@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/index.css"
+        ],
+        "createdAt": "2026-10-28T07:30:53.126Z",
+        "reason": "User asked to match markolosic.github.io, whose .grad gradient-text style is part of that design"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/index.css"
+        ],
+        "createdAt": "2026-10-28T07:34:40.063Z",
+        "reason": "Blockquote left rule in .prose, copied from markolosic.github.io blog.css which the user asked to match; not a card"
+      }
+    ]
+  }
+}
