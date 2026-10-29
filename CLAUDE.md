@@ -42,7 +42,7 @@ Ovo je **React + TypeScript blog sajt** koji vodi **Marko Lošić** iz Banje Luk
 - **Nema baze podataka, nema CMS-a** — sve je u kodu i Git-u.
 - Korisnik piše članke (tekst, beleške, sirovi sadržaj), a **Claude Code ih formatira** u ispravne `.md` fajlove sa frontmatterom (vidi sekciju 15).
 - Claude Code izgrađuje i održava **kod** i **pomaže u formatiranju sadržaja**.
-- Sajt je na **srpskom jeziku (latinica)** u interfejsu; članci mogu biti na srpskom ili engleskom.
+- Sajt je **višejezičan**: srpski (podrazumevani, latinica, ekavica), engleski, hrvatski, bosanski i njemački — i interfejs i članci (sekcija 7.1).
 - **Ton sajta:** ličan, topao, profesionalan, bez korporativnog žargona. Kao da nastavnik piše iz svoje učionice.
 
 **Predlog imena (nije obavezno):** `Iz učionice`, `Nastavničke beleške`, `Moja učionica`, `Tabla i kreda`. Kada korisnik izabere ime, ažuriraj `siteConfig` (sekcija 3) i ovaj opis.
@@ -99,7 +99,13 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     ├── index.css              # Tailwind direktive + globalni stilovi
     ├── vite-env.d.ts          # Vite tipovi
     ├── config/
-    │   └── site.ts            # siteConfig: ime sajta, opis, autor, linkovi
+    │   └── site.ts            # siteConfig: ime sajta, autor (ime, email), linkovi — isto na svim jezicima
+    ├── i18n/
+    │   ├── config.ts          # LOCALES, DEFAULT_LOCALE, localeInfo (ime, BCP 47 tag, slug „O meni“) — deli se sa vite.config.ts
+    │   ├── paths.ts           # localeBase, pathsFor(locale), switchLocalePath
+    │   ├── LocaleContext.tsx  # LocaleProvider + useLocale() → { locale, t, paths }
+    │   ├── dictionaries.ts    # Record<Locale, Dictionary>
+    │   └── locales/           # sr.ts (izvor tipa Dictionary), en.ts, hr.ts, bs.ts, de.ts
     ├── types/
     │   └── post.ts            # Post, PostMeta, Category
     ├── components/
@@ -111,6 +117,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── EmptyState.tsx     # prazno stanje (nema članaka)
     │   ├── ScrollToTop.tsx    # skrol na vrh pri promeni rute
     │   ├── ThemeToggle.tsx    # preklopnik tamna/svetla tema
+    │   ├── LanguageSwitcher.tsx # izbor jezika (dugme sa kodom + meni sa linkovima)
     │   └── PixelIcon.tsx      # pikselske SVG ikone (9×9) sa markolosic.github.io
     ├── pages/
     │   ├── Home.tsx           # početna
@@ -121,11 +128,12 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     ├── lib/
     │   ├── posts.ts           # čitanje .md fajlova
     │   ├── frontmatter.ts     # validateFrontmatter (deli se sa vite.config.ts)
-    │   └── formatDate.ts      # formatiranje datuma (srpski)
+    │   └── formatDate.ts      # formatiranje datuma (po jeziku)
     └── content/
-        └── posts/             # OVDE SE DODAJU ČLANCI
-            ├── prvi-clanak.md
-            └── ...
+        └── posts/             # OVDE SE DODAJU ČLANCI, po folderu za svaki jezik
+            ├── sr/ai-u-nastavi-od-1-do-5-razreda.md
+            ├── en/ai-u-nastavi-od-1-do-5-razreda.md   # prevod = isti slug
+            └── hr/ bs/ de/ ...
 ```
 
 Napomena: Folder `src/content/posts/` je isključivo korisnikov sadržaj. Claude Code ga dira samo kada korisnik eksplicitno zatraži formatiranje novog članka (sekcija 15).
@@ -159,7 +167,9 @@ export const siteConfig = {
 } as const;
 ```
 
-**Pravilo:** Kada korisnik izabere ime sajta, ažuriraj `siteConfig.name`, `siteConfig.tagline`, `siteConfig.description` i `siteConfig.author`.
+**Ažurirano (višejezičnost):** `siteConfig` sada drži samo ono što je isto na svim jezicima: `name`, `author.name`, `author.email`, `url`, `social`. Prevodivi tekstovi (`tagline`, `author.role/location/intro/background`, `topics`) su u `src/i18n/locales/<jezik>.ts`. Komponente ih spajaju: `const author = { ...siteConfig.author, ...t.author }`.
+
+**Pravilo:** Kada korisnik menja tekst o sebi, menjaj ga u **svih pet** rečnika.
 
 ---
 
@@ -180,6 +190,7 @@ export type Category = (typeof CATEGORIES)[number];
 
 export interface PostMeta {
   slug: string;
+  locale: Locale;     // iz foldera: content/posts/<jezik>/
   title: string;
   date: string;       // ISO format: "YYYY-MM-DD"
   excerpt: string;
@@ -207,7 +218,7 @@ export interface PostFrontmatter {
 
 ## 5. Format Markdown članaka
 
-Svaki članak je `.md` fajl u `src/content/posts/`. Ime fajla postaje URL slug (npr. `ai-u-nastavi.md` → `/blog/ai-u-nastavi`).
+Svaki članak je `.md` fajl u `src/content/posts/<jezik>/` (`sr`, `en`, `hr`, `bs`, `de`). Ime fajla postaje URL slug (npr. `sr/ai-u-nastavi.md` → `/blog/ai-u-nastavi`, `en/ai-u-nastavi.md` → `/en/blog/ai-u-nastavi`). **Prevod istog članka ima isto ime fajla** u folderu drugog jezika — po tome izbor jezika nalazi prevod. Članak bez prevoda se jednostavno ne pojavljuje na tom jeziku. `category` je uvek srpski ključ iz `CATEGORIES`; prevod oznake je u `t.categories`. Fajl van foldera jezika obara build.
 
 ### 5.1. Obavezan frontmatter
 
@@ -312,7 +323,7 @@ Prva stvar koju treba razumeti je...
 `posts.ts` zatim koristi Vite `import.meta.glob` (bez `?raw`):
 
 ```typescript
-const modules = import.meta.glob('../content/posts/*.md', {
+const modules = import.meta.glob('../content/posts/*/*.md', {
   import: 'default',
   eager: true,
 }) as Record<string, { data: unknown; content: string }>;
@@ -332,11 +343,11 @@ Za svaki fajl:
 
 | Funkcija | Potpis | Opis |
 |----------|--------|------|
-| `getAllPosts` | `(): PostMeta[]` | Svi članci, sortirano po `date` opadajuće |
-| `getPostBySlug` | `(slug: string): Post \| null` | Jedan članak ili `null` |
-| `getPostsByCategory` | `(category: Category): PostMeta[]` | Filtrirano, sortirano po datumu |
-| `getAllCategories` | `(): Category[]` | Sve kategorije koje imaju bar jedan članak |
-| `getRecentPosts` | `(count: number): PostMeta[]` | Najnovijih `count` članaka |
+| `getAllPosts` | `(locale: Locale): PostMeta[]` | Svi članci jezika, sortirano po `date` opadajuće |
+| `getPostBySlug` | `(locale: Locale, slug: string): Post \| null` | Jedan članak ili `null` |
+| `getPostsByCategory` | `(locale: Locale, category: Category): PostMeta[]` | Filtrirano, sortirano po datumu |
+| `getAllCategories` | `(locale: Locale): Category[]` | Sve kategorije koje imaju bar jedan članak |
+| `getRecentPosts` | `(locale: Locale, count: number): PostMeta[]` | Najnovijih `count` članaka |
 
 ### 6.3. Validacija frontmattera
 
@@ -382,7 +393,7 @@ export function formatDate(iso: string): string {
 
 Primer izlaza: `27. oktobar 2026.`
 
-Implementacija dodaje `timeZone: 'UTC'`: `new Date('YYYY-MM-DD')` je UTC ponoć, pa bi bez toga čitaoci u zapadnim vremenskim zonama videli prethodni dan.
+Stvarni potpis je `formatDate(iso, locale)` — koristi `localeInfo[locale].tag`. Implementacija dodaje `timeZone: 'UTC'`: `new Date('YYYY-MM-DD')` je UTC ponoć, pa bi bez toga čitaoci u zapadnim vremenskim zonama videli prethodni dan.
 
 ---
 
@@ -399,6 +410,17 @@ Koristi `react-router-dom`:
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />`.
+
+### 7.1. Jezici
+
+- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`.
+- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`.
+- **Tekst interfejsa nikad ne hardkoduj** — koristi `t` iz `useLocale()`. Novi string dodaj u `locales/sr.ts`, a TypeScript će tražiti isti ključ u ostala četiri rečnika.
+- `LocaleProvider` postavlja `<html lang>` na BCP 47 tag jezika.
+- `LanguageSwitcher` vodi na istu stranicu na drugom jeziku (`switchLocalePath`); ako članak nema prevod, vodi na listu članaka tog jezika.
+- Varijante: srpski = ekavica; hrvatski = ijekavica i hrvatska leksika (tjedan, točno, učitelj); bosanski = ijekavica i bosanska leksika (sedmica, tačno, historija); njemački = „Sie“ forma.
+- Ime sajta (`siteConfig.name`) se ne prevodi.
+- Za sada nema automatskog preusmeravanja po jeziku browsera.
 
 **Napomena za BlogPost:** ako slug ne postoji, prikaži `<NotFound />` ili poruku „Članak nije pronađen" sa linkom na `/blog`.
 
@@ -481,7 +503,7 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 
 - Plutajuća pilula: `fixed top-3.5`, centrirana, `rounded-full`, poluprozirna `bg-surface/70` + `backdrop-blur`; posle skrola dobija jaču granicu i senku.
 - Levo: znak (zeleni kvadrat sa pikselskom kvačicom) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
-- Desno: Početna, Blog, O meni (`NavLink`; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<ThemeToggle />`.
+- Desno: Početna, Blog, O meni (`NavLink`; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<LanguageSwitcher />` + `<ThemeToggle />`.
 
 ### 9.3. `Footer.tsx`
 
@@ -607,7 +629,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - **Jedan `<h1>` po stranici.**
 - **Linkovi:** tekst linka mora imati smisao i van konteksta (ne „klikni ovde").
 - **Forme (ako ih bude):** `<label>` povezan sa inputom.
-- **Jezik:** `<html lang="sr-Latn-BA">` u `index.html`.
+- **Jezik:** `<html lang="sr-Latn-BA">` u `index.html`; `LocaleProvider` ga menja po ruti. Stavke u izboru jezika imaju `lang` i `hrefLang`.
 
 ---
 
@@ -641,7 +663,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 6. **Kada menjaš strukturu fajlova, ažuriraj ovaj CLAUDE.md** (sekcija 3 i relevantne sekcije).
 7. **Ne instaliraj nove biblioteke bez eksplicitnog odobrenja korisnika.** Ako predlažeš novu zavisnost, objasni zašto.
 8. **Ne postavljaj analitiku, kolačiće, niti bilo kakvo praćenje** bez eksplicitnog zahteva.
-9. **Sav tekst interfejsa na srpskom (latinica)** — „Početna", „Blog", „O meni", „Pročitaj više", „Objavljeno", „Kategorija", „Nazad na blog".
+9. **Sav tekst interfejsa ide kroz rečnike** (`src/i18n/locales/*.ts`, sekcija 7.1) — srpski (latinica) je izvor, uz prevode na engleski, hrvatski, bosanski i njemački.
 10. **Commit poruke i komentari u kodu** mogu biti na srpskom ili engleskom — konzistentno unutar fajla.
 11. **Koristi `siteConfig`** za ime sajta, opis, autora — ne hardkoduj stringove.
 12. **Koristi `formatDate`** za prikaz datuma — ne formatuj ručno.

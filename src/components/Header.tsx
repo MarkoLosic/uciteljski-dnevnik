@@ -3,15 +3,17 @@ import { Link, NavLink } from 'react-router-dom';
 import { siteConfig } from '../config/site';
 import PixelIcon from './PixelIcon';
 import ThemeToggle from './ThemeToggle';
-
-const navItems = [
-  { to: '/', label: 'Početna' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/o-meni', label: 'O meni' },
-] as const;
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLocale } from '../i18n/LocaleContext';
 
 export default function Header() {
+  const { t, paths } = useLocale();
   const [scrolled, setScrolled] = useState(false);
+  const navItems = [
+    { to: paths.home, label: t.nav.home },
+    { to: paths.blog, label: t.nav.blog },
+    { to: paths.about, label: t.nav.about },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -27,7 +29,7 @@ export default function Header() {
       }`}
     >
       <Link
-        to="/"
+        to={paths.home}
         className="focus-ring flex items-center gap-2.5 rounded-lg font-head text-base font-semibold tracking-tight"
       >
         <span className="grid h-7 w-7 place-items-center rounded-[9px] bg-accent text-accent-ink">
@@ -36,13 +38,13 @@ export default function Header() {
         <span className="max-sm:sr-only">{siteConfig.name}</span>
       </Link>
       <div className="flex items-center gap-1 sm:gap-1.5">
-        <nav aria-label="Glavna navigacija">
+        <nav aria-label={t.nav.label}>
           <ul className="flex sm:gap-1">
             {navItems.map(({ to, label }) => (
               <li key={to}>
                 <NavLink
                   to={to}
-                  end={to === '/'}
+                  end={to === paths.home}
                   className={({ isActive }) =>
                     `focus-ring block rounded-full px-2.5 py-2 text-sm font-medium transition-colors sm:px-3.5 sm:text-[14.5px] ${
                       isActive
@@ -57,6 +59,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+        <LanguageSwitcher />
         <ThemeToggle />
       </div>
     </header>

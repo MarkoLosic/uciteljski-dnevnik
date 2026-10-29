@@ -1,23 +1,27 @@
 import { Laptop, School, type LucideIcon } from 'lucide-react';
 import { siteConfig } from '../config/site';
+import { useLocale } from '../i18n/LocaleContext';
 
 const backgroundIcons: LucideIcon[] = [Laptop, School];
 
 export default function About() {
-  const { author, topics, social } = siteConfig;
-  const contactItems = [
+  const { t } = useLocale();
+  const { social } = siteConfig;
+  const author = { ...siteConfig.author, ...t.author };
+  const { topics } = t;
+  const contactItems: { label: string; text: string; href: string }[] = [
     { label: 'Email', text: author.email, href: `mailto:${author.email}` },
     { label: 'LinkedIn', text: 'linkedin.com/in/markološić', href: social.linkedin },
     { label: 'GitHub', text: 'github.com/MarkoLosic', href: social.github },
-    { label: 'Lokacija', text: author.location, href: '' },
-  ].filter(({ label, href }) => label === 'Lokacija' || href.length > 0);
+    { label: t.about.location, text: author.location, href: '' },
+  ].filter(({ label, href }) => label === t.about.location || href.length > 0);
 
   return (
     <div className="wrap pt-[130px]">
       <header className="max-w-[760px]">
         <span className="eyebrow">{author.role}</span>
-        <h1 className="page-title mt-2 mb-5">O meni</h1>
-        {/* KORISNIK: tekstovi dolaze iz src/config/site.ts — tamo ih zameni svojim. */}
+        <h1 className="page-title mt-2 mb-5">{t.about.title}</h1>
+        {/* KORISNIK: tekstovi dolaze iz src/i18n/locales/*.ts — tamo ih zameni svojim. */}
         <p className="text-lg text-muted sm:text-xl">{author.intro}</p>
       </header>
 
@@ -42,12 +46,12 @@ export default function About() {
       </ul>
 
       <section className="pt-20 sm:pt-28" aria-labelledby="o-blogu">
-        <span className="eyebrow">O blogu</span>
+        <span className="eyebrow">{t.about.blogEyebrow}</span>
         <h2 id="o-blogu" className="section-title mb-5">
-          Šta ćete ovde naći
+          {t.about.blogTitle}
         </h2>
         <p className="mb-9 max-w-[760px] text-lg text-muted">
-          {siteConfig.name} je mesto gde spajam ono što sam naučio u učionici sa onim čime se svaki dan bavim u IT-u.
+          {t.about.blogText(siteConfig.name)}
         </p>
         <ul className="grid gap-[18px] sm:grid-cols-3">
           {topics.map(({ title, text }, i) => (
@@ -71,12 +75,12 @@ export default function About() {
         aria-labelledby="kontakt"
       >
         <div>
-          <span className="eyebrow">Kontakt</span>
+          <span className="eyebrow">{t.about.contactEyebrow}</span>
           <h2 id="kontakt" className="mb-4 font-head text-[clamp(28px,3.6vw,42px)] leading-[1.1] font-bold tracking-[-0.03em]">
-            Javite se
+            {t.about.contactTitle}
           </h2>
           <p className="max-w-[520px] text-[17px] text-muted">
-            Pitanja, predlozi, ideja za temu ili samo pozdrav — rado odgovaram.
+            {t.about.contactText}
           </p>
         </div>
         <ul className="grid content-center">

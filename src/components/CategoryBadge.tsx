@@ -1,4 +1,5 @@
 import type { Category } from '../types/post';
+import { useLocale } from '../i18n/LocaleContext';
 
 interface CategoryBadgeProps {
   category: Category;
@@ -13,5 +14,6 @@ const categoryColors: Record<Category, string> = {
 };
 
 export default function CategoryBadge({ category }: CategoryBadgeProps) {
-  return <span className={`cat ${categoryColors[category]}`}>{category}</span>;
+  const { t } = useLocale();
+  return <span className={`cat ${categoryColors[category]}`}>{t.categories[category]}</span>;
 }

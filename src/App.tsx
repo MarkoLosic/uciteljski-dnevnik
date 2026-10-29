@@ -5,17 +5,31 @@ import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+import { LOCALES, localeInfo } from './i18n/config';
+import { LocaleProvider } from './i18n/LocaleContext';
+import { localeBase } from './i18n/paths';
 
+// Isti skup ruta za svaki jezik: srpski bez prefiksa (`/blog`), ostali sa njim (`/en/blog`).
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<BlogList />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/o-meni" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      {LOCALES.map((locale) => (
+        <Route
+          key={locale}
+          path={localeBase(locale) || '/'}
+          element={
+            <LocaleProvider locale={locale}>
+              <Layout />
+            </LocaleProvider>
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="blog" element={<BlogList />} />
+          <Route path="blog/:slug" element={<BlogPost />} />
+          <Route path={localeInfo[locale].aboutSlug} element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      ))}
     </Routes>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PixelIcon from './PixelIcon';
+import { useLocale } from '../i18n/LocaleContext';
 
 type Theme = 'dark' | 'light';
 
@@ -8,6 +9,7 @@ function currentTheme(): Theme {
 }
 
 export default function ThemeToggle() {
+  const { t } = useLocale();
   const [theme, setTheme] = useState<Theme>(currentTheme);
 
   function toggle() {
@@ -25,7 +27,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label={theme === 'dark' ? 'Uključi svetlu temu' : 'Uključi tamnu temu'}
+      aria-label={theme === 'dark' ? t.theme.toLight : t.theme.toDark}
       className="focus-ring inline-grid h-[38px] w-[38px] place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:bg-surface-2 hover:text-ink"
     >
       <PixelIcon name={theme === 'dark' ? 'moon' : 'sun'} />

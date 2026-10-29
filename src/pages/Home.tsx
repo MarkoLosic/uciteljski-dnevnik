@@ -5,13 +5,14 @@ import { getRecentPosts } from '../lib/posts';
 import PostCard from '../components/PostCard';
 import EmptyState from '../components/EmptyState';
 import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
+import { useLocale } from '../i18n/LocaleContext';
 
 const backgroundIcons: LucideIcon[] = [Laptop, School];
 
 const heroChips = [
-  { label: 'Razredna nastava', className: 'top-[6%] -right-[6%] max-lg:-right-[2%]', color: '' },
-  { label: 'QA inženjer', className: 'top-[22%] -left-[10%] max-lg:-left-[4%] [animation-delay:-2s]', color: '[--c:var(--accent-2)]' },
-  { label: 'AI u nastavi', className: 'top-[72%] -right-[8%] max-lg:-right-[2%] [animation-delay:-4s]', color: '[--c:var(--cat-amber)]' },
+  { className: 'top-[6%] -right-[6%] max-lg:-right-[2%]', color: '' },
+  { className: 'top-[22%] -left-[10%] max-lg:-left-[4%] [animation-delay:-2s]', color: '[--c:var(--accent-2)]' },
+  { className: 'top-[72%] -right-[8%] max-lg:-right-[2%] [animation-delay:-4s]', color: '[--c:var(--cat-amber)]' },
 ] as const;
 
 function initials(name: string): string {
@@ -24,8 +25,11 @@ function initials(name: string): string {
 }
 
 export default function Home() {
-  const recentPosts = getRecentPosts(3);
-  const { author, topics, social } = siteConfig;
+  const { locale, t, paths } = useLocale();
+  const recentPosts = getRecentPosts(locale, 3);
+  const { social } = siteConfig;
+  const author = { ...siteConfig.author, ...t.author };
+  const { topics } = t;
   const socialLinks = (
     [
       { label: 'GitHub', href: social.github, icon: 'github' },
@@ -43,16 +47,16 @@ export default function Home() {
             {author.role} · {author.location}
           </span>
           <h1 className="mt-5 mb-5 font-head text-[clamp(38px,6.2vw,74px)] leading-[1.04] font-bold tracking-[-0.035em] text-balance">
-            Zdravo, ja sam <span className="grad">{author.name}</span>
+            {t.home.greeting} <span className="grad">{author.name}</span>
           </h1>
           <p className="max-w-[580px] text-[clamp(16.5px,1.6vw,19px)] text-muted">{author.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/blog" className="btn btn-primary focus-ring">
-              Pročitaj blog
+            <Link to={paths.blog} className="btn btn-primary focus-ring">
+              {t.home.readBlog}
               <PixelIcon name="arrow" />
             </Link>
-            <Link to="/o-meni" className="btn btn-ghost focus-ring">
-              Više o meni
+            <Link to={paths.about} className="btn btn-ghost focus-ring">
+              {t.home.moreAboutMe}
             </Link>
           </div>
           <div className="mt-7 flex flex-wrap items-center gap-2">
@@ -81,10 +85,10 @@ export default function Home() {
             <div className="photo grid place-items-center font-head text-[clamp(56px,9vw,104px)] font-bold tracking-tight">
               <span className="grad">{initials(author.name)}</span>
             </div>
-            {heroChips.map(({ label, className, color }) => (
-              <span key={label} className={`float-chip max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[11.5px] ${className} ${color}`}>
+            {heroChips.map(({ className, color }, i) => (
+              <span key={className} className={`float-chip max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[11.5px] ${className} ${color}`}>
                 <i />
-                {label}
+                {t.home.chips[i]}
               </span>
             ))}
           </div>
@@ -92,9 +96,9 @@ export default function Home() {
       </section>
 
       <section className="wrap pt-12 sm:pt-20" aria-labelledby="ko-sam-ja">
-        <span className="eyebrow">01 — Ko sam ja</span>
+        <span className="eyebrow">{t.home.whoEyebrow}</span>
         <h2 id="ko-sam-ja" className="section-title mb-11">
-          Između učionice i IT-a
+          {t.home.whoTitle}
         </h2>
         <ul className="grid gap-[18px] md:grid-cols-2">
           {author.background.map(({ title, text }, i) => {
@@ -113,9 +117,9 @@ export default function Home() {
       </section>
 
       <section className="wrap pt-20 sm:pt-28" aria-labelledby="o-cemu-pisem">
-        <span className="eyebrow">02 — Teme</span>
+        <span className="eyebrow">{t.home.topicsEyebrow}</span>
         <h2 id="o-cemu-pisem" className="section-title mb-11">
-          O čemu pišem
+          {t.home.topicsTitle}
         </h2>
         <ul className="grid gap-[18px] sm:grid-cols-3">
           {topics.map(({ title, text }, i) => (
@@ -131,17 +135,17 @@ export default function Home() {
       </section>
 
       <section className="wrap pt-20 sm:pt-28" aria-labelledby="najnovije">
-        <span className="eyebrow">03 — Blog</span>
+        <span className="eyebrow">{t.home.blogEyebrow}</span>
         <div className="mb-11 flex flex-wrap items-end justify-between gap-4">
           <h2 id="najnovije" className="section-title">
-            Najnovije sa bloga
+            {t.home.blogTitle}
           </h2>
           {recentPosts.length > 0 && (
             <Link
-              to="/blog"
+              to={paths.blog}
               className="focus-ring inline-flex items-center gap-2 rounded font-semibold text-accent hover:underline"
             >
-              Svi članci <PixelIcon name="arrow" size={16} />
+              {t.blog.allPosts} <PixelIcon name="arrow" size={16} />
             </Link>
           )}
         </div>
@@ -154,7 +158,7 @@ export default function Home() {
             ))}
           </ul>
         ) : (
-          <EmptyState headingLevel={3} title="Još nema članaka" message="Prvi članci su u pripremi. Navratite uskoro!" />
+          <EmptyState headingLevel={3} title={t.blog.emptyTitle} message={t.blog.emptyMessage} />
         )}
       </section>
     </>

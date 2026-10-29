@@ -1,3 +1,5 @@
+import type { Locale } from '../i18n/config';
+
 export const CATEGORIES = [
   'AI alati u nastavi',
   'Etika i AI',
@@ -10,6 +12,7 @@ export type Category = (typeof CATEGORIES)[number];
 
 export interface PostMeta {
   slug: string;
+  locale: Locale; // iz imena foldera: content/posts/<jezik>/
   title: string;
   date: string; // ISO format: "YYYY-MM-DD"
   excerpt: string;
