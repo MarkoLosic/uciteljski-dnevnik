@@ -169,7 +169,7 @@ export const siteConfig = {
     email: 'kontakt@example.ba',
   },
   topics: [{ title, text }, …],  // „O čemu pišem"
-  url: 'https://example.ba',
+  url: 'https://uciteljski-dnevnik-roan.vercel.app',
   locale: 'sr-Latn-BA',
   social: {
     linkedin: '',
@@ -663,7 +663,8 @@ Redosled sekcija (lično predstavljanje pa blog):
 - `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`) — podrazumevane vrednosti i ono što vide pregledi linkova bez JS-a.
 - **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — Iz učionice“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
 - `sitemap.xml` i `robots.txt` pravi plugin `seo-files` u `vite.config.ts` pri `npm run build` — iz istih podataka kao rute (jezici, slugovi, igre, članci sa `lastmod` = `date`), sa `hreflang` vezama između prevoda. Nova vrsta stranice → dodaj je u `sitemapGroups()`.
-- **Dok je `siteConfig.url` placeholder (`example.ba`), sitemap se ne pravi** (build ispisuje upozorenje). Kada je domen poznat, upiši ga u `siteConfig.url` i u `og:url` u `index.html`.
+- Domen: `https://uciteljski-dnevnik-roan.vercel.app` (Vercel). Ako se promeni, menja se u `siteConfig.url` i u `index.html` (`og:url`, `og:image`, `canonical`). Dok je `siteConfig.url` placeholder (`example.`), sitemap se ne pravi.
+- Slika za deljenje linkova: `public/slike/og-slika.jpg` (1200×630), postavljena u `index.html`.
 - Ograničenje: pregledi linkova (Facebook, Viber, WhatsApp) ne izvršavaju JS, pa za sve stranice vide tagove iz `index.html`. Za prave preglede po članku trebalo bi prerenderovanje (roadmap).
 - Semantički HTML (sekcija 11) pomaže SEO.
 - Sitemap i `robots.txt`: kasnije, preko Vite plugina ili ručno.

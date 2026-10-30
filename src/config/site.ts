@@ -6,7 +6,7 @@ export const siteConfig = {
     name: 'Marko Lošić',
     email: 'markolosic1993@gmail.com',
   },
-  url: 'https://example.ba',
+  url: 'https://uciteljski-dnevnik-roan.vercel.app',
   social: {
     linkedin: 'https://www.linkedin.com/in/markolo%C5%A1i%C4%87/',
     twitter: '',
