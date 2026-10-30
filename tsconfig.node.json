@@ -16,5 +16,5 @@
     "outDir": "./node_modules/.tmp/node",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo"
   },
-  "include": ["vite.config.ts", "src/lib/frontmatter.ts", "src/types/post.ts", "src/i18n/config.ts"]
+  "include": ["vite.config.ts", "src/lib/frontmatter.ts", "src/types/post.ts", "src/i18n/config.ts", "src/config/site.ts", "src/games/ids.ts"]
 }

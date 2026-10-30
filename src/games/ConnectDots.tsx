@@ -3,7 +3,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { RoundDots, toyHex, useShake, type GameProps } from './shared';
 
 // Svaki oblik je zatvoren poligon; tačke se spajaju redom 1 → N, pa nazad na 1.
-const FIGURES: { points: [number, number][]; color: string }[] = [
+export const FIGURES: { points: [number, number][]; color: string }[] = [
   { points: [[200, 30], [320, 150], [200, 270], [80, 150]], color: toyHex.orange },
   { points: [[200, 35], [325, 135], [325, 265], [75, 265], [75, 135]], color: toyHex.red },
   { points: [[55, 150], [150, 70], [265, 120], [345, 55], [345, 245], [265, 180], [150, 230]], color: toyHex.blue },

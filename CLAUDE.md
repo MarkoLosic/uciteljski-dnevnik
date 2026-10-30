@@ -86,7 +86,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
 ├── package.json
 ├── tsconfig.json              # app (src/), referencira tsconfig.node.json
 ├── tsconfig.node.json         # vite.config.ts + deljeni validator
-├── vite.config.ts             # sadrži plugin markdown-posts (vidi 6)
+├── vite.config.ts             # pluginovi markdown-posts (vidi 6) i seo-files (sitemap.xml, robots.txt — vidi 12)
 ├── vercel.json                # SPA rewrite: sve rute → index.html
 ├── index.html
 ├── .gitignore
@@ -126,17 +126,20 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── About.tsx          # o sajtu / o autoru
     │   ├── Games.tsx          # lista igara za predškolce
     │   ├── GamePlay.tsx       # jedna igra + ekran „Bravo!“
+    │   ├── Worksheet.tsx      # radni list za štampu (A4)
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
     │   ├── registry.ts        # GameId → komponenta, ikona, boja kartice, veštine
     │   ├── shared.tsx         # toyHex, shuffle, ShapeIcon, RoundDots, useShake, useDragDrop
     │   ├── things.ts          # sličice (lucide) za pamćenje, brojanje, veličine
+    │   ├── worksheets.tsx     # radni listovi: igre na papiru + pisanje brojeva i slova (latinica, ćirilica)
     │   └── Balloons.tsx, ColorSort.tsx, ShapeMatch.tsx, Trace.tsx, ConnectDots.tsx,
     │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
     ├── lib/
     │   ├── posts.ts           # čitanje .md fajlova
     │   ├── frontmatter.ts     # validateFrontmatter (deli se sa vite.config.ts)
+    │   ├── usePageMeta.ts     # naslov, opis, Open Graph i canonical po stranici
     │   └── formatDate.ts      # formatiranje datuma (po jeziku)
     └── content/
         └── posts/             # OVDE SE DODAJU ČLANCI, po folderu za svaki jezik
@@ -418,14 +421,15 @@ Koristi `react-router-dom`:
 | `/o-meni` | `<About />` | O meni: IT iskustvo, razredna nastava, o blogu, kontakt |
 | `/igre` | `<Games />` | Igre za predškolce (sekcija 10.5) |
 | `/igre/:gameId` | `<GamePlay />` | Jedna igra; nepoznat `gameId` → `<NotFound />` |
+| `/igre/radni-listovi/:sheetId` | `<Worksheet />` | Radni list za štampu (`WORKSHEET_IDS`; ćirilica samo sr i bs) |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />`.
 
 ### 7.1. Jezici
 
-- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`, a stranice igara u `localeInfo[locale].gamesSlug` (`igre`, en `games`, de `spiele`; `gameId` je isti na svim jezicima).
-- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`, `paths.games`, `paths.game(id)`.
+- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`, a stranice igara u `localeInfo[locale].gamesSlug` (`igre`, en `games`, de `spiele`; `gameId` je isti na svim jezicima), a radnih listova u `worksheetSlug` (`radni-listovi`, en `worksheets`, de `arbeitsblaetter`).
+- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`, `paths.games`, `paths.game(id)`, `paths.worksheet(id)`.
 - **Tekst interfejsa nikad ne hardkoduj** — koristi `t` iz `useLocale()`. Novi string dodaj u `locales/sr.ts`, a TypeScript će tražiti isti ključ u ostala četiri rečnika.
 - `LocaleProvider` postavlja `<html lang>` na BCP 47 tag jezika.
 - `LanguageSwitcher` vodi na istu stranicu na drugom jeziku (`switchLocalePath`); ako članak nema prevod, vodi na listu članaka tog jezika.
@@ -630,6 +634,8 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Nova igra: dodaj id u `GAME_IDS`, komponentu u `registry.ts` i tekst (`title`, `short`, `howTo`) u `t.games.list` u svih pet rečnika.
 - Pravila: velike mete (dečji prst), greška samo „odmahne“ (`useShake`), bez tajmera i kazni. Prevlačenje ide kroz `useDragDrop` — radi i „dodirni predmet, pa dodirni cilj“ i tastatura. Boje igračaka (`toyHex`) su sadržaj i ne menjaju se sa temom.
 - Bez zvuka, reklama i praćenja. Animacije poštuju `prefers-reduced-motion`.
+- Radni listovi (`WORKSHEET_IDS`): `trace`, `dots`, `maze` su papirne verzije igara (isti id i ista data: `PATHS`, `FIGURES`, `MAZES`; `GamePlay` linkuje na njih), a `numbers`, `latin`, `cyrillic` su listovi za pisanje (`WritingRow`: crni uzorak, sive kopije za precrtavanje, linije). `WORKSHEET_LOCALES` ograničava list na jezike (ćirilica: sr, bs); abeceda za `latin` je u `t.games.worksheet.alphabet` (en/de imaju svoju).
+- Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`.
 
 ### 10.6. `NotFound.tsx`
 
@@ -654,8 +660,11 @@ Redosled sekcija (lično predstavljanje pa blog):
 
 ## 12. SEO i meta podaci
 
-- `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`).
-- Kasnije (roadmap): `react-helmet-async` za dinamičke meta tagove po stranici (naslov članka, opis, datum).
+- `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`) — podrazumevane vrednosti i ono što vide pregledi linkova bez JS-a.
+- **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — Iz učionice“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
+- `sitemap.xml` i `robots.txt` pravi plugin `seo-files` u `vite.config.ts` pri `npm run build` — iz istih podataka kao rute (jezici, slugovi, igre, članci sa `lastmod` = `date`), sa `hreflang` vezama između prevoda. Nova vrsta stranice → dodaj je u `sitemapGroups()`.
+- **Dok je `siteConfig.url` placeholder (`example.ba`), sitemap se ne pravi** (build ispisuje upozorenje). Kada je domen poznat, upiši ga u `siteConfig.url` i u `og:url` u `index.html`.
+- Ograničenje: pregledi linkova (Facebook, Viber, WhatsApp) ne izvršavaju JS, pa za sve stranice vide tagove iz `index.html`. Za prave preglede po članku trebalo bi prerenderovanje (roadmap).
 - Semantički HTML (sekcija 11) pomaže SEO.
 - Sitemap i `robots.txt`: kasnije, preko Vite plugina ili ručno.
 - Kanonski URL-ovi: kasnije, ako bude potrebe.

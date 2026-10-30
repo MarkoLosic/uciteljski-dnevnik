@@ -3,12 +3,14 @@ import type { Dictionary } from './sr';
 export const bs: Dictionary = {
   site: {
     tagline: 'O učionici i tehnologiji u nastavi',
+    description:
+      'Lični blog o obrazovanju, razrednoj nastavi i tehnologiji u učionici — iz ugla učitelja koji danas radi kao QA inženjer.',
   },
   author: {
     role: 'QA inženjer i profesor razredne nastave',
     location: 'Banja Luka, BiH',
     intro:
-      'Po struci sam profesor razredne nastave, a danas radim u IT-u kao QA inženjer. Osam mjeseci predavao sam prvačićima i od tada razmišljam o tome kako tehnologija može pomoći u učionici — i kada samo smeta.',
+      'Po struci sam učitelj, i onih osam mjeseci provedenih sa prvacima naučilo me je dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — ko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo klikanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
     background: [
       {
         title: 'U IT-u',
@@ -32,7 +34,8 @@ export const bs: Dictionary = {
     label: 'Glavna navigacija',
     home: 'Početna',
     blog: 'Blog',
-    games: 'Igre',
+    games: 'Igre za djecu',
+    gamesShort: 'Igre',
     about: 'O meni',
   },
   language: {
@@ -71,6 +74,8 @@ export const bs: Dictionary = {
   blog: {
     eyebrow: 'Blog',
     title: 'Svi članci',
+    description:
+      'Svi članci o nastavi u nižim razredima, iskustvima iz učionice i pametnoj upotrebi tehnologije i umjetne inteligencije.',
     allPosts: 'Svi članci',
     readMore: 'Pročitaj više',
     published: 'Objavljeno',
@@ -82,6 +87,8 @@ export const bs: Dictionary = {
   },
   about: {
     title: 'O meni',
+    description:
+      'Ko piše blog Iz učionice: učitelj po struci, QA inženjer po zanimanju, iz Banje Luke. Iskustvo, teme i kontakt.',
     blogEyebrow: 'O blogu',
     blogTitle: 'Šta ćete ovdje naći',
     blogText: (siteName: string) =>
@@ -171,6 +178,46 @@ export const bs: Dictionary = {
       howMany: (thing: string) => `Koliko ih ima? (${thing})`,
       sizeItem: (thing: string, n: number, total: number) => `${thing}, veličina ${n} od ${total}`,
       shelf: 'Polica, od najmanjeg do najvećeg',
+    },
+    worksheet: {
+      link: 'Radni list za štampu',
+      eyebrow: 'Radni list',
+      print: 'Štampaj',
+      backToGames: 'Nazad na igre',
+      name: 'Ime',
+      date: 'Datum',
+      page: (n: number, total: number) => `Strana ${n}/${total}`,
+      tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
+      sectionEyebrow: 'Za štampu',
+      sectionTitle: 'Radni listovi',
+      sectionText: 'Papirne verzije igara i listovi za pisanje brojeva i slova — za vježbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
+      alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
+      sheets: {
+        trace: {
+          title: 'Prati stazu',
+          text: 'Olovkom ili bojicom prati isprekidanu liniju od bube do cvijeta. Ne žuri i pokušaj ostati na sivoj stazi.',
+        },
+        dots: {
+          title: 'Spoji tačke',
+          text: 'Spoji tačke redom, od 1 do zadnjeg broja, pa se vrati na 1. Zatim oboji sliku.',
+        },
+        maze: {
+          title: 'Zeko u lavirintu',
+          text: 'Nacrtaj put kojim zeko stiže do mrkve. Kroz ogradu ne može.',
+        },
+        numbers: {
+          title: 'Pišemo brojeve',
+          text: 'Prvo pogledaj crni broj, pa olovkom pređi preko svakog sivog. Kreni odozgo. Na praznom dijelu reda napiši broj bez pomoći.',
+        },
+        latin: {
+          title: 'Pišemo slova — latinica',
+          text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+        cyrillic: {
+          title: 'Pišemo slova — ćirilica',
+          text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+      },
     },
     list: {
       balloons: {

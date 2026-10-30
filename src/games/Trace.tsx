@@ -3,7 +3,7 @@ import { Bug, Flower2 } from 'lucide-react';
 import { useLocale } from '../i18n/LocaleContext';
 import { RoundDots, toyHex, type GameProps } from './shared';
 
-const PATHS = [
+export const PATHS = [
   'M40 130 C 100 30, 160 30, 200 130 S 300 230, 360 130',
   'M40 200 L 105 70 L 170 200 L 235 70 L 300 200 L 360 80',
   'M40 210 C 40 60, 210 50, 200 150 C 195 215, 115 205, 130 145 C 145 85, 300 50, 360 120',

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
+import { usePageMeta } from '../lib/usePageMeta';
 
 export default function NotFound() {
   const { t, paths } = useLocale();
+  usePageMeta({ title: t.notFound.title.replace(/\.$/, ''), description: t.site.description, noindex: true });
 
   return (
     <div className="wrap flex min-h-[80vh] flex-col items-center justify-center pt-[130px] text-center">

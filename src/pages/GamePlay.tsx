@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { RotateCcw, Star } from 'lucide-react';
+import { Printer, RotateCcw, Star } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import NotFound from './NotFound';
 import { useLocale } from '../i18n/LocaleContext';
-import { GAME_IDS, isGameId, type GameId } from '../games/ids';
+import { GAME_IDS, hasWorksheet, isGameId, type GameId } from '../games/ids';
 import { games } from '../games/registry';
+import { usePageMeta } from '../lib/usePageMeta';
 
 export default function GamePlay() {
   const { gameId } = useParams();
@@ -18,6 +19,7 @@ function GameStage({ id }: { id: GameId }) {
   const g = t.games;
   const { Component, skills } = games[id];
   const text = g.list[id];
+  usePageMeta({ title: `${text.title} — ${g.title}`, description: text.short });
   const [attempt, setAttempt] = useState(0);
   const [won, setWon] = useState(false);
   const againRef = useRef<HTMLButtonElement>(null);
@@ -53,6 +55,15 @@ function GameStage({ id }: { id: GameId }) {
         </div>
         <h1 className="font-head text-[clamp(30px,4.6vw,48px)] leading-[1.1] font-bold tracking-[-0.03em]">{text.title}</h1>
         <p className="mt-3 max-w-[640px] text-[17px] text-muted">{text.howTo}</p>
+        {hasWorksheet(id) && (
+          <Link
+            to={paths.worksheet(id)}
+            className="focus-ring mt-4 inline-flex items-center gap-2 rounded text-sm font-semibold text-accent hover:underline"
+          >
+            <Printer aria-hidden="true" className="h-4 w-4" />
+            {g.worksheet.link}
+          </Link>
+        )}
       </header>
 
       <div className="relative">

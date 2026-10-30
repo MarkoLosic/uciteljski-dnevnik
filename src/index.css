@@ -556,6 +556,69 @@
   }
 }
 
+/* Radni list: list papira A4 — beo i crn u obe teme, jer se štampa. */
+@layer components {
+  .sheet {
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin-inline: auto;
+    padding: 14mm;
+    background: #fff;
+    color: #111827;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet + .sheet {
+    margin-top: 28px;
+  }
+  .sheet-eyebrow {
+    font: 500 11px var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4b5563;
+  }
+  .sheet-line {
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid #111827;
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .sheet {
+      min-height: 0;
+      padding: 18px;
+    }
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: #fff !important;
+  }
+  main {
+    min-height: 0 !important;
+  }
+  .sheet {
+    max-width: none;
+    width: 210mm;
+    height: 297mm;
+    min-height: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    break-after: page;
+  }
+  .sheet + .sheet {
+    margin-top: 0;
+  }
+}
+
 /* Kada su animacije isključene, cela memorijska kartica se samo zameni licem, bez okretanja. */
 @media (prefers-reduced-motion: reduce) {
   .memory-card.is-open .memory-back {

@@ -1,6 +1,7 @@
 import { Laptop, School, type LucideIcon } from 'lucide-react';
 import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const backgroundIcons: LucideIcon[] = [Laptop, School];
 
@@ -9,6 +10,7 @@ export default function About() {
   const { social } = siteConfig;
   const author = { ...siteConfig.author, ...t.author };
   const { topics } = t;
+  usePageMeta({ title: t.about.title, description: t.about.description });
   const contactItems: { label: string; text: string; href: string }[] = [
     { label: 'Email', text: author.email, href: `mailto:${author.email}` },
     { label: 'LinkedIn', text: 'linkedin.com/in/markološić', href: social.linkedin },

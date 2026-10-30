@@ -3,12 +3,14 @@ import type { Dictionary } from './sr';
 export const en: Dictionary = {
   site: {
     tagline: 'On the classroom and technology in teaching',
+    description:
+      'A personal blog about education, primary teaching and technology in the classroom — from a teacher who now works as a QA engineer.',
   },
   author: {
     role: 'QA engineer and primary school teacher',
     location: 'Banja Luka, Bosnia and Herzegovina',
     intro:
-      'I trained as a primary school teacher and today I work in IT as a QA engineer. I spent eight months teaching first graders, and ever since I have been thinking about how technology can help in the classroom — and when it only gets in the way.',
+      'I’m a primary school teacher by training, and those eight months with first-graders taught me the two most important skills I have: endless patience and an eye for detail. In a classroom full of six-year-olds you have to notice every little thing — who has quietly got stuck, where a task is unclear, and how a seemingly small slip can cause chaos. I bring that same mindset to IT today as a QA engineer. For me, software testing isn’t just clicking around an app; it’s exactly that: carefully noticing the details others miss and patiently building systems that work without errors. That’s why I look at technology in education from both sides — where it genuinely lightens the load, and where poor design only gets in the way.',
     background: [
       {
         title: 'In IT',
@@ -32,7 +34,8 @@ export const en: Dictionary = {
     label: 'Main navigation',
     home: 'Home',
     blog: 'Blog',
-    games: 'Games',
+    games: 'Games for kids',
+    gamesShort: 'Games',
     about: 'About',
   },
   language: {
@@ -71,6 +74,8 @@ export const en: Dictionary = {
   blog: {
     eyebrow: 'Blog',
     title: 'All articles',
+    description:
+      'All articles on primary teaching, classroom experience and the sensible use of technology and artificial intelligence.',
     allPosts: 'All articles',
     readMore: 'Read more',
     published: 'Published',
@@ -82,6 +87,8 @@ export const en: Dictionary = {
   },
   about: {
     title: 'About me',
+    description:
+      'Who writes Iz učionice: a primary teacher by training and QA engineer by trade, from Banja Luka. Background, topics and contact.',
     blogEyebrow: 'About the blog',
     blogTitle: 'What you’ll find here',
     blogText: (siteName: string) =>
@@ -171,6 +178,46 @@ export const en: Dictionary = {
       howMany: (thing: string) => `How many? (${thing})`,
       sizeItem: (thing: string, n: number, total: number) => `${thing}, size ${n} of ${total}`,
       shelf: 'Shelf, from smallest to biggest',
+    },
+    worksheet: {
+      link: 'Printable worksheet',
+      eyebrow: 'Worksheet',
+      print: 'Print',
+      backToGames: 'Back to games',
+      name: 'Name',
+      date: 'Date',
+      page: (n: number, total: number) => `Page ${n}/${total}`,
+      tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
+      sectionEyebrow: 'Printables',
+      sectionTitle: 'Worksheets',
+      sectionText: 'Paper versions of the games, plus sheets for writing numbers and letters — pencil practice, away from the screen. Open a sheet and print it.',
+      alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
+      sheets: {
+        trace: {
+          title: 'Follow the path',
+          text: 'Follow the dashed line from the bug to the flower with a pencil or crayon. Take your time and try to stay on the grey path.',
+        },
+        dots: {
+          title: 'Join the dots',
+          text: 'Join the dots in order, from 1 to the last number, then back to 1. Then colour in the picture.',
+        },
+        maze: {
+          title: 'Bunny maze',
+          text: 'Draw the way the bunny gets to the carrot. It can’t go through the hedge.',
+        },
+        numbers: {
+          title: 'Writing numbers',
+          text: 'Look at the black number first, then trace over each grey one with a pencil, starting at the top. Write the number on your own in the empty space.',
+        },
+        latin: {
+          title: 'Writing letters',
+          text: 'Trace over the grey letters, then write the letter on your own at the end of the row. Capital letters touch the top line, small letters the dashed middle line.',
+        },
+        cyrillic: {
+          title: 'Writing letters — Cyrillic',
+          text: 'Trace over the grey letters, then write the letter on your own at the end of the row. Capital letters touch the top line, small letters the dashed middle line.',
+        },
+      },
     },
     list: {
       balloons: {

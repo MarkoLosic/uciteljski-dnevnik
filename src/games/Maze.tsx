@@ -4,7 +4,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { RoundDots, toyHex, type GameProps } from './shared';
 
 // S = zec, E = šargarepa, # = živa ograda, . = staza
-const MAZES = [
+export const MAZES = [
   ['S...#', '###.#', '#...#', '#.###', '#...E'],
   ['S.#...', '.##.#.', '....#.', '#.###.', '#.....', '###.#E'],
   ['S.....#', '#####.#', '...#..#', '.#.#.##', '.#.....', '.#####E'],

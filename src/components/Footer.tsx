@@ -6,7 +6,7 @@ export default function Footer() {
   const { t, paths } = useLocale();
 
   return (
-    <footer className="wrap mt-24 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-7 pb-10 text-sm text-muted max-sm:flex-col max-sm:text-center">
+    <footer className="wrap mt-24 flex print:hidden flex-wrap items-center justify-between gap-3 border-t border-line pt-7 pb-10 text-sm text-muted max-sm:flex-col max-sm:text-center">
       <p>
         © {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}
       </p>

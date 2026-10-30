@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Hand, HeartHandshake, Timer, type LucideIcon } from 'lucide-react';
+import { Hand, HeartHandshake, Printer, Timer, type LucideIcon } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
-import { GAME_IDS } from '../games/ids';
+import { GAME_IDS, worksheetsFor } from '../games/ids';
 import { games } from '../games/registry';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
 
 export default function Games() {
-  const { t, paths } = useLocale();
+  const { locale, t, paths } = useLocale();
   const g = t.games;
+  usePageMeta({ title: g.title, description: g.intro });
 
   return (
     <div className="wrap pt-[130px]">
@@ -63,6 +65,29 @@ export default function Games() {
           );
         })}
       </ul>
+
+      <section className="pt-20 sm:pt-28" aria-labelledby="radni-listovi">
+        <span className="eyebrow">{g.worksheet.sectionEyebrow}</span>
+        <h2 id="radni-listovi" className="section-title mb-4">
+          {g.worksheet.sectionTitle}
+        </h2>
+        <p className="mb-9 max-w-[640px] text-lg text-muted">{g.worksheet.sectionText}</p>
+        <ul className="grid gap-[18px] sm:grid-cols-3">
+          {worksheetsFor(locale).map((id) => (
+            <li key={id}>
+              <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
+                <span className="icon-tile">
+                  <Printer aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <span>
+                  <span className="block text-[17px] font-semibold tracking-tight">{g.worksheet.sheets[id].title}</span>
+                  <span className="text-sm text-muted">{g.worksheet.eyebrow} · A4</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="pt-20 sm:pt-28" aria-labelledby="za-odrasle">
         <span className="eyebrow">{g.tipsEyebrow}</span>

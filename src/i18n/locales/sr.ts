@@ -1,5 +1,5 @@
 import type { Category } from '../../types/post';
-import type { GameId, GameText, Shape, Skill, ToyColor } from '../../games/ids';
+import type { GameId, GameText, Shape, Skill, ToyColor, WorksheetId } from '../../games/ids';
 import type { Thing } from '../../games/things';
 
 // KORISNIK: tekstovi o tebi i tekst interfejsa na srpskom. Ostali jezici su u susednim fajlovima
@@ -7,12 +7,14 @@ import type { Thing } from '../../games/things';
 export const sr = {
   site: {
     tagline: 'O učionici i tehnologiji u nastavi',
+    description:
+      'Lični blog o obrazovanju, razrednoj nastavi i tehnologiji u učionici — iz ugla učitelja koji danas radi kao QA inženjer.',
   },
   author: {
     role: 'QA inženjer i profesor razredne nastave',
     location: 'Banja Luka, BiH',
     intro:
-      'Po struci sam profesor razredne nastave, a danas radim u IT-u kao QA inženjer. Osam meseci predavao sam prvacima i od tada razmišljam o tome kako tehnologija može da pomogne u učionici — i kada samo smeta.',
+      'Po struci sam učitelj, i onih osam meseci provedenih sa prvacima naučilo me je dvema najvažnijim veštinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primetiti svaku sitnicu — ko je tiho zapeo, gde je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo kliktanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gde stvarno rasterećuje, a gde zbog lošeg dizajna samo smeta.',
     background: [
       {
         title: 'U IT-u',
@@ -36,7 +38,8 @@ export const sr = {
     label: 'Glavna navigacija',
     home: 'Početna',
     blog: 'Blog',
-    games: 'Igre',
+    games: 'Igre za decu',
+    gamesShort: 'Igre', // na telefonu, gde nema mesta za pun naziv
     about: 'O meni',
   },
   language: {
@@ -75,6 +78,8 @@ export const sr = {
   blog: {
     eyebrow: 'Blog',
     title: 'Svi članci',
+    description:
+      'Svi članci o nastavi u nižim razredima, iskustvima iz učionice i pametnoj upotrebi tehnologije i veštačke inteligencije.',
     allPosts: 'Svi članci',
     readMore: 'Pročitaj više',
     published: 'Objavljeno',
@@ -86,6 +91,8 @@ export const sr = {
   },
   about: {
     title: 'O meni',
+    description:
+      'Ko piše blog Iz učionice: učitelj po struci, QA inženjer po zanimanju, iz Banje Luke. Iskustvo, teme i kontakt.',
     blogEyebrow: 'O blogu',
     blogTitle: 'Šta ćete ovde naći',
     blogText: (siteName: string) =>
@@ -175,6 +182,46 @@ export const sr = {
       howMany: (thing: string) => `Koliko ima? (${thing})`,
       sizeItem: (thing: string, n: number, total: number) => `${thing}, veličina ${n} od ${total}`,
       shelf: 'Polica, od najmanjeg do najvećeg',
+    },
+    worksheet: {
+      link: 'Radni list za štampu',
+      eyebrow: 'Radni list',
+      print: 'Štampaj',
+      backToGames: 'Nazad na igre',
+      name: 'Ime',
+      date: 'Datum',
+      page: (n: number, total: number) => `Strana ${n}/${total}`,
+      tip: 'Savet: štampajte na A4 papiru. Radi i crno-belo. Bojice i debela olovka su bolje od tanke hemijske.',
+      sectionEyebrow: 'Za štampu',
+      sectionTitle: 'Radni listovi',
+      sectionText: 'Papirne verzije igara i listovi za pisanje brojeva i slova — za vežbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
+      alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
+      sheets: {
+        trace: {
+          title: 'Prati stazu',
+          text: 'Olovkom ili bojicom prati isprekidanu liniju od bube do cveta. Ne žuri i pokušaj da ostaneš na sivoj stazi.',
+        },
+        dots: {
+          title: 'Spoji tačke',
+          text: 'Spoji tačke redom, od 1 do poslednjeg broja, pa se vrati na 1. Zatim oboji sliku.',
+        },
+        maze: {
+          title: 'Zeka u lavirintu',
+          text: 'Nacrtaj put kojim zeka stiže do šargarepe. Kroz ogradu ne može.',
+        },
+        numbers: {
+          title: 'Pišemo brojeve',
+          text: 'Prvo pogledaj crni broj, pa olovkom pređi preko svakog sivog. Kreni odozgo. Na praznom delu reda napiši broj bez pomoći.',
+        },
+        latin: {
+          title: 'Pišemo slova — latinica',
+          text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+        cyrillic: {
+          title: 'Pišemo slova — ćirilica',
+          text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+      } satisfies Record<WorksheetId, { title: string; text: string }>,
     },
     list: {
       balloons: {

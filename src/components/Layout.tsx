@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <>
       <ScrollToTop />
-      <div className="bg-glow" aria-hidden="true">
+      <div className="bg-glow print:hidden" aria-hidden="true">
         <span />
         <span />
       </div>

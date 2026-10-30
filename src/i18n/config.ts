@@ -12,14 +12,15 @@ interface LocaleInfo {
   tag: string; // BCP 47: <html lang> i Intl formatiranje
   aboutSlug: string;
   gamesSlug: string;
+  worksheetSlug: string;
 }
 
 export const localeInfo: Record<Locale, LocaleInfo> = {
-  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre' },
-  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games' },
-  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre' },
-  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre' },
-  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele' },
+  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
+  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games', worksheetSlug: 'worksheets' },
+  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
+  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
+  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele', worksheetSlug: 'arbeitsblaetter' },
 };
 
 export function isLocale(value: unknown): value is Locale {

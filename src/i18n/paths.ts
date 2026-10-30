@@ -14,6 +14,7 @@ export function pathsFor(locale: Locale) {
     about: `${base}/${localeInfo[locale].aboutSlug}`,
     games: `${base}/${localeInfo[locale].gamesSlug}`,
     game: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${id}`,
+    worksheet: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${localeInfo[locale].worksheetSlug}/${id}`,
   };
 }
 
@@ -31,7 +32,10 @@ export function switchLocalePath(pathname: string, from: Locale, to: Locale): st
 
   const gamesSlug = localeInfo[from].gamesSlug;
   if (rest === `/${gamesSlug}`) return target.games;
-  if (rest.startsWith(`/${gamesSlug}/`)) return target.game(rest.slice(gamesSlug.length + 2));
+  const sheetMatch = new RegExp(`^/${gamesSlug}/${localeInfo[from].worksheetSlug}/([^/]+)$`).exec(rest);
+  if (sheetMatch) return target.worksheet(sheetMatch[1]);
+  const gameMatch = new RegExp(`^/${gamesSlug}/([^/]+)$`).exec(rest);
+  if (gameMatch) return target.game(gameMatch[1]);
 
   const postMatch = /^\/blog\/([^/]+)$/.exec(rest);
   if (postMatch) {

@@ -7,11 +7,17 @@ import CategoryBadge from '../components/CategoryBadge';
 import EmptyState from '../components/EmptyState';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
+import { usePageMeta } from '../lib/usePageMeta';
 
 export default function BlogPost() {
   const { slug = '' } = useParams();
   const { locale, t, paths } = useLocale();
   const post = getPostBySlug(locale, slug);
+  usePageMeta(
+    post
+      ? { title: post.title, description: post.excerpt, type: 'article' }
+      : { title: t.blog.notFoundTitle, description: t.blog.notFoundMessage, noindex: true },
+  );
 
   if (!post) {
     return (

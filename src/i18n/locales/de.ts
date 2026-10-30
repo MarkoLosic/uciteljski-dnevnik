@@ -3,12 +3,14 @@ import type { Dictionary } from './sr';
 export const de: Dictionary = {
   site: {
     tagline: 'Über das Klassenzimmer und Technologie im Unterricht',
+    description:
+      'Ein persönlicher Blog über Bildung, Grundschulunterricht und Technologie im Klassenzimmer — von einem Lehrer, der heute als QA-Ingenieur arbeitet.',
   },
   author: {
     role: 'QA-Ingenieur und Grundschullehrer',
     location: 'Banja Luka, Bosnien und Herzegowina',
     intro:
-      'Von Beruf bin ich Grundschullehrer, heute arbeite ich in der IT als QA-Ingenieur. Acht Monate lang habe ich Erstklässler unterrichtet, und seitdem denke ich darüber nach, wie Technologie im Klassenzimmer helfen kann — und wann sie nur stört.',
+      'Von Beruf bin ich Grundschullehrer, und die acht Monate mit Erstklässlern haben mich die zwei wichtigsten Fähigkeiten gelehrt: grenzenlose Geduld und ein Auge fürs Detail. In einem Klassenzimmer voller Sechsjähriger muss man jede Kleinigkeit bemerken — wer still hängen geblieben ist, wo eine Aufgabe unklar ist und wie ein scheinbar kleines Versehen für Durcheinander sorgen kann. Genau diese Denkweise bringe ich heute als QA-Ingenieur in die IT ein. Softwaretests bedeuten für mich nicht bloß, sich durch eine App zu klicken, sondern genau das: Details aufmerksam beobachten, die andere übersehen, und geduldig an Systemen arbeiten, die fehlerfrei funktionieren. Deshalb betrachte ich Technologie in der Bildung von beiden Seiten — wo sie wirklich entlastet und wo sie wegen schlechten Designs nur stört.',
     background: [
       {
         title: 'In der IT',
@@ -32,7 +34,8 @@ export const de: Dictionary = {
     label: 'Hauptnavigation',
     home: 'Start',
     blog: 'Blog',
-    games: 'Spiele',
+    games: 'Spiele für Kinder',
+    gamesShort: 'Spiele',
     about: 'Über mich',
   },
   language: {
@@ -71,6 +74,8 @@ export const de: Dictionary = {
   blog: {
     eyebrow: 'Blog',
     title: 'Alle Artikel',
+    description:
+      'Alle Artikel über Grundschulunterricht, Erfahrungen aus dem Klassenzimmer und den sinnvollen Einsatz von Technologie und KI.',
     allPosts: 'Alle Artikel',
     readMore: 'Weiterlesen',
     published: 'Veröffentlicht am',
@@ -82,6 +87,8 @@ export const de: Dictionary = {
   },
   about: {
     title: 'Über mich',
+    description:
+      'Wer hinter Iz učionice steht: Grundschullehrer von Beruf, QA-Ingenieur in der Praxis, aus Banja Luka. Hintergrund, Themen und Kontakt.',
     blogEyebrow: 'Über den Blog',
     blogTitle: 'Was Sie hier finden',
     blogText: (siteName: string) =>
@@ -171,6 +178,46 @@ export const de: Dictionary = {
       howMany: (thing: string) => `Wie viele? (${thing})`,
       sizeItem: (thing: string, n: number, total: number) => `${thing}, Größe ${n} von ${total}`,
       shelf: 'Regal, vom kleinsten zum größten',
+    },
+    worksheet: {
+      link: 'Arbeitsblatt zum Ausdrucken',
+      eyebrow: 'Arbeitsblatt',
+      print: 'Drucken',
+      backToGames: 'Zurück zu den Spielen',
+      name: 'Name',
+      date: 'Datum',
+      page: (n: number, total: number) => `Seite ${n}/${total}`,
+      tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
+      sectionEyebrow: 'Zum Ausdrucken',
+      sectionTitle: 'Arbeitsblätter',
+      sectionText: 'Papierversionen der Spiele und Blätter zum Schreiben von Zahlen und Buchstaben — Übung mit dem Stift, ganz ohne Bildschirm. Blatt öffnen und ausdrucken.',
+      alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
+      sheets: {
+        trace: {
+          title: 'Dem Weg folgen',
+          text: 'Mit Bleistift oder Buntstift der gestrichelten Linie vom Käfer zur Blume folgen. Langsam, und möglichst auf dem grauen Weg bleiben.',
+        },
+        dots: {
+          title: 'Punkte verbinden',
+          text: 'Die Punkte der Reihe nach verbinden, von 1 bis zur letzten Zahl und zurück zur 1. Dann das Bild ausmalen.',
+        },
+        maze: {
+          title: 'Hasen-Labyrinth',
+          text: 'Den Weg einzeichnen, auf dem der Hase zur Karotte kommt. Durch die Hecke geht es nicht.',
+        },
+        numbers: {
+          title: 'Zahlen schreiben',
+          text: 'Zuerst die schwarze Zahl anschauen, dann jede graue mit dem Bleistift nachfahren, oben beginnen. Im freien Teil der Zeile die Zahl selbst schreiben.',
+        },
+        latin: {
+          title: 'Buchstaben schreiben',
+          text: 'Die grauen Buchstaben nachfahren und am Ende der Zeile den Buchstaben selbst schreiben. Großbuchstaben reichen bis zur oberen Linie, kleine bis zur gestrichelten Mittellinie.',
+        },
+        cyrillic: {
+          title: 'Buchstaben schreiben — Kyrillisch',
+          text: 'Die grauen Buchstaben nachfahren und am Ende der Zeile den Buchstaben selbst schreiben. Großbuchstaben reichen bis zur oberen Linie, kleine bis zur gestrichelten Mittellinie.',
+        },
+      },
     },
     list: {
       balloons: {

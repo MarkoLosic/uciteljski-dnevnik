@@ -7,6 +7,7 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Games from './pages/Games';
 import GamePlay from './pages/GamePlay';
+import Worksheet from './pages/Worksheet';
 import { LOCALES, localeInfo } from './i18n/config';
 import { LocaleProvider } from './i18n/LocaleContext';
 import { localeBase } from './i18n/paths';
@@ -31,6 +32,10 @@ export default function App() {
           <Route path={localeInfo[locale].aboutSlug} element={<About />} />
           <Route path={localeInfo[locale].gamesSlug} element={<Games />} />
           <Route path={`${localeInfo[locale].gamesSlug}/:gameId`} element={<GamePlay />} />
+          <Route
+            path={`${localeInfo[locale].gamesSlug}/${localeInfo[locale].worksheetSlug}/:sheetId`}
+            element={<Worksheet />}
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       ))}

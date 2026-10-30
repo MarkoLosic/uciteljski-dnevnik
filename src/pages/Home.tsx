@@ -6,6 +6,7 @@ import PostCard from '../components/PostCard';
 import EmptyState from '../components/EmptyState';
 import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const backgroundIcons: LucideIcon[] = [Laptop, School];
 
@@ -30,6 +31,7 @@ export default function Home() {
   const { social } = siteConfig;
   const author = { ...siteConfig.author, ...t.author };
   const { topics } = t;
+  usePageMeta({ title: null, description: t.site.description });
   const socialLinks = (
     [
       { label: 'GitHub', href: social.github, icon: 'github' },

@@ -12,7 +12,7 @@ export default function Header() {
   const navItems = [
     { to: paths.home, label: t.nav.home },
     { to: paths.blog, label: t.nav.blog },
-    { to: paths.games, label: t.nav.games },
+    { to: paths.games, label: t.nav.games, short: t.nav.gamesShort },
     { to: paths.about, label: t.nav.about },
   ];
 
@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-3.5 left-1/2 z-50 flex w-[min(1160px,calc(100%-28px))] -translate-x-1/2 items-center justify-between gap-2 rounded-full border bg-surface/70 py-2.5 pr-3 pl-4 backdrop-blur-lg backdrop-saturate-150 transition-shadow sm:gap-4 ${
+      className={`fixed top-3.5 left-1/2 z-50 flex print:hidden w-[min(1160px,calc(100%-28px))] -translate-x-1/2 items-center justify-between gap-2 rounded-full border bg-surface/70 py-2.5 pr-3 pl-4 backdrop-blur-lg backdrop-saturate-150 transition-shadow sm:gap-4 ${
         scrolled ? 'border-line-strong shadow-[var(--shadow)]' : 'border-line'
       }`}
     >
@@ -41,7 +41,7 @@ export default function Header() {
       <div className="flex items-center gap-1 sm:gap-1.5">
         <nav aria-label={t.nav.label}>
           <ul className="flex sm:gap-1">
-            {navItems.map(({ to, label }) => (
+            {navItems.map(({ to, label, short }) => (
               // Na telefonu nema mesta za četiri stavke; logo levo već vodi na početnu.
               <li key={to} className={to === paths.home ? 'max-sm:hidden' : undefined}>
                 <NavLink
@@ -55,7 +55,14 @@ export default function Header() {
                     }`
                   }
                 >
-                  {label}
+                  {short ? (
+                    <>
+                      <span className="sm:hidden">{short}</span>
+                      <span className="max-sm:hidden">{label}</span>
+                    </>
+                  ) : (
+                    label
+                  )}
                 </NavLink>
               </li>
             ))}

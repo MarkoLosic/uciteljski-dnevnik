@@ -2,10 +2,12 @@ import { getAllPosts } from '../lib/posts';
 import { useLocale } from '../i18n/LocaleContext';
 import PostCard from '../components/PostCard';
 import EmptyState from '../components/EmptyState';
+import { usePageMeta } from '../lib/usePageMeta';
 
 export default function BlogList() {
   const { locale, t, paths } = useLocale();
   const posts = getAllPosts(locale);
+  usePageMeta({ title: t.blog.title, description: t.blog.description });
 
   return (
     <div className="wrap min-h-[80vh] pt-[130px]">
