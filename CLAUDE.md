@@ -133,7 +133,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── registry.ts        # GameId → komponenta, ikona, boja kartice, veštine
     │   ├── shared.tsx         # toyHex, shuffle, ShapeIcon, RoundDots, useShake, useDragDrop
     │   ├── things.ts          # sličice (lucide) za pamćenje, brojanje, veličine
-    │   ├── worksheets.tsx     # radni listovi: igre na papiru + pisanje brojeva i slova (latinica, ćirilica)
+    │   ├── worksheets.tsx     # 21 radni list: igre na papiru, predpisanje, pisanje, brojevi, logika
     │   └── Balloons.tsx, ColorSort.tsx, ShapeMatch.tsx, Trace.tsx, ConnectDots.tsx,
     │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
     ├── lib/
@@ -634,7 +634,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Nova igra: dodaj id u `GAME_IDS`, komponentu u `registry.ts` i tekst (`title`, `short`, `howTo`) u `t.games.list` u svih pet rečnika.
 - Pravila: velike mete (dečji prst), greška samo „odmahne“ (`useShake`), bez tajmera i kazni. Prevlačenje ide kroz `useDragDrop` — radi i „dodirni predmet, pa dodirni cilj“ i tastatura. Boje igračaka (`toyHex`) su sadržaj i ne menjaju se sa temom.
 - Bez zvuka, reklama i praćenja. Animacije poštuju `prefers-reduced-motion`.
-- Radni listovi (`WORKSHEET_IDS`): `trace`, `dots`, `maze` su papirne verzije igara (isti id i ista data: `PATHS`, `FIGURES`, `MAZES`; `GamePlay` linkuje na njih), a `numbers`, `latin`, `cyrillic` su listovi za pisanje (`WritingRow`: crni uzorak, sive kopije za precrtavanje, linije). `WORKSHEET_LOCALES` ograničava list na jezike (ćirilica: sr, bs); abeceda za `latin` je u `t.games.worksheet.alphabet` (en/de imaju svoju).
+- Radni listovi (`WORKSHEET_IDS`, 21): list sa istim id kao igra je njena papirna verzija (`trace`, `dots`, `maze`, `shapes`, `colors`, `count`, `pattern`, `sizes`; `GamePlay` linkuje na njih preko `hasWorksheet`); `trace`/`dots`/`maze` dele data sa igrom (`PATHS`, `FIGURES`, `MAZES`). `numbers`, `latin`, `cyrillic` su listovi za pisanje (`WritingRow`: crni uzorak, sive kopije za precrtavanje, linije). Ostali listovi su jedan SVG širine 600 i visine ≤ 660 (`Page`), sa fiksnim (ne nasumičnim) rasporedom da se isto štampaju. Na stranici igara su grupisani po `WORKSHEET_GROUPS` (naslovi u `t.games.worksheet.groups`). `WORKSHEET_LOCALES` ograničava list na jezike (ćirilica: sr, bs); abeceda za `latin` je u `t.games.worksheet.alphabet` (en/de imaju svoju), a list `colors` koristi `t.games.colorNames`. Novi list: id u `WORKSHEET_IDS` i u jednu grupu, komponenta u `worksheets` (`worksheets.tsx`), `title`/`text` u svih pet rečnika.
 - Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`.
 
 ### 10.6. `NotFound.tsx`

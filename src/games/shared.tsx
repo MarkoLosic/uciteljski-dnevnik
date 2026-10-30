@@ -28,7 +28,7 @@ export function randomInt(min: number, max: number): number {
   return min + Math.floor(Math.random() * (max - min + 1));
 }
 
-const shapePaths: Record<Shape, string> = {
+export const shapePaths: Record<Shape, string> = {
   circle: 'M50 8a42 42 0 1 1 0 84a42 42 0 1 1 0-84z',
   square: 'M14 14h72v72h-72z',
   triangle: 'M50 10l42 78h-84z',

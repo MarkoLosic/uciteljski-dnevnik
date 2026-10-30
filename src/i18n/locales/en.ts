@@ -192,8 +192,14 @@ export const en: Dictionary = {
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
       sectionEyebrow: 'Printables',
       sectionTitle: 'Worksheets',
-      sectionText: 'Paper versions of the games, plus sheets for writing numbers and letters — pencil practice, away from the screen. Open a sheet and print it.',
+      sectionText: 'Paper versions of the games, pre-writing practice, numbers, letters and logic puzzles — pencil practice, away from the screen. Open a sheet and print it.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
+      groups: {
+        motor: 'Fine motor and pre-writing',
+        writing: 'Writing',
+        math: 'Numbers and counting',
+        logic: 'Logic and attention',
+      },
       sheets: {
         trace: {
           title: 'Follow the path',
@@ -218,6 +224,66 @@ export const en: Dictionary = {
         cyrillic: {
           title: 'Writing letters — Cyrillic',
           text: 'Trace over the grey letters, then write the letter on your own at the end of the row. Capital letters touch the top line, small letters the dashed middle line.',
+        },
+        lines: {
+          title: 'Straight lines',
+          text: 'Draw a line from one picture to the other: the dog to its bone, the rabbit to the carrot, the rain from the cloud to the flower and the rocket to the moon. Follow the dashed line.',
+        },
+        waves: {
+          title: 'Waves and loops',
+          text: 'Each row starts with a black example. Trace the dashed pattern to the end of the row, without lifting the pencil if you can.',
+        },
+        outlines: {
+          title: 'Trace the shapes',
+          text: 'The first shape in each row is the example. Trace the dashed shapes, then name them: circle, square, triangle, heart, star.',
+        },
+        colors: {
+          title: 'Colour by shape',
+          text: 'Look at the top to see which colour goes with each shape, then colour every shape on the sheet in its colour.',
+        },
+        count: {
+          title: 'Count and circle',
+          text: 'Count the pictures in each row and circle the right number.',
+        },
+        quantity: {
+          title: 'Draw how many',
+          text: 'In each box, draw as many circles (or apples, or suns) as the number shows.',
+        },
+        adding: {
+          title: 'Add the pictures',
+          text: 'Count the pictures on both sides of the plus sign and write in the box how many there are altogether.',
+        },
+        sizes: {
+          title: 'Smallest to biggest',
+          text: 'In each row, write the numbers 1 to 4 under the pictures: 1 under the smallest, 4 under the biggest.',
+        },
+        pattern: {
+          title: 'What comes next?',
+          text: 'Look at how the pictures repeat, then draw what comes next in the empty boxes.',
+        },
+        odd: {
+          title: 'Odd one out',
+          text: 'In each row, one picture is not like the others. Find it, circle it and say why it doesn’t belong.',
+        },
+        match: {
+          title: 'What goes together?',
+          text: 'Draw a line between the pictures that go together: the dog and the bone, the rain and the umbrella… Go from dot to dot.',
+        },
+        shapes: {
+          title: 'Find the shadow',
+          text: 'Draw a line from each picture on the left to its shadow on the right.',
+        },
+        differences: {
+          title: 'Spot 5 differences',
+          text: 'Compare the top and bottom pictures. Circle the 5 things that are different in the bottom one.',
+        },
+        symmetry: {
+          title: 'Finish the other half',
+          text: 'Only the left half of each picture is drawn. Draw the right half like a mirror image: the dashed line is the mirror. Count the squares.',
+        },
+        copy: {
+          title: 'Copy the picture',
+          text: 'Copy the drawing from the left grid onto the empty grid on the right. Count the squares and start from the same corner.',
         },
       },
     },

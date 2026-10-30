@@ -192,8 +192,14 @@ export const de: Dictionary = {
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
       sectionEyebrow: 'Zum Ausdrucken',
       sectionTitle: 'Arbeitsblätter',
-      sectionText: 'Papierversionen der Spiele und Blätter zum Schreiben von Zahlen und Buchstaben — Übung mit dem Stift, ganz ohne Bildschirm. Blatt öffnen und ausdrucken.',
+      sectionText: 'Papierversionen der Spiele, Übungen zur Schreibvorbereitung, Zahlen, Buchstaben und Logikrätsel — Übung mit dem Stift, ganz ohne Bildschirm. Blatt öffnen und ausdrucken.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
+      groups: {
+        motor: 'Feinmotorik und Schreibvorbereitung',
+        writing: 'Schreiben',
+        math: 'Zahlen und Rechnen',
+        logic: 'Logik und Aufmerksamkeit',
+      },
       sheets: {
         trace: {
           title: 'Dem Weg folgen',
@@ -218,6 +224,66 @@ export const de: Dictionary = {
         cyrillic: {
           title: 'Buchstaben schreiben — Kyrillisch',
           text: 'Die grauen Buchstaben nachfahren und am Ende der Zeile den Buchstaben selbst schreiben. Großbuchstaben reichen bis zur oberen Linie, kleine bis zur gestrichelten Mittellinie.',
+        },
+        lines: {
+          title: 'Gerade Linien',
+          text: 'Eine Linie von einem Bild zum anderen ziehen: den Hund zum Knochen, den Hasen zur Karotte, den Regen von der Wolke zur Blume und die Rakete zum Mond. Der gestrichelten Linie folgen.',
+        },
+        waves: {
+          title: 'Wellen und Schleifen',
+          text: 'Am Anfang jeder Zeile steht ein schwarzes Vorbild. Das gestrichelte Muster bis zum Ende der Zeile nachfahren, möglichst ohne den Stift abzusetzen.',
+        },
+        outlines: {
+          title: 'Formen nachfahren',
+          text: 'Die erste Form in jeder Zeile ist das Vorbild. Die gestrichelten Formen nachfahren und benennen: Kreis, Quadrat, Dreieck, Herz, Stern.',
+        },
+        colors: {
+          title: 'Formen ausmalen',
+          text: 'Oben steht, welche Farbe zu welcher Form gehört. Jede Form auf dem Blatt in ihrer Farbe ausmalen.',
+        },
+        count: {
+          title: 'Zählen und einkreisen',
+          text: 'Die Bilder in jeder Reihe zählen und die richtige Zahl einkreisen.',
+        },
+        quantity: {
+          title: 'So viele malen',
+          text: 'In jedes Feld so viele Kreise (oder Äpfel, oder Sonnen) malen, wie die Zahl zeigt.',
+        },
+        adding: {
+          title: 'Bilder zusammenzählen',
+          text: 'Die Bilder links und rechts vom Pluszeichen zählen und ins Kästchen schreiben, wie viele es zusammen sind.',
+        },
+        sizes: {
+          title: 'Vom Kleinsten zum Größten',
+          text: 'In jeder Reihe die Zahlen 1 bis 4 unter die Bilder schreiben: 1 unter das kleinste, 4 unter das größte.',
+        },
+        pattern: {
+          title: 'Wie geht es weiter?',
+          text: 'Anschauen, wie sich die Bilder wiederholen, und in die leeren Kästchen malen, was als Nächstes kommt.',
+        },
+        odd: {
+          title: 'Was passt nicht?',
+          text: 'In jeder Reihe ist ein Bild anders als die anderen. Es finden, einkreisen und sagen, warum es nicht passt.',
+        },
+        match: {
+          title: 'Was gehört zusammen?',
+          text: 'Die Bilder, die zusammengehören, mit einer Linie verbinden: Hund und Knochen, Regen und Schirm … Von Punkt zu Punkt.',
+        },
+        shapes: {
+          title: 'Den Schatten finden',
+          text: 'Jedes Bild links mit seinem Schatten rechts verbinden.',
+        },
+        differences: {
+          title: '5 Unterschiede finden',
+          text: 'Das obere und das untere Bild vergleichen. Im unteren Bild die 5 Dinge einkreisen, die anders sind.',
+        },
+        symmetry: {
+          title: 'Die andere Hälfte ergänzen',
+          text: 'Von jedem Bild ist nur die linke Hälfte gezeichnet. Die rechte Hälfte spiegelbildlich ergänzen: Die gestrichelte Linie ist der Spiegel. Kästchen zählen.',
+        },
+        copy: {
+          title: 'Bild abzeichnen',
+          text: 'Die Zeichnung vom linken Gitter auf das leere Gitter rechts übertragen. Kästchen zählen und in derselben Ecke beginnen.',
         },
       },
     },

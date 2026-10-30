@@ -19,7 +19,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   const { t, paths } = useLocale();
   const ws = t.games.worksheet;
   const { title, text } = ws.sheets[id];
-  const pages = worksheets[id]({ alphabet: ws.alphabet });
+  const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames });
   usePageMeta({ title: `${ws.eyebrow}: ${title}`, description: text });
 
   return (

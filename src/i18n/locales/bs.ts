@@ -192,8 +192,14 @@ export const bs: Dictionary = {
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu',
       sectionTitle: 'Radni listovi',
-      sectionText: 'Papirne verzije igara i listovi za pisanje brojeva i slova — za vježbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
+      sectionText: 'Papirne verzije igara, vježbe za ruku prije pisanja, brojevi, slova i logički zadaci — za vježbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
+      groups: {
+        motor: 'Motorika i predpisanje',
+        writing: 'Pisanje',
+        math: 'Brojevi i računanje',
+        logic: 'Logika i pažnja',
+      },
       sheets: {
         trace: {
           title: 'Prati stazu',
@@ -218,6 +224,66 @@ export const bs: Dictionary = {
         cyrillic: {
           title: 'Pišemo slova — ćirilica',
           text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+        lines: {
+          title: 'Ravne linije',
+          text: 'Povuci liniju od jedne sličice do druge: kucu do koske, zeku do mrkve, kišu od oblaka do cvijeta i raketu do mjeseca. Prati isprekidanu liniju.',
+        },
+        waves: {
+          title: 'Talasi i petlje',
+          text: 'Na početku svakog reda je crni uzorak. Pređi olovkom preko isprekidane šare do kraja reda, bez podizanja olovke ako možeš.',
+        },
+        outlines: {
+          title: 'Precrtaj oblike',
+          text: 'Prvi oblik u redu je uzorak. Pređi olovkom preko isprekidanih oblika, pa ih imenuj: krug, kvadrat, trougao, srce, zvijezda.',
+        },
+        colors: {
+          title: 'Oboji oblike',
+          text: 'Pogledaj na vrhu koje je boje koji oblik, pa svaki oblik na listu oboji tom bojom.',
+        },
+        count: {
+          title: 'Prebroj i zaokruži',
+          text: 'Prebroj sličice u svakom redu i zaokruži tačan broj.',
+        },
+        quantity: {
+          title: 'Nacrtaj koliko piše',
+          text: 'U svakom okviru nacrtaj onoliko kružića (ili jabuka, ili sunaca) koliko pokazuje broj.',
+        },
+        adding: {
+          title: 'Saberi sličice',
+          text: 'Prebroj sličice lijevo i desno od znaka plus, pa u kvadratić upiši koliko ih ima zajedno.',
+        },
+        sizes: {
+          title: 'Od najmanjeg do najvećeg',
+          text: 'U svakom redu upiši ispod sličica brojeve od 1 do 4: 1 ispod najmanje, 4 ispod najveće.',
+        },
+        pattern: {
+          title: 'Nastavi niz',
+          text: 'Pogledaj kako se sličice ponavljaju, pa u prazne kvadratiće nacrtaj šta dolazi dalje.',
+        },
+        odd: {
+          title: 'Šta ne pripada?',
+          text: 'U svakom redu jedna sličica nije kao ostale. Pronađi je i zaokruži, pa reci zašto ne pripada.',
+        },
+        match: {
+          title: 'Šta ide zajedno?',
+          text: 'Spoji linijom sličice koje idu zajedno: kucu i kosku, kišu i kišobran… Linija ide od tačke do tačke.',
+        },
+        shapes: {
+          title: 'Pronađi sjenu',
+          text: 'Spoji svaku sličicu lijevo s njenom sjenom desno.',
+        },
+        differences: {
+          title: 'Pronađi 5 razlika',
+          text: 'Uporedi gornju i donju sliku. Na donjoj zaokruži 5 stvari koje su drugačije.',
+        },
+        symmetry: {
+          title: 'Dovrši drugu polovinu',
+          text: 'Nacrtana je samo lijeva polovina slike. Nacrtaj desnu kao u ogledalu: isprekidana linija je ogledalo. Broji kvadratiće.',
+        },
+        copy: {
+          title: 'Precrtaj sliku',
+          text: 'Precrtaj crtež s lijeve mreže na praznu mrežu desno. Broji kvadratiće i kreni od istog ugla.',
         },
       },
     },

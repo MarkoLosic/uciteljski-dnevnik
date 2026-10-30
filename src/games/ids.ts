@@ -38,8 +38,30 @@ export function isGameId(value: unknown): value is GameId {
   return typeof value === 'string' && (GAME_IDS as readonly string[]).includes(value);
 }
 
-// Radni listovi za štampu. Prva tri su papirne verzije igara (isti id kao igra), ostali su samostalni.
-export const WORKSHEET_IDS = ['trace', 'dots', 'maze', 'numbers', 'latin', 'cyrillic'] as const;
+// Radni listovi za štampu. Listovi sa istim id kao igra su njene papirne verzije (GamePlay linkuje na njih).
+export const WORKSHEET_IDS = [
+  'trace',
+  'dots',
+  'maze',
+  'numbers',
+  'latin',
+  'cyrillic',
+  'lines',
+  'waves',
+  'outlines',
+  'colors',
+  'count',
+  'quantity',
+  'adding',
+  'sizes',
+  'pattern',
+  'odd',
+  'match',
+  'shapes',
+  'differences',
+  'symmetry',
+  'copy',
+] as const;
 
 export type WorksheetId = (typeof WORKSHEET_IDS)[number];
 
@@ -47,6 +69,16 @@ export type WorksheetId = (typeof WORKSHEET_IDS)[number];
 export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> = {
   cyrillic: ['sr', 'bs'],
 };
+
+// Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
+export const WORKSHEET_GROUPS = {
+  motor: ['trace', 'lines', 'waves', 'outlines', 'dots', 'maze', 'colors'],
+  writing: ['numbers', 'latin', 'cyrillic'],
+  math: ['count', 'quantity', 'adding', 'sizes'],
+  logic: ['pattern', 'odd', 'match', 'shapes', 'differences', 'symmetry', 'copy'],
+} as const satisfies Record<string, readonly WorksheetId[]>;
+
+export type WorksheetGroup = keyof typeof WORKSHEET_GROUPS;
 
 export function isWorksheetId(value: unknown): value is WorksheetId {
   return typeof value === 'string' && (WORKSHEET_IDS as readonly string[]).includes(value);

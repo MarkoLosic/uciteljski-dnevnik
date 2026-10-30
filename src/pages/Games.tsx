@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Hand, HeartHandshake, Printer, Timer, type LucideIcon } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
-import { GAME_IDS, worksheetsFor } from '../games/ids';
+import { GAME_IDS, WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
 import { games } from '../games/registry';
 import { usePageMeta } from '../lib/usePageMeta';
 
@@ -11,6 +11,7 @@ const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
 export default function Games() {
   const { locale, t, paths } = useLocale();
   const g = t.games;
+  const sheetIds = worksheetsFor(locale);
   usePageMeta({ title: g.title, description: g.intro });
 
   return (
@@ -72,21 +73,29 @@ export default function Games() {
           {g.worksheet.sectionTitle}
         </h2>
         <p className="mb-9 max-w-[640px] text-lg text-muted">{g.worksheet.sectionText}</p>
-        <ul className="grid gap-[18px] sm:grid-cols-3">
-          {worksheetsFor(locale).map((id) => (
-            <li key={id}>
-              <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
-                <span className="icon-tile">
-                  <Printer aria-hidden="true" className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-[17px] font-semibold tracking-tight">{g.worksheet.sheets[id].title}</span>
-                  <span className="text-sm text-muted">{g.worksheet.eyebrow} · A4</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {(Object.keys(WORKSHEET_GROUPS) as WorksheetGroup[]).map((group) => {
+          const ids = WORKSHEET_GROUPS[group].filter((id) => sheetIds.includes(id));
+          return (
+            <div key={group} className="mt-10 first-of-type:mt-0">
+              <h3 className="mb-4 font-head text-xl font-semibold tracking-tight">{g.worksheet.groups[group]}</h3>
+              <ul className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+                {ids.map((id) => (
+                  <li key={id}>
+                    <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
+                      <span className="icon-tile">
+                        <Printer aria-hidden="true" className="h-5 w-5" />
+                      </span>
+                      <span>
+                        <span className="block text-[17px] font-semibold tracking-tight">{g.worksheet.sheets[id].title}</span>
+                        <span className="text-sm text-muted">{g.worksheet.eyebrow} · A4</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </section>
 
       <section className="pt-20 sm:pt-28" aria-labelledby="za-odrasle">

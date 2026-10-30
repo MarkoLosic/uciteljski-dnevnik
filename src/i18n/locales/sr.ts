@@ -1,5 +1,5 @@
 import type { Category } from '../../types/post';
-import type { GameId, GameText, Shape, Skill, ToyColor, WorksheetId } from '../../games/ids';
+import type { GameId, GameText, Shape, Skill, ToyColor, WorksheetGroup, WorksheetId } from '../../games/ids';
 import type { Thing } from '../../games/things';
 
 // KORISNIK: tekstovi o tebi i tekst interfejsa na srpskom. Ostali jezici su u susednim fajlovima
@@ -196,8 +196,14 @@ export const sr = {
       tip: 'Savet: štampajte na A4 papiru. Radi i crno-belo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu',
       sectionTitle: 'Radni listovi',
-      sectionText: 'Papirne verzije igara i listovi za pisanje brojeva i slova — za vežbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
+      sectionText: 'Papirne verzije igara, vežbe za ruku pred pisanje, brojevi, slova i logički zadaci — za vežbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
+      groups: {
+        motor: 'Motorika i predpisanje',
+        writing: 'Pisanje',
+        math: 'Brojevi i računanje',
+        logic: 'Logika i pažnja',
+      } satisfies Record<WorksheetGroup, string>,
       sheets: {
         trace: {
           title: 'Prati stazu',
@@ -222,6 +228,66 @@ export const sr = {
         cyrillic: {
           title: 'Pišemo slova — ćirilica',
           text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+        lines: {
+          title: 'Ravne linije',
+          text: 'Povuci liniju od jedne sličice do druge: kucu do koske, zeku do šargarepe, kišu od oblaka do cveta i raketu do meseca. Prati isprekidanu liniju.',
+        },
+        waves: {
+          title: 'Talasi i petlje',
+          text: 'Na početku svakog reda je crni uzorak. Pređi olovkom preko isprekidane šare do kraja reda, bez podizanja olovke ako možeš.',
+        },
+        outlines: {
+          title: 'Precrtaj oblike',
+          text: 'Prvi oblik u redu je uzorak. Pređi olovkom preko isprekidanih oblika, pa ih imenuj: krug, kvadrat, trougao, srce, zvezda.',
+        },
+        colors: {
+          title: 'Oboji oblike',
+          text: 'Pogledaj na vrhu koje je boje koji oblik, pa svaki oblik na listu oboji tom bojom.',
+        },
+        count: {
+          title: 'Prebroj i zaokruži',
+          text: 'Prebroj sličice u svakom redu i zaokruži tačan broj.',
+        },
+        quantity: {
+          title: 'Nacrtaj koliko piše',
+          text: 'U svakom okviru nacrtaj onoliko kružića (ili jabuka, ili sunaca) koliko pokazuje broj.',
+        },
+        adding: {
+          title: 'Saberi sličice',
+          text: 'Prebroj sličice levo i desno od znaka plus, pa u kvadratić upiši koliko ih ima zajedno.',
+        },
+        sizes: {
+          title: 'Od najmanjeg do najvećeg',
+          text: 'U svakom redu upiši ispod sličica brojeve od 1 do 4: 1 ispod najmanje, 4 ispod najveće.',
+        },
+        pattern: {
+          title: 'Nastavi niz',
+          text: 'Pogledaj kako se sličice ponavljaju, pa u prazne kvadratiće nacrtaj šta dolazi dalje.',
+        },
+        odd: {
+          title: 'Šta ne pripada?',
+          text: 'U svakom redu jedna sličica nije kao ostale. Pronađi je i zaokruži, pa reci zašto ne pripada.',
+        },
+        match: {
+          title: 'Šta ide zajedno?',
+          text: 'Spoji linijom sličice koje idu zajedno: kucu i kosku, kišu i kišobran… Linija ide od tačke do tačke.',
+        },
+        shapes: {
+          title: 'Pronađi senku',
+          text: 'Spoji svaku sličicu levo sa njenom senkom desno.',
+        },
+        differences: {
+          title: 'Pronađi 5 razlika',
+          text: 'Uporedi gornju i donju sliku. Na donjoj zaokruži 5 stvari koje su drugačije.',
+        },
+        symmetry: {
+          title: 'Dovrši drugu polovinu',
+          text: 'Nacrtana je samo leva polovina slike. Nacrtaj desnu kao u ogledalu: isprekidana linija je ogledalo. Broji kvadratiće.',
+        },
+        copy: {
+          title: 'Precrtaj sliku',
+          text: 'Precrtaj crtež sa leve mreže na praznu mrežu desno. Broji kvadratiće i kreni od istog ugla.',
         },
       } satisfies Record<WorksheetId, { title: string; text: string }>,
     },
