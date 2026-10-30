@@ -124,7 +124,16 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── BlogList.tsx       # lista članaka
     │   ├── BlogPost.tsx       # pojedinačni članak
     │   ├── About.tsx          # o sajtu / o autoru
+    │   ├── Games.tsx          # lista igara za predškolce
+    │   ├── GamePlay.tsx       # jedna igra + ekran „Bravo!“
     │   └── NotFound.tsx       # 404
+    ├── games/                 # igre za predškolce (sekcija 10.5)
+    │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
+    │   ├── registry.ts        # GameId → komponenta, ikona, boja kartice, veštine
+    │   ├── shared.tsx         # toyHex, shuffle, ShapeIcon, RoundDots, useShake, useDragDrop
+    │   ├── things.ts          # sličice (lucide) za pamćenje, brojanje, veličine
+    │   └── Balloons.tsx, ColorSort.tsx, ShapeMatch.tsx, Trace.tsx, ConnectDots.tsx,
+    │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
     ├── lib/
     │   ├── posts.ts           # čitanje .md fajlova
     │   ├── frontmatter.ts     # validateFrontmatter (deli se sa vite.config.ts)
@@ -407,14 +416,16 @@ Koristi `react-router-dom`:
 | `/blog` | `<BlogList />` | Lista svih članaka (kartice) |
 | `/blog/:slug` | `<BlogPost />` | Pojedinačni članak |
 | `/o-meni` | `<About />` | O meni: IT iskustvo, razredna nastava, o blogu, kontakt |
+| `/igre` | `<Games />` | Igre za predškolce (sekcija 10.5) |
+| `/igre/:gameId` | `<GamePlay />` | Jedna igra; nepoznat `gameId` → `<NotFound />` |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />`.
 
 ### 7.1. Jezici
 
-- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`.
-- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`.
+- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`, a stranice igara u `localeInfo[locale].gamesSlug` (`igre`, en `games`, de `spiele`; `gameId` je isti na svim jezicima).
+- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`, `paths.games`, `paths.game(id)`.
 - **Tekst interfejsa nikad ne hardkoduj** — koristi `t` iz `useLocale()`. Novi string dodaj u `locales/sr.ts`, a TypeScript će tražiti isti ključ u ostala četiri rečnika.
 - `LocaleProvider` postavlja `<html lang>` na BCP 47 tag jezika.
 - `LanguageSwitcher` vodi na istu stranicu na drugom jeziku (`switchLocalePath`); ako članak nema prevod, vodi na listu članaka tog jezika.
@@ -503,7 +514,7 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 
 - Plutajuća pilula: `fixed top-3.5`, centrirana, `rounded-full`, poluprozirna `bg-surface/70` + `backdrop-blur`; posle skrola dobija jaču granicu i senku.
 - Levo: znak (zeleni kvadrat sa pikselskom kvačicom) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
-- Desno: Početna, Blog, O meni (`NavLink`; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<LanguageSwitcher />` + `<ThemeToggle />`.
+- Desno: Početna, Blog, Igre, O meni (`NavLink`; „Početna“ je skrivena na < 640px jer logo vodi na početnu; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<LanguageSwitcher />` + `<ThemeToggle />`.
 
 ### 9.3. `Footer.tsx`
 
@@ -612,7 +623,15 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Kontakt (email iz `siteConfig.author.email`).
 - Svi tekstovi o autoru su u `src/config/site.ts` (označeno `KORISNIK:`), ne u komponentama.
 
-### 10.5. `NotFound.tsx`
+### 10.5. `Games.tsx` i `GamePlay.tsx` — igre za predškolce
+
+- Deset kratkih interaktivnih igara za uzrast 3–6 (fina motorika, oko–ruka, logika, pamćenje, brojanje): baloni, razvrstavanje boja, oblici, praćenje staze, spajanje tačaka, lavirint, parovi, nizovi, brojanje, od malog do velikog.
+- Igra je komponenta sa `GameProps` (`onWin`); runde vodi sama, `GamePlay` prikazuje ekran pobede („Igraj ponovo“ = remount preko `key`, „Sledeća“ = sledeći `GAME_IDS`).
+- Nova igra: dodaj id u `GAME_IDS`, komponentu u `registry.ts` i tekst (`title`, `short`, `howTo`) u `t.games.list` u svih pet rečnika.
+- Pravila: velike mete (dečji prst), greška samo „odmahne“ (`useShake`), bez tajmera i kazni. Prevlačenje ide kroz `useDragDrop` — radi i „dodirni predmet, pa dodirni cilj“ i tastatura. Boje igračaka (`toyHex`) su sadržaj i ne menjaju se sa temom.
+- Bez zvuka, reklama i praćenja. Animacije poštuju `prefers-reduced-motion`.
+
+### 10.6. `NotFound.tsx`
 
 - Veliki „404".
 - Poruka: „Stranica nije pronađena."

@@ -447,6 +447,120 @@
       font-size: 17px;
     }
   }
+
+  /* Igre za predškolce: velike mete, mekani pokreti, bez kazne za grešku. */
+  .game-board {
+    position: relative;
+    border-radius: 24px;
+    border: 1px solid var(--border-strong);
+    background:
+      radial-gradient(500px circle at 10% 0%, var(--glow-a), transparent 60%),
+      radial-gradient(500px circle at 90% 100%, var(--glow-b), transparent 60%),
+      var(--surface-2);
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .toy-piece {
+    position: relative;
+    box-shadow: 0 6px 0 -1px rgba(0, 0, 0, 0.22);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+  .toy-piece:active {
+    transform: scale(0.94);
+  }
+  .toy-selected {
+    outline: 4px solid var(--accent-2);
+    outline-offset: 4px;
+    transform: scale(1.06);
+  }
+  .shake {
+    animation: shake 0.45s ease-in-out;
+  }
+  .pop-in {
+    animation: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .bounce-once {
+    animation: bounce-once 0.6s ease;
+  }
+  .pulse-ring {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse-ring 1.4s ease-out infinite;
+  }
+
+  .balloon {
+    animation: balloon-rise linear forwards;
+    cursor: pointer;
+    border-radius: 50% 50% 40% 40%;
+    touch-action: manipulation;
+  }
+  .balloon:hover svg {
+    filter: brightness(1.08);
+  }
+  .balloon-popped {
+    animation-play-state: paused;
+  }
+  .balloon-popped svg {
+    animation: pop-out 0.3s ease-out forwards;
+  }
+
+  .memory-card {
+    position: relative;
+    border-radius: 18px;
+    perspective: 700px;
+  }
+  .memory-face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.45s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .memory-back {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: var(--accent-ink);
+    font: 700 clamp(28px, 6vw, 44px) var(--font-head);
+    box-shadow: 0 6px 0 -1px rgba(0, 0, 0, 0.22);
+  }
+  .memory-front {
+    background: var(--surface);
+    border: 2px solid var(--border-strong);
+    transform: rotateY(180deg);
+  }
+  .memory-card.is-open .memory-back {
+    transform: rotateY(-180deg);
+  }
+  .memory-card.is-open .memory-front {
+    transform: rotateY(0);
+  }
+  .memory-card.is-found .memory-front {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  }
+
+  .win-overlay {
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--border-strong);
+    animation: pop-in 0.4s ease-out;
+  }
+  .win-star {
+    animation: win-star 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+}
+
+/* Kada su animacije isključene, cela memorijska kartica se samo zameni licem, bez okretanja. */
+@media (prefers-reduced-motion: reduce) {
+  .memory-card.is-open .memory-back {
+    visibility: hidden;
+  }
 }
 
 @keyframes drift {
@@ -478,6 +592,56 @@
 @keyframes bob {
   50% {
     transform: translateY(-9px);
+  }
+}
+@keyframes shake {
+  20%,
+  60% {
+    transform: translateX(-8px) rotate(-4deg);
+  }
+  40%,
+  80% {
+    transform: translateX(8px) rotate(4deg);
+  }
+}
+@keyframes pop-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+@keyframes pop-out {
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+@keyframes bounce-once {
+  40% {
+    transform: translateY(-18%) scale(1.1);
+  }
+}
+@keyframes pulse-ring {
+  from {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes balloon-rise {
+  from {
+    top: 100%;
+  }
+  to {
+    top: -40%;
+  }
+}
+@keyframes win-star {
+  from {
+    transform: scale(0) rotate(-90deg);
   }
 }
 

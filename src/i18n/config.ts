@@ -11,14 +11,15 @@ interface LocaleInfo {
   name: string; // ime jezika na tom jeziku (za izbor jezika)
   tag: string; // BCP 47: <html lang> i Intl formatiranje
   aboutSlug: string;
+  gamesSlug: string;
 }
 
 export const localeInfo: Record<Locale, LocaleInfo> = {
-  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni' },
-  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about' },
-  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni' },
-  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni' },
-  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich' },
+  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre' },
+  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games' },
+  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre' },
+  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre' },
+  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele' },
 };
 
 export function isLocale(value: unknown): value is Locale {

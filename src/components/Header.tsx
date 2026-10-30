@@ -12,6 +12,7 @@ export default function Header() {
   const navItems = [
     { to: paths.home, label: t.nav.home },
     { to: paths.blog, label: t.nav.blog },
+    { to: paths.games, label: t.nav.games },
     { to: paths.about, label: t.nav.about },
   ];
 
@@ -41,12 +42,13 @@ export default function Header() {
         <nav aria-label={t.nav.label}>
           <ul className="flex sm:gap-1">
             {navItems.map(({ to, label }) => (
-              <li key={to}>
+              // Na telefonu nema mesta za četiri stavke; logo levo već vodi na početnu.
+              <li key={to} className={to === paths.home ? 'max-sm:hidden' : undefined}>
                 <NavLink
                   to={to}
                   end={to === paths.home}
                   className={({ isActive }) =>
-                    `focus-ring block rounded-full px-2.5 py-2 text-sm font-medium transition-colors sm:px-3.5 sm:text-[14.5px] ${
+                    `focus-ring block rounded-full px-2.5 py-2 whitespace-nowrap text-sm font-medium transition-colors sm:px-3.5 sm:text-[14.5px] ${
                       isActive
                         ? 'bg-surface-2 text-ink shadow-[inset_0_0_0_1px_var(--border)]'
                         : 'text-muted hover:bg-surface-2 hover:text-ink'

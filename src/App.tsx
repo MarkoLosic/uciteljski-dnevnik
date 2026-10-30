@@ -5,6 +5,8 @@ import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+import Games from './pages/Games';
+import GamePlay from './pages/GamePlay';
 import { LOCALES, localeInfo } from './i18n/config';
 import { LocaleProvider } from './i18n/LocaleContext';
 import { localeBase } from './i18n/paths';
@@ -27,6 +29,8 @@ export default function App() {
           <Route path="blog" element={<BlogList />} />
           <Route path="blog/:slug" element={<BlogPost />} />
           <Route path={localeInfo[locale].aboutSlug} element={<About />} />
+          <Route path={localeInfo[locale].gamesSlug} element={<Games />} />
+          <Route path={`${localeInfo[locale].gamesSlug}/:gameId`} element={<GamePlay />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       ))}
