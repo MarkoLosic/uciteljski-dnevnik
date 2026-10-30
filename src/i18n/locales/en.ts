@@ -66,6 +66,8 @@ export const en: Dictionary = {
     chips: ['Primary teaching', 'QA engineer', 'AI in education'],
     whoEyebrow: '01 — Who I am',
     whoTitle: 'Between the classroom and IT',
+    whoImageAlt:
+      'Illustration: on one side a teacher plays with children in a classroom, on the other the same man works at a computer as a QA engineer — letters and numbers from the classroom flow into code and tests.',
     topicsEyebrow: '02 — Topics',
     topicsTitle: 'What I write about',
     blogEyebrow: '03 — Blog',

@@ -70,6 +70,8 @@ export const sr = {
     chips: ['Razredna nastava', 'QA inženjer', 'AI u nastavi'],
     whoEyebrow: '01 — Ko sam ja',
     whoTitle: 'Između učionice i IT-a',
+    whoImageAlt:
+      'Ilustracija: s jedne strane učitelj se igra s decom u učionici, a s druge isti čovek radi za računarom kao QA inženjer — slova i brojevi iz učionice prelaze u kod i testove.',
     topicsEyebrow: '02 — Teme',
     topicsTitle: 'O čemu pišem',
     blogEyebrow: '03 — Blog',

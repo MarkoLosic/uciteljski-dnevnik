@@ -595,8 +595,8 @@ interface EmptyStateProps {
 ### 10.1. `Home.tsx`
 
 Redosled sekcija (lično predstavljanje pa blog):
-- Hero: „Zdravo, ja sam {author.name}" (h1), ispod `author.role`, pa `author.intro`, dugmad „Pročitaj blog" → `/blog` i „Više o meni" → `/o-meni`, krug sa inicijalima (mesto za fotografiju).
-- „Ko sam ja": kartice iz `author.background` (IT iskustvo, profesor razredne nastave).
+- Hero: „Zdravo, ja sam {author.name}" (h1), ispod `author.role`, pa `author.intro`, dugmad „Pročitaj blog" → `/blog` i „Više o meni" → `/o-meni`, fotografija autora u „blob" okviru (`public/slike/marko-losic.jpg`).
+- „Ko sam ja": ilustracija „učionica → IT" (`public/slike/ucionica-i-it-{1200,2000}.webp`, alt u `t.home.whoImageAlt`), pa kartice iz `author.background` (IT iskustvo, profesor razredne nastave).
 - „O čemu pišem": `siteConfig.topics`.
 - „Najnovije sa bloga": 3 najnovija članka preko `getRecentPosts(3)` i `<PostCard />`.
 - Ako nema članaka: `<EmptyState />`.

@@ -66,6 +66,8 @@ export const de: Dictionary = {
     chips: ['Grundschule', 'QA-Ingenieur', 'KI im Unterricht'],
     whoEyebrow: '01 — Wer ich bin',
     whoTitle: 'Zwischen Klassenzimmer und IT',
+    whoImageAlt:
+      'Illustration: Auf der einen Seite spielt ein Lehrer mit Kindern im Klassenzimmer, auf der anderen arbeitet derselbe Mann als QA-Ingenieur am Computer — Buchstaben und Zahlen aus dem Klassenzimmer fließen in Code und Tests.',
     topicsEyebrow: '02 — Themen',
     topicsTitle: 'Worüber ich schreibe',
     blogEyebrow: '03 — Blog',

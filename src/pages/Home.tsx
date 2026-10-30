@@ -16,15 +16,6 @@ const heroChips = [
   { className: 'top-[72%] -right-[8%] max-lg:-right-[2%] [animation-delay:-4s]', color: '[--c:var(--cat-amber)]' },
 ] as const;
 
-function initials(name: string): string {
-  return name
-    .split(' ')
-    .map((part) => part[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 export default function Home() {
   const { locale, t, paths } = useLocale();
   const recentPosts = getRecentPosts(locale, 3);
@@ -80,13 +71,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* KORISNIK: ovde može ići tvoja fotografija umesto inicijala (npr. <img className="photo object-cover" …>). */}
+        {/* KORISNIK: fotografija je u public/slike/marko-losic.jpg — zameni fajl da promeniš sliku. */}
         <div aria-hidden="true" className="grid justify-items-center max-lg:order-first">
           <div className="relative aspect-square w-[min(340px,72%)]">
             <div className="photo-ring" />
-            <div className="photo grid place-items-center font-head text-[clamp(56px,9vw,104px)] font-bold tracking-tight">
-              <span className="grad">{initials(author.name)}</span>
-            </div>
+            <img src="/slike/marko-losic.jpg" alt="" width={400} height={400} className="photo h-[calc(100%-10px)] w-[calc(100%-10px)] object-cover" />
             {heroChips.map(({ className, color }, i) => (
               <span key={className} className={`float-chip max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[11.5px] ${className} ${color}`}>
                 <i />
@@ -102,6 +91,16 @@ export default function Home() {
         <h2 id="ko-sam-ja" className="section-title mb-11">
           {t.home.whoTitle}
         </h2>
+        <img
+          src="/slike/ucionica-i-it-1200.webp"
+          srcSet="/slike/ucionica-i-it-1200.webp 1200w, /slike/ucionica-i-it-2000.webp 2000w"
+          sizes="(min-width: 1200px) 1160px, calc(100vw - 40px)"
+          width={2000}
+          height={848}
+          loading="lazy"
+          alt={t.home.whoImageAlt}
+          className="mb-[18px] h-auto w-full rounded-[20px] border border-line"
+        />
         <ul className="grid gap-[18px] md:grid-cols-2">
           {author.background.map(({ title, text }, i) => {
             const Icon = backgroundIcons[i] ?? School;
