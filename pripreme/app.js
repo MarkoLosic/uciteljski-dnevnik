@@ -1,13 +1,18 @@
 /**
  * Glavna aplikaciona logika za biblioteku nastavnih priprema (pripreme/app.js)
- * - Filtriranje u realnom vremenu i pretraga bez obzira na dijakritičke znakove (č, ć, ž, š, đ)
- * - Prikaz kartica i detaljnog modala
- * - URL Hash podrška (#priprema=<slug>) za direktno dijeljenje linka
- * - Kopiranje za e-Dnevnik, A4 štampa i generisanje/preuzimanje .docx i .pdf fajlova
+ * - Filtriranje u realnom vremenu i pretraga bez obzira na dijakritičke znakove (č, ć, ž, š, đ) i pismo (latinica/ćirilica)
+ * - Brzo postepeno iscrtavanje (paginacija po 36 kartica) za trenutno filtriranje 1.436 priprema
+ * - Jednim klikom preslovljavanje Latinica ↔ Ћирилица (kartice, modal, e-Dnevnik, Word .docx, A4 radni listić)
+ * - Čuvanje omiljenih priprema (⭐ Sačuvane) i podataka o školi/učitelju u localStorage
+ * - URL Query (?razred=1&sistem=RS) i Hash (#priprema=<slug>) podrška za direktno dijeljenje linka
+ * - Kopiranje za e-Dnevnik, A4 štampa, generisanje .docx fajlova i automatski A4 Radni listić za učenike
  */
 
 (function () {
   'use strict';
+
+  const KORAK_PRIKAZA = 36;
+  let trenutniLimit = KORAK_PRIKAZA;
 
   // Stanje aktivnih filtera
   const stanjeFiltera = {
@@ -16,9 +21,27 @@
     razred: 'Svi',
     predmet: 'Svi',
     tipCasa: 'Svi',
+    samoSacuvane: false,
   };
 
   let trenutnoOtvorenaJedinica = null;
+  let trenutnoPismo = 'lat'; // 'lat' ili 'cir'
+  let sacuvaniSlugovi = [];
+
+  // Učitavanje sačuvanog pisma i omiljenih priprema iz localStorage-a
+  try {
+    const sacuvanoPismo = localStorage.getItem('pripreme_pismo');
+    if (sacuvanoPismo === 'cir' || sacuvanoPismo === 'lat') {
+      trenutnoPismo = sacuvanoPismo;
+    }
+    const sacuvanoJson = localStorage.getItem('pripreme_sacuvane');
+    if (sacuvanoJson) {
+      const parsirano = JSON.parse(sacuvanoJson);
+      if (Array.isArray(parsirano)) {
+        sacuvaniSlugovi = parsirano;
+      }
+    }
+  } catch (e) {}
 
   // DOM elementi
   const elMrezaKartica = document.getElementById('mrezaKartica');
@@ -26,14 +49,22 @@
   const elBrojacRezultata = document.getElementById('brojacRezultata');
   const elStatUkupno = document.getElementById('statUkupno');
 
+  const elKontejnerUcitajJos = document.getElementById('kontejnerUcitajJos');
+  const elStatusPaginacije = document.getElementById('statusPaginacije');
+  const elDugmeUcitajJos = document.getElementById('dugmeUcitajJos');
+  const elDugmePrikaziSve = document.getElementById('dugmePrikaziSve');
+
   const elPoljePretraga = document.getElementById('poljePretraga');
   const elObrisiPretragu = document.getElementById('obrisiPretragu');
   const elFilterSistem = document.getElementById('filterSistem');
   const elGrupaRazreda = document.getElementById('grupaRazreda');
   const elFilterPredmet = document.getElementById('filterPredmet');
   const elFilterTipCasa = document.getElementById('filterTipCasa');
+  const elDugmeFilterSacuvane = document.getElementById('dugmeFilterSacuvane');
+  const elBrojSacuvanih = document.getElementById('brojSacuvanih');
   const elDugmeResetuj = document.getElementById('dugmeResetujFiltere');
   const elDugmeResetujPrazno = document.getElementById('dugmeResetujPrazno');
+  const elDugmePismo = document.getElementById('dugmePismo');
 
   // Modal elementi
   const elModalPozadina = document.getElementById('modalPozadina');
@@ -63,11 +94,202 @@
   const elAkcijaStampa = document.getElementById('akcijaStampa');
   const elAkcijaPreuzmiDocx = document.getElementById('akcijaPreuzmiDocx');
   const elAkcijaPreuzmiPdf = document.getElementById('akcijaPreuzmiPdf');
+  const elAkcijaSacuvaj = document.getElementById('akcijaSacuvaj');
+  const elAkcijaPismoModal = document.getElementById('akcijaPismoModal');
 
-  // Pomoćna funkcija za normalizaciju teksta (uklanja kvačice radi lakše pretrage)
+  // ==========================================================================
+  // PRESLOVLJAVANJE LATINICA ↔ ĆIRILICA
+  // ==========================================================================
+  const mapaDigrafa = [
+    ['DŽ', 'Џ'],
+    ['Dž', 'Џ'],
+    ['dž', 'џ'],
+    ['LJ', 'Љ'],
+    ['Lj', 'Љ'],
+    ['lj', 'љ'],
+    ['NJ', 'Њ'],
+    ['Nj', 'Њ'],
+    ['nj', 'њ'],
+  ];
+
+  const mapaSlovaLatUCir = {
+    A: 'А', a: 'а',
+    B: 'Б', b: 'б',
+    V: 'В', v: 'в',
+    G: 'Г', g: 'г',
+    D: 'Д', d: 'д',
+    Đ: 'Ђ', đ: 'ђ',
+    E: 'Е', e: 'е',
+    Ž: 'Ж', ž: 'ж',
+    Z: 'З', z: 'з',
+    I: 'И', i: 'и',
+    J: 'Ј', j: 'ј',
+    K: 'К', k: 'к',
+    L: 'Л', l: 'л',
+    M: 'М', m: 'м',
+    N: 'Н', n: 'н',
+    O: 'О', o: 'о',
+    P: 'П', p: 'п',
+    R: 'Р', r: 'р',
+    S: 'С', s: 'с',
+    T: 'Т', t: 'т',
+    Ć: 'Ћ', ć: 'ћ',
+    U: 'У', u: 'у',
+    F: 'Ф', f: 'ф',
+    H: 'Х', h: 'х',
+    C: 'Ц', c: 'ц',
+    Č: 'Ч', č: 'ч',
+    Š: 'Ш', š: 'ш',
+  };
+
+  const mapaSlovaCirULat = {
+    А: 'A', а: 'a',
+    Б: 'B', б: 'b',
+    В: 'V', в: 'v',
+    Г: 'G', г: 'g',
+    Д: 'D', д: 'd',
+    Ђ: 'Đ', ђ: 'đ',
+    Е: 'E', е: 'e',
+    Ж: 'Ž', ж: 'ž',
+    З: 'Z', з: 'z',
+    И: 'I', и: 'i',
+    Ј: 'J', ј: 'j',
+    К: 'K', к: 'k',
+    Л: 'L', л: 'l',
+    Љ: 'Lj', љ: 'lj',
+    М: 'M', м: 'm',
+    Н: 'N', н: 'n',
+    Њ: 'Nj', њ: 'nj',
+    О: 'O', о: 'o',
+    П: 'P', п: 'p',
+    Р: 'R', р: 'r',
+    С: 'S', с: 's',
+    Т: 'T', т: 't',
+    Ћ: 'Ć', ћ: 'ć',
+    У: 'U', у: 'u',
+    Ф: 'F', ф: 'f',
+    Х: 'H', х: 'h',
+    Ц: 'C', ц: 'c',
+    Ч: 'Č', ч: 'č',
+    Џ: 'Dž', џ: 'dž',
+    Ш: 'Š', ш: 'š',
+  };
+
+  function uCirilicu(tekst) {
+    if (!tekst) return '';
+    let rez = String(tekst);
+    // Sačuvaj poznate skraćenice koje ostaju u izvornom obliku ili se prirodno preslovljavaju
+    for (let i = 0; i < mapaDigrafa.length; i++) {
+      rez = rez.split(mapaDigrafa[i][0]).join(mapaDigrafa[i][1]);
+    }
+    let izlaz = '';
+    for (let j = 0; j < rez.length; j++) {
+      const znak = rez[j];
+      izlaz += mapaSlovaLatUCir[znak] || znak;
+    }
+    return izlaz;
+  }
+
+  function uLatinicu(tekst) {
+    if (!tekst) return '';
+    const s = String(tekst);
+    let izlaz = '';
+    for (let i = 0; i < s.length; i++) {
+      const znak = s[i];
+      izlaz += mapaSlovaCirULat[znak] || znak;
+    }
+    return izlaz;
+  }
+
+  // Preslovljava tekst u trenutno aktivno pismo ('lat' ili 'cir')
+  function preslovi(tekst) {
+    if (!tekst) return '';
+    return trenutnoPismo === 'cir' ? uCirilicu(tekst) : String(tekst);
+  }
+
+  function azurirajDugmadPisma() {
+    const jeCir = trenutnoPismo === 'cir';
+    if (elDugmePismo) {
+      elDugmePismo.textContent = jeCir ? 'ЋИР → LAT' : 'LAT → ЋИР';
+      elDugmePismo.classList.toggle('active-cyr', jeCir);
+      elDugmePismo.title = jeCir
+        ? 'Trenutno pismo: Ćirilica (kliknite za prebacivanje na latinicu)'
+        : 'Trenutno pismo: Latinica (kliknite za prebacivanje na ćirilicu)';
+    }
+    if (elAkcijaPismoModal) {
+      elAkcijaPismoModal.textContent = jeCir ? '🔤 Prebaci na latinicu' : '🔤 Пребаци на ћирилицу';
+    }
+  }
+
+  function promijeniPismo() {
+    trenutnoPismo = trenutnoPismo === 'lat' ? 'cir' : 'lat';
+    try {
+      localStorage.setItem('pripreme_pismo', trenutnoPismo);
+    } catch (e) {}
+    azurirajDugmadPisma();
+    prikaziKartice();
+    if (trenutnoOtvorenaJedinica) {
+      otvoriModalPoSlugu(trenutnoOtvorenaJedinica.slug, false);
+    }
+    prikaziObavjestenje(
+      trenutnoPismo === 'cir'
+        ? 'Приказ и извоз су пребачени на ћирилицу (АБВ).'
+        : 'Prikaz i izvoz su prebačeni na latinicu (ABC).'
+    );
+  }
+
+  // ==========================================================================
+  // SAČUVANE / OMILJENE PRIPREME (localStorage)
+  // ==========================================================================
+  function jeSacuvana(slug) {
+    return sacuvaniSlugovi.indexOf(slug) !== -1;
+  }
+
+  function azurirajBrojacSacuvanih() {
+    if (elBrojSacuvanih) {
+      elBrojSacuvanih.textContent = String(sacuvaniSlugovi.length);
+    }
+    if (elDugmeFilterSacuvane) {
+      elDugmeFilterSacuvane.classList.toggle('btn-saved-active', stanjeFiltera.samoSacuvane);
+      elDugmeFilterSacuvane.setAttribute('aria-pressed', stanjeFiltera.samoSacuvane ? 'true' : 'false');
+    }
+    if (elAkcijaSacuvaj && trenutnoOtvorenaJedinica) {
+      const aktivno = jeSacuvana(trenutnoOtvorenaJedinica.slug);
+      elAkcijaSacuvaj.textContent = aktivno ? '⭐ Sačuvano' : '☆ Sačuvaj';
+      elAkcijaSacuvaj.classList.toggle('btn-saved-active', aktivno);
+    }
+  }
+
+  function prebaciSacuvanu(slug) {
+    if (!slug) return;
+    const idx = sacuvaniSlugovi.indexOf(slug);
+    let dodato = false;
+    if (idx === -1) {
+      sacuvaniSlugovi.push(slug);
+      dodato = true;
+    } else {
+      sacuvaniSlugovi.splice(idx, 1);
+    }
+    try {
+      localStorage.setItem('pripreme_sacuvane', JSON.stringify(sacuvaniSlugovi));
+    } catch (e) {}
+
+    azurirajBrojacSacuvanih();
+    prikaziKartice();
+    prikaziObavjestenje(
+      dodato
+        ? '⭐ Priprema je dodata u vaše sačuvane pripreme.'
+        : 'Priprema je uklonjena iz sačuvanih priprema.'
+    );
+  }
+
+  // ==========================================================================
+  // NORMALIZACIJA I FILTRIRANJE
+  // ==========================================================================
+  // Pomoćna funkcija za normalizaciju teksta (podržava i ćirilični unos u pretrazi i uklanja kvačice)
   function normalizujTekst(tekst) {
     if (!tekst) return '';
-    return String(tekst)
+    return uLatinicu(String(tekst))
       .toLowerCase()
       .replace(/č/g, 'c')
       .replace(/ć/g, 'c')
@@ -121,9 +343,13 @@
       .filter(Boolean)
       .map(function (s) {
         const norm = String(s).trim().toUpperCase();
-        if (norm === 'RS' || norm.includes('SRPSKA') || norm.includes('RPZ')) return 'Republika Srpska (RPZ)';
-        if (norm === 'FBIH' || norm.includes('FEDERACIJA') || norm.includes('ZJNPP')) return 'Federacija BiH (ZJNPP)';
-        return s;
+        if (norm === 'RS' || norm.includes('SRPSKA') || norm.includes('RPZ')) {
+          return preslovi('Republika Srpska (RPZ)');
+        }
+        if (norm === 'FBIH' || norm.includes('FEDERACIJA') || norm.includes('ZJNPP')) {
+          return preslovi('Federacija BiH (ZJNPP)');
+        }
+        return preslovi(s);
       })
       .join(' · ');
   }
@@ -136,12 +362,12 @@
       .map(function (s) {
         const norm = String(s).trim().toUpperCase();
         if (norm === 'RS' || norm.includes('SRPSKA') || norm.includes('RPZ')) {
-          return '<span class="badge badge-system-rs">RS (RPZ)</span>';
+          return '<span class="badge badge-system-rs">' + escapeHtml(preslovi('RS (RPZ)')) + '</span>';
         }
         if (norm === 'FBIH' || norm.includes('FEDERACIJA') || norm.includes('ZJNPP')) {
-          return '<span class="badge badge-system-fbih">FBiH (ZJNPP)</span>';
+          return '<span class="badge badge-system-fbih">' + escapeHtml(preslovi('FBiH (ZJNPP)')) + '</span>';
         }
-        return '<span class="badge badge-system">' + escapeHtml(s) + '</span>';
+        return '<span class="badge badge-system">' + escapeHtml(preslovi(s)) + '</span>';
       })
       .join('');
   }
@@ -201,6 +427,11 @@
     const pojam = normalizujTekst(stanjeFiltera.pretraga.trim());
 
     return nastavneJedinice.filter(function (jedinica) {
+      // 0. Samo sačuvane
+      if (stanjeFiltera.samoSacuvane && !jeSacuvana(jedinica.slug)) {
+        return false;
+      }
+
       // 1. Sistem (RS / FBiH)
       if (!poklapanjeSistema(jedinica.sistem, stanjeFiltera.sistem)) {
         return false;
@@ -239,7 +470,7 @@
     });
   }
 
-  // Iscrtavanje kartica u mreži
+  // Iscrtavanje kartica u mreži (sa paginacijom po 36 kartica)
   function prikaziKartice() {
     if (!elMrezaKartica) return;
 
@@ -247,75 +478,128 @@
     if (elStatUkupno) elStatUkupno.textContent = String(ukupno);
 
     const filtrirane = filtrirajJedinice();
+    const zaPrikaz = filtrirane.slice(0, trenutniLimit);
 
     if (elBrojacRezultata) {
       let dodatakSistem = '';
       if (stanjeFiltera.sistem === 'RS') {
-        dodatakSistem = ' · Sistem: <strong>Republika Srpska (RPZ)</strong>';
+        dodatakSistem = ' · Sistem: <strong>' + escapeHtml(preslovi('Republika Srpska (RPZ)')) + '</strong>';
       } else if (stanjeFiltera.sistem === 'FBiH') {
-        dodatakSistem = ' · Sistem: <strong>Federacija BiH (ZJNPP)</strong>';
+        dodatakSistem = ' · Sistem: <strong>' + escapeHtml(preslovi('Federacija BiH (ZJNPP)')) + '</strong>';
+      }
+      if (stanjeFiltera.samoSacuvane) {
+        dodatakSistem += ' · <strong>' + escapeHtml(preslovi('⭐ Samo sačuvane')) + '</strong>';
       }
       elBrojacRezultata.innerHTML =
-        'Prikazano <strong>' +
+        escapeHtml(preslovi('Pronađeno ')) +
+        '<strong>' +
         filtrirane.length +
-        '</strong> od <strong>' +
+        '</strong>' +
+        escapeHtml(preslovi(' od ukupno ')) +
+        '<strong>' +
         ukupno +
-        '</strong> priprema' +
+        '</strong>' +
+        escapeHtml(preslovi(' priprema')) +
         dodatakSistem;
     }
 
     if (filtrirane.length === 0) {
       elMrezaKartica.innerHTML = '';
+      if (elKontejnerUcitajJos) elKontejnerUcitajJos.hidden = true;
       if (elPraznoStanje) elPraznoStanje.hidden = false;
       return;
     }
 
     if (elPraznoStanje) elPraznoStanje.hidden = true;
 
-    elMrezaKartica.innerHTML = filtrirane
+    elMrezaKartica.innerHTML = zaPrikaz
       .map(function (jedinica) {
         const klasaTipa = klasaZaTipCasa(jedinica.tipCasa);
         const bedzeviSistemaHtml = kreirajBedzeveSistema(jedinica.sistem);
+        const sacuvana = jeSacuvana(jedinica.slug);
 
         return (
           '<article class="lesson-card" tabindex="0" role="button" data-slug="' +
           escapeHtml(jedinica.slug) +
           '" aria-label="Otvori pripremu: ' +
-          escapeHtml(jedinica.naziv) +
+          escapeHtml(preslovi(jedinica.naziv)) +
           '">' +
           '<div>' +
+          '<div class="card-top-row">' +
           '<div class="card-badges">' +
           '<span class="badge badge-grade">' +
           escapeHtml(jedinica.razred) +
-          '. razred</span>' +
+          escapeHtml(preslovi('. razred')) +
+          '</span>' +
           '<span class="badge badge-subject">' +
-          escapeHtml(jedinica.predmet) +
+          escapeHtml(preslovi(jedinica.predmet)) +
           '</span>' +
           '<span class="badge ' +
           klasaTipa +
           '">' +
-          escapeHtml(jedinica.tipCasa) +
+          escapeHtml(preslovi(jedinica.tipCasa)) +
           '</span>' +
           bedzeviSistemaHtml +
           '</div>' +
+          '<button type="button" class="card-star-btn' +
+          (sacuvana ? ' saved' : '') +
+          '" data-star-slug="' +
+          escapeHtml(jedinica.slug) +
+          '" aria-label="Sačuvaj pripremu" title="' +
+          escapeHtml(preslovi(sacuvana ? 'Ukloni iz sačuvanih' : 'Sačuvaj pripremu')) +
+          '">' +
+          (sacuvana ? '★' : '☆') +
+          '</button>' +
+          '</div>' +
           '<p class="card-unit">' +
-          escapeHtml(jedinica.cjelina) +
+          escapeHtml(preslovi(jedinica.cjelina)) +
           '</p>' +
           '<h2 class="card-title">' +
-          escapeHtml(jedinica.naziv) +
+          escapeHtml(preslovi(jedinica.naziv)) +
           '</h2>' +
           '<p class="card-goal">' +
-          escapeHtml(jedinica.cilj) +
+          escapeHtml(preslovi(jedinica.cilj)) +
           '</p>' +
           '</div>' +
           '<div class="card-footer">' +
-          '<span class="card-meta">📋 e-Dnevnik · 🖨 A4 · ⬇ DOCX</span>' +
-          '<span class="card-open-label">Otvori pripremu →</span>' +
+          '<span class="card-meta">📋 e-Dnevnik · 📝 Listić · ⬇ DOCX</span>' +
+          '<span class="card-open-label">' +
+          escapeHtml(preslovi('Otvori pripremu →')) +
+          '</span>' +
           '</div>' +
           '</article>'
         );
       })
       .join('');
+
+    // Kontrola prikaza dugmeta "Prikaži još"
+    if (elKontejnerUcitajJos) {
+      if (filtrirane.length > zaPrikaz.length) {
+        const preostalo = filtrirane.length - zaPrikaz.length;
+        const sljedeciKorak = Math.min(KORAK_PRIKAZA, preostalo);
+        elKontejnerUcitajJos.hidden = false;
+        if (elStatusPaginacije) {
+          elStatusPaginacije.innerHTML =
+            escapeHtml(preslovi('Prikazano je ')) +
+            '<strong>' +
+            zaPrikaz.length +
+            '</strong>' +
+            escapeHtml(preslovi(' od ')) +
+            '<strong>' +
+            filtrirane.length +
+            '</strong>' +
+            escapeHtml(preslovi(' pronađenih priprema.'));
+        }
+        if (elDugmeUcitajJos) {
+          elDugmeUcitajJos.textContent = preslovi('Prikaži još priprema (+' + sljedeciKorak + ')');
+        }
+        if (elDugmePrikaziSve) {
+          elDugmePrikaziSve.textContent = preslovi('Prikaži sve (' + filtrirane.length + ')');
+        }
+      } else {
+        elKontejnerUcitajJos.hidden = true;
+      }
+    }
   }
 
   // Otvaranje modala za izabranu nastavnu jedinicu
@@ -335,18 +619,19 @@
     elModalBedzevi.innerHTML =
       '<span class="badge badge-grade">' +
       escapeHtml(jedinica.razred) +
-      '. razred</span>' +
+      escapeHtml(preslovi('. razred')) +
+      '</span>' +
       '<span class="badge badge-subject">' +
-      escapeHtml(jedinica.predmet) +
+      escapeHtml(preslovi(jedinica.predmet)) +
       '</span>' +
       '<span class="badge ' +
       klasaTipa +
       '">' +
-      escapeHtml(jedinica.tipCasa) +
+      escapeHtml(preslovi(jedinica.tipCasa)) +
       '</span>' +
       bedzeviSistemaHtml;
 
-    // Popunjavanje zaglavlja za štampu
+    // Popunjavanje zaglavlja za štampu (uz čitanje sačuvanih podataka o školi i učitelju iz localStorage)
     const danas = new Date();
     const datumStr =
       String(danas.getDate()).padStart(2, '0') +
@@ -358,22 +643,46 @@
     if (elMetaDatum && !elMetaDatum.textContent.trim()) {
       elMetaDatum.textContent = datumStr;
     }
-    if (elMetaRazredOdjeljenje) {
-      elMetaRazredOdjeljenje.textContent = jedinica.razred + '. razred (odjeljenje: ___)';
+    try {
+      const sacuvanaSkola = localStorage.getItem('pripreme_meta_skola');
+      if (elMetaSkola && sacuvanaSkola && sacuvanaSkola.trim()) {
+        elMetaSkola.textContent = sacuvanaSkola;
+      }
+      const sacuvaniUcitelj = localStorage.getItem('pripreme_meta_ucitelj');
+      if (elMetaUcitelj && sacuvaniUcitelj && sacuvaniUcitelj.trim()) {
+        elMetaUcitelj.textContent = sacuvaniUcitelj;
+      }
+      const sacuvanoOdjeljenje = localStorage.getItem('pripreme_meta_odjeljenje');
+      if (elMetaRazredOdjeljenje) {
+        if (sacuvanoOdjeljenje && sacuvanoOdjeljenje.trim()) {
+          elMetaRazredOdjeljenje.textContent =
+            jedinica.razred + preslovi('. razred (') + sacuvanoOdjeljenje + ')';
+        } else {
+          elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred (odjeljenje: ___)');
+        }
+      }
+    } catch (e) {
+      if (elMetaRazredOdjeljenje) {
+        elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred (odjeljenje: ___)');
+      }
     }
 
-    elModalPredmet.textContent = jedinica.predmet;
+    elModalPredmet.textContent = preslovi(jedinica.predmet);
     elModalSistem.textContent = oznakaSistema;
-    elModalCjelina.textContent = jedinica.cjelina;
-    elModalNaslov.textContent = jedinica.naziv;
-    elModalTipCasa.textContent = jedinica.tipCasa;
-    elModalMetode.textContent = jedinica.metodeOblici;
-    elModalKorelacija.textContent = jedinica.korelacija || 'Unutarpredmetna i međupredmetna korelacija';
-    elModalCilj.textContent = jedinica.cilj;
-    elModalIshodi.textContent = jedinica.ishodi;
-    elModalUvodni.textContent = jedinica.uvodniDio;
-    elModalGlavni.textContent = jedinica.glavniDio;
-    elModalZavrsni.textContent = jedinica.zavrsniDio;
+    elModalCjelina.textContent = preslovi(jedinica.cjelina);
+    elModalNaslov.textContent = preslovi(jedinica.naziv);
+    elModalTipCasa.textContent = preslovi(jedinica.tipCasa);
+    elModalMetode.textContent = preslovi(jedinica.metodeOblici);
+    elModalKorelacija.textContent = preslovi(
+      jedinica.korelacija || 'Unutarpredmetna i međupredmetna korelacija'
+    );
+    elModalCilj.textContent = preslovi(jedinica.cilj);
+    elModalIshodi.textContent = preslovi(jedinica.ishodi);
+    elModalUvodni.textContent = preslovi(jedinica.uvodniDio);
+    elModalGlavni.textContent = preslovi(jedinica.glavniDio);
+    elModalZavrsni.textContent = preslovi(jedinica.zavrsniDio);
+
+    azurirajBrojacSacuvanih();
 
     elModalPozadina.hidden = false;
     elModalPozadina.classList.add('open');
@@ -404,6 +713,46 @@
     }
   }
 
+  // Čitanje URL query parametara (?razred=1&sistem=RS&predmet=Matematika&pretraga=...)
+  function procitajUrlParametre() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const razredParam = params.get('razred');
+      if (razredParam && ['1', '2', '3', '4', '5'].indexOf(razredParam.trim()) !== -1) {
+        stanjeFiltera.razred = razredParam.trim();
+        if (elGrupaRazreda) {
+          elGrupaRazreda.querySelectorAll('.pill-btn').forEach(function (d) {
+            d.classList.toggle('active', d.getAttribute('data-razred') === stanjeFiltera.razred);
+          });
+        }
+      }
+
+      const sistemParam = params.get('sistem');
+      if (sistemParam) {
+        const sNorm = sistemParam.trim().toUpperCase();
+        if (sNorm === 'RS' || sNorm === 'FBIH') {
+          stanjeFiltera.sistem = sNorm === 'RS' ? 'RS' : 'FBiH';
+          if (elFilterSistem) elFilterSistem.value = stanjeFiltera.sistem;
+        }
+      }
+
+      const predmetParam = params.get('predmet');
+      if (predmetParam && elFilterPredmet) {
+        stanjeFiltera.predmet = predmetParam.trim();
+        elFilterPredmet.value = stanjeFiltera.predmet;
+      }
+
+      const qParam = params.get('pretraga') || params.get('q');
+      if (qParam && elPoljePretraga) {
+        stanjeFiltera.pretraga = qParam.trim();
+        elPoljePretraga.value = stanjeFiltera.pretraga;
+        if (elObrisiPretragu) {
+          elObrisiPretragu.classList.toggle('visible', stanjeFiltera.pretraga.length > 0);
+        }
+      }
+    } catch (e) {}
+  }
+
   // Čitanje URL hash-a (#priprema=<slug>)
   function provjeriUrlHash() {
     const hash = window.location.hash || '';
@@ -424,6 +773,8 @@
     stanjeFiltera.razred = 'Svi';
     stanjeFiltera.predmet = 'Svi';
     stanjeFiltera.tipCasa = 'Svi';
+    stanjeFiltera.samoSacuvane = false;
+    trenutniLimit = KORAK_PRIKAZA;
 
     if (elPoljePretraga) elPoljePretraga.value = '';
     if (elObrisiPretragu) elObrisiPretragu.classList.remove('visible');
@@ -438,6 +789,7 @@
       });
     }
 
+    azurirajBrojacSacuvanih();
     prikaziKartice();
   }
 
@@ -474,9 +826,9 @@
     }
   }
 
-  // Sastavljanje teksta pripreme za e-Dnevnik
+  // Sastavljanje teksta pripreme za e-Dnevnik (poštuje izabrano pismo)
   function sastaviTekstZaEDnevnik(jedinica) {
-    return [
+    const siroviTekst = [
       'NASTAVNA JEDINICA: ' + jedinica.naziv,
       'Predmet: ' + jedinica.predmet + ' (' + jedinica.razred + '. razred)',
       'Nastavna cjelina: ' + jedinica.cjelina,
@@ -498,14 +850,18 @@
       '',
       'Korelacija: ' + jedinica.korelacija,
     ].join('\n');
+    return preslovi(siroviTekst);
   }
 
   // Generisanje .docx dokumenta direktno u browseru pomoću `docx` biblioteke
   window.generisiDocxPripremu = async function (jedinica, zaglavljeOpcije) {
     const opcije = zaglavljeOpcije || {};
-    const nazivSkole = opcije.skola || (elMetaSkola ? elMetaSkola.textContent.trim() : '________________________________');
-    const imeUcitelja =
-      opcije.ucitelj || (elMetaUcitelj ? elMetaUcitelj.textContent.trim() : '________________________________');
+    const nazivSkole = preslovi(
+      opcije.skola || (elMetaSkola ? elMetaSkola.textContent.trim() : '________________________________')
+    );
+    const imeUcitelja = preslovi(
+      opcije.ucitelj || (elMetaUcitelj ? elMetaUcitelj.textContent.trim() : '________________________________')
+    );
     const datumCasa = opcije.datum || (elMetaDatum ? elMetaDatum.textContent.trim() : '________________');
 
     // Ako je dostupna `docx` biblioteka (sa CDN-a), kreiramo pravi .docx fajl
@@ -541,7 +897,7 @@
               shading: { fill: 'EDF4F5', type: ShadingType.CLEAR, color: 'auto' },
               children: [
                 new Paragraph({
-                  children: [new TextRun({ text: oznaka, bold: true, size: 21, font: 'Calibri' })],
+                  children: [new TextRun({ text: preslovi(oznaka), bold: true, size: 21, font: 'Calibri' })],
                 }),
               ],
             }),
@@ -550,7 +906,7 @@
               borders: okvirTabele,
               children: [
                 new Paragraph({
-                  children: [new TextRun({ text: String(vrijednost || ''), size: 21, font: 'Calibri' })],
+                  children: [new TextRun({ text: preslovi(String(vrijednost || '')), size: 21, font: 'Calibri' })],
                 }),
               ],
             }),
@@ -559,14 +915,14 @@
       }
 
       function napraviSekcijuPasusa(naslovSekcije, tekstSekcije) {
-        const linije = String(tekstSekcije || '').split('\n');
+        const linije = preslovi(String(tekstSekcije || '')).split('\n');
         const pasusi = [
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
             spacing: { before: 240, after: 100 },
             children: [
               new TextRun({
-                text: naslovSekcije,
+                text: preslovi(naslovSekcije),
                 bold: true,
                 size: 24,
                 color: '0D6E6E',
@@ -588,7 +944,9 @@
         return pasusi;
       }
 
-      const oznakaSistema = Array.isArray(jedinica.sistem) ? jedinica.sistem.join(' / ') : String(jedinica.sistem || '');
+      const oznakaSistema = Array.isArray(jedinica.sistem)
+        ? jedinica.sistem.join(' / ')
+        : String(jedinica.sistem || '');
 
       const doc = new Document({
         sections: [
@@ -600,7 +958,7 @@
                 spacing: { after: 240 },
                 children: [
                   new TextRun({
-                    text: 'PISMENA PRIPREMA ZA REALIZACIJU NASTAVNOG ČASA',
+                    text: preslovi('PISMENA PRIPREMA ZA REALIZACIJU NASTAVNOG ČASA'),
                     bold: true,
                     size: 28,
                     font: 'Calibri',
@@ -634,7 +992,7 @@
                 alignment: AlignmentType.RIGHT,
                 children: [
                   new TextRun({
-                    text: 'Potpis realizatora: ___________________________',
+                    text: preslovi('Potpis realizatora: ___________________________'),
                     size: 21,
                     font: 'Calibri',
                   }),
@@ -648,11 +1006,11 @@
       const blob = await Packer.toBlob(doc);
       const imeFajla = (jedinica.slug || 'nastavna-priprema') + '.docx';
       window.saveAs(blob, imeFajla);
-      prikaziObavjestenje('Word dokument (' + imeFajla + ') je uspješno preuzet!');
+      prikaziObavjestenje(preslovi('Word dokument (' + imeFajla + ') je uspješno preuzet!'));
       return;
     }
 
-    // Rezervni mehanizam ako internet/CDN nije dostupan: provjeri fajl u fajlovi/ ili preuzmi Word-kompatibilan dokument
+    // Rezervni mehanizam ako internet/CDN nije dostupan: provjeri fajl u fajlovi/
     if (jedinica.fajlDocx) {
       try {
         const odg = await fetch(jedinica.fajlDocx, { method: 'HEAD' });
@@ -663,16 +1021,198 @@
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
-          prikaziObavjestenje('Preuzimanje Word fajla je pokrenuto.');
+          prikaziObavjestenje(preslovi('Preuzimanje Word fajla je pokrenuto.'));
           return;
         }
       } catch (e) {}
     }
 
-    prikaziObavjestenje('Biblioteka za .docx zahtijeva internet vezu ili koristite opciju Odštampaj pripremu.');
+    prikaziObavjestenje(
+      preslovi('Biblioteka za .docx zahtijeva internet vezu ili koristite opciju Odštampaj pripremu.')
+    );
   };
 
-  // Provjera i preuzimanje Radnog listića (.pdf) bez 404 greške
+  // ==========================================================================
+  // AUTOMATSKI GENERATOR A4 RADNOG LISTIĆA ZA UČENIKE (I STATIČKI PDF AKO POSTOJI)
+  // ==========================================================================
+  function otvoriGeneratorRadnogListica(jedinica) {
+    const prozor = window.open('', '_blank');
+    if (!prozor) {
+      prikaziObavjestenje(
+        preslovi('Dozvolite otvaranje novog prozora u pregledaču kako biste odštampali radni listić.')
+      );
+      return;
+    }
+
+    const ishodiNiz = String(jedinica.ishodi || '')
+      .split('\n')
+      .map(function (s) {
+        return s.replace(/^[-•*]\s*/, '').trim();
+      })
+      .filter(Boolean);
+
+    const prviIshod = ishodiNiz[0] || jedinica.cilj || '';
+    const drugiIshod = ishodiNiz[1] || jedinica.glavniDio || '';
+
+    const htmlSadrzaj =
+      '<!doctype html>' +
+      '<html lang="sr">' +
+      '<head>' +
+      '<meta charset="UTF-8">' +
+      '<title>' +
+      escapeHtml(preslovi('Radni listić za učenike — ' + jedinica.naziv)) +
+      '</title>' +
+      '<style>' +
+      '@page { size: A4 portrait; margin: 14mm 15mm; }' +
+      '* { box-sizing: border-box; margin: 0; padding: 0; }' +
+      'body { font-family: "Inter", "Segoe UI", Arial, sans-serif; color: #111; background: #f3f6f7; padding: 24px; line-height: 1.5; }' +
+      '.toolbar { max-width: 210mm; margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #0d6e6e; color: #fff; padding: 12px 18px; border-radius: 10px; }' +
+      '.toolbar button { background: #fff; color: #0d6e6e; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; }' +
+      '.sheet { max-width: 210mm; margin: 0 auto; background: #fff; padding: 16mm; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }' +
+      '.header-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; border: 2px solid #0d6e6e; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 13.5px; }' +
+      '.title-box { text-align: center; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #0d6e6e; }' +
+      '.title-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #0d6e6e; font-weight: 700; }' +
+      '.title-main { font-size: 20px; font-weight: 800; margin-top: 4px; color: #111; }' +
+      '.task { border: 1.5px solid #222; border-radius: 8px; padding: 12px 15px; margin-bottom: 14px; page-break-inside: avoid; }' +
+      '.task-head { font-weight: 700; font-size: 14.5px; margin-bottom: 6px; color: #0d6e6e; }' +
+      '.task-desc { font-size: 13.5px; margin-bottom: 10px; color: #222; }' +
+      '.lines { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }' +
+      '.line { border-bottom: 1px dotted #555; height: 18px; }' +
+      '.draw-box { height: 115px; border: 1.5px dashed #777; border-radius: 6px; margin-top: 6px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px 10px; font-size: 11px; color: #666; }' +
+      '.self-eval { border: 1.5px solid #0d6e6e; border-radius: 8px; padding: 10px 14px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }' +
+      '.eval-options { display: flex; gap: 18px; font-weight: 600; }' +
+      '@media print { body { background: #fff; padding: 0; } .toolbar { display: none !important; } .sheet { border: none; box-shadow: none; padding: 0; max-width: none; } }' +
+      '</style>' +
+      '</head>' +
+      '<body>' +
+      '<div class="toolbar">' +
+      '<span><strong>' +
+      escapeHtml(preslovi('📝 Radni listić za učenike (A4 format spreman za štampu ili čuvanje u PDF)')) +
+      '</strong></span>' +
+      '<div style="display:flex;gap:8px">' +
+      '<button onclick="window.print()">🖨 ' +
+      escapeHtml(preslovi('Odštampaj / Sačuvaj kao PDF')) +
+      '</button>' +
+      '<button onclick="window.close()" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5)">✕ ' +
+      escapeHtml(preslovi('Zatvori')) +
+      '</button>' +
+      '</div>' +
+      '</div>' +
+      '<div class="sheet">' +
+      '<div class="header-grid">' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Ime i prezime učenika:')) +
+      '</strong> ________________________</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Razred i odjeljenje:')) +
+      '</strong> ' +
+      escapeHtml(String(jedinica.razred)) +
+      escapeHtml(preslovi('. razred (___)')) +
+      '</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Nastavni predmet:')) +
+      '</strong> ' +
+      escapeHtml(preslovi(jedinica.predmet)) +
+      '</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Datum:')) +
+      '</strong> ___________________</div>' +
+      '</div>' +
+      '<div class="title-box">' +
+      '<div class="title-eyebrow">' +
+      escapeHtml(preslovi('RADNI LISTIĆ ZA UČENIKE · ' + jedinica.cjelina)) +
+      '</div>' +
+      '<div class="title-main">' +
+      escapeHtml(preslovi(jedinica.naziv)) +
+      '</div>' +
+      '</div>' +
+      '<div class="task">' +
+      '<div class="task-head">' +
+      escapeHtml(preslovi('1. zadatak — Razumijevanje ključnih pojmova')) +
+      '</div>' +
+      '<div class="task-desc">' +
+      escapeHtml(
+        preslovi(
+          'Pažljivo pročitaj zadatak i svojim riječima odgovori ili dopuni rečenice u vezi sa temom „' +
+            jedinica.naziv +
+            '“ (' +
+            prviIshod +
+            '):'
+        )
+      ) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="task">' +
+      '<div class="task-head">' +
+      escapeHtml(preslovi('2. zadatak — Primjena stečenog znanja u praksi')) +
+      '</div>' +
+      '<div class="task-desc">' +
+      escapeHtml(
+        preslovi(
+          'Riješi zadatak ili navedi dva konkretna primjera koji pokazuju kako primjenjujemo naučeno (' +
+            drugiIshod +
+            '):'
+        )
+      ) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="task">' +
+      '<div class="task-head">' +
+      escapeHtml(preslovi('3. zadatak — Ilustracija, šema ili postupak rješavanja')) +
+      '</div>' +
+      '<div class="task-desc">' +
+      escapeHtml(
+        preslovi(
+          'U okviru ispod nacrtaj ilustraciju, šemu, tabelu ili prikaži postupak rješavanja zadatka sa časa:'
+        )
+      ) +
+      '</div>' +
+      '<div class="draw-box">' +
+      escapeHtml(preslovi('Prostor za crtanje, šemu ili račun')) +
+      '</div>' +
+      '</div>' +
+      '<div class="task">' +
+      '<div class="task-head">' +
+      escapeHtml(preslovi('4. zadatak — Zaključak i provjera (' + jedinica.tipCasa + ')')) +
+      '</div>' +
+      '<div class="task-desc">' +
+      escapeHtml(
+        preslovi(
+          'Napiši šta ti je na današnjem času bilo najzanimljivije i formuliši jedno pitanje za druga ili drugaricu iz klupe:'
+        )
+      ) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="self-eval">' +
+      '<strong>' +
+      escapeHtml(preslovi('Samoprocjena učenika (zaokruži):')) +
+      '</strong>' +
+      '<div class="eval-options">' +
+      '<span>😊 ' +
+      escapeHtml(preslovi('Sve razumijem')) +
+      '</span>' +
+      '<span>🤔 ' +
+      escapeHtml(preslovi('Treba mi još malo vježbe')) +
+      '</span>' +
+      '<span>🙋 ' +
+      escapeHtml(preslovi('Treba mi pomoć')) +
+      '</span>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</body>' +
+      '</html>';
+
+    prozor.document.open();
+    prozor.document.write(htmlSadrzaj);
+    prozor.document.close();
+    prikaziObavjestenje(preslovi('Otvoren je A4 radni listić za učenike spreman za štampu!'));
+  }
+
+  // Provjera i preuzimanje Radnog listića (.pdf) ili otvaranje A4 generatora radnog listića
   async function preuzmiRadniListicPdf(jedinica) {
     if (!jedinica) return;
     const putanjaPdf = jedinica.fajlPdf;
@@ -690,19 +1230,14 @@
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          prikaziObavjestenje('Preuzimanje radnog listića (.pdf) je pokrenuto!');
+          prikaziObavjestenje(preslovi('Preuzimanje radnog listića (.pdf) je pokrenuto!'));
           return;
         }
-      } catch (err) {
-        // Ako se otvara direktno preko file:// protokola ili fajl još ne postoji
-      }
+      } catch (err) {}
     }
 
-    prikaziObavjestenje(
-      'ℹ️ Radni listić (' +
-        (putanjaPdf || 'PDF') +
-        ') još nije postavljen u folder fajlovi/. Možete odštampati pripremu pomoću dugmeta „Odštampaj pripremu“.'
-    );
+    // Ako statički PDF nije u folderu fajlovi/, automatski generiši A4 radni listić za učenike
+    otvoriGeneratorRadnogListica(jedinica);
   }
 
   // Inicijalizacija događaja (Event Listeners)
@@ -710,6 +1245,17 @@
     // Godina u podnožju
     const elGodina = document.getElementById('trenutnaGodina');
     if (elGodina) elGodina.textContent = String(new Date().getFullYear());
+
+    azurirajDugmadPisma();
+    azurirajBrojacSacuvanih();
+
+    // Preklopnik pisma (Latinica / Ćirilica)
+    if (elDugmePismo) {
+      elDugmePismo.addEventListener('click', promijeniPismo);
+    }
+    if (elAkcijaPismoModal) {
+      elAkcijaPismoModal.addEventListener('click', promijeniPismo);
+    }
 
     // Preklopnik teme (svijetla / tamna)
     const elDugmeTema = document.getElementById('dugmeTema');
@@ -724,10 +1270,33 @@
       });
     }
 
+    // Čuvanje izmjena zaglavlja škole i učitelja u localStorage
+    if (elMetaSkola) {
+      elMetaSkola.addEventListener('blur', function () {
+        const vr = elMetaSkola.textContent.trim();
+        if (vr && !vr.startsWith('___')) {
+          try {
+            localStorage.setItem('pripreme_meta_skola', vr);
+          } catch (e) {}
+        }
+      });
+    }
+    if (elMetaUcitelj) {
+      elMetaUcitelj.addEventListener('blur', function () {
+        const vr = elMetaUcitelj.textContent.trim();
+        if (vr && !vr.startsWith('___')) {
+          try {
+            localStorage.setItem('pripreme_meta_ucitelj', vr);
+          } catch (e) {}
+        }
+      });
+    }
+
     // Tekstualna pretraga u realnom vremenu
     if (elPoljePretraga) {
       elPoljePretraga.addEventListener('input', function (e) {
         stanjeFiltera.pretraga = e.target.value || '';
+        trenutniLimit = KORAK_PRIKAZA;
         if (elObrisiPretragu) {
           elObrisiPretragu.classList.toggle('visible', stanjeFiltera.pretraga.length > 0);
         }
@@ -738,6 +1307,7 @@
     if (elObrisiPretragu) {
       elObrisiPretragu.addEventListener('click', function () {
         stanjeFiltera.pretraga = '';
+        trenutniLimit = KORAK_PRIKAZA;
         if (elPoljePretraga) {
           elPoljePretraga.value = '';
           elPoljePretraga.focus();
@@ -751,6 +1321,7 @@
     if (elFilterSistem) {
       const promjenaSistema = function (e) {
         stanjeFiltera.sistem = e.target.value;
+        trenutniLimit = KORAK_PRIKAZA;
         prikaziKartice();
       };
       elFilterSistem.addEventListener('change', promjenaSistema);
@@ -764,6 +1335,7 @@
         if (!dugme) return;
         const odabraniRazred = dugme.getAttribute('data-razred') || 'Svi';
         stanjeFiltera.razred = odabraniRazred;
+        trenutniLimit = KORAK_PRIKAZA;
 
         elGrupaRazreda.querySelectorAll('.pill-btn').forEach(function (d) {
           d.classList.toggle('active', d === dugme);
@@ -776,6 +1348,7 @@
     if (elFilterPredmet) {
       elFilterPredmet.addEventListener('change', function (e) {
         stanjeFiltera.predmet = e.target.value;
+        trenutniLimit = KORAK_PRIKAZA;
         prikaziKartice();
       });
     }
@@ -784,6 +1357,31 @@
     if (elFilterTipCasa) {
       elFilterTipCasa.addEventListener('change', function (e) {
         stanjeFiltera.tipCasa = e.target.value;
+        trenutniLimit = KORAK_PRIKAZA;
+        prikaziKartice();
+      });
+    }
+
+    // Filter za sačuvane pripreme (⭐)
+    if (elDugmeFilterSacuvane) {
+      elDugmeFilterSacuvane.addEventListener('click', function () {
+        stanjeFiltera.samoSacuvane = !stanjeFiltera.samoSacuvane;
+        trenutniLimit = KORAK_PRIKAZA;
+        azurirajBrojacSacuvanih();
+        prikaziKartice();
+      });
+    }
+
+    // Paginacija: Prikaži još (+36) i Prikaži sve
+    if (elDugmeUcitajJos) {
+      elDugmeUcitajJos.addEventListener('click', function () {
+        trenutniLimit += KORAK_PRIKAZA;
+        prikaziKartice();
+      });
+    }
+    if (elDugmePrikaziSve) {
+      elDugmePrikaziSve.addEventListener('click', function () {
+        trenutniLimit = 999999;
         prikaziKartice();
       });
     }
@@ -796,9 +1394,17 @@
       elDugmeResetujPrazno.addEventListener('click', resetujFiltere);
     }
 
-    // Klik ili Enter na karticu pripreme
+    // Klik ili Enter na karticu pripreme (ili klik na zvjezdicu)
     if (elMrezaKartica) {
       elMrezaKartica.addEventListener('click', function (e) {
+        const dugmeZvjezdica = e.target.closest('.card-star-btn');
+        if (dugmeZvjezdica) {
+          e.stopPropagation();
+          const starSlug = dugmeZvjezdica.getAttribute('data-star-slug');
+          if (starSlug) prebaciSacuvanu(starSlug);
+          return;
+        }
+
         const kartica = e.target.closest('.lesson-card');
         if (!kartica) return;
         const slug = kartica.getAttribute('data-slug');
@@ -807,6 +1413,7 @@
 
       elMrezaKartica.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
+          if (e.target.closest('.card-star-btn')) return;
           const kartica = e.target.closest('.lesson-card');
           if (!kartica) return;
           e.preventDefault();
@@ -846,13 +1453,15 @@
         kopirajUClipboard(tekst, function (uspjesno) {
           if (uspjesno) {
             const izvorniTekst = elAkcijaKopirajEDnevnik.textContent;
-            elAkcijaKopirajEDnevnik.textContent = '✓ Kopirano!';
-            prikaziObavjestenje('Kopirano! Sadržaj pripreme je spreman za lijepljenje u e-Dnevnik.');
+            elAkcijaKopirajEDnevnik.textContent = preslovi('✓ Kopirano!');
+            prikaziObavjestenje(
+              preslovi('Kopirano! Sadržaj pripreme je spreman za lijepljenje u e-Dnevnik.')
+            );
             setTimeout(function () {
               elAkcijaKopirajEDnevnik.textContent = izvorniTekst;
             }, 2200);
           } else {
-            prikaziObavjestenje('Kopiranje nije uspjelo. Pokušajte ručno označiti tekst.');
+            prikaziObavjestenje(preslovi('Kopiranje nije uspjelo. Pokušajte ručno označiti tekst.'));
           }
         });
       });
@@ -870,8 +1479,10 @@
         kopirajUClipboard(url, function (uspjesno) {
           if (uspjesno) {
             const izvorniTekst = elAkcijaKopirajLink.textContent;
-            elAkcijaKopirajLink.textContent = '✓ Link kopiran!';
-            prikaziObavjestenje('Direktan link do ove pripreme je kopiran u privremenu memoriju!');
+            elAkcijaKopirajLink.textContent = preslovi('✓ Link kopiran!');
+            prikaziObavjestenje(
+              preslovi('Direktan link do ove pripreme je kopiran u privremenu memoriju!')
+            );
             setTimeout(function () {
               elAkcijaKopirajLink.textContent = izvorniTekst;
             }, 2200);
@@ -895,11 +1506,19 @@
       });
     }
 
-    // 5. Preuzmi Radni listić (.pdf)
+    // 5. Radni listić za učenike (A4 / PDF)
     if (elAkcijaPreuzmiPdf) {
       elAkcijaPreuzmiPdf.addEventListener('click', function () {
         if (!trenutnoOtvorenaJedinica) return;
         preuzmiRadniListicPdf(trenutnoOtvorenaJedinica);
+      });
+    }
+
+    // 6. Sačuvaj u omiljene iz modala
+    if (elAkcijaSacuvaj) {
+      elAkcijaSacuvaj.addEventListener('click', function () {
+        if (!trenutnoOtvorenaJedinica) return;
+        prebaciSacuvanu(trenutnoOtvorenaJedinica.slug);
       });
     }
 
@@ -909,9 +1528,9 @@
 
   // Pokretanje pri učitavanju stranice
   if (elMrezaKartica) {
+    procitajUrlParametre();
     inicijalizujDogadjaje();
     prikaziKartice();
     provjeriUrlHash();
   }
 })();
-

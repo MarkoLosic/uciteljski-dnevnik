@@ -309,6 +309,23 @@ function seoFiles(): Plugin {
   };
 }
 
+function pripremeDevRoute(): Plugin {
+  return {
+    name: 'pripreme-dev-route',
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        if (req.url) {
+          const [pathname, search] = req.url.split('?');
+          if (pathname === '/pripreme' || pathname === '/pripreme/') {
+            req.url = `/pripreme/index.html${search ? `?${search}` : ''}`;
+          }
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [markdownPosts(), seoFiles(), react(), tailwindcss()],
+  plugins: [pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
 });

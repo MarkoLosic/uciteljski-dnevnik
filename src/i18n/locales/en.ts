@@ -36,8 +36,16 @@ export const en: Dictionary = {
     blog: 'Blog',
     games: 'Games for kids',
     gamesShort: 'Games',
+    pripreme: 'Lesson Plans',
     about: 'About',
     world: 'Schools worldwide',
+  },
+  pripremePromo: {
+    eyebrow: 'For Primary Teachers · Grades 1–5 (BiH Curricula)',
+    title: 'Daily Lesson Plans Library (1,436 Lesson Plans)',
+    desc: 'Complete library of methodically structured daily lesson plans covering the entire school year for grades 1 to 5 in Bosnia and Herzegovina (Republika Srpska RPZ & Federation of BiH ZJNPP), with one-click e-Dnevnik copy, A4 print, student worksheets, and Word (.docx) export.',
+    ctaAll: 'Browse all 1,436 lesson plans',
+    gradeLabel: (r: number) => `Grade ${r}`,
   },
   language: {
     label: 'Language',

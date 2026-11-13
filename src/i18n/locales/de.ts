@@ -36,8 +36,16 @@ export const de: Dictionary = {
     blog: 'Blog',
     games: 'Spiele für Kinder',
     gamesShort: 'Spiele',
+    pripreme: 'Unterrichtspläne',
     about: 'Über mich',
     world: 'Schulen weltweit',
+  },
+  pripremePromo: {
+    eyebrow: 'Für Grundschullehrkräfte · 1.–5. Klasse (BiH)',
+    title: 'Bibliothek täglicher Unterrichtsvorbereitungen (1.436 Pläne)',
+    desc: 'Vollständige Sammlung methodisch ausgearbeiteter Unterrichtsentwürfe für das gesamte Schuljahr der Klassen 1 bis 5 in Bosnien und Herzegowina (RPZ RS & ZJNPP FBiH) — inklusive 1-Klick-Kopie für e-Dnevnik, A4-Druck, Arbeitsblättern und Word-Download (.docx).',
+    ctaAll: 'Alle 1.436 Unterrichtspläne öffnen',
+    gradeLabel: (r: number) => `${r}. Klasse`,
   },
   language: {
     label: 'Sprache',

@@ -46,6 +46,15 @@
           <a href="./admin.html" class="nav-link">⚙️ Generator priprema</a>
           <button
             type="button"
+            id="dugmePismo"
+            class="script-toggle-btn"
+            aria-label="Promijeni pismo prikaza: Latinica ili Ćirilica"
+            title="Prebaci sve pripreme i izvoz između latinice i ćirilice"
+          >
+            АБВ / ABC
+          </button>
+          <button
+            type="button"
             id="dugmeTema"
             class="theme-btn"
             aria-label="Promijeni svijetlu ili tamnu temu"
@@ -169,6 +178,15 @@
               Prikazano <strong>0</strong> od <strong>0</strong> priprema
             </p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <button
+                type="button"
+                id="dugmeFilterSacuvane"
+                class="btn btn-outline"
+                aria-pressed="false"
+                title="Prikaži samo pripreme koje ste označili zvjezdicom"
+              >
+                ⭐ Sačuvane (<span id="brojSacuvanih">0</span>)
+              </button>
               <button type="button" id="dugmeResetujFiltere" class="btn btn-subtle">↺ Resetuj filtere</button>
               <a href="./admin.html" class="btn btn-outline">+ Dodaj novu pripremu</a>
             </div>
@@ -179,6 +197,19 @@
       <!-- Lista kartica priprema -->
       <section aria-label="Lista nastavnih priprema">
         <div id="mrezaKartica" class="cards-grid"></div>
+
+        <!-- Kontrole za postepeno učitavanje kartica (paginacija) -->
+        <div id="kontejnerUcitajJos" class="load-more-wrap" hidden>
+          <p id="statusPaginacije" class="load-more-info"></p>
+          <div class="load-more-actions">
+            <button type="button" id="dugmeUcitajJos" class="btn btn-primary">
+              Prikaži još priprema (+36)
+            </button>
+            <button type="button" id="dugmePrikaziSve" class="btn btn-outline">
+              Prikaži sve rezultate
+            </button>
+          </div>
+        </div>
 
         <!-- Prazno stanje kada filteri ne vrate nijednu pripremu -->
         <div id="praznoStanje" class="empty-state" hidden>
@@ -222,17 +253,28 @@
           <button type="button" id="akcijaKopirajEDnevnik" class="btn btn-primary">
             📋 Kopiraj za e-Dnevnik
           </button>
-          <button type="button" id="akcijaKopirajLink" class="btn btn-outline">
-            🔗 Kopiraj link
-          </button>
           <button type="button" id="akcijaStampa" class="btn btn-outline">
             🖨 Odštampaj pripremu
           </button>
           <button type="button" id="akcijaPreuzmiDocx" class="btn btn-secondary">
             ⬇ Preuzmi Word (.docx)
           </button>
-          <button type="button" id="akcijaPreuzmiPdf" class="btn btn-subtle">
-            ⬇ Radni listić (.pdf)
+          <button type="button" id="akcijaPreuzmiPdf" class="btn btn-outline">
+            📝 Radni listić za učenike (A4)
+          </button>
+          <button type="button" id="akcijaSacuvaj" class="btn btn-subtle" title="Sačuvaj pripremu u omiljene">
+            ☆ Sačuvaj
+          </button>
+          <button
+            type="button"
+            id="akcijaPismoModal"
+            class="btn btn-subtle"
+            title="Prebaci pismo pripreme između latinice i ćirilice"
+          >
+            АБВ ↔ ABC
+          </button>
+          <button type="button" id="akcijaKopirajLink" class="btn btn-subtle">
+            🔗 Kopiraj link
           </button>
         </div>
 

@@ -99,6 +99,31 @@ export default function Games() {
         })}
       </section>
 
+      <section className="pt-20 sm:pt-28" aria-labelledby="pripreme-za-nastavu">
+        <div className="card border-accent/30 bg-surface-2/60 p-6 sm:p-8">
+          <span className="eyebrow">{t.pripremePromo.eyebrow}</span>
+          <h2 id="pripreme-za-nastavu" className="section-title mt-2 mb-3">
+            {t.pripremePromo.title}
+          </h2>
+          <p className="max-w-[760px] text-[15.5px] text-muted">{t.pripremePromo.desc}</p>
+          <div className="mt-5 flex flex-wrap items-center gap-2.5">
+            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
+              {t.pripremePromo.ctaAll}
+              <PixelIcon name="arrow" />
+            </a>
+            {[1, 2, 3, 4, 5].map((r) => (
+              <a
+                key={r}
+                href={`/pripreme/index.html?razred=${r}`}
+                className="btn btn-ghost focus-ring text-sm"
+              >
+                {t.pripremePromo.gradeLabel(r)}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pt-20 sm:pt-28" aria-labelledby="za-odrasle">
         <span className="eyebrow">{g.tipsEyebrow}</span>
         <h2 id="za-odrasle" className="section-title mb-9">

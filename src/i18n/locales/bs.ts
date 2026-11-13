@@ -36,8 +36,16 @@ export const bs: Dictionary = {
     blog: 'Blog',
     games: 'Igre za djecu',
     gamesShort: 'Igre',
+    pripreme: 'Pripreme',
     about: 'O meni',
     world: 'Škole u svijetu',
+  },
+  pripremePromo: {
+    eyebrow: 'Za učitelje i nastavnike · 1–5. razred (FBiH i RS)',
+    title: 'Biblioteka dnevnih priprema za čas (1.436 priprema)',
+    desc: 'Kompletna baza metodički razrađenih dnevnih priprema za cijelu školsku godinu od 1. do 5. razreda osnovne škole, usklađena sa planovima u Federaciji BiH (ZJNPP) i Republici Srpskoj (RPZ). Kopiranje za e-Dnevnik jednim klikom, A4 štampa, radni listići i Word (.docx) preuzimanje.',
+    ctaAll: 'Otvori sve pripreme (1.436)',
+    gradeLabel: (r: number) => `${r}. razred`,
   },
   language: {
     label: 'Jezik',
