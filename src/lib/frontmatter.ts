@@ -43,3 +43,9 @@ export function validateFrontmatter(data: unknown, filename: string): PostFrontm
 
   return { title: t, date: d, excerpt: e, category: category as Category };
 }
+
+// ~200 reči u minuti; računa se pri buildu da tekst članka ne bi morao biti u glavnom paketu.
+export function readingMinutes(markdown: string): number {
+  const words = markdown.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  return Math.max(1, Math.round(words / 200));
+}

@@ -7,6 +7,7 @@ import EmptyState from '../components/EmptyState';
 import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
+import { pageMeta } from '../lib/seo';
 
 const backgroundIcons: LucideIcon[] = [Laptop, School];
 
@@ -22,7 +23,7 @@ export default function Home() {
   const { social } = siteConfig;
   const author = { ...siteConfig.author, ...t.author };
   const { topics } = t;
-  usePageMeta({ title: null, description: t.site.description });
+  usePageMeta(pageMeta.home(t));
   const socialLinks = (
     [
       { label: 'GitHub', href: social.github, icon: 'github' },

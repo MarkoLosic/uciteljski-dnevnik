@@ -51,6 +51,7 @@ export const de: Dictionary = {
     rights: 'Alle Rechte vorbehalten.',
     author: 'Autor',
     contact: 'Kontakt',
+    rss: 'RSS',
   },
   categories: {
     'AI alati u nastavi': 'KI-Werkzeuge im Unterricht',
@@ -86,6 +87,10 @@ export const de: Dictionary = {
     emptyMessage: 'Die ersten Artikel sind in Arbeit. Schauen Sie bald wieder vorbei!',
     notFoundTitle: 'Artikel nicht gefunden',
     notFoundMessage: 'Der gesuchte Artikel existiert nicht oder wurde verschoben.',
+    readingTime: (n: number) => `${n} Min. Lesezeit`,
+    filterLabel: 'Nach Kategorie filtern',
+    filterAll: 'Alle',
+    related: 'Mehr aus dem Blog',
   },
   about: {
     title: 'Über mich',
@@ -344,5 +349,10 @@ export const de: Dictionary = {
     eyebrow: 'Fehler',
     title: 'Seite nicht gefunden.',
     backHome: 'Zurück zur Startseite',
+  },
+  error: {
+    title: 'Etwas ist schiefgelaufen',
+    message: 'Die Seite wurde nicht richtig geladen. Bitte laden Sie sie neu – nach einem Update der Website behebt das meist das Problem.',
+    reload: 'Seite neu laden',
   },
 };

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { siteConfig } from '../config/site';
+import { documentTitle } from './seo';
 import { localeInfo } from '../i18n/config';
 import { useLocale } from '../i18n/LocaleContext';
 
@@ -39,7 +40,7 @@ export function usePageMeta({ title, description, type = 'website', noindex = fa
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const fullTitle = title ? `${title} — ${siteConfig.name}` : `${siteConfig.name} — ${t.site.tagline}`;
+    const fullTitle = documentTitle(title, t);
     const url = `${siteConfig.url}${pathname === '/' ? '' : pathname.replace(/\/+$/, '')}`;
 
     document.title = fullTitle;

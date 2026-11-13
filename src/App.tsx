@@ -1,16 +1,19 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import BlogList from './pages/BlogList';
-import BlogPost from './pages/BlogPost';
-import About from './pages/About';
 import NotFound from './pages/NotFound';
-import Games from './pages/Games';
-import GamePlay from './pages/GamePlay';
-import Worksheet from './pages/Worksheet';
 import { LOCALES, localeInfo } from './i18n/config';
 import { LocaleProvider } from './i18n/LocaleContext';
 import { localeBase } from './i18n/paths';
+
+// Članak (react-markdown), O meni i igre/radni listovi su zasebni chunk-ovi — ne usporavaju početnu i listu.
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const About = lazy(() => import('./pages/About'));
+const Games = lazy(() => import('./pages/Games'));
+const GamePlay = lazy(() => import('./pages/GamePlay'));
+const Worksheet = lazy(() => import('./pages/Worksheet'));
 
 // Isti skup ruta za svaki jezik: srpski bez prefiksa (`/blog`), ostali sa njim (`/en/blog`).
 export default function App() {

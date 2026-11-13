@@ -1,6 +1,5 @@
 import type { Category } from '../../types/post';
-import type { GameId, GameText, Shape, Skill, ToyColor, WorksheetGroup, WorksheetId } from '../../games/ids';
-import type { Thing } from '../../games/things';
+import type { GameId, GameText, Shape, Skill, Thing, ToyColor, WorksheetGroup, WorksheetId } from '../../games/ids';
 
 // KORISNIK: tekstovi o tebi i tekst interfejsa na srpskom. Ostali jezici su u susednim fajlovima
 // i moraju imati iste ključeve (tip `Dictionary` se izvodi iz ovog fajla).
@@ -55,6 +54,7 @@ export const sr = {
     rights: 'Sva prava zadržana.',
     author: 'Autor',
     contact: 'Kontakt',
+    rss: 'RSS',
   },
   categories: {
     'AI alati u nastavi': 'AI alati u nastavi',
@@ -90,6 +90,10 @@ export const sr = {
     emptyMessage: 'Prvi članci su u pripremi. Navratite uskoro!',
     notFoundTitle: 'Članak nije pronađen',
     notFoundMessage: 'Članak koji tražite ne postoji ili je premešten.',
+    readingTime: (n: number) => `${n} min čitanja`,
+    filterLabel: 'Filtriraj po kategoriji',
+    filterAll: 'Sve',
+    related: 'Još sa bloga',
   },
   about: {
     title: 'O meni',
@@ -348,6 +352,11 @@ export const sr = {
     eyebrow: 'Greška',
     title: 'Stranica nije pronađena.',
     backHome: 'Nazad na početnu',
+  },
+  error: {
+    title: 'Nešto je pošlo naopako',
+    message: 'Stranica se nije učitala kako treba. Osvežite je — ako je sajt upravo ažuriran, to obično reši problem.',
+    reload: 'Osveži stranicu',
   },
 };
 

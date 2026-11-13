@@ -1,44 +1,64 @@
-import type { Category, Post, PostMeta } from '../types/post';
+import { CATEGORIES, type Category, type PostMeta } from '../types/post';
 import { isLocale, localeInfo, type Locale } from '../i18n/config';
 import { validateFrontmatter } from './frontmatter';
 
-// Frontmatter je već parsiran u vite.config.ts (plugin markdown-posts).
-// Članci su po jezicima: content/posts/<jezik>/<slug>.md; prevod istog članka ima isti slug.
-const modules = import.meta.glob('../content/posts/*/*.md', {
+// Frontmatter parsira plugin markdown-posts u vite.config.ts. Isti .md fajl se uvozi dvaput:
+// `?meta` (naslov, datum… — mali, odmah u glavnom paketu) i bez upita (tekst — zaseban chunk,
+// učitava se tek kad se članak otvori). Putanja: content/posts/<jezik>/<slug>.md.
+const metaModules = import.meta.glob('../content/posts/*/*.md', {
+  query: '?meta',
   import: 'default',
   eager: true,
-}) as Record<string, { data: unknown; content: string }>;
+}) as Record<string, { data: unknown; readingMinutes: number }>;
 
-let cachedPosts: Post[] | null = null;
+const contentModules = import.meta.glob('../content/posts/*/*.md', { import: 'default' }) as Record<
+  string,
+  () => Promise<string>
+>;
 
-function loadPosts(): Post[] {
-  if (cachedPosts) return cachedPosts;
-
-  const posts = Object.entries(modules).map(([filepath, { data, content }]): Post => {
-    const [locale, filename] = filepath.split('/').slice(-2);
-    if (!isLocale(locale)) throw new Error(`Nepoznat jezik članka "${locale}/${filename}"`);
-    const frontmatter = validateFrontmatter(data, `${locale}/${filename}`);
-    return { slug: filename.replace(/\.md$/, ''), locale, ...frontmatter, content };
-  });
-
-  cachedPosts = posts.sort((a, b) =>
-    a.date === b.date ? a.title.localeCompare(b.title, localeInfo[a.locale].tag) : b.date.localeCompare(a.date),
-  );
-  return cachedPosts;
+interface Entry extends PostMeta {
+  loadContent: () => Promise<string>;
 }
 
-function toMeta({ content: _content, ...meta }: Post): PostMeta {
+let cachedEntries: Entry[] | null = null;
+
+function loadEntries(): Entry[] {
+  if (cachedEntries) return cachedEntries;
+
+  const entries = Object.entries(metaModules).map(([filepath, { data, readingMinutes }]): Entry => {
+    const file = filepath.replace(/\?.*$/, '');
+    const [locale, filename] = file.split('/').slice(-2);
+    if (!isLocale(locale)) throw new Error(`Nepoznat jezik članka "${locale}/${filename}"`);
+    const frontmatter = validateFrontmatter(data, `${locale}/${filename}`);
+    const loadContent = contentModules[file];
+    if (!loadContent) throw new Error(`Nema sadržaja za članak "${locale}/${filename}"`);
+    return { slug: filename.replace(/\.md$/, ''), locale, ...frontmatter, readingMinutes, loadContent };
+  });
+
+  cachedEntries = entries.sort((a, b) =>
+    a.date === b.date ? a.title.localeCompare(b.title, localeInfo[a.locale].tag) : b.date.localeCompare(a.date),
+  );
+  return cachedEntries;
+}
+
+function toMeta({ loadContent: _loadContent, ...meta }: Entry): PostMeta {
   return meta;
 }
 
 export function getAllPosts(locale: Locale): PostMeta[] {
-  return loadPosts()
+  return loadEntries()
     .filter((post) => post.locale === locale)
     .map(toMeta);
 }
 
-export function getPostBySlug(locale: Locale, slug: string): Post | null {
-  return loadPosts().find((post) => post.locale === locale && post.slug === slug) ?? null;
+export function getPostBySlug(locale: Locale, slug: string): PostMeta | null {
+  const entry = loadEntries().find((post) => post.locale === locale && post.slug === slug);
+  return entry ? toMeta(entry) : null;
+}
+
+// Sirovi Markdown članka; `null` ako članak ne postoji.
+export function loadPostContent(locale: Locale, slug: string): Promise<string> | null {
+  return loadEntries().find((post) => post.locale === locale && post.slug === slug)?.loadContent() ?? null;
 }
 
 export function getPostsByCategory(locale: Locale, category: Category): PostMeta[] {
@@ -46,9 +66,17 @@ export function getPostsByCategory(locale: Locale, category: Category): PostMeta
 }
 
 export function getAllCategories(locale: Locale): Category[] {
-  return [...new Set(getAllPosts(locale).map((post) => post.category))];
+  const used = new Set(getAllPosts(locale).map((post) => post.category));
+  return CATEGORIES.filter((category) => used.has(category));
 }
 
 export function getRecentPosts(locale: Locale, count: number): PostMeta[] {
   return getAllPosts(locale).slice(0, count);
+}
+
+// Za kraj članka: prvo iz iste kategorije, pa najnoviji ostali.
+export function getRelatedPosts(post: PostMeta, count: number): PostMeta[] {
+  const others = getAllPosts(post.locale).filter((p) => p.slug !== post.slug);
+  const same = others.filter((p) => p.category === post.category);
+  return [...same, ...others.filter((p) => p.category !== post.category)].slice(0, count);
 }

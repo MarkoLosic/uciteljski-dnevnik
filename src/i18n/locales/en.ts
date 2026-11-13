@@ -51,6 +51,7 @@ export const en: Dictionary = {
     rights: 'All rights reserved.',
     author: 'Author',
     contact: 'Contact',
+    rss: 'RSS',
   },
   categories: {
     'AI alati u nastavi': 'AI tools in teaching',
@@ -86,6 +87,10 @@ export const en: Dictionary = {
     emptyMessage: 'The first articles are on their way. Check back soon!',
     notFoundTitle: 'Article not found',
     notFoundMessage: 'The article you are looking for does not exist or has been moved.',
+    readingTime: (n: number) => `${n} min read`,
+    filterLabel: 'Filter by category',
+    filterAll: 'All',
+    related: 'More from the blog',
   },
   about: {
     title: 'About me',
@@ -344,5 +349,10 @@ export const en: Dictionary = {
     eyebrow: 'Error',
     title: 'Page not found.',
     backHome: 'Back to home',
+  },
+  error: {
+    title: 'Something went wrong',
+    message: 'The page did not load properly. Please refresh it — if the site was just updated, that usually fixes it.',
+    reload: 'Refresh the page',
   },
 };

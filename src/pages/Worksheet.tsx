@@ -7,6 +7,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { isWorksheetId, worksheetsFor, type WorksheetId } from '../games/ids';
 import { worksheets } from '../games/worksheets';
 import { usePageMeta } from '../lib/usePageMeta';
+import { pageMeta } from '../lib/seo';
 
 export default function Worksheet() {
   const { sheetId } = useParams();
@@ -20,7 +21,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   const ws = t.games.worksheet;
   const { title, text } = ws.sheets[id];
   const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames });
-  usePageMeta({ title: `${ws.eyebrow}: ${title}`, description: text });
+  usePageMeta(pageMeta.worksheet(t, id));
 
   return (
     <div className="wrap max-w-[860px] pt-[130px] print:w-auto print:max-w-none print:p-0">

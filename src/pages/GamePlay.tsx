@@ -7,6 +7,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { GAME_IDS, hasWorksheet, isGameId, type GameId } from '../games/ids';
 import { games } from '../games/registry';
 import { usePageMeta } from '../lib/usePageMeta';
+import { pageMeta } from '../lib/seo';
 
 export default function GamePlay() {
   const { gameId } = useParams();
@@ -19,7 +20,7 @@ function GameStage({ id }: { id: GameId }) {
   const g = t.games;
   const { Component, skills } = games[id];
   const text = g.list[id];
-  usePageMeta({ title: `${text.title} — ${g.title}`, description: text.short });
+  usePageMeta(pageMeta.game(t, id));
   const [attempt, setAttempt] = useState(0);
   const [won, setWon] = useState(false);
   const againRef = useRef<HTMLButtonElement>(null);

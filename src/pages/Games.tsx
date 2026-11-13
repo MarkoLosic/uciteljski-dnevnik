@@ -5,6 +5,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { GAME_IDS, WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
 import { games } from '../games/registry';
 import { usePageMeta } from '../lib/usePageMeta';
+import { pageMeta } from '../lib/seo';
 
 const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
 
@@ -12,7 +13,7 @@ export default function Games() {
   const { locale, t, paths } = useLocale();
   const g = t.games;
   const sheetIds = worksheetsFor(locale);
-  usePageMeta({ title: g.title, description: g.intro });
+  usePageMeta(pageMeta.games(t));
 
   return (
     <div className="wrap pt-[130px]">

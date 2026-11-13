@@ -86,7 +86,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
 ├── package.json
 ├── tsconfig.json              # app (src/), referencira tsconfig.node.json
 ├── tsconfig.node.json         # vite.config.ts + deljeni validator
-├── vite.config.ts             # pluginovi markdown-posts (vidi 6) i seo-files (sitemap.xml, robots.txt — vidi 12)
+├── vite.config.ts             # pluginovi markdown-posts (vidi 6) i seo-files (sitemap.xml, robots.txt, RSS, HTML po ruti — vidi 12)
 ├── vercel.json                # SPA rewrite: sve rute → index.html
 ├── index.html
 ├── .gitignore
@@ -109,7 +109,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     ├── types/
     │   └── post.ts            # Post, PostMeta, Category
     ├── components/
-    │   ├── Layout.tsx         # Header + Outlet + Footer
+    │   ├── Layout.tsx         # Header + ErrorBoundary/Suspense(Outlet) + Footer
+    │   ├── ErrorBoundary.tsx  # hvata greške pri iscrtavanju (jedina klasna komponenta)
     │   ├── Header.tsx         # navigacija
     │   ├── Footer.tsx         # copyright, linkovi
     │   ├── PostCard.tsx       # kartica članka
@@ -138,7 +139,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
     ├── lib/
     │   ├── posts.ts           # čitanje .md fajlova
-    │   ├── frontmatter.ts     # validateFrontmatter (deli se sa vite.config.ts)
+    │   ├── frontmatter.ts     # validateFrontmatter, readingMinutes (deli se sa vite.config.ts)
+    │   ├── seo.ts             # documentTitle, pageMeta.* — naslov/opis stranica (deli se sa vite.config.ts)
     │   ├── usePageMeta.ts     # naslov, opis, Open Graph i canonical po stranici
     │   └── formatDate.ts      # formatiranje datuma (po jeziku)
     └── content/
@@ -200,6 +202,9 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
+// slug kategorije u filteru liste: /blog?kategorija=resursi
+export const CATEGORY_SLUGS: Record<Category, string> = { … };
+
 export interface PostMeta {
   slug: string;
   locale: Locale;     // iz foldera: content/posts/<jezik>/
@@ -207,10 +212,7 @@ export interface PostMeta {
   date: string;       // ISO format: "YYYY-MM-DD"
   excerpt: string;
   category: Category;
-}
-
-export interface Post extends PostMeta {
-  content: string;    // sirovi Markdown
+  readingMinutes: number; // računa plugin markdown-posts (~200 reči/min)
 }
 
 export interface PostFrontmatter {
@@ -332,14 +334,17 @@ Prva stvar koju treba razumeti je...
 
 **Važno — gray-matter se NE izvršava u browseru.** gray-matter zavisi od Node-ovog `Buffer`-a, pa bi u browseru pukao (`Buffer is not defined`). Zato frontmatter parsira Vite plugin `markdownPosts` u `vite.config.ts` (radi u Node-u): za svaki `.md` modul pozove `matter()`, pozove `validateFrontmatter()` i vrati `export default { data, content }`. Posledica: **neispravan članak obara `npm run build` i dev server** sa porukom iz sekcije 6.3.
 
-`posts.ts` zatim koristi Vite `import.meta.glob` (bez `?raw`):
+Svaki `.md` se uvozi dvaput (code-splitting): `x.md?meta` → `{ data, readingMinutes }` (mali, eager, u glavnom paketu) i `x.md` → sirovi Markdown string (lazy, zaseban chunk po članku, učitava ga `BlogPost`):
 
 ```typescript
-const modules = import.meta.glob('../content/posts/*/*.md', {
-  import: 'default',
-  eager: true,
-}) as Record<string, { data: unknown; content: string }>;
+const metaModules = import.meta.glob('../content/posts/*/*.md', {
+  query: '?meta', import: 'default', eager: true,
+}) as Record<string, { data: unknown; readingMinutes: number }>;
+const contentModules = import.meta.glob('../content/posts/*/*.md', { import: 'default' })
+  as Record<string, () => Promise<string>>;
 ```
+
+**Ne uvozi tekst članaka eager** — svih 5 jezika bi završilo u glavnom paketu.
 
 `validateFrontmatter` živi u `src/lib/frontmatter.ts` i ne sme uvoziti ništa zavisno od okruženja (koristi ga i Node i browser). `posts.ts` ga ponovo poziva da bi dobio ispravan `PostFrontmatter` tip.
 
@@ -356,9 +361,11 @@ Za svaki fajl:
 | Funkcija | Potpis | Opis |
 |----------|--------|------|
 | `getAllPosts` | `(locale: Locale): PostMeta[]` | Svi članci jezika, sortirano po `date` opadajuće |
-| `getPostBySlug` | `(locale: Locale, slug: string): Post \| null` | Jedan članak ili `null` |
+| `getPostBySlug` | `(locale: Locale, slug: string): PostMeta \| null` | Podaci o članku ili `null` |
+| `loadPostContent` | `(locale: Locale, slug: string): Promise<string> \| null` | Sirovi Markdown (lazy chunk) |
+| `getRelatedPosts` | `(post: PostMeta, count: number): PostMeta[]` | Za kraj članka: ista kategorija, pa najnoviji |
 | `getPostsByCategory` | `(locale: Locale, category: Category): PostMeta[]` | Filtrirano, sortirano po datumu |
-| `getAllCategories` | `(locale: Locale): Category[]` | Sve kategorije koje imaju bar jedan članak |
+| `getAllCategories` | `(locale: Locale): Category[]` | Kategorije sa bar jednim člankom, redom iz `CATEGORIES` |
 | `getRecentPosts` | `(locale: Locale, count: number): PostMeta[]` | Najnovijih `count` članaka |
 
 ### 6.3. Validacija frontmattera
@@ -424,7 +431,7 @@ Koristi `react-router-dom`:
 | `/igre/radni-listovi/:sheetId` | `<Worksheet />` | Radni list za štampu (`WORKSHEET_IDS`; ćirilica samo sr i bs) |
 | `*` | `<NotFound />` | 404 stranica |
 
-Sve rute su umotane u `<Layout />` koji koristi `<Outlet />`.
+Sve rute su umotane u `<Layout />` koji koristi `<Outlet />` (unutar `ErrorBoundary` i `Suspense`). `Home`, `BlogList` i `NotFound` su u glavnom paketu; `BlogPost` (react-markdown), `About`, `Games`, `GamePlay` i `Worksheet` se učitavaju preko `React.lazy`.
 
 ### 7.1. Jezici
 
@@ -498,7 +505,7 @@ Testirati na: 375px, 768px, 1024px, 1440px. (Headless Chrome ne ide ispod ~500px
 
 ### 8.6. Stilizovanje Markdown sadržaja
 
-Klasa `.prose` je **sopstvena** (u `index.css`, prati `blog.css` sa originala) — `@tailwindcss/typography` se više ne koristi (paket je ostao u `devDependencies` i može se ukloniti). U `BlogPost.tsx`: `<article className="prose">`. Pokriva naslove, liste (marker u akcentu), citate, kod, slike, tabele, liste zadataka.
+Klasa `.prose` je **sopstvena** (u `index.css`, prati `blog.css` sa originala) — `@tailwindcss/typography` se ne koristi (uklonjen). U `BlogPost.tsx`: `<article className="prose">`. Pokriva naslove, liste (marker u akcentu), citate, kod, slike, tabele, liste zadataka.
 
 ### 8.7. Fokus stanja (a11y)
 
@@ -510,7 +517,8 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 
 ### 9.1. `Layout.tsx`
 
-- Struktura: `<Header />` + `<main><Outlet /></main>` + `<Footer />`.
+- Struktura: `<Header />` + `<main><ErrorBoundary key={pathname}><Suspense><Outlet /></Suspense></ErrorBoundary></main>` + `<Footer />`.
+- Greška pri iscrtavanju (ili neuspelo učitavanje chunk-a posle deploy-a) prikazuje `t.error` sa dugmetom „Osveži stranicu“ umesto belog ekrana.
 - `<main>` ima `min-h-screen` da footer bude na dnu.
 - Sadrži `<ScrollToTop />`.
 
@@ -522,9 +530,9 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 
 ### 9.3. `Footer.tsx`
 
-- Copyright: `© {new Date().getFullYear()} {siteConfig.name}. Sva prava zadržana.`
-- Linkovi: O meni, Kontakt (mailto), Politika privatnosti (ako postoji).
-- Autor: `Autor: {siteConfig.author.name}`.
+- Copyright: `© {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}`.
+- Autor: `{t.footer.author}: {siteConfig.author.name}`.
+- Linkovi: O meni, Kontakt (mailto), GitHub i LinkedIn (iz `siteConfig.social`, samo neprazni), RSS (`<jezik>/rss.xml`, samo ako jezik ima članke).
 
 ### 9.4. `PostCard.tsx`
 
@@ -537,14 +545,10 @@ interface PostCardProps {
 ```
 
 Struktura:
-- `<Link to={`/blog/${post.slug}`}>` kao wrapper.
-- Kategorija (bedž) — `<CategoryBadge category={post.category} />`.
-- Naslov: `<h3 className="text-xl font-bold">{post.title}</h3>`.
-- Datum: `<time dateTime={post.date}>{formatDate(post.date)}</time>`.
-- Excerpt: `<p className="text-gray-600">{post.excerpt}</p>`.
-- „Pročitaj više →" link/tekst.
-
-Stil: `bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6`.
+- `<Link to={paths.post(post.slug)} className="card …">` kao wrapper.
+- Gore: `<CategoryBadge />` + `<time>` (`formatDate(post.date, locale)`).
+- Naslov `<h3>` (`font-head`), excerpt (`text-muted`).
+- Dole: „Pročitaj više →“ levo, `t.blog.readingTime(post.readingMinutes)` desno.
 
 ### 9.5. `CategoryBadge.tsx`
 
@@ -608,16 +612,15 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Lista svih članaka preko `getAllPosts()`.
 - Svaki članak u `<PostCard />`.
 - Ako nema članaka: `<EmptyState />`.
-- (Opciono, kasnije) Filter po kategoriji — dugmad ili dropdown.
+- Filter po kategoriji: pilule-linkovi („Sve“ + `getAllCategories`) u `<nav aria-label={t.blog.filterLabel}>`, stanje u URL-u `?kategorija=<CATEGORY_SLUGS>`; aktivni ima `aria-current="page"`. Prikazuje se samo ako postoje bar 2 kategorije.
 
 ### 10.3. `BlogPost.tsx`
 
 - Uzmi `slug` iz `useParams()`.
 - `getPostBySlug(slug)` — ako `null`, prikaži poruku „Članak nije pronađen" + link na `/blog`.
-- Header članka: naslov (`text-3xl`/`text-4xl`), datum, kategorija (bedž).
-- Sadržaj: `<ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>` unutar `<article className="prose prose-lg max-w-none">`.
-- Link „← Nazad na blog" na dnu.
-- (Opciono) „Sledeći / prethodni članak" — kasnije.
+- Header članka: kategorija (bedž), datum, vreme čitanja, naslov, excerpt — odmah (iz `getPostBySlug`).
+- Sadržaj: `loadPostContent()` u `useEffect`, pa `<ReactMarkdown remarkPlugins={[remarkGfm]} components={…}>` unutar `<article className="prose">`. Slike dobijaju `loading="lazy"`.
+- Link „← Nazad na blog" na dnu, pa sekcija „Još sa bloga“ (`getRelatedPosts(post, 3)` u `<PostCard />`).
 
 ### 10.4. `About.tsx`
 
@@ -662,13 +665,15 @@ Redosled sekcija (lično predstavljanje pa blog):
 
 - `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`) — podrazumevane vrednosti i ono što vide pregledi linkova bez JS-a.
 - **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — Iz učionice“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
-- `sitemap.xml` i `robots.txt` pravi plugin `seo-files` u `vite.config.ts` pri `npm run build` — iz istih podataka kao rute (jezici, slugovi, igre, članci sa `lastmod` = `date`), sa `hreflang` vezama između prevoda. Nova vrsta stranice → dodaj je u `sitemapGroups()`.
+- Naslov i opis stranica su u `src/lib/seo.ts` (`pageMeta.home(t)`, `pageMeta.game(t, id)`…) i koriste ih i stranice i `vite.config.ts`. Nova stranica → dodaj `pageMeta.*` i grupu u `pageGroups()`.
+- Plugin `seo-files` u `vite.config.ts` pri `npm run build` iz `pageGroups()` (jezici, slugovi, igre, radni listovi, članci) pravi:
+  - `sitemap.xml` (sa `lastmod` = `date` i `hreflang` vezama) i `robots.txt`;
+  - RSS po jeziku: `/rss.xml`, `/en/rss.xml`… (samo jezici sa člancima);
+  - **statični HTML po ruti** (`dist/<putanja>/index.html`): kopija `index.html` sa pravim `lang`, `<title>`, description, `og:*`, canonical, `hreflang` linkovima i RSS linkom; za članak `og:type=article`, `article:published_time` i `og:image` = prva slika iz teksta. Vercel prvo služi statične fajlove, pa tek onda SPA rewrite — zato pregledi linkova (Viber, Facebook, WhatsApp) vide naslov i opis baš tog članka. Ako se promeni `index.html`, regexi u `pageHtml()` moraju i dalje da nađu tagove (inače build pada).
 - Domen: `https://uciteljski-dnevnik-roan.vercel.app` (Vercel). Ako se promeni, menja se u `siteConfig.url` i u `index.html` (`og:url`, `og:image`, `canonical`). Dok je `siteConfig.url` placeholder (`example.`), sitemap se ne pravi.
 - Slika za deljenje linkova: `public/slike/og-slika.jpg` (1200×630), postavljena u `index.html`.
-- Ograničenje: pregledi linkova (Facebook, Viber, WhatsApp) ne izvršavaju JS, pa za sve stranice vide tagove iz `index.html`. Za prave preglede po članku trebalo bi prerenderovanje (roadmap).
+- Telo stranice se i dalje iscrtava JS-om; Google ga vidi, a pregledima linkova trebaju samo tagovi iz `<head>`.
 - Semantički HTML (sekcija 11) pomaže SEO.
-- Sitemap i `robots.txt`: kasnije, preko Vite plugina ili ručno.
-- Kanonski URL-ovi: kasnije, ako bude potrebe.
 
 ---
 
@@ -678,7 +683,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - **Nepostojeći slug:** `BlogPost` prikazuje poruku „Članak nije pronađen" + link na `/blog`.
 - **Prazan folder članaka:** `EmptyState` na `Home` i `BlogList`.
 - **Greške pri buildu:** Claude Code pokreće `npm run build` posle većih izmena i popravlja pre nego što nastavi.
-- **Runtime greške:** za sada bez Error Boundary; dodati kasnije ako bude potrebe.
+- **Runtime greške:** `ErrorBoundary` u `Layout` (sekcija 9.1) — poruka iz `t.error` + dugme za osvežavanje.
 
 ---
 
@@ -686,7 +691,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 
 1. **Ne diraj fajlove u `src/content/posts/` bez eksplicitnog zahteva korisnika.** Ti fajlovi su sadržaj. Jedini izuzetak je formatiranje novih članaka na zahtev korisnika (sekcija 15) — tada kreiraš ili menjaš `.md` fajl, ali uvek prema korisnikovom tekstu.
 2. **Sav kod je TypeScript.** Ne koristi `.jsx`/`.js` za nove fajlove. Strogi režim (`strict: true` u `tsconfig.json`). Bez `any`.
-3. **Koristi funkcionalne komponente i React Hooks** (ne class komponente). Tipiziraj props interfejsima.
+3. **Koristi funkcionalne komponente i React Hooks** (ne class komponente; jedini izuzetak je `ErrorBoundary`, jer React nema hook za to). Tipiziraj props interfejsima.
 4. **Pre dodavanja nove funkcionalnosti, proveri** da li već postoji slična komponenta ili funkcija — ne dupliraj kod.
 5. **Posle većih izmena, pokreni `npm run build`** (uključuje `tsc -b && vite build`) da proveriš da nema grešaka. Ako build padne, popravi pre nego što nastaviš.
 6. **Kada menjaš strukturu fajlova, ažuriraj ovaj CLAUDE.md** (sekcija 3 i relevantne sekcije).

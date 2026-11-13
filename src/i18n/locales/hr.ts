@@ -51,6 +51,7 @@ export const hr: Dictionary = {
     rights: 'Sva prava pridržana.',
     author: 'Autor',
     contact: 'Kontakt',
+    rss: 'RSS',
   },
   categories: {
     'AI alati u nastavi': 'AI alati u nastavi',
@@ -86,6 +87,10 @@ export const hr: Dictionary = {
     emptyMessage: 'Prvi članci su u pripremi. Navratite uskoro!',
     notFoundTitle: 'Članak nije pronađen',
     notFoundMessage: 'Članak koji tražite ne postoji ili je premješten.',
+    readingTime: (n: number) => `${n} min čitanja`,
+    filterLabel: 'Filtriraj po kategoriji',
+    filterAll: 'Sve',
+    related: 'Još s bloga',
   },
   about: {
     title: 'O meni',
@@ -344,5 +349,10 @@ export const hr: Dictionary = {
     eyebrow: 'Pogreška',
     title: 'Stranica nije pronađena.',
     backHome: 'Natrag na početnu',
+  },
+  error: {
+    title: 'Nešto je pošlo po zlu',
+    message: 'Stranica se nije ispravno učitala. Osvježite je — ako je stranica upravo ažurirana, to obično riješi problem.',
+    reload: 'Osvježi stranicu',
   },
 };

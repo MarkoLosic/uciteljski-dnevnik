@@ -20,10 +20,13 @@ export default function PostCard({ post }: PostCardProps) {
       </div>
       <h3 className="font-head text-[22px] leading-tight font-bold tracking-tight text-balance">{post.title}</h3>
       <p className="text-[15.5px] text-muted">{post.excerpt}</p>
-      <span className="mt-auto inline-flex items-center gap-2 pt-1.5 text-[14.5px] font-semibold text-accent">
-        {t.blog.readMore}
-        <PixelIcon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
-      </span>
+      <div className="mt-auto flex items-center justify-between gap-3 pt-1.5">
+        <span className="inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent">
+          {t.blog.readMore}
+          <PixelIcon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
+        </span>
+        <span className="font-mono text-[12.5px] font-medium text-muted">{t.blog.readingTime(post.readingMinutes)}</span>
+      </div>
     </Link>
   );
 }

@@ -28,6 +28,11 @@ export const SHAPES = ['circle', 'square', 'triangle', 'star', 'heart'] as const
 
 export type Shape = (typeof SHAPES)[number];
 
+// Sličice iz things.ts; ovde je samo spisak imena da rečnici ne bi uvozili ikone (i JSX).
+export const THING_IDS = ['cat', 'dog', 'fish', 'bird', 'rabbit', 'turtle', 'snail', 'apple', 'star', 'flower', 'sun'] as const;
+
+export type Thing = (typeof THING_IDS)[number];
+
 export interface GameText {
   title: string;
   short: string;

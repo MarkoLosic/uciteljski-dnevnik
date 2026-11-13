@@ -1,5 +1,8 @@
 import { Apple, Bird, Cat, Dog, Fish, Flower, Rabbit, Snail, Star, Sun, Turtle, type LucideIcon } from 'lucide-react';
 import { toyHex } from './shared';
+import { THING_IDS, type Thing } from './ids';
+
+export type { Thing };
 
 // Sličice za pamćenje, brojanje i redanje po veličini. Ime (ključ) se prevodi u `t.games.things`.
 export const THINGS = {
@@ -14,8 +17,6 @@ export const THINGS = {
   star: { Icon: Star, color: toyHex.yellow },
   flower: { Icon: Flower, color: toyHex.purple },
   sun: { Icon: Sun, color: toyHex.yellow },
-} satisfies Record<string, { Icon: LucideIcon; color: string }>;
+} satisfies Record<Thing, { Icon: LucideIcon; color: string }>;
 
-export type Thing = keyof typeof THINGS;
-
-export const THING_NAMES = Object.keys(THINGS) as Thing[];
+export const THING_NAMES: readonly Thing[] = THING_IDS;
