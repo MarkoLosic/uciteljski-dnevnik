@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="sr-Latn-BA" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Nastavne pripreme i planovi (1–5. razred BiH) — Iz učionice</title>
+    <meta
+      name="description"
+      content="Biblioteka dnevnih priprema za razrednu nastavu od 1. do 5. razreda osnovne škole u Bosni i Hercegovini (Republika Srpska RPZ i Federacija BiH ZJNPP)."
+    />
+    <script>
+      (function () {
+        try {
+          var sacuvanaTema = localStorage.getItem('theme');
+          if (sacuvanaTema === 'dark' || sacuvanaTema === 'light') {
+            document.documentElement.dataset.theme = sacuvanaTema;
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./stil.css" />
+  </head>
+  <body>
+    <!-- Zaglavlje sajta -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand-group">
+          <a href="../index.html" class="brand-logo" title="Povratak na početnu stranicu sajta Iz učionice">
+            <span class="brand-badge" aria-hidden="true">IU</span>
+            <span>Iz učionice</span>
+          </a>
+          <span class="brand-divider" aria-hidden="true">/</span>
+          <span class="brand-sub">Biblioteka priprema</span>
+        </div>
+
+        <nav class="header-nav" aria-label="Navigacija sekcije za pripreme">
+          <a href="../index.html" class="nav-link">← Početna stranica</a>
+          <a href="./index.html" class="nav-link active" aria-current="page">📚 Sve pripreme</a>
+          <a href="./admin.html" class="nav-link">⚙️ Generator priprema</a>
+          <button
+            type="button"
+            id="dugmeTema"
+            class="theme-btn"
+            aria-label="Promijeni svijetlu ili tamnu temu"
+            title="Promijeni svijetlu ili tamnu temu"
+          >
+            🌓
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Uvodna sekcija -->
+      <section class="hero" aria-labelledby="naslovBiblioteke">
+        <div class="hero-card">
+          <div>
+            <span class="hero-eyebrow">🇧🇦 Razredna nastava · RPZ (RS) i ZJNPP (FBiH)</span>
+            <h1 id="naslovBiblioteke" class="hero-title">Nastavni planovi i dnevne pripreme (1–5. razred)</h1>
+            <p class="hero-desc">
+              Gotove, metodički uređene pripreme za čas prilagođene nastavnim planovima i programima u Republici Srpskoj
+              i Federaciji BiH. Svaku pripremu možete jednim klikom kopirati za <strong>e-Dnevnik</strong>, odštampati
+              na čistom A4 formatu ili preuzeti u <strong>Word (.docx)</strong> formatu.
+            </p>
+          </div>
+          <div class="hero-stats" aria-label="Statistika baze priprema">
+            <div class="stat-box">
+              <span class="stat-num" id="statUkupno">15</span>
+              <span class="stat-label">Priprema u bazi</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">1–5.</span>
+              <span class="stat-label">Razredi OŠ</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">6</span>
+              <span class="stat-label">Nastavnih predmeta</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filteri u realnom vremenu -->
+      <section class="filters-section" aria-label="Filteri i pretraga nastavnih priprema">
+        <div class="filters-card">
+          <div class="search-row">
+            <div class="search-input-wrap">
+              <span class="search-icon" aria-hidden="true">🔍</span>
+              <input
+                type="search"
+                id="poljePretraga"
+                class="search-input"
+                placeholder="Pretraži po nazivu nastavne jedinice, cjelini, cilju ili ishodima (npr. množenje, imenice, šuma)..."
+                aria-label="Tekstualna pretraga priprema"
+                autocomplete="off"
+              />
+              <button
+                type="button"
+                id="obrisiPretragu"
+                class="clear-search-btn"
+                aria-label="Obriši tekst pretrage"
+                title="Obriši pretragu"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <div class="filters-grid">
+            <!-- Sistem / Plan -->
+            <div class="filter-group">
+              <label for="filterSistem" class="filter-label">Sistem / Nastavni plan</label>
+              <select id="filterSistem" class="filter-select">
+                <option value="Svi">Svi sistemi (RPZ RS + ZJNPP FBiH)</option>
+                <option value="RS">Republika Srpska (RPZ)</option>
+                <option value="FBiH">Federacija BiH (ZJNPP)</option>
+              </select>
+            </div>
+
+            <!-- Razred (dugmad + skrivena sinhronizacija) -->
+            <div class="filter-group">
+              <span class="filter-label" id="oznakaRazred">Razred</span>
+              <div class="grade-pills" role="group" aria-labelledby="oznakaRazred" id="grupaRazreda">
+                <button type="button" class="pill-btn active" data-razred="Svi">Svi</button>
+                <button type="button" class="pill-btn" data-razred="1">1.</button>
+                <button type="button" class="pill-btn" data-razred="2">2.</button>
+                <button type="button" class="pill-btn" data-razred="3">3.</button>
+                <button type="button" class="pill-btn" data-razred="4">4.</button>
+                <button type="button" class="pill-btn" data-razred="5">5.</button>
+              </div>
+            </div>
+
+            <!-- Predmet -->
+            <div class="filter-group">
+              <label for="filterPredmet" class="filter-label">Nastavni predmet</label>
+              <select id="filterPredmet" class="filter-select">
+                <option value="Svi">Svi predmeti</option>
+                <option value="Maternji jezik">Maternji jezik i književnost</option>
+                <option value="Matematika">Matematika</option>
+                <option value="Moja okolina / PiD">Moja okolina / Priroda i društvo</option>
+                <option value="Likovna kultura">Likovna kultura</option>
+                <option value="Muzička kultura">Muzička kultura</option>
+                <option value="Tjelesni odgoj">Tjelesni i zdravstveni odgoj</option>
+              </select>
+            </div>
+
+            <!-- Tip časa -->
+            <div class="filter-group">
+              <label for="filterTipCasa" class="filter-label">Tip časa</label>
+              <select id="filterTipCasa" class="filter-select">
+                <option value="Svi">Svi tipovi časa</option>
+                <option value="Obrada">Obrada novog gradiva</option>
+                <option value="Utvrđivanje">Utvrđivanje</option>
+                <option value="Ponavljanje">Ponavljanje</option>
+                <option value="Sistematizacija">Sistematizacija</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filters-footer">
+            <p class="results-counter" id="brojacRezultata" aria-live="polite">
+              Prikazano <strong>0</strong> od <strong>0</strong> priprema
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <button type="button" id="dugmeResetujFiltere" class="btn btn-subtle">↺ Resetuj filtere</button>
+              <a href="./admin.html" class="btn btn-outline">+ Dodaj novu pripremu</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lista kartica priprema -->
+      <section aria-label="Lista nastavnih priprema">
+        <div id="mrezaKartica" class="cards-grid"></div>
+
+        <!-- Prazno stanje kada filteri ne vrate nijednu pripremu -->
+        <div id="praznoStanje" class="empty-state" hidden>
+          <div class="empty-icon" aria-hidden="true">🗂️</div>
+          <h2 class="empty-title">Nema pronađenih priprema za odabrane kriterijume</h2>
+          <p class="empty-desc">
+            Pokušajte da izmijenite pojam u pretrazi ili kliknite na dugme ispod da prikažete sve dostupne nastavne
+            jedinice.
+          </p>
+          <button type="button" id="dugmeResetujPrazno" class="btn btn-primary">Prikaži sve pripreme</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal sa detaljnim prikazom pripreme -->
+    <div
+      id="modalPozadina"
+      class="modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalNaslovJedinice"
+      hidden
+    >
+      <div class="modal-window">
+        <!-- Gornja traka modala -->
+        <div class="modal-topbar">
+          <div class="card-badges" id="modalBedzevi"></div>
+          <button
+            type="button"
+            id="dugmeZatvoriModal"
+            class="close-modal-btn"
+            aria-label="Zatvori prikaz pripreme"
+            title="Zatvori (Esc)"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Traka sa akcijama (skriva se na štampi) -->
+        <div class="modal-actions-bar">
+          <button type="button" id="akcijaKopirajEDnevnik" class="btn btn-primary">
+            📋 Kopiraj za e-Dnevnik
+          </button>
+          <button type="button" id="akcijaKopirajLink" class="btn btn-outline">
+            🔗 Kopiraj link
+          </button>
+          <button type="button" id="akcijaStampa" class="btn btn-outline">
+            🖨 Odštampaj pripremu
+          </button>
+          <button type="button" id="akcijaPreuzmiDocx" class="btn btn-secondary">
+            ⬇ Preuzmi Word (.docx)
+          </button>
+          <button type="button" id="akcijaPreuzmiPdf" class="btn btn-subtle">
+            ⬇ Radni listić (.pdf)
+          </button>
+        </div>
+
+        <!-- Tijelo modala / Dokument za A4 štampu -->
+        <div class="modal-body">
+          <!-- Zaglavlje škole (polja se mogu kliknuti i dopuniti prije štampe ili Word eksporta) -->
+          <div class="print-school-header">
+            <div class="print-doc-title">PISMENA PRIPREMA ZA REALIZACIJU NASTAVNOG ČASA</div>
+            <div class="school-meta-grid">
+              <div class="school-meta-item">
+                <span class="school-meta-label">Osnovna škola:</span>
+                <span
+                  class="school-meta-value"
+                  id="metaSkola"
+                  contenteditable="true"
+                  title="Kliknite da upišete naziv škole prije štampe"
+                  >________________________________</span
+                >
+              </div>
+              <div class="school-meta-item">
+                <span class="school-meta-label">Datum održavanja:</span>
+                <span
+                  class="school-meta-value"
+                  id="metaDatum"
+                  contenteditable="true"
+                  title="Kliknite da izmijenite datum"
+                ></span>
+              </div>
+              <div class="school-meta-item">
+                <span class="school-meta-label">Realizator (učitelj/ica):</span>
+                <span
+                  class="school-meta-value"
+                  id="metaUcitelj"
+                  contenteditable="true"
+                  title="Kliknite da upišete ime i prezime"
+                  >________________________________</span
+                >
+              </div>
+              <div class="school-meta-item">
+                <span class="school-meta-label">Razred i odjeljenje:</span>
+                <span class="school-meta-value" id="metaRazredOdjeljenje" contenteditable="true"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela opštih metodičkih podataka -->
+          <table class="method-table" aria-label="Metodički podaci o času">
+            <tbody>
+              <tr>
+                <th>Nastavni predmet:</th>
+                <td id="modalPredmet"></td>
+              </tr>
+              <tr>
+                <th>Nastavni plan / Sistem:</th>
+                <td id="modalSistem"></td>
+              </tr>
+              <tr>
+                <th>Nastavna tema / Cjelina:</th>
+                <td id="modalCjelina"></td>
+              </tr>
+              <tr>
+                <th>Nastavna jedinica:</th>
+                <td><strong id="modalNaslovJedinice"></strong></td>
+              </tr>
+              <tr>
+                <th>Tip nastavnog časa:</th>
+                <td id="modalTipCasa"></td>
+              </tr>
+              <tr>
+                <th>Oblik i metode rada:</th>
+                <td id="modalMetode"></td>
+              </tr>
+              <tr>
+                <th>Međupredmetna korelacija:</th>
+                <td id="modalKorelacija"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Cilj i ishodi -->
+          <div class="lesson-section">
+            <div class="lesson-section-header">
+              <span>🎯 Cilj časa</span>
+            </div>
+            <div class="lesson-section-content" id="modalCilj"></div>
+          </div>
+
+          <div class="lesson-section">
+            <div class="lesson-section-header">
+              <span>✅ Očekivani ishodi učenja</span>
+            </div>
+            <div class="lesson-section-content" id="modalIshodi"></div>
+          </div>
+
+          <!-- Struktura i tok časa -->
+          <div class="lesson-section">
+            <div class="lesson-section-header">
+              <span>1. Uvodni dio časa</span>
+              <span>Okvirno trajanje: 7–10 min</span>
+            </div>
+            <div class="lesson-section-content" id="modalUvodni"></div>
+          </div>
+
+          <div class="lesson-section">
+            <div class="lesson-section-header">
+              <span>2. Glavni dio časa</span>
+              <span>Okvirno trajanje: 25–30 min</span>
+            </div>
+            <div class="lesson-section-content" id="modalGlavni"></div>
+          </div>
+
+          <div class="lesson-section">
+            <div class="lesson-section-header">
+              <span>3. Završni dio časa</span>
+              <span>Okvirno trajanje: 8–10 min</span>
+            </div>
+            <div class="lesson-section-content" id="modalZavrsni"></div>
+          </div>
+
+          <!-- Potpis na dnu A4 lista (vidljivo samo na štampi) -->
+          <div class="print-signatures">
+            <div class="signature-line">Pregledao / Pedagog ili direktor škole</div>
+            <div class="signature-line">Potpis realizatora (učitelja/ice)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontejner za vizuelne potvrde (Toast) -->
+    <div id="toastKontejner" class="toast-container" aria-live="polite"></div>
+
+    <!-- Podnožje -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="trenutnaGodina"></span> Iz učionice — Biblioteka nastavnih priprema za osnovne škole u BiH.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <a href="../index.html">Početna stranica bloga</a>
+          <a href="./admin.html">Generator novih priprema (Admin)</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Biblioteke za direktno generisanje .docx fajlova u browseru -->
+    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- Podaci i aplikaciona logika -->
+    <script src="./podaci.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
+

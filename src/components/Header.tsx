@@ -72,6 +72,14 @@ export default function Header() {
                 </NavLink>
               </li>
             ))}
+            <li>
+              <a
+                href="/pripreme/index.html"
+                className="focus-ring block rounded-full px-2.5 py-2 whitespace-nowrap text-sm font-medium text-muted transition-colors hover:bg-surface-2 hover:text-ink sm:px-3.5 sm:text-[14.5px]"
+              >
+                Pripreme
+              </a>
+            </li>
           </ul>
         </nav>
         <LanguageSwitcher />

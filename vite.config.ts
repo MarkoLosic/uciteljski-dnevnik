@@ -301,6 +301,10 @@ function seoFiles(): Plugin {
           fs.writeFileSync(file, pageHtml(template, locale, page, group, postsOf(locale).length > 0));
         }
       }
+      const pripremeSrc = path.resolve(__dirname, 'pripreme');
+      if (fs.existsSync(pripremeSrc)) {
+        fs.cpSync(pripremeSrc, path.join(options.dir, 'pripreme'), { recursive: true });
+      }
     },
   };
 }

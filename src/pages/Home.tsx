@@ -49,6 +49,9 @@ export default function Home() {
               {t.home.readBlog}
               <PixelIcon name="arrow" />
             </Link>
+            <a href="/pripreme/index.html" className="btn btn-ghost focus-ring">
+              Nastavne pripreme (1–5. razred)
+            </a>
             <Link to={paths.about} className="btn btn-ghost focus-ring">
               {t.home.moreAboutMe}
             </Link>

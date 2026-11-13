@@ -24,6 +24,9 @@ export default function Footer() {
         {t.footer.author}: {siteConfig.author.name}
       </p>
       <nav aria-label={t.footer.label} className="flex flex-wrap justify-center gap-x-4">
+        <a href="/pripreme/index.html" className={linkClass}>
+          Nastavne pripreme
+        </a>
         {hasCountries(locale) && (
           <Link to={paths.world} className={linkClass}>
             {t.nav.world}
