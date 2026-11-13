@@ -1,6 +1,7 @@
 import { siteConfig } from '../config/site';
 import type { Dictionary } from '../i18n/dictionaries';
 import type { GameId, WorksheetId } from '../games/ids';
+import type { CountryFrontmatter } from '../types/country';
 
 // Deli se između stranica (usePageMeta) i vite.config.ts (statični HTML po ruti, RSS),
 // zato ne sme da uvozi ništa što zavisi od okruženja.
@@ -22,6 +23,11 @@ export const pageMeta = {
   game: (t: Dictionary, id: GameId): PageMetaText => ({
     title: `${t.games.list[id].title} — ${t.games.title}`,
     description: t.games.list[id].short,
+  }),
+  world: (t: Dictionary): PageMetaText => ({ title: t.world.title, description: t.world.description }),
+  country: (t: Dictionary, country: Pick<CountryFrontmatter, 'name' | 'excerpt'>): PageMetaText => ({
+    title: `${country.name} — ${t.world.title}`,
+    description: country.excerpt,
   }),
   worksheet: (t: Dictionary, id: WorksheetId): PageMetaText => ({
     title: `${t.games.worksheet.eyebrow}: ${t.games.worksheet.sheets[id].title}`,

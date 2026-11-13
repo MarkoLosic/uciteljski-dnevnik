@@ -1,5 +1,6 @@
 import { DEFAULT_LOCALE, localeInfo, type Locale } from './config';
 import { getPostBySlug } from '../lib/posts';
+import { getCountry } from '../lib/countries';
 
 export function localeBase(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '' : `/${locale}`;
@@ -15,12 +16,15 @@ export function pathsFor(locale: Locale) {
     games: `${base}/${localeInfo[locale].gamesSlug}`,
     game: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${id}`,
     worksheet: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${localeInfo[locale].worksheetSlug}/${id}`,
+    world: `${base}/${localeInfo[locale].worldSlug}`,
+    country: (id: string) => `${base}/${localeInfo[locale].worldSlug}/${id}`,
   };
 }
 
 export type Paths = ReturnType<typeof pathsFor>;
 
-// Ista stranica na drugom jeziku. Članak bez prevoda vodi na listu članaka tog jezika.
+// Ista stranica na drugom jeziku. Članak bez prevoda vodi na listu članaka tog jezika,
+// a zemlja bez prevoda na stranicu Škole u svetu.
 export function switchLocalePath(pathname: string, from: Locale, to: Locale): string {
   const target = pathsFor(to);
   const base = localeBase(from);
@@ -36,6 +40,11 @@ export function switchLocalePath(pathname: string, from: Locale, to: Locale): st
   if (sheetMatch) return target.worksheet(sheetMatch[1]);
   const gameMatch = new RegExp(`^/${gamesSlug}/([^/]+)$`).exec(rest);
   if (gameMatch) return target.game(gameMatch[1]);
+
+  const worldSlug = localeInfo[from].worldSlug;
+  if (rest === `/${worldSlug}`) return target.world;
+  const countryMatch = new RegExp(`^/${worldSlug}/([^/]+)$`).exec(rest);
+  if (countryMatch) return getCountry(to, countryMatch[1]) ? target.country(countryMatch[1]) : target.world;
 
   const postMatch = /^\/blog\/([^/]+)$/.exec(rest);
   if (postMatch) {

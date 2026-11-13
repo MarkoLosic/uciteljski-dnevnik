@@ -13,14 +13,15 @@ interface LocaleInfo {
   aboutSlug: string;
   gamesSlug: string;
   worksheetSlug: string;
+  worldSlug: string; // Škole u svetu
 }
 
 export const localeInfo: Record<Locale, LocaleInfo> = {
-  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
-  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games', worksheetSlug: 'worksheets' },
-  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
-  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi' },
-  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele', worksheetSlug: 'arbeitsblaetter' },
+  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svetu' },
+  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games', worksheetSlug: 'worksheets', worldSlug: 'schools-worldwide' },
+  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu' },
+  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu' },
+  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele', worksheetSlug: 'arbeitsblaetter', worldSlug: 'schulen-weltweit' },
 };
 
 export function isLocale(value: unknown): value is Locale {

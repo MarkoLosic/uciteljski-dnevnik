@@ -3,6 +3,7 @@ import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
 import { localeBase } from '../i18n/paths';
 import { getAllPosts } from '../lib/posts';
+import { hasCountries } from '../lib/countries';
 
 const linkClass = 'focus-ring rounded py-2 transition-colors hover:text-accent';
 
@@ -23,6 +24,11 @@ export default function Footer() {
         {t.footer.author}: {siteConfig.author.name}
       </p>
       <nav aria-label={t.footer.label} className="flex flex-wrap justify-center gap-x-4">
+        {hasCountries(locale) && (
+          <Link to={paths.world} className={linkClass}>
+            {t.nav.world}
+          </Link>
+        )}
         <Link to={paths.about} className={linkClass}>
           {t.nav.about}
         </Link>

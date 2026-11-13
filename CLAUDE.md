@@ -107,7 +107,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── dictionaries.ts    # Record<Locale, Dictionary>
     │   └── locales/           # sr.ts (izvor tipa Dictionary), en.ts, hr.ts, bs.ts, de.ts
     ├── types/
-    │   └── post.ts            # Post, PostMeta, Category
+    │   ├── post.ts            # Post, PostMeta, Category
+    │   └── country.ts         # COUNTRY_FACTS, CountryFrontmatter, CountryMeta
     ├── components/
     │   ├── Layout.tsx         # Header + ErrorBoundary/Suspense(Outlet) + Footer
     │   ├── ErrorBoundary.tsx  # hvata greške pri iscrtavanju (jedina klasna komponenta)
@@ -119,7 +120,12 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── ScrollToTop.tsx    # skrol na vrh pri promeni rute
     │   ├── ThemeToggle.tsx    # preklopnik tamna/svetla tema
     │   ├── LanguageSwitcher.tsx # izbor jezika (dugme sa kodom + meni sa linkovima)
-    │   └── PixelIcon.tsx      # pikselske SVG ikone (9×9) sa markolosic.github.io
+    │   ├── TableOfContents.tsx # sadržaj članka (## i ###), samo ako ima ≥ 3 sekcije ##
+    │   ├── CodeBlock.tsx      # <pre> iz Markdowna sa dugmetom „Kopiraj“
+    │   ├── ShareButtons.tsx   # deljenje članka: Viber, WhatsApp, Facebook, kopiraj link, navigator.share
+    │   ├── PixelIcon.tsx      # pikselske SVG ikone (9×9) sa markolosic.github.io
+    │   ├── CountryCode.tsx    # dvoslovna oznaka zemlje (umesto emoji zastave)
+    │   └── ResultsTable.tsx   # tabela PISA / TIMSS / PIRLS + prosek OECD-a
     ├── pages/
     │   ├── Home.tsx           # početna
     │   ├── BlogList.tsx       # lista članaka
@@ -128,6 +134,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── Games.tsx          # lista igara za predškolce
     │   ├── GamePlay.tsx       # jedna igra + ekran „Bravo!“
     │   ├── Worksheet.tsx      # radni list za štampu (A4)
+    │   ├── World.tsx          # Škole u svetu: kartice zemalja + tabela za poređenje
+    │   ├── Country.tsx        # jedna zemlja: činjenice, tekst, izvori
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
@@ -142,12 +150,20 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── frontmatter.ts     # validateFrontmatter, readingMinutes (deli se sa vite.config.ts)
     │   ├── seo.ts             # documentTitle, pageMeta.* — naslov/opis stranica (deli se sa vite.config.ts)
     │   ├── usePageMeta.ts     # naslov, opis, Open Graph i canonical po stranici
-    │   └── formatDate.ts      # formatiranje datuma (po jeziku)
+    │   ├── headings.ts        # extractHeadings, slugifyHeading — id-jevi naslova za sadržaj i sidra
+    │   ├── clipboard.ts       # copyText (Clipboard API + rezervna varijanta)
+    │   ├── formatDate.ts      # formatiranje datuma (po jeziku)
+    │   ├── countries.ts       # čitanje zemalja (isti obrazac kao posts.ts)
+    │   └── countryFrontmatter.ts # validateCountry (deli se sa vite.config.ts)
     └── content/
         └── posts/             # OVDE SE DODAJU ČLANCI, po folderu za svaki jezik
             ├── sr/ai-u-nastavi-od-1-do-5-razreda.md
             ├── en/ai-u-nastavi-od-1-do-5-razreda.md   # prevod = isti slug
             └── hr/ bs/ de/ ...
+        ├── countries/         # Škole u svetu: jedna zemlja = jedan .md (sekcija 10.7)
+        │   └── sr/bosna-i-hercegovina.md, estonija.md, finska.md, holandija.md, japan.md, nemacka.md, singapur.md, slovenija.md
+        └── world/             # zaključci ispod tabela na stranici Škole u svetu (bez frontmattera)
+            └── sr/zakljucci.md
 ```
 
 Napomena: Folder `src/content/posts/` je isključivo korisnikov sadržaj. Claude Code ga dira samo kada korisnik eksplicitno zatraži formatiranje novog članka (sekcija 15).
@@ -429,14 +445,16 @@ Koristi `react-router-dom`:
 | `/igre` | `<Games />` | Igre za predškolce (sekcija 10.5) |
 | `/igre/:gameId` | `<GamePlay />` | Jedna igra; nepoznat `gameId` → `<NotFound />` |
 | `/igre/radni-listovi/:sheetId` | `<Worksheet />` | Radni list za štampu (`WORKSHEET_IDS`; ćirilica samo sr i bs) |
+| `/skole-u-svetu` | `<World />` | Razredna nastava u svetu (sekcija 10.7) |
+| `/skole-u-svetu/:countryId` | `<Country />` | Jedna zemlja |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />` (unutar `ErrorBoundary` i `Suspense`). `Home`, `BlogList` i `NotFound` su u glavnom paketu; `BlogPost` (react-markdown), `About`, `Games`, `GamePlay` i `Worksheet` se učitavaju preko `React.lazy`.
 
 ### 7.1. Jezici
 
-- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`, a stranice igara u `localeInfo[locale].gamesSlug` (`igre`, en `games`, de `spiele`; `gameId` je isti na svim jezicima), a radnih listova u `worksheetSlug` (`radni-listovi`, en `worksheets`, de `arbeitsblaetter`).
-- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`, `paths.games`, `paths.game(id)`, `paths.worksheet(id)`.
+- `App.tsx` pravi isti skup ruta za svaki jezik iz `LOCALES`, umotan u `<LocaleProvider locale>`. Srpski nema prefiks (`/`, `/blog`, `/o-meni`); ostali imaju (`/en`, `/en/blog`, `/en/about`, `/hr/o-meni`, `/bs/o-meni`, `/de/ueber-mich`). Slug stranice „O meni“ je u `localeInfo[locale].aboutSlug`, a stranice igara u `localeInfo[locale].gamesSlug` (`igre`, en `games`, de `spiele`; `gameId` je isti na svim jezicima), a radnih listova u `worksheetSlug` (`radni-listovi`, en `worksheets`, de `arbeitsblaetter`), a Škola u svetu u `worldSlug` (`skole-u-svetu`, hr/bs `skole-u-svijetu`, en `schools-worldwide`, de `schulen-weltweit`).
+- **Linkove nikad ne hardkoduj** (`'/blog'`) — koristi `paths` iz `useLocale()`: `paths.home`, `paths.blog`, `paths.post(slug)`, `paths.about`, `paths.games`, `paths.game(id)`, `paths.worksheet(id)`, `paths.world`, `paths.country(id)`.
 - **Tekst interfejsa nikad ne hardkoduj** — koristi `t` iz `useLocale()`. Novi string dodaj u `locales/sr.ts`, a TypeScript će tražiti isti ključ u ostala četiri rečnika.
 - `LocaleProvider` postavlja `<html lang>` na BCP 47 tag jezika.
 - `LanguageSwitcher` vodi na istu stranicu na drugom jeziku (`switchLocalePath`); ako članak nema prevod, vodi na listu članaka tog jezika.
@@ -620,6 +638,9 @@ Redosled sekcija (lično predstavljanje pa blog):
 - `getPostBySlug(slug)` — ako `null`, prikaži poruku „Članak nije pronađen" + link na `/blog`.
 - Header članka: kategorija (bedž), datum, vreme čitanja, naslov, excerpt — odmah (iz `getPostBySlug`).
 - Sadržaj: `loadPostContent()` u `useEffect`, pa `<ReactMarkdown remarkPlugins={[remarkGfm]} components={…}>` unutar `<article className="prose">`. Slike dobijaju `loading="lazy"`.
+- Iznad teksta `<TableOfContents />` (iz `extractHeadings(markdown)`). Naslovi `##`/`###` dobijaju `id` (slug bez dijakritika, duplikati `-2`) i sidro `#`; komponenta naslova nalazi svoj id po broju linije (`node.position.start.line`). Pri učitavanju sa `#sekcija` u URL-u stranica skroluje na nju kada stigne tekst.
+- Blokovi koda (`pre`) idu kroz `<CodeBlock />` sa dugmetom „Kopiraj“ (npr. promptovi).
+- Posle teksta `<ShareButtons />` — obični linkovi, bez skripti trećih strana i praćenja.
 - Link „← Nazad na blog" na dnu, pa sekcija „Još sa bloga“ (`getRelatedPosts(post, 3)` u `<PostCard />`).
 
 ### 10.4. `About.tsx`
@@ -639,6 +660,18 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Bez zvuka, reklama i praćenja. Animacije poštuju `prefers-reduced-motion`.
 - Radni listovi (`WORKSHEET_IDS`, 21): list sa istim id kao igra je njena papirna verzija (`trace`, `dots`, `maze`, `shapes`, `colors`, `count`, `pattern`, `sizes`; `GamePlay` linkuje na njih preko `hasWorksheet`); `trace`/`dots`/`maze` dele data sa igrom (`PATHS`, `FIGURES`, `MAZES`). `numbers`, `latin`, `cyrillic` su listovi za pisanje (`WritingRow`: crni uzorak, sive kopije za precrtavanje, linije). Ostali listovi su jedan SVG širine 600 i visine ≤ 660 (`Page`), sa fiksnim (ne nasumičnim) rasporedom da se isto štampaju. Na stranici igara su grupisani po `WORKSHEET_GROUPS` (naslovi u `t.games.worksheet.groups`). `WORKSHEET_LOCALES` ograničava list na jezike (ćirilica: sr, bs); abeceda za `latin` je u `t.games.worksheet.alphabet` (en/de imaju svoju), a list `colors` koristi `t.games.colorNames`. Novi list: id u `WORKSHEET_IDS` i u jednu grupu, komponenta u `worksheets` (`worksheets.tsx`), `title`/`text` u svih pet rečnika.
 - Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`.
+
+### 10.7. `World.tsx` i `Country.tsx` — Škole u svetu
+
+- Ugao: **razredna nastava** (prvi razredi), ne celo školstvo. BiH je referentna tačka (`reference: true`, ide prva i istaknuta je u tabeli).
+- Zemlja je `.md` u `src/content/countries/<jezik>/<id>.md`; prevod = isto ime fajla. Plugin `markdown-posts` po putanji (`/content/countries/`) poziva `validateCountry` umesto `validateFrontmatter` — neispravna zemlja obara build. `src/lib/countryFrontmatter.ts` i `src/types/country.ts` su u `tsconfig.node.json`.
+- Frontmatter: `name`, `code` (ISO, npr. `FI`), `excerpt` (80–200), `checked` (datum provere podataka, pod navodnicima), `reference` (opciono), `keyIdea`, `facts` (tačno ključevi iz `COUNTRY_FACTS`: `schoolStart`, `compulsory`, `tracking`, `primaryTeacher`, `teacherEducation`, `grading`, `testing`; svaki ≤ 240 karaktera), `results` (brojevi: `pisa: { year, math, reading, science }`, `timss: { year, math, science }`, `pirls: { year, reading }` — izostavljen blok = zemlja nije učestvovala), `resultsNote` (opciono), `sources` (bar jedan `{ title, url }`, `https://`). Telo: tekst sa `##` sekcijama, završava sa „Šta bismo mogli preuzeti“.
+- Prosek OECD-a za PISA je konstanta `PISA_OECD_AVERAGE` u `src/lib/countries.ts` — ažuriraj je sa novim PISA ciklusom (i `year` u zemljama). TIMSS/PIRLS nemaju prosek OECD-a (centralna tačka skale 500).
+- Zaključci ispod tabela: `src/content/world/<jezik>/zakljucci.md` (bez frontmattera, `##` naslovi); učitava ih `loadWorldSummary`.
+- **Svaka činjenica mora imati izvor** (Eurydice, OECD, ministarstvo). Kad nisi siguran, formuliši oprezno („pravila se razlikuju po entitetima“) umesto da izmišljaš broj. Ne tvrditi da autor trenutno predaje.
+- Pregled: kartice + tabela za poređenje (`COUNTRY_FACTS` × zemlje, prva kolona lepljiva, vodoravni skrol) + `<ResultsTable />` (redosled po PISA matematici; stariji ciklus = siva vrednost sa godinom) + zaključci. Zemlja: ključna ideja, kartice činjenica, rezultati, tekst, izvori, `<ShareButtons />`, ostale zemlje.
+- Jezik bez zemalja: stranica prikazuje `EmptyState` sa linkom na srpsku verziju (`noindex`), link nije u headeru/footeru, a stranica nije u sitemap-u. Link u headeru je samo na ≥ 1024px (`max-lg:hidden`); uvek je u footeru.
+- Nova činjenica: ključ u `COUNTRY_FACTS` + oznaka u `t.world.facts` (svih pet rečnika) + vrednost u svakoj zemlji.
 
 ### 10.6. `NotFound.tsx`
 

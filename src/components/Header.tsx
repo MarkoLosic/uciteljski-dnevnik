@@ -5,14 +5,17 @@ import PixelIcon from './PixelIcon';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLocale } from '../i18n/LocaleContext';
+import { hasCountries } from '../lib/countries';
 
 export default function Header() {
-  const { t, paths } = useLocale();
+  const { locale, t, paths } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const navItems = [
     { to: paths.home, label: t.nav.home },
     { to: paths.blog, label: t.nav.blog },
     { to: paths.games, label: t.nav.games, short: t.nav.gamesShort },
+    // Samo na širokim ekranima (ispod 1024px nema mesta); inače je link u footeru.
+    ...(hasCountries(locale) ? [{ to: paths.world, label: t.nav.world, wideOnly: true }] : []),
     { to: paths.about, label: t.nav.about },
   ];
 
@@ -41,9 +44,12 @@ export default function Header() {
       <div className="flex items-center gap-1 sm:gap-1.5">
         <nav aria-label={t.nav.label}>
           <ul className="flex sm:gap-1">
-            {navItems.map(({ to, label, short }) => (
+            {navItems.map(({ to, label, short, wideOnly }) => (
               // Na telefonu nema mesta za četiri stavke; logo levo već vodi na početnu.
-              <li key={to} className={to === paths.home ? 'max-sm:hidden' : undefined}>
+              <li
+                key={to}
+                className={to === paths.home ? 'max-sm:hidden' : wideOnly ? 'max-lg:hidden' : undefined}
+              >
                 <NavLink
                   to={to}
                   end={to === paths.home}

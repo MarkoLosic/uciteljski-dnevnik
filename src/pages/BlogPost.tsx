@@ -1,19 +1,47 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getRelatedPosts, loadPostContent } from '../lib/posts';
 import { formatDate } from '../lib/formatDate';
 import CategoryBadge from '../components/CategoryBadge';
+import CodeBlock from '../components/CodeBlock';
 import EmptyState from '../components/EmptyState';
 import PixelIcon from '../components/PixelIcon';
 import PostCard from '../components/PostCard';
+import ShareButtons from '../components/ShareButtons';
+import TableOfContents from '../components/TableOfContents';
+import { siteConfig } from '../config/site';
+import { extractHeadings, type Heading } from '../lib/headings';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 
-const markdownComponents: Components = {
-  img: ({ node: _node, ...props }) => <img {...props} loading="lazy" decoding="async" />,
-};
+type HeadingTag = 'h2' | 'h3';
+
+function buildComponents(headings: Heading[], anchorLabel: (title: string) => string): Components {
+  const byLine = new Map(headings.map((h) => [h.line, h]));
+  const heading =
+    (Tag: HeadingTag): Components[HeadingTag] =>
+    ({ node, children, ...props }) => {
+      const h = byLine.get(node?.position?.start.line ?? -1);
+      if (!h) return <Tag {...props}>{children}</Tag>;
+      return (
+        <Tag id={h.id} {...props}>
+          {children}
+          <a href={`#${h.id}`} className="heading-anchor focus-ring" aria-label={anchorLabel(h.text)}>
+            #
+          </a>
+        </Tag>
+      );
+    };
+
+  return {
+    img: ({ node: _node, ...props }) => <img {...props} loading="lazy" decoding="async" />,
+    pre: ({ node: _node, ...props }) => <CodeBlock {...props} />,
+    h2: heading('h2'),
+    h3: heading('h3'),
+  };
+}
 
 export default function BlogPost() {
   const { slug = '' } = useParams();
@@ -21,6 +49,7 @@ export default function BlogPost() {
   const post = getPostBySlug(locale, slug);
   const [content, setContent] = useState<{ key: string; markdown: string } | null>(null);
   const key = `${locale}/${slug}`;
+  const { hash } = useLocation();
 
   usePageMeta(
     post
@@ -38,6 +67,16 @@ export default function BlogPost() {
     };
   }, [locale, slug, key]);
 
+  const markdown = content?.key === key ? content.markdown : null;
+  const headings = useMemo(() => (markdown ? extractHeadings(markdown) : []), [markdown]);
+  const components = useMemo(() => buildComponents(headings, t.blog.headingLink), [headings, t]);
+
+  // Sadržaj se učitava naknadno, pa browser ne može sam da skroluje na #sekciju iz linka.
+  useEffect(() => {
+    if (markdown === null || !hash) return;
+    document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: 'instant' });
+  }, [markdown, hash]);
+
   if (!post) {
     return (
       <div className="wrap max-w-[780px] pt-[130px]">
@@ -53,7 +92,6 @@ export default function BlogPost() {
   }
 
   const related = getRelatedPosts(post, 3);
-  const markdown = content?.key === key ? content.markdown : null;
 
   return (
     <>
@@ -83,15 +121,19 @@ export default function BlogPost() {
           <p className="text-[clamp(16.5px,1.6vw,19px)] text-muted">{post.excerpt}</p>
         </header>
 
+        <TableOfContents headings={headings} />
+
         <article className="prose" aria-busy={markdown === null}>
           {markdown !== null && (
-            <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
               {markdown}
             </ReactMarkdown>
           )}
         </article>
 
-        <div className="mt-14 border-t border-line pt-7">
+        <ShareButtons title={post.title} url={`${siteConfig.url}${paths.post(post.slug)}`} />
+
+        <div className="mt-10">
           <Link to={paths.blog} className="btn btn-ghost focus-ring">
             <PixelIcon name="back" />
             {t.blog.backToBlog}

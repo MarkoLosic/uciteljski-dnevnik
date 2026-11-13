@@ -332,6 +332,34 @@
   .prose h2 {
     font-size: 30px;
   }
+  .heading-anchor {
+    margin-left: 0.35em;
+    padding: 0 0.15em;
+    border-radius: 6px;
+    color: var(--muted);
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0;
+    transition:
+      opacity 0.15s,
+      color 0.15s;
+  }
+  .prose .heading-anchor {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .prose :is(h2, h3):hover .heading-anchor,
+  .prose .heading-anchor:focus-visible {
+    opacity: 1;
+  }
+  .prose .heading-anchor:hover {
+    color: var(--accent);
+  }
+  @media (hover: none) {
+    .heading-anchor {
+      opacity: 0.45;
+    }
+  }
   .prose h3 {
     font-size: 23px;
   }
@@ -405,6 +433,51 @@
     color: #d7deea;
     font-size: 14px;
     line-height: 1.7;
+  }
+  .code-block {
+    position: relative;
+  }
+  .code-block pre {
+    padding-top: 46px;
+  }
+  /* Blok koda je uvek taman (i u svetloj temi), pa su i boje dugmeta fiksne. */
+  .code-copy {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 30px;
+    padding: 0 11px;
+    border-radius: 9px;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    background: rgb(255 255 255 / 0.06);
+    color: #d7deea;
+    font: 500 12.5px var(--font-mono);
+    transition: background 0.15s;
+  }
+  .code-copy:hover {
+    background: rgb(255 255 255 / 0.12);
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    font-size: 14.5px;
+    font-weight: 500;
+    transition:
+      background 0.15s,
+      color 0.15s;
+  }
+  .share-btn:hover {
+    background: var(--surface-2);
+    color: var(--accent);
   }
   .prose img {
     width: 100%;

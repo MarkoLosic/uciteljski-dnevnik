@@ -5,12 +5,14 @@ import matter from 'gray-matter';
 import fs from 'node:fs';
 import path from 'node:path';
 import { readingMinutes, validateFrontmatter } from './src/lib/frontmatter';
+import { validateCountry } from './src/lib/countryFrontmatter';
 import { DEFAULT_LOCALE, isLocale, localeInfo, LOCALES, type Locale } from './src/i18n/config';
 import { dictionaries } from './src/i18n/dictionaries';
 import { siteConfig } from './src/config/site';
 import { documentTitle, pageMeta, type PageMetaText } from './src/lib/seo';
 import { GAME_IDS, WORKSHEET_IDS, WORKSHEET_LOCALES } from './src/games/ids';
 import type { PostFrontmatter } from './src/types/post';
+import type { CountryFrontmatter } from './src/types/country';
 
 // gray-matter zavisi od Node-ovog Buffer-a, pa frontmatter parsiramo ovde (u Node-u),
 // a ne u browseru. Validacija ovde znači da neispravan članak obara `npm run build`.
@@ -25,7 +27,16 @@ function markdownPosts(): Plugin {
       const locale = path.basename(path.dirname(file));
       const name = `${locale}/${path.basename(file)}`;
       if (!isLocale(locale)) {
-        throw new Error(`Članak "${name}" mora biti u folderu jezika: ${LOCALES.join(', ')}`);
+        throw new Error(`Fajl "${name}" mora biti u folderu jezika: ${LOCALES.join(', ')}`);
+      }
+      // content/countries/ → zemlje, content/world/ → zaključci (Škole u svetu), sve ostalo → članci bloga.
+      if (file.includes('/content/world/')) {
+        return { code: `export default ${JSON.stringify(content)};`, map: null };
+      }
+      if (file.includes('/content/countries/')) {
+        validateCountry(data, name);
+        const value = query === 'meta' ? { data } : content;
+        return { code: `export default ${JSON.stringify(value)};`, map: null };
       }
       validateFrontmatter(data, name);
       const value = query === 'meta' ? { data, readingMinutes: readingMinutes(content) } : content;
@@ -61,6 +72,26 @@ function readPosts(): SourcePost[] {
   });
 }
 
+interface SourceCountry extends CountryFrontmatter {
+  id: string;
+  locale: Locale;
+}
+
+function readCountries(): SourceCountry[] {
+  return LOCALES.flatMap((locale) => {
+    const dir = path.resolve(__dirname, 'src/content/countries', locale);
+    if (!fs.existsSync(dir)) return [];
+    return fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('.md'))
+      .map((file): SourceCountry => ({
+        id: file.replace(/\.md$/, ''),
+        locale,
+        ...validateCountry(matter(fs.readFileSync(path.join(dir, file), 'utf8')).data, `${locale}/${file}`),
+      }));
+  });
+}
+
 interface Page {
   path: string;
   meta: PageMetaText;
@@ -74,7 +105,7 @@ const base = (locale: Locale) => (locale === DEFAULT_LOCALE ? '' : `/${locale}`)
 
 // Ista stranica na svim jezicima čini jednu grupu; iz nje nastaju hreflang veze.
 // Nova vrsta stranice → dodaj je ovde (sitemap i statični HTML se prave iz ovog spiska).
-function pageGroups(posts: SourcePost[]): PageGroup[] {
+function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[] {
   const everywhere = (page: (locale: Locale) => Page, locales: readonly Locale[] = LOCALES): PageGroup =>
     Object.fromEntries(locales.map((locale) => [locale, page(locale)]));
   const games = (locale: Locale) => `${base(locale)}/${localeInfo[locale].gamesSlug}`;
@@ -105,7 +136,24 @@ function pageGroups(posts: SourcePost[]): PageGroup[] {
     };
     bySlug.set(post.slug, group);
   }
-  return [...groups, ...bySlug.values()];
+  // Škole u svetu: samo jezici koji imaju bar jednu zemlju.
+  const world = (locale: Locale) => `${base(locale)}/${localeInfo[locale].worldSlug}`;
+  const worldLocales = LOCALES.filter((l) => countries.some((c) => c.locale === l));
+  if (worldLocales.length > 0) {
+    groups.push(everywhere((l) => ({ path: world(l), meta: pageMeta.world(t(l)) }), worldLocales));
+  }
+  const byCountry = new Map<string, PageGroup>();
+  for (const country of countries) {
+    const group = byCountry.get(country.id) ?? {};
+    group[country.locale] = {
+      path: `${world(country.locale)}/${country.id}`,
+      meta: pageMeta.country(t(country.locale), country),
+      lastmod: country.checked,
+    };
+    byCountry.set(country.id, group);
+  }
+
+  return [...groups, ...byCountry.values(), ...bySlug.values()];
 }
 
 const escapeXml = (s: string) =>
@@ -226,7 +274,7 @@ function seoFiles(): Plugin {
     enforce: 'post',
     buildStart() {
       posts = readPosts();
-      groups = pageGroups(posts);
+      groups = pageGroups(posts, readCountries());
     },
     generateBundle() {
       const robots = ['User-agent: *', 'Allow: /'];

@@ -11,6 +11,7 @@ const paths = {
     'M0 0h9v1h-9zM0 1h1v1h-1zM2 1h7v1h-7zM0 2h9v1h-9zM0 3h1v1h-1zM2 3h1v1h-1zM4 3h1v1h-1zM7 3h2v1h-2zM0 4h1v1h-1zM2 4h1v1h-1zM5 4h2v1h-2zM8 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM4 7h3v1h-3zM8 7h1v1h-1zM0 8h9v1h-9z',
   mail: 'M0 1h9v1h-9zM0 2h2v1h-2zM7 2h2v1h-2zM0 3h1v1h-1zM2 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM0 4h1v1h-1zM3 4h1v1h-1zM5 4h1v1h-1zM8 4h1v1h-1zM0 5h1v1h-1zM4 5h1v1h-1zM8 5h1v1h-1zM0 6h1v1h-1zM8 6h1v1h-1zM0 7h9v1h-9z',
   pin: 'M2 0h5v1h-5zM1 1h2v1h-2zM6 1h2v1h-2zM1 2h1v1h-1zM4 2h1v1h-1zM7 2h1v1h-1zM1 3h1v1h-1zM7 3h1v1h-1zM1 4h2v1h-2zM6 4h2v1h-2zM2 5h2v1h-2zM5 5h2v1h-2zM3 6h3v1h-3zM4 7h1v1h-1z',
+  copy: 'M3 0h6v1h-6zM8 1h1v5h-1zM3 1h1v2h-1zM6 5h2v1h-2zM0 3h6v1h-6zM0 4h1v4h-1zM5 4h1v4h-1zM0 8h6v1h-6z',
 } as const;
 
 export type PixelIconName = keyof typeof paths;
