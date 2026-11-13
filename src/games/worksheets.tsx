@@ -1951,6 +1951,372 @@ function DifferentiatedMultiplicationTestSheet() {
   );
 }
 
+function Grade1TestSheet() {
+  return (
+    <TestFrame
+      subject="1. RAZRED · KOMPLEKSNA DIFERENCIRANA PROVJERA"
+      title="Matematika (do 20), Početno čitanje i pisanje, Moja okolina"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Izračunaj osnovne računske zadatke u prvoj desetici (4 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>4 + 3 = ____</div>
+            <div>7 + 2 = ____</div>
+            <div>9 - 5 = ____</div>
+            <div>10 - 6 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Spoj riječ sa njenim početnim glasom i slovom (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 text-sm bg-white p-2 rounded border border-gray-200 text-center font-medium">
+            <div>🍎 JABUKA &nbsp;➔&nbsp; [ &nbsp;<strong>J</strong>&nbsp; ]</div>
+            <div>🌞 SUNCE &nbsp;➔&nbsp; [ &nbsp;<strong>S</strong>&nbsp; ]</div>
+            <div>🐟 RIBA &nbsp;➔&nbsp; [ &nbsp;<strong>R</strong>&nbsp; ]</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Zaokruži ono što pripada živoj prirodi (3 b):</p>
+          <div className="grid grid-cols-4 gap-2 text-sm bg-white p-2 rounded border border-gray-200 text-center font-medium">
+            <div className="border border-dashed border-gray-300 rounded p-1">Hrastovo drvo</div>
+            <div className="border border-dashed border-gray-300 rounded p-1">Sivi kamen</div>
+            <div className="border border-dashed border-gray-300 rounded p-1">Pas štene</div>
+            <div className="border border-dashed border-gray-300 rounded p-1">Plastična lopta</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Izračunaj sabiranje i oduzimanje u drugoj desetici (4 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>12 + 5 = ____</div>
+            <div>18 - 6 = ____</div>
+            <div>8 + 6 = ____</div>
+            <div>15 - 7 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Rastavi riječi na slogove crticom i napiši broj slogova (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>ŠKOLA ➔ ŠKO-LA (2)</div>
+            <div>LEPTIR ➔ ________ ( )</div>
+            <div>UČIONICA ➔ ______ ( )</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">6. Dopuni nazive godišnjih doba koja nedostaju (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-sm font-medium text-center">
+            Proljeće &nbsp;➔&nbsp; ____________________ &nbsp;➔&nbsp; Jesen &nbsp;➔&nbsp; ____________________
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">7. Tekstualni zadatak sa računanjem (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              U školskoj korpi bilo je 8 crvenih i 7 žutih jabuka. Učenici su za užinu pojeli 9 jabuka. Koliko je jabuka ostalo u korpi?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              1) Ukupno jabuka: _______________________ = _____<br />
+              2) Ostalo jabuka: _______________________ = _____<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">8. Složi date riječi u smislenu rečenicu i prepiši je (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Riječi: <strong>[ marljivo, školi, u, uči, novi, đak ]</strong><br />
+            Rečenica: _________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function Grade2TestSheet() {
+  return (
+    <TestFrame
+      subject="2. RAZRED · KOMPLEKSNA DIFERENCIRANA PROVJERA"
+      title="Sabiranje i oduzimanje do 100, Rečenice i imenice, Priroda i društvo"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Izračunaj sabiranje i oduzimanje bez prelaza desetice (4 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>34 + 20 = ____</div>
+            <div>52 + 25 = ____</div>
+            <div>78 - 30 = ____</div>
+            <div>89 - 46 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Zaokruži sve imenice (riječi koje označavaju bića i predmete) (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-sm font-medium flex justify-around">
+            <span>Marko</span>
+            <span>trči</span>
+            <span>knjiga</span>
+            <span>plavo</span>
+            <span>lastavica</span>
+            <span>pjeva</span>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Razvrstaj životinje na domaće (D) i divlje (Div) (3 b):</p>
+          <div className="grid grid-cols-4 gap-2 text-sm bg-white p-2 rounded border border-gray-200 text-center font-medium">
+            <div>Krava [ &nbsp; ]</div>
+            <div>Vuk [ &nbsp; ]</div>
+            <div>Kokoška [ &nbsp; ]</div>
+            <div>Lisica [ &nbsp; ]</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Izračunaj sa prelazom desetice (4 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>47 + 28 = ____</div>
+            <div>39 + 36 = ____</div>
+            <div>73 - 38 = ____</div>
+            <div>91 - 47 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Prepoznaj vrstu rečenice i stavi odgovarajući znak na kraju (. ? !) (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm space-y-1">
+            <div>a) Kako se zove tvoja osnovna škola [ &nbsp; ] ➔ ______________________ rečenica</div>
+            <div>b) Sutra svi učenici idu na proljećni izlet [ &nbsp; ] ➔ ______________________ rečenica</div>
+            <div>c) Pazi, dolazi automobil [ &nbsp; ] ➔ ______________________ rečenica</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">6. Dopuni 4 osnovne strane svijeta (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-sm font-medium text-center">
+            Sjever (S) &nbsp;·&nbsp; ____________________ (J) &nbsp;·&nbsp; Istok (I) &nbsp;·&nbsp; ____________________ (Z)
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">7. Tekstualni zadatak u dva koraka (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              U školskoj biblioteci na prvoj polici nalazi se 38 knjiga bajki, a na drugoj polici ima 17 knjiga više nego na prvoj. Koliko se ukupno knjiga bajki nalazi na obje police?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              1) Druga polica: _______________________ = _____ knjiga<br />
+              2) Ukupno na obje: _____________________ = _____ knjiga<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">8. Pronađi 3 greške i prepiši rečenicu pravilno velikim slovom (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Netačno: <em>učenik marko i njegova sestra ana žive u sarajevu pored rijeke miljacke.</em><br />
+            Pravilno: _________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function Grade3TestSheet() {
+  return (
+    <TestFrame
+      subject="3. RAZRED · KOMPLEKSNA DIFERENCIRANA PROVJERA"
+      title="Tablica množenja i dijeljenja, Vrste riječi, Zavičaj i reljef"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Izračunaj osnovne produkte i količnike (4 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>7 × 6 = ____</div>
+            <div>8 × 9 = ____</div>
+            <div>48 : 6 = ____</div>
+            <div>63 : 7 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Podvuci sve glagole (riječi koje označavaju radnju) u rečenici (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-sm font-medium">
+            "Djeca veselo trče po parku, pjevaju pjesme i igraju fudbal sa loptom."
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Poveži oblik reljefa sa odgovarajućim opisom (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 text-xs bg-white p-2 rounded border border-gray-200 text-center">
+            <div><strong>Ravnica</strong> ➔ Plodno ravno tlo</div>
+            <div><strong>Brdo</strong> ➔ Uzvišenje do 500 m</div>
+            <div><strong>Planina</strong> ➔ Uzvišenje preko 500 m</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Izračunaj pazeći na redoslijed operacija i zagrade (4 b):</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 82 - 7 × 8 = 82 - ____ = ____</div>
+            <div>b) 9 × 6 + 36 : 4 = ____ + ____ = ____</div>
+            <div>c) (45 + 18) : 7 = ____ : 7 = ____</div>
+            <div>d) 100 - (24 : 3 × 5) = 100 - ____ = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Odredi rod i broj imenica (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 font-mono text-xs bg-white p-2 rounded border border-gray-200">
+            <div>a) SUNCE (rod: ____, br: ____)</div>
+            <div>b) KNJIGE (rod: ____, br: ____)</div>
+            <div>c) DJEČAK (rod: ____, br: ____)</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">6. Razvrstaj vode u zavičaju na tekuće (T) i stajaće (S) (3 b):</p>
+          <div className="grid grid-cols-5 gap-2 text-xs bg-white p-2 rounded border border-gray-200 text-center font-medium">
+            <div>Rijeka [ &nbsp; ]</div>
+            <div>Jezero [ &nbsp; ]</div>
+            <div>Potok [ &nbsp; ]</div>
+            <div>Bara [ &nbsp; ]</div>
+            <div>More [ &nbsp; ]</div>
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">7. Riješi jednačinu i tekstualni zadatak (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              Jednačina: <strong>x × 8 = 72</strong> ➔ x = ________________ = _____<br />
+              Zadatak: Pekar je ispekao 9 tepsija po 8 kiflica. Ako je prodao 58 kiflica, koliko mu je kiflica ostalo?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              1) Ukupno kiflica: _____________________ = _____<br />
+              2) Ostalo kiflica: _____________________ = _____<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">8. Orijentacija u prirodi bez kompasa (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm leading-normal">
+            Objasni kako pomoću mahovine na stablima drveća i pomoću godova na panju možemo odrediti gdje se nalazi sjever:<br />
+            ____________________________________________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function Grade4TestSheet() {
+  return (
+    <TestFrame
+      subject="4. RAZRED · KOMPLEKSNA DIFERENCIRANA PROVJERA"
+      title="Višecifreni brojevi, Geometrija, Rečenica, Ljudsko tijelo i ekologija"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Saberi i oduzmi višecifrene brojeve (4 b):</p>
+          <div className="grid grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>35.400 + 24.300 = ___________</div>
+            <div>78.650 - 45.230 = ___________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Podvuci subjekat (jednom crtom) i predikat (dvije crte) (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-sm font-medium">
+            "Vrijedni učenici četvrtog razreda pažljivo rješavaju kontrolni zadatak."
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Organi u ljudskom tijelu — napiši njihovu glavnu ulogu (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 text-xs bg-white p-2 rounded border border-gray-200">
+            <div><strong>Srce:</strong> pumpa krv</div>
+            <div><strong>Pluća:</strong> disanje i kiseonik</div>
+            <div><strong>Mozak:</strong> upravlja telom</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Pisano množenje i dijeljenje (4 b):</p>
+          <div className="grid grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>342 × 15 = _____________________</div>
+            <div>896 : 4 = ______________________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Geometrija — Obim i površina pravougaonika (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm font-mono">
+            Pravougaonik ima stranice a = 9 cm i b = 6 cm.<br />
+            Obim: O = 2 × (a + b) = 2 × (____ + ____) = ______ cm<br />
+            Površina: P = a × b = ____ × ____ = ______ cm²
+          </div>
+          <p className="font-semibold text-[13px] pt-1">6. Ekosistem i fotosinteza (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Zašto su zelene biljke proizvođači u prirodi i šta one stvaraju procesom fotosinteze?<br />
+            _________________________________________________________________
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">7. Složeni problem iz geometrije i finansijske pismenosti (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              Pod dječije sobe ima oblik pravougaonika dužine 5 m i širine 4 m. Kolika je površina poda te sobe? Ako jedan kvadratni metar parketa košta 25 KM, koliko košta parket za cijelu sobu?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              1) Površina sobe: P = a × b = _____ × _____ = _____ m²<br />
+              2) Ukupna cijena parketa: _____ m² × 25 KM = _____ KM<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">8. Analiza književnog teksta i pouka (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Napiši u 2 do 3 rečenice pouku basne o cvrčku i mravu. Kako se ta pouka primjenjuje na rad i učenje đaka u školi?<br />
+            ____________________________________________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function Grade5TestSheet() {
+  return (
+    <TestFrame
+      subject="5. RAZRED · KOMPLEKSNA DIFERENCIRANA PROVJERA"
+      title="Razlomci i uglovi, Padeži i sintaksa, Geografska karta i biosfera"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Saberi i oduzmi razlomke jednakih imenilaca (4 b):</p>
+          <div className="grid grid-cols-3 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>3/8 + 4/8 = ____</div>
+            <div>9/10 - 3/10 = ____</div>
+            <div>1 - 4/7 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Odredi padež podvučenih riječi (pitanje i naziv padeža) (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm space-y-1">
+            <div>a) Vidim <u>lijepu pticu</u> na grani ➔ Koga/šta vidim? ➔ Padež: __________________</div>
+            <div>b) Idemo prema <u>školskom dvorištu</u> ➔ Kome/čemu idemo? ➔ Padež: ____________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Geografska karta i razmernik (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Šta označava razmernik 1 : 100.000 na geografskoj karti? &nbsp;➔&nbsp; 1 cm na karti u prirodi je: __________ km.
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Razlomci sa različitim imeniocima i decimalni brojevi (4 b):</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 1/2 + 1/4 = ____/4 + 1/4 = ____</div>
+            <div>b) 5/6 - 1/3 = 5/6 - ____/6 = ____</div>
+            <div>c) 3.65 + 4.8 = ___________</div>
+            <div>d) 10 - 3.45 = ___________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Služba riječi u rečenici (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            U rečenici: <em>"Učenici su juče u biblioteci tiho čitali zanimljive knjige."</em> odredi:<br />
+            - Priloška odredba za vrijeme: ___________________ &nbsp;|&nbsp; Priloška odredba za mjesto: ___________________<br />
+            - Pravi objekat: __________________________________
+          </div>
+          <p className="font-semibold text-[13px] pt-1">6. Građa Zemlje i reljef (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Nabroj tri glavna sloja unutrašnje građe planete Zemlje:<br />
+            1) ________________________ &nbsp;|&nbsp; 2) ________________________ &nbsp;|&nbsp; 3) ________________________
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">7. Geometrija i računanje uglova (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              a) Dva ugla su komplementna (njihov zbir je 90°). Ako je ugao α = 38°, izračunaj ugao β.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;β = 90° - 38° = _______°<br />
+              b) Zbir unutrašnjih uglova u svakom trouglu je 180°. Ako su dva ugla trougla α = 65° i β = 45°, izračunaj treći ugao γ.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;γ = 180° - (65° + 45°) = 180° - _______° = _______°
+            </p>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">8. Književnost i stilske figure (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Prepoznaj stilske figure u sljedećim primjerima:<br />
+            a) <em>"Zlatno sunce se tiho nasmijalo planinskim vrhovima."</em> ➔ ___________________________<br />
+            b) <em>"Bistar kao gorsko jezero."</em> ➔ ___________________________<br />
+            Napiši u 2 rečenice zašto je čitanje knjiga važno za bogaćenje rečnika i mišljenje:<br />
+            ____________________________________________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
 interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
@@ -2159,6 +2525,11 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   differences: () => [<DifferencesSheet key="differences" />],
   symmetry: () => [<SymmetrySheet key="symmetry" />],
   copy: () => [<CopySheet key="copy" />],
+  testGrade1: () => [<Grade1TestSheet key="testGrade1" />],
+  testGrade2: () => [<Grade2TestSheet key="testGrade2" />],
+  testGrade3: () => [<Grade3TestSheet key="testGrade3" />],
+  testGrade4: () => [<Grade4TestSheet key="testGrade4" />],
+  testGrade5: () => [<Grade5TestSheet key="testGrade5" />],
   testMathOperations: () => [<DifferentiatedMathTestSheet key="testMathOperations" />],
   testLanguageGrammar: () => [<DifferentiatedGrammarTestSheet key="testLanguageGrammar" />],
   testNatureSociety: () => [<DifferentiatedNatureTestSheet key="testNatureSociety" />],

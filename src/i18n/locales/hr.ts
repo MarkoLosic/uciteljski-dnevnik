@@ -362,6 +362,26 @@ export const hr: Dictionary = {
         logic: 'Logika i pažnja',
       },
       sheets: {
+        testGrade1: {
+          title: 'Diferencirani ispit za 1. razred (3 razine znanja)',
+          text: 'Provjera za učenike prvog razreda: I razina (brojevi do 10, prepoznavanje slova i glasova), II razina (zbrajanje i oduzimanje do 20, spajanje slogova i riječi), III razina (tekstualni zadatak i sastavljanje rečenice).',
+        },
+        testGrade2: {
+          title: 'Diferencirani ispit za 2. razred (3 razine znanja)',
+          text: 'Provjera za učenike drugog razreda: I razina (račun do 100 bez prijelaza, imenice i rečenice), II razina (zbrajanje i oduzimanje s prijelazom, vrste riječi i godišnja doba), III razina (zadaci u dva koraka i kratak opis).',
+        },
+        testGrade3: {
+          title: 'Diferencirani ispit za 3. razred (3 razine znanja)',
+          text: 'Provjera za učenike trećeg razreda: I razina (tablica množenja i dijeljenja, imenice i glagoli), II razina (izrazi sa zagradama, pridjevi, orijentacija u prostoru), III razina (tekstualni zadaci s nepoznatim faktorom i plan naselja).',
+        },
+        testGrade4: {
+          title: 'Diferencirani ispit za 4. razred (3 razine znanja)',
+          text: 'Provjera za učenike četvrtog razreda: I razina (višeznamenkasti brojevi, pravopis i rečenice), II razina (pisano množenje i dijeljenje, subjekt i predikat, organi i čovjek), III razina (opseg i površina, analiza teksta i ekosustavi).',
+        },
+        testGrade5: {
+          title: 'Diferencirani ispit za 5. razred (3 razine znanja)',
+          text: 'Provjera za učenike petog razreda: I razina (osnovni razlomci, vrste riječi i padeži), II razina (računanje s razlomcima, služba riječi, zemljovid), III razina (kutovi i geometrijski zadaci, stilska izražajna sredstva i interpretacija).',
+        },
         testMathOperations: {
           title: 'Diferencirani ispit: Zbrajanje i oduzimanje (3 razine znanja)',
           text: 'Diferencirana kontrolna vježba iz matematike: I razina (osnovno računanje do 20), II razina (računanje do 100 sa zagradama i nepoznatim brojem), III razina (složeni tekstualni zadatak i magični kvadrat).',

@@ -362,6 +362,26 @@ export const en: Dictionary = {
         logic: 'Logic and attention',
       },
       sheets: {
+        testGrade1: {
+          title: 'Differentiated Test for Grade 1 (3 Levels)',
+          text: 'Grade 1 evaluation: Level I (numbers to 10, letter & sound recognition), Level II (addition/subtraction to 20, syllables & words), Level III (word problem & sentence construction).',
+        },
+        testGrade2: {
+          title: 'Differentiated Test for Grade 2 (3 Levels)',
+          text: 'Grade 2 evaluation: Level I (math to 100 without regrouping, nouns & sentences), Level II (addition/subtraction with regrouping, parts of speech), Level III (two-step problems & short creative prompt).',
+        },
+        testGrade3: {
+          title: 'Differentiated Test for Grade 3 (3 Levels)',
+          text: 'Grade 3 evaluation: Level I (multiplication & division table, nouns & verbs), Level II (parentheses expressions, adjectives, map directions), Level III (equations with unknown factor & community map).',
+        },
+        testGrade4: {
+          title: 'Differentiated Test for Grade 4 (3 Levels)',
+          text: 'Grade 4 evaluation: Level I (multi-digit numbers, spelling & punctuation), Level II (long multiplication & division, subject & predicate, human biology), Level III (geometry area/perimeter, text analysis & ecosystems).',
+        },
+        testGrade5: {
+          title: 'Differentiated Test for Grade 5 (3 Levels)',
+          text: 'Grade 5 evaluation: Level I (basic fractions, grammatical cases), Level II (fraction arithmetic, sentence syntax, geography map), Level III (angles & geometry challenges, figurative language & analysis).',
+        },
         testMathOperations: {
           title: 'Differentiated test: Addition & subtraction (3 levels)',
           text: 'Differentiated math test: Level I (basic operations up to 20), Level II (operations up to 100 with parentheses and unknown x), Level III (multi-step word problem and magic square).',

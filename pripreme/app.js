@@ -870,23 +870,66 @@
     const ishod3 = ishodiLinije[2] || 'povezuje naučeno gradivo sa novim situacijama i rješava problemske zadatke';
 
     const normPredmet = normalizujTekst(jedinica.predmet);
+    const r = Number(jedinica.razred) || 1;
     let zadatakOsnovni = '';
     let zadatakSrednji = '';
     let zadatakNapredni = '';
 
     if (normPredmet.includes('matematika')) {
-      zadatakOsnovni =
-        'Uz pomoć očiglednih sredstava, brojevne prave ili ponuđenog modela na tabli rješava osnovne zadatke za lekciju „' +
-        jedinica.naziv +
-        '“ (prepoznavanje, zapisivanje i direktan račun u jednom koraku).';
-      zadatakSrednji =
-        'Samostalno rješava standardne zadatke iz udžbenika i radne sveske vezane za „' +
-        jedinica.naziv +
-        '“, provjerava tačnost rezultata i objašnjava postupak rješavanja.';
-      zadatakNapredni =
-        'Rješava složenije tekstualne i problemske zadatke sa više operacija u okviru teme „' +
-        jedinica.naziv +
-        '“, pronalazi različite načine rješavanja i samostalno sastavlja novi matematički zadatak za vršnjake.';
+      if (r === 1) {
+        zadatakOsnovni =
+          '1) Pomoću brojevne prave i crteža izračunaj direktan zbir i razliku do 10/20 za temu „' +
+          jedinica.naziv +
+          '”. 2) Prebroj i oboji tačan broj kružića. 3) Upiši broj koji nedostaje: 6 + [ &nbsp; ] = 10.';
+        zadatakSrednji =
+          '1) Samostalno izračunaj zadatke sabiranja i oduzimanja do 20 bez prelaza za temu „' +
+          jedinica.naziv +
+          '”. 2) Upiši znak <, > ili =: 14 + 3 [ &nbsp; ] 20 - 2. 3) Dopuni jednakost: 15 - [ &nbsp; ] = 9.';
+        zadatakNapredni =
+          '1) Riješi tekstualni zadatak u 2 koraka: „Marko ima 8 bojica, a Luka za 4 više od Marka. Koliko bojica imaju zajedno?”. 2) Logička zagonetka: upiši brojeve 2, 4 i 6 u kružiće tako da zbir u svakom pravcu bude 10.';
+      } else if (r === 2) {
+        zadatakOsnovni =
+          '1) Izračunaj sabiranje i oduzimanje do 100 bez prelaza: 42 + 25 = ___ i 78 - 34 = ___ za temu „' +
+          jedinica.naziv +
+          '”. 2) Prepoznaj i imenuj geometrijske oblike. 3) Popuni tablicu brojeva.';
+        zadatakSrednji =
+          '1) Izračunaj sa prelazom preko desetice: 38 + 27 = ___ i 63 - 28 = ___. 2) Izračunaj vrijednost izraza sa zagradama: (45 + 15) - 24 = ___. 3) Odredi nepoznati broj x: x + 19 = 52.';
+        zadatakNapredni =
+          '1) Tekstualni zadatak u 2 koraka: „U voćnjaku je ubrano 35 kg jabuka i za 12 kg manje krušaka. Koliko je ukupno voća ubrano?”. 2) Magični kvadrat: popuni polja tako da je zbir u svakom pravcu 30.';
+      } else if (r === 3) {
+        zadatakOsnovni =
+          '1) Izračunaj osnovne proizvode i količnike tablice množenja do 5 za temu „' +
+          jedinica.naziv +
+          '”: 4 × 5 = ___ i 18 : 3 = ___. 2) Zapiši zbir sabiraka kao proizvod. 3) Upiši broj koji nedostaje: 6 × [ &nbsp; ] = 24.';
+        zadatakSrednji =
+          '1) Izračunaj poštujući redoslijed računskih operacija za temu „' +
+          jedinica.naziv +
+          '”: 70 - 7 × 8 = ___ i 48 : 6 + 25 = ___. 2) Riješi jednačinu: x × 8 = 56. 3) Uporedi izraze: 8 × 6 [ &nbsp; ] 50 - 3.';
+        zadatakNapredni =
+          '1) Tekstualni zadatak sa dijeljenjem i ostatkom: „U skladištu ima 58 kg brašna. Pakuje se u vrećice od po 6 kg. Koliko vrećica je napunjeno i koliko je kg ostalo?”. 2) Logička zagonetka: Broj pomnožen sa 4 i umanjen za 12 daje 28. Koji je to broj?';
+      } else if (r === 4) {
+        zadatakOsnovni =
+          '1) Zapiši ciframa i riječima višecifrene brojeve do 1.000.000 za temu „' +
+          jedinica.naziv +
+          '”. 2) Pismeno saberi i oduzmi: 4.532 + 2.146 = ___ i 8.765 - 3.421 = ___. 3) Izračunaj obim/površinu geometrijske figure.';
+        zadatakSrednji =
+          '1) Pismeno pomnoži i podijeli višecifrenim brojem za temu „' +
+          jedinica.naziv +
+          '”: 458 × 24 = ___ i 2.736 : 6 = ___. 2) Riješi složeniju jednačinu: (x + 350) - 180 = 420. 3) Pretvori mjerne jedinice.';
+        zadatakNapredni =
+          '1) Složeni problemski zadatak kretanja: „Dva voza kreću istovremeno jedan drugom u susret iz gradova udaljenih 360 km brzinama 70 km/h i 50 km/h. Nakon koliko sati će se sresti?”. 2) Geometrijsko-kombinatorni zadatak.';
+      } else {
+        zadatakOsnovni =
+          '1) Zapiši i pročitaj razlomke, prepoznaj pravi i nepravi razlomak za temu „' +
+          jedinica.naziv +
+          '”. 2) Saberi razlomke jednakih imenilaca: 3/7 + 2/7 = ___. 3) Nacrtaj i izmjeri zadati ugao uglomjerom.';
+        zadatakSrednji =
+          '1) Saberi i oduzmi razlomke različitih imenilaca uz pronalaženje NZS: 2/3 + 3/4 = ___. 2) Riješi jednačinu sa decimalnim brojevima za temu „' +
+          jedinica.naziv +
+          '”. 3) Izračunaj komplementne i suplementne uglove.';
+        zadatakNapredni =
+          '1) Tekstualni zadatak sa razlomcima u tri koraka: „Biciklista je prvog dana prešao 2/5 puta, drugog dana 1/3 ostatka, a trećeg dana preostalih 24 km. Kolika je dužina cijelog puta?”. 2) Geometrijski dokaz simetrije.';
+      }
     } else if (
       normPredmet.includes('maternji') ||
       normPredmet.includes('srpski') ||
@@ -894,70 +937,148 @@
       normPredmet.includes('hrvatski') ||
       normPredmet.includes('jezik')
     ) {
-      zadatakOsnovni =
-        'Uz podršku učitelja i podsticajna pitanja uočava osnovne elemente teme „' +
-        jedinica.naziv +
-        '“, prepoznaje ključne riječi/primjere u tekstu i dopunjava kratke rečenice prema modelu.';
-      zadatakSrednji =
-        'Samostalno čita, analizira i primjenjuje pravila/sadržaje nastavne jedinice „' +
-        jedinica.naziv +
-        '“, odgovara potpunim rečenicama i pravilno rješava zadatke na nastavnom listiću.';
-      zadatakNapredni =
-        'Stvaralački i kritički pristupa temi „' +
-        jedinica.naziv +
-        '“, samostalno sastavlja kraći autorski tekst ili proširene primjere, uočava dublje značenje i pomaže drugovima u grupi.';
-    } else if (normPredmet.includes('priroda') || normPredmet.includes('okolina') || normPredmet.includes('pid')) {
-      zadatakOsnovni =
-        'Posmatra ilustracije/modele i uz vođenje učitelja imenuje osnovne pojmove i pojave iz lekcije „' +
-        jedinica.naziv +
-        '“, te rješava zadatke zaokruživanja i spajanja parova.';
-      zadatakSrednji =
-        'Samostalno opisuje karakteristike i značaj pojmova iz teme „' +
-        jedinica.naziv +
-        '“, razvrstava primjere u tabelu i povezuje ih sa svakodnevnim životom u svom okruženju.';
-      zadatakNapredni =
-        'Objašnjava uzročno-posljedične veze u okviru nastavne jedinice „' +
-        jedinica.naziv +
-        '“, donosi zaključke na osnovu ogleda/istraživanja i predlaže praktična rješenja ili ekološke poruke.';
+      if (r === 1) {
+        zadatakOsnovni =
+          '1) Imenuj glas i zaokruži naučeno slovo u riječima vezanim za „' +
+          jedinica.naziv +
+          '”. 2) Spoji linijom sliku sa početnim slovom. 3) Prepiši pažljivo 2 jednostavne riječi školskim pismom.';
+        zadatakSrednji =
+          '1) Podijeli date riječi na slogove (npr. ško-la, u-či-te-љ). 2) Sastavi i napiši potpunu rečenicu po modelu sa velikim početnim slovom i tačkom na kraju za temu „' +
+          jedinica.naziv +
+          '”.';
+        zadatakNapredni =
+          '1) Od ponuđenih izmiješanih riječi složi i prepiši pravilnu rečenicu. 2) Smisli i napiši dvije svoje rečenice o temi „' +
+          jedinica.naziv +
+          '” i podvuci riječi koje počinju naučenim slovom.';
+      } else if (r === 2) {
+        zadatakOsnovni =
+          '1) U tekstu lekcije „' +
+          jedinica.naziv +
+          '” prepoznaj izjavne, upitne i uzvične rečenice. 2) Stavi tačku, upitnik ili uzvičnik na kraju 3 rečenice. 3) Napiši pravilno veliko slovo u imenima učenika.';
+        zadatakSrednji =
+          '1) Razvrstaj date riječi na imenice i glagole u tabelu za temu „' +
+          jedinica.naziv +
+          '”. 2) Odredi rod (muški, ženski, srednji) i broj (jednina, množina) zadatim imenicama. 3) Napiši odrični oblik glagola: znam ➔ ___, pišem ➔ ___.';
+        zadatakNapredni =
+          '1) Pronađi i ispravi 3 pravopisne greške u kratkom tekstu o temi „' +
+          jedinica.naziv +
+          '”. 2) Napiši kratak opis (3-4 rečenice) sa upotrebom najmanje dva opisna pridjeva.';
+      } else if (r === 3) {
+        zadatakOsnovni =
+          '1) Prepoznaj i podvuci imenice plavom, glagole crvenom, a pridjeve zelenom bojom u tekstu „' +
+          jedinica.naziv +
+          '”. 2) Napiši suprotna značenja riječima (antonime).';
+        zadatakSrednji =
+          '1) Odredi vrstu pridjeva (opisni, prisvojni, gradivni) i napiši komparaciju (pozitiv, komparativ, superlativ) za temu „' +
+          jedinica.naziv +
+          '”. 2) Pravilno upotrijebi veliko slovo u nazivima ulica, gradova i praznika.';
+        zadatakNapredni =
+          '1) Analiziraj poruku teksta/pjesme „' +
+          jedinica.naziv +
+          '”, odredi temu i glavnu ideju. 2) Napiši stvaralački završetak priče u 4-5 rečenica sa stilskim izražajnim sredstvima.';
+      } else if (r === 4) {
+        zadatakOsnovni =
+          '1) Prepoznaj glavne rečenične članove (subjekat i predikat) u rečenicama iz lekcije „' +
+          jedinica.naziv +
+          '”. 2) Razlikuj glagolska vremena (prošlo, sadašnje, buduće).';
+        zadatakSrednji =
+          '1) Odredi službu riječi: subjekat, predikat, pravi objekat i priloške odredbe (za mjesto, vrijeme i način) za temu „' +
+          jedinica.naziv +
+          '”. 2) Napiši upravni govor na 2 različita načina pomoću navodnika i dvotačke.';
+        zadatakNapredni =
+          '1) Analiziraj stilske figure (poređenje, epitet, personifikacija) u književnom tekstu „' +
+          jedinica.naziv +
+          '”. 2) Napiši argumentovani esej/raspravu (6-8 rečenica) iznoseći svoj stav i dokaze.';
+      } else {
+        zadatakOsnovni =
+          '1) Prepoznaj promjenljive i nepromjenljive vrste riječi u odlomku „' +
+          jedinica.naziv +
+          '”. 2) Odredi padež i padežno pitanje imenicama u rečenici.';
+        zadatakSrednji =
+          '1) Odredi sve padeže sa predlozima i njihova osnovna značenja u tekstu lekcije „' +
+          jedinica.naziv +
+          '”. 2) Prepoznaj glagolske oblike (perfekat, prezent, futur I, aorist, imperfekt) i odredi glagolski vid i rod.';
+        zadatakNapredni =
+          '1) Sintaksička analiza proste proširene i složene rečenice (vrste zavisnih rečenica). 2) Napiši literarni prikaz ili kritički osvrt na lektiru/tekst „' +
+          jedinica.naziv +
+          '” poštujući kompoziciju.';
+      }
+    } else if (normPredmet.includes('priroda') || normPredmet.includes('okolina') || normPredmet.includes('pid') || normPredmet.includes('drustvo')) {
+      if (r <= 2) {
+        zadatakOsnovni =
+          '1) Poveži sliku sa tačnim nazivom pojma iz teme „' +
+          jedinica.naziv +
+          '”. 2) Poveži domaće i divlje životinje sa staništem. 3) Odgovori sa DA ili NE na 3 tvrdnje o prirodi.';
+        zadatakSrednji =
+          '1) Opiši dijelove biljke i njihovu ulogu (korijen, stablo, list, cvijet, plod). 2) Navedi 3 pravila bezbjednog kretanja pješaka u saobraćaju i razvrstaj primjere za temu „' +
+          jedinica.naziv +
+          '”.';
+        zadatakNapredni =
+          '1) Objasni uzročno-posljedičnu vezu: kako smjena dana i noći i godišnjih doba utiče na ponašanje biljaka i životinja. 2) Sastavi plan kako tvoje odjeljenje može reciklirati otpad i čuvati prirodu.';
+      } else if (r <= 4) {
+        zadatakOsnovni =
+          '1) Imenuj glavne i sporedne strane svijeta i prepoznaj reljefne oblike (ravnica, brdo, planina) na karti za temu „' +
+          jedinica.naziv +
+          '”. 2) Prepoznaj glavne organe čovječijeg tijela.';
+        zadatakSrednji =
+          '1) Objasni kruženje vode u prirodi pomoću skice. 2) Opiši rad srca i krvotoka ili disajnih organa za temu „' +
+          jedinica.naziv +
+          '” i poveži sa zdravim načinom života.';
+        zadatakNapredni =
+          '1) Lanac ishrane: poredaj članove i objasni šta se dešava ako nestane jedna karika u lancu. 2) Objasni orijentaciju u prirodi pomoću Sunca, sjenke, mahovine i Sjevernjače.';
+      } else {
+        zadatakOsnovni =
+          '1) Imenuj kontinente, okeane i osnovne geografske pojmove iz teme „' +
+          jedinica.naziv +
+          '”. 2) Poveži istorijske epohe i događaje na lenti vremena.';
+        zadatakSrednji =
+          '1) Objasni strukturu ćelije ili ekosistema, navodeći uloge proizvođača, potrošača i razlagača za temu „' +
+          jedinica.naziv +
+          '”. 2) Analiziraj klimatske pojaseve na Zemlji.';
+        zadatakNapredni =
+          '1) Izradi komparativnu analizu uzroka i posljedica istorijskog preokreta ili prirodne pojave iz teme „' +
+          jedinica.naziv +
+          '”. 2) Sastavi naučno-istraživački izvještaj sa hipotezom i zaključkom.';
+      }
     } else if (normPredmet.includes('likovna')) {
       zadatakOsnovni =
-        'Uz demonstraciju učitelja koristi osnovni likovni materijal, uočava glavni likovni element na temu „' +
+        '1) Uz demonstraciju učitelja koristi osnovni likovni materijal i uoči glavni likovni element na temu „' +
         jedinica.naziv +
-        '“ i realizuje jednostavniju likovnu kompoziciju.';
+        '”. 2) Oboji i popuni jednostavniju kompoziciju.';
       zadatakSrednji =
-        'Samostalno oblikuje likovni rad na temu „' +
+        '1) Samostalno oblikuj likovni rad na temu „' +
         jedinica.naziv +
-        '“ poštujući zadani likovni problem, tehniku i proporcije, te učestvuje u analizi radova.';
+        '” poštujući zadani likovni problem, tehniku i proporcije. 2) Učestvuj u estetskoj analizi radova u odjeljenju.';
       zadatakNapredni =
-        'Kreativno, originalno i sa bogatstvom detalja rješava likovni problem „' +
+        '1) Kreativno, originalno i sa bogatstvom detalja riješi likovni problem „' +
         jedinica.naziv +
-        '“, eksperimentiše sa izražajnim mogućnostima tehnike i obrazlaže estetsku vrijednost rada.';
+        '”. 2) Eksperimentiši sa miješanjem boja i tekstura i obrazloži estetsku poruku svog rada.';
     } else if (normPredmet.includes('muzicka')) {
       zadatakOsnovni =
-        'Pažljivo sluša i uz podršku učitelja/grupe reprodukuje osnovni ritam ili melodijski motiv u okviru jedinice „' +
+        '1) Pažljivo slušaj i uz podršku učitelja/grupe reprodukuj osnovni ritam ili melodijski motiv za temu „' +
         jedinica.naziv +
-        '“.';
+        '”. 2) Imenuj instrument sa slike.';
       zadatakSrednji =
-        'Samostalno i tačno izvodi pjesmicu/brojalicu ili prepoznaje muzičke elemente (tempo, dinamiku, instrumente) u lekciji „' +
+        '1) Samostalno i tačno izvedi pjesmicu/brojalicu ili prepoznaj muzičke elemente (tempo, dinamiku, instrumente) u lekciji „' +
         jedinica.naziv +
-        '“.';
+        '”. 2) Odredi takt 2/4 ili 3/4.';
       zadatakNapredni =
-        'Izražajno i muzikalno izvodi zadatak iz teme „' +
+        '1) Izražajno i muzikalno izvedi zadatak iz teme „' +
         jedinica.naziv +
-        '“, osmišljava ritmičku pratnju, predvodi grupu u izvođenju i uočava fine muzičke nijanse.';
+        '”. 2) Osmisli sopstvenu ritmičku pratnju dječijim instrumentima i predvodi grupu u izvođenju.';
     } else {
       zadatakOsnovni =
-        'Uz demonstraciju i asistenciju učitelja pravilno i bezbjedno izvodi osnovne elemente kretanja/vježbe u okviru teme „' +
+        '1) Uz demonstraciju i asistenciju učitelja pravilno i bezbjedno izvedi osnovne elemente kretanja/vježbe za temu „' +
         jedinica.naziv +
-        '“.';
+        '”. 2) Poštuj red u vrsti.';
       zadatakSrednji =
-        'Samostalno, koordinisano i po pravilima izvodi motorički zadatak „' +
+        '1) Samostalno, koordinisano i po pravilima izvedi motorički zadatak „' +
         jedinica.naziv +
-        '“ uz poštovanje fer-pleja i saradnju sa vršnjacima.';
+        '” uz poštovanje fer-pleja i saradnju sa vršnjacima u ekipi.';
       zadatakNapredni =
-        'Tehnički precizno i spretno demonstrira vježbu „' +
+        '1) Tehnički precizno i spretno demonstriraj vježbu „' +
         jedinica.naziv +
-        '“, pomaže vršnjacima u grupi i uspješno rješava složenije motoričke poligone/igre.';
+        '”. 2) Pomaži vršnjacima u grupi i uspješno savladaj složeni motorički poligon spretnosti.';
     }
 
     return {

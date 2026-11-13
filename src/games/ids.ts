@@ -102,6 +102,11 @@ export const WORKSHEET_IDS = [
   'differences',
   'symmetry',
   'copy',
+  'testGrade1',
+  'testGrade2',
+  'testGrade3',
+  'testGrade4',
+  'testGrade5',
   'testMathOperations',
   'testLanguageGrammar',
   'testNatureSociety',
@@ -124,6 +129,11 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
   tests: [
+    'testGrade1',
+    'testGrade2',
+    'testGrade3',
+    'testGrade4',
+    'testGrade5',
     'testMathOperations',
     'testLanguageGrammar',
     'testNatureSociety',

@@ -362,6 +362,26 @@ export const de: Dictionary = {
         logic: 'Logik und Konzentration',
       },
       sheets: {
+        testGrade1: {
+          title: 'Differenzierter Test für 1. Klasse (3 Stufen)',
+          text: 'Probe für die 1. Klasse: Stufe I (Zahlen bis 10, Buchstaben- und Lauterkennung), Stufe II (Addition/Subtraktion bis 20, Silben und Wörter), Stufe III (Textaufgabe und Satzbau).',
+        },
+        testGrade2: {
+          title: 'Differenzierter Test für 2. Klasse (3 Stufen)',
+          text: 'Probe für die 2. Klasse: Stufe I (Rechnen bis 100 ohne Zehnerübergang, Nomen & Sätze), Stufe II (mit Zehnerübergang, Wortarten), Stufe III (zweischrittige Textaufgaben und Kurzbeschreibung).',
+        },
+        testGrade3: {
+          title: 'Differenzierter Test für 3. Klasse (3 Stufen)',
+          text: 'Probe für die 3. Klasse: Stufe I (Einmaleins und Division, Nomen & Verben), Stufe II (Klammerausdrücke, Adjektive, Himmelsrichtungen), Stufe III (Gleichungen mit Unbekannter & Ortsplan).',
+        },
+        testGrade4: {
+          title: 'Differenzierter Test für 4. Klasse (3 Stufen)',
+          text: 'Probe für die 4. Klasse: Stufe I (Mehrstellige Zahlen, Rechtschreibung & Zeichensetzung), Stufe II (Schriftliche Multiplikation/Division, Subjekt & Prädikat, Organe), Stufe III (Fläche/Umfang, Textanalyse & Ökosysteme).',
+        },
+        testGrade5: {
+          title: 'Differenzierter Test für 5. Klasse (3 Stufen)',
+          text: 'Probe für die 5. Klasse: Stufe I (Einfache Brüche, Wortarten & Fälle), Stufe II (Bruchrechnung, Satzglieder, Landkarte), Stufe III (Winkel & Geometrieaufgaben, Stilmittel & Textinterpretation).',
+        },
         testMathOperations: {
           title: 'Differenzierter Test: Addition & Subtraktion (3 Stufen)',
           text: 'Differenzierte Mathematik-Probe: Stufe I (Grundrechnen bis 20), Stufe II (Rechnen bis 100 mit Klammern und Variable x), Stufe III (mehrschrittige Textaufgabe und magisches Quadrat).',

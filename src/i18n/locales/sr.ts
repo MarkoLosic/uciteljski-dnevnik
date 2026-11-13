@@ -365,6 +365,26 @@ export const sr = {
         logic: 'Logika i pažnja',
       } satisfies Record<WorksheetGroup, string>,
       sheets: {
+        testGrade1: {
+          title: 'Diferencirani test za 1. razred (3 nivoa znanja)',
+          text: 'Provera za učenike prvog razreda: I nivo (brojevi do 10, prepoznavanje slova i glasova), II nivo (sabiranje i oduzimanje do 20, spajanje slogova i reči), III nivo (tekstualni zadatak i sastavljanje rečenice).',
+        },
+        testGrade2: {
+          title: 'Diferencirani test za 2. razred (3 nivoa znanja)',
+          text: 'Provera za učenike drugog razreda: I nivo (račun do 100 bez prelaza, imenice i rečenice), II nivo (sabiranje i oduzimanje sa prelazom, vrste reči i godišnja doba), III nivo (zadaci u dva koraka i kratak opis).',
+        },
+        testGrade3: {
+          title: 'Diferencirani test za 3. razred (3 nivoa znanja)',
+          text: 'Provera za učenike trećeg razreda: I nivo (tablica množenja i deljenja, imenice i glagoli), II nivo (izrazi sa zagradama, pridevi, orijentacija u prostoru), III nivo (tekstualni zadaci sa nepoznatim činiocem i plan naselja).',
+        },
+        testGrade4: {
+          title: 'Diferencirani test za 4. razred (3 nivoa znanja)',
+          text: 'Provera za učenike četvrtog razreda: I nivo (višecifreni brojevi, pravopis i rečenice), II nivo (pisano množenje i deljenje, subjekat i predikat, organi i čovek), III nivo (površina geometrijskih tela, analiza teksta i ekosistemi).',
+        },
+        testGrade5: {
+          title: 'Diferencirani test za 5. razred (3 nivoa znanja)',
+          text: 'Provera za učenike petog razreda: I nivo (osnovni razlomci, vrste reči i padeži), II nivo (računanje sa razlomcima, služba reči, geografska karta), III nivo (uglovi i geometrijski zadaci, stilske figure i interpretacija).',
+        },
         testMathOperations: {
           title: 'Diferencirani test: Sabiranje i oduzimanje (3 nivoa znanja)',
           text: 'Diferencirana kontrolna vežba iz matematike: I nivo (osnovni račun do 20), II nivo (računanje do 100 sa zagradama i nepoznatim brojem), III nivo (složeni tekstualni zadatak i magični kvadrat).',
