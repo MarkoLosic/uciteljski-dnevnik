@@ -16,7 +16,7 @@ export default function Games() {
   usePageMeta(pageMeta.games(t));
 
   return (
-    <div className="wrap pt-[130px]">
+    <div className="wrap pt-[96px] sm:pt-[130px]">
       <header className="max-w-[760px]">
         <span className="eyebrow">{g.eyebrow}</span>
         <h1 className="page-title mt-2 mb-5">{g.title}</h1>

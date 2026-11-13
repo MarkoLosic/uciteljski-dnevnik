@@ -351,7 +351,7 @@ export const bs: Dictionary = {
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
-      sectionText: 'Kompletna zbirka od 55 radnih listova i tematskih bojanki za štampu: velika ilustrovana izdanja (učionica, 4 godišnja doba, proljeće, ljeto, jesen, zima, farma, safari, ljubimci, morski svijet, podmornica, saobraćaj, građevina, dinosaurusi, bajka, kosmos, profesije, sport, muzika, pekara), abecedne i azbučne bojanke slova, početno čitanje i pisanje na latinici i ćirilici, slogovi, grafomotorika i matematika. Otvorite list i odštampajte ga na A4 papiru.',
+      sectionText: 'Kompletna zbirka od 55 radnih listova i tematskih bojanki spremnih za štampu na A4 formatu: ilustrovane tematske cjeline, slova abecede i azbuke, početno čitanje i pisanje, grafomotorika i zabavna matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
         coloring: 'Bojanke (tematske slike, slova i brojevi)',

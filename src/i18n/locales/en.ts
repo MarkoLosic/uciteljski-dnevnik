@@ -351,7 +351,7 @@ export const en: Dictionary = {
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
       sectionEyebrow: 'Printables · A4 format',
       sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
-      sectionText: 'Complete collection of 55 printable worksheets and themed coloring books: large illustrations (classroom, 4 seasons, spring, summer, autumn, winter, farm animals, safari, pets, ocean life, submarine, vehicles, construction, dinosaurs, fairytale castle, space, professions, sports, music, bakery), alphabet coloring pages, early reading and writing in Latin and Cyrillic, syllables, fine motor skills and math. Open any sheet and print it on A4 paper.',
+      sectionText: 'Complete collection of 55 worksheets and themed coloring pages ready to print on A4: rich thematic illustrations, alphabet pages, early reading and writing, fine motor skills, and math.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
         coloring: 'Coloring books (themed pictures, letters & numbers)',

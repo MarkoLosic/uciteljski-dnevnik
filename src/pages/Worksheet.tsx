@@ -24,8 +24,8 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   usePageMeta(pageMeta.worksheet(t, id));
 
   return (
-    <div className="wrap max-w-[860px] pt-[130px] print:w-auto print:max-w-none print:p-0">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
+    <div className="wrap max-w-[860px] pt-[96px] sm:pt-[130px] print:w-auto print:max-w-none print:p-0">
+      <div className="mb-4 sm:mb-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 print:hidden">
         <Link
           to={paths.worksheets}
           className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-muted transition-colors hover:text-accent"

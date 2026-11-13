@@ -72,6 +72,7 @@
     color: var(--text);
     font: 400 16px/1.65 var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
     transition:
       background 0.3s,
       color 0.3s;
@@ -185,14 +186,14 @@
   }
 
   .section-title {
-    font: 700 clamp(30px, 4.4vw, 50px) / 1.1 var(--font-head);
+    font: 700 clamp(24px, 4.4vw, 50px) / 1.15 var(--font-head);
     letter-spacing: -0.03em;
     max-width: 780px;
     text-wrap: balance;
   }
 
   .page-title {
-    font: 700 clamp(36px, 5.6vw, 64px) / 1.05 var(--font-head);
+    font: 700 clamp(26px, 5.2vw, 64px) / 1.1 var(--font-head);
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
@@ -661,7 +662,9 @@
   @media (max-width: 640px) {
     .sheet {
       min-height: 0;
-      padding: 18px;
+      padding: 14px 12px;
+      border-radius: 12px;
+      overflow-x: hidden;
     }
   }
 }
@@ -686,6 +689,12 @@
     box-shadow: none;
     overflow: hidden;
     break-after: page;
+  }
+  .sheet img {
+    max-height: 200mm;
+    width: 100%;
+    margin-inline: auto;
+    object-fit: contain;
   }
   .sheet + .sheet {
     margin-top: 0;

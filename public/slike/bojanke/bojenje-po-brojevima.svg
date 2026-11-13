@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#ffffff" />
+  
+  <!-- LEPTIR PODELJEN NA BROJEVE 1, 2, 3, 4, 5, 6 -->
+  <!-- Telo leptira -->
+  <g transform="translate(400, 360)">
+    <!-- Krila gore levo (Polje 1) -->
+    <path d="M -15 -40 C -80 -180, -280 -160, -260 20 C -250 110, -80 80, -15 20 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <!-- Unutrašnja šara gore levo (Polje 2) -->
+    <path d="M -60 -20 C -120 -100, -220 -80, -200 10 C -190 60, -80 50, -60 0 Z" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round" />
+    <circle cx="-130" cy="-20" r="28" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <text x="-130" y="-12" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">3</text>
+    <text x="-160" y="-70" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">2</text>
+    <text x="-210" y="20" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">1</text>
+
+    <!-- Krila gore desno (Polje 1 simetrično) -->
+    <path d="M 15 -40 C 80 -180, 280 -160, 260 20 C 250 110, 80 80, 15 20 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <path d="M 60 -20 C 120 -100, 220 -80, 200 10 C 190 60, 80 50, 60 0 Z" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round" />
+    <circle cx="130" cy="-20" r="28" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <text x="130" y="-12" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">3</text>
+    <text x="160" y="-70" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">2</text>
+    <text x="210" y="20" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">1</text>
+
+    <!-- Donja krila levo (Polje 4) -->
+    <path d="M -15 30 C -60 60, -220 90, -180 210 C -150 280, -30 200, -10 90 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <circle cx="-100" cy="150" r="24" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <text x="-100" y="158" text-anchor="middle" font-size="26" font-weight="900" font-family="system-ui" fill="#111827">5</text>
+    <text x="-135" y="210" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">4</text>
+
+    <!-- Donja krila desno (Polje 4 simetrično) -->
+    <path d="M 15 30 C 60 60, 220 90, 180 210 C 150 280, 30 200, 10 90 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <circle cx="100" cy="150" r="24" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <text x="100" y="158" text-anchor="middle" font-size="26" font-weight="900" font-family="system-ui" fill="#111827">5</text>
+    <text x="135" y="210" text-anchor="middle" font-size="28" font-weight="900" font-family="system-ui" fill="#111827">4</text>
+
+    <!-- Trup leptira -->
+    <ellipse cx="0" cy="40" rx="16" ry="110" fill="#ffffff" stroke="#111827" stroke-width="5" />
+    <text x="0" y="48" text-anchor="middle" font-size="24" font-weight="900" font-family="system-ui" fill="#111827">6</text>
+    <circle cx="0" cy="-80" r="25" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Pipci -->
+    <path d="M -8 -105 Q -30 -160 -60 -150 Q -70 -130 -50 -130" fill="none" stroke="#111827" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 8 -105 Q 30 -160 60 -150 Q 70 -130 50 -130" fill="none" stroke="#111827" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Legenda sa brojevima 1-6 na dnu -->
+  <g transform="translate(100, 680)">
+    <rect x="0" y="0" width="600" height="75" rx="14" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <text x="45" y="46" font-size="22" font-weight="800" font-family="system-ui" fill="#111827">1 = Crvena</text>
+    <text x="235" y="46" font-size="22" font-weight="800" font-family="system-ui" fill="#111827">2 = Žuta</text>
+    <text x="415" y="46" font-size="22" font-weight="800" font-family="system-ui" fill="#111827">3 = Plava</text>
+  </g>
+</svg>

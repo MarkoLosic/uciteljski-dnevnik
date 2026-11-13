@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#ffffff" />
+
+  <!-- Tri okvira / panela za tri zanimanja -->
+  <line x1="270" y1="40" x2="270" y2="760" stroke="#111827" stroke-width="3" stroke-dasharray="10 8" />
+  <line x1="530" y1="40" x2="530" y2="760" stroke="#111827" stroke-width="3" stroke-dasharray="10 8" />
+
+  <!-- 1. VATROGASAC (Levo) -->
+  <g transform="translate(135, 120)">
+    <!-- Šlem -->
+    <path d="M -60 70 C -60 0, 60 0, 60 70 L 75 78 L -75 78 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" stroke-linejoin="round" />
+    <polygon points="0,25 15,45 -15,45" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <circle cx="0" cy="38" r="3" fill="#111827" />
+    <!-- Glava -->
+    <circle cx="0" cy="115" r="45" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <circle cx="-16" cy="110" r="5" fill="#111827" />
+    <circle cx="16" cy="110" r="5" fill="#111827" />
+    <path d="M -12 130 Q 0 142 12 130" fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" />
+    <!-- Telo / Uniforma -->
+    <path d="M -45 160 L -55 360 L 55 360 L 45 160 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Reflektujuće trake -->
+    <line x1="-50" y1="260" x2="50" y2="260" stroke="#111827" stroke-width="4" stroke-dasharray="8 6" />
+    <line x1="-53" y1="310" x2="53" y2="310" stroke="#111827" stroke-width="4" stroke-dasharray="8 6" />
+    <!-- Ruke i vatrogasno crevo -->
+    <path d="M -45 180 L -80 270 L -60 270" stroke="#111827" stroke-width="4" fill="none" />
+    <path d="M 45 180 L 80 260 L 60 260" stroke="#111827" stroke-width="4" fill="none" />
+    <rect x="50" y="240" width="22" height="60" rx="6" transform="rotate(35 50 240)" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <!-- Čizme -->
+    <rect x="-45" y="360" width="35" height="100" rx="8" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <rect x="10" y="360" width="35" height="100" rx="8" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Natpis -->
+    <text x="0" y="520" text-anchor="middle" font-size="24" font-weight="800" font-family="system-ui" fill="#111827">VATROGASAC</text>
+  </g>
+
+  <!-- 2. LEKAR / DOKTOR (Centar) -->
+  <g transform="translate(400, 120)">
+    <!-- Kosa i glava -->
+    <path d="M -42 85 C -45 35, 45 35, 42 85 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <circle cx="0" cy="115" r="45" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <circle cx="-16" cy="110" r="5" fill="#111827" />
+    <circle cx="16" cy="110" r="5" fill="#111827" />
+    <path d="M -12 130 Q 0 142 12 130" fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" />
+    <!-- Beli mantil -->
+    <path d="M -45 160 L -60 380 L 60 380 L 45 160 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <line x1="0" y1="160" x2="0" y2="380" stroke="#111827" stroke-width="3" />
+    <!-- Džep sa olovkom -->
+    <rect x="15" y="220" width="28" height="32" rx="4" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <line x1="24" y1="210" x2="24" y2="230" stroke="#111827" stroke-width="3.5" />
+    <!-- Stetoskop oko vrata -->
+    <path d="M -25 160 C -35 220, -10 260, 0 260 C 10 260, 35 220, 25 160" fill="none" stroke="#111827" stroke-width="5" stroke-linecap="round" />
+    <circle cx="0" cy="275" r="14" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <line x1="0" y1="260" x2="0" y2="275" stroke="#111827" stroke-width="4" />
+    <!-- Noge -->
+    <rect x="-42" y="380" width="32" height="80" rx="6" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <rect x="10" y="380" width="32" height="80" rx="6" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Natpis -->
+    <text x="0" y="520" text-anchor="middle" font-size="24" font-weight="800" font-family="system-ui" fill="#111827">DOKTOR</text>
+  </g>
+
+  <!-- 3. KUVAR (Desno) -->
+  <g transform="translate(665, 120)">
+    <!-- Velika kuvarska kapa -->
+    <path d="M -40 75 C -75 50, -60 -10, 0 -15 C 60 -10, 75 50, 40 75 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" stroke-linejoin="round" />
+    <rect x="-42" y="70" width="84" height="20" rx="4" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <!-- Glava -->
+    <circle cx="0" cy="120" r="45" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <circle cx="-16" cy="115" r="5" fill="#111827" />
+    <circle cx="16" cy="115" r="5" fill="#111827" />
+    <!-- Brkovi i osmeh -->
+    <path d="M -18 132 Q 0 138 18 132 M -12 136 Q 0 148 12 136" fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" />
+    <!-- Kuvarska bluza sa duplim kopčanjem -->
+    <path d="M -45 165 L -55 370 L 55 370 L 45 165 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <circle cx="-16" cy="210" r="6" fill="#111827" />
+    <circle cx="16" cy="210" r="6" fill="#111827" />
+    <circle cx="-16" cy="260" r="6" fill="#111827" />
+    <circle cx="16" cy="260" r="6" fill="#111827" />
+    <circle cx="-16" cy="310" r="6" fill="#111827" />
+    <circle cx="16" cy="310" r="6" fill="#111827" />
+    <!-- Varjača u ruci -->
+    <line x1="60" y1="180" x2="85" y2="300" stroke="#111827" stroke-width="5" stroke-linecap="round" />
+    <ellipse cx="88" cy="315" rx="14" ry="20" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <!-- Noge -->
+    <rect x="-42" y="370" width="32" height="90" rx="6" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <rect x="10" y="370" width="32" height="90" rx="6" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Natpis -->
+    <text x="0" y="520" text-anchor="middle" font-size="24" font-weight="800" font-family="system-ui" fill="#111827">KUVAR</text>
+  </g>
+</svg>

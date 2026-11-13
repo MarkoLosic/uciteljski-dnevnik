@@ -79,7 +79,7 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="wrap max-w-[780px] pt-[130px]">
+      <div className="wrap max-w-[780px] pt-[96px] sm:pt-[130px]">
         <EmptyState
           headingLevel={1}
           title={t.blog.notFoundTitle}
@@ -95,7 +95,7 @@ export default function BlogPost() {
 
   return (
     <>
-      <div className="wrap min-h-[80vh] max-w-[780px] pt-[130px]">
+      <div className="wrap min-h-[80vh] max-w-[780px] pt-[96px] sm:pt-[130px]">
         <Link
           to={paths.blog}
           className="focus-ring mb-7 inline-flex items-center gap-2 rounded text-[14.5px] font-medium text-muted transition-colors hover:text-accent"

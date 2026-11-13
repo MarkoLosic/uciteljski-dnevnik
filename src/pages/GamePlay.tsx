@@ -46,7 +46,7 @@ function GameStage({ id }: { id: GameId }) {
   };
 
   return (
-    <div className="wrap max-w-[880px] pt-[130px]">
+    <div className="wrap max-w-[880px] pt-[96px] sm:pt-[130px]">
       <Link
         to={paths.games}
         className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-muted transition-colors hover:text-accent"

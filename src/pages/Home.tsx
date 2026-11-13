@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       {/* Uvodna sekcija posvećena učiteljima i svakodnevnom radu u školi */}
-      <section className="wrap grid items-center gap-10 pt-[120px] pb-16 lg:min-h-[88svh] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pt-[134px]">
+      <section className="wrap grid items-center gap-8 sm:gap-10 pt-[96px] sm:pt-[120px] pb-12 sm:pb-16 lg:min-h-[88svh] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pt-[134px]">
         <div>
           <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[13.5px] font-medium text-muted">
             <i className="status-dot" />

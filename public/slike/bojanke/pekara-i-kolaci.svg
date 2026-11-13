@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#ffffff" />
+
+  <!-- Sto u pekari -->
+  <line x1="0" y1="620" x2="800" y2="620" stroke="#111827" stroke-width="5" />
+  <rect x="0" y="620" width="800" height="180" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+
+  <!-- VELIKA ROĐENDANSKA TORTA NA 3 SPRATA (Centar) -->
+  <g transform="translate(250, 220)">
+    <!-- Tacna za tortu -->
+    <ellipse cx="150" cy="400" rx="170" ry="25" fill="#ffffff" stroke="#111827" stroke-width="5" />
+    <polygon points="120,418 180,418 190,440 110,440" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+
+    <!-- 1. Donji sprat -->
+    <path d="M 20 280 L 20 380 Q 150 420 280 380 L 280 280 Q 150 250 20 280 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <!-- Glazura koja curi -->
+    <path d="M 20 300 Q 50 330 75 305 Q 100 335 130 310 Q 165 340 195 305 Q 230 335 255 310 L 280 300" fill="none" stroke="#111827" stroke-width="4" />
+    <circle cx="60" cy="350" r="8" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <circle cx="110" cy="355" r="8" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <circle cx="160" cy="360" r="8" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <circle cx="210" cy="355" r="8" fill="#ffffff" stroke="#111827" stroke-width="3" />
+
+    <!-- 2. Srednji sprat -->
+    <path d="M 55 180 L 55 270 Q 150 305 245 270 L 245 180 Q 150 155 55 180 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <path d="M 55 200 Q 90 230 120 205 Q 150 235 180 205 Q 215 230 245 200" fill="none" stroke="#111827" stroke-width="4" />
+
+    <!-- 3. Gornji sprat -->
+    <path d="M 90 100 L 90 175 Q 150 205 210 175 L 210 100 Q 150 80 90 100 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <!-- Jagode na vrhu -->
+    <circle cx="115" cy="95" r="14" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <circle cx="150" cy="90" r="14" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <circle cx="185" cy="95" r="14" fill="#ffffff" stroke="#111827" stroke-width="4" />
+
+    <!-- Svećice -->
+    <g transform="translate(150, 40)">
+      <rect x="-8" y="0" width="16" height="50" rx="3" fill="#ffffff" stroke="#111827" stroke-width="4" />
+      <line x1="0" y1="0" x2="0" y2="-12" stroke="#111827" stroke-width="3.5" />
+      <!-- Plamen -->
+      <path d="M 0 -12 C -10 -25, 0 -45, 0 -45 C 0 -45, 10 -25, 0 -12 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" />
+    </g>
+    <g transform="translate(115, 45)">
+      <rect x="-7" y="0" width="14" height="50" rx="3" fill="#ffffff" stroke="#111827" stroke-width="4" />
+      <line x1="0" y1="0" x2="0" y2="-10" stroke="#111827" stroke-width="3" />
+      <path d="M 0 -10 C -8 -20, 0 -38, 0 -38 C 0 -38, 8 -20, 0 -10 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+    </g>
+    <g transform="translate(185, 45)">
+      <rect x="-7" y="0" width="14" height="50" rx="3" fill="#ffffff" stroke="#111827" stroke-width="4" />
+      <line x1="0" y1="0" x2="0" y2="-10" stroke="#111827" stroke-width="3" />
+      <path d="M 0 -10 C -8 -20, 0 -38, 0 -38 C 0 -38, 8 -20, 0 -10 Z" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- KROFNA SA POSIPOM (Levo) -->
+  <g transform="translate(120, 480)">
+    <circle cx="0" cy="0" r="75" fill="#ffffff" stroke="#111827" stroke-width="5" />
+    <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Talasasta glazura -->
+    <path d="M -60 -25 C -65 -5, -45 5, -55 25 C -45 45, -25 35, -15 55 C 5 45, 25 55, 35 40 C 55 45, 55 20, 62 5 C 55 -15, 60 -35, 45 -45 C 30 -40, 15 -60, -5 -50 C -25 -55, -45 -35, -60 -25 Z" fill="none" stroke="#111827" stroke-width="3.5" />
+    <!-- Šarene mrvice -->
+    <rect x="-35" y="-30" width="14" height="5" rx="2" transform="rotate(25 -35 -30)" fill="#111827" />
+    <rect x="25" y="-25" width="14" height="5" rx="2" transform="rotate(-30 25 -25)" fill="#111827" />
+    <rect x="-38" y="15" width="14" height="5" rx="2" transform="rotate(-40 -38 15)" fill="#111827" />
+    <rect x="35" y="18" width="14" height="5" rx="2" transform="rotate(45 35 18)" fill="#111827" />
+    <rect x="-5" y="42" width="14" height="5" rx="2" transform="rotate(15 -5 42)" fill="#111827" />
+    <rect x="-5" y="-45" width="14" height="5" rx="2" transform="rotate(-15 -5 -45)" fill="#111827" />
+  </g>
+
+  <!-- MAFIN SA KREMOM I VIŠNJOM (Desno) -->
+  <g transform="translate(670, 460)">
+    <!-- Korpa mafina -->
+    <polygon points="-50,60 50,60 40,150 -40,150" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <line x1="-30" y1="65" x2="-25" y2="145" stroke="#111827" stroke-width="3" />
+    <line x1="-10" y1="65" x2="-8" y2="145" stroke="#111827" stroke-width="3" />
+    <line x1="10" y1="65" x2="8" y2="145" stroke="#111827" stroke-width="3" />
+    <line x1="30" y1="65" x2="25" y2="145" stroke="#111827" stroke-width="3" />
+    <!-- Krem u spiralama -->
+    <path d="M -55 60 C -70 30, -50 -10, -20 10 C -15 -25, 20 -25, 25 5 C 45 -10, 70 20, 55 60 Z" fill="#ffffff" stroke="#111827" stroke-width="5" stroke-linejoin="round" />
+    <!-- Višnjica na vrhu -->
+    <circle cx="0" cy="-28" r="16" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <path d="M 5 -42 Q 25 -65 20 -75" fill="none" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    <ellipse cx="22" cy="-68" rx="8" ry="4" transform="rotate(25 22 -68)" fill="#ffffff" stroke="#111827" stroke-width="2.5" />
+  </g>
+</svg>

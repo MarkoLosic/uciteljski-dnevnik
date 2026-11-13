@@ -34,7 +34,7 @@ export default function About() {
   ].filter(({ label, href }) => label === t.about.location || href.length > 0);
 
   return (
-    <div className="wrap pt-[130px]">
+    <div className="wrap pt-[96px] sm:pt-[130px]">
       {/* Lično predstavljanje autora sa fotografijom */}
       <section className="grid items-center gap-8 pb-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-14">
         <div>

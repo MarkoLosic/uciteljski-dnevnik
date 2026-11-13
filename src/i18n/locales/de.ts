@@ -351,7 +351,7 @@ export const de: Dictionary = {
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
       sectionEyebrow: 'Zum Ausdrucken · A4-Format',
       sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
-      sectionText: 'Komplette Sammlung von 55 Arbeitsblättern und thematischen Malbüchern zum Ausdrucken: große Illustrationen (Klassenzimmer, 4 Jahreszeiten, Frühling, Sommer, Herbst, Winter, Bauernhoftiere, Safari, Haustiere, Unterwasserwelt, U-Boot, Fahrzeuge, Baustelle, Dinosaurier, Märchenschloss, Weltraum, Berufe, Sport, Musik, Bäckerei), Buchstaben-Malbücher, frühes Lesen und Schreiben auf Lateinisch und Kyrillisch, Silben, Feinmotorik und Rechnen. Auf A4 drucken.',
+      sectionText: 'Komplette Sammlung von 55 Arbeitsblättern und thematischen Malbüchern im A4-Format: thematische Illustrationen, Buchstaben, erste Lese- und Schreibübungen, Feinmotorik und Rechnen.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
         coloring: 'Ausmalbilder (Themenbilder, Buchstaben & Zahlen)',

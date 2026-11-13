@@ -35,7 +35,7 @@ export default function BlogList() {
   };
 
   return (
-    <div className="wrap min-h-[80vh] pt-[130px]">
+    <div className="wrap min-h-[80vh] pt-[96px] sm:pt-[130px]">
       <header className="mb-10 max-w-[760px]">
         <span className="eyebrow">{t.blog.eyebrow}</span>
         <h1 className="page-title mt-2 mb-4">{t.blog.title}</h1>
