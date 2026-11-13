@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Hand, HeartHandshake, Printer, Timer, type LucideIcon } from 'lucide-react';
+import { Hand, HeartHandshake, Palette, Printer, Timer, type LucideIcon } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { GAME_IDS, WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
@@ -8,6 +8,17 @@ import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
 
 const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
+
+const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
+  coloringClassroom: '/slike/bojanke/ucionica-i-skola.jpg',
+  coloringSeasons: '/slike/bojanke/cetiri-godisnja-doba.jpg',
+  coloringAnimals: '/slike/bojanke/zivotinje-na-farmi.jpg',
+  coloringUnderwater: '/slike/bojanke/podvodni-svet.jpg',
+  coloringVehicles: '/slike/bojanke/saobracaj-i-vozila.jpg',
+  coloringDino: '/slike/bojanke/dinosauri-avantura.jpg',
+  coloringCastle: '/slike/bojanke/dvorac-i-bajka.jpg',
+  coloringSpace: '/slike/bojanke/svemir-i-kosmonauti.jpg',
+};
 
 export default function Games() {
   const { locale, t, paths } = useLocale();
@@ -100,19 +111,36 @@ export default function Games() {
             <div key={group} id={`grupa-${group}`} className="mt-10 scroll-mt-28 first-of-type:mt-0">
               <h3 className="mb-4 font-head text-xl font-semibold tracking-tight">{g.worksheet.groups[group]}</h3>
               <ul className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
-                {ids.map((id) => (
-                  <li key={id}>
-                    <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
-                      <span className="icon-tile">
-                        <Printer aria-hidden="true" className="h-5 w-5" />
-                      </span>
-                      <span>
-                        <span className="block text-[17px] font-semibold tracking-tight">{g.worksheet.sheets[id].title}</span>
-                        <span className="text-sm text-muted">{g.worksheet.eyebrow} · A4</span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+                {ids.map((id) => {
+                  const thumb = WORKSHEET_THUMBNAILS[id];
+                  return (
+                    <li key={id}>
+                      <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
+                        {thumb ? (
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-white shadow-xs">
+                            <img src={thumb} alt="" className="h-full w-full object-cover" />
+                          </div>
+                        ) : (
+                          <span className="icon-tile shrink-0">
+                            {group === 'coloring' ? (
+                              <Palette aria-hidden="true" className="h-5 w-5 text-accent" />
+                            ) : (
+                              <Printer aria-hidden="true" className="h-5 w-5" />
+                            )}
+                          </span>
+                        )}
+                        <span className="min-w-0">
+                          <span className="block text-[17px] font-semibold tracking-tight leading-snug line-clamp-2">
+                            {g.worksheet.sheets[id].title}
+                          </span>
+                          <span className="text-sm text-muted">
+                            {group === 'coloring' && thumb ? 'Bojanka · A4' : `${g.worksheet.eyebrow} · A4`}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           );

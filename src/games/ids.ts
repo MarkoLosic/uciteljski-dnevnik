@@ -47,6 +47,14 @@ export function isGameId(value: unknown): value is GameId {
 
 // Radni listovi za štampu. Listovi sa istim id kao igra su njene papirne verzije (GamePlay linkuje na njih).
 export const WORKSHEET_IDS = [
+  'coloringClassroom',
+  'coloringSeasons',
+  'coloringAnimals',
+  'coloringUnderwater',
+  'coloringVehicles',
+  'coloringDino',
+  'coloringCastle',
+  'coloringSpace',
   'coloringLatin',
   'coloringCyrillic',
   'colorByNumber',
@@ -98,7 +106,21 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
-  coloring: ['coloringLatin', 'coloringCyrillic', 'colorByNumber', 'coloringScenes', 'colors'],
+  coloring: [
+    'coloringClassroom',
+    'coloringSeasons',
+    'coloringAnimals',
+    'coloringUnderwater',
+    'coloringVehicles',
+    'coloringDino',
+    'coloringCastle',
+    'coloringSpace',
+    'coloringLatin',
+    'coloringCyrillic',
+    'colorByNumber',
+    'coloringScenes',
+    'colors',
+  ],
   writing: [
     'latin',
     'cyrillic',

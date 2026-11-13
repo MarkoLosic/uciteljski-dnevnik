@@ -17,6 +17,8 @@ const SCENES: SceneInfo[] = [
   { latUpper: 'S', latLower: 's', cyrUpper: 'С', cyrLower: 'с', wordLat: 'Sunce', wordCyr: 'Сунце' },
   { latUpper: 'K', latLower: 'k', cyrUpper: 'К', cyrLower: 'к', wordLat: 'Kuća', wordCyr: 'Кућа' },
   { latUpper: 'R', latLower: 'r', cyrUpper: 'Р', cyrLower: 'р', wordLat: 'Raketa', wordCyr: 'Ракета' },
+  { latUpper: 'D', latLower: 'd', cyrUpper: 'Д', cyrLower: 'д', wordLat: 'Dinosaurus', wordCyr: 'Диносаурус' },
+  { latUpper: 'B', latLower: 'b', cyrUpper: 'Б', cyrLower: 'б', wordLat: 'Brod na vodi', wordCyr: 'Брод на води' },
 ];
 
 const REGION_COUNT = 6;
@@ -313,6 +315,96 @@ export default function Coloring({ onWin }: GameProps) {
                 fill={regionFill(5)}
                 stroke="#0f172a"
                 strokeWidth="3.8"
+                strokeLinejoin="round"
+              />
+            </>
+          )}
+
+          {round === 4 && (
+            <>
+              {/* Dinosaurus tijelo i noge */}
+              <path
+                onClick={() => paintRegion(2)}
+                className="cursor-pointer"
+                d="M350 215 C345 170, 360 135, 410 135 C460 135, 485 165, 515 165 C530 165, 545 175, 535 188 C515 200, 490 195, 475 215 L455 215 C455 198, 440 198, 440 215 L395 215 C395 198, 380 198, 380 215 Z"
+                fill={regionFill(2)}
+                stroke="#0f172a"
+                strokeWidth="4"
+                strokeLinejoin="round"
+              />
+              {/* Vrat i glava */}
+              <path
+                onClick={() => paintRegion(3)}
+                className="cursor-pointer"
+                d="M370 155 C355 120, 340 75, 360 48 C375 30, 410 35, 405 60 C395 80, 395 115, 415 145 Z"
+                fill={regionFill(3)}
+                stroke="#0f172a"
+                strokeWidth="3.8"
+                strokeLinejoin="round"
+              />
+              {/* Bodlje na leđima */}
+              <path
+                onClick={() => paintRegion(4)}
+                className="cursor-pointer"
+                d="M405 130 L415 112 L425 130 L435 114 L445 132 L455 116 L465 136 Z"
+                fill={regionFill(4)}
+                stroke="#0f172a"
+                strokeWidth="3.5"
+                strokeLinejoin="round"
+              />
+              {/* Dino jaje sa cik-cak linijom */}
+              <path
+                onClick={() => paintRegion(5)}
+                className="cursor-pointer"
+                d="M480 218 C470 190, 520 185, 525 218 Z"
+                fill={regionFill(5)}
+                stroke="#0f172a"
+                strokeWidth="3.5"
+                strokeLinejoin="round"
+              />
+            </>
+          )}
+
+          {round === 5 && (
+            <>
+              {/* Trup broda */}
+              <polygon
+                onClick={() => paintRegion(2)}
+                className="cursor-pointer"
+                points="310,165 520,165 480,215 350,215"
+                fill={regionFill(2)}
+                stroke="#0f172a"
+                strokeWidth="4"
+                strokeLinejoin="round"
+              />
+              {/* Veliko jedro */}
+              <polygon
+                onClick={() => paintRegion(3)}
+                className="cursor-pointer"
+                points="425,45 425,150 495,150"
+                fill={regionFill(3)}
+                stroke="#0f172a"
+                strokeWidth="3.8"
+                strokeLinejoin="round"
+              />
+              {/* Malo jedro / zastava */}
+              <polygon
+                onClick={() => paintRegion(4)}
+                className="cursor-pointer"
+                points="415,65 415,150 345,150"
+                fill={regionFill(4)}
+                stroke="#0f172a"
+                strokeWidth="3.8"
+                strokeLinejoin="round"
+              />
+              {/* Morski talasi */}
+              <path
+                onClick={() => paintRegion(5)}
+                className="cursor-pointer"
+                d="M305 224 Q330 208 355 224 T405 224 T455 224 T505 224 T545 224 L545 240 L305 240 Z"
+                fill={regionFill(5)}
+                stroke="#0f172a"
+                strokeWidth="3.5"
                 strokeLinejoin="round"
               />
             </>

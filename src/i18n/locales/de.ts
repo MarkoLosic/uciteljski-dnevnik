@@ -346,18 +346,50 @@ export const de: Dictionary = {
       date: 'Datum',
       page: (n: number, total: number) => `Seite ${n}/${total}`,
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
-      sectionEyebrow: 'Zum Ausdrucken',
-      sectionTitle: 'Arbeitsblätter',
-      sectionText: 'Papierversionen der Spiele, Übungen zur Schreibvorbereitung, Zahlen, Buchstaben und Logikrätsel — Übung mit dem Stift, ganz ohne Bildschirm. Blatt öffnen und ausdrucken.',
+      sectionEyebrow: 'Zum Ausdrucken · A4-Format',
+      sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
+      sectionText: 'Komplette Sammlung von 43 Arbeitsblättern und thematischen Malbüchern zum Ausdrucken: große Illustrationen (Klassenzimmer, 4 Jahreszeiten, Bauernhoftiere, Unterwasserwelt, Fahrzeuge, Dinosaurier, Märchenschloss, Weltraum), Buchstaben-Malbücher, frühes Lesen und Schreiben auf Lateinisch und Kyrillisch, Silben, Feinmotorik und Rechnen. Auf A4 drucken.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
-        coloring: 'Ausmalbilder für Buchstaben und Motive',
+        coloring: 'Ausmalbilder (Themenbilder, Buchstaben & Zahlen)',
         writing: 'Lesen und Schreiben',
         motor: 'Feinmotorik und Schreibvorbereitung',
         math: 'Zahlen und Rechnen',
-        logic: 'Logik und Aufmerksamkeit',
+        logic: 'Logika i pažnja',
       },
       sheets: {
+        coloringClassroom: {
+          title: 'Ausmalbild: Mein Klassenzimmer & Schule',
+          text: 'Male das fröhliche Klassenzimmer, die Lehrerin, Schüler an den Tischen, Schultafel und Globus in deinen Lieblingsfarben aus.',
+        },
+        coloringSeasons: {
+          title: 'Ausmalbild: Die vier Jahreszeiten',
+          text: 'Vier Naturbilder auf einem Blatt: Frühling mit Blumen, warmer Sommer mit Strand, Herbstlaub mit Eichhörnchen und Winter mit Schneemann.',
+        },
+        coloringAnimals: {
+          title: 'Ausmalbild: Tiere auf dem Bauernhof',
+          text: 'Male die gefleckte Kuh, das flauschige Schaf, das Hündchen, den Hahn auf dem Zaun und den Bauernhof aus.',
+        },
+        coloringUnderwater: {
+          title: 'Ausmalbild: Unterwasserwelt & Ozean',
+          text: 'Tauche ins Meeresblau ein und male den Delfin, die Meeresschildkröte, den Oktopus, Seesterne und Muscheln aus.',
+        },
+        coloringVehicles: {
+          title: 'Ausmalbild: Fahrzeuge & Verkehr',
+          text: 'Male die Dampflokomotive auf Schienen, das Flugzeug am Himmel, das Segelschiff auf Wellen und das Auto aus.',
+        },
+        coloringDino: {
+          title: 'Ausmalbild: Dinosaurier-Abenteuer',
+          text: 'Male den friedlichen Langhals-Dinosaurier, den Triceratops und das niedliche Dinosaurierbaby im Ei aus.',
+        },
+        coloringCastle: {
+          title: 'Ausmalbild: Märchenschloss & Drache',
+          text: 'Male das Zauberschloss mit Türmen und Fahnen, den lieben Drachen mit Blume und den Regenbogen aus.',
+        },
+        coloringSpace: {
+          title: 'Ausmalbild: Weltraum, Rakete & Astronaut',
+          text: 'Male den schwebenden Astronauten, die Weltraumrakete, Planeten mit Ringen und das freundliche Alien aus.',
+        },
         coloringLatin: {
           title: 'Buchstaben-Ausmalbuch — Lateinisch',
           text: 'Male die großen und kleinen hohlen Buchstaben sowie das passende Bild aus, fahre dann die grauen Buchstaben nach und schreibe sie selbst in die Zeile.',

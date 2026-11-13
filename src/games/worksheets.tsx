@@ -1505,6 +1505,24 @@ function MissingNumbersSheet() {
   );
 }
 
+function ImageColoringSheet({ src, alt, prompt }: { src: string; alt: string; prompt: string }) {
+  return (
+    <div className="flex flex-col items-center justify-between min-h-[580px] max-h-[640px] w-full">
+      <div className="w-full flex-1 flex items-center justify-center p-2 rounded-2xl border-2 border-[#111827] bg-white overflow-hidden shadow-sm">
+        <img
+          src={src}
+          alt={alt}
+          loading="eager"
+          className="max-h-[540px] w-auto max-w-full object-contain filter contrast-125"
+        />
+      </div>
+      <p className="mt-3 text-center text-[14px] font-medium text-muted print:text-[#374151]">
+        💡 {prompt}
+      </p>
+    </div>
+  );
+}
+
 interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
@@ -1512,6 +1530,70 @@ interface SheetContext {
 
 // Svaki list vraća svoje strane; stranica radnog lista oko svake dodaje zaglavlje i prelom strane.
 export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]> = {
+  coloringClassroom: () => [
+    <ImageColoringSheet
+      key="coloringClassroom"
+      src="/slike/bojanke/ucionica-i-skola.jpg"
+      alt="Moja učionica i škola"
+      prompt="Oboji učiteljicu, đake, tablu i školski pribor svojim omiljenim bojama."
+    />,
+  ],
+  coloringSeasons: () => [
+    <ImageColoringSheet
+      key="coloringSeasons"
+      src="/slike/bojanke/cetiri-godisnja-doba.jpg"
+      alt="Četiri godišnja doba"
+      prompt="Proljeće, ljeto, jesen i zima — oboji svako polje karakterističnim bojama prirode."
+    />,
+  ],
+  coloringAnimals: () => [
+    <ImageColoringSheet
+      key="coloringAnimals"
+      src="/slike/bojanke/zivotinje-na-farmi.jpg"
+      alt="Domaće životinje na farmi"
+      prompt="Oboji kravicu, ovčicu, kucu i pijetla, pa ih imenuj naglas."
+    />,
+  ],
+  coloringUnderwater: () => [
+    <ImageColoringSheet
+      key="coloringUnderwater"
+      src="/slike/bojanke/podvodni-svet.jpg"
+      alt="Podvodni svijet i morske životinje"
+      prompt="Oboji veselog delfina, morsku kornjaču, hobotnicu i morske zvijezde u živim morskim tonovima."
+    />,
+  ],
+  coloringVehicles: () => [
+    <ImageColoringSheet
+      key="coloringVehicles"
+      src="/slike/bojanke/saobracaj-i-vozila.jpg"
+      alt="Saobraćaj i prevozna sredstva"
+      prompt="Oboji parnu lokomotivu, avion, jedrenjak i auto na putu."
+    />,
+  ],
+  coloringDino: () => [
+    <ImageColoringSheet
+      key="coloringDino"
+      src="/slike/bojanke/dinosauri-avantura.jpg"
+      alt="Dinosaurusi i praistorijski svijet"
+      prompt="Oboji biljojeda dugog vrata, triceratopsa i bebu dinosaurusa koja viri iz jajeta."
+    />,
+  ],
+  coloringCastle: () => [
+    <ImageColoringSheet
+      key="coloringCastle"
+      src="/slike/bojanke/dvorac-i-bajka.jpg"
+      alt="Bajkoviti dvorac i zmaj"
+      prompt="Oboji kule dvorca, zastavice, veselog zmaja sa cvijetom i dugu na nebu."
+    />,
+  ],
+  coloringSpace: () => [
+    <ImageColoringSheet
+      key="coloringSpace"
+      src="/slike/bojanke/svemir-i-kosmonauti.jpg"
+      alt="Kosmos, raketa i astronaut"
+      prompt="Oboji astronauta u bestežinskom stanju, raketu, planete sa prstenom i prijateljskog vanzemaljca."
+    />,
+  ],
   coloringLatin: () => coloringLetterPages(LATIN_COLOR_CARDS),
   coloringCyrillic: () => coloringLetterPages(CYRILLIC_COLOR_CARDS),
   colorByNumber: (ctx) => [<ColorByNumberSheet key="colorByNumber" {...ctx} />],

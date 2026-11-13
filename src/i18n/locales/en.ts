@@ -346,18 +346,50 @@ export const en: Dictionary = {
       date: 'Date',
       page: (n: number, total: number) => `Page ${n}/${total}`,
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
-      sectionEyebrow: 'Printables',
-      sectionTitle: 'Worksheets',
-      sectionText: 'Paper versions of the games, pre-writing practice, numbers, letters and logic puzzles — pencil practice, away from the screen. Open a sheet and print it.',
+      sectionEyebrow: 'Printables · A4 format',
+      sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
+      sectionText: 'Complete collection of 43 printable worksheets and themed coloring books: large illustrations (classroom, 4 seasons, farm animals, ocean life, vehicles, dinosaurs, fairytale castle, space), alphabet coloring pages, early reading and writing in Latin and Cyrillic, syllables, fine motor skills and math. Open any sheet and print it on A4 paper.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
-        coloring: 'Letter & picture colouring pages',
+        coloring: 'Coloring books (themed pictures, letters & numbers)',
         writing: 'Reading and writing',
         motor: 'Fine motor and pre-writing',
         math: 'Numbers and counting',
         logic: 'Logic and attention',
       },
       sheets: {
+        coloringClassroom: {
+          title: 'Coloring page: My school & classroom',
+          text: 'Color the happy classroom, friendly teacher, pupils at their desks, blackboard and globe with your favourite colors.',
+        },
+        coloringSeasons: {
+          title: 'Coloring page: Four seasons',
+          text: 'Four nature scenes on one sheet: Spring with flowers, warm Summer with sun and beach, Autumn leaves with squirrel, and snowy Winter with a snowman.',
+        },
+        coloringAnimals: {
+          title: 'Coloring page: Farm animals',
+          text: 'Color the friendly spotted cow, fluffy sheep, playful puppy, rooster on a fence and barnyard.',
+        },
+        coloringUnderwater: {
+          title: 'Coloring page: Ocean & underwater adventure',
+          text: 'Dive into the ocean blue and color the smiling dolphin, sea turtle, octopus, starfish and seashells.',
+        },
+        coloringVehicles: {
+          title: 'Coloring page: Vehicles & transport',
+          text: 'Color the steam train on tracks, airplane high in the sky, sailboat on water and car on the road.',
+        },
+        coloringDino: {
+          title: 'Coloring page: Dinosaur adventure',
+          text: 'Color the gentle long-neck dinosaur, triceratops and cute baby dino hatching from an egg.',
+        },
+        coloringCastle: {
+          title: 'Coloring page: Fairytale castle & dragon',
+          text: 'Color the magical castle with turrets and flags, friendly dragon holding a daisy, and rainbow in the sky.',
+        },
+        coloringSpace: {
+          title: 'Coloring page: Space, rocket & astronaut',
+          text: 'Color the young astronaut floating weightlessly, rocket ship, ringed planets and friendly waving alien.',
+        },
         coloringLatin: {
           title: 'Alphabet colouring book — Latin letters',
           text: 'Colour in the large hollow capital and small letters and the matching picture, then trace the grey letters and write them on the line below.',

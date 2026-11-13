@@ -146,8 +146,8 @@ export const bs: Dictionary = {
       },
       {
         badge: 'Prvi koraci u školi',
-        title: 'Bojanke slova, ćirilica i latinica, radni listovi i igre',
-        text: 'Za predškolce i učenike nižih razreda pripremili smo 35 radnih listova i bojanki za štampu (bojanke slova za latinicu i ćirilicu, bojanke po brojevima, slogovi, početno slovo, grafomotorika, sabiranje i oduzimanje) i 12 interaktivnih igara.',
+        title: 'Bojanke slova i slika, ćirilica i latinica, radni listovi i igre',
+        text: 'Za predškolce i učenike nižih razreda pripremili smo 43 radna lista i tematske bojanke za štampu (učionica, 4 godišnja doba, životinje, podvodni svijet, vozila, dinosaurusi, dvorac, kosmos, slova na latinici i ćirilici) i 12 interaktivnih igara.',
         linkText: 'Otvori igre, bojanke i radne listove →',
         href: '/bs/igre',
       },
@@ -347,17 +347,49 @@ export const bs: Dictionary = {
       page: (n: number, total: number) => `Strana ${n}/${total}`,
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
-      sectionTitle: 'Bojanke slova, ćirilica, latinica i radni listovi',
-      sectionText: 'Kompletna zbirka od 35 radnih listova i bojanki za štampu: abecedne i azbučne bojanke slova, početno čitanje i pisanje na latinici i ćirilici, slogovi, grafomotorika, računanje i logički zadaci. Otvorite list i odštampajte ga na A4 papiru.',
+      sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
+      sectionText: 'Kompletna zbirka od 43 radna lista i tematske bojanke za štampu: velika ilustrovana izdanja (učionica, 4 godišnja doba, farma, morski svijet, saobraćaj, dinosaurusi, bajka, kosmos), abecedne i azbučne bojanke slova, početno čitanje i pisanje na latinici i ćirilici, slogovi, grafomotorika i matematika. Otvorite list i odštampajte ga na A4 papiru.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
-        coloring: 'Bojanke slova i crteža (latinica i ćirilica)',
+        coloring: 'Bojanke (tematske slike, slova i brojevi)',
         writing: 'Čitanje i pisanje — latinica i ćirilica',
         motor: 'Motorika i predpisanje',
         math: 'Brojevi i računanje',
         logic: 'Logika i pažnja',
       },
       sheets: {
+        coloringClassroom: {
+          title: 'Bojanka: Moja učionica i škola',
+          text: 'Oboji veselu učionicu, nasmijanu učiteljicu, đake u klupama, školsku tablu i globus svojim najljepšim bojama.',
+        },
+        coloringSeasons: {
+          title: 'Bojanka: Četiri godišnja doba',
+          text: 'Četiri slike prirode na jednom listu: proljeće sa cvjetićima, toplo ljeto sa suncem, jesenje lišće s vjevericom i snježna zima sa Snješkom Bijelićem.',
+        },
+        coloringAnimals: {
+          title: 'Bojanka: Domaće životinje na farmi',
+          text: 'Oboji veselu kravicu, mekanu ovčicu, štene, pijetla na ogradi i seosko imanje.',
+        },
+        coloringUnderwater: {
+          title: 'Bojanka: Podvodni svijet i morske dubine',
+          text: 'Zaroni u morsko plavetnilo i oboji dobroćudnog delfina, morsku kornjaču, hobotnicu, morske zvijezde i školjke.',
+        },
+        coloringVehicles: {
+          title: 'Bojanka: Saobraćaj i prevozna sredstva',
+          text: 'Oboji parnu lokomotivu na šinama, avion visoko na nebu, jedrenjak na talasima i auto na drumu.',
+        },
+        coloringDino: {
+          title: 'Bojanka: Dinosaurusi i praistorija',
+          text: 'Oboji dobroćudnog dinosaurusa dugog vrata, triceratopsa i slatku bebu dinosaurusa koja tek izviruje iz jajeta.',
+        },
+        coloringCastle: {
+          title: 'Bojanka: Bajkoviti dvorac i zmaj',
+          text: 'Oboji čarobni dvorac s kulama i zastavicama, veselog zmaja sa cvijetom i dugu na nebu.',
+        },
+        coloringSpace: {
+          title: 'Bojanka: Kosmos, raketa i astronaut',
+          text: 'Oboji malog astronauta koji lebdi u svemiru, svemirsku raketu, planete s prstenom i prijateljskog vanzemaljca.',
+        },
         coloringLatin: {
           title: 'Bojanka slova — latinica (A–Ž)',
           text: 'Oboji velika i mala šuplja slova abecede i sličicu uz svako slovo, a zatim na liniji ispod pređi preko sivih slova i napiši ih samostalno.',
