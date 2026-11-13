@@ -348,7 +348,7 @@ export const de: Dictionary = {
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
       sectionEyebrow: 'Zum Ausdrucken · A4-Format',
       sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
-      sectionText: 'Komplette Sammlung von 43 Arbeitsblättern und thematischen Malbüchern zum Ausdrucken: große Illustrationen (Klassenzimmer, 4 Jahreszeiten, Bauernhoftiere, Unterwasserwelt, Fahrzeuge, Dinosaurier, Märchenschloss, Weltraum), Buchstaben-Malbücher, frühes Lesen und Schreiben auf Lateinisch und Kyrillisch, Silben, Feinmotorik und Rechnen. Auf A4 drucken.',
+      sectionText: 'Komplette Sammlung von 55 Arbeitsblättern und thematischen Malbüchern zum Ausdrucken: große Illustrationen (Klassenzimmer, 4 Jahreszeiten, Frühling, Sommer, Herbst, Winter, Bauernhoftiere, Safari, Haustiere, Unterwasserwelt, U-Boot, Fahrzeuge, Baustelle, Dinosaurier, Märchenschloss, Weltraum, Berufe, Sport, Musik, Bäckerei), Buchstaben-Malbücher, frühes Lesen und Schreiben auf Lateinisch und Kyrillisch, Silben, Feinmotorik und Rechnen. Auf A4 drucken.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
         coloring: 'Ausmalbilder (Themenbilder, Buchstaben & Zahlen)',
@@ -366,17 +366,49 @@ export const de: Dictionary = {
           title: 'Ausmalbild: Die vier Jahreszeiten',
           text: 'Vier Naturbilder auf einem Blatt: Frühling mit Blumen, warmer Sommer mit Strand, Herbstlaub mit Eichhörnchen und Winter mit Schneemann.',
         },
+        coloringSpring: {
+          title: 'Ausmalbild: Frühlingsblumen & Bienen',
+          text: 'Male das Erwachen der Natur aus: blühende Bäume, Frühlingsblumen, fleißige Bienen, Schmetterlinge und Sonnenschein.',
+        },
+        coloringSummer: {
+          title: 'Ausmalbild: Sommer am Strand & Sandburg',
+          text: 'Male Ferienspaß am Meer: eine große Sandburg mit Türmen, Sonnenschirm, Wasserball und eine fröhliche Krabbe.',
+        },
+        coloringAutumn: {
+          title: 'Ausmalbild: Herbstwald & Waldtiere',
+          text: 'Male den bunten Herbstwald: Igel mit einem Apfel, Eichhörnchen mit Eichel, weise Eule und tanzende Herbstblätter.',
+        },
+        coloringWinter: {
+          title: 'Ausmalbild: Winterfreuden & Schlittenfahren',
+          text: 'Male fröhliche Winterspiele im Schnee: Kinder auf dem Schlitten, warme Mützen und Schals, Schneeflocken und einen Hund.',
+        },
         coloringAnimals: {
           title: 'Ausmalbild: Tiere auf dem Bauernhof',
           text: 'Male die gefleckte Kuh, das flauschige Schaf, das Hündchen, den Hahn auf dem Zaun und den Bauernhof aus.',
+        },
+        coloringSafari: {
+          title: 'Ausmalbild: Safari & wilde Tiere',
+          text: 'Entdecke die afrikanische Savanne: Löwenjunges mit Mähne, hohe Giraffe, kleiner Elefant und ein Äffchen auf dem Baum.',
+        },
+        coloringPets: {
+          title: 'Ausmalbild: Liebe Haustiere',
+          text: 'Male süße Haustiere aus: verspieltes Kätzchen mit Wollknäuel, treuer Hund mit Knochen und ein Goldfisch im Glas.',
         },
         coloringUnderwater: {
           title: 'Ausmalbild: Unterwasserwelt & Ozean',
           text: 'Tauche ins Meeresblau ein und male den Delfin, die Meeresschildkröte, den Oktopus, Seesterne und Muscheln aus.',
         },
+        coloringSubmarine: {
+          title: 'Ausmalbild: U-Boot & geheimer Schatz',
+          text: 'Tauche mit dem U-Boot auf den Meeresgrund, entdecke eine alte Schatztruhe und leuchtende Schwärme kleiner Fische.',
+        },
         coloringVehicles: {
           title: 'Ausmalbild: Fahrzeuge & Verkehr',
           text: 'Male die Dampflokomotive auf Schienen, das Flugzeug am Himmel, das Segelschiff auf Wellen und das Auto aus.',
+        },
+        coloringConstruction: {
+          title: 'Ausmalbild: Baustellenfahrzeuge & Bagger',
+          text: 'Male schwere Baumaschinen: starker Bagger beim Erdaushub, Kipper voller Sand und ein riesiger Baukran.',
         },
         coloringDino: {
           title: 'Ausmalbild: Dinosaurier-Abenteuer',
@@ -389,6 +421,22 @@ export const de: Dictionary = {
         coloringSpace: {
           title: 'Ausmalbild: Weltraum, Rakete & Astronaut',
           text: 'Male den schwebenden Astronauten, die Weltraumrakete, Planeten mit Ringen und das freundliche Alien aus.',
+        },
+        coloringProfessions: {
+          title: 'Ausmalbild: Berufe & Helfer',
+          text: 'Was möchtest du einmal werden? Male einen Feuerwehrmann, eine Ärztin mit Stethoskop und einen Koch mit Kochmütze aus.',
+        },
+        coloringSports: {
+          title: 'Ausmalbild: Sport & Bewegung für Kinder',
+          text: 'Male sportliche Aktivitäten aus: Fußball, Basketball, Kinderfahrrad, Laufschuhe und einen glänzenden Siegerpokal.',
+        },
+        coloringMusic: {
+          title: 'Ausmalbild: Musikorchester & Instrumente',
+          text: 'Bringe Musik in Farben: akustische Gitarre, Klaviertasten, Trommeln, Violine und schwebende Noten in der Luft.',
+        },
+        coloringBakery: {
+          title: 'Ausmalbild: Süße Bäckerei & Leckereien',
+          text: 'Male köstliche Backwaren aus: festliche Geburtstagstorte mit Kerzen, glasierte Donuts, Muffins und leckeres Eis.',
         },
         coloringLatin: {
           title: 'Buchstaben-Ausmalbuch — Lateinisch',

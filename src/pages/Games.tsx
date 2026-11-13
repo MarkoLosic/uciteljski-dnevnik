@@ -12,12 +12,16 @@ const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
 const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringClassroom: '/slike/bojanke/ucionica-i-skola.jpg',
   coloringSeasons: '/slike/bojanke/cetiri-godisnja-doba.jpg',
+  coloringSpring: '/slike/bojanke/prolece-i-pcelice.jpg',
+  coloringSummer: '/slike/bojanke/leto-na-plazi.jpg',
+  coloringAutumn: '/slike/bojanke/jesen-u-sumi.jpg',
   coloringAnimals: '/slike/bojanke/zivotinje-na-farmi.jpg',
   coloringUnderwater: '/slike/bojanke/podvodni-svet.jpg',
   coloringVehicles: '/slike/bojanke/saobracaj-i-vozila.jpg',
   coloringDino: '/slike/bojanke/dinosauri-avantura.jpg',
   coloringCastle: '/slike/bojanke/dvorac-i-bajka.jpg',
   coloringSpace: '/slike/bojanke/svemir-i-kosmonauti.jpg',
+  coloringSports: '/slike/bojanke/sport-i-igra.jpg',
 };
 
 export default function Games() {

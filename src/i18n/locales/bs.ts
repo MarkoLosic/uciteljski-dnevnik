@@ -348,7 +348,7 @@ export const bs: Dictionary = {
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
-      sectionText: 'Kompletna zbirka od 43 radna lista i tematske bojanke za štampu: velika ilustrovana izdanja (učionica, 4 godišnja doba, farma, morski svijet, saobraćaj, dinosaurusi, bajka, kosmos), abecedne i azbučne bojanke slova, početno čitanje i pisanje na latinici i ćirilici, slogovi, grafomotorika i matematika. Otvorite list i odštampajte ga na A4 papiru.',
+      sectionText: 'Kompletna zbirka od 55 radnih listova i tematskih bojanki za štampu: velika ilustrovana izdanja (učionica, 4 godišnja doba, proljeće, ljeto, jesen, zima, farma, safari, ljubimci, morski svijet, podmornica, saobraćaj, građevina, dinosaurusi, bajka, kosmos, profesije, sport, muzika, pekara), abecedne i azbučne bojanke slova, početno čitanje i pisanje na latinici i ćirilici, slogovi, grafomotorika i matematika. Otvorite list i odštampajte ga na A4 papiru.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
         coloring: 'Bojanke (tematske slike, slova i brojevi)',
@@ -366,17 +366,49 @@ export const bs: Dictionary = {
           title: 'Bojanka: Četiri godišnja doba',
           text: 'Četiri slike prirode na jednom listu: proljeće sa cvjetićima, toplo ljeto sa suncem, jesenje lišće s vjevericom i snježna zima sa Snješkom Bijelićem.',
         },
+        coloringSpring: {
+          title: 'Bojanka: Proljeće u cvatu i pčelice',
+          text: 'Oboji buđenje prirode, rascvjetalo drveće i proljetno cvijeće, veselu pčelicu, leptira i toplo nasmijano proljetno sunce.',
+        },
+        coloringSummer: {
+          title: 'Bojanka: Ljeto na plaži i dvorac od pijeska',
+          text: 'Oboji ljetne radosti pored mora, veliki dvorac od pijeska sa kulama, suncobran, šarenu loptu i veselog morskog račića.',
+        },
+        coloringAutumn: {
+          title: 'Bojanka: Jesenja šuma i šumske životinje',
+          text: 'Oboji jesenje čarolije u šumi: vrijednog ježića sa jabukom na leđima, vjevericu sa žirom, mudru sovu i opalo šareno lišće.',
+        },
+        coloringWinter: {
+          title: 'Bojanka: Zimske radosti i sankanje',
+          text: 'Oboji zimske igre na snijegu, dječije sanke koje jure niz brdo, toplu kapu i šal, pahulje i veselog psa na snijegu.',
+        },
         coloringAnimals: {
           title: 'Bojanka: Domaće životinje na farmi',
           text: 'Oboji veselu kravicu, mekanu ovčicu, štene, pijetla na ogradi i seosko imanje.',
+        },
+        coloringSafari: {
+          title: 'Bojanka: Safari i divlje životinje',
+          text: 'Upoznaj divlji svijet afričke savane: oboji hrabrog lavića sa grivom, visoku žirafu, slonče sa surlom i majmunčića na drvetu.',
+        },
+        coloringPets: {
+          title: 'Bojanka: Kućni ljubimci',
+          text: 'Oboji najdraže kućne ljubimce: razigranu macu sa klupkom vune, vjernog psa sa koskom u travi i zlatnu ribicu u akvarijumu.',
         },
         coloringUnderwater: {
           title: 'Bojanka: Podvodni svijet i morske dubine',
           text: 'Zaroni u morsko plavetnilo i oboji dobroćudnog delfina, morsku kornjaču, hobotnicu, morske zvijezde i školjke.',
         },
+        coloringSubmarine: {
+          title: 'Bojanka: Podmornica i tajanstveno blago',
+          text: 'Zaroni žutom podmornicom na samo dno okeana, istraži staru škrinju sa blagom i oboji jata svjetlećih ribica.',
+        },
         coloringVehicles: {
           title: 'Bojanka: Saobraćaj i prevozna sredstva',
           text: 'Oboji parnu lokomotivu na šinama, avion visoko na nebu, jedrenjak na talasima i auto na drumu.',
+        },
+        coloringConstruction: {
+          title: 'Bojanka: Građevinske mašine i radovi',
+          text: 'Oboji velika vozila na gradilištu: snažni bager koji kopa zemlju, kamion kiper pun pijeska i visoku građevinsku dizalicu.',
         },
         coloringDino: {
           title: 'Bojanka: Dinosaurusi i praistorija',
@@ -389,6 +421,22 @@ export const bs: Dictionary = {
         coloringSpace: {
           title: 'Bojanka: Kosmos, raketa i astronaut',
           text: 'Oboji malog astronauta koji lebdi u svemiru, svemirsku raketu, planete s prstenom i prijateljskog vanzemaljca.',
+        },
+        coloringProfessions: {
+          title: 'Bojanka: Zanimanja i profesije',
+          text: 'Ko želiš da budeš kad porasteš? Oboji hrabrog vatrogasca sa šmrkom, doktora sa stetoskopom i veselog kuhara sa kapom.',
+        },
+        coloringSports: {
+          title: 'Bojanka: Sport i rekreacija za djecu',
+          text: 'Oboji sportski duh i igru: fudbalsku i košarkašku loptu, dječiji bicikl, patike za trčanje i zlatni pobjednički pehar.',
+        },
+        coloringMusic: {
+          title: 'Bojanka: Muzički orkestar i instrumenti',
+          text: 'Zasviraj u bojama: oboji akustičnu gitaru, dirke klavira, bubnjeve, violinu i raspjevane note koje lebde u vazduhu.',
+        },
+        coloringBakery: {
+          title: 'Bojanka: Slatka pekara i kolačići',
+          text: 'Oboji najslađe đakonije iz pekare: rođendansku tortu sa svjećicama, krofne sa posipom, mafine i ukusne sladolede.',
         },
         coloringLatin: {
           title: 'Bojanka slova — latinica (A–Ž)',

@@ -348,7 +348,7 @@ export const en: Dictionary = {
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
       sectionEyebrow: 'Printables · A4 format',
       sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
-      sectionText: 'Complete collection of 43 printable worksheets and themed coloring books: large illustrations (classroom, 4 seasons, farm animals, ocean life, vehicles, dinosaurs, fairytale castle, space), alphabet coloring pages, early reading and writing in Latin and Cyrillic, syllables, fine motor skills and math. Open any sheet and print it on A4 paper.',
+      sectionText: 'Complete collection of 55 printable worksheets and themed coloring books: large illustrations (classroom, 4 seasons, spring, summer, autumn, winter, farm animals, safari, pets, ocean life, submarine, vehicles, construction, dinosaurs, fairytale castle, space, professions, sports, music, bakery), alphabet coloring pages, early reading and writing in Latin and Cyrillic, syllables, fine motor skills and math. Open any sheet and print it on A4 paper.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
         coloring: 'Coloring books (themed pictures, letters & numbers)',
@@ -366,17 +366,49 @@ export const en: Dictionary = {
           title: 'Coloring page: Four seasons',
           text: 'Four nature scenes on one sheet: Spring with flowers, warm Summer with sun and beach, Autumn leaves with squirrel, and snowy Winter with a snowman.',
         },
+        coloringSpring: {
+          title: 'Coloring: Spring Blossoms & Bees',
+          text: 'Color the awakening of nature, blossoming trees, spring flowers, a busy bee, butterfly, and a smiling sun.',
+        },
+        coloringSummer: {
+          title: 'Coloring: Summer Beach & Sandcastle',
+          text: 'Color summer fun by the sea: a big sandcastle with towers, a beach umbrella, beach ball, and a friendly crab.',
+        },
+        coloringAutumn: {
+          title: 'Coloring: Autumn Forest & Woodland Animals',
+          text: 'Color autumn forest magic: a hedgehog carrying an apple, a squirrel with an acorn, a wise owl, and fallen leaves.',
+        },
+        coloringWinter: {
+          title: 'Coloring: Winter Fun & Sledding',
+          text: 'Color winter games in the snow: kids sledding down a hill, cozy winter clothes, snowflakes, and a playful dog.',
+        },
         coloringAnimals: {
           title: 'Coloring page: Farm animals',
           text: 'Color the friendly spotted cow, fluffy sheep, playful puppy, rooster on a fence and barnyard.',
+        },
+        coloringSafari: {
+          title: 'Coloring: Safari & Wild Animals',
+          text: 'Explore the African savanna: color a brave lion cub, a tall giraffe, a baby elephant, and a monkey on a branch.',
+        },
+        coloringPets: {
+          title: 'Coloring: Cute Household Pets',
+          text: 'Color beloved pets: a playful kitten with yarn, a happy dog with a bone, and a goldfish swimming in a bowl.',
         },
         coloringUnderwater: {
           title: 'Coloring page: Ocean & underwater adventure',
           text: 'Dive into the ocean blue and color the smiling dolphin, sea turtle, octopus, starfish and seashells.',
         },
+        coloringSubmarine: {
+          title: 'Coloring: Submarine & Hidden Treasure',
+          text: 'Dive down to the ocean floor in a submarine, explore an ancient treasure chest, and color schools of glowing fish.',
+        },
         coloringVehicles: {
           title: 'Coloring page: Vehicles & transport',
           text: 'Color the steam train on tracks, airplane high in the sky, sailboat on water and car on the road.',
+        },
+        coloringConstruction: {
+          title: 'Coloring: Construction Vehicles & Work',
+          text: 'Color big construction machines: a heavy excavator digging soil, a dump truck full of sand, and a tall crane.',
         },
         coloringDino: {
           title: 'Coloring page: Dinosaur adventure',
@@ -389,6 +421,22 @@ export const en: Dictionary = {
         coloringSpace: {
           title: 'Coloring page: Space, rocket & astronaut',
           text: 'Color the young astronaut floating weightlessly, rocket ship, ringed planets and friendly waving alien.',
+        },
+        coloringProfessions: {
+          title: 'Coloring: Community Helpers & Jobs',
+          text: 'What do you want to be when you grow up? Color a brave firefighter, a caring doctor with a stethoscope, and a chef.',
+        },
+        coloringSports: {
+          title: 'Coloring: Sports & Outdoor Games',
+          text: 'Color the joy of movement: a soccer ball, basketball, bicycle, running sneakers, and a golden winner trophy.',
+        },
+        coloringMusic: {
+          title: 'Coloring: Music Band & Instruments',
+          text: 'Make music in colors: color an acoustic guitar, piano keys, drums, violin, and dancing musical notes in the air.',
+        },
+        coloringBakery: {
+          title: 'Coloring: Sweet Bakery & Treats',
+          text: 'Color delicious bakery treats: a festive birthday cake with candles, frosted donuts with sprinkles, cupcakes, and ice cream.',
         },
         coloringLatin: {
           title: 'Alphabet colouring book — Latin letters',
