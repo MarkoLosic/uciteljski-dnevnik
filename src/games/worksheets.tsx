@@ -778,6 +778,733 @@ function CopySheet() {
   );
 }
 
+// ============================================================================
+// NOVI SADRŽAJI: BOJANKE SLOVA (LATINICA I ĆIRILICA), BOJANKE CRTEŽA I RADNI LISTOVI
+// ============================================================================
+
+interface LetterColorCard {
+  pair: string;
+  word: string;
+  Icon: LucideIcon;
+}
+
+const LATIN_COLOR_CARDS: LetterColorCard[] = [
+  { pair: 'A a', word: 'AVION', Icon: Plane },
+  { pair: 'B b', word: 'BANANA', Icon: Banana },
+  { pair: 'C c', word: 'CVIJET', Icon: Flower2 },
+  { pair: 'Č č', word: 'ČAŠA / Čaj', Icon: Bell },
+  { pair: 'Ć ć', word: 'ĆILIM / Kuća', Icon: House },
+  { pair: 'D d', word: 'DRVO / List', Icon: Leaf },
+  { pair: 'Dž dž', word: 'DŽip / Auto', Icon: Car },
+  { pair: 'Đ đ', word: 'ĐAK', Icon: Key },
+  { pair: 'E e', word: 'EKRAN / Zvijezda', Icon: Star },
+  { pair: 'F f', word: 'FENJER / Cvijet', Icon: Flower },
+  { pair: 'G g', word: 'GROŽĐE', Icon: Grape },
+  { pair: 'H h', word: 'HELIKOPTER', Icon: Plane },
+  { pair: 'I i', word: 'IGRAČKA', Icon: Heart },
+  { pair: 'J j', word: 'JABUKA', Icon: Apple },
+  { pair: 'K k', word: 'KUĆA', Icon: House },
+  { pair: 'L l', word: 'LIST', Icon: Leaf },
+  { pair: 'Lj lj', word: 'LJUBAV', Icon: Heart },
+  { pair: 'M m', word: 'MAČKA', Icon: Cat },
+  { pair: 'N n', word: 'NOĆ / Mjesec', Icon: Moon },
+  { pair: 'Nj nj', word: 'NJIVA / Sunce', Icon: Sun },
+  { pair: 'O o', word: 'OBLAK', Icon: Cloud },
+  { pair: 'P p', word: 'PTICA', Icon: Bird },
+  { pair: 'R r', word: 'RIBA', Icon: Fish },
+  { pair: 'S s', word: 'SUNCE', Icon: Sun },
+  { pair: 'Š š', word: 'ŠARGAREPA', Icon: Carrot },
+  { pair: 'T t', word: 'TREŠNJA', Icon: Cherry },
+  { pair: 'U u', word: 'ULICA / Bus', Icon: Bus },
+  { pair: 'V v', word: 'VOZ / Bicikl', Icon: Bike },
+  { pair: 'Z z', word: 'ZEC', Icon: Rabbit },
+  { pair: 'Ž zz'.replace('zz', 'ž'), word: 'ŽELVA / Kornjača', Icon: Turtle },
+];
+
+const CYRILLIC_COLOR_CARDS: LetterColorCard[] = [
+  { pair: 'А а', word: 'АВИОН', Icon: Plane },
+  { pair: 'Б б', word: 'БАНАНА', Icon: Banana },
+  { pair: 'В в', word: 'ВОЗ / БИЦИКЛ', Icon: Bike },
+  { pair: 'Г г', word: 'ГРОЖЂЕ', Icon: Grape },
+  { pair: 'Д д', word: 'ДРВО / ЛИСТ', Icon: Leaf },
+  { pair: 'Ђ ђ', word: 'ЂАК / КЉУЧ', Icon: Key },
+  { pair: 'Е е', word: 'ЕКРАН / ЗВИЈЕЗДА', Icon: Star },
+  { pair: 'Ж ж', word: 'ЖЕЛВА / КОРЊАЧА', Icon: Turtle },
+  { pair: 'З з', word: 'ЗЕЦ', Icon: Rabbit },
+  { pair: 'И и', word: 'ИГРАЧКА', Icon: Heart },
+  { pair: 'Ј ј', word: 'ЈАБУКА', Icon: Apple },
+  { pair: 'К к', word: 'КУЋА', Icon: House },
+  { pair: 'Л л', word: 'ЛИСТ', Icon: Leaf },
+  { pair: 'Љ љ', word: 'ЉУБАВ', Icon: Heart },
+  { pair: 'М м', word: 'МАЧКА', Icon: Cat },
+  { pair: 'Н н', word: 'НОЋ / МЈЕСЕЦ', Icon: Moon },
+  { pair: 'Њ њ', word: 'ЊИВА / СУНЦЕ', Icon: Sun },
+  { pair: 'О о', word: 'ОБЛАК', Icon: Cloud },
+  { pair: 'П п', word: 'ПТИЦА', Icon: Bird },
+  { pair: 'Р р', word: 'РИБА', Icon: Fish },
+  { pair: 'С с', word: 'СУНЦЕ', Icon: Sun },
+  { pair: 'Т т', word: 'ТРЕШЊА', Icon: Cherry },
+  { pair: 'Ћ ћ', word: 'ЋИЛИМ / КУЋА', Icon: House },
+  { pair: 'У у', word: 'УЛИЦА / БУС', Icon: Bus },
+  { pair: 'Ф ф', word: 'ФЕНЈЕР / ЦВИЈЕТ', Icon: Flower },
+  { pair: 'Х х', word: 'ХЕЛИКОПТЕР', Icon: Plane },
+  { pair: 'Ц ц', word: 'ЦВИЈЕТ', Icon: Flower2 },
+  { pair: 'Ч ч', word: 'ЧАША / ЗВОНО', Icon: Bell },
+  { pair: 'Џ џ', word: 'ЏИП / АУТО', Icon: Car },
+  { pair: 'Ш ш', word: 'ШАРГАРЕПА', Icon: Carrot },
+];
+
+function coloringLetterPages(cards: readonly LetterColorCard[]): ReactNode[] {
+  return chunk(cards, 6).map((pageCards, pageIndex) => (
+    <Page key={pageIndex} height={640}>
+      {pageCards.map(({ pair, word, Icon }, i) => {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        const x = 6 + col * 300;
+        const y = 6 + row * 212;
+        return (
+          <g key={pair}>
+            <rect x={x} y={y} width="288" height="200" rx="16" fill="#ffffff" stroke={INK} strokeWidth="2.2" />
+            {/* Šuplje veliko i malo slovo za bojenje */}
+            <text
+              x={x + 95}
+              y={y + 66}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontSize="66"
+              fontWeight="900"
+              fontFamily={FONT}
+              fill="#ffffff"
+              stroke={INK}
+              strokeWidth="2.6"
+            >
+              {pair}
+            </text>
+            {/* Sličica za bojenje */}
+            <circle cx={x + 232} cy={y + 62} r="42" fill="none" stroke={GUIDE} strokeWidth="1.8" strokeDasharray="5 5" />
+            <Pic Icon={Icon} x={x + 232} y={y + 62} size={56} />
+            {/* Riječ uz slovo */}
+            <text
+              x={x + 144}
+              y={y + 124}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontSize="16"
+              fontWeight="800"
+              fontFamily={FONT}
+              fill={INK}
+              letterSpacing="1.5"
+            >
+              {word}
+            </text>
+            {/* Linije za pisanje i podebljavanje slova */}
+            <line x1={x + 16} x2={x + 272} y1={y + 148} y2={y + 148} stroke={TRACE_GRAY} strokeWidth="1.2" />
+            <line x1={x + 16} x2={x + 272} y1={y + 164} y2={y + 164} stroke="#9ca3af" strokeWidth="1" strokeDasharray="4 4" />
+            <line x1={x + 16} x2={x + 272} y1={y + 184} y2={y + 184} stroke={INK} strokeWidth="1.6" />
+            <text x={x + 22} y={y + 182} fontSize="28" fontFamily={FONT} fontWeight="700" fill={INK}>
+              {pair}
+            </text>
+            <text x={x + 104} y={y + 182} fontSize="28" fontFamily={FONT} fontWeight="700" fill={TRACE_GRAY}>
+              {pair}
+            </text>
+            <text x={x + 186} y={y + 182} fontSize="28" fontFamily={FONT} fontWeight="700" fill={TRACE_GRAY}>
+              {pair}
+            </text>
+          </g>
+        );
+      })}
+    </Page>
+  ));
+}
+
+const NUMBER_COLORS: [number, ToyColor][] = [
+  [1, 'red'],
+  [2, 'blue'],
+  [3, 'yellow'],
+  [4, 'green'],
+  [5, 'purple'],
+  [6, 'orange'],
+];
+
+function ColorByNumberSheet({ colorNames }: SheetContext) {
+  return (
+    <Page height={645}>
+      {/* Legenda boja sa brojevima 1-6 */}
+      {NUMBER_COLORS.map(([num, color], i) => {
+        const x = 50 + i * 100;
+        return (
+          <g key={num}>
+            <circle cx={x} cy="28" r="20" fill={toyHex[color]} stroke={INK} strokeWidth="2" />
+            <text x={x} y="29" textAnchor="middle" dominantBaseline="central" fontSize="18" fontWeight="800" fontFamily={FONT} fill="#fff" stroke={INK} strokeWidth="0.6">
+              {num}
+            </text>
+            <text x={x} y="64" textAnchor="middle" fontSize="13.5" fontWeight="700" fontFamily={FONT} fill={INK}>
+              {num} = {colorNames[color]}
+            </text>
+          </g>
+        );
+      })}
+      <Divider y={82} />
+
+      {/* Velika scena za bojenje po brojevima */}
+      <rect x="8" y="96" width="584" height="540" rx="20" fill="#fff" stroke={INK} strokeWidth="2.5" />
+
+      {/* Sunce (3 = žuta, 6 = narandžasta) */}
+      <circle cx="105" cy="175" r="54" fill="none" stroke={INK} strokeWidth="2.2" strokeDasharray="10 6" />
+      <Label x={105} y={132} size={18}>6</Label>
+      <circle cx="105" cy="175" r="34" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={105} y={175} size={24}>3</Label>
+
+      {/* Oblaci (2 = plava) */}
+      <path d="M250 185 C225 185, 215 162, 234 148 C234 124, 268 114, 286 132 C305 114, 344 122, 346 148 C368 152, 370 185, 342 185 Z" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={295} y={158} size={22}>2</Label>
+
+      <path d="M430 175 C410 175, 402 156, 418 144 C418 124, 446 116, 462 130 C478 116, 510 122, 512 144 C530 148, 532 175, 508 175 Z" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={468} y={152} size={22}>2</Label>
+
+      {/* Kuća: krov (1 = crvena), dimnjak (5 = ljubičasta), zidovi (3 = žuta), vrata (6 = narandžasta), prozori (2 = plava) */}
+      <rect x="295" y="230" width="28" height="55" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={309} y={252} size={18}>5</Label>
+      <polygon points="150,320 265,215 380,320" fill="#fff" stroke={INK} strokeWidth="2.8" strokeLinejoin="round" />
+      <Label x={265} y={282} size={26}>1</Label>
+
+      <rect x="172" y="320" width="186" height="175" fill="#fff" stroke={INK} strokeWidth="2.8" />
+      <Label x={265} y={352} size={24}>3</Label>
+
+      {/* Vrata */}
+      <rect x="200" y="395" width="54" height="100" rx="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <circle cx="244" cy="448" r="4" fill={INK} />
+      <Label x={227} y={445} size={22}>6</Label>
+
+      {/* Prozor */}
+      <rect x="278" y="385" width="58" height="58" rx="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <line x1="307" x2="307" y1="385" y2="443" stroke={INK} strokeWidth="2" />
+      <line x1="278" x2="336" y1="414" y2="414" stroke={INK} strokeWidth="2" />
+      <Label x={292} y={400} size={16}>2</Label>
+      <Label x={322} y={428} size={16}>2</Label>
+
+      {/* Drvo desno: krošnja (4 = zelena), jabuke (1 = crvena), stablo (6 = narandžasta) */}
+      <rect x="462" y="385" width="36" height="110" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={480} y={445} size={22}>6</Label>
+      <circle cx="480" cy="315" r="76" fill="#fff" stroke={INK} strokeWidth="2.8" />
+      <Label x={480} y={315} size={26}>4</Label>
+      <circle cx="445" cy="285" r="16" fill="#fff" stroke={INK} strokeWidth="2" />
+      <Label x={445} y={285} size={16}>1</Label>
+      <circle cx="515" cy="295" r="16" fill="#fff" stroke={INK} strokeWidth="2" />
+      <Label x={515} y={295} size={16}>1</Label>
+      <circle cx="458" cy="355" r="16" fill="#fff" stroke={INK} strokeWidth="2" />
+      <Label x={458} y={355} size={16}>1</Label>
+
+      {/* Cvijet lijevo (5 = ljubičasta, 3 = žuta, 4 = zelena) */}
+      <line x1="88" x2="88" y1="395" y2="495" stroke={INK} strokeWidth="3" />
+      <circle cx="88" cy="340" r="22" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <circle cx="54" cy="374" r="22" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <circle cx="122" cy="374" r="22" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <circle cx="88" cy="408" r="22" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <Label x={88} y={340} size={16}>5</Label>
+      <Label x={54} y={374} size={16}>5</Label>
+      <Label x={122} y={374} size={16}>5</Label>
+      <Label x={88} y={408} size={16}>5</Label>
+      <circle cx="88" cy="374" r="20" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={88} y={374} size={18}>3</Label>
+
+      {/* Livada / trava na dnu (4 = zelena) */}
+      <path d="M8 495 L592 495 L592 616 C592 628, 584 636, 572 636 L28 636 C16 636, 8 628, 8 616 Z" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={110} y={565} size={26}>4</Label>
+      <Label x={480} y={565} size={26}>4</Label>
+
+      {/* Staza ispred kuće (6 = narandžasta) */}
+      <polygon points="200,495 254,495 288,636 166,636" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <Label x={227} y={565} size={24}>6</Label>
+    </Page>
+  );
+}
+
+function ColoringScenesPages(): ReactNode[] {
+  return [
+    // Strana 1: Priroda, životinje i veselo dvorište
+    <Page key="scene-1" height={640}>
+      <rect x="6" y="6" width="588" height="628" rx="22" fill="#fff" stroke={INK} strokeWidth="2.8" />
+      {/* Duga i oblaci */}
+      <path d="M90 210 A160 160 0 0 1 410 210" fill="none" stroke={INK} strokeWidth="2.4" />
+      <path d="M112 210 A138 138 0 0 1 388 210" fill="none" stroke={INK} strokeWidth="2.4" />
+      <path d="M134 210 A116 116 0 0 1 366 210" fill="none" stroke={INK} strokeWidth="2.4" />
+      <Pic Icon={Cloud} x={95} y={210} size={84} />
+      <Pic Icon={Cloud} x={405} y={210} size={84} />
+      <Pic Icon={Sun} x={505} y={92} size={96} />
+      <Pic Icon={Bird} x={245} y={76} size={56} />
+
+      {/* Kuća i cvijeće u sredini */}
+      <Pic Icon={House} x={150} y={365} size={150} />
+      <Pic Icon={Flower2} x={310} y={395} size={82} />
+      <Pic Icon={Flower} x={405} y={395} size={82} />
+      <Pic Icon={Bug} x={515} y={355} size={68} />
+
+      {/* Linija tla */}
+      <line x1="6" x2="594" y1="450" y2="450" stroke={INK} strokeWidth="2.5" />
+
+      {/* Životinje u prvom planu */}
+      <Pic Icon={Cat} x={95} y={540} size={104} />
+      <Pic Icon={Dog} x={235} y={540} size={104} />
+      <Pic Icon={Rabbit} x={375} y={540} size={104} />
+      <Pic Icon={Snail} x={505} y={548} size={88} />
+    </Page>,
+
+    // Strana 2: Putovanje u svemir i morski svijet
+    <Page key="scene-2" height={640}>
+      {/* Gornji okvir: Svemir */}
+      <rect x="6" y="6" width="588" height="304" rx="20" fill="#fff" stroke={INK} strokeWidth="2.6" />
+      <Pic Icon={Rocket} x={295} y={158} size={148} />
+      <Pic Icon={Moon} x={100} y={108} size={92} />
+      <Pic Icon={Star} x={195} y={68} size={54} />
+      <Pic Icon={Star} x={420} y={72} size={62} />
+      <Pic Icon={Star} x={515} y={175} size={58} />
+      <Pic Icon={Star} x={95} y={236} size={52} />
+      {/* Planeta sa prstenom */}
+      <circle cx="480" cy="238" r="36" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <ellipse cx="480" cy="238" rx="68" ry="16" fill="none" stroke={INK} strokeWidth="2.4" />
+
+      {/* Donji okvir: Morski svijet */}
+      <rect x="6" y="330" width="588" height="304" rx="20" fill="#fff" stroke={INK} strokeWidth="2.6" />
+      <path d="M6 382 Q80 362 154 382 T302 382 T450 382 T594 382" fill="none" stroke={INK} strokeWidth="2.2" />
+      <Pic Icon={Fish} x={135} y={465} size={112} />
+      <Pic Icon={Turtle} x={335} y={475} size={124} />
+      <Pic Icon={Fish} x={505} y={445} size={88} />
+      <Pic Icon={Star} x={115} y={582} size={58} />
+      <Pic Icon={Star} x={485} y={578} size={62} />
+      <circle cx="215" cy="425" r="10" fill="none" stroke={INK} strokeWidth="2" />
+      <circle cx="230" cy="402" r="14" fill="none" stroke={INK} strokeWidth="2" />
+      <circle cx="430" cy="422" r="12" fill="none" stroke={INK} strokeWidth="2" />
+    </Page>,
+  ];
+}
+
+interface InitialItem {
+  Icon: LucideIcon;
+  choicesLat: [string, string, string];
+  choicesCyr: [string, string, string];
+  restLat: string;
+  restCyr: string;
+}
+
+const INITIAL_ITEMS: InitialItem[] = [
+  { Icon: Sun, choicesLat: ['S', 'M', 'K'], choicesCyr: ['С', 'М', 'К'], restLat: 'UNCE', restCyr: 'УНЦЕ' },
+  { Icon: Apple, choicesLat: ['B', 'J', 'L'], choicesCyr: ['Б', 'Ј', 'Л'], restLat: 'ABUKA', restCyr: 'АБУКА' },
+  { Icon: Fish, choicesLat: ['P', 'T', 'R'], choicesCyr: ['П', 'Т', 'Р'], restLat: 'IBA', restCyr: 'ИБА' },
+  { Icon: House, choicesLat: ['K', 'G', 'N'], choicesCyr: ['К', 'Г', 'Н'], restLat: 'UĆA', restCyr: 'УЋА' },
+  { Icon: Cat, choicesLat: ['V', 'M', 'Z'], choicesCyr: ['В', 'М', 'З'], restLat: 'AČKA', restCyr: 'АЧКА' },
+  { Icon: Rabbit, choicesLat: ['S', 'D', 'Z'], choicesCyr: ['С', 'Д', 'З'], restLat: 'EC', restCyr: 'ЕЦ' },
+  { Icon: Flower2, choicesLat: ['C', 'Č', 'P'], choicesCyr: ['Ц', 'Ч', 'П'], restLat: 'VIJET', restCyr: 'ВИЈЕТ' },
+  { Icon: Dog, choicesLat: ['R', 'P', 'B'], choicesCyr: ['Р', 'П', 'Б'], restLat: 'AS', restCyr: 'АС' },
+  { Icon: Bird, choicesLat: ['P', 'T', 'K'], choicesCyr: ['П', 'Т', 'К'], restLat: 'TICA', restCyr: 'ТИЦА' },
+  { Icon: Rocket, choicesLat: ['L', 'M', 'R'], choicesCyr: ['Л', 'М', 'Р'], restLat: 'AKETA', restCyr: 'АКЕТА' },
+  { Icon: Cloud, choicesLat: ['O', 'U', 'A'], choicesCyr: ['О', 'У', 'А'], restLat: 'BLAK', restCyr: 'БЛАК' },
+  { Icon: Leaf, choicesLat: ['N', 'L', 'R'], choicesCyr: ['Н', 'Л', 'Р'], restLat: 'IST', restCyr: 'ИСТ' },
+];
+
+function InitialLetterSheet({ script }: { script: 'lat' | 'cyr' }) {
+  return (
+    <Page height={640}>
+      {INITIAL_ITEMS.map((item, i) => {
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+        const x = 6 + col * 198;
+        const y = 6 + row * 158;
+        const choices = script === 'cyr' ? item.choicesCyr : item.choicesLat;
+        const rest = script === 'cyr' ? item.restCyr : item.restLat;
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width="192" height="150" rx="14" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Pic Icon={item.Icon} x={x + 52} y={y + 52} size={56} />
+            {/* 3 kružića sa ponuđenim početnim slovima */}
+            {choices.map((ch, k) => (
+              <g key={k}>
+                <circle cx={x + 124} cy={y + 28 + k * 34} r="14" fill="#fff" stroke={INK} strokeWidth="1.8" />
+                <Label x={x + 124} y={y + 28 + k * 34} size={17}>
+                  {ch}
+                </Label>
+              </g>
+            ))}
+            {/* Linija za upisivanje početnog slova + ostatak riječi */}
+            <line x1={x + 22} x2={x + 62} y1={y + 134} y2={y + 134} stroke={INK} strokeWidth="2.5" />
+            <text x={x + 68} y={y + 132} fontSize="20" fontWeight="800" fontFamily={FONT} fill={INK} letterSpacing="1.5">
+              {rest}
+            </text>
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const LATIN_CASE_PAIRS: [string, string][] = [
+  ['A', 'a'],
+  ['B', 'b'],
+  ['D', 'd'],
+  ['E', 'e'],
+  ['G', 'g'],
+  ['H', 'h'],
+  ['M', 'm'],
+  ['N', 'n'],
+  ['R', 'r'],
+  ['Đ', 'đ'],
+  ['Č', 'č'],
+  ['Ž', 'ž'],
+];
+
+const CYRILLIC_CASE_PAIRS: [string, string][] = [
+  ['А', 'а'],
+  ['Б', 'б'],
+  ['В', 'в'],
+  ['Г', 'г'],
+  ['Д', 'д'],
+  ['Ђ', 'ђ'],
+  ['Е', 'е'],
+  ['Ж', 'ж'],
+  ['И', 'и'],
+  ['Љ', 'љ'],
+  ['Њ', 'њ'],
+  ['Ћ', 'ћ'],
+];
+
+function LetterMatchSheet({ script }: { script: 'lat' | 'cyr' }) {
+  const pairs = script === 'cyr' ? CYRILLIC_CASE_PAIRS : LATIN_CASE_PAIRS;
+  const topPairs = pairs.slice(0, 6);
+  const shuffledOrder = [2, 5, 0, 4, 1, 3];
+  return (
+    <Page height={640}>
+      {/* Gornji dio: spoji veliko i malo slovo */}
+      {topPairs.map(([upper], i) => {
+        const y = 38 + i * 54;
+        return (
+          <g key={upper}>
+            <rect x="60" y={y - 22} width="64" height="44" rx="10" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={92} y={y} size={26}>
+              {upper}
+            </Label>
+            <circle cx="144" cy={y} r="6" fill={INK} />
+          </g>
+        );
+      })}
+      {shuffledOrder.map((pairIdx, i) => {
+        const y = 38 + i * 54;
+        const [, lower] = topPairs[pairIdx];
+        return (
+          <g key={lower}>
+            <circle cx="456" cy={y} r="6" fill={INK} />
+            <rect x="476" y={y - 22} width="64" height="44" rx="10" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={508} y={y} size={26}>
+              {lower}
+            </Label>
+          </g>
+        );
+      })}
+
+      <Divider y={356} />
+
+      {/* Donji dio: kućice za slova (napiši malo slovo pored velikog) */}
+      {pairs.map(([upper], i) => {
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+        const x = 14 + col * 196;
+        const y = 374 + row * 66;
+        return (
+          <g key={upper}>
+            <rect x={x} y={y} width="180" height="54" rx="12" fill="#fff" stroke={INK} strokeWidth="2" />
+            <line x1={x + 90} x2={x + 90} y1={y} y2={y + 54} stroke={GUIDE} strokeWidth="1.8" />
+            <Label x={x + 45} y={y + 27} size={28}>
+              {upper}
+            </Label>
+            <line x1={x + 108} x2={x + 162} y1={y + 42} y2={y + 42} stroke={INK} strokeWidth="2" strokeDasharray="5 4" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+interface SyllableRow {
+  Icon: LucideIcon;
+  partsLat: string[];
+  partsCyr: string[];
+}
+
+const SYLLABLE_ROWS: SyllableRow[] = [
+  { Icon: Sun, partsLat: ['SU', 'NCE'], partsCyr: ['СУ', 'НЦЕ'] },
+  { Icon: Fish, partsLat: ['RI', 'BA'], partsCyr: ['РИ', 'БА'] },
+  { Icon: House, partsLat: ['KU', 'ĆA'], partsCyr: ['КУ', 'ЋА'] },
+  { Icon: Cat, partsLat: ['MA', 'ČKA'], partsCyr: ['МА', 'ЧКА'] },
+  { Icon: Apple, partsLat: ['JA', 'BU', 'KA'], partsCyr: ['ЈА', 'БУ', 'КА'] },
+  { Icon: Rocket, partsLat: ['RA', 'KE', 'TA'], partsCyr: ['РА', 'КЕ', 'ТА'] },
+];
+
+function SyllablesSheet({ script }: { script: 'lat' | 'cyr' }) {
+  const vowels = script === 'cyr' ? ['А', 'Е', 'И', 'О', 'У'] : ['A', 'E', 'I', 'O', 'U'];
+  const cons = script === 'cyr' ? ['М', 'С', 'Т', 'К'] : ['M', 'S', 'T', 'K'];
+  return (
+    <Page height={640}>
+      {/* Gornja tablica otvorenih slogova za glasno čitanje */}
+      <rect x="8" y="6" width="584" height="128" rx="14" fill="#fff" stroke={INK} strokeWidth="2" />
+      {cons.map((c, r) =>
+        vowels.map((v, col) => {
+          const x = 64 + col * 116;
+          const y = 26 + r * 26;
+          return (
+            <Label key={`${c}${v}`} x={x} y={y} size={18}>
+              {c}
+              {v}
+            </Label>
+          );
+        }),
+      )}
+
+      {/* 6 redova sa sličicama, slogovima i linijama za spajanje u riječ */}
+      {SYLLABLE_ROWS.map((row, i) => {
+        const y = 178 + i * 82;
+        const parts = script === 'cyr' ? row.partsCyr : row.partsLat;
+        return (
+          <g key={i}>
+            {i > 0 && <Divider y={y - 41} />}
+            <Pic Icon={row.Icon} x={42} y={y} size={48} />
+            {parts.map((part, k) => {
+              const bx = 92 + k * 86;
+              return (
+                <g key={k}>
+                  <rect x={bx} y={y - 24} width="64" height="44" rx="10" fill="#fff" stroke={INK} strokeWidth="2" />
+                  <Label x={bx + 32} y={y - 2} size={20}>
+                    {part}
+                  </Label>
+                  {/* Luk sloga ispod pravougaonika */}
+                  <path d={`M${bx + 8} ${y + 25} Q${bx + 32} ${y + 36} ${bx + 56} ${y + 25}`} fill="none" stroke={MUTED} strokeWidth="1.8" />
+                  {k < parts.length - 1 && (
+                    <Label x={bx + 75} y={y - 2} size={20}>
+                      +
+                    </Label>
+                  )}
+                </g>
+              );
+            })}
+            <Label x={360} y={y - 2} size={22}>
+              =
+            </Label>
+            <line x1="386" x2="584" y1={y + 16} y2={y + 16} stroke={INK} strokeWidth="2.2" />
+            <line x1="386" x2="584" y1={y - 12} y2={y - 12} stroke={TRACE_GRAY} strokeWidth="1.2" strokeDasharray="5 5" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const BRIDGE_PAIRS: [string, string][] = [
+  ['B b', 'Б б'],
+  ['V v', 'В в'],
+  ['G g', 'Г г'],
+  ['D d', 'Д д'],
+  ['Đ đ', 'Ђ ђ'],
+  ['Ž ž', 'Ж ж'],
+  ['Lj lj', 'Љ љ'],
+  ['Nj nj', 'Њ њ'],
+];
+
+const BRIDGE_WORDS: [LucideIcon, string, string][] = [
+  [Sun, 'SUNCE', 'СУНЦЕ'],
+  [Fish, 'RIBA', 'РИБА'],
+  [House, 'KUĆA', 'КУЋА'],
+  [Apple, 'JABUKA', 'ЈАБУКА'],
+  [Bird, 'PTICA', 'ПТИЦА'],
+  [Flower2, 'CVIJET', 'ЦВИЈЕТ'],
+];
+
+function ScriptBridgeSheet() {
+  const order = [3, 0, 5, 1, 7, 2, 6, 4];
+  return (
+    <Page height={640}>
+      {/* Gornji dio: spoji latinično i ćirilično slovo */}
+      {BRIDGE_PAIRS.map(([lat], i) => {
+        const y = 30 + i * 44;
+        return (
+          <g key={lat}>
+            <rect x="44" y={y - 18} width="84" height="36" rx="8" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={86} y={y} size={20}>
+              {lat}
+            </Label>
+            <circle cx="146" cy={y} r="6" fill={INK} />
+          </g>
+        );
+      })}
+      {order.map((idx, i) => {
+        const y = 30 + i * 44;
+        const [, cyr] = BRIDGE_PAIRS[idx];
+        return (
+          <g key={cyr}>
+            <circle cx="454" cy={y} r="6" fill={INK} />
+            <rect x="472" y={y - 18} width="84" height="36" rx="8" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={514} y={y} size={20}>
+              {cyr}
+            </Label>
+          </g>
+        );
+      })}
+
+      <Divider y={376} />
+
+      {/* Donji dio: prepiši riječ drugim pismom */}
+      {BRIDGE_WORDS.map(([Icon, lat, cyr], i) => {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        const x = 12 + col * 296;
+        const y = 394 + row * 82;
+        const promptWord = i % 2 === 0 ? lat : cyr;
+        return (
+          <g key={lat}>
+            <rect x={x} y={y} width="280" height="70" rx="12" fill="#fff" stroke={INK} strokeWidth="1.8" />
+            <Pic Icon={Icon} x={x + 34} y={y + 35} size={40} />
+            <Label x={x + 104} y={y + 24} size={18}>
+              {promptWord}
+            </Label>
+            <line x1={x + 68} x2={x + 264} y1={y + 56} y2={y + 56} stroke={INK} strokeWidth="2" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const SUBTRACTIONS: [LucideIcon, number, number][] = [
+  [Apple, 5, 2],
+  [Cherry, 4, 1],
+  [Fish, 6, 3],
+  [Star, 7, 2],
+  [Heart, 8, 3],
+  [Snail, 9, 4],
+];
+
+function SubtractionSheet() {
+  return (
+    <Page height={640}>
+      {SUBTRACTIONS.map(([Icon, total, minus], i) => {
+        const y = 50 + i * 106;
+        return (
+          <g key={i}>
+            {i > 0 && <Divider y={y - 53} />}
+            {Array.from({ length: total }, (_, k) => {
+              const cx = 32 + k * 34;
+              const crossed = k >= total - minus;
+              return (
+                <g key={k}>
+                  <Pic Icon={Icon} x={cx} y={y} size={28} />
+                  {crossed && <line x1={cx - 14} y1={y + 14} x2={cx + 14} y2={y - 14} stroke={INK} strokeWidth="2.8" />}
+                </g>
+              );
+            })}
+            <Label x={400} y={y} size={30}>
+              {total} − {minus} =
+            </Label>
+            <rect x="495" y={y - 28} width="58" height="56" rx="10" fill="none" stroke={INK} strokeWidth="2.2" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const COMPARE_ROWS: [LucideIcon, number, number][] = [
+  [Apple, 4, 2],
+  [Star, 3, 5],
+  [Fish, 4, 4],
+  [Flower, 6, 3],
+  [Bird, 2, 6],
+  [Sun, 5, 5],
+];
+
+function CompareNumbersSheet() {
+  return (
+    <Page height={640}>
+      {COMPARE_ROWS.map(([Icon, leftN, rightN], i) => {
+        const y = 50 + i * 106;
+        return (
+          <g key={i}>
+            {i > 0 && <Divider y={y - 53} />}
+            <Group Icon={Icon} n={leftN} cx={135} cy={y} size={32} gap={40} />
+            <circle cx="300" cy={y} r="28" fill="#fff" stroke={INK} strokeWidth="2.4" />
+            <Group Icon={Icon} n={rightN} cx={465} cy={y} size={32} gap={40} />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const NUMBER_TRAINS: (number | null)[][] = [
+  [1, 2, null, 4, 5, null, 7, 8, null, 10],
+  [1, null, 3, null, 5, 6, null, 8, 9, null],
+  [null, 2, 3, 4, null, 6, 7, null, 9, 10],
+];
+
+const NEIGHBORS = [2, 4, 5, 6, 8, 9];
+
+function MissingNumbersSheet() {
+  return (
+    <Page height={640}>
+      {/* Gornji dio: 3 brojevna vozića od 1 do 10 */}
+      {NUMBER_TRAINS.map((train, r) => {
+        const y = 48 + r * 92;
+        return (
+          <g key={r}>
+            {train.map((val, c) => {
+              const x = 14 + c * 58;
+              return (
+                <g key={c}>
+                  {c > 0 && <line x1={x - 8} x2={x} y1={y} y2={y} stroke={INK} strokeWidth="2.5" />}
+                  <rect
+                    x={x}
+                    y={y - 25}
+                    width="50"
+                    height="50"
+                    rx="10"
+                    fill="#fff"
+                    stroke={INK}
+                    strokeWidth="2.2"
+                    strokeDasharray={val === null ? '6 5' : undefined}
+                  />
+                  {val !== null && (
+                    <Label x={x + 25} y={y} size={24}>
+                      {val}
+                    </Label>
+                  )}
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+
+      <Divider y={310} />
+
+      {/* Donji dio: prethodnik i sledbenik */}
+      {NEIGHBORS.map((centerNum, i) => {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        const x = 26 + col * 300;
+        const y = 365 + row * 96;
+        return (
+          <g key={centerNum}>
+            <rect x={x} y={y - 28} width="64" height="56" rx="12" {...DASH} strokeWidth={2} />
+            <line x1={x + 72} x2={x + 92} y1={y} y2={y} stroke={INK} strokeWidth="2.2" />
+            <circle cx={x + 126} cy={y} r="30" fill="#fff" stroke={INK} strokeWidth="2.4" />
+            <Label x={x + 126} y={y} size={28}>
+              {centerNum}
+            </Label>
+            <line x1={x + 160} x2={x + 180} y1={y} y2={y} stroke={INK} strokeWidth="2.2" />
+            <rect x={x + 188} y={y - 28} width="64" height="56" rx="12" {...DASH} strokeWidth={2} />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
 interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
@@ -785,6 +1512,10 @@ interface SheetContext {
 
 // Svaki list vraća svoje strane; stranica radnog lista oko svake dodaje zaglavlje i prelom strane.
 export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]> = {
+  coloringLatin: () => coloringLetterPages(LATIN_COLOR_CARDS),
+  coloringCyrillic: () => coloringLetterPages(CYRILLIC_COLOR_CARDS),
+  colorByNumber: (ctx) => [<ColorByNumberSheet key="colorByNumber" {...ctx} />],
+  coloringScenes: () => ColoringScenesPages(),
   trace: () => [<TraceSheet key="trace" />],
   dots: () => [<DotsSheet key="dots" />],
   maze: () => [<MazeSheet key="maze" />],
@@ -797,6 +1528,13 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   ],
   latin: ({ alphabet }) => letterPages(alphabet),
   cyrillic: () => letterPages(CYRILLIC),
+  initialLetterLatin: () => [<InitialLetterSheet key="initialLetterLatin" script="lat" />],
+  initialLetterCyrillic: () => [<InitialLetterSheet key="initialLetterCyrillic" script="cyr" />],
+  letterMatchLatin: () => [<LetterMatchSheet key="letterMatchLatin" script="lat" />],
+  letterMatchCyrillic: () => [<LetterMatchSheet key="letterMatchCyrillic" script="cyr" />],
+  syllablesLatin: () => [<SyllablesSheet key="syllablesLatin" script="lat" />],
+  syllablesCyrillic: () => [<SyllablesSheet key="syllablesCyrillic" script="cyr" />],
+  scriptBridge: () => [<ScriptBridgeSheet key="scriptBridge" />],
   lines: () => [<LinesSheet key="lines" />],
   waves: () => [<WavesSheet key="waves" />],
   outlines: () => [<OutlinesSheet key="outlines" />],
@@ -804,6 +1542,9 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   count: () => [<CountSheet key="count" />],
   quantity: () => [<QuantitySheet key="quantity" />],
   adding: () => [<AddingSheet key="adding" />],
+  subtraction: () => [<SubtractionSheet key="subtraction" />],
+  compareNumbers: () => [<CompareNumbersSheet key="compareNumbers" />],
+  missingNumbers: () => [<MissingNumbersSheet key="missingNumbers" />],
   sizes: () => [<SizesSheet key="sizes" />],
   pattern: () => [<PatternSheet key="pattern" />],
   odd: () => [<OddSheet key="odd" />],

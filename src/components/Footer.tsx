@@ -11,7 +11,6 @@ export default function Footer() {
   const { locale, t, paths } = useLocale();
   const { social } = siteConfig;
   const external = [
-    { label: 'GitHub', href: social.github },
     { label: 'LinkedIn', href: social.linkedin },
   ].filter((link) => link.href);
 
@@ -24,9 +23,18 @@ export default function Footer() {
         {t.footer.author}: {siteConfig.author.name}
       </p>
       <nav aria-label={t.footer.label} className="flex flex-wrap justify-center gap-x-4">
+        <Link to={paths.home} className={linkClass}>
+          {t.nav.home}
+        </Link>
         <a href="/pripreme/index.html" className={linkClass}>
           {t.nav.pripreme}
         </a>
+        <Link to={paths.games} className={linkClass}>
+          {t.nav.games}
+        </Link>
+        <Link to={paths.blog} className={linkClass}>
+          {t.nav.blog}
+        </Link>
         {hasCountries(locale) && (
           <Link to={paths.world} className={linkClass}>
             {t.nav.world}

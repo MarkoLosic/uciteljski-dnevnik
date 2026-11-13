@@ -741,6 +741,40 @@ textarea {
   gap: 5px;
 }
 
+.btn-card-levels {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-purple) 35%, transparent);
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-card-levels:hover {
+  background: var(--accent-purple);
+  color: #ffffff;
+  border-color: var(--accent-purple);
+}
+
+.btn-levels-cta {
+  background: linear-gradient(135deg, #6d28d9, #0d6e6e);
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 2px 10px rgba(109, 40, 217, 0.22);
+}
+
+.btn-levels-cta:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
 .card-top-row {
   display: flex;
   align-items: flex-start;
@@ -942,6 +976,7 @@ textarea {
   padding: 16px 20px;
   margin-bottom: 22px;
   background: var(--bg);
+  overflow: hidden;
 }
 
 .print-doc-title {
@@ -959,15 +994,17 @@ textarea {
 
 .school-meta-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px 24px;
   font-size: 0.92rem;
 }
 
 .school-meta-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px 8px;
+  min-width: 0;
   border-bottom: 1px dotted var(--border-strong);
   padding-bottom: 4px;
 }
@@ -976,12 +1013,33 @@ textarea {
   font-weight: 600;
   color: var(--text-secondary);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .school-meta-value {
   color: var(--text);
   font-weight: 500;
-  flex: 1;
+  flex: 1 1 140px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.school-meta-value:focus {
+  outline: none;
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.school-meta-value:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Tabela osnovnih metodičkih podataka */
@@ -1041,6 +1099,175 @@ textarea {
   white-space: pre-line;
   font-size: 0.96rem;
   line-height: 1.65;
+}
+
+/* ==========================================================================
+   DIFERENCIRANA PRIPREMA ZA 3 NIVOA POSTIGNUĆA UČENIKA
+   ========================================================================== */
+.levels-cta-banner {
+  margin: 24px 0 20px;
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed color-mix(in srgb, var(--accent-purple) 45%, var(--primary));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-purple-bg) 55%, var(--surface)),
+    color-mix(in srgb, var(--primary-light) 55%, var(--surface))
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.levels-cta-text {
+  flex: 1 1 420px;
+}
+
+.levels-cta-badge {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent-purple);
+  background: var(--accent-purple-bg);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.levels-cta-text h3 {
+  font-family: var(--font-head);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.levels-cta-text p {
+  font-size: 0.91rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.levels-section {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.levels-section-header {
+  background: var(--primary-light);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.levels-section-title {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.levels-section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.levels-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 18px;
+}
+
+@media (max-width: 860px) {
+  .levels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.level-card {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.level-card-head {
+  padding: 10px 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.94rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.level-osnovni .level-card-head {
+  background: var(--primary-light);
+  color: var(--accent-emerald);
+}
+
+.level-srednji .level-card-head {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+}
+
+.level-napredni .level-card-head {
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+}
+
+.level-card-body {
+  padding: 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.level-block-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.level-block-text {
+  white-space: pre-line;
+  color: var(--text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .print-signatures {
@@ -1369,7 +1596,7 @@ textarea {
   }
 
   .school-meta-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .school-meta-item {
@@ -1379,6 +1606,10 @@ textarea {
   .school-meta-label,
   .school-meta-value {
     color: #000000 !important;
+  }
+
+  .school-meta-value:empty::before {
+    content: '' !important;
   }
 
   .method-table {
@@ -1425,6 +1656,66 @@ textarea {
     color: #000000 !important;
     padding: 8px 10px !important;
     font-size: 10.5pt !important;
+  }
+
+  .levels-section {
+    border: 1.5px solid #000000 !important;
+    border-radius: 0 !important;
+    margin-top: 14px !important;
+    margin-bottom: 14px !important;
+    break-inside: avoid;
+  }
+
+  .levels-section-header {
+    background: #f2f2f2 !important;
+    color: #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    padding: 8px 10px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .levels-section-title,
+  .levels-section-subtitle {
+    color: #000000 !important;
+  }
+
+  .levels-toolbar {
+    display: none !important;
+  }
+
+  .levels-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+
+  .level-card {
+    border: 1px solid #000000 !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    break-inside: avoid;
+  }
+
+  .level-card-head {
+    background: #eaeaea !important;
+    color: #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    padding: 6px 8px !important;
+    font-size: 9.5pt !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .level-card-body {
+    padding: 8px !important;
+    font-size: 9.5pt !important;
+    color: #000000 !important;
+  }
+
+  .level-block-label,
+  .level-block-text {
+    color: #000000 !important;
   }
 
   .print-signatures {

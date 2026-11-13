@@ -90,12 +90,19 @@
 
   // Dugmad u modalu
   const elAkcijaKopirajEDnevnik = document.getElementById('akcijaKopirajEDnevnik');
+  const elAkcijaTriNivoa = document.getElementById('akcijaTriNivoa');
   const elAkcijaKopirajLink = document.getElementById('akcijaKopirajLink');
   const elAkcijaStampa = document.getElementById('akcijaStampa');
   const elAkcijaPreuzmiDocx = document.getElementById('akcijaPreuzmiDocx');
   const elAkcijaPreuzmiPdf = document.getElementById('akcijaPreuzmiPdf');
   const elAkcijaSacuvaj = document.getElementById('akcijaSacuvaj');
   const elAkcijaPismoModal = document.getElementById('akcijaPismoModal');
+
+  // Elementi za diferenciranu pripremu na 3 nivoa učenika
+  const elCtaTriNivoaBox = document.getElementById('ctaTriNivoaBox');
+  const elDugmeGenerisiTriNivoa = document.getElementById('dugmeGenerisiTriNivoa');
+  const elSekcijaTriNivoa = document.getElementById('sekcijaTriNivoa');
+  let triNivoaAktivno = false;
 
   // ==========================================================================
   // PRESLOVLJAVANJE LATINICA ↔ ĆIRILICA
@@ -562,7 +569,15 @@
           '</p>' +
           '</div>' +
           '<div class="card-footer">' +
-          '<span class="card-meta">📋 e-Dnevnik · 📝 Listić · ⬇ DOCX</span>' +
+          '<button type="button" class="btn-card-levels" data-levels-slug="' +
+          escapeHtml(jedinica.slug) +
+          '" title="' +
+          escapeHtml(
+            preslovi('Otvori pripremu sa diferenciranim očekivanjima za 3 nivoa učenika (Osnovni, Srednji, Napredni)')
+          ) +
+          '">📊 ' +
+          escapeHtml(preslovi('Priprema za 3 nivoa')) +
+          '</button>' +
           '<span class="card-open-label">' +
           escapeHtml(preslovi('Otvori pripremu →')) +
           '</span>' +
@@ -644,26 +659,26 @@
       elMetaDatum.textContent = datumStr;
     }
     try {
-      const sacuvanaSkola = localStorage.getItem('pripreme_meta_skola');
-      if (elMetaSkola && sacuvanaSkola && sacuvanaSkola.trim()) {
+      const sacuvanaSkola = (localStorage.getItem('pripreme_meta_skola') || '').replace(/_+/g, '').trim();
+      if (elMetaSkola) {
         elMetaSkola.textContent = sacuvanaSkola;
       }
-      const sacuvaniUcitelj = localStorage.getItem('pripreme_meta_ucitelj');
-      if (elMetaUcitelj && sacuvaniUcitelj && sacuvaniUcitelj.trim()) {
+      const sacuvaniUcitelj = (localStorage.getItem('pripreme_meta_ucitelj') || '').replace(/_+/g, '').trim();
+      if (elMetaUcitelj) {
         elMetaUcitelj.textContent = sacuvaniUcitelj;
       }
-      const sacuvanoOdjeljenje = localStorage.getItem('pripreme_meta_odjeljenje');
+      const sacuvanoOdjeljenje = (localStorage.getItem('pripreme_meta_odjeljenje') || '').replace(/_+/g, '').trim();
       if (elMetaRazredOdjeljenje) {
-        if (sacuvanoOdjeljenje && sacuvanoOdjeljenje.trim()) {
+        if (sacuvanoOdjeljenje) {
           elMetaRazredOdjeljenje.textContent =
             jedinica.razred + preslovi('. razred (') + sacuvanoOdjeljenje + ')';
         } else {
-          elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred (odjeljenje: ___)');
+          elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred');
         }
       }
     } catch (e) {
       if (elMetaRazredOdjeljenje) {
-        elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred (odjeljenje: ___)');
+        elMetaRazredOdjeljenje.textContent = jedinica.razred + preslovi('. razred');
       }
     }
 
@@ -681,6 +696,17 @@
     elModalUvodni.textContent = preslovi(jedinica.uvodniDio);
     elModalGlavni.textContent = preslovi(jedinica.glavniDio);
     elModalZavrsni.textContent = preslovi(jedinica.zavrsniDio);
+
+    // Ako je sekcija za 3 nivoa već bila uključena, osvježi je za novu pripremu; inače prikaži CTA baner
+    if (triNivoaAktivno) {
+      prikaziSekcijuTriNivoa(jedinica, false);
+    } else {
+      if (elSekcijaTriNivoa) {
+        elSekcijaTriNivoa.hidden = true;
+        elSekcijaTriNivoa.innerHTML = '';
+      }
+      if (elCtaTriNivoaBox) elCtaTriNivoaBox.hidden = false;
+    }
 
     azurirajBrojacSacuvanih();
 
@@ -826,9 +852,487 @@
     }
   }
 
-  // Sastavljanje teksta pripreme za e-Dnevnik (poštuje izabrano pismo)
-  function sastaviTekstZaEDnevnik(jedinica) {
-    const siroviTekst = [
+  // ==========================================================================
+  // DIFERENCIRANA PRIPREMA ZA 3 NIVOA POSTIGNUĆA UČENIKA (OSNOVNI, SREDNJI, NAPREDNI)
+  // ==========================================================================
+  function generisiTriNivoaZaJedinicu(jedinica) {
+    if (!jedinica) return null;
+
+    const ishodiLinije = String(jedinica.ishodi || '')
+      .split('\n')
+      .map(function (s) {
+        return s.replace(/^[-•*]\s*/, '').trim();
+      })
+      .filter(Boolean);
+
+    const ishod1 = ishodiLinije[0] || 'usvaja osnovne pojmove nastavne jedinice „' + jedinica.naziv + '“';
+    const ishod2 = ishodiLinije[1] || 'samostalno primjenjuje stečeno znanje kroz vježbu i primjere';
+    const ishod3 = ishodiLinije[2] || 'povezuje naučeno gradivo sa novim situacijama i rješava problemske zadatke';
+
+    const normPredmet = normalizujTekst(jedinica.predmet);
+    let zadatakOsnovni = '';
+    let zadatakSrednji = '';
+    let zadatakNapredni = '';
+
+    if (normPredmet.includes('matematika')) {
+      zadatakOsnovni =
+        'Uz pomoć očiglednih sredstava, brojevne prave ili ponuđenog modela na tabli rješava osnovne zadatke za lekciju „' +
+        jedinica.naziv +
+        '“ (prepoznavanje, zapisivanje i direktan račun u jednom koraku).';
+      zadatakSrednji =
+        'Samostalno rješava standardne zadatke iz udžbenika i radne sveske vezane za „' +
+        jedinica.naziv +
+        '“, provjerava tačnost rezultata i objašnjava postupak rješavanja.';
+      zadatakNapredni =
+        'Rješava složenije tekstualne i problemske zadatke sa više operacija u okviru teme „' +
+        jedinica.naziv +
+        '“, pronalazi različite načine rješavanja i samostalno sastavlja novi matematički zadatak za vršnjake.';
+    } else if (
+      normPredmet.includes('maternji') ||
+      normPredmet.includes('srpski') ||
+      normPredmet.includes('bosanski') ||
+      normPredmet.includes('hrvatski') ||
+      normPredmet.includes('jezik')
+    ) {
+      zadatakOsnovni =
+        'Uz podršku učitelja i podsticajna pitanja uočava osnovne elemente teme „' +
+        jedinica.naziv +
+        '“, prepoznaje ključne riječi/primjere u tekstu i dopunjava kratke rečenice prema modelu.';
+      zadatakSrednji =
+        'Samostalno čita, analizira i primjenjuje pravila/sadržaje nastavne jedinice „' +
+        jedinica.naziv +
+        '“, odgovara potpunim rečenicama i pravilno rješava zadatke na nastavnom listiću.';
+      zadatakNapredni =
+        'Stvaralački i kritički pristupa temi „' +
+        jedinica.naziv +
+        '“, samostalno sastavlja kraći autorski tekst ili proširene primjere, uočava dublje značenje i pomaže drugovima u grupi.';
+    } else if (normPredmet.includes('priroda') || normPredmet.includes('okolina') || normPredmet.includes('pid')) {
+      zadatakOsnovni =
+        'Posmatra ilustracije/modele i uz vođenje učitelja imenuje osnovne pojmove i pojave iz lekcije „' +
+        jedinica.naziv +
+        '“, te rješava zadatke zaokruživanja i spajanja parova.';
+      zadatakSrednji =
+        'Samostalno opisuje karakteristike i značaj pojmova iz teme „' +
+        jedinica.naziv +
+        '“, razvrstava primjere u tabelu i povezuje ih sa svakodnevnim životom u svom okruženju.';
+      zadatakNapredni =
+        'Objašnjava uzročno-posljedične veze u okviru nastavne jedinice „' +
+        jedinica.naziv +
+        '“, donosi zaključke na osnovu ogleda/istraživanja i predlaže praktična rješenja ili ekološke poruke.';
+    } else if (normPredmet.includes('likovna')) {
+      zadatakOsnovni =
+        'Uz demonstraciju učitelja koristi osnovni likovni materijal, uočava glavni likovni element na temu „' +
+        jedinica.naziv +
+        '“ i realizuje jednostavniju likovnu kompoziciju.';
+      zadatakSrednji =
+        'Samostalno oblikuje likovni rad na temu „' +
+        jedinica.naziv +
+        '“ poštujući zadani likovni problem, tehniku i proporcije, te učestvuje u analizi radova.';
+      zadatakNapredni =
+        'Kreativno, originalno i sa bogatstvom detalja rješava likovni problem „' +
+        jedinica.naziv +
+        '“, eksperimentiše sa izražajnim mogućnostima tehnike i obrazlaže estetsku vrijednost rada.';
+    } else if (normPredmet.includes('muzicka')) {
+      zadatakOsnovni =
+        'Pažljivo sluša i uz podršku učitelja/grupe reprodukuje osnovni ritam ili melodijski motiv u okviru jedinice „' +
+        jedinica.naziv +
+        '“.';
+      zadatakSrednji =
+        'Samostalno i tačno izvodi pjesmicu/brojalicu ili prepoznaje muzičke elemente (tempo, dinamiku, instrumente) u lekciji „' +
+        jedinica.naziv +
+        '“.';
+      zadatakNapredni =
+        'Izražajno i muzikalno izvodi zadatak iz teme „' +
+        jedinica.naziv +
+        '“, osmišljava ritmičku pratnju, predvodi grupu u izvođenju i uočava fine muzičke nijanse.';
+    } else {
+      zadatakOsnovni =
+        'Uz demonstraciju i asistenciju učitelja pravilno i bezbjedno izvodi osnovne elemente kretanja/vježbe u okviru teme „' +
+        jedinica.naziv +
+        '“.';
+      zadatakSrednji =
+        'Samostalno, koordinisano i po pravilima izvodi motorički zadatak „' +
+        jedinica.naziv +
+        '“ uz poštovanje fer-pleja i saradnju sa vršnjacima.';
+      zadatakNapredni =
+        'Tehnički precizno i spretno demonstrira vježbu „' +
+        jedinica.naziv +
+        '“, pomaže vršnjacima u grupi i uspješno rješava složenije motoričke poligone/igre.';
+    }
+
+    return {
+      osnovni: {
+        oznaka: '🟢 I NIVO — Osnovni nivo (Prilagođena očekivanja)',
+        ciljnaGrupa: 'Učenici kojima je potrebna dodatna podrška, vizuelni oslonac i postepeno vođenje.',
+        ocekivanja:
+          '• Učenik prepoznaje i imenuje ključne pojmove lekcije „' +
+          jedinica.naziv +
+          '“ uz pomoć učitelja ili očiglednih sredstava.\n• Ostvaruje polazni ishod: ' +
+          ishod1,
+        zadaci: zadatakOsnovni,
+        podrska:
+          'Postepeno vođenje korak po korak, kraći i jasno strukturisani zahtjevi, rad uz konkretan materijal/slike i stalno ohrabrivanje za svaki tačan korak.',
+      },
+      srednji: {
+        oznaka: '🔵 II NIVO — Srednji nivo (Standardna očekivanja)',
+        ciljnaGrupa: 'Učenici koji samostalno prate nastavu i ostvaruju redovne programske zahtjeve.',
+        ocekivanja:
+          '• Učenik razumije i svojim riječima objašnjava suštinu nastavne jedinice „' +
+          jedinica.naziv +
+          '“.\n• Samostalno ostvaruje ishode: ' +
+          ishod1 +
+          '; ' +
+          ishod2,
+        zadaci: zadatakSrednji,
+        podrska:
+          'Praćenje samostalnosti, tačnosti i urednosti u radu, usmjeravanje pri samoprovjeri i povratna informacija o kvalitetu urađenog zadatka.',
+      },
+      napredni: {
+        oznaka: '🟣 III NIVO — Napredni nivo (Viša i stvaralačka očekivanja)',
+        ciljnaGrupa: 'Učenici koji brže napreduju, povezuju znanja i pokazuju visok stepen samostalnosti.',
+        ocekivanja:
+          '• Učenik analizira, upoređuje i kritički promišlja sadržaje jedinice „' +
+          jedinica.naziv +
+          '“ u novim i problemskim situacijama.\n• U potpunosti ostvaruje i proširuje ishod: ' +
+          ishod3,
+        zadaci: zadatakNapredni,
+        podrska:
+          'Dodatni problemski i istraživački izazovi, podsticanje kreativnosti, argumentovanog obrazlaganja i vršnjačke podrške u grupi.',
+      },
+    };
+  }
+
+  function prikaziSekcijuTriNivoa(jedinica, skroluj) {
+    if (!jedinica || !elSekcijaTriNivoa) return;
+    triNivoaAktivno = true;
+    const nivoi = generisiTriNivoaZaJedinicu(jedinica);
+    if (!nivoi) return;
+
+    if (elCtaTriNivoaBox) elCtaTriNivoaBox.hidden = true;
+    elSekcijaTriNivoa.hidden = false;
+
+    elSekcijaTriNivoa.innerHTML =
+      '<div class="levels-section-header">' +
+      '<div>' +
+      '<div class="levels-section-title">📊 ' +
+      escapeHtml(
+        preslovi('DIFERENCIRANA PRIPREMA ZA 3 NIVOA POSTIGNUĆA UČENIKA (Individualizovana očekivanja)')
+      ) +
+      '</div>' +
+      '<div class="levels-section-subtitle">' +
+      escapeHtml(
+        preslovi(
+          'Polja ispod možete direktno kliknuti i dopuniti prema konkretnim učenicima u vašem odjeljenju prije štampe ili Word izvoza.'
+        )
+      ) +
+      '</div>' +
+      '</div>' +
+      '<div class="levels-toolbar no-print">' +
+      '<button type="button" id="dugmeKopirajTriNivoa" class="btn btn-primary" style="height:34px;font-size:0.84rem">' +
+      '📋 ' +
+      escapeHtml(preslovi('Kopiraj sa 3 nivoa (e-Dnevnik)')) +
+      '</button>' +
+      '<button type="button" id="dugmeListicTriNivoa" class="btn btn-outline" style="height:34px;font-size:0.84rem">' +
+      '📝 ' +
+      escapeHtml(preslovi('Radni listić na 3 nivoa (A4)')) +
+      '</button>' +
+      '<button type="button" id="dugmeSakrijTriNivoa" class="btn btn-subtle" style="height:34px;font-size:0.84rem">' +
+      '✕ ' +
+      escapeHtml(preslovi('Sakrij')) +
+      '</button>' +
+      '</div>' +
+      '</div>' +
+      '<div class="levels-grid">' +
+      // I NIVO
+      '<div class="level-card level-osnovni">' +
+      '<div class="level-card-head">' +
+      '<span>' +
+      escapeHtml(preslovi(nivoi.osnovni.oznaka)) +
+      '</span>' +
+      '</div>' +
+      '<div class="level-card-body" contenteditable="true" title="Kliknite za izmjenu teksta">' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Očekivanja za učenika (ishodi):')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoOsnovniOcekivanja">' +
+      escapeHtml(preslovi(nivoi.osnovni.ocekivanja)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Prilagođeni zadaci na času:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoOsnovniZadaci">' +
+      escapeHtml(preslovi(nivoi.osnovni.zadaci)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Podrška učitelja i praćenje:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoOsnovniPodrska">' +
+      escapeHtml(preslovi(nivoi.osnovni.podrska)) +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      // II NIVO
+      '<div class="level-card level-srednji">' +
+      '<div class="level-card-head">' +
+      '<span>' +
+      escapeHtml(preslovi(nivoi.srednji.oznaka)) +
+      '</span>' +
+      '</div>' +
+      '<div class="level-card-body" contenteditable="true" title="Kliknite za izmjenu teksta">' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Očekivanja za učenika (ishodi):')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoSrednjiOcekivanja">' +
+      escapeHtml(preslovi(nivoi.srednji.ocekivanja)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Standardni zadaci na času:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoSrednjiZadaci">' +
+      escapeHtml(preslovi(nivoi.srednji.zadaci)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Podrška učitelja i praćenje:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoSrednjiPodrska">' +
+      escapeHtml(preslovi(nivoi.srednji.podrska)) +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      // III NIVO
+      '<div class="level-card level-napredni">' +
+      '<div class="level-card-head">' +
+      '<span>' +
+      escapeHtml(preslovi(nivoi.napredni.oznaka)) +
+      '</span>' +
+      '</div>' +
+      '<div class="level-card-body" contenteditable="true" title="Kliknite za izmjenu teksta">' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Očekivanja za učenika (ishodi):')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoNapredniOcekivanja">' +
+      escapeHtml(preslovi(nivoi.napredni.ocekivanja)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Problemski i stvaralački zadaci:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoNapredniZadaci">' +
+      escapeHtml(preslovi(nivoi.napredni.zadaci)) +
+      '</div>' +
+      '</div>' +
+      '<div>' +
+      '<div class="level-block-label">' +
+      escapeHtml(preslovi('Podrška učitelja i praćenje:')) +
+      '</div>' +
+      '<div class="level-block-text" id="tekstNivoNapredniPodrska">' +
+      escapeHtml(preslovi(nivoi.napredni.podrska)) +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+
+    // Povezivanje dugmadi unutar sekcije za 3 nivoa
+    const btnKopiraj3 = document.getElementById('dugmeKopirajTriNivoa');
+    if (btnKopiraj3) {
+      btnKopiraj3.addEventListener('click', function () {
+        const tekst = sastaviTekstZaEDnevnik(jedinica, true);
+        kopirajUClipboard(tekst, function (uspjesno) {
+          if (uspjesno) {
+            prikaziObavjestenje(
+              preslovi('Kopirana je kompletna priprema sa očekivanjima za sva 3 nivoa učenika!')
+            );
+          }
+        });
+      });
+    }
+
+    const btnListic3 = document.getElementById('dugmeListicTriNivoa');
+    if (btnListic3) {
+      btnListic3.addEventListener('click', function () {
+        otvoriRadniListicTriNivoa(jedinica);
+      });
+    }
+
+    const btnSakrij3 = document.getElementById('dugmeSakrijTriNivoa');
+    if (btnSakrij3) {
+      btnSakrij3.addEventListener('click', function () {
+        triNivoaAktivno = false;
+        elSekcijaTriNivoa.hidden = true;
+        if (elCtaTriNivoaBox) elCtaTriNivoaBox.hidden = false;
+      });
+    }
+
+    if (skroluj) {
+      setTimeout(function () {
+        elSekcijaTriNivoa.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+      prikaziObavjestenje(
+        preslovi('Kreirana je diferencirana priprema sa očekivanjima za 3 nivoa postignuća učenika!')
+      );
+    }
+  }
+
+  // Otvaranje A4 radnog listića za učenike podijeljenog na 3 nivoa složenosti
+  function otvoriRadniListicTriNivoa(jedinica) {
+    if (!jedinica) return;
+    const nivoi = generisiTriNivoaZaJedinicu(jedinica);
+    const prozor = window.open('', '_blank');
+    if (!prozor) {
+      prikaziObavjestenje(
+        preslovi('Dozvolite otvaranje novog prozora u pregledaču kako biste odštampali radni listić za 3 nivoa.')
+      );
+      return;
+    }
+
+    const htmlSadrzaj =
+      '<!doctype html>' +
+      '<html lang="sr">' +
+      '<head>' +
+      '<meta charset="UTF-8">' +
+      '<title>' +
+      escapeHtml(preslovi('Diferencirani radni listić (3 nivoa) — ' + jedinica.naziv)) +
+      '</title>' +
+      '<style>' +
+      '@page { size: A4 portrait; margin: 12mm 14mm; }' +
+      '* { box-sizing: border-box; margin: 0; padding: 0; }' +
+      'body { font-family: "Inter", "Segoe UI", Arial, sans-serif; color: #111; background: #f3f6f7; padding: 20px; line-height: 1.45; }' +
+      '.toolbar { max-width: 210mm; margin: 0 auto 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #4c1d95; color: #fff; padding: 12px 18px; border-radius: 10px; }' +
+      '.toolbar button { background: #fff; color: #4c1d95; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; }' +
+      '.sheet { max-width: 210mm; margin: 0 auto; background: #fff; padding: 14mm; border: 1px solid #ccc; border-radius: 8px; }' +
+      '.header-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; border: 2px solid #111; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; }' +
+      '.title-box { text-align: center; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #111; }' +
+      '.title-eyebrow { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #4c1d95; font-weight: 700; }' +
+      '.title-main { font-size: 19px; font-weight: 800; margin-top: 3px; }' +
+      '.level-box { border: 1.5px solid #222; border-radius: 8px; padding: 11px 14px; margin-bottom: 12px; page-break-inside: avoid; }' +
+      '.level-1 { border-left: 6px solid #059669; }' +
+      '.level-2 { border-left: 6px solid #2563eb; }' +
+      '.level-3 { border-left: 6px solid #7c3aed; }' +
+      '.level-head { font-weight: 800; font-size: 14px; margin-bottom: 5px; display: flex; justify-content: space-between; }' +
+      '.level-expect { font-size: 12.5px; color: #333; margin-bottom: 6px; font-style: italic; }' +
+      '.level-task { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #111; }' +
+      '.lines { display: flex; flex-direction: column; gap: 16px; padding-top: 6px; }' +
+      '.line { border-bottom: 1px dotted #555; height: 16px; }' +
+      '.footer-note { border: 1px solid #444; border-radius: 6px; padding: 8px 12px; font-size: 12.5px; display: flex; justify-content: space-between; margin-top: 10px; }' +
+      '@media print { body { background: #fff; padding: 0; } .toolbar { display: none !important; } .sheet { border: none; padding: 0; max-width: none; } }' +
+      '</style>' +
+      '</head>' +
+      '<body>' +
+      '<div class="toolbar">' +
+      '<span><strong>' +
+      escapeHtml(preslovi('📊 Diferencirani radni listić za 3 nivoa postignuća učenika (A4)')) +
+      '</strong></span>' +
+      '<div style="display:flex;gap:8px">' +
+      '<button onclick="window.print()">🖨 ' +
+      escapeHtml(preslovi('Odštampaj / Sačuvaj PDF')) +
+      '</button>' +
+      '<button onclick="window.close()" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5)">✕ ' +
+      escapeHtml(preslovi('Zatvori')) +
+      '</button>' +
+      '</div>' +
+      '</div>' +
+      '<div class="sheet">' +
+      '<div class="header-grid">' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Ime i prezime učenika:')) +
+      '</strong> ________________________</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Razred i odjeljenje:')) +
+      '</strong> ' +
+      escapeHtml(String(jedinica.razred)) +
+      escapeHtml(preslovi('. razred (___)')) +
+      '</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Nastavni predmet:')) +
+      '</strong> ' +
+      escapeHtml(preslovi(jedinica.predmet)) +
+      '</div>' +
+      '<div><strong>' +
+      escapeHtml(preslovi('Odabrani nivo:')) +
+      '</strong> ☐ I nivo &nbsp; ☐ II nivo &nbsp; ☐ III nivo</div>' +
+      '</div>' +
+      '<div class="title-box">' +
+      '<div class="title-eyebrow">' +
+      escapeHtml(preslovi('DIFERENCIRANI ZADACI ZA TRI NIVOA UČENIKA · ' + jedinica.cjelina)) +
+      '</div>' +
+      '<div class="title-main">' +
+      escapeHtml(preslovi(jedinica.naziv)) +
+      '</div>' +
+      '</div>' +
+      '<div class="level-box level-1">' +
+      '<div class="level-head"><span>' +
+      escapeHtml(preslovi(nivoi.osnovni.oznaka)) +
+      '</span><span>⭐</span></div>' +
+      '<div class="level-expect">' +
+      escapeHtml(preslovi(nivoi.osnovni.ocekivanja.replace(/\n/g, ' '))) +
+      '</div>' +
+      '<div class="level-task">' +
+      escapeHtml(preslovi('Zadatak (I nivo): ' + nivoi.osnovni.zadaci)) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="level-box level-2">' +
+      '<div class="level-head"><span>' +
+      escapeHtml(preslovi(nivoi.srednji.oznaka)) +
+      '</span><span>⭐⭐</span></div>' +
+      '<div class="level-expect">' +
+      escapeHtml(preslovi(nivoi.srednji.ocekivanja.replace(/\n/g, ' '))) +
+      '</div>' +
+      '<div class="level-task">' +
+      escapeHtml(preslovi('Zadatak (II nivo): ' + nivoi.srednji.zadaci)) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="level-box level-3">' +
+      '<div class="level-head"><span>' +
+      escapeHtml(preslovi(nivoi.napredni.oznaka)) +
+      '</span><span>⭐⭐⭐</span></div>' +
+      '<div class="level-expect">' +
+      escapeHtml(preslovi(nivoi.napredni.ocekivanja.replace(/\n/g, ' '))) +
+      '</div>' +
+      '<div class="level-task">' +
+      escapeHtml(preslovi('Zadatak (III nivo): ' + nivoi.napredni.zadaci)) +
+      '</div>' +
+      '<div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>' +
+      '</div>' +
+      '<div class="footer-note">' +
+      '<span><strong>' +
+      escapeHtml(preslovi('Zapažanje i povratna informacija učitelja/ice:')) +
+      '</strong> ____________________________________________</span>' +
+      '<span><strong>' +
+      escapeHtml(preslovi('Ostvareni nivo:')) +
+      '</strong> I / II / III</span>' +
+      '</div>' +
+      '</div>' +
+      '</body>' +
+      '</html>';
+
+    prozor.document.open();
+    prozor.document.write(htmlSadrzaj);
+    prozor.document.close();
+  }
+
+  // Sastavljanje teksta pripreme za e-Dnevnik (poštuje izabrano pismo i uključuje 3 nivoa učenika)
+  function sastaviTekstZaEDnevnik(jedinica, prisiliTriNivoa) {
+    const nivoi = generisiTriNivoaZaJedinicu(jedinica);
+    const ukljuciNivoe = prisiliTriNivoa || triNivoaAktivno;
+
+    const dijelovi = [
       'NASTAVNA JEDINICA: ' + jedinica.naziv,
       'Predmet: ' + jedinica.predmet + ' (' + jedinica.razred + '. razred)',
       'Nastavna cjelina: ' + jedinica.cjelina,
@@ -849,8 +1353,30 @@
       '3. Završni dio: ' + jedinica.zavrsniDio,
       '',
       'Korelacija: ' + jedinica.korelacija,
-    ].join('\n');
-    return preslovi(siroviTekst);
+    ];
+
+    if (ukljuciNivoe && nivoi) {
+      dijelovi.push(
+        '',
+        'DIFERENCIRANA OČEKIVANJA I ZADACI ZA 3 NIVOA POSTIGNUĆA UČENIKA:',
+        '1) ' + nivoi.osnovni.oznaka,
+        'Očekivanja: ' + nivoi.osnovni.ocekivanja.replace(/\n/g, ' '),
+        'Zadaci na času: ' + nivoi.osnovni.zadaci,
+        'Podrška i praćenje: ' + nivoi.osnovni.podrska,
+        '',
+        '2) ' + nivoi.srednji.oznaka,
+        'Očekivanja: ' + nivoi.srednji.ocekivanja.replace(/\n/g, ' '),
+        'Zadaci na času: ' + nivoi.srednji.zadaci,
+        'Podrška i praćenje: ' + nivoi.srednji.podrska,
+        '',
+        '3) ' + nivoi.napredni.oznaka,
+        'Očekivanja: ' + nivoi.napredni.ocekivanja.replace(/\n/g, ' '),
+        'Zadaci na času: ' + nivoi.napredni.zadaci,
+        'Podrška i praćenje: ' + nivoi.napredni.podrska
+      );
+    }
+
+    return preslovi(dijelovi.join('\n'));
   }
 
   // Generisanje .docx dokumenta direktno u browseru pomoću `docx` biblioteke
@@ -947,6 +1473,7 @@
       const oznakaSistema = Array.isArray(jedinica.sistem)
         ? jedinica.sistem.join(' / ')
         : String(jedinica.sistem || '');
+      const nivoi = generisiTriNivoaZaJedinicu(jedinica);
 
       const doc = new Document({
         sections: [
@@ -987,6 +1514,29 @@
               ...napraviSekcijuPasusa('1. UVODNI DIO ČASA', jedinica.uvodniDio),
               ...napraviSekcijuPasusa('2. GLAVNI DIO ČASA', jedinica.glavniDio),
               ...napraviSekcijuPasusa('3. ZAVRŠNI DIO ČASA', jedinica.zavrsniDio),
+              ...(nivoi
+                ? [
+                    ...napraviSekcijuPasusa(
+                      'DIFERENCIRANA PRIPREMA ZA 3 NIVOA POSTIGNUĆA UČENIKA (Individualizovana očekivanja)',
+                      [
+                        nivoi.osnovni.oznaka,
+                        'Očekivanja za učenika: ' + nivoi.osnovni.ocekivanja.replace(/\n/g, ' '),
+                        'Prilagođeni zadaci na času: ' + nivoi.osnovni.zadaci,
+                        'Podrška i praćenje: ' + nivoi.osnovni.podrska,
+                        '',
+                        nivoi.srednji.oznaka,
+                        'Očekivanja za učenika: ' + nivoi.srednji.ocekivanja.replace(/\n/g, ' '),
+                        'Standardni zadaci na času: ' + nivoi.srednji.zadaci,
+                        'Podrška i praćenje: ' + nivoi.srednji.podrska,
+                        '',
+                        nivoi.napredni.oznaka,
+                        'Očekivanja za učenika: ' + nivoi.napredni.ocekivanja.replace(/\n/g, ' '),
+                        'Problemski i stvaralački zadaci: ' + nivoi.napredni.zadaci,
+                        'Podrška i praćenje: ' + nivoi.napredni.podrska,
+                      ].join('\n')
+                    ),
+                  ]
+                : []),
               new Paragraph({
                 spacing: { before: 480 },
                 alignment: AlignmentType.RIGHT,
@@ -1272,23 +1822,39 @@
 
     // Čuvanje izmjena zaglavlja škole i učitelja u localStorage
     if (elMetaSkola) {
-      elMetaSkola.addEventListener('blur', function () {
-        const vr = elMetaSkola.textContent.trim();
-        if (vr && !vr.startsWith('___')) {
-          try {
-            localStorage.setItem('pripreme_meta_skola', vr);
-          } catch (e) {}
+      elMetaSkola.addEventListener('focus', function () {
+        if (elMetaSkola.textContent.indexOf('___') !== -1) {
+          elMetaSkola.textContent = elMetaSkola.textContent.replace(/_+/g, '').trim();
         }
+      });
+      elMetaSkola.addEventListener('blur', function () {
+        const vr = elMetaSkola.textContent.replace(/_+/g, '').trim();
+        elMetaSkola.textContent = vr;
+        try {
+          if (vr) {
+            localStorage.setItem('pripreme_meta_skola', vr);
+          } else {
+            localStorage.removeItem('pripreme_meta_skola');
+          }
+        } catch (e) {}
       });
     }
     if (elMetaUcitelj) {
-      elMetaUcitelj.addEventListener('blur', function () {
-        const vr = elMetaUcitelj.textContent.trim();
-        if (vr && !vr.startsWith('___')) {
-          try {
-            localStorage.setItem('pripreme_meta_ucitelj', vr);
-          } catch (e) {}
+      elMetaUcitelj.addEventListener('focus', function () {
+        if (elMetaUcitelj.textContent.indexOf('___') !== -1) {
+          elMetaUcitelj.textContent = elMetaUcitelj.textContent.replace(/_+/g, '').trim();
         }
+      });
+      elMetaUcitelj.addEventListener('blur', function () {
+        const vr = elMetaUcitelj.textContent.replace(/_+/g, '').trim();
+        elMetaUcitelj.textContent = vr;
+        try {
+          if (vr) {
+            localStorage.setItem('pripreme_meta_ucitelj', vr);
+          } else {
+            localStorage.removeItem('pripreme_meta_ucitelj');
+          }
+        } catch (e) {}
       });
     }
 
@@ -1394,7 +1960,7 @@
       elDugmeResetujPrazno.addEventListener('click', resetujFiltere);
     }
 
-    // Klik ili Enter na karticu pripreme (ili klik na zvjezdicu)
+    // Klik ili Enter na karticu pripreme (ili klik na zvjezdicu ili na CTA za 3 nivoa)
     if (elMrezaKartica) {
       elMrezaKartica.addEventListener('click', function (e) {
         const dugmeZvjezdica = e.target.closest('.card-star-btn');
@@ -1402,6 +1968,20 @@
           e.stopPropagation();
           const starSlug = dugmeZvjezdica.getAttribute('data-star-slug');
           if (starSlug) prebaciSacuvanu(starSlug);
+          return;
+        }
+
+        const dugmeTriNivoaKartica = e.target.closest('.btn-card-levels');
+        if (dugmeTriNivoaKartica) {
+          e.stopPropagation();
+          const levelsSlug = dugmeTriNivoaKartica.getAttribute('data-levels-slug');
+          if (levelsSlug) {
+            triNivoaAktivno = true;
+            otvoriModalPoSlugu(levelsSlug, true);
+            if (trenutnoOtvorenaJedinica) {
+              prikaziSekcijuTriNivoa(trenutnoOtvorenaJedinica, true);
+            }
+          }
           return;
         }
 
@@ -1519,6 +2099,20 @@
       elAkcijaSacuvaj.addEventListener('click', function () {
         if (!trenutnoOtvorenaJedinica) return;
         prebaciSacuvanu(trenutnoOtvorenaJedinica.slug);
+      });
+    }
+
+    // 7. Kreiraj diferenciranu pripremu za 3 nivoa učenika (dugme u traci sa akcijama i u CTA baneru)
+    if (elAkcijaTriNivoa) {
+      elAkcijaTriNivoa.addEventListener('click', function () {
+        if (!trenutnoOtvorenaJedinica) return;
+        prikaziSekcijuTriNivoa(trenutnoOtvorenaJedinica, true);
+      });
+    }
+    if (elDugmeGenerisiTriNivoa) {
+      elDugmeGenerisiTriNivoa.addEventListener('click', function () {
+        if (!trenutnoOtvorenaJedinica) return;
+        prikaziSekcijuTriNivoa(trenutnoOtvorenaJedinica, true);
       });
     }
 

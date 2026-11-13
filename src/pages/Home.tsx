@@ -1,169 +1,213 @@
 import { Link } from 'react-router-dom';
-import { Laptop, School, type LucideIcon } from 'lucide-react';
-import { siteConfig } from '../config/site';
+import {
+  BookOpen,
+  BookOpenCheck,
+  ClipboardList,
+  FileCheck2,
+  FileSpreadsheet,
+  GraduationCap,
+  Layers,
+  Printer,
+  Sparkles,
+  Users,
+  type LucideIcon,
+} from 'lucide-react';
 import { getRecentPosts } from '../lib/posts';
 import PostCard from '../components/PostCard';
 import EmptyState from '../components/EmptyState';
-import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
+import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
 
-const backgroundIcons: LucideIcon[] = [Laptop, School];
-
-const heroChips = [
-  { className: 'top-[6%] -right-[6%] max-lg:-right-[2%]', color: '' },
-  { className: 'top-[22%] -left-[10%] max-lg:-left-[4%] [animation-delay:-2s]', color: '[--c:var(--accent-2)]' },
-  { className: 'top-[72%] -right-[8%] max-lg:-right-[2%] [animation-delay:-4s]', color: '[--c:var(--cat-amber)]' },
-] as const;
+const statIcons: LucideIcon[] = [BookOpenCheck, Layers, Printer, FileCheck2];
+const pillarIcons: LucideIcon[] = [BookOpen, Users, FileSpreadsheet, ClipboardList, Sparkles, GraduationCap];
 
 export default function Home() {
   const { locale, t, paths } = useLocale();
   const recentPosts = getRecentPosts(locale, 3);
-  const { social } = siteConfig;
-  const author = { ...siteConfig.author, ...t.author };
-  const { topics } = t;
   usePageMeta(pageMeta.home(t));
-  const socialLinks = (
-    [
-      { label: 'GitHub', href: social.github, icon: 'github' },
-      { label: 'LinkedIn', href: social.linkedin, icon: 'linkedin' },
-      { label: 'Email', href: `mailto:${author.email}`, icon: 'mail' },
-    ] satisfies { label: string; href: string; icon: PixelIconName }[]
-  ).filter(({ href }) => href.length > 0);
 
   return (
     <>
-      <section className="wrap grid items-center gap-8 pt-[120px] pb-16 lg:min-h-svh lg:grid-cols-[1.15fr_.85fr] lg:gap-14 lg:pt-[130px]">
+      {/* Uvodna sekcija posvećena učiteljima i svakodnevnom radu u školi */}
+      <section className="wrap grid items-center gap-10 pt-[120px] pb-16 lg:min-h-[88svh] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pt-[134px]">
         <div>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[13.5px] text-muted">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[13.5px] font-medium text-muted">
             <i className="status-dot" />
-            {author.role} · {author.location}
+            {t.home.heroBadge}
           </span>
-          <h1 className="mt-5 mb-5 font-head text-[clamp(38px,6.2vw,74px)] leading-[1.04] font-bold tracking-[-0.035em] text-balance">
-            {t.home.greeting} <span className="grad">{author.name}</span>
+          <h1 className="mt-5 mb-5 font-head text-[clamp(34px,5.2vw,64px)] leading-[1.06] font-bold tracking-[-0.035em] text-balance">
+            {t.home.heroTitleBefore}
+            <span className="grad">{t.home.heroTitleHighlight}</span>
           </h1>
-          <p className="max-w-[580px] text-[clamp(16.5px,1.6vw,19px)] text-muted">{author.intro}</p>
+          <p className="max-w-[620px] text-[clamp(16px,1.5vw,18.5px)] leading-relaxed text-muted">
+            {t.home.heroLead}
+          </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to={paths.blog} className="btn btn-primary focus-ring">
-              {t.home.readBlog}
+            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
+              {t.home.ctaPripreme}
               <PixelIcon name="arrow" />
-            </Link>
-            <a href="/pripreme/index.html" className="btn btn-ghost focus-ring">
-              {t.nav.pripreme} (1–5)
             </a>
-            <Link to={paths.about} className="btn btn-ghost focus-ring">
-              {t.home.moreAboutMe}
+            <Link to={paths.games} className="btn btn-ghost focus-ring">
+              {t.home.ctaWorksheets}
             </Link>
-          </div>
-          <div className="mt-7 flex flex-wrap items-center gap-2">
-            {socialLinks.map(({ label, href, icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                rel={href.startsWith('mailto:') ? undefined : 'me noopener'}
-                className="focus-ring grid h-[42px] w-[42px] place-items-center rounded-xl border border-line text-muted transition hover:-translate-y-0.5 hover:border-accent hover:bg-surface hover:text-accent"
-              >
-                <PixelIcon name={icon} />
-              </a>
-            ))}
-            <span className="inline-flex items-center gap-2 text-sm text-muted max-sm:w-full sm:ml-2.5">
-              <PixelIcon name="pin" />
-              {author.location}
-            </span>
+            <Link to={paths.blog} className="btn btn-ghost focus-ring">
+              {t.home.readBlog}
+            </Link>
           </div>
         </div>
 
-        {/* KORISNIK: fotografija je u public/slike/marko-losic.jpg — zameni fajl da promeniš sliku. */}
-        <div aria-hidden="true" className="grid justify-items-center max-lg:order-first">
-          <div className="relative aspect-square w-[min(340px,72%)]">
-            <div className="photo-ring" />
-            <img src="/slike/marko-losic.jpg" alt="" width={400} height={400} className="photo h-[calc(100%-10px)] w-[calc(100%-10px)] object-cover" />
-            {heroChips.map(({ className, color }, i) => (
-              <span key={className} className={`float-chip max-sm:px-2.5 max-sm:py-1.5 max-sm:text-[11.5px] ${className} ${color}`}>
-                <i />
-                {t.home.chips[i]}
-              </span>
-            ))}
-          </div>
+        {/* Pregled ključnih alata za učitelje */}
+        <div className="grid gap-3.5 sm:grid-cols-2">
+          {t.home.stats.map(({ value, label, detail }, i) => {
+            const Icon = statIcons[i] ?? BookOpenCheck;
+            return (
+              <a
+                key={label}
+                href={i === 2 ? paths.games : '/pripreme/index.html'}
+                className="card hoverable focus-ring flex flex-col justify-between p-5"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="icon-tile">
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </span>
+                  <span className="font-head text-2xl font-bold tracking-tight text-accent sm:text-3xl">
+                    {value}
+                  </span>
+                </div>
+                <div className="mt-4">
+                  <h2 className="text-[17px] leading-snug font-semibold tracking-tight">{label}</h2>
+                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">{detail}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
-      <section className="wrap pt-12 sm:pt-20" aria-labelledby="ko-sam-ja">
-        <span className="eyebrow">{t.home.whoEyebrow}</span>
-        <h2 id="ko-sam-ja" className="section-title mb-11">
-          {t.home.whoTitle}
+      {/* 01 — Kako sajt pomaže učiteljima u svakodnevnom poslu */}
+      <section className="wrap pt-14 sm:pt-24" aria-labelledby="podrska-uciteljima">
+        <span className="eyebrow">{t.home.pillarsEyebrow}</span>
+        <h2 id="podrska-uciteljima" className="section-title mb-4">
+          {t.home.pillarsTitle}
         </h2>
-        <img
-          src="/slike/ucionica-i-it-1200.webp"
-          srcSet="/slike/ucionica-i-it-1200.webp 1200w, /slike/ucionica-i-it-2000.webp 2000w"
-          sizes="(min-width: 1200px) 1160px, calc(100vw - 40px)"
-          width={2000}
-          height={848}
-          loading="lazy"
-          alt={t.home.whoImageAlt}
-          className="mb-[18px] h-auto w-full rounded-[20px] border border-line"
-        />
-        <ul className="grid gap-[18px] md:grid-cols-2">
-          {author.background.map(({ title, text }, i) => {
-            const Icon = backgroundIcons[i] ?? School;
+        <p className="mb-11 max-w-[740px] text-lg text-muted">{t.home.pillarsIntro}</p>
+
+        <ul className="grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
+          {t.home.pillars.map(({ badge, title, text, linkText, href }, i) => {
+            const Icon = pillarIcons[i] ?? BookOpen;
+            const isInternal = !href.startsWith('/pripreme');
             return (
-              <li key={title} className="card hoverable">
-                <span className="icon-tile">
-                  <Icon aria-hidden="true" className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 text-xl font-semibold tracking-tight">{title}</h3>
-                <p className="mt-2.5 text-[15.5px] text-muted">{text}</p>
+              <li key={title} className="card hoverable flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="icon-tile">
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <span className="cat">{badge}</span>
+                  </div>
+                  <h3 className="mt-5 text-[19px] leading-snug font-semibold tracking-tight">{title}</h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-muted">{text}</p>
+                </div>
+                <div className="mt-5 border-t border-line pt-4">
+                  {isInternal ? (
+                    <Link
+                      to={href}
+                      className="focus-ring inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                    >
+                      {linkText}
+                    </Link>
+                  ) : (
+                    <a
+                      href={href}
+                      className="focus-ring inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                    >
+                      {linkText}
+                    </a>
+                  )}
+                </div>
               </li>
             );
           })}
         </ul>
       </section>
 
-      <section className="wrap pt-20 sm:pt-28" aria-labelledby="o-cemu-pisem">
-        <span className="eyebrow">{t.home.topicsEyebrow}</span>
-        <h2 id="o-cemu-pisem" className="section-title mb-11">
-          {t.home.topicsTitle}
+      {/* 02 — Baza nastavnih priprema po razredima (1–5. razred) */}
+      <section className="wrap pt-20 sm:pt-28" aria-labelledby="baza-po-razredima">
+        <span className="eyebrow">{t.home.gradesEyebrow}</span>
+        <h2 id="baza-po-razredima" className="section-title mb-4">
+          {t.home.gradesTitle}
+        </h2>
+        <p className="mb-10 max-w-[760px] text-lg text-muted">{t.home.gradesIntro}</p>
+
+        <ul className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+          {t.home.gradesList.map(({ grade, count, title, desc }) => (
+            <li key={grade}>
+              <a
+                href={`/pripreme/index.html?razred=${grade}`}
+                className="card hoverable focus-ring group flex h-full flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent font-head text-lg font-bold text-accent-ink">
+                      {grade}.
+                    </span>
+                    <span className="rounded-full border border-line bg-surface-2 px-3 py-1 font-mono text-xs font-semibold text-accent">
+                      {count}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-[19px] font-semibold tracking-tight group-hover:text-accent">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{desc}</p>
+                </div>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                  {t.pripremePromo.gradeLabel(grade)} <PixelIcon name="arrow" size={14} />
+                </span>
+              </a>
+            </li>
+          ))}
+
+          {/* Kartica za otvaranje kompletne biblioteke svih razreda */}
+          <li>
+            <a
+              href="/pripreme/index.html"
+              className="card hoverable focus-ring flex h-full flex-col justify-between border-accent/40 bg-surface-2/70"
+            >
+              <div>
+                <span className="cat">{t.pripremePromo.eyebrow}</span>
+                <h3 className="mt-4 text-[19px] font-semibold tracking-tight">{t.pripremePromo.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{t.pripremePromo.desc}</p>
+              </div>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                {t.pripremePromo.ctaAll} <PixelIcon name="arrow" size={14} />
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      {/* 03 — Kako izgleda priprema časa u 3 koraka */}
+      <section className="wrap pt-20 sm:pt-28" aria-labelledby="kako-funkcionise">
+        <span className="eyebrow">{t.home.workflowEyebrow}</span>
+        <h2 id="kako-funkcionise" className="section-title mb-10">
+          {t.home.workflowTitle}
         </h2>
         <ul className="grid gap-[18px] sm:grid-cols-3">
-          {topics.map(({ title, text }, i) => (
-            <li key={title} className="card hoverable">
-              <span className="mb-3.5 inline-block font-mono text-xs font-medium tracking-[0.08em] text-accent-2">
-                {String(i + 1).padStart(2, '0')}
+          {t.home.workflowSteps.map(({ step, title, text }) => (
+            <li key={step} className="card">
+              <span className="mb-3.5 inline-block font-mono text-xs font-semibold tracking-[0.08em] text-accent">
+                {step}
               </span>
               <h3 className="text-[19px] leading-snug font-semibold tracking-tight">{title}</h3>
-              <p className="mt-2.5 text-[15px] text-muted">{text}</p>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-muted">{text}</p>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="wrap pt-20 sm:pt-28" aria-labelledby="biblioteka-priprema">
-        <div className="card border-accent/30 bg-surface-2/60 p-6 sm:p-9">
-          <span className="eyebrow">{t.pripremePromo.eyebrow}</span>
-          <h2 id="biblioteka-priprema" className="section-title mt-2 mb-4">
-            {t.pripremePromo.title}
-          </h2>
-          <p className="max-w-[780px] text-[16px] leading-relaxed text-muted">{t.pripremePromo.desc}</p>
-          <div className="mt-6 flex flex-wrap items-center gap-2.5">
-            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
-              {t.pripremePromo.ctaAll}
-              <PixelIcon name="arrow" />
-            </a>
-            {[1, 2, 3, 4, 5].map((r) => (
-              <a
-                key={r}
-                href={`/pripreme/index.html?razred=${r}`}
-                className="btn btn-ghost focus-ring text-sm"
-              >
-                {t.pripremePromo.gradeLabel(r)}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* 04 — Najnoviji članci sa bloga */}
       <section className="wrap pt-20 sm:pt-28" aria-labelledby="najnovije">
         <span className="eyebrow">{t.home.blogEyebrow}</span>
         <div className="mb-11 flex flex-wrap items-end justify-between gap-4">

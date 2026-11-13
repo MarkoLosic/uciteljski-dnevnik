@@ -41,9 +41,12 @@
         </div>
 
         <nav class="header-nav" aria-label="Navigacija sekcije za pripreme">
-          <a href="/" class="nav-link">← Početna stranica</a>
-          <a href="./index.html" class="nav-link active" aria-current="page">📚 Sve pripreme</a>
-          <a href="./admin.html" class="nav-link">⚙️ Generator priprema</a>
+          <a href="/" class="nav-link">Početna</a>
+          <a href="./index.html" class="nav-link active" aria-current="page">Pripreme</a>
+          <a href="/igre" class="nav-link">Igre za djecu</a>
+          <a href="/blog" class="nav-link">Blog</a>
+          <a href="/o-meni" class="nav-link">O meni</a>
+          <a href="./admin.html" class="nav-link">⚙️ Generator</a>
           <button
             type="button"
             id="dugmePismo"
@@ -71,7 +74,7 @@
       <section class="hero" aria-labelledby="naslovBiblioteke">
         <div class="hero-card">
           <div>
-            <span class="hero-eyebrow">🇧🇦 Razredna nastava · RPZ (RS) i ZJNPP (FBiH)</span>
+            <span class="hero-eyebrow">Razredna nastava · RPZ (RS) i ZJNPP (FBiH)</span>
             <h1 id="naslovBiblioteke" class="hero-title">Nastavni planovi i dnevne pripreme (1–5. razred)</h1>
             <p class="hero-desc">
               Gotove, metodički uređene pripreme za čas prilagođene nastavnim planovima i programima u Republici Srpskoj
@@ -253,6 +256,14 @@
           <button type="button" id="akcijaKopirajEDnevnik" class="btn btn-primary">
             📋 Kopiraj za e-Dnevnik
           </button>
+          <button
+            type="button"
+            id="akcijaTriNivoa"
+            class="btn btn-levels-cta"
+            title="Kreiraj diferenciranu pripremu sa različitim očekivanjima za 3 nivoa učenika (Osnovni, Srednji i Napredni nivo)"
+          >
+            📊 Kreiraj pripremu za 3 nivoa učenika
+          </button>
           <button type="button" id="akcijaStampa" class="btn btn-outline">
             🖨 Odštampaj pripremu
           </button>
@@ -290,9 +301,9 @@
                   class="school-meta-value"
                   id="metaSkola"
                   contenteditable="true"
+                  data-placeholder="Upišite naziv škole..."
                   title="Kliknite da upišete naziv škole prije štampe"
-                  >________________________________</span
-                >
+                ></span>
               </div>
               <div class="school-meta-item">
                 <span class="school-meta-label">Datum održavanja:</span>
@@ -300,6 +311,7 @@
                   class="school-meta-value"
                   id="metaDatum"
                   contenteditable="true"
+                  data-placeholder="Upišite datum..."
                   title="Kliknite da izmijenite datum"
                 ></span>
               </div>
@@ -309,13 +321,18 @@
                   class="school-meta-value"
                   id="metaUcitelj"
                   contenteditable="true"
+                  data-placeholder="Upišite ime i prezime..."
                   title="Kliknite da upišete ime i prezime"
-                  >________________________________</span
-                >
+                ></span>
               </div>
               <div class="school-meta-item">
                 <span class="school-meta-label">Razred i odjeljenje:</span>
-                <span class="school-meta-value" id="metaRazredOdjeljenje" contenteditable="true"></span>
+                <span
+                  class="school-meta-value"
+                  id="metaRazredOdjeljenje"
+                  contenteditable="true"
+                  data-placeholder="Razred i odjeljenje..."
+                ></span>
               </div>
             </div>
           </div>
@@ -393,6 +410,25 @@
             </div>
             <div class="lesson-section-content" id="modalZavrsni"></div>
           </div>
+
+          <!-- CTA baner za kreiranje diferencirane pripreme za 3 nivoa učenika -->
+          <div id="ctaTriNivoaBox" class="levels-cta-banner no-print">
+            <div class="levels-cta-text">
+              <span class="levels-cta-badge">🎯 Diferencirana nastava · Individualizovana očekivanja</span>
+              <h3 id="naslovCtaTriNivoa">Potrebna vam je priprema za 3 nivoa postignuća učenika?</h3>
+              <p id="opisCtaTriNivoa">
+                Jednim klikom generišite razradu očekivanih ishoda, prilagođenih zadataka i načina praćenja za
+                <strong>Osnovni (I)</strong>, <strong>Srednji (II)</strong> i <strong>Napredni (III) nivo</strong>
+                učenika za ovu nastavnu jedinicu.
+              </p>
+            </div>
+            <button type="button" id="dugmeGenerisiTriNivoa" class="btn btn-levels-cta">
+              📊 Kreiraj pripremu za 3 nivoa učenika
+            </button>
+          </div>
+
+          <!-- Dinamički generisana sekcija za 3 nivoa postignuća učenika (uključuje se i u A4 štampu i u .docx) -->
+          <div id="sekcijaTriNivoa" class="levels-section" hidden></div>
 
           <!-- Potpis na dnu A4 lista (vidljivo samo na štampi) -->
           <div class="print-signatures">

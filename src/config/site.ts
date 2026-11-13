@@ -10,6 +10,5 @@ export const siteConfig = {
   social: {
     linkedin: 'https://www.linkedin.com/in/markolo%C5%A1i%C4%87/',
     twitter: '',
-    github: 'https://github.com/MarkoLosic',
   },
 } as const;

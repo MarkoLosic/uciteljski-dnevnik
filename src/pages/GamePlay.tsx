@@ -4,7 +4,7 @@ import { Printer, RotateCcw, Star } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import NotFound from './NotFound';
 import { useLocale } from '../i18n/LocaleContext';
-import { GAME_IDS, hasWorksheet, isGameId, type GameId } from '../games/ids';
+import { GAME_IDS, hasWorksheet, isGameId, worksheetsFor, type GameId, type WorksheetId } from '../games/ids';
 import { games } from '../games/registry';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
@@ -16,7 +16,7 @@ export default function GamePlay() {
 }
 
 function GameStage({ id }: { id: GameId }) {
-  const { t, paths } = useLocale();
+  const { locale, t, paths } = useLocale();
   const g = t.games;
   const { Component, skills } = games[id];
   const text = g.list[id];
@@ -25,6 +25,14 @@ function GameStage({ id }: { id: GameId }) {
   const [won, setWon] = useState(false);
   const againRef = useRef<HTMLButtonElement>(null);
   const nextId = GAME_IDS[(GAME_IDS.indexOf(id) + 1) % GAME_IDS.length];
+  const availableSheets = worksheetsFor(locale);
+  const linkedSheets: WorksheetId[] = hasWorksheet(id)
+    ? [id]
+    : id === 'coloring'
+      ? (['coloringLatin', 'coloringCyrillic'] as WorksheetId[]).filter((s) => availableSheets.includes(s))
+      : id === 'letters'
+        ? (['initialLetterLatin', 'initialLetterCyrillic'] as WorksheetId[]).filter((s) => availableSheets.includes(s))
+        : [];
 
   const onWin = useCallback(() => setWon(true), []);
 
@@ -56,14 +64,19 @@ function GameStage({ id }: { id: GameId }) {
         </div>
         <h1 className="font-head text-[clamp(30px,4.6vw,48px)] leading-[1.1] font-bold tracking-[-0.03em]">{text.title}</h1>
         <p className="mt-3 max-w-[640px] text-[17px] text-muted">{text.howTo}</p>
-        {hasWorksheet(id) && (
-          <Link
-            to={paths.worksheet(id)}
-            className="focus-ring mt-4 inline-flex items-center gap-2 rounded text-sm font-semibold text-accent hover:underline"
-          >
-            <Printer aria-hidden="true" className="h-4 w-4" />
-            {g.worksheet.link}
-          </Link>
+        {linkedSheets.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-4">
+            {linkedSheets.map((sheetId) => (
+              <Link
+                key={sheetId}
+                to={paths.worksheet(sheetId)}
+                className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-accent hover:underline"
+              >
+                <Printer aria-hidden="true" className="h-4 w-4" />
+                {linkedSheets.length > 1 ? g.worksheet.sheets[sheetId].title : g.worksheet.link}
+              </Link>
+            ))}
+          </div>
         )}
       </header>
 

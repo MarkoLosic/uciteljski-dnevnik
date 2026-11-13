@@ -2,9 +2,9 @@ import type { Dictionary } from './sr';
 
 export const en: Dictionary = {
   site: {
-    tagline: 'On the classroom and technology in teaching',
+    tagline: 'Practical support for primary school teachers in everyday classroom work',
     description:
-      'A personal blog about education, primary teaching and technology in the classroom — from a teacher who now works as a QA engineer.',
+      'A platform dedicated to primary school teachers and classroom work — 1,436 daily lesson plans for grades 1–5, 3-level differentiated expectations, printable A4 worksheets, educational games, and teaching articles.',
   },
   author: {
     role: 'QA engineer and primary school teacher',
@@ -71,17 +71,149 @@ export const en: Dictionary = {
   },
   home: {
     greeting: 'Hi, I’m',
-    readBlog: 'Read the blog',
-    moreAboutMe: 'More about me',
+    readBlog: 'Teaching Blog & Practice',
+    moreAboutMe: 'About the Author',
     chips: ['Primary teaching', 'QA engineer', 'AI in education'],
     whoEyebrow: '01 — Who I am',
     whoTitle: 'Between the classroom and IT',
     whoImageAlt:
       'Illustration: on one side a teacher plays with children in a classroom, on the other the same man works at a computer as a QA engineer — letters and numbers from the classroom flow into code and tests.',
-    topicsEyebrow: '02 — Topics',
-    topicsTitle: 'What I write about',
-    blogEyebrow: '03 — Blog',
-    blogTitle: 'Latest from the blog',
+    topicsEyebrow: '03 — Topics & Focus Areas',
+    topicsTitle: 'What we write about and explore',
+    blogEyebrow: '04 — From Teaching Practice',
+    blogTitle: 'Latest articles for teachers',
+    heroBadge: 'Primary Teaching Hub · Grades 1 to 5',
+    heroTitleBefore: 'A place built to help teachers in ',
+    heroTitleHighlight: 'everyday school work',
+    heroLead:
+      'Every school day calls for thoughtful preparation, patience, and adapting to every child in the classroom. “Iz učionice” is a practical toolkit for primary teachers: from 1,436 ready-to-use daily lesson plans, 3-level differentiated student expectations, and printable A4 worksheets, to ad-free educational games and classroom insights that save hours of paperwork.',
+    ctaPripreme: 'Lesson Plans Library (1,436)',
+    ctaWorksheets: 'Worksheets & Kids Games',
+    stats: [
+      {
+        value: '1,436',
+        label: 'Daily Lesson Plans (Grades 1–5)',
+        detail: 'Covers the entire school year across all 6 primary subjects (RPZ RS & ZJNPP FBiH).',
+      },
+      {
+        value: '3 Levels',
+        label: 'Differentiated Expectations',
+        detail: 'Generate outcomes and tasks for basic, intermediate, and advanced students in one click.',
+      },
+      {
+        value: '21 + 10',
+        label: 'A4 Worksheets & Games',
+        detail: 'Printable sheets for fine motor skills, letters, numbers, and logic, plus 10 ad-free games.',
+      },
+      {
+        value: '1 Click',
+        label: 'e-Dnevnik, Word & Print',
+        detail: 'Instant copy for e-Dnevnik, .docx export, and Latin ↔ Cyrillic transliteration.',
+      },
+    ],
+    pillarsEyebrow: '01 — Everyday Classroom Support',
+    pillarsTitle: 'Everything a primary teacher needs for class — in one place',
+    pillarsIntro:
+      'Instead of searching through dozens of scattered folders and spreadsheets, find structured materials that follow the real pace of the school year and actual classroom needs.',
+    pillars: [
+      {
+        badge: 'Full Curriculum',
+        title: 'Daily Lesson Plans for the Entire School Year (Grades 1–5)',
+        text: 'Complete daily lesson plans for Mother Tongue, Mathematics, Science & Social Studies, Art, Music, and Physical Education — including lesson goals, learning outcomes, and intro, main, and closing activities.',
+        linkText: 'Browse lesson plans →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Differentiation & Inclusion',
+        title: '3-Level Student Achievement Plans',
+        text: 'Every classroom has learners moving at different paces. With one click on any lesson plan, generate tailored expectations, tasks, and teacher support for Basic (I), Intermediate (II), and Advanced (III) levels.',
+        linkText: 'Open 3-level plans →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Less Paperwork',
+        title: 'Fast e-Dnevnik Copy, Word (.docx) & A4 Print',
+        text: 'Copy any lesson plan formatted for e-Dnevnik in one click, download a clean Word document pre-filled with your school and teacher name, or switch between Latin and Cyrillic scripts instantly.',
+        linkText: 'Try export tools →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Ready for Student Desks',
+        title: 'Automatic A4 Student Worksheets',
+        text: 'Every lesson plan can generate a print-ready A4 student worksheet with four structured tasks and a student self-assessment scale, plus a 3-level differentiated worksheet.',
+        linkText: 'View student worksheets →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Early Primary & Preschool',
+        title: 'Fine Motor Skills, Early Writing, Numbers & Games',
+        text: '21 printable A4 worksheets (lines, waves, Latin & Cyrillic letters, addition, logic) and 10 short interactive games to build attention and hand–eye coordination.',
+        linkText: 'Open games & worksheets →',
+        href: '/en/games',
+      },
+      {
+        badge: 'Professional Growth',
+        title: 'Classroom Practice, AI Tools & Schools Worldwide',
+        text: 'Practical articles on lesson organization, safe use of AI for lesson prep, protecting student privacy, and comparing primary education across Finland, Estonia, Japan, and Singapore.',
+        linkText: 'Read blog articles →',
+        href: '/en/blog',
+      },
+    ],
+    gradesEyebrow: '02 — Browse by Grade',
+    gradesTitle: 'Pick your grade and open daily lesson plans right away',
+    gradesIntro:
+      'Each grade covers the full annual teaching schedule across all six subjects for both curricula in Bosnia and Herzegovina (RPZ RS and ZJNPP FBiH).',
+    gradesList: [
+      {
+        grade: 1,
+        count: '284 plans',
+        title: '1st Grade Primary School',
+        desc: 'First-grade adaptation, pre-reading skills, learning letters, numbers up to 20, exploring the environment, and building study habits.',
+      },
+      {
+        grade: 2,
+        count: '296 plans',
+        title: '2nd Grade Primary School',
+        desc: 'Second script (Latin/Cyrillic), addition and subtraction up to 100, multiplication and division, seasons, traffic safety, and local community.',
+      },
+      {
+        grade: 3,
+        count: '288 plans',
+        title: '3rd Grade Primary School',
+        desc: 'Parts of speech and creative writing, numbers up to 1,000, geometry and measurement, local history, and living vs. non-living nature.',
+      },
+      {
+        grade: 4,
+        count: '284 plans',
+        title: '4th Grade Primary School',
+        desc: 'Sentence analysis, multi-digit numbers, area and volume, map reading, and natural and social geography.',
+      },
+      {
+        grade: 5,
+        count: '284 plans',
+        title: '5th Grade Primary School',
+        desc: 'Literary genres, verb tenses, fractions and geometry, social communities, energy, and transition to subject teaching.',
+      },
+    ],
+    workflowEyebrow: '03 — How It Works in Practice',
+    workflowTitle: 'From choosing a topic to a ready lesson in 3 steps',
+    workflowSteps: [
+      {
+        step: '01',
+        title: 'Find your lesson unit',
+        text: 'Filter the library by grade (1–5), curriculum (RPZ RS or ZJNPP FBiH), subject, or lesson type, or search by keyword.',
+      },
+      {
+        step: '02',
+        title: 'Enable 3 student levels & script',
+        text: 'Click “Create 3-level student plan” to generate differentiated expectations and tasks, choose Latin or Cyrillic, and enter your school name.',
+      },
+      {
+        step: '03',
+        title: 'Copy to e-Dnevnik or print A4',
+        text: 'Copy the lesson plan to e-Dnevnik in one click, download the complete Word (.docx) file, or print the A4 student worksheet.',
+      },
+    ],
   },
   blog: {
     eyebrow: 'Blog',
@@ -219,12 +351,29 @@ export const en: Dictionary = {
       sectionText: 'Paper versions of the games, pre-writing practice, numbers, letters and logic puzzles — pencil practice, away from the screen. Open a sheet and print it.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
+        coloring: 'Letter & picture colouring pages',
+        writing: 'Reading and writing',
         motor: 'Fine motor and pre-writing',
-        writing: 'Writing',
         math: 'Numbers and counting',
         logic: 'Logic and attention',
       },
       sheets: {
+        coloringLatin: {
+          title: 'Alphabet colouring book — Latin letters',
+          text: 'Colour in the large hollow capital and small letters and the matching picture, then trace the grey letters and write them on the line below.',
+        },
+        coloringCyrillic: {
+          title: 'Alphabet colouring book — Cyrillic letters',
+          text: 'Colour in the large hollow Cyrillic capital and small letters and the matching picture, then trace and write the letters on the line below.',
+        },
+        colorByNumber: {
+          title: 'Colour by number (1–6)',
+          text: 'Check the colour key at the top to see which number matches which colour, then colour each numbered part of the scene.',
+        },
+        coloringScenes: {
+          title: 'Big colouring book — nature, animals & space',
+          text: 'Pick your favourite crayons and colour the cheerful nature scene with animals, the space rocket with planets and the underwater world.',
+        },
         trace: {
           title: 'Follow the path',
           text: 'Follow the dashed line from the bug to the flower with a pencil or crayon. Take your time and try to stay on the grey path.',
@@ -248,6 +397,34 @@ export const en: Dictionary = {
         cyrillic: {
           title: 'Writing letters — Cyrillic',
           text: 'Trace over the grey letters, then write the letter on your own at the end of the row. Capital letters touch the top line, small letters the dashed middle line.',
+        },
+        initialLetterLatin: {
+          title: 'First letter — Latin',
+          text: 'Name each picture, circle the right starting letter out of the three options and write it on the line at the beginning of the word.',
+        },
+        initialLetterCyrillic: {
+          title: 'First letter — Cyrillic',
+          text: 'Name each picture, circle the right starting Cyrillic letter out of the three options and write it on the line at the beginning of the word.',
+        },
+        letterMatchLatin: {
+          title: 'Match capital and small letters — Latin',
+          text: 'Draw a line to match each capital letter with its small letter at the top, then write the small letter next to the capital one in the boxes below.',
+        },
+        letterMatchCyrillic: {
+          title: 'Match capital and small letters — Cyrillic',
+          text: 'Draw a line to match each Cyrillic capital letter with its small letter at the top, then write the small letter in the boxes below.',
+        },
+        syllablesLatin: {
+          title: 'Read and join syllables — Latin',
+          text: 'Read the syllable table at the top out loud first. Then join the syllables into words and write the whole word on the line.',
+        },
+        syllablesCyrillic: {
+          title: 'Read and join syllables — Cyrillic',
+          text: 'Read the Cyrillic syllable table at the top out loud first. Then join the syllables into words and write the whole word on the line.',
+        },
+        scriptBridge: {
+          title: 'Script bridge — Latin & Cyrillic',
+          text: 'Match the corresponding letters between the Latin and Cyrillic scripts, then rewrite the words below in the other script.',
         },
         lines: {
           title: 'Straight lines',
@@ -276,6 +453,18 @@ export const en: Dictionary = {
         adding: {
           title: 'Add the pictures',
           text: 'Count the pictures on both sides of the plus sign and write in the box how many there are altogether.',
+        },
+        subtraction: {
+          title: 'Subtract with pictures',
+          text: 'Look at how many pictures are in each row and how many are crossed out. Count how many are left and write the answer in the box.',
+        },
+        compareNumbers: {
+          title: 'Compare groups and numbers (<, >, =)',
+          text: 'Count the pictures on the left and right, then write < (less than), > (greater than) or = (equal to) inside the middle circle.',
+        },
+        missingNumbers: {
+          title: 'Number train & number neighbours',
+          text: 'Fill in the missing numbers from 1 to 10 in the train cars at the top, then write the number before and the number after in the boxes below.',
         },
         sizes: {
           title: 'Smallest to biggest',
@@ -361,6 +550,16 @@ export const en: Dictionary = {
         title: 'Small to big',
         short: 'Put the pictures on the shelf from smallest to biggest.',
         howTo: 'Tap the pictures in order: the smallest first, then bigger and bigger. Each one goes onto the shelf.',
+      },
+      coloring: {
+        title: 'Colour letters & pictures',
+        short: 'Pick a colour and paint big and small letters, an apple, the sun, a house and a rocket.',
+        howTo: 'Choose the script (Latin or Cyrillic) at the top, tap a colour in the palette below, then tap parts of the letters and drawing to colour them in.',
+      },
+      letters: {
+        title: 'Starting letter (Latin & Cyrillic)',
+        short: 'Look at the picture and pick the letter the word starts with.',
+        howTo: 'Name the object in the picture, select Latin or Cyrillic at the top, and tap the matching starting letter among the three options.',
       },
     },
   },

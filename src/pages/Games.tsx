@@ -21,10 +21,19 @@ export default function Games() {
         <span className="eyebrow">{g.eyebrow}</span>
         <h1 className="page-title mt-2 mb-5">{g.title}</h1>
         <p className="text-lg text-muted sm:text-xl">{g.intro}</p>
-        <p className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[13.5px] text-muted">
-          <i className="status-dot" />
-          {g.age}
-        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-2.5">
+          <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[13.5px] text-muted">
+            <i className="status-dot" />
+            {g.age}
+          </p>
+          <a
+            href="#radni-listovi"
+            className="focus-ring inline-flex items-center gap-2 rounded-full border border-accent/40 bg-surface-2 px-3.5 py-1.5 text-[13.5px] font-semibold text-accent transition-colors hover:border-accent"
+          >
+            <Printer aria-hidden="true" className="h-4 w-4" />
+            {g.worksheet.sectionTitle} ({sheetIds.length})
+          </a>
+        </div>
       </header>
 
       <ul className="mt-12 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
@@ -73,11 +82,22 @@ export default function Games() {
         <h2 id="radni-listovi" className="section-title mb-4">
           {g.worksheet.sectionTitle}
         </h2>
-        <p className="mb-9 max-w-[640px] text-lg text-muted">{g.worksheet.sectionText}</p>
+        <p className="mb-6 max-w-[680px] text-lg text-muted">{g.worksheet.sectionText}</p>
+        <div className="mb-9 flex flex-wrap gap-2">
+          {(Object.keys(WORKSHEET_GROUPS) as WorksheetGroup[]).map((group) => (
+            <a
+              key={group}
+              href={`#grupa-${group}`}
+              className="focus-ring rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs font-semibold text-muted transition-colors hover:border-accent hover:text-accent"
+            >
+              {g.worksheet.groups[group]}
+            </a>
+          ))}
+        </div>
         {(Object.keys(WORKSHEET_GROUPS) as WorksheetGroup[]).map((group) => {
           const ids = WORKSHEET_GROUPS[group].filter((id) => sheetIds.includes(id));
           return (
-            <div key={group} className="mt-10 first-of-type:mt-0">
+            <div key={group} id={`grupa-${group}`} className="mt-10 scroll-mt-28 first-of-type:mt-0">
               <h3 className="mb-4 font-head text-xl font-semibold tracking-tight">{g.worksheet.groups[group]}</h3>
               <ul className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
                 {ids.map((id) => (

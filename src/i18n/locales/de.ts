@@ -2,9 +2,9 @@ import type { Dictionary } from './sr';
 
 export const de: Dictionary = {
   site: {
-    tagline: 'Über das Klassenzimmer und Technologie im Unterricht',
+    tagline: 'Praktische Unterstützung für Grundschullehrkräfte im Schulalltag',
     description:
-      'Ein persönlicher Blog über Bildung, Grundschulunterricht und Technologie im Klassenzimmer — von einem Lehrer, der heute als QA-Ingenieur arbeitet.',
+      'Eine Plattform für Grundschullehrkräfte und den Unterrichtsalltag — 1.436 tägliche Unterrichtsentwürfe für die Klassen 1–5, Differenzierung auf drei Niveaustufen, A4-Arbeitsblätter, Lernspiele und Fachartikel.',
   },
   author: {
     role: 'QA-Ingenieur und Grundschullehrer',
@@ -71,17 +71,149 @@ export const de: Dictionary = {
   },
   home: {
     greeting: 'Hallo, ich bin',
-    readBlog: 'Zum Blog',
-    moreAboutMe: 'Mehr über mich',
+    readBlog: 'Praxis-Blog & Artikel',
+    moreAboutMe: 'Über den Autor',
     chips: ['Grundschule', 'QA-Ingenieur', 'KI im Unterricht'],
     whoEyebrow: '01 — Wer ich bin',
     whoTitle: 'Zwischen Klassenzimmer und IT',
     whoImageAlt:
       'Illustration: Auf der einen Seite spielt ein Lehrer mit Kindern im Klassenzimmer, auf der anderen arbeitet derselbe Mann als QA-Ingenieur am Computer — Buchstaben und Zahlen aus dem Klassenzimmer fließen in Code und Tests.',
-    topicsEyebrow: '02 — Themen',
-    topicsTitle: 'Worüber ich schreibe',
-    blogEyebrow: '03 — Blog',
-    blogTitle: 'Neu im Blog',
+    topicsEyebrow: '03 — Themen & Schwerpunkte',
+    topicsTitle: 'Worüber wir schreiben und forschen',
+    blogEyebrow: '04 — Aus der Unterrichtspraxis',
+    blogTitle: 'aktuelle Artikel für Lehrkräfte',
+    heroBadge: 'Portal für Grundschullehrkräfte · 1. bis 5. Klasse',
+    heroTitleBefore: 'Ein Ort, der Lehrkräften die ',
+    heroTitleHighlight: 'tägliche Arbeit in der Schule erleichtert',
+    heroLead:
+      'Jeder Schultag erfordert gute Vorbereitung, Geduld und das Eingehen auf jedes einzelne Kind. „Iz učionice“ bündelt praktische Werkzeuge für Lehrkräfte: von 1.436 fertigen täglichen Unterrichtsentwürfen, differenzierten Erwartungen für drei Leistungsniveaus und druckfertigen A4-Arbeitsblättern bis hin zu werbefreien Lernspielen und Praxistipps.',
+    ctaPripreme: 'Unterrichtspläne (1.436)',
+    ctaWorksheets: 'Arbeitsblätter & Lernspiele',
+    stats: [
+      {
+        value: '1.436',
+        label: 'Tägliche Unterrichtspläne (Kl. 1–5)',
+        detail: 'Deckt das gesamte Schuljahr in allen 6 Grundschulfächern ab (RPZ RS & ZJNPP FBiH).',
+      },
+      {
+        value: '3 Niveaus',
+        label: 'Differenzierte Erwartungen',
+        detail: 'Mit einem Klick Lernziele und Aufgaben für Grund-, Mittel- und fortgeschrittenes Niveau erstellen.',
+      },
+      {
+        value: '21 + 10',
+        label: 'A4-Arbeitsblätter & Spiele',
+        detail: 'Druckvorlagen für Feinmotorik, Buchstaben, Zahlen und Logik sowie 10 werbefreie Spiele.',
+      },
+      {
+        value: '1 Klick',
+        label: 'e-Dnevnik, Word & Druck',
+        detail: 'Sofortiges Kopieren für e-Dnevnik, .docx-Download und Wechsel zwischen Lateinisch ↔ Kyrillisch.',
+      },
+    ],
+    pillarsEyebrow: '01 — Unterstützung im Schulalltag',
+    pillarsTitle: 'Alles, was Lehrkräfte für die Unterrichtsstunde brauchen — an einem Ort',
+    pillarsIntro:
+      'Statt in unzähligen Dokumenten zu suchen, finden Sie hier strukturierte Materialien, die dem echten Rhythmus des Schuljahres folgen.',
+    pillars: [
+      {
+        badge: 'Lehrplan & Struktur',
+        title: 'Tägliche Unterrichtsentwürfe für das ganze Schuljahr (1.–5. Klasse)',
+        text: 'Vollständig ausgearbeitete Unterrichtseinheiten für Muttersprache, Mathematik, Sachunterricht, Kunst, Musik und Sport — mit Stundenziel, Lernresultaten sowie Einstieg, Hauptteil und Schluss.',
+        linkText: 'Unterrichtspläne durchsuchen →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Differenzierung & Inklusion',
+        title: 'Unterrichtsvorbereitung für 3 Leistungsniveaus',
+        text: 'In jeder Klasse lernen Kinder unterschiedlich schnell. Mit einem Klick erzeugen Sie differenzierte Erwartungen, angepasste Aufgaben und Beobachtungskriterien für Grund- (I), Mittel- (II) und fortgeschrittenes Niveau (III).',
+        linkText: 'Differenzierte Pläne öffnen →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Weniger Bürokratie',
+        title: 'Schneller Export für e-Dnevnik, Word (.docx) und A4-Druck',
+        text: 'Kopieren Sie jeden Entwurf mit einem Klick für das elektronische Klassenbuch, laden Sie eine saubere Word-Datei mit Ihrem Schulnamen herunter oder wechseln Sie zwischen lateinischer und kyrillischer Schrift.',
+        linkText: 'Exportfunktionen testen →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Material für die Schulbank',
+        title: 'Automatische A4-Arbeitsblätter für Schülerinnen und Schüler',
+        text: 'Zu jeder Unterrichtseinheit lässt sich sofort ein druckfertiges A4-Arbeitsblatt mit vier strukturierten Aufgaben und Selbsteinschätzung sowie ein 3-Niveau-Arbeitsblatt öffnen.',
+        linkText: 'Arbeitsblätter ansehen →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Vorschule & Schulanfang',
+        title: 'Feinmotorik, Schreibvorbereitung, Zahlen und Spiele',
+        text: '21 druckbare A4-Arbeitsblätter (Linien, Wellen, Buchstaben, Rechnen, Logik) und 10 kurze interaktive Spiele zur Förderung von Aufmerksamkeit und Feinmotorik.',
+        linkText: 'Spiele & Arbeitsblätter öffnen →',
+        href: '/de/spiele',
+      },
+      {
+        badge: 'Weiterbildung & Praxis',
+        title: 'Erfahrungen aus dem Klassenzimmer, KI-Tools & Schulen weltweit',
+        text: 'Praxisnahe Artikel über Unterrichtsorganisation, den sicheren Einsatz von KI bei der Unterrichtsvorbereitung, Datenschutz und den Vergleich mit Schulsystemen in Finnland, Estland oder Japan.',
+        linkText: 'Blogartikel lesen →',
+        href: '/de/blog',
+      },
+    ],
+    gradesEyebrow: '02 — Nach Klassenstufe',
+    gradesTitle: 'Klassenstufe wählen und direkt zu den Unterrichtsplänen springen',
+    gradesIntro:
+      'Jede Klassenstufe umfasst das gesamte Jahresstundenvolumen für beide Lehrpläne in Bosnien und Herzegowina (RPZ RS und ZJNPP FBiH).',
+    gradesList: [
+      {
+        grade: 1,
+        count: '284 Pläne',
+        title: '1. Klasse Grundschule',
+        desc: 'Eingewöhnung der Erstklässler, Vorfibelzeit, Buchstabeneinführung, Zahlen bis 20, Orientierung in der Umwelt und erste Arbeitsgewohnheiten.',
+      },
+      {
+        grade: 2,
+        count: '296 Pläne',
+        title: '2. Klasse Grundschule',
+        desc: 'Zweite Schrift (Lateinisch/Kyrillisch), Rechnen bis 100, Multiplikation und Division, Jahreszeiten, Verkehrserziehung und Heimatkunde.',
+      },
+      {
+        grade: 3,
+        count: '288 Pläne',
+        title: '3. Klasse Grundschule',
+        desc: 'Wortarten und schriftlicher Ausdruck, Zahlen bis 1.000, Geometrie und Größen, Geschichte der Heimat sowie belebte und unbelebte Natur.',
+      },
+      {
+        grade: 4,
+        count: '284 Pläne',
+        title: '4. Klasse Grundschule',
+        desc: 'Satzglieder, große Zahlen, Fläche und Volumen, Kartenarbeit sowie Natur- und Gesellschaftskunde.',
+      },
+      {
+        grade: 5,
+        count: '284 Pläne',
+        title: '5. Klasse Grundschule',
+        desc: 'Literarische Gattungen, Zeitformen, Brüche und Geometrie, Gesellschaft, Energie und Vorbereitung auf den Fachunterricht.',
+      },
+    ],
+    workflowEyebrow: '03 — So funktioniert es im Alltag',
+    workflowTitle: 'In 3 Schritten von der Themenwahl zur fertigen Unterrichtsstunde',
+    workflowSteps: [
+      {
+        step: '01',
+        title: 'Unterrichtseinheit finden',
+        text: 'Filtern Sie nach Klasse (1–5), Lehrplan (RPZ RS oder ZJNPP FBiH), Fach oder Stundentyp oder nutzen Sie die Stichwortsuche.',
+      },
+      {
+        step: '02',
+        title: '3 Niveaustufen & Schrift wählen',
+        text: 'Klicken Sie auf „3-Niveau-Plan erstellen“ für differenzierte Erwartungen und Aufgaben, wählen Sie Lateinisch oder Kyrillisch und tragen Sie Ihre Schule ein.',
+      },
+      {
+        step: '03',
+        title: 'Für e-Dnevnik kopieren oder A4 drucken',
+        text: 'Kopieren Sie den Entwurf mit einem Klick ins Klassenbuch, laden Sie die Word-Datei (.docx) herunter oder drucken Sie das A4-Arbeitsblatt.',
+      },
+    ],
   },
   blog: {
     eyebrow: 'Blog',
@@ -219,12 +351,29 @@ export const de: Dictionary = {
       sectionText: 'Papierversionen der Spiele, Übungen zur Schreibvorbereitung, Zahlen, Buchstaben und Logikrätsel — Übung mit dem Stift, ganz ohne Bildschirm. Blatt öffnen und ausdrucken.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
+        coloring: 'Ausmalbilder für Buchstaben und Motive',
+        writing: 'Lesen und Schreiben',
         motor: 'Feinmotorik und Schreibvorbereitung',
-        writing: 'Schreiben',
         math: 'Zahlen und Rechnen',
         logic: 'Logik und Aufmerksamkeit',
       },
       sheets: {
+        coloringLatin: {
+          title: 'Buchstaben-Ausmalbuch — Lateinisch',
+          text: 'Male die großen und kleinen hohlen Buchstaben sowie das passende Bild aus, fahre dann die grauen Buchstaben nach und schreibe sie selbst in die Zeile.',
+        },
+        coloringCyrillic: {
+          title: 'Buchstaben-Ausmalbuch — Kyrillisch',
+          text: 'Male die großen und kleinen kyrillischen Buchstaben sowie das passende Bild aus und übe das Schreiben in der Zeile darunter.',
+        },
+        colorByNumber: {
+          title: 'Malen nach Zahlen (1–6)',
+          text: 'Schau oben nach, welche Zahl für welche Farbe steht, und male jedes nummerierte Feld im Bild passend aus.',
+        },
+        coloringScenes: {
+          title: 'Großes Ausmalbuch — Natur, Tiere und Weltraum',
+          text: 'Wähle deine Lieblingsbuntstifte und male die fröhliche Natur mit Tieren, die Weltraumrakete mit Planeten und die Unterwasserwelt aus.',
+        },
         trace: {
           title: 'Dem Weg folgen',
           text: 'Mit Bleistift oder Buntstift der gestrichelten Linie vom Käfer zur Blume folgen. Langsam, und möglichst auf dem grauen Weg bleiben.',
@@ -248,6 +397,34 @@ export const de: Dictionary = {
         cyrillic: {
           title: 'Buchstaben schreiben — Kyrillisch',
           text: 'Die grauen Buchstaben nachfahren und am Ende der Zeile den Buchstaben selbst schreiben. Großbuchstaben reichen bis zur oberen Linie, kleine bis zur gestrichelten Mittellinie.',
+        },
+        initialLetterLatin: {
+          title: 'Anfangsbuchstabe — Lateinisch',
+          text: 'Benenne jedes Bild, kreise den richtigen Anfangsbuchstaben unter den drei Vorschlägen ein und schreibe ihn auf die Linie.',
+        },
+        initialLetterCyrillic: {
+          title: 'Anfangsbuchstabe — Kyrillisch',
+          text: 'Benenne jedes Bild, kreise den richtigen kyrillischen Anfangsbuchstaben ein und schreibe ihn auf die Linie.',
+        },
+        letterMatchLatin: {
+          title: 'Groß- und Kleinbuchstaben verbinden — Lateinisch',
+          text: 'Verbinde oben jeden Großbuchstaben mit dem passenden Kleinbuchstaben und schreibe unten den Kleinbuchstaben neben den großen ins Kästchen.',
+        },
+        letterMatchCyrillic: {
+          title: 'Groß- und Kleinbuchstaben verbinden — Kyrillisch',
+          text: 'Verbinde oben jeden kyrillischen Großbuchstaben mit seinem Kleinbuchstaben und ergänze unten die Buchstaben-Häuschen.',
+        },
+        syllablesLatin: {
+          title: 'Silben lesen und verbinden — Lateinisch',
+          text: 'Lies zuerst die Silbentabelle oben laut vor. Verbinde dann die Silben zu Wörtern und schreibe das ganze Wort auf die Linie.',
+        },
+        syllablesCyrillic: {
+          title: 'Silben lesen und verbinden — Kyrillisch',
+          text: 'Lies zuerst die kyrillische Silbentabelle oben laut vor. Verbinde dann die Silben zu Wörtern und schreibe das ganze Wort auf die Linie.',
+        },
+        scriptBridge: {
+          title: 'Brücke zwischen den Schriften — Lateinisch & Kyrillisch',
+          text: 'Verbinde die gleichen Buchstaben in lateinischer und kyrillischer Schrift und schreibe die Wörter unten in der jeweils anderen Schrift.',
         },
         lines: {
           title: 'Gerade Linien',
@@ -276,6 +453,18 @@ export const de: Dictionary = {
         adding: {
           title: 'Bilder zusammenzählen',
           text: 'Die Bilder links und rechts vom Pluszeichen zählen und ins Kästchen schreiben, wie viele es zusammen sind.',
+        },
+        subtraction: {
+          title: 'Abziehen mit Bildern',
+          text: 'Schau dir an, wie viele Bilder in der Reihe sind und wie viele durchgestrichen wurden. Zähle den Rest und schreibe die Zahl ins Kästchen.',
+        },
+        compareNumbers: {
+          title: 'Gruppen und Zahlen vergleichen (<, >, =)',
+          text: 'Zähle die Bilder links und rechts und schreibe < (kleiner), > (größer) oder = (gleich) in den Kreis in der Mitte.',
+        },
+        missingNumbers: {
+          title: 'Zahlenreihe, Vorgänger und Nachfolger',
+          text: 'Trage oben die fehlenden Zahlen von 1 bis 10 in die Zugwaggons ein und schreibe unten den Vorgänger und den Nachfolger auf.',
         },
         sizes: {
           title: 'Vom Kleinsten zum Größten',
@@ -361,6 +550,16 @@ export const de: Dictionary = {
         title: 'Von klein nach groß',
         short: 'Die Bilder vom kleinsten bis zum größten ins Regal stellen.',
         howTo: 'Die Bilder der Reihe nach antippen: zuerst das kleinste, dann immer größere. Jedes kommt ins Regal.',
+      },
+      coloring: {
+        title: 'Buchstaben und Bilder ausmalen',
+        short: 'Wähle eine Farbe und male große und kleine Buchstaben, Apfel, Sonne, Haus und Rakete aus.',
+        howTo: 'Wähle oben die Schrift (Lateinisch oder Kyrillisch), tippe unten auf eine Farbe in der Palette und male die Teile des Buchstabens und des Bildes aus.',
+      },
+      letters: {
+        title: 'Anfangsbuchstabe (Lateinisch & Kyrillisch)',
+        short: 'Schau dir das Bild an und errate, mit welchem Buchstaben das Wort beginnt.',
+        howTo: 'Benenne das Bild, wähle oben Lateinisch oder Kyrillisch und tippe auf den richtigen Anfangsbuchstaben unter den drei Möglichkeiten.',
       },
     },
   },

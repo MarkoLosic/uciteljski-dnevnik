@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import { Balloon, Blocks, Brain, Hash, Rabbit, Repeat, Ruler, Shapes, Spline, Waypoints, type LucideIcon } from 'lucide-react';
+import { Balloon, Blocks, BookOpenCheck, Brain, Hash, Palette, Rabbit, Repeat, Ruler, Shapes, Spline, Waypoints, type LucideIcon } from 'lucide-react';
 import type { GameId, Skill } from './ids';
 import type { GameProps } from './shared';
 import Balloons from './Balloons';
@@ -12,6 +12,8 @@ import Memory from './Memory';
 import Pattern from './Pattern';
 import Count from './Count';
 import Sizes from './Sizes';
+import Coloring from './Coloring';
+import Letters from './Letters';
 
 interface GameDefinition {
   Component: ComponentType<GameProps>;
@@ -32,4 +34,6 @@ export const games: Record<GameId, GameDefinition> = {
   pattern: { Component: Pattern, Icon: Repeat, color: 'var(--cat-purple)', skills: ['logic'] },
   count: { Component: Count, Icon: Hash, color: 'var(--accent)', skills: ['counting'] },
   sizes: { Component: Sizes, Icon: Ruler, color: 'var(--cat-amber)', skills: ['logic', 'eyeHand'] },
+  coloring: { Component: Coloring, Icon: Palette, color: 'var(--accent-2)', skills: ['fine', 'eyeHand'] },
+  letters: { Component: Letters, Icon: BookOpenCheck, color: 'var(--cat-purple)', skills: ['logic', 'memory'] },
 };

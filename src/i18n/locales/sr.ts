@@ -5,9 +5,9 @@ import type { GameId, GameText, Shape, Skill, Thing, ToyColor, WorksheetGroup, W
 // i moraju imati iste ključeve (tip `Dictionary` se izvodi iz ovog fajla).
 export const sr = {
   site: {
-    tagline: 'O učionici i tehnologiji u nastavi',
+    tagline: 'Praktična podrška učiteljima u svakodnevnom radu u školi',
     description:
-      'Lični blog o obrazovanju, razrednoj nastavi i tehnologiji u učionici — iz ugla učitelja koji danas radi kao QA inženjer.',
+      'Sajt posvećen učiteljima, razrednoj nastavi i radu u školi — 1.436 dnevnih priprema od 1. do 5. razreda, diferencirana nastava za tri nivoa učenika, radni listovi za štampu, edukativne igre i stručni tekstovi.',
   },
   author: {
     role: 'QA inženjer i profesor razredne nastave',
@@ -74,17 +74,149 @@ export const sr = {
   } satisfies Record<Category, string>,
   home: {
     greeting: 'Zdravo, ja sam',
-    readBlog: 'Pročitaj blog',
-    moreAboutMe: 'Više o meni',
+    readBlog: 'Stručni blog i praksa',
+    moreAboutMe: 'Više o autoru',
     chips: ['Razredna nastava', 'QA inženjer', 'AI u nastavi'],
     whoEyebrow: '01 — Ko sam ja',
     whoTitle: 'Između učionice i IT-a',
     whoImageAlt:
       'Ilustracija: s jedne strane učitelj se igra s decom u učionici, a s druge isti čovek radi za računarom kao QA inženjer — slova i brojevi iz učionice prelaze u kod i testove.',
-    topicsEyebrow: '02 — Teme',
-    topicsTitle: 'O čemu pišem',
-    blogEyebrow: '03 — Blog',
-    blogTitle: 'Najnovije sa bloga',
+    topicsEyebrow: '03 — Teme i oblasti rada',
+    topicsTitle: 'O čemu pišemo i šta istražujemo',
+    blogEyebrow: '04 — Iz učiteljske prakse',
+    blogTitle: 'Najnoviji članci za učitelje',
+    heroBadge: 'Portal za učitelje i razrednu nastavu · 1–5. razred osnovne škole',
+    heroTitleBefore: 'Mesto koje učiteljima olakšava ',
+    heroTitleHighlight: 'svakodnevni rad u školi',
+    heroLead:
+      'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom detetu u učionici. Zato je „Iz učionice“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i saveta iz prakse koji štede sate administracije.',
+    ctaPripreme: 'Biblioteka priprema (1.436)',
+    ctaWorksheets: 'Radni listovi i igre za decu',
+    stats: [
+      {
+        value: '1.436',
+        label: 'Dnevnih priprema (1–5. razred)',
+        detail: 'Pokrivena cela školska godina za svih 6 nastavnih predmeta (RPZ RS i ZJNPP FBiH).',
+      },
+      {
+        value: '3 nivoa',
+        label: 'Diferencirana očekivanja',
+        detail: 'Jednim klikom kreirajte ishode i zadatke za osnovni, srednji i napredni nivo učenika.',
+      },
+      {
+        value: '21 + 10',
+        label: 'A4 radni listovi i igre',
+        detail: 'Gotovi listići za grafomotoriku, slova, brojeve i logiku, uz 10 igara bez reklama.',
+      },
+      {
+        value: '1 klik',
+        label: 'e-Dnevnik, Word i štampa',
+        detail: 'Trenutno kopiranje za e-Dnevnik, preuzimanje u .docx formatu i preslovljavanje LAT ↔ ĆIR.',
+      },
+    ],
+    pillarsEyebrow: '01 — Podrška u svakodnevnom radu',
+    pillarsTitle: 'Sve što je učitelju potrebno za čas — na jednom mestu',
+    pillarsIntro:
+      'Umesto lutanja po desetinama dokumenata i tabelama, ovde su objedinjeni materijali koji prate stvarni ritam školske godine i realne potrebe u učionici.',
+    pillars: [
+      {
+        badge: 'Nastavni plan i program',
+        title: 'Dnevne pripreme za celu školsku godinu (1–5. razred)',
+        text: 'Kompletno razrađene nastavne jedinice za Maternji jezik, Matematiku, Prirodu i društvo / Moju okolinu, Likovnu kulturu, Muzičku kulturu i Fizičko / Tjelesni odgoj — sa ciljem, ishodima i uvodnim, glavnim i završnim delom časa.',
+        linkText: 'Pretraži pripreme →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Individualizacija i inkluzija',
+        title: 'Priprema za 3 nivoa postignuća učenika',
+        text: 'U svakom odeljenju sede učenici različitog tempa rada. Na svakoj pripremi jednim klikom generišete posebna očekivanja, prilagođene zadatke i način praćenja za osnovni (I), srednji (II) i napredni (III) nivo.',
+        linkText: 'Otvori diferencirane pripreme →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Manje papirologije',
+        title: 'Brz unos u e-Dnevnik, Word (.docx) i A4 štampa',
+        text: 'Svaku pripremu možete jednim klikom kopirati u formatu spremnom za e-Dnevnik, preuzeti kao uredan Word dokument sa sačuvanim imenom vaše škole i učitelja, ili prebaciti između latinice i ćirilice.',
+        linkText: 'Isprobaj alate za izvoz →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Materijali za klupe',
+        title: 'Automatski A4 radni listići za učenike',
+        text: 'Uz svaku pripremu možete odmah otvoriti i odštampati radni listić za učenike sa četiri strukturisana zadatka i skalom samoprocene, kao i poseban diferencirani listić podeljen na tri nivoa težine.',
+        linkText: 'Pogledaj radne listiće →',
+        href: '/pripreme/index.html',
+      },
+      {
+        badge: 'Prvi koraci u školi',
+        title: 'Bojanke slova, ćirilica i latinica, radni listovi i igre',
+        text: 'Za predškolce i učenike nižih razreda pripremili smo 35 radnih listova i bojanki za štampu (bojanke slova za latinicu i ćirilicu, bojanke po brojevima, slogovi, početno slovo, grafomotorika, sabiranje i oduzimanje) i 12 interaktivnih igara.',
+        linkText: 'Otvori igre, bojanke i radne listove →',
+        href: '/igre',
+      },
+      {
+        badge: 'Stručno usavršavanje',
+        title: 'Iskustva iz učionice, AI alati i škole u svetu',
+        text: 'Praktični članci o organizaciji časa, bezbednoj upotrebi veštačke inteligencije u pisanju priprema, zaštiti podataka učenika i poređenju našeg školstva sa Finskom, Estonijom, Japanom i drugim zemljama.',
+        linkText: 'Čitaj članke na blogu →',
+        href: '/blog',
+      },
+    ],
+    gradesEyebrow: '02 — Baza po razredima',
+    gradesTitle: 'Izaberite razred i odmah otvorite pripreme za čas',
+    gradesIntro:
+      'Svaki razred obuhvata kompletan godišnji fond časova za oba nastavna plana i programa u Bosni i Hercegovini (RPZ Republike Srpske i ZJNPP Federacije BiH).',
+    gradesList: [
+      {
+        grade: 1,
+        count: '284 pripreme',
+        title: '1. razred osnovne škole',
+        desc: 'Adaptacija prvaka, predbukvarski period, obrada slova, brojevi do 20, snalaženje u okolini i razvoj početnih radnih navika.',
+      },
+      {
+        grade: 2,
+        count: '296 priprema',
+        title: '2. razred osnovne škole',
+        desc: 'Drugo pismo (latinica/ćirilica), sabiranje i oduzimanje do 100, množenje i deljenje, godišnja doba, saobraćaj i zavičaj.',
+      },
+      {
+        grade: 3,
+        count: '288 priprema',
+        title: '3. razred osnovne škole',
+        desc: 'Vrste reči i pismeno izražavanje, brojevi do 1.000, geometrijski oblici i merenje, prošlost zavičaja, živa i neživa priroda.',
+      },
+      {
+        grade: 4,
+        count: '284 pripreme',
+        title: '4. razred osnovne škole',
+        desc: 'Služba reči u rečenici, višeocifreni brojevi, površina i zapremina, geografska karta, prirodne i društvene odlike domovine.',
+      },
+      {
+        grade: 5,
+        count: '284 pripreme',
+        title: '5. razred osnovne škole',
+        desc: 'Književni rodovi i vrste, glagolski oblici, razlomci i geometrija, društvene zajednice, energija i priprema za predmetnu nastavu.',
+      },
+    ],
+    workflowEyebrow: '03 — Kako funkcioniše u praksi',
+    workflowTitle: 'Od izbora lekcije do spremnog časa u 3 koraka',
+    workflowSteps: [
+      {
+        step: '01',
+        title: 'Pronađite nastavnu jedinicu',
+        text: 'Filtrirajte bazu po razredu (1–5), nastavnom planu (RPZ RS ili ZJNPP FBiH), predmetu ili tipu časa, ili jednostavno ukucajte pojam u pretragu.',
+      },
+      {
+        step: '02',
+        title: 'Uključite 3 nivoa učenika i pismo',
+        text: 'Kliknite na „Kreiraj pripremu za 3 nivoa učenika“ da dobijete diferencirana očekivanja i zadatke, izaberite latinicu ili ćirilicu i upišite naziv škole.',
+      },
+      {
+        step: '03',
+        title: 'Kopirajte za e-Dnevnik ili odštampajte',
+        text: 'Jednim klikom kopirajte pripremu u e-Dnevnik, preuzmite kompletan Word (.docx) fajl ili odštampajte A4 radni listić za učenike.',
+      },
+    ],
   },
   blog: {
     eyebrow: 'Blog',
@@ -217,17 +349,34 @@ export const sr = {
       date: 'Datum',
       page: (n: number, total: number) => `Strana ${n}/${total}`,
       tip: 'Savet: štampajte na A4 papiru. Radi i crno-belo. Bojice i debela olovka su bolje od tanke hemijske.',
-      sectionEyebrow: 'Za štampu',
-      sectionTitle: 'Radni listovi',
-      sectionText: 'Papirne verzije igara, vežbe za ruku pred pisanje, brojevi, slova i logički zadaci — za vežbu olovkom, bez ekrana. Otvorite list i odštampajte ga.',
+      sectionEyebrow: 'Za štampu · A4 format',
+      sectionTitle: 'Bojanke slova, ćirilica, latinica i radni listovi',
+      sectionText: 'Kompletna zbirka od 35 radnih listova i bojanki za štampu: azbučne i abecedne bojanke slova, početno čitanje i pisanje na ćirilici i latinici, slogovi, grafomotorika, računanje i logički zadaci. Otvorite list i odštampajte ga na A4 papiru.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
+        coloring: 'Bojanke slova i crteža (latinica i ćirilica)',
+        writing: 'Čitanje i pisanje — ćirilica i latinica',
         motor: 'Motorika i predpisanje',
-        writing: 'Pisanje',
         math: 'Brojevi i računanje',
         logic: 'Logika i pažnja',
       } satisfies Record<WorksheetGroup, string>,
       sheets: {
+        coloringLatin: {
+          title: 'Bojanka slova — latinica (A–Ž)',
+          text: 'Oboji velika i mala šuplja slova abecede i sličicu uz svako slovo, a zatim na liniji ispod pređi preko sivih slova i napiši ih samostalno.',
+        },
+        coloringCyrillic: {
+          title: 'Бојанка слова — ћирилица (А–Ш)',
+          text: 'Обоји велика и мала шупља слова азбуке и сличицу уз свако слово, прочитај ријеч, а затим на линији испод вјежбај писање слова.',
+        },
+        colorByNumber: {
+          title: 'Bojanka po brojevima (1–6)',
+          text: 'Pogledaj na vrhu koji broj označava koju boju, pa oboji svako polje na slici odgovarajućom bojom.',
+        },
+        coloringScenes: {
+          title: 'Velika bojanka — priroda, životinje i svemir',
+          text: 'Izaberi omiljene drvene bojice i oboji veselu prirodu sa životinjama, svemirsku raketu sa planetama i morski svet.',
+        },
         trace: {
           title: 'Prati stazu',
           text: 'Olovkom ili bojicom prati isprekidanu liniju od bube do cveta. Ne žuri i pokušaj da ostaneš na sivoj stazi.',
@@ -251,6 +400,34 @@ export const sr = {
         cyrillic: {
           title: 'Pišemo slova — ćirilica',
           text: 'Pređi olovkom preko sivih slova, pa na kraju reda napiši slovo samostalno. Velika slova dodiruju gornju liniju, mala isprekidanu srednju.',
+        },
+        initialLetterLatin: {
+          title: 'Početno slovo — latinica',
+          text: 'Imenuj svaku sličicu, zaokruži tačno početno slovo među tri ponuđena i napiši ga na crti ispred ostatka reči.',
+        },
+        initialLetterCyrillic: {
+          title: 'Почетно слово — ћирилица',
+          text: 'Именуј сваку сличицу, заокружи тачно почетно слово међу три понуђена и напиши га на црти испред остатка ријечи.',
+        },
+        letterMatchLatin: {
+          title: 'Spoji velika i mala slova — latinica',
+          text: 'U gornjem delu spoji linijom svako veliko slovo sa odgovarajućim malim slovom, a u kućicama ispod dopiši malo slovo pored velikog.',
+        },
+        letterMatchCyrillic: {
+          title: 'Споји велика и мала слова — ћирилица',
+          text: 'У горњем дијелу споји линијом свако велико ћирилично слово са његовим малим паром, а у кућицама испод допиши мало слово поред великог.',
+        },
+        syllablesLatin: {
+          title: 'Čitamo i spajamo slogove — latinica',
+          text: 'Prvo naglas pročitaj tablicu slogova na vrhu. Zatim spoji slogove u reči, izgovori ih i napiši celu reč na liniji.',
+        },
+        syllablesCyrillic: {
+          title: 'Читамо и спајамо слогове — ћирилица',
+          text: 'Прво наглас прочитај таблицу слогова на врху. Затим споји слогове у ријечи, изговори их и напиши цијелу ријеч на линији.',
+        },
+        scriptBridge: {
+          title: 'Most između pisama — latinica i ćirilica',
+          text: 'Spoji parove istih slova u latinici i ćirilici, a u donjem delu prepiši zadate reči drugim pismom.',
         },
         lines: {
           title: 'Ravne linije',
@@ -279,6 +456,18 @@ export const sr = {
         adding: {
           title: 'Saberi sličice',
           text: 'Prebroj sličice levo i desno od znaka plus, pa u kvadratić upiši koliko ih ima zajedno.',
+        },
+        subtraction: {
+          title: 'Oduzimanje sa sličicama',
+          text: 'Pogledaj koliko ukupno ima sličica u redu, a koliko ih je precrtano. Prebroj koliko je ostalo i upiši broj u kvadratić.',
+        },
+        compareNumbers: {
+          title: 'Uporedi grupe i brojeve (<, >, =)',
+          text: 'Prebroj sličice na levoj i desnoj strani, pa u kružić u sredini upiši znak < (manje), > (veće) ili = (jednako).',
+        },
+        missingNumbers: {
+          title: 'Brojevni niz, prethodnik i sledbenik',
+          text: 'U gornjem delu upiši brojeve koji nedostaju u vagonima od 1 do 10, a dole upiši prethodnik (za 1 manji) i sledbenik (za 1 veći broj).',
         },
         sizes: {
           title: 'Od najmanjeg do najvećeg',
@@ -364,6 +553,16 @@ export const sr = {
         title: 'Od malog do velikog',
         short: 'Poređaj sličice na policu od najmanje do najveće.',
         howTo: 'Dodiruj sličice redom: prvo najmanju, pa sve veću i veću. Svaka odlazi na policu.',
+      },
+      coloring: {
+        title: 'Bojanka slova i slika (latinica i ćirilica)',
+        short: 'Izaberi boju i oboji velika i mala slova, jabuku, sunce, kućicu i raketu.',
+        howTo: 'Izaberi pismo (latinica ili ćirilica) na vrhu, klikni na željenu boju u paleti dole, a zatim dodiruj delove slova i crteža da ih obojiš.',
+      },
+      letters: {
+        title: 'Na koje slovo počinje? (latinica i ćirilica)',
+        short: 'Pogledaj sličicu i pogodi kojim slovom počinje reč na latinici ili ćirilici.',
+        howTo: 'Imenuj ono što vidiš na slici, izaberi pismo na vrhu (latinica ili ćirilica) i dodirni tačno početno slovo među tri ponuđena.',
       },
     } satisfies Record<GameId, GameText>,
   },

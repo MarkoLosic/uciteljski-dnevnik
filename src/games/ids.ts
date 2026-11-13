@@ -12,6 +12,8 @@ export const GAME_IDS = [
   'pattern',
   'count',
   'sizes',
+  'coloring',
+  'letters',
 ] as const;
 
 export type GameId = (typeof GAME_IDS)[number];
@@ -45,12 +47,23 @@ export function isGameId(value: unknown): value is GameId {
 
 // Radni listovi za štampu. Listovi sa istim id kao igra su njene papirne verzije (GamePlay linkuje na njih).
 export const WORKSHEET_IDS = [
+  'coloringLatin',
+  'coloringCyrillic',
+  'colorByNumber',
+  'coloringScenes',
   'trace',
   'dots',
   'maze',
   'numbers',
   'latin',
   'cyrillic',
+  'initialLetterLatin',
+  'initialLetterCyrillic',
+  'letterMatchLatin',
+  'letterMatchCyrillic',
+  'syllablesLatin',
+  'syllablesCyrillic',
+  'scriptBridge',
   'lines',
   'waves',
   'outlines',
@@ -58,6 +71,9 @@ export const WORKSHEET_IDS = [
   'count',
   'quantity',
   'adding',
+  'subtraction',
+  'compareNumbers',
+  'missingNumbers',
   'sizes',
   'pattern',
   'odd',
@@ -72,14 +88,31 @@ export type WorksheetId = (typeof WORKSHEET_IDS)[number];
 
 // Listovi koji imaju smisla samo na nekim jezicima; ostali su na svim.
 export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> = {
-  cyrillic: ['sr', 'bs'],
+  cyrillic: ['sr', 'bs', 'hr'],
+  coloringCyrillic: ['sr', 'bs', 'hr'],
+  initialLetterCyrillic: ['sr', 'bs', 'hr'],
+  letterMatchCyrillic: ['sr', 'bs', 'hr'],
+  syllablesCyrillic: ['sr', 'bs', 'hr'],
+  scriptBridge: ['sr', 'bs', 'hr'],
 };
 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
-  motor: ['trace', 'lines', 'waves', 'outlines', 'dots', 'maze', 'colors'],
-  writing: ['numbers', 'latin', 'cyrillic'],
-  math: ['count', 'quantity', 'adding', 'sizes'],
+  coloring: ['coloringLatin', 'coloringCyrillic', 'colorByNumber', 'coloringScenes', 'colors'],
+  writing: [
+    'latin',
+    'cyrillic',
+    'initialLetterLatin',
+    'initialLetterCyrillic',
+    'letterMatchLatin',
+    'letterMatchCyrillic',
+    'syllablesLatin',
+    'syllablesCyrillic',
+    'scriptBridge',
+    'numbers',
+  ],
+  motor: ['trace', 'lines', 'waves', 'outlines', 'dots', 'maze'],
+  math: ['count', 'quantity', 'adding', 'subtraction', 'compareNumbers', 'missingNumbers', 'sizes'],
   logic: ['pattern', 'odd', 'match', 'shapes', 'differences', 'symmetry', 'copy'],
 } as const satisfies Record<string, readonly WorksheetId[]>;
 
