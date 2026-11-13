@@ -1,28 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Hand, HeartHandshake, Palette, Printer, Timer, type LucideIcon } from 'lucide-react';
+import { Hand, HeartHandshake, Palette, Timer, type LucideIcon } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
-import { GAME_IDS, WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
+import { GAME_IDS, worksheetsFor } from '../games/ids';
 import { games } from '../games/registry';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
 
 const tipIcons: LucideIcon[] = [HeartHandshake, Timer, Hand];
-
-const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
-  coloringClassroom: '/slike/bojanke/ucionica-i-skola.jpg',
-  coloringSeasons: '/slike/bojanke/cetiri-godisnja-doba.jpg',
-  coloringSpring: '/slike/bojanke/prolece-i-pcelice.jpg',
-  coloringSummer: '/slike/bojanke/leto-na-plazi.jpg',
-  coloringAutumn: '/slike/bojanke/jesen-u-sumi.jpg',
-  coloringAnimals: '/slike/bojanke/zivotinje-na-farmi.jpg',
-  coloringUnderwater: '/slike/bojanke/podvodni-svet.jpg',
-  coloringVehicles: '/slike/bojanke/saobracaj-i-vozila.jpg',
-  coloringDino: '/slike/bojanke/dinosauri-avantura.jpg',
-  coloringCastle: '/slike/bojanke/dvorac-i-bajka.jpg',
-  coloringSpace: '/slike/bojanke/svemir-i-kosmonauti.jpg',
-  coloringSports: '/slike/bojanke/sport-i-igra.jpg',
-};
 
 export default function Games() {
   const { locale, t, paths } = useLocale();
@@ -41,13 +26,13 @@ export default function Games() {
             <i className="status-dot" />
             {g.age}
           </p>
-          <a
-            href="#radni-listovi"
+          <Link
+            to={paths.worksheets}
             className="focus-ring inline-flex items-center gap-2 rounded-full border border-accent/40 bg-surface-2 px-3.5 py-1.5 text-[13.5px] font-semibold text-accent transition-colors hover:border-accent"
           >
-            <Printer aria-hidden="true" className="h-4 w-4" />
-            {g.worksheet.sectionTitle} ({sheetIds.length})
-          </a>
+            <Palette aria-hidden="true" className="h-4 w-4" />
+            {t.nav.worksheets} ({sheetIds.length})
+          </Link>
         </div>
       </header>
 
@@ -92,63 +77,24 @@ export default function Games() {
         })}
       </ul>
 
-      <section className="pt-20 sm:pt-28" aria-labelledby="radni-listovi">
-        <span className="eyebrow">{g.worksheet.sectionEyebrow}</span>
-        <h2 id="radni-listovi" className="section-title mb-4">
-          {g.worksheet.sectionTitle}
-        </h2>
-        <p className="mb-6 max-w-[680px] text-lg text-muted">{g.worksheet.sectionText}</p>
-        <div className="mb-9 flex flex-wrap gap-2">
-          {(Object.keys(WORKSHEET_GROUPS) as WorksheetGroup[]).map((group) => (
-            <a
-              key={group}
-              href={`#grupa-${group}`}
-              className="focus-ring rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs font-semibold text-muted transition-colors hover:border-accent hover:text-accent"
-            >
-              {g.worksheet.groups[group]}
-            </a>
-          ))}
+      {/* Promotivni baner koji vodi na zasebnu stranicu Bojanki i radnih listova */}
+      <section className="pt-20 sm:pt-28" aria-labelledby="bojanke-promo">
+        <div className="card border-accent/30 bg-surface-2/60 p-6 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-[640px]">
+            <span className="eyebrow">{g.worksheet.sectionEyebrow}</span>
+            <h2 id="bojanke-promo" className="section-title mt-2 mb-3">
+              {g.worksheet.sectionTitle}
+            </h2>
+            <p className="text-[15.5px] text-muted">
+              {g.worksheet.sectionText}
+            </p>
+          </div>
+          <Link to={paths.worksheets} className="btn btn-primary focus-ring shrink-0">
+            <Palette aria-hidden="true" className="h-5 w-5" />
+            {t.nav.worksheets} ({sheetIds.length})
+            <PixelIcon name="arrow" />
+          </Link>
         </div>
-        {(Object.keys(WORKSHEET_GROUPS) as WorksheetGroup[]).map((group) => {
-          const ids = WORKSHEET_GROUPS[group].filter((id) => sheetIds.includes(id));
-          return (
-            <div key={group} id={`grupa-${group}`} className="mt-10 scroll-mt-28 first-of-type:mt-0">
-              <h3 className="mb-4 font-head text-xl font-semibold tracking-tight">{g.worksheet.groups[group]}</h3>
-              <ul className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
-                {ids.map((id) => {
-                  const thumb = WORKSHEET_THUMBNAILS[id];
-                  return (
-                    <li key={id}>
-                      <Link to={paths.worksheet(id)} className="card focus-ring flex h-full items-center gap-4 hover:-translate-y-1">
-                        {thumb ? (
-                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-white shadow-xs">
-                            <img src={thumb} alt="" className="h-full w-full object-cover" />
-                          </div>
-                        ) : (
-                          <span className="icon-tile shrink-0">
-                            {group === 'coloring' ? (
-                              <Palette aria-hidden="true" className="h-5 w-5 text-accent" />
-                            ) : (
-                              <Printer aria-hidden="true" className="h-5 w-5" />
-                            )}
-                          </span>
-                        )}
-                        <span className="min-w-0">
-                          <span className="block text-[17px] font-semibold tracking-tight leading-snug line-clamp-2">
-                            {g.worksheet.sheets[id].title}
-                          </span>
-                          <span className="text-sm text-muted">
-                            {group === 'coloring' && thumb ? 'Bojanka · A4' : `${g.worksheet.eyebrow} · A4`}
-                          </span>
-                        </span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
       </section>
 
       <section className="pt-20 sm:pt-28" aria-labelledby="pripreme-za-nastavu">

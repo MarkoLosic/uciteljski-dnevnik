@@ -1722,64 +1722,6 @@ function BakeryColoringSVG() {
   );
 }
 
-function PetsColoringSVG() {
-  return (
-    <Page height={640}>
-      <rect x="6" y="6" width="588" height="628" rx="22" fill="#fff" stroke={INK} strokeWidth="2.8" />
-      <g transform="translate(100, 120)">
-        <ellipse cx="140" cy="100" rx="60" ry="40" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <circle cx="85" cy="70" r="38" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <polygon points="60,45 75,10 90,40" fill="#fff" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-        <polygon points="95,40 110,10 120,45" fill="#fff" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-        <ellipse cx="73" cy="65" rx="5" ry="7" fill={INK} />
-        <ellipse cx="97" cy="65" rx="5" ry="7" fill={INK} />
-        <polygon points="85,76 80,82 90,82" fill={INK} />
-        <line x1="60" x2="35" y1="78" y2="72" stroke={INK} strokeWidth="2" />
-        <line x1="60" x2="35" y1="84" y2="86" stroke={INK} strokeWidth="2" />
-        <line x1="110" x2="135" y1="78" y2="72" stroke={INK} strokeWidth="2" />
-        <line x1="110" x2="135" y1="84" y2="86" stroke={INK} strokeWidth="2" />
-        <ellipse cx="65" cy="130" rx="14" ry="10" fill="#fff" stroke={INK} strokeWidth="3" />
-        <ellipse cx="105" cy="130" rx="14" ry="10" fill="#fff" stroke={INK} strokeWidth="3" />
-        <path d="M195 90 Q240 80 230 40 Q215 15 200 40" fill="none" stroke={INK} strokeWidth="6" strokeLinecap="round" />
-        <circle cx="10" cy="120" r="28" fill="#fff" stroke={INK} strokeWidth="3" />
-        <path d="M-8 110 Q10 140 28 115 M-10 125 Q12 100 25 130" fill="none" stroke={INK} strokeWidth="2" />
-        <path d="M30 135 Q50 145 65 132" fill="none" stroke={INK} strokeWidth="2.5" />
-      </g>
-
-      <Divider y={280} />
-
-      <g transform="translate(60, 330)">
-        <ellipse cx="120" cy="130" rx="65" ry="48" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <circle cx="75" cy="80" r="42" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <ellipse cx="45" cy="95" rx="16" ry="34" fill="#fff" stroke={INK} strokeWidth="3.2" />
-        <ellipse cx="105" cy="95" rx="16" ry="34" fill="#fff" stroke={INK} strokeWidth="3.2" />
-        <circle cx="65" cy="72" r="5" fill={INK} />
-        <circle cx="85" cy="72" r="5" fill={INK} />
-        <ellipse cx="75" cy="88" rx="8" ry="6" fill={INK} />
-        <rect x="50" y="98" width="50" height="10" rx="4" fill="#fff" stroke={INK} strokeWidth="2.5" />
-        <circle cx="48" cy="96" r="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
-        <circle cx="48" cy="110" r="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
-        <circle cx="102" cy="96" r="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
-        <circle cx="102" cy="110" r="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
-        <rect x="75" y="165" width="22" height="50" rx="8" fill="#fff" stroke={INK} strokeWidth="3.2" />
-        <rect x="145" y="165" width="22" height="50" rx="8" fill="#fff" stroke={INK} strokeWidth="3.2" />
-        <path d="M180 120 Q215 110 220 80" fill="none" stroke={INK} strokeWidth="6" strokeLinecap="round" />
-      </g>
-
-      <g transform="translate(370, 340)">
-        <ellipse cx="90" cy="20" rx="55" ry="14" fill="#fff" stroke={INK} strokeWidth="3" />
-        <path d="M35 20 C10 60, 10 140, 50 170 C70 185, 110 185, 130 170 C170 140, 170 60, 145 20 Z" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <path d="M22 65 Q90 55 158 65" fill="none" stroke={INK} strokeWidth="2" strokeDasharray="6 5" />
-        <ellipse cx="90" cy="110" rx="30" ry="18" fill="#fff" stroke={INK} strokeWidth="3" />
-        <polygon points="118,110 142,90 142,130" fill="#fff" stroke={INK} strokeWidth="2.8" strokeLinejoin="round" />
-        <circle cx="76" cy="106" r="4" fill={INK} />
-        <circle cx="70" cy="85" r="5" fill="#fff" stroke={INK} strokeWidth="1.8" />
-        <circle cx="65" cy="70" r="4" fill="#fff" stroke={INK} strokeWidth="1.8" />
-      </g>
-    </Page>
-  );
-}
-
 function SubmarineColoringSVG() {
   return (
     <Page height={640}>
@@ -1820,58 +1762,6 @@ function SubmarineColoringSVG() {
       <path d="M480 500 Q510 430 480 370 Q460 430 485 500" fill="#fff" stroke={INK} strokeWidth="3" />
       <polygon points="100,560 107,575 125,575 111,586 116,602 100,592 84,602 89,586 75,575 93,575" fill="#fff" stroke={INK} strokeWidth="2.5" strokeLinejoin="round" />
       <polygon points="430,550 436,562 450,562 439,571 443,584 430,576 417,584 421,571 410,562 424,562" fill="#fff" stroke={INK} strokeWidth="2.5" strokeLinejoin="round" />
-    </Page>
-  );
-}
-
-function ConstructionColoringSVG() {
-  return (
-    <Page height={640}>
-      <rect x="6" y="6" width="588" height="628" rx="22" fill="#fff" stroke={INK} strokeWidth="2.8" />
-      <g transform="translate(160, 240)">
-        <rect x="-80" y="160" width="220" height="45" rx="22" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        {[-50, -10, 30, 70, 110].map((wx) => (
-          <circle key={wx} cx={wx} cy="182" r="16" fill="#fff" stroke={INK} strokeWidth="2.8" />
-        ))}
-        <rect x="-60" y="60" width="120" height="100" rx="14" fill="#fff" stroke={INK} strokeWidth="3.5" />
-        <rect x="-45" y="75" width="60" height="50" rx="8" fill="#fff" stroke={INK} strokeWidth="2.8" />
-        <circle cx="-15" cy="100" r="12" fill="#fff" stroke={INK} strokeWidth="2" />
-        <polygon points="50,110 140,20 160,35 70,125" fill="#fff" stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />
-        <polygon points="145,25 240,110 225,125 135,40" fill="#fff" stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />
-        <path d="M235 110 C275 110, 290 160, 250 190 L215 170 Z" fill="#fff" stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />
-        <polygon points="255,185 265,200 248,192" fill={INK} />
-        <polygon points="268,175 280,188 262,180" fill={INK} />
-      </g>
-
-      <g transform="translate(30, 410)">
-        <path d="M0 60 L40 60 L55 90 L55 120 L0 120 Z" fill="#fff" stroke={INK} strokeWidth="3.2" strokeLinejoin="round" />
-        <rect x="10" y="70" width="28" height="25" rx="4" fill="#fff" stroke={INK} strokeWidth="2.2" />
-        <polygon points="45,40 135,15 140,85 55,110" fill="#fff" stroke={INK} strokeWidth="3.2" strokeLinejoin="round" />
-        <circle cx="20" cy="125" r="16" fill="#fff" stroke={INK} strokeWidth="3.2" />
-        <circle cx="105" cy="125" r="16" fill="#fff" stroke={INK} strokeWidth="3.2" />
-      </g>
-
-      <g transform="translate(480, 50)">
-        <line x1="30" x2="30" y1="380" y2="20" stroke={INK} strokeWidth="4" />
-        {[60, 100, 140, 180, 220, 260, 300, 340].map((ly) => (
-          <line key={ly} x1="15" x2="45" y1={ly} y2={ly + 20} stroke={INK} strokeWidth="2" />
-        ))}
-        <line x1="-100" x2="60" y1="20" y2="20" stroke={INK} strokeWidth="4" />
-        <line x1="-70" x2="-70" y1="20" y2="100" stroke={INK} strokeWidth="2" />
-        <path d="M-70 100 Q-70 120 -80 115 Q-90 110 -80 105" fill="none" stroke={INK} strokeWidth="3.5" />
-      </g>
-
-      {[
-        [220, 530], [280, 530]
-      ].map(([cx, cy], i) => (
-        <g key={i}>
-          <polygon points={`${cx},${cy} ${cx + 18},${cy + 45} ${cx - 18},${cy + 45}`} fill="#fff" stroke={INK} strokeWidth="2.5" />
-          <rect x={cx - 24} y={cy + 45} width="48" height="8" rx="2" fill="#fff" stroke={INK} strokeWidth="2.5" />
-          <line x1={cx - 8} x2={cx + 8} y1={cy + 20} y2={cy + 20} stroke={INK} strokeWidth="2" />
-          <line x1={cx - 13} x2={cx + 13} y1={cy + 32} y2={cy + 32} stroke={INK} strokeWidth="2" />
-        </g>
-      ))}
-      <line x1="6" x2="594" y1="580" y2="580" stroke={INK} strokeWidth="3.5" />
     </Page>
   );
 }
@@ -2028,7 +1918,14 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
     />,
   ],
   coloringSafari: () => [<SafariColoringSVG key="coloringSafari" />],
-  coloringPets: () => [<PetsColoringSVG key="coloringPets" />],
+  coloringPets: () => [
+    <ImageColoringSheet
+      key="coloringPets"
+      src="/slike/bojanke/kucni-ljubimci.jpg"
+      alt="Kućni ljubimci"
+      prompt="Oboji razigrano mače sa klupkom, kucu sa koskom i zlatnu ribicu."
+    />,
+  ],
   coloringUnderwater: () => [
     <ImageColoringSheet
       key="coloringUnderwater"
@@ -2046,7 +1943,14 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
       prompt="Oboji parnu lokomotivu, avion, jedrenjak i auto na putu."
     />,
   ],
-  coloringConstruction: () => [<ConstructionColoringSVG key="coloringConstruction" />],
+  coloringConstruction: () => [
+    <ImageColoringSheet
+      key="coloringConstruction"
+      src="/slike/bojanke/gradjevinske-masine.jpg"
+      alt="Građevinske mašine i bageri"
+      prompt="Oboji veliki bager sa kašikom, kamion kiper i visoku dizalicu na gradilištu."
+    />,
+  ],
   coloringDino: () => [
     <ImageColoringSheet
       key="coloringDino"

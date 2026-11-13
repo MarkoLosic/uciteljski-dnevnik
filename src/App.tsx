@@ -13,6 +13,7 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const About = lazy(() => import('./pages/About'));
 const Games = lazy(() => import('./pages/Games'));
 const GamePlay = lazy(() => import('./pages/GamePlay'));
+const WorksheetsPage = lazy(() => import('./pages/WorksheetsPage'));
 const Worksheet = lazy(() => import('./pages/Worksheet'));
 const World = lazy(() => import('./pages/World'));
 const Country = lazy(() => import('./pages/Country'));
@@ -36,6 +37,10 @@ export default function App() {
           <Route path="blog" element={<BlogList />} />
           <Route path="blog/:slug" element={<BlogPost />} />
           <Route path={localeInfo[locale].aboutSlug} element={<About />} />
+          <Route path={localeInfo[locale].worksheetSlug} element={<WorksheetsPage />} />
+          <Route path={`${localeInfo[locale].worksheetSlug}/:sheetId`} element={<Worksheet />} />
+          <Route path="bojanke" element={<WorksheetsPage />} />
+          <Route path="bojanke/:sheetId" element={<Worksheet />} />
           <Route path={localeInfo[locale].gamesSlug} element={<Games />} />
           <Route path={`${localeInfo[locale].gamesSlug}/:gameId`} element={<GamePlay />} />
           <Route

@@ -33,10 +33,12 @@ export const bs: Dictionary = {
   nav: {
     label: 'Glavna navigacija',
     home: 'Početna',
-    blog: 'Blog',
-    games: 'Igre za djecu',
-    gamesShort: 'Igre',
     pripreme: 'Pripreme',
+    worksheets: 'Bojanke i listovi',
+    worksheetsShort: 'Bojanke',
+    games: 'Edukativne igre',
+    gamesShort: 'Igre',
+    blog: 'Blog',
     about: 'O meni',
     world: 'Škole u svijetu',
   },
@@ -88,7 +90,7 @@ export const bs: Dictionary = {
     heroLead:
       'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom djetetu u učionici. Zato je „Iz učionice“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i savjeta iz prakse koji štede sate administracije.',
     ctaPripreme: 'Biblioteka priprema (1.436)',
-    ctaWorksheets: 'Radni listovi i igre za djecu',
+    ctaWorksheets: 'Bojanke i radni listovi (55)',
     stats: [
       {
         value: '1.436',
@@ -101,9 +103,9 @@ export const bs: Dictionary = {
         detail: 'Jednim klikom kreirajte ishode i zadatke za osnovni, srednji i napredni nivo učenika.',
       },
       {
-        value: '21 + 10',
-        label: 'A4 radni listovi i igre',
-        detail: 'Gotovi listići za grafomotoriku, slova, brojeve i logiku, uz 10 igara bez reklama.',
+        value: '55 + 10',
+        label: 'A4 bojanke, listovi i igre',
+        detail: '55 ilustrovanih bojanki i radnih listova za A4 štampu, uz 10 edukativnih igara bez reklama.',
       },
       {
         value: '1 klik',
@@ -146,10 +148,10 @@ export const bs: Dictionary = {
       },
       {
         badge: 'Prvi koraci u školi',
-        title: 'Bojanke slova i slika, ćirilica i latinica, radni listovi i igre',
-        text: 'Za predškolce i učenike nižih razreda pripremili smo 43 radna lista i tematske bojanke za štampu (učionica, 4 godišnja doba, životinje, podvodni svijet, vozila, dinosaurusi, dvorac, kosmos, slova na latinici i ćirilici) i 12 interaktivnih igara.',
-        linkText: 'Otvori igre, bojanke i radne listove →',
-        href: '/bs/igre',
+        title: 'Bojanke za štampu, slova, ćirilica, latinica i igre',
+        text: 'Za predškolce i učenike nižih razreda pripremili smo 55 tematskih bojanki i radnih listova za A4 štampu (učionica, 4 doba, životinje, bageri i građevina, morski svijet, bajka, kosmos, slova na latinici i ćirilici), uz 10 edukativnih igara.',
+        linkText: 'Otvori bojanke i radne listove →',
+        href: '/bs/radni-listovi',
       },
       {
         badge: 'Stručno usavršavanje',
@@ -342,6 +344,7 @@ export const bs: Dictionary = {
       eyebrow: 'Radni list',
       print: 'Štampaj',
       backToGames: 'Nazad na igre',
+      backToWorksheets: 'Nazad na bojanke i listove',
       name: 'Ime',
       date: 'Datum',
       page: (n: number, total: number) => `Strana ${n}/${total}`,

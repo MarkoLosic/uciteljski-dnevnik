@@ -33,10 +33,12 @@ export const en: Dictionary = {
   nav: {
     label: 'Main navigation',
     home: 'Home',
-    blog: 'Blog',
-    games: 'Games for kids',
-    gamesShort: 'Games',
     pripreme: 'Lesson Plans',
+    worksheets: 'Coloring & Worksheets',
+    worksheetsShort: 'Coloring',
+    games: 'Educational Games',
+    gamesShort: 'Games',
+    blog: 'Blog',
     about: 'About',
     world: 'Schools worldwide',
   },
@@ -88,7 +90,7 @@ export const en: Dictionary = {
     heroLead:
       'Every school day calls for thoughtful preparation, patience, and adapting to every child in the classroom. “Iz učionice” is a practical toolkit for primary teachers: from 1,436 ready-to-use daily lesson plans, 3-level differentiated student expectations, and printable A4 worksheets, to ad-free educational games and classroom insights that save hours of paperwork.',
     ctaPripreme: 'Lesson Plans Library (1,436)',
-    ctaWorksheets: 'Worksheets & Kids Games',
+    ctaWorksheets: 'Coloring & Worksheets (55)',
     stats: [
       {
         value: '1,436',
@@ -101,9 +103,9 @@ export const en: Dictionary = {
         detail: 'Generate outcomes and tasks for basic, intermediate, and advanced students in one click.',
       },
       {
-        value: '21 + 10',
-        label: 'A4 Worksheets & Games',
-        detail: 'Printable sheets for fine motor skills, letters, numbers, and logic, plus 10 ad-free games.',
+        value: '55 + 10',
+        label: 'A4 Coloring, Worksheets & Games',
+        detail: '55 printable A4 sheets for coloring, letters, numbers, and logic, plus 10 ad-free games.',
       },
       {
         value: '1 Click',
@@ -146,10 +148,10 @@ export const en: Dictionary = {
       },
       {
         badge: 'Early Primary & Preschool',
-        title: 'Fine Motor Skills, Early Writing, Numbers & Games',
-        text: '21 printable A4 worksheets (lines, waves, Latin & Cyrillic letters, addition, logic) and 10 short interactive games to build attention and hand–eye coordination.',
-        linkText: 'Open games & worksheets →',
-        href: '/en/games',
+        title: 'Coloring Books, Early Writing, Numbers & Games',
+        text: '55 printable A4 coloring pages and worksheets (classroom, seasons, animals, construction, castle, space, alphabet), plus 10 interactive games to build attention and coordination.',
+        linkText: 'Open coloring & worksheets →',
+        href: '/en/worksheets',
       },
       {
         badge: 'Professional Growth',
@@ -342,6 +344,7 @@ export const en: Dictionary = {
       eyebrow: 'Worksheet',
       print: 'Print',
       backToGames: 'Back to games',
+      backToWorksheets: 'Back to coloring & worksheets',
       name: 'Name',
       date: 'Date',
       page: (n: number, total: number) => `Page ${n}/${total}`,

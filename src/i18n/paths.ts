@@ -15,7 +15,8 @@ export function pathsFor(locale: Locale) {
     about: `${base}/${localeInfo[locale].aboutSlug}`,
     games: `${base}/${localeInfo[locale].gamesSlug}`,
     game: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${id}`,
-    worksheet: (id: string) => `${base}/${localeInfo[locale].gamesSlug}/${localeInfo[locale].worksheetSlug}/${id}`,
+    worksheets: `${base}/${localeInfo[locale].worksheetSlug}`,
+    worksheet: (id: string) => `${base}/${localeInfo[locale].worksheetSlug}/${id}`,
     world: `${base}/${localeInfo[locale].worldSlug}`,
     country: (id: string) => `${base}/${localeInfo[locale].worldSlug}/${id}`,
   };
@@ -33,6 +34,11 @@ export function switchLocalePath(pathname: string, from: Locale, to: Locale): st
   if (rest === '') return target.home;
   if (rest === '/blog') return target.blog;
   if (rest === `/${localeInfo[from].aboutSlug}`) return target.about;
+
+  const worksheetSlug = localeInfo[from].worksheetSlug;
+  if (rest === `/${worksheetSlug}` || rest === '/bojanke') return target.worksheets;
+  const directSheetMatch = new RegExp(`^/${worksheetSlug}/([^/]+)$`).exec(rest);
+  if (directSheetMatch) return target.worksheet(directSheetMatch[1]);
 
   const gamesSlug = localeInfo[from].gamesSlug;
   if (rest === `/${gamesSlug}`) return target.games;

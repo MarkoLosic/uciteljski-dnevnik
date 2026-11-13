@@ -49,7 +49,7 @@ export default function Home() {
               {t.home.ctaPripreme}
               <PixelIcon name="arrow" />
             </a>
-            <Link to={paths.games} className="btn btn-ghost focus-ring">
+            <Link to={paths.worksheets} className="btn btn-ghost focus-ring">
               {t.home.ctaWorksheets}
             </Link>
             <Link to={paths.blog} className="btn btn-ghost focus-ring">
@@ -65,7 +65,7 @@ export default function Home() {
             return (
               <a
                 key={label}
-                href={i === 2 ? paths.games : '/pripreme/index.html'}
+                href={i === 2 ? paths.worksheets : '/pripreme/index.html'}
                 className="card hoverable focus-ring flex flex-col justify-between p-5"
               >
                 <div className="flex items-center justify-between gap-3">

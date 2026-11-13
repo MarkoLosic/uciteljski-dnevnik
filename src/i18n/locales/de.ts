@@ -33,10 +33,12 @@ export const de: Dictionary = {
   nav: {
     label: 'Hauptnavigation',
     home: 'Start',
-    blog: 'Blog',
-    games: 'Spiele für Kinder',
-    gamesShort: 'Spiele',
     pripreme: 'Unterrichtspläne',
+    worksheets: 'Ausmalbilder & Blätter',
+    worksheetsShort: 'Ausmalbilder',
+    games: 'Lernspiele',
+    gamesShort: 'Spiele',
+    blog: 'Blog',
     about: 'Über mich',
     world: 'Schulen weltweit',
   },
@@ -88,7 +90,7 @@ export const de: Dictionary = {
     heroLead:
       'Jeder Schultag erfordert gute Vorbereitung, Geduld und das Eingehen auf jedes einzelne Kind. „Iz učionice“ bündelt praktische Werkzeuge für Lehrkräfte: von 1.436 fertigen täglichen Unterrichtsentwürfen, differenzierten Erwartungen für drei Leistungsniveaus und druckfertigen A4-Arbeitsblättern bis hin zu werbefreien Lernspielen und Praxistipps.',
     ctaPripreme: 'Unterrichtspläne (1.436)',
-    ctaWorksheets: 'Arbeitsblätter & Lernspiele',
+    ctaWorksheets: 'Ausmalbilder & Blätter (55)',
     stats: [
       {
         value: '1.436',
@@ -101,9 +103,9 @@ export const de: Dictionary = {
         detail: 'Mit einem Klick Lernziele und Aufgaben für Grund-, Mittel- und fortgeschrittenes Niveau erstellen.',
       },
       {
-        value: '21 + 10',
-        label: 'A4-Arbeitsblätter & Spiele',
-        detail: 'Druckvorlagen für Feinmotorik, Buchstaben, Zahlen und Logik sowie 10 werbefreie Spiele.',
+        value: '55 + 10',
+        label: 'A4-Ausmalbilder, Blätter & Spiele',
+        detail: '55 druckbare A4-Ausmalbilder und Vorlagen sowie 10 werbefreie Lernspiele.',
       },
       {
         value: '1 Klick',
@@ -146,10 +148,10 @@ export const de: Dictionary = {
       },
       {
         badge: 'Vorschule & Schulanfang',
-        title: 'Feinmotorik, Schreibvorbereitung, Zahlen und Spiele',
-        text: '21 druckbare A4-Arbeitsblätter (Linien, Wellen, Buchstaben, Rechnen, Logik) und 10 kurze interaktive Spiele zur Förderung von Aufmerksamkeit und Feinmotorik.',
-        linkText: 'Spiele & Arbeitsblätter öffnen →',
-        href: '/de/spiele',
+        title: 'Ausmalbilder, Schreibvorbereitung, Zahlen und Spiele',
+        text: '55 druckbare A4-Ausmalbilder und Vorlagen (Klassenzimmer, 4 Jahreszeiten, Tiere, Bagger und Baustelle, Unterwasserwelt, Weltraum, Buchstaben) und 10 interaktive Lernspiele.',
+        linkText: 'Ausmalbilder & Arbeitsblätter öffnen →',
+        href: '/de/arbeitsblaetter',
       },
       {
         badge: 'Weiterbildung & Praxis',
@@ -342,6 +344,7 @@ export const de: Dictionary = {
       eyebrow: 'Arbeitsblatt',
       print: 'Drucken',
       backToGames: 'Zurück zu den Spielen',
+      backToWorksheets: 'Zurück zu den Ausmalbildern',
       name: 'Name',
       date: 'Datum',
       page: (n: number, total: number) => `Seite ${n}/${total}`,

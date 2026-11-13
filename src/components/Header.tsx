@@ -19,6 +19,7 @@ export default function Header() {
   }[] = [
     { to: paths.home, label: t.nav.home },
     { to: '/pripreme/index.html', label: t.nav.pripreme, external: true },
+    { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort },
     { to: paths.games, label: t.nav.games, short: t.nav.gamesShort },
     { to: paths.blog, label: t.nav.blog },
     // Samo na širokim ekranima (ispod 1024px nema mesta); inače je link u footeru.

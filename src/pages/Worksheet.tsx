@@ -27,11 +27,11 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
     <div className="wrap max-w-[860px] pt-[130px] print:w-auto print:max-w-none print:p-0">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
         <Link
-          to={paths.games}
+          to={paths.worksheets}
           className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-muted transition-colors hover:text-accent"
         >
           <PixelIcon name="back" size={14} />
-          {ws.backToGames}
+          {ws.backToWorksheets}
         </Link>
         <button type="button" onClick={() => window.print()} className="btn btn-primary focus-ring">
           <Printer aria-hidden="true" className="h-[18px] w-[18px]" />
