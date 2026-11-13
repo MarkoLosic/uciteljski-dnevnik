@@ -32,6 +32,7 @@ export default function App() {
           }
         >
           <Route index element={<Home />} />
+          <Route path="index.html" element={<Home />} />
           <Route path="blog" element={<BlogList />} />
           <Route path="blog/:slug" element={<BlogPost />} />
           <Route path={localeInfo[locale].aboutSlug} element={<About />} />
