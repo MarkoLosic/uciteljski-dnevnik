@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Gamepad2, Palette, Printer } from 'lucide-react';
+import { Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
@@ -34,10 +34,11 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   colors: '/slike/bojanke/oboji-oblike.svg',
 };
 
-const GROUP_ORDER: WorksheetGroup[] = ['coloring', 'writing', 'motor', 'math', 'logic'];
+const GROUP_ORDER: WorksheetGroup[] = ['tests', 'coloring', 'writing', 'motor', 'math', 'logic'];
 
 const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
   sr: {
+    tests: 'Testovi (3 nivoa)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
     motor: 'Grafomotorika',
@@ -45,6 +46,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     logic: 'Logika i pažnja',
   },
   bs: {
+    tests: 'Testovi (3 nivoa)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
     motor: 'Grafomotorika',
@@ -52,6 +54,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     logic: 'Logika i pažnja',
   },
   hr: {
+    tests: 'Testovi (3 razine)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
     motor: 'Grafomotorika',
@@ -59,6 +62,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     logic: 'Logika i pažnja',
   },
   en: {
+    tests: 'Tests (3 levels)',
     coloring: 'Coloring',
     writing: 'Letters & Writing',
     motor: 'Motor Skills',
@@ -66,6 +70,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     logic: 'Logic & Focus',
   },
   de: {
+    tests: 'Tests (3 Stufen)',
     coloring: 'Ausmalbilder',
     writing: 'Schreiben & Buchstaben',
     motor: 'Feinmotorik',
@@ -140,6 +145,7 @@ export default function WorksheetsPage() {
                   : 'border border-line bg-surface text-muted hover:bg-surface-2 hover:text-ink'
               }`}
             >
+              {group === 'tests' && <GraduationCap aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {group === 'coloring' && <Palette aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {shortLabels[group]} ({count})
             </button>
@@ -157,11 +163,12 @@ export default function WorksheetsPage() {
             <section key={group} aria-labelledby={`naslov-${group}`}>
               <div className="mb-4 sm:mb-5 flex items-center justify-between border-b border-line/60 pb-2.5 sm:pb-3">
                 <h2 id={`naslov-${group}`} className="text-lg font-bold tracking-tight sm:text-2xl flex items-center gap-2 sm:gap-2.5">
+                  {group === 'tests' && <GraduationCap aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {group === 'coloring' && <Palette aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {g.worksheet.groups[group]}
                 </h2>
                 <span className="font-mono text-xs font-semibold text-muted">
-                  {ids.length} {group === 'coloring' ? 'bojanki' : 'listova'}
+                  {ids.length} {group === 'tests' ? 'testova' : group === 'coloring' ? 'bojanki' : 'listova'}
                 </span>
               </div>
               <ul className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -182,7 +189,9 @@ export default function WorksheetsPage() {
                             </div>
                           ) : (
                             <span className="icon-tile shrink-0">
-                              {group === 'coloring' ? (
+                              {group === 'tests' ? (
+                                <GraduationCap aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+                              ) : group === 'coloring' ? (
                                 <Palette aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
                               ) : (
                                 <Printer aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -191,7 +200,7 @@ export default function WorksheetsPage() {
                           )}
                           <div className="min-w-0 flex-1">
                             <span className="inline-block rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-semibold text-muted">
-                              {group === 'coloring' ? 'Bojanka · A4' : `${g.worksheet.eyebrow} · A4`}
+                              {group === 'tests' ? 'Test · 3 nivoa' : group === 'coloring' ? 'Bojanka · A4' : `${g.worksheet.eyebrow} · A4`}
                             </span>
                             <h3 className="mt-1 text-[15px] sm:text-[16px] font-semibold tracking-tight leading-snug line-clamp-2 group-hover:text-accent transition-colors">
                               {cleanTitle}

@@ -351,9 +351,10 @@ export const bs: Dictionary = {
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
-      sectionText: 'Kompletna zbirka od 55 radnih listova i tematskih bojanki spremnih za štampu na A4 formatu: ilustrovane tematske cjeline, slova abecede i azbuke, početno čitanje i pisanje, grafomotorika i zabavna matematika.',
+      sectionText: 'Kompletna zbirka od 60 radnih listova, diferenciranih testova i tematskih bojanki spremnih za štampu na A4 formatu: testovi znanja za tri nivoa postignuća učenika (osnovni, srednji i napredni), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
+        tests: 'Diferencirani testovi znanja (3 nivoa: osnovni, srednji i napredni)',
         coloring: 'Bojanke (tematske slike, slova i brojevi)',
         writing: 'Čitanje i pisanje — latinica i ćirilica',
         motor: 'Motorika i predpisanje',
@@ -361,6 +362,26 @@ export const bs: Dictionary = {
         logic: 'Logika i pažnja',
       },
       sheets: {
+        testMathOperations: {
+          title: 'Diferencirani test: Sabiranje i oduzimanje (3 nivoa znanja)',
+          text: 'Diferencirana kontrolna vježba iz matematike: I nivo (osnovni račun do 20), II nivo (računanje do 100 sa zagradama i nepoznatim brojem), III nivo (složeni tekstualni zadatak i magični kvadrat).',
+        },
+        testLanguageGrammar: {
+          title: 'Diferencirani test: Bosanski/Srpski/Hrvatski jezik i gramatika (3 nivoa znanja)',
+          text: 'Diferencirana provjera iz maternjeg jezika: I nivo (vrste rečenica i veliko slovo), II nivo (imenice, glagoli, pridjevi, rod i broj), III nivo (ispravka grešaka i kratak opis sa pridjevima).',
+        },
+        testNatureSociety: {
+          title: 'Diferencirani test: Moja okolina — Priroda i društvo (3 nivoa znanja)',
+          text: 'Diferencirani test o prirodi: I nivo (dijelovi biljke i staništa životinja), II nivo (korist domaćih životinja i godišnja doba), III nivo (lanac ishrane i zaštita čiste vode i šuma).',
+        },
+        testReadingComprehension: {
+          title: 'Diferencirani test: Čitanje sa razumijevanjem (3 nivoa znanja)',
+          text: 'Diferencirani test razumijevanja pročitanog teksta: I nivo (glavni likovi i mjesto radnje), II nivo (hronološki redoslijed događaja i uzroci), III nivo (glavna poruka basne i lični stav).',
+        },
+        testMultiplicationDivision: {
+          title: 'Diferencirani test: Množenje i dijeljenje (3 nivoa znanja)',
+          text: 'Diferencirana provjera operacija: I nivo (osnovna tablica do 5), II nivo (tablica do 10, redoslijed operacija i poređenje), III nivo (jednačine sa nepoznatim činiocem i tekstualni zadatak).',
+        },
         coloringClassroom: {
           title: 'Bojanka: Moja učionica i škola',
           text: 'Oboji veselu učionicu, nasmijanu učiteljicu, đake u klupama, školsku tablu i globus svojim najljepšim bojama.',

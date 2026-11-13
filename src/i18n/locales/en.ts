@@ -351,9 +351,10 @@ export const en: Dictionary = {
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
       sectionEyebrow: 'Printables · A4 format',
       sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
-      sectionText: 'Complete collection of 55 worksheets and themed coloring pages ready to print on A4: rich thematic illustrations, alphabet pages, early reading and writing, fine motor skills, and math.',
+      sectionText: 'Complete collection of 60 worksheets, differentiated tests and themed coloring pages ready to print on A4: achievement tests for 3 levels (basic, intermediate, advanced), themed coloring books, alphabet pages, fine motor skills and math.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
+        tests: 'Differentiated tests (3 levels: basic, intermediate & advanced)',
         coloring: 'Coloring books (themed pictures, letters & numbers)',
         writing: 'Reading and writing',
         motor: 'Fine motor and pre-writing',
@@ -361,6 +362,26 @@ export const en: Dictionary = {
         logic: 'Logic and attention',
       },
       sheets: {
+        testMathOperations: {
+          title: 'Differentiated test: Addition & subtraction (3 levels)',
+          text: 'Differentiated math test: Level I (basic operations up to 20), Level II (operations up to 100 with parentheses and unknown x), Level III (multi-step word problem and magic square).',
+        },
+        testLanguageGrammar: {
+          title: 'Differentiated test: Language & grammar (3 levels)',
+          text: 'Differentiated language test: Level I (sentence types and capital letters), Level II (nouns, verbs, adjectives, gender and number), Level III (error correction and short descriptive paragraph).',
+        },
+        testNatureSociety: {
+          title: 'Differentiated test: Science & Nature (3 levels)',
+          text: 'Differentiated nature test: Level I (plant parts and animal habitats), Level II (domestic vs wild animals and seasons), Level III (food chain and environmental protection).',
+        },
+        testReadingComprehension: {
+          title: 'Differentiated test: Reading comprehension (3 levels)',
+          text: 'Differentiated reading test: Level I (main characters and setting), Level II (chronological sequence of events), Level III (main moral of the story and personal reflection).',
+        },
+        testMultiplicationDivision: {
+          title: 'Differentiated test: Multiplication & division (3 levels)',
+          text: 'Differentiated operations test: Level I (basic tables up to 5), Level II (tables up to 10, order of operations and comparisons), Level III (equations with unknown factors and word problem).',
+        },
         coloringClassroom: {
           title: 'Coloring page: My school & classroom',
           text: 'Color the happy classroom, friendly teacher, pupils at their desks, blackboard and globe with your favourite colors.',

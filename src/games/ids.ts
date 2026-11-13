@@ -102,6 +102,11 @@ export const WORKSHEET_IDS = [
   'differences',
   'symmetry',
   'copy',
+  'testMathOperations',
+  'testLanguageGrammar',
+  'testNatureSociety',
+  'testReadingComprehension',
+  'testMultiplicationDivision',
 ] as const;
 
 export type WorksheetId = (typeof WORKSHEET_IDS)[number];
@@ -118,6 +123,13 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
+  tests: [
+    'testMathOperations',
+    'testLanguageGrammar',
+    'testNatureSociety',
+    'testReadingComprehension',
+    'testMultiplicationDivision',
+  ],
   coloring: [
     'coloringClassroom',
     'coloringSeasons',

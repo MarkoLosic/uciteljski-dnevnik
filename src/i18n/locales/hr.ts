@@ -351,9 +351,10 @@ export const hr: Dictionary = {
       tip: 'Savjet: ispišite na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka bolje su od tanke kemijske.',
       sectionEyebrow: 'Za ispis · A4 format',
       sectionTitle: 'Bojanke slova i slika, latinica, ćirilica i radni listovi',
-      sectionText: 'Kompletna zbirka od 55 radnih listova i tematskih bojanki spremnih za ispis na A4 formatu: ilustrirane tematske cjeline, slova abecede i azbuke, početno čitanje i pisanje, grafomotorika i zabavna matematika.',
+      sectionText: 'Kompletna zbirka od 60 radnih listova, diferenciranih ispita i tematskih bojanki spremnih za ispis na A4 formatu: provjere znanja za tri razine postignuća učenika (osnovna, srednja i napredna), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
+        tests: 'Diferencirani ispiti znanja (3 razine: osnovna, srednja i napredna)',
         coloring: 'Bojanke (tematske slike, slova i brojevi)',
         writing: 'Čitanje i pisanje — latinica i ćirilica',
         motor: 'Motorika i predvježbe pisanja',
@@ -361,6 +362,26 @@ export const hr: Dictionary = {
         logic: 'Logika i pažnja',
       },
       sheets: {
+        testMathOperations: {
+          title: 'Diferencirani ispit: Zbrajanje i oduzimanje (3 razine znanja)',
+          text: 'Diferencirana kontrolna vježba iz matematike: I razina (osnovno računanje do 20), II razina (računanje do 100 sa zagradama i nepoznatim brojem), III razina (složeni tekstualni zadatak i magični kvadrat).',
+        },
+        testLanguageGrammar: {
+          title: 'Diferencirani ispit: Hrvatski jezik i gramatika (3 razine znanja)',
+          text: 'Diferencirana provjera iz materinskog jezika: I razina (vrste rečenica i veliko slovo), II razina (imenice, glagoli, pridjevi, rod i broj), III razina (ispravak pogrešaka i kratak opis s pridjevima).',
+        },
+        testNatureSociety: {
+          title: 'Diferencirani ispit: Priroda i društvo (3 razine znanja)',
+          text: 'Diferencirana provjera o prirodi: I razina (dijelovi biljke i staništa životinja), II razina (korist domaćih životinja i godišnja doba), III razina (hranidbeni lanac i zaštita čiste vode i šuma).',
+        },
+        testReadingComprehension: {
+          title: 'Diferencirani ispit: Čitanje s razumijevanjem (3 razine znanja)',
+          text: 'Diferencirana provjera razumijevanja pročitanog teksta: I razina (glavni likovi i mjesto radnje), II razina (kronološki redoslijed događaja i uzroci), III razina (glavna poruka basne i osobni stav).',
+        },
+        testMultiplicationDivision: {
+          title: 'Diferencirani ispit: Množenje i dijeljenje (3 razine znanja)',
+          text: 'Diferencirana provjera računskih operacija: I razina (tablica do 5), II razina (tablica do 10, redoslijed operacija i uspoređivanje), III razina (jednadžbe s nepoznatim faktorom i tekstualni zadatak).',
+        },
         coloringClassroom: {
           title: 'Bojanka: Moja učionica i škola',
           text: 'Oboji veselu učionicu, nasmijanu učiteljicu, učenike u klupama, školsku ploču i globus svojim najljepšim bojama.',

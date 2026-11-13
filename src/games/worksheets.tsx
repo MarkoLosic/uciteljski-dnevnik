@@ -1529,6 +1529,428 @@ function ImageColoringSheet({ src, alt, prompt }: { src: string; alt: string; pr
   );
 }
 
+// ============================================================================
+// DIFERENCIRANI TESTOVI ZNANJA ZA 3 NIVOA POSTIGNUĆA (A4 ŠTAMPA)
+// ============================================================================
+
+function TestFrame({
+  subject,
+  title,
+  level1,
+  level2,
+  level3,
+}: {
+  subject: string;
+  title: string;
+  level1: ReactNode;
+  level2: ReactNode;
+  level3: ReactNode;
+}) {
+  return (
+    <div className="w-full text-[#111827] flex flex-col gap-3.5 print:gap-3 text-sm">
+      {/* Zaglavlje za podatke o učeniku i ocjenjivanje */}
+      <div className="rounded-xl border-2 border-[#111827] bg-[#f9fafb] p-3 print:bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold pb-2 border-b border-gray-300">
+          <div><span className="text-gray-500 print:text-black">Učenik:</span> _________________</div>
+          <div><span className="text-gray-500 print:text-black">Razred:</span> _____ <span className="text-gray-500 print:text-black">Datum:</span> _____</div>
+          <div><span className="text-gray-500 print:text-black">Bodovi:</span> _____ / 30</div>
+          <div><span className="text-gray-500 print:text-black">Ocjena:</span> _________________</div>
+        </div>
+        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1">
+          <div>
+            <span className="text-[10.5px] font-mono uppercase tracking-wider text-accent font-bold">
+              DIFERENCIRANA PROVJERA ZNANJA · {subject}
+            </span>
+            <h2 className="text-base font-extrabold leading-tight">{title}</h2>
+          </div>
+          <span className="text-[11px] font-semibold text-gray-500 print:text-black">
+            Vrijeme rada: 45 min
+          </span>
+        </div>
+      </div>
+
+      {/* Nivo 1: Osnovni */}
+      <div className="rounded-xl border-2 border-emerald-600 bg-emerald-50/20 p-3 print:bg-white print:border-gray-800">
+        <div className="flex items-center justify-between font-bold text-xs text-emerald-800 print:text-black pb-2 mb-2 border-b border-emerald-200 print:border-gray-300">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-600 print:border print:border-black" />
+            NIVO I — OSNOVNI NIVO (Prepoznavanje, direktno računanje i osnovni pojmovi)
+          </span>
+          <span className="bg-emerald-100 text-emerald-800 print:bg-transparent print:text-black px-2 py-0.5 rounded text-[11px]">
+            10 bodova
+          </span>
+        </div>
+        {level1}
+      </div>
+
+      {/* Nivo 2: Srednji */}
+      <div className="rounded-xl border-2 border-blue-600 bg-blue-50/20 p-3 print:bg-white print:border-gray-800">
+        <div className="flex items-center justify-between font-bold text-xs text-blue-800 print:text-black pb-2 mb-2 border-b border-blue-200 print:border-gray-300">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-600 print:border print:border-black" />
+            NIVO II — SREDNJI NIVO (Primjena pravila, standardni zadaci u dva koraka)
+          </span>
+          <span className="bg-blue-100 text-blue-800 print:bg-transparent print:text-black px-2 py-0.5 rounded text-[11px]">
+            10 bodova
+          </span>
+        </div>
+        {level2}
+      </div>
+
+      {/* Nivo 3: Napredni */}
+      <div className="rounded-xl border-2 border-purple-600 bg-purple-50/20 p-3 print:bg-white print:border-gray-800">
+        <div className="flex items-center justify-between font-bold text-xs text-purple-800 print:text-black pb-2 mb-2 border-b border-purple-200 print:border-gray-300">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-purple-600 print:border print:border-black" />
+            NIVO III — NAPREDNI NIVO (Tekstualni, problemski i logički izazov)
+          </span>
+          <span className="bg-purple-100 text-purple-800 print:bg-transparent print:text-black px-2 py-0.5 rounded text-[11px]">
+            10 bodova
+          </span>
+        </div>
+        {level3}
+      </div>
+
+      {/* Podnožje sa skalom bodovanja */}
+      <div className="rounded-lg border border-gray-300 p-2 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-gray-600 print:text-black">
+        <div>
+          <strong>Skala bodovanja:</strong> 0–11 (nedovoljan 1), 12–16 (dovoljan 2), 17–21 (dobar 3), 22–26 (v. dobar 4), 27–30 (odličan 5)
+        </div>
+        <div className="flex items-center gap-2">
+          <span>Samoprocjena:</span>
+          <span>😃 Lako</span>
+          <span>😐 Srednje</span>
+          <span>😟 Teško</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DifferentiatedMathTestSheet() {
+  return (
+    <TestFrame
+      subject="MATEMATIKA"
+      title="Sabiranje i oduzimanje do 100 sa zagradama i tekstualnim zadatkom"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Izračunaj osnovne računske operacije (5 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 14 + 5 = ____</div>
+            <div>b) 19 - 7 = ____</div>
+            <div>c) 8 + 6 = ____</div>
+            <div>d) 15 - 9 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Upiši broj koji nedostaje u kvadratić (5 b):</p>
+          <div className="grid grid-cols-3 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 10 + [ &nbsp; ] = 17</div>
+            <div>b) [ &nbsp; ] - 4 = 12</div>
+            <div>c) 20 - [ &nbsp; ] = 15</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">3. Izračunaj vrijednost izraza poštujući zagrade (4 b):</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) (34 + 16) - 25 = ____________________</div>
+            <div>b) 80 - (24 + 18) = ____________________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">4. Odredi nepoznati broj x i provjeri tačnost (4 b):</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) x + 27 = 64 &nbsp;➔&nbsp; x = _______ &nbsp;(Pr: _______)</div>
+            <div>b) 75 - x = 38 &nbsp;➔&nbsp; x = _______ &nbsp;(Pr: _______)</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Upiši znak &lt;, &gt; ili = (2 b):</p>
+          <div className="grid grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>45 + 18 &nbsp;[ &nbsp; ]&nbsp; 80 - 15</div>
+            <div>62 - 24 &nbsp;[ &nbsp; ]&nbsp; 19 + 19</div>
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">6. Složeni tekstualni zadatak (6 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              U školskoj biblioteci na prvoj polici ima 46 knjiga. Na drugoj polici ima za 18 knjiga manje nego na prvoj, a na trećoj polici onoliko koliko na prve dvije police zajedno. Koliko ukupno knjiga ima na sve tri police?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              Račun: __________________________________________________________________<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">7. Logička zagonetka (4 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Zbir tri uzastopna broja iznosi 45. Koji su to brojevi? &nbsp;➔&nbsp; <strong>___ + ___ + ___ = 45</strong>
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function DifferentiatedGrammarTestSheet() {
+  return (
+    <TestFrame
+      subject="SRPSKI / MATERNJI JEZIK"
+      title="Vrste reči, rečenice, pravopis i čitanje sa razumevanjem"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Na kraju svake rečenice upiši tačku (.), upitnik (?) ili uzvičnik (!) (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 space-y-1 text-xs sm:text-sm">
+            <div>a) Danas je prelep, sunčan i topao prolećni dan [ &nbsp; ]</div>
+            <div>b) Da li si poneo pernicu i udžbenik za školu [ &nbsp; ]</div>
+            <div>c) Pazi na stepenicama, nemoj trčati [ &nbsp; ]</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Podvuci reči koje moraju biti napisane velikim početnim slovom (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm italic">
+            „učenik marko i njegova sestra jelena žive u banjaluci blizu reke vrbas.”
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">3. Razvrstaj ponuđene reči u tabelu: kuća, pevati, plavo, reka, crtati, vesela, drvo, trčati (4 b):</p>
+          <div className="grid grid-cols-3 gap-2 bg-white p-2 rounded border border-gray-200 text-xs">
+            <div><strong>Imenice (bića, predmeti):</strong><br />________________________</div>
+            <div><strong>Glagoli (radnja):</strong><br />________________________</div>
+            <div><strong>Pridjevi (osobine):</strong><br />________________________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">4. Odredi rod (muški, ženski, srednji) i broj (jednina, množina) imenicama (4 b):</p>
+          <div className="grid grid-cols-2 gap-2 bg-white p-2 rounded border border-gray-200 text-xs font-mono">
+            <div>a) jabuke: rod ________, broj ________</div>
+            <div>b) sunce: rod ________, broj ________</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Napiši odrični oblik glagola (2 b):</p>
+          <div className="grid grid-cols-3 gap-2 bg-white p-2 rounded border border-gray-200 text-xs">
+            <div>znam ➔ ____________</div>
+            <div>hoću ➔ ____________</div>
+            <div>imam ➔ ____________</div>
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">6. Pronađi i precrtaj 4 pravopisne greške u tekstu, pa ih pravilno napiši (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            „Juče smo išli na izlet na planinu jahorinu. nismo znali dase tamo još uvek sneg nije otopio. Sa nama je išao i pas žuća.”<br />
+            <span className="text-gray-500 text-xs">Ispravke: 1) _______________ 2) _______________ 3) _______________ 4) _______________</span>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">7. Stvaralačko pisanje (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Napiši 3 povezane rečenice o svom omiljenom godišnjem dobu. Upotrijebi najmanje 3 opisna prideva i 1 uzvičnu rečenicu:<br />
+            <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
+            <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
+            <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function DifferentiatedNatureTestSheet() {
+  return (
+    <TestFrame
+      subject="PRIRODA I DRUŠTVO / SVET OKO NAS"
+      title="Živa i neživa priroda, godišnja doba, biljke i životinjski svet"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Poveži linijom živo biće sa njegovim staništem (4 b):</p>
+          <div className="grid grid-cols-2 gap-2 bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            <div>• Pastrmka<br />• Veverica<br />• Pčela medarica<br />• Krtica</div>
+            <div className="text-right">• Rascvetala livada<br />• Planinska bistra reka<br />• Podzemni hodnici u zemlji<br />• Hrastova šuma</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Zaokruži šta pripada NEŽIVOJ prirodi (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm flex flex-wrap gap-3">
+            <span>a) vuk</span>
+            <span>b) kamen</span>
+            <span>c) sunce</span>
+            <span>d) maslačak</span>
+            <span>e) vazduh i voda</span>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Napiši 4 glavna dijela biljke (3 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs font-mono">
+            1) _____________ &nbsp; 2) _____________ &nbsp; 3) _____________ &nbsp; 4) _____________
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Razvrstaj životinje na domaće i divlje i napiši korist domaćih za čoveka (5 b):</p>
+          <div className="grid grid-cols-2 gap-2 bg-white p-2 rounded border border-gray-200 text-xs">
+            <div>
+              <strong>Domaće životinje:</strong> krava, ovca, kokoška<br />
+              <span className="text-gray-500">Korist: _______________________________</span>
+            </div>
+            <div>
+              <strong>Divlje životinje:</strong> lisica, medvjed, divlja svinja<br />
+              <span className="text-gray-500">Gdje pronalaze hranu: __________________</span>
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Dopuni rečenice o kretanju Zemlje i vremenu (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 space-y-1 text-xs">
+            <div>a) Dan i noć nastaju zbog obrtanja Zemlje oko ____________________.</div>
+            <div>b) Četiri godišnja doba nastaju zbog kretanja Zemlje oko ____________________.</div>
+            <div>c) Napiši dva znaka po kojima prepoznajemo jesen u prirodi: ________________________.</div>
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">6. Lanac ishrane — poredaj brojevima od 1 do 4 (5 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm">
+            <div className="flex justify-between items-center mb-2 font-semibold">
+              <span>[ &nbsp; ] Žaba</span>
+              <span>➔</span>
+              <span>[ &nbsp; ] Roda</span>
+              <span>➔</span>
+              <span>[ &nbsp; ] Zelena trava</span>
+              <span>➔</span>
+              <span>[ &nbsp; ] Skakavac</span>
+            </div>
+            <p className="text-xs text-gray-600">
+              Šta bi se dogodilo sa skakavcima ako bi iz bare nestale sve žabe? Objasni: __________________________________________________________________
+            </p>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">7. Zaštita životne sredine i ekologija (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Napiši dva načina kako učenici u školi i kod kuće mogu štedjeti vodu i čuvati prirodu od zagađenja plastičnim otpadom:<br />
+            1) ____________________________________________________________________<br />
+            2) ____________________________________________________________________
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function DifferentiatedReadingTestSheet() {
+  return (
+    <TestFrame
+      subject="SRPSKI / BOSANSKI / HRVATSKI JEZIK"
+      title="Čitanje sa razumijevanjem: „Vrijedna pčelica Maja i veseli mrav”"
+      level1={
+        <div className="space-y-2">
+          {/* Tekst priče */}
+          <div className="bg-amber-50/50 p-2.5 rounded border border-amber-200 text-xs leading-relaxed italic print:bg-white print:border-gray-300">
+            „Jednog toplog ljetnog jutra, pčelica Maja je letjela sa cvijeta na cvijet i sakupljala slatki nektar. Pored starog hrasta sjedio je mrav Borko, sunčao se i pjevao. 'Zašto toliko radiš na ovoj vrućini, Majo? Dođi da se igramo!', reče mrav. 'Lijepo je igrati se, Borko, ali ja spremam med za hladnu zimu. Ako sada ne radimo, zimi ćemo gladovati', odgovori pčelica i odletje u košnicu. Kada je pala prva snježna mećava, Borko je shvatio da nema ni zrno hrane. Pokucao je na vrata košnice. Maja ga je ugostila toplim čajem i medom, a Borko je obećao da će od proljeća biti najvrijedniji mrav u šumi.”
+          </div>
+          <p className="font-semibold text-[13px]">1. Pitanja za provjeru osnovnih činjenica iz priče (10 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 space-y-1.5 text-xs sm:text-sm">
+            <div>a) Ko su glavni likovi ove priče? _________________________________________</div>
+            <div>
+              b) U koje godišnje doba započinje priča? &nbsp;
+              <strong>A)</strong> u jesen &nbsp; <strong>B)</strong> u proljeće &nbsp; <strong>C)</strong> u ljeto
+            </div>
+            <div>c) Šta je pčelica Maja sakupljala na livadi? _________________________________________</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">2. Poredaj redoslijed događaja u priči brojevima od 1 do 4 (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 space-y-1 text-xs">
+            <div>[ &nbsp; ] Mrav Borko kuca na vrata tople košnice tražeći pomoć.</div>
+            <div>[ &nbsp; ] Pčelica Maja vrijedno sakuplja nektar dok se mrav sunča i pjeva.</div>
+            <div>[ &nbsp; ] Borko obećava pčelici da će na proljeće postati vrijedan mrav.</div>
+            <div>[ &nbsp; ] Pala je prva snježna mećava i mrav je ostao bez ijednog zrna hrane.</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">3. Uzroci i posljedice (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Zašto je pčelica Maja radila po najvećoj ljetnoj vrućini dok su se drugi odmarali? __________________________________________________________________________________
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">4. Poruka priče i pouka (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Koja je glavna pouka ove priče za djecu? Koju narodnu poslovicu možeš povezati sa ovom pričom? (npr. „Ko radi, ne boji se gladi”) __________________________________________________________________________________
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Tvoje mišljenje i empatija (5 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Kako je pčelica Maja postupila prema mravu kada je bio u nevolji i šta to govori o pravom prijateljstvu? Šta bi ti učinio na Majinom mjestu?<br />
+            <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
+            <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
+function DifferentiatedMultiplicationTestSheet() {
+  return (
+    <TestFrame
+      subject="MATEMATIKA"
+      title="Množenje i dijeljenje brojeva, redoslijed operacija i jednačine"
+      level1={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">1. Izračunaj osnovne proizvode i količnike (6 b):</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>3 × 4 = ____</div>
+            <div>5 × 6 = ____</div>
+            <div>2 × 9 = ____</div>
+            <div>4 × 7 = ____</div>
+            <div>12 : 3 = ____</div>
+            <div>20 : 5 = ____</div>
+            <div>18 : 2 = ____</div>
+            <div>28 : 4 = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">2. Zapiši zbir jednakih sabiraka kao proizvod (4 b):</p>
+          <div className="grid grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 4 + 4 + 4 + 4 + 4 = ____ × ____ = ____</div>
+            <div>b) 6 + 6 + 6 = ____ × ____ = ____</div>
+          </div>
+        </div>
+      }
+      level2={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">3. Izračunaj pazeći na redoslijed operacija (množenje i dijeljenje imaju prednost) (4 b):</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) 64 - 6 × 7 = 64 - ____ = ____</div>
+            <div>b) 8 × 8 + 26 = ____ + 26 = ____</div>
+            <div>c) 54 : 6 + 7 × 5 = ____ + ____ = ____</div>
+            <div>d) 90 - (45 : 9) = 90 - ____ = ____</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">4. Uporedi izraze upisivanjem znaka &lt;, &gt; ili = (3 b):</p>
+          <div className="grid grid-cols-3 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>7 × 8 &nbsp;[ &nbsp; ]&nbsp; 6 × 9</div>
+            <div>72 : 8 &nbsp;[ &nbsp; ]&nbsp; 63 : 7</div>
+            <div>9 × 4 &nbsp;[ &nbsp; ]&nbsp; 40 - 5</div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">5. Odredi nepoznati broj x (3 b):</p>
+          <div className="grid grid-cols-2 gap-2 font-mono text-sm bg-white p-2 rounded border border-gray-200">
+            <div>a) x × 6 = 42 ➔ x = 42 : 6 ➔ x = ____</div>
+            <div>b) 56 : x = 7 ➔ x = 56 : 7 ➔ x = ____</div>
+          </div>
+        </div>
+      }
+      level3={
+        <div className="space-y-2">
+          <p className="font-semibold text-[13px]">6. Tekstualni zadatak u dva koraka (6 b):</p>
+          <div className="bg-white p-2.5 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
+            <p>
+              Učiteljica je za školsku priredbu pripremila 5 pakovanja balona, a u svakom pakovanju je bilo po 8 balona. Učenici su ukrasili 4 učionice tako što su u svaku stavili jednak broj balona. Koliko je balona dobila svaka učionica?
+            </p>
+            <div className="mt-2 text-xs font-mono text-gray-500">
+              1) Ukupno balona: ________________________ = _____<br />
+              2) Po svakoj učionici: ___________________ = _____<br />
+              Odgovor: _________________________________________________________________
+            </div>
+          </div>
+          <p className="font-semibold text-[13px] pt-1">7. Logički zadatak sa dijeljenjem (4 b):</p>
+          <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
+            Mama je podijelila 27 bombona na troje djece tako da je svako sljedeće dijete dobilo po 2 bombone više od prethodnog. Koliko je bombona dobilo svako dijete? &nbsp;➔&nbsp; <strong>___ + ___ + ___ = 27</strong>
+          </div>
+        </div>
+      }
+    />
+  );
+}
+
 interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
@@ -1737,4 +2159,9 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   differences: () => [<DifferencesSheet key="differences" />],
   symmetry: () => [<SymmetrySheet key="symmetry" />],
   copy: () => [<CopySheet key="copy" />],
+  testMathOperations: () => [<DifferentiatedMathTestSheet key="testMathOperations" />],
+  testLanguageGrammar: () => [<DifferentiatedGrammarTestSheet key="testLanguageGrammar" />],
+  testNatureSociety: () => [<DifferentiatedNatureTestSheet key="testNatureSociety" />],
+  testReadingComprehension: () => [<DifferentiatedReadingTestSheet key="testReadingComprehension" />],
+  testMultiplicationDivision: () => [<DifferentiatedMultiplicationTestSheet key="testMultiplicationDivision" />],
 };

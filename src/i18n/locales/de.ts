@@ -351,16 +351,37 @@ export const de: Dictionary = {
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
       sectionEyebrow: 'Zum Ausdrucken · A4-Format',
       sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
-      sectionText: 'Komplette Sammlung von 55 Arbeitsblättern und thematischen Malbüchern im A4-Format: thematische Illustrationen, Buchstaben, erste Lese- und Schreibübungen, Feinmotorik und Rechnen.',
+      sectionText: 'Komplette Sammlung von 60 Arbeitsblättern, differenzierten Leistungstests und Malbüchern im A4-Format: Tests für 3 Lernstufen (Basis, Mittel, Fortgeschritten), thematische Ausmalbilder, Buchstaben und Rechnen.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
+        tests: 'Differenzierte Tests (3 Stufen: Basis, Mittel & Fortgeschritten)',
         coloring: 'Ausmalbilder (Themenbilder, Buchstaben & Zahlen)',
         writing: 'Lesen und Schreiben',
         motor: 'Feinmotorik und Schreibvorbereitung',
         math: 'Zahlen und Rechnen',
-        logic: 'Logika i pažnja',
+        logic: 'Logik und Konzentration',
       },
       sheets: {
+        testMathOperations: {
+          title: 'Differenzierter Test: Addition & Subtraktion (3 Stufen)',
+          text: 'Differenzierte Mathematik-Probe: Stufe I (Grundrechnen bis 20), Stufe II (Rechnen bis 100 mit Klammern und Variable x), Stufe III (mehrschrittige Textaufgabe und magisches Quadrat).',
+        },
+        testLanguageGrammar: {
+          title: 'Differenzierter Test: Sprache & Grammatik (3 Stufen)',
+          text: 'Differenzierter Sprachtest: Stufe I (Satzarten und Großschreibung), Stufe II (Nomen, Verben, Adjektive, Geschlecht und Zahl), Stufe III (Fehlerkorrektur und kurzer beschreibender Text).',
+        },
+        testNatureSociety: {
+          title: 'Differenzierter Test: Sachunterricht & Natur (3 Stufen)',
+          text: 'Differenzierter Naturtest: Stufe I (Pflanzenteile und Lebensräume), Stufe II (Nutztiere und Jahreszeiten), Stufe III (Nahrungskette und Umweltschutz).',
+        },
+        testReadingComprehension: {
+          title: 'Differenzierter Test: Leseverständnis (3 Stufen)',
+          text: 'Differenzierter Lesetest: Stufe I (Hauptfiguren und Handlungsort), Stufe II (chronologische Reihenfolge), Stufe III (Botschaft der Fabel und eigene Meinung).',
+        },
+        testMultiplicationDivision: {
+          title: 'Differenzierter Test: Multiplikation & Division (3 Stufen)',
+          text: 'Differenzierter Rechentest: Stufe I (Einmaleins bis 5), Stufe II (Einmaleins bis 10 und Punkt-vor-Strich), Stufe III (Gleichungen und Textaufgabe).',
+        },
         coloringClassroom: {
           title: 'Ausmalbild: Mein Klassenzimmer & Schule',
           text: 'Male das fröhliche Klassenzimmer, die Lehrerin, Schüler an den Tischen, Schultafel und Globus in deinen Lieblingsfarben aus.',
