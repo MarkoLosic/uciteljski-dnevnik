@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "provjeri:zadatke": "node scripts/provjeri-zadatke.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

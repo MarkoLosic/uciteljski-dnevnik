@@ -674,6 +674,14 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Jezik bez zemalja: stranica prikazuje `EmptyState` sa linkom na srpsku verziju (`noindex`), link nije u headeru/footeru, a stranica nije u sitemap-u. Link je u headeru (na < 1024px u hamburger meniju) i u footeru.
 - Nova činjenica: ključ u `COUNTRY_FACTS` + oznaka u `t.world.facts` (svih pet rečnika) + vrednost u svakoj zemlji.
 
+### 10.8. Pripreme (`pripreme/`) — zadaci za 3 nivoa
+
+- Biblioteka dnevnih priprema je statična aplikacija u `pripreme/` (`podaci.js` = 1.436 priprema, `app.js` = prikaz); Vite je kopira u `dist/`.
+- Zadaci za I, II i III nivo **nisu šablon po predmetu**, nego dolaze iz banke `pripreme/zadaci/` (`osnova.js` + `matematika.js`, `jezik.js`, `priroda.js`, `ostalo.js`): svaka tema časa ima svoje pravilo (`t:` regex nad nazivom časa, `r:` razredi). Prvo pravilo koje odgovara se koristi — specifičnija pravila idu ispred opštijih.
+- Zadaci su pisani **za učenika** (kratka naredba, jedna radnja, konkretni brojevi i riječi); ishodi iz plana su za učitelja i ne idu na učenički listić.
+- Računi se pišu oznakama (`[[34 + 5]]`, `[[x + 24 = 60 | 36]]`, `[[14 + 3 ? 20 - 2]]`, `[[= 4 + 5]]`, `[[! rješenje]]`…, opis u `osnova.js`); banka ih računa i provjerava, a rješenja vidi samo učitelj.
+- Posle svake izmene banke ili `podaci.js`: **`npm run provjeri:zadatke`** — prolazi kroz sve pripreme i javlja temu bez svojih zadataka, netačan račun, ostatke HTML-a (`&nbsp;`), ćirilicu usred latinice i brojeve prevelike za razred (1: ≤ 20, 2: ≤ 100, 3: ≤ 1000).
+
 ### 10.6. `NotFound.tsx`
 
 - Veliki „404".
