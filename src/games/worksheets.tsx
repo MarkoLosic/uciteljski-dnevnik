@@ -1,5 +1,36 @@
 import { useLayoutEffect, useRef, useState, type ReactNode, type SVGProps } from 'react';
 import {
+  AlarmClock,
+  Backpack,
+  Bath,
+  Bean,
+  Bed,
+  BookOpen,
+  Cake,
+  Candy,
+  Cookie,
+  Croissant,
+  CupSoda,
+  Droplets,
+  Egg,
+  GlassWater,
+  Hand,
+  IceCreamCone,
+  Milk,
+  Newspaper,
+  Package,
+  PersonStanding,
+  Puzzle,
+  Recycle,
+  Salad,
+  School,
+  Snowflake,
+  Soup,
+  Sprout,
+  Sunrise,
+  Sunset,
+  Toothbrush,
+  Utensils,
   Apple,
   ArrowRight,
   Banana,
@@ -35,6 +66,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import type { Shape, ToyColor, WorksheetId } from './ids';
+import type { Dictionary } from '../i18n/dictionaries';
 import { shapePaths, toyHex } from './shared';
 import { PATHS } from './Trace';
 import { FIGURES } from './ConnectDots';
@@ -2317,9 +2349,1306 @@ function Grade5TestSheet() {
   );
 }
 
+// ============================================================================
+// SPOZNAJA VREMENA I SMISLENE BOJANKE (crtano u kodu, tekst iz rečnika)
+// ============================================================================
+
+type SheetLabels = Dictionary['games']['worksheet']['labels'];
+
+function Box({ x, y, w, h, r = 18 }: { x: number; y: number; w: number; h: number; r?: number }) {
+  return <rect x={x} y={y} width={w} height={h} rx={r} fill="#fff" stroke={INK} strokeWidth="2.5" />;
+}
+
+// Tačka na krugu; ugao u stepenima, 0 = gore, raste u smeru kazaljke.
+function polar(cx: number, cy: number, radius: number, deg: number): [number, number] {
+  const a = (deg * Math.PI) / 180;
+  return [cx + radius * Math.sin(a), cy - radius * Math.cos(a)];
+}
+
+function StepNumber({ x, y, n }: { x: number; y: number; n: number }) {
+  return (
+    <g>
+      <circle cx={x} cy={y} r="16" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <Label x={x} y={y} size={17}>
+        {n}
+      </Label>
+    </g>
+  );
+}
+
+interface ClockFaceProps {
+  cx: number;
+  cy: number;
+  r: number;
+  hour?: number; // bez sata = prazan brojčanik na kom dete crta kazaljke
+  minute?: number;
+  rim?: boolean;
+}
+
+function ClockFace({ cx, cy, r, hour, minute = 0, rim = false }: ClockFaceProps) {
+  const big = r >= 100;
+  return (
+    <g>
+      {rim && <circle cx={cx} cy={cy} r={r + 14} fill="#fff" stroke={INK} strokeWidth="2.5" />}
+      <circle cx={cx} cy={cy} r={r} fill="#fff" stroke={INK} strokeWidth={big ? 3 : 2.2} />
+      {Array.from({ length: big ? 60 : 12 }, (_, i) => {
+        const deg = big ? i * 6 : i * 30;
+        const isHour = !big || i % 5 === 0;
+        const [x1, y1] = polar(cx, cy, r * (isHour ? 0.88 : 0.93), deg);
+        const [x2, y2] = polar(cx, cy, r * 0.98, deg);
+        return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={INK} strokeWidth={isHour ? 2.4 : 1.2} />;
+      })}
+      {Array.from({ length: 12 }, (_, i) => {
+        const [x, y] = polar(cx, cy, r * 0.72, (i + 1) * 30);
+        return (
+          <Label key={i} x={x} y={y} size={Math.round(r * 0.2)}>
+            {i + 1}
+          </Label>
+        );
+      })}
+      {hour !== undefined && (
+        <>
+          <line
+            x1={cx}
+            y1={cy}
+            x2={polar(cx, cy, r * 0.45, ((hour % 12) + minute / 60) * 30)[0]}
+            y2={polar(cx, cy, r * 0.45, ((hour % 12) + minute / 60) * 30)[1]}
+            stroke={INK}
+            strokeWidth={Math.max(4, r * 0.07)}
+            strokeLinecap="round"
+          />
+          <line
+            x1={cx}
+            y1={cy}
+            x2={polar(cx, cy, r * 0.7, minute * 6)[0]}
+            y2={polar(cx, cy, r * 0.7, minute * 6)[1]}
+            stroke={INK}
+            strokeWidth={Math.max(2.5, r * 0.04)}
+            strokeLinecap="round"
+          />
+        </>
+      )}
+      <circle cx={cx} cy={cy} r={Math.max(4, r * 0.05)} fill={INK} />
+    </g>
+  );
+}
+
+// Delovi dana: nebo (gde je sunce/mesec) i šta tada radimo.
+const DAY_SCENES = [
+  { key: 'morning', Sky: Sunrise, items: [AlarmClock, Toothbrush, Croissant] },
+  { key: 'noon', Sky: Sun, items: [School, Backpack, Soup] },
+  { key: 'evening', Sky: Sunset, items: [Bath, Utensils, BookOpen] },
+  { key: 'night', Sky: Moon, items: [Bed] },
+] as const satisfies readonly { key: keyof SheetLabels['dayParts']; Sky: LucideIcon; items: readonly LucideIcon[] }[];
+
+const panelAt = (i: number) => ({ x: 6 + (i % 2) * 300, y: 6 + Math.floor(i / 2) * 318 });
+
+function DayPartsSheet({ labels }: { labels: SheetLabels }) {
+  return (
+    <Page height={640}>
+      {DAY_SCENES.map(({ key, Sky, items }, i) => {
+        const { x, y } = panelAt(i);
+        const night = key === 'night';
+        return (
+          <g key={key}>
+            <Box x={x} y={y} w={288} h={308} />
+            <Label x={x + 144} y={y + 30} size={22}>
+              {labels.dayParts[key].toUpperCase()}
+            </Label>
+            <Pic Icon={Sky} x={x + (night ? 110 : 144)} y={y + (key === 'noon' ? 100 : 115)} size={night ? 80 : 96} />
+            {night && (
+              <>
+                <Pic Icon={Star} x={x + 200} y={y + 85} size={34} />
+                <Pic Icon={Star} x={x + 240} y={y + 135} size={26} />
+                <Pic Icon={Star} x={x + 45} y={y + 75} size={24} />
+              </>
+            )}
+            <line x1={x} x2={x + 288} y1={y + 180} y2={y + 180} stroke={INK} strokeWidth="2" />
+            {items.length === 1 ? (
+              <Pic Icon={items[0]} x={x + 144} y={y + 245} size={100} />
+            ) : (
+              items.map((Icon, j) => <Pic key={j} Icon={Icon} x={x + 54 + j * 90} y={y + 245} size={66} />)
+            )}
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+type Draw = (x: number, y: number, s: number) => ReactNode;
+
+const icon =
+  (Icon: LucideIcon): Draw =>
+  (x, y, s) => <Pic Icon={Icon} x={x} y={y} size={s} />;
+
+const egg =
+  (cracked: boolean): Draw =>
+  (x, y, s) => {
+    const rx = s * 0.3;
+    const ry = s * 0.4;
+    const zig = Array.from({ length: 7 }, (_, i) => `${x - rx + (i * 2 * rx) / 6} ${y - 2 + (i % 2 ? -8 : 6)}`).join(' L');
+    return (
+      <g>
+        <ellipse cx={x} cy={y + 4} rx={rx} ry={ry} fill="#fff" stroke={INK} strokeWidth="2.5" />
+        {cracked && <path d={`M${zig}`} fill="none" stroke={INK} strokeWidth="2.5" strokeLinejoin="round" />}
+      </g>
+    );
+  };
+
+// Sneško se pravi u tri koraka: jedna, dve, pa tri kugle sa šeširom.
+const snowman =
+  (stage: 1 | 2 | 3): Draw =>
+  (x, y, s) => {
+    const k = s / 100;
+    const ball = (cy: number, r: number) => <circle cx={x} cy={y + cy * k} r={r * k} fill="#fff" stroke={INK} strokeWidth="2.5" />;
+    return (
+      <g>
+        {ball(28, 24)}
+        {stage >= 2 && ball(-8, 17)}
+        {stage >= 3 && (
+          <>
+            {ball(-34, 12)}
+            <rect x={x - 11 * k} y={y - 58 * k} width={22 * k} height={13 * k} fill="#fff" stroke={INK} strokeWidth="2.2" />
+            <line x1={x - 17 * k} x2={x + 17 * k} y1={y - 45 * k} y2={y - 45 * k} stroke={INK} strokeWidth="2.5" />
+            <circle cx={x - 4 * k} cy={y - 36 * k} r={1.8 * k} fill={INK} />
+            <circle cx={x + 4 * k} cy={y - 36 * k} r={1.8 * k} fill={INK} />
+          </>
+        )}
+      </g>
+    );
+  };
+
+// Redosled je namerno izmešan; tačan: izlazak sunca → sunce → zalazak → mesec, pasulj → klica → cvet, jaje → napuklo → ptica, sneško 1 → 2 → 3.
+const SEQUENCES: Draw[][] = [
+  [icon(Sun), icon(Moon), icon(Sunrise), icon(Sunset)],
+  [icon(Sprout), icon(Flower2), icon(Bean)],
+  [icon(Bird), egg(false), egg(true)],
+  [snowman(3), snowman(1), snowman(2)],
+];
+
+function SequenceSheet() {
+  return (
+    <Page height={644}>
+      {SEQUENCES.map((row, i) => {
+        const y0 = 4 + i * 160;
+        const cw = 588 / row.length;
+        return (
+          <g key={i}>
+            <Box x={6} y={y0} w={588} h={150} />
+            {row.map((draw, j) => {
+              const cx = 6 + cw * (j + 0.5);
+              return (
+                <g key={j}>
+                  {draw(cx, y0 + 54, 80)}
+                  <rect x={cx - 18} y={y0 + 104} width="36" height="36" rx="6" fill="#fff" stroke={INK} strokeWidth="2.2" />
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const READ_HOURS = [2, 5, 8, 12, 4, 10];
+const DRAW_TIMES: [number, number][] = [
+  [1, 0],
+  [3, 0],
+  [6, 0],
+  [8, 0],
+  [11, 0],
+  [12, 0],
+  [2, 30],
+  [7, 30],
+  [9, 30],
+];
+
+function clockPages(): ReactNode[] {
+  return [
+    <Page key="clock-read" height={660}>
+      <ClockFace cx={300} cy={136} r={114} hour={9} rim />
+      {READ_HOURS.map((hour, i) => {
+        const cx = 100 + (i % 3) * 200;
+        const cy = i < 3 ? 350 : 545;
+        return (
+          <g key={i}>
+            <ClockFace cx={cx} cy={cy} r={56} hour={hour} />
+            <rect x={cx - 55} y={cy + 68} width="110" height="38" rx="8" fill="#fff" stroke={INK} strokeWidth="2" />
+            <line x1={cx - 42} x2={cx - 2} y1={cy + 96} y2={cy + 96} stroke={MUTED} strokeWidth="1.5" />
+            <Label x={cx + 24} y={cy + 87} size={22}>
+              :00
+            </Label>
+          </g>
+        );
+      })}
+    </Page>,
+    <Page key="clock-draw" height={630}>
+      {DRAW_TIMES.map(([hour, minute], i) => {
+        const cx = 100 + (i % 3) * 200;
+        const cy = 120 + Math.floor(i / 3) * 215;
+        return (
+          <g key={i}>
+            <rect x={cx - 48} y={cy - 112} width="96" height="36" rx="10" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={cx} y={cy - 94} size={22}>
+              {`${hour}:${String(minute).padStart(2, '0')}`}
+            </Label>
+            <ClockFace cx={cx} cy={cy} r={68} />
+          </g>
+        );
+      })}
+    </Page>,
+  ];
+}
+
+const ROUTINE = [
+  { key: 'wakeUp', Icon: AlarmClock },
+  { key: 'breakfast', Icon: Croissant },
+  { key: 'school', Icon: School },
+  { key: 'lunch', Icon: Soup },
+  { key: 'play', Icon: Puzzle },
+  { key: 'sleep', Icon: Bed },
+] as const satisfies readonly { key: keyof SheetLabels['routine']; Icon: LucideIcon }[];
+
+function RoutineSheet({ labels }: { labels: SheetLabels }) {
+  return (
+    <Page height={636}>
+      {ROUTINE.map(({ key, Icon }, i) => {
+        const x = 6 + (i % 2) * 300;
+        const y = 6 + Math.floor(i / 2) * 212;
+        return (
+          <g key={key}>
+            <Box x={x} y={y} w={288} h={200} />
+            <StepNumber x={x + 28} y={y + 28} n={i + 1} />
+            <Label x={x + 52} y={y + 29} size={18} anchor="start">
+              {labels.routine[key]}
+            </Label>
+            <Pic Icon={Icon} x={x + 78} y={y + 122} size={92} />
+            <ClockFace cx={x + 212} cy={y + 118} r={58} />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+function WeekSheet({ labels }: { labels: SheetLabels }) {
+  const segments = labels.weekdays.map((_, i) => ({ cx: 128 + i * 68, cy: 88 + (i % 2 ? 10 : -10) }));
+  return (
+    <Page height={640}>
+      {[...segments].reverse().map(({ cx, cy }, ri) => {
+        const n = segments.length - ri;
+        return (
+          <g key={n}>
+            <line x1={cx - 10} y1={cy + 34} x2={cx - 14} y2={cy + 52} stroke={INK} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1={cx + 10} y1={cy + 34} x2={cx + 14} y2={cy + 52} stroke={INK} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx={cx} cy={cy} r="38" fill="#fff" stroke={INK} strokeWidth="2.5" />
+            <Label x={cx} y={cy} size={24}>
+              {n}
+            </Label>
+          </g>
+        );
+      })}
+      {/* Glava gusenice */}
+      <path d="M40 52 Q28 22 18 18 M68 50 Q76 20 88 14" fill="none" stroke={INK} strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="17" cy="16" r="6" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <circle cx="89" cy="13" r="6" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <circle cx="55" cy="88" r="44" fill="#fff" stroke={INK} strokeWidth="2.8" />
+      <circle cx="40" cy="78" r="6" fill={INK} />
+      <circle cx="70" cy="78" r="6" fill={INK} />
+      <path d="M36 100 Q55 118 74 100" fill="none" stroke={INK} strokeWidth="2.8" strokeLinecap="round" />
+
+      {labels.weekdays.map((day, i) => {
+        const y = 172 + i * 44;
+        return (
+          <g key={day}>
+            <circle cx="24" cy={y + 18} r="15" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={24} y={y + 18} size={15}>
+              {i + 1}
+            </Label>
+            <Label x={50} y={y + 18} size={19} anchor="start">
+              {day}
+            </Label>
+            <line x1="230" x2="594" y1={y + 32} y2={y + 32} {...DASH} strokeWidth={2} />
+          </g>
+        );
+      })}
+      <Divider y={490} />
+      {[labels.yesterday, labels.today, labels.tomorrow].map((text, i) => {
+        const y = 525 + i * 48;
+        return (
+          <g key={text}>
+            <Label x={6} y={y} size={20} anchor="start">
+              {text}
+            </Label>
+            <line x1="160" x2="594" y1={y + 14} y2={y + 14} stroke={INK} strokeWidth="1.8" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+const SEASONS = [
+  { key: 'winter', Icon: Snowflake },
+  { key: 'spring', Icon: Flower2 },
+  { key: 'summer', Icon: Sun },
+  { key: 'autumn', Icon: Leaf },
+] as const satisfies readonly { key: keyof SheetLabels['seasons']; Icon: LucideIcon }[];
+
+// Godišnji točak: januar je gore, pa zima (dec–feb) zauzima gornju četvrtinu, proleće desnu, leto donju, jesen levu.
+function YearSheet({ labels }: { labels: SheetLabels }) {
+  const cx = 300;
+  const cy = 292;
+  const outer = 274;
+  const mid = 178;
+  const inner = 60;
+  const radial = (deg: number, from: number, key: string, width = 2.2) => {
+    const [x1, y1] = polar(cx, cy, from, deg);
+    const [x2, y2] = polar(cx, cy, outer, deg);
+    return <line key={key} x1={x1} y1={y1} x2={x2} y2={y2} stroke={INK} strokeWidth={width} />;
+  };
+  return (
+    <Page height={645}>
+      <circle cx={cx} cy={cy} r={outer} fill="#fff" stroke={INK} strokeWidth="3" />
+      <circle cx={cx} cy={cy} r={mid} fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <circle cx={cx} cy={cy} r={inner} fill="#fff" stroke={INK} strokeWidth="2.5" />
+      {Array.from({ length: 12 }, (_, i) => (i % 3 === 1 ? radial(15 + i * 30, inner, `s${i}`, 3) : radial(15 + i * 30, mid, `m${i}`)))}
+      {labels.months.map((month, i) => {
+        const [x, y] = polar(cx, cy, (outer + mid) / 2, i * 30);
+        return (
+          <Label key={month} x={x} y={y} size={16}>
+            {month}
+          </Label>
+        );
+      })}
+      {SEASONS.map(({ key, Icon }, i) => {
+        const [x, y] = polar(cx, cy, 120, i * 90);
+        return (
+          <g key={key}>
+            <Pic Icon={Icon} x={x} y={y - 12} size={54} />
+            <Label x={x} y={y + 34} size={15}>
+              {labels.seasons[key]}
+            </Label>
+          </g>
+        );
+      })}
+      <Label x={cx} y={cy} size={17}>
+        {labels.year}
+      </Label>
+      <Label x={6} y={622} size={19} anchor="start">
+        {labels.birthday}
+      </Label>
+      <line x1="330" x2="594" y1="636" y2="636" stroke={INK} strokeWidth="1.8" />
+    </Page>
+  );
+}
+
+function Bubbles({ points }: { points: [number, number, number][] }) {
+  return (
+    <>
+      {points.map(([x, y, r]) => (
+        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill="#fff" stroke={INK} strokeWidth="2" />
+      ))}
+    </>
+  );
+}
+
+// Desna ruka je ogledalska slika leve.
+function MirroredPic({ Icon, x, y, size }: { Icon: LucideIcon; x: number; y: number; size: number }) {
+  return (
+    <g transform={`translate(${2 * x} 0) scale(-1 1)`}>
+      <Pic Icon={Icon} x={x} y={y} size={size} />
+    </g>
+  );
+}
+
+function HandWashSheet({ labels }: { labels: SheetLabels }) {
+  const steps = ['wet', 'soap', 'rub', 'dry'] as const satisfies readonly (keyof SheetLabels['handWash'])[];
+  return (
+    <Page height={640}>
+      {steps.map((key, i) => {
+        const { x, y } = panelAt(i);
+        return (
+          <g key={key}>
+            <Box x={x} y={y} w={288} h={308} />
+            <StepNumber x={x + 28} y={y + 30} n={i + 1} />
+            <Label x={x + 52} y={y + 31} size={18} anchor="start">
+              {labels.handWash[key]}
+            </Label>
+            {key === 'wet' && (
+              <>
+                {/* Slavina */}
+                <rect x={x + 120} y={y + 62} width="44" height="16" rx="8" fill="#fff" stroke={INK} strokeWidth="2.5" />
+                <rect x={x + 136} y={y + 78} width="12" height="14" fill="#fff" stroke={INK} strokeWidth="2.5" />
+                <path
+                  d={`M${x + 70} ${y + 92} H${x + 196} Q${x + 214} ${y + 92} ${x + 214} ${y + 110} V${y + 124} H${x + 190} V${y + 116} H${x + 70} Z`}
+                  fill="#fff"
+                  stroke={INK}
+                  strokeWidth="2.5"
+                  strokeLinejoin="round"
+                />
+                <Pic Icon={Droplets} x={x + 202} y={y + 160} size={44} />
+                <Pic Icon={Hand} x={x + 160} y={y + 240} size={96} />
+              </>
+            )}
+            {key === 'soap' && (
+              <>
+                <rect x={x + 74} y={y + 130} width="140" height="76" rx="28" fill="#fff" stroke={INK} strokeWidth="2.6" />
+                <rect x={x + 96} y={y + 148} width="96" height="40" rx="16" fill="#fff" stroke={INK} strokeWidth="2" />
+                <Bubbles
+                  points={[
+                    [x + 86, y + 100, 16],
+                    [x + 128, y + 82, 22],
+                    [x + 178, y + 96, 13],
+                    [x + 222, y + 118, 18],
+                    [x + 60, y + 238, 12],
+                    [x + 232, y + 240, 15],
+                    [x + 200, y + 270, 10],
+                  ]}
+                />
+                <Pic Icon={Hand} x={x + 130} y={y + 258} size={70} />
+              </>
+            )}
+            {key === 'rub' && (
+              <>
+                <Pic Icon={Hand} x={x + 112} y={y + 175} size={112} />
+                <MirroredPic Icon={Hand} x={x + 176} y={y + 185} size={112} />
+                <Bubbles
+                  points={[
+                    [x + 44, y + 90, 14],
+                    [x + 246, y + 86, 18],
+                    [x + 232, y + 270, 14],
+                    [x + 56, y + 268, 18],
+                    [x + 146, y + 276, 10],
+                  ]}
+                />
+              </>
+            )}
+            {key === 'dry' && (
+              <>
+                {/* Peškir na držaču */}
+                <line x1={x + 30} x2={x + 190} y1={y + 72} y2={y + 72} stroke={INK} strokeWidth="5" strokeLinecap="round" />
+                <rect x={x + 50} y={y + 72} width="120" height="196" rx="10" fill="#fff" stroke={INK} strokeWidth="2.6" />
+                <line x1={x + 50} x2={x + 170} y1={y + 226} y2={y + 226} stroke={INK} strokeWidth="2" />
+                <line x1={x + 50} x2={x + 170} y1={y + 242} y2={y + 242} stroke={INK} strokeWidth="2" />
+                <Pic Icon={Hand} x={x + 224} y={y + 190} size={80} />
+              </>
+            )}
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+function TrafficSheet({ labels, colorNames }: { labels: SheetLabels; colorNames: Record<ToyColor, string> }) {
+  const lights = [
+    { color: colorNames.red, meaning: labels.traffic.stop, cy: 95 },
+    { color: colorNames.yellow, meaning: labels.traffic.wait, cy: 220 },
+    { color: colorNames.green, meaning: labels.traffic.go, cy: 345 },
+  ];
+  return (
+    <Page height={640}>
+      {/* Semafor */}
+      <rect x="100" y="420" width="30" height="196" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <rect x="70" y="610" width="90" height="22" rx="6" fill="#fff" stroke={INK} strokeWidth="2.5" />
+      <rect x="40" y="20" width="150" height="400" rx="30" fill="#fff" stroke={INK} strokeWidth="3" />
+      {lights.map(({ color, meaning, cy }) => (
+        <g key={cy}>
+          <path d={`M55 ${cy - 30} Q115 ${cy - 78} 175 ${cy - 30}`} fill="none" stroke={INK} strokeWidth="2.2" />
+          <circle cx="115" cy={cy} r="50" fill="#fff" stroke={INK} strokeWidth="2.6" />
+          <Label x={222} y={cy - 16} size={24} anchor="start">
+            {color}
+          </Label>
+          <Label x={222} y={cy + 18} size={20} anchor="start">
+            {meaning}
+          </Label>
+        </g>
+      ))}
+      {/* Ulica sa pešačkim prelazom */}
+      <line x1="220" x2="594" y1="486" y2="486" stroke={INK} strokeWidth="3" />
+      <line x1="220" x2="594" y1="632" y2="632" stroke={INK} strokeWidth="3" />
+      {Array.from({ length: 4 }, (_, i) => (
+        <rect key={i} x={300 + i * 40} y="496" width="24" height="126" rx="3" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      ))}
+      <Pic Icon={PersonStanding} x={372} y={446} size={72} />
+      <Pic Icon={Car} x={530} y={560} size={88} />
+    </Page>
+  );
+}
+
+const PLATE_FOOD: LucideIcon[] = [Apple, Carrot, Banana, Grape, Fish, Milk, Egg, Cherry];
+const SWEETS: LucideIcon[] = [Candy, Cookie, IceCreamCone, Cake, CupSoda];
+
+function FoodSheet({ labels }: { labels: SheetLabels }) {
+  return (
+    <Page height={640}>
+      <circle cx="300" cy="235" r="222" fill="#fff" stroke={INK} strokeWidth="3" />
+      <circle cx="300" cy="235" r="190" fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <Pic Icon={Salad} x={300} y={225} size={92} />
+      {PLATE_FOOD.map((Icon, i) => {
+        const [x, y] = polar(300, 225, 122, i * 45);
+        return <Pic key={i} Icon={Icon} x={x} y={y} size={70} />;
+      })}
+      <Label x={300} y={432} size={16}>
+        {labels.food.everyday.toUpperCase()}
+      </Label>
+      <Box x={6} y={474} w={588} h={160} />
+      <Label x={300} y={500} size={18}>
+        {labels.food.sometimes.toUpperCase()}
+      </Label>
+      {SWEETS.map((Icon, i) => (
+        <Pic key={i} Icon={Icon} x={70 + i * 115} y={574} size={72} />
+      ))}
+    </Page>
+  );
+}
+
+const jar: Draw = (x, y, s) => {
+  const k = s / 70;
+  return (
+    <g>
+      <rect x={x - 20 * k} y={y - 18 * k} width={40 * k} height={50 * k} rx={10 * k} fill="#fff" stroke={INK} strokeWidth="2.2" />
+      <rect x={x - 16 * k} y={y - 30 * k} width={32 * k} height={12 * k} rx={3 * k} fill="#fff" stroke={INK} strokeWidth="2.2" />
+    </g>
+  );
+};
+
+// Izmešano: papir (novine, kutija), plastika (sok, flaša mleka), staklo (čaša, tegla).
+const WASTE: Draw[] = [icon(Newspaper), icon(CupSoda), icon(GlassWater), icon(Package), icon(Milk), jar];
+
+function RecycleSheet({ labels }: { labels: SheetLabels }) {
+  const bins = ['paper', 'plastic', 'glass'] as const satisfies readonly (keyof SheetLabels['bins'])[];
+  return (
+    <Page height={636}>
+      {WASTE.map((draw, i) => {
+        const x = 55 + i * 98;
+        return (
+          <g key={i}>
+            {draw(x, 80, 70)}
+            <circle cx={x} cy="150" r="7" fill={INK} />
+          </g>
+        );
+      })}
+      {bins.map((key, i) => {
+        const cx = 110 + i * 190;
+        return (
+          <g key={key}>
+            <circle cx={cx} cy="372" r="7" fill={INK} />
+            <path d={`M${cx - 75} 420 L${cx - 60} 630 H${cx + 60} L${cx + 75} 420 Z`} fill="#fff" stroke={INK} strokeWidth="2.8" strokeLinejoin="round" />
+            <rect x={cx - 86} y="394" width="172" height="26" rx="8" fill="#fff" stroke={INK} strokeWidth="2.6" />
+            <rect x={cx - 22} y="384" width="44" height="10" rx="4" fill="#fff" stroke={INK} strokeWidth="2.2" />
+            <Pic Icon={Recycle} x={cx} y={500} size={62} />
+            <Label x={cx} y={580} size={19}>
+              {labels.bins[key]}
+            </Label>
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+type Feeling = keyof SheetLabels['feelings'];
+
+function Face({ cx, cy, r, kind }: { cx: number; cy: number; r: number; kind?: Feeling }) {
+  const stroke = { fill: 'none', stroke: INK, strokeWidth: 3, strokeLinecap: 'round' } as const;
+  const ex = r * 0.34;
+  const ey = cy - r * 0.18;
+  const open = kind === 'scared' || kind === 'surprised';
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={r} fill="#fff" stroke={INK} strokeWidth="2.8" />
+      {kind &&
+        [-1, 1].map((side) => {
+          const x = cx + side * ex;
+          if (kind === 'calm') return <path key={side} d={`M${x - r * 0.12} ${ey} Q${x} ${ey + r * 0.12} ${x + r * 0.12} ${ey}`} {...stroke} />;
+          if (open)
+            return (
+              <g key={side}>
+                <circle cx={x} cy={ey} r={r * 0.14} fill="#fff" stroke={INK} strokeWidth="2.5" />
+                <circle cx={x} cy={ey} r={r * 0.05} fill={INK} />
+              </g>
+            );
+          return <circle key={side} cx={x} cy={ey} r={r * 0.08} fill={INK} />;
+        })}
+      {kind === 'angry' && (
+        <>
+          <line x1={cx - r * 0.55} y1={cy - r * 0.48} x2={cx - r * 0.16} y2={cy - r * 0.32} {...stroke} />
+          <line x1={cx + r * 0.55} y1={cy - r * 0.48} x2={cx + r * 0.16} y2={cy - r * 0.32} {...stroke} />
+        </>
+      )}
+      {open && (
+        <>
+          <path d={`M${cx - ex - r * 0.16} ${cy - r * 0.46} Q${cx - ex} ${cy - r * 0.6} ${cx - ex + r * 0.16} ${cy - r * 0.46}`} {...stroke} />
+          <path d={`M${cx + ex - r * 0.16} ${cy - r * 0.46} Q${cx + ex} ${cy - r * 0.6} ${cx + ex + r * 0.16} ${cy - r * 0.46}`} {...stroke} />
+        </>
+      )}
+      {kind === 'happy' && <path d={`M${cx - r * 0.42} ${cy + r * 0.18} Q${cx} ${cy + r * 0.7} ${cx + r * 0.42} ${cy + r * 0.18}`} {...stroke} />}
+      {kind === 'calm' && <path d={`M${cx - r * 0.26} ${cy + r * 0.32} Q${cx} ${cy + r * 0.5} ${cx + r * 0.26} ${cy + r * 0.32}`} {...stroke} />}
+      {kind === 'sad' && (
+        <>
+          <path d={`M${cx - r * 0.34} ${cy + r * 0.5} Q${cx} ${cy + r * 0.16} ${cx + r * 0.34} ${cy + r * 0.5}`} {...stroke} />
+          <path
+            d={`M${cx + ex} ${ey + r * 0.16} Q${cx + ex + r * 0.1} ${ey + r * 0.34} ${cx + ex} ${ey + r * 0.38} Q${cx + ex - r * 0.1} ${ey + r * 0.34} ${cx + ex} ${ey + r * 0.16} Z`}
+            fill="#fff"
+            stroke={INK}
+            strokeWidth="2"
+          />
+        </>
+      )}
+      {kind === 'angry' && <path d={`M${cx - r * 0.3} ${cy + r * 0.48} Q${cx} ${cy + r * 0.28} ${cx + r * 0.3} ${cy + r * 0.48}`} {...stroke} />}
+      {kind === 'scared' && (
+        <path
+          d={`M${cx - r * 0.36} ${cy + r * 0.42} l${r * 0.12} ${-r * 0.1} l${r * 0.12} ${r * 0.1} l${r * 0.12} ${-r * 0.1} l${r * 0.12} ${r * 0.1} l${r * 0.12} ${-r * 0.1} l${r * 0.12} ${r * 0.1}`}
+          {...stroke}
+          strokeLinejoin="round"
+        />
+      )}
+      {kind === 'surprised' && <ellipse cx={cx} cy={cy + r * 0.38} rx={r * 0.15} ry={r * 0.21} fill="#fff" stroke={INK} strokeWidth="3" />}
+    </g>
+  );
+}
+
+const FEELINGS: Feeling[] = ['happy', 'sad', 'angry', 'scared', 'surprised', 'calm'];
+
+function FeelingsSheet({ labels }: { labels: SheetLabels }) {
+  return (
+    <Page height={640}>
+      {FEELINGS.map((kind, i) => {
+        const cx = 100 + (i % 3) * 200;
+        const cy = i < 3 ? 86 : 290;
+        return (
+          <g key={kind}>
+            <Face cx={cx} cy={cy} r={66} kind={kind} />
+            <Label x={cx} y={cy + 90} size={19}>
+              {labels.feelings[kind]}
+            </Label>
+          </g>
+        );
+      })}
+      <Box x={6} y={424} w={588} h={212} />
+      <Label x={300} y={452} size={20}>
+        {labels.feelToday}
+      </Label>
+      <Face cx={300} cy={546} r={76} />
+    </Page>
+  );
+}
+
+// ============================================================================
+// MATEMATIKA (mnogo zadataka) I VEŽBE UZ LEKCIJE O VREMENU
+// ============================================================================
+
+// Isti zadaci pri svakom otvaranju i štampi: brojevi dolaze iz generatora sa fiksnim semenom.
+function seeded(seed: number) {
+  let a = seed;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+type Rnd = () => number;
+const randInt = (rnd: Rnd, min: number, max: number) => min + Math.floor(rnd() * (max - min + 1));
+
+type Op = '+' | '−' | '·' | ':';
+
+interface Drill {
+  a: number;
+  op: Op;
+  b: number;
+  hide: 0 | 1 | 2; // 0 = prvi broj, 1 = drugi broj, 2 = rezultat
+}
+
+function solve({ a, op, b }: Drill): number {
+  if (op === '+') return a + b;
+  if (op === '−') return a - b;
+  if (op === '·') return a * b;
+  return a / b;
+}
+
+// Pravi `count` različitih zadataka; `make` vraća null kada izvučeni brojevi ne odgovaraju pravilu.
+function drills(seed: number, count: number, make: (rnd: Rnd) => Drill | null): Drill[] {
+  const rnd = seeded(seed);
+  const seen = new Set<string>();
+  const out: Drill[] = [];
+  for (let tries = 0; out.length < count && tries < 20000; tries++) {
+    const d = make(rnd);
+    if (!d) continue;
+    const key = `${d.a}${d.op}${d.b}${d.hide}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(d);
+  }
+  return out;
+}
+
+const DRILLS_PER_PAGE = 48;
+const per = (make: (rnd: Rnd) => Drill | null, seed: number) => drills(seed, DRILLS_PER_PAGE, make);
+
+const add10 = (rnd: Rnd): Drill | null => {
+  const a = randInt(rnd, 0, 10);
+  const b = randInt(rnd, 0, 10);
+  return a + b <= 10 && a + b > 1 ? { a, op: '+', b, hide: 2 } : null;
+};
+const sub10 = (rnd: Rnd): Drill | null => {
+  const a = randInt(rnd, 2, 10);
+  return { a, op: '−', b: randInt(rnd, 0, a), hide: 2 };
+};
+const missing = (max: number) => (rnd: Rnd): Drill | null => {
+  const sum = randInt(rnd, 3, max);
+  const a = randInt(rnd, 1, sum - 1);
+  const hide = rnd() < 0.5 ? 0 : 1;
+  return rnd() < 0.6 ? { a, op: '+', b: sum - a, hide } : { a: sum, op: '−', b: a, hide };
+};
+// Do 20 bez prelaza: jedinice se ne prelivaju u novu deseticu.
+const within20 = (rnd: Rnd): Drill | null => {
+  const u1 = randInt(rnd, 0, 9);
+  const u2 = randInt(rnd, 1, 9);
+  if (rnd() < 0.5) return u1 + u2 <= 9 ? { a: 10 + u1, op: '+', b: u2, hide: 2 } : null;
+  return u2 <= u1 ? { a: 10 + u1, op: '−', b: u2, hide: 2 } : null;
+};
+const across20 = (rnd: Rnd): Drill | null => {
+  const a = randInt(rnd, 2, 9);
+  const b = randInt(rnd, 2, 9);
+  if (a + b <= 10) return null;
+  return rnd() < 0.5 ? { a, op: '+', b, hide: 2 } : { a: a + b, op: '−', b, hide: 2 };
+};
+const within100 = (carry: boolean) => (rnd: Rnd): Drill | null => {
+  const a = randInt(rnd, 11, 89);
+  const b = rnd() < 0.3 && !carry ? randInt(rnd, 1, 8) * 10 : randInt(rnd, 3, 69);
+  const plus = rnd() < 0.5;
+  const unitsCarry = plus ? (a % 10) + (b % 10) >= 10 : a % 10 < b % 10;
+  if (unitsCarry !== carry) return null;
+  if (plus) return a + b <= 99 ? { a, op: '+', b, hide: 2 } : null;
+  return a > b ? { a, op: '−', b, hide: 2 } : null;
+};
+const multiply = (from: number, to: number) => (rnd: Rnd): Drill | null => {
+  const t = randInt(rnd, from, to);
+  const n = randInt(rnd, 1, 10);
+  return rnd() < 0.5 ? { a: t, op: '·', b: n, hide: 2 } : { a: n, op: '·', b: t, hide: 2 };
+};
+const divide = (from: number, to: number) => (rnd: Rnd): Drill | null => {
+  const d = randInt(rnd, from, to);
+  const q = randInt(rnd, 1, 10);
+  return { a: d * q, op: ':', b: d, hide: 2 };
+};
+
+function DrillCell({ drill, x, y }: { drill: Drill; x: number; y: number }) {
+  const values = [drill.a, drill.b, solve(drill)];
+  // Tri polja za brojeve (desno poravnata) i dva znaka između; skriveno polje je prazan kvadratić.
+  const slots = [
+    { right: x + 52, sign: drill.op, signX: x + 68 },
+    { right: x + 124, sign: '=', signX: x + 140 },
+    { right: x + 194, sign: '', signX: 0 },
+  ];
+  return (
+    <g>
+      {slots.map((slot, i) => (
+        <g key={i}>
+          {drill.hide === i ? (
+            <rect x={slot.right - 44} y={y - 16} width="44" height="32" rx="6" fill="#fff" stroke={INK} strokeWidth="1.6" />
+          ) : (
+            <text x={slot.right - 2} y={y} textAnchor="end" dominantBaseline="central" fontSize="22" fontWeight="600" fontFamily={FONT} fill={INK}>
+              {values[i]}
+            </text>
+          )}
+          {slot.sign && (
+            <Label x={slot.signX} y={y} size={22}>
+              {slot.sign}
+            </Label>
+          )}
+        </g>
+      ))}
+    </g>
+  );
+}
+
+function DrillPage({ tasks }: { tasks: Drill[] }) {
+  const rows = Math.ceil(tasks.length / 3);
+  return (
+    <Page height={rows * 40 + 8}>
+      {[1, 2].map((c) => (
+        <line key={c} x1={c * 200} x2={c * 200} y1="4" y2={rows * 40 + 4} stroke={GUIDE} strokeWidth="1.5" />
+      ))}
+      {tasks.map((drill, i) => (
+        <DrillCell key={i} drill={drill} x={(i % 3) * 200} y={24 + Math.floor(i / 3) * 40} />
+      ))}
+    </Page>
+  );
+}
+
+const drillPages = (id: string, pages: readonly Drill[][]) => pages.map((tasks, i) => <DrillPage key={`${id}-${i}`} tasks={tasks} />);
+
+const DRILL_SETS = {
+  mathAdd10: [per(add10, 101), per(add10, 102)],
+  mathSub10: [per(sub10, 201), per(sub10, 202)],
+  mathMissing: [per(missing(10), 301), per(missing(20), 302)],
+  mathAddSub20: [per(within20, 401), per(across20, 402)],
+  mathAddSub100: [per(within100(false), 501), per(within100(true), 502)],
+  mathMultiply: [per(multiply(1, 5), 601), per(multiply(6, 10), 602)],
+  mathDivide: [per(divide(1, 5), 701), per(divide(6, 10), 702)],
+} as const;
+
+// Kućica: broj na krovu, a na svakom spratu dva sabirka od kojih je jedan prazan.
+function NumberHouse({ x, y, n, seed }: { x: number; y: number; n: number; seed: number }) {
+  const rnd = seeded(seed);
+  const parts = [...new Set(Array.from({ length: 12 }, () => randInt(rnd, 0, n)))].slice(0, 4);
+  const w = 132;
+  const floor = 30;
+  return (
+    <g>
+      <path d={`M${x} ${y + 46} L${x + w / 2} ${y} L${x + w} ${y + 46} Z`} fill="#fff" stroke={INK} strokeWidth="2.4" strokeLinejoin="round" />
+      <Label x={x + w / 2} y={y + 30} size={22}>
+        {n}
+      </Label>
+      {parts.map((a, i) => {
+        const fy = y + 46 + i * floor;
+        const leftShown = i % 2 === 0;
+        return (
+          <g key={i}>
+            <rect x={x} y={fy} width={w / 2} height={floor} fill="#fff" stroke={INK} strokeWidth="2" />
+            <rect x={x + w / 2} y={fy} width={w / 2} height={floor} fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={x + (leftShown ? w / 4 : (3 * w) / 4)} y={fy + floor / 2} size={18}>
+              {leftShown ? a : n - a}
+            </Label>
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+const HOUSES = [5, 6, 7, 8, 9, 10, 10, 12, 14, 15, 18, 20];
+
+function HousesSheet() {
+  return (
+    <Page height={640}>
+      {HOUSES.map((n, i) => (
+        <NumberHouse key={i} x={10 + (i % 4) * 148} y={8 + Math.floor(i / 4) * 214} n={n} seed={800 + i} />
+      ))}
+    </Page>
+  );
+}
+
+// Piramida: red 0 su osnovni brojevi, svaki sledeći red je zbir dva susedna ispod. `hidden` su prazne cigle ("red-indeks").
+function pyramidRows(base: number[]): number[][] {
+  const rows = [base];
+  while (rows[rows.length - 1].length > 1) {
+    const last = rows[rows.length - 1];
+    rows.push(last.slice(1).map((v, i) => v + last[i]));
+  }
+  return rows;
+}
+
+function Pyramid({ x, y, base, hidden, brick }: { x: number; y: number; base: number[]; hidden: string[]; brick: number }) {
+  const rows = pyramidRows(base);
+  const h = 38;
+  return (
+    <g>
+      {rows.map((row, level) =>
+        row.map((value, i) => {
+          const bx = x + level * (brick / 2) + i * brick;
+          const by = y + (rows.length - 1 - level) * h;
+          const show = !hidden.includes(`${level}-${i}`);
+          return (
+            <g key={`${level}-${i}`}>
+              <rect x={bx} y={by} width={brick} height={h} fill="#fff" stroke={INK} strokeWidth="2" />
+              {show && (
+                <Label x={bx + brick / 2} y={by + h / 2} size={19}>
+                  {value}
+                </Label>
+              )}
+            </g>
+          );
+        }),
+      )}
+    </g>
+  );
+}
+
+// Svaka piramida je rešiva: ako fali osnovni broj, poznata je cigla iznad njega.
+const PYRAMIDS_20: { base: number[]; hidden: string[] }[] = [
+  { base: [2, 3, 1], hidden: ['1-0', '1-1', '2-0'] },
+  { base: [4, 1, 5], hidden: ['1-0', '1-1', '2-0'] },
+  { base: [3, 3, 2], hidden: ['1-0', '1-1', '2-0'] },
+  { base: [5, 2, 4], hidden: ['0-1', '1-1', '2-0'] },
+  { base: [1, 6, 3], hidden: ['0-0', '0-2', '2-0'] },
+  { base: [2, 5, 4], hidden: ['0-1', '1-1', '2-0'] },
+];
+const PYRAMIDS_100: { base: number[]; hidden: string[] }[] = [
+  { base: [5, 8, 3, 6], hidden: ['1-0', '1-1', '1-2', '2-0', '2-1', '3-0'] },
+  { base: [10, 4, 7, 9], hidden: ['1-0', '1-1', '1-2', '2-0', '2-1', '3-0'] },
+  { base: [6, 12, 5, 8], hidden: ['1-0', '1-1', '1-2', '2-0', '2-1', '3-0'] },
+  { base: [9, 6, 11, 4], hidden: ['0-1', '1-1', '1-2', '2-0', '2-1', '3-0'] },
+  { base: [7, 9, 8, 14], hidden: ['0-0', '0-3', '1-1', '2-0', '2-1', '3-0'] },
+  { base: [15, 5, 10, 6], hidden: ['0-1', '1-1', '1-2', '2-0', '2-1', '3-0'] },
+];
+
+function pyramidPages(): ReactNode[] {
+  return [
+    <Page key="pyramids-20" height={630}>
+      {PYRAMIDS_20.map((p, i) => (
+        <Pyramid key={i} x={i % 2 ? 325 : 35} y={20 + Math.floor(i / 2) * 210} brick={80} {...p} />
+      ))}
+    </Page>,
+    <Page key="pyramids-100" height={640}>
+      {PYRAMIDS_100.map((p, i) => (
+        <Pyramid key={i} x={i % 2 ? 308 : 6} y={14 + Math.floor(i / 2) * 212} brick={70} {...p} />
+      ))}
+    </Page>,
+  ];
+}
+
+// Brojevna prava 0–20: tri broja fale, a luk pokazuje skok.
+const JUMPS: [number, number][] = [
+  [5, 3],
+  [8, 6],
+  [12, 5],
+  [15, -4],
+  [11, -7],
+  [3, 9],
+];
+
+function NumberLineSheet() {
+  const step = 21;
+  const x0 = 24;
+  return (
+    <Page height={640}>
+      {JUMPS.map(([from, jump], r) => {
+        const y = 74 + r * 104;
+        const rnd = seeded(900 + r);
+        const to = from + jump;
+        const gaps = new Set<number>();
+        while (gaps.size < 3) {
+          const n = randInt(rnd, 1, 19);
+          if (n !== from && n !== to) gaps.add(n);
+        }
+        const fx = x0 + from * step;
+        const tx = x0 + to * step;
+        const sign = jump > 0 ? '+' : '−';
+        return (
+          <g key={r}>
+            <line x1={x0 - 8} x2={x0 + 20 * step + 12} y1={y} y2={y} stroke={INK} strokeWidth="2.2" />
+            <path d={`M${x0 + 20 * step + 12} ${y} l-10 -6 v12 z`} fill={INK} />
+            {Array.from({ length: 21 }, (_, n) => {
+              const x = x0 + n * step;
+              return (
+                <g key={n}>
+                  <line x1={x} x2={x} y1={y - 7} y2={y + 7} stroke={INK} strokeWidth="1.8" />
+                  {gaps.has(n) ? (
+                    <rect x={x - 10} y={y + 11} width="20" height="22" rx="4" fill="#fff" stroke={INK} strokeWidth="1.5" />
+                  ) : (
+                    <Label x={x} y={y + 22} size={13}>
+                      {n}
+                    </Label>
+                  )}
+                </g>
+              );
+            })}
+            <path d={`M${fx} ${y - 8} Q${(fx + tx) / 2} ${y - 62} ${tx} ${y - 8}`} fill="none" stroke={INK} strokeWidth="2.2" />
+            <path
+              d={jump > 0 ? `M${tx} ${y - 8} l-9 -9 M${tx} ${y - 8} l2 -12` : `M${tx} ${y - 8} l9 -9 M${tx} ${y - 8} l-2 -12`}
+              stroke={INK}
+              strokeWidth="2.2"
+              strokeLinecap="round"
+            />
+            <Label x={(fx + tx) / 2} y={y - 44} size={16}>
+              {`${sign}${Math.abs(jump)}`}
+            </Label>
+            <Label x={480} y={y} size={18} anchor="start">
+              {`${from} ${sign} ${Math.abs(jump)} =`}
+            </Label>
+            <rect x="558" y={y - 17} width="36" height="34" rx="6" fill="#fff" stroke={INK} strokeWidth="1.8" />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+function AnswerLines({ labels }: { labels: SheetLabels }) {
+  return (
+    <div className="mt-[3mm] grid grid-cols-2 gap-6 text-[14px]">
+      <span className="sheet-line">{labels.calculation}</span>
+      <span className="sheet-line">{labels.answer}</span>
+    </div>
+  );
+}
+
+const WORD_PROBLEMS_PER_PAGE = 5;
+
+function wordProblemPages(labels: SheetLabels): ReactNode[] {
+  return chunk(labels.wordProblems, WORD_PROBLEMS_PER_PAGE).map((page, p) => (
+    <ol key={p} className="grid gap-[4mm] text-[#111827]">
+      {page.map((text, i) => (
+        <li key={text} className="rounded-xl border-2 border-[#111827] px-[4mm] py-[3mm]">
+          <p className="flex gap-2 text-[15.5px] leading-snug">
+            <span className="font-bold">{p * WORD_PROBLEMS_PER_PAGE + i + 1}.</span>
+            <span>{text}</span>
+          </p>
+          <div className="h-[16mm]" />
+          <AnswerLines labels={labels} />
+        </li>
+      ))}
+    </ol>
+  ));
+}
+
+// Čitanje sata: puni sati i pola sata, pa spajanje sa digitalnim zapisom.
+const READ_TIMES: [number, number][] = [
+  [3, 0],
+  [6, 30],
+  [9, 0],
+  [12, 30],
+  [1, 30],
+  [4, 0],
+  [7, 30],
+  [10, 0],
+  [2, 30],
+  [5, 0],
+  [8, 30],
+  [11, 30],
+];
+const MATCH_TIMES: [number, number][] = [
+  [4, 30],
+  [10, 0],
+  [1, 0],
+  [7, 30],
+  [12, 0],
+  [3, 30],
+];
+const MATCH_ORDER = [3, 0, 5, 2, 4, 1];
+const timeText = ([h, m]: [number, number]) => `${h}:${String(m).padStart(2, '0')}`;
+
+function TimeBox({ cx, y }: { cx: number; y: number }) {
+  return (
+    <g>
+      <rect x={cx - 50} y={y} width="100" height="36" rx="8" fill="#fff" stroke={INK} strokeWidth="2" />
+      <Label x={cx} y={y + 17} size={22}>
+        :
+      </Label>
+    </g>
+  );
+}
+
+function clockReadPages(): ReactNode[] {
+  return [
+    <Page key="clock-read-half" height={640}>
+      {READ_TIMES.map(([h, m], i) => {
+        const cx = 75 + (i % 4) * 150;
+        const cy = 70 + Math.floor(i / 4) * 214;
+        return (
+          <g key={i}>
+            <ClockFace cx={cx} cy={cy} r={58} hour={h} minute={m} />
+            <TimeBox cx={cx} y={cy + 72} />
+          </g>
+        );
+      })}
+    </Page>,
+    <Page key="clock-match" height={636}>
+      {MATCH_TIMES.map(([h, m], i) => {
+        const cy = 54 + i * 106;
+        const right = MATCH_TIMES[MATCH_ORDER[i]];
+        return (
+          <g key={i}>
+            <ClockFace cx={110} cy={cy} r={46} hour={h} minute={m} />
+            <circle cx="180" cy={cy} r="7" fill={INK} />
+            <circle cx="420" cy={cy} r="7" fill={INK} />
+            <rect x="440" y={cy - 24} width="110" height="48" rx="10" fill="#fff" stroke={INK} strokeWidth="2.2" />
+            <Label x={495} y={cy} size={26}>
+              {timeText(right)}
+            </Label>
+          </g>
+        );
+      })}
+    </Page>,
+  ];
+}
+
+// Računanje sa satom: [sat, minut, koliko sati dodati (negativno = oduzeti)].
+const CLOCK_MATH: [number, number, number][] = [
+  [3, 0, 2],
+  [7, 0, 3],
+  [10, 0, 2],
+  [11, 0, 3],
+  [5, 30, 1],
+  [8, 0, -2],
+  [1, 0, -1],
+  [9, 30, 2],
+];
+
+function ClockMathSheet() {
+  return (
+    <Page height={640}>
+      {CLOCK_MATH.map(([h, m, add], i) => {
+        const x = (i % 2) * 300;
+        const cy = 62 + Math.floor(i / 2) * 156;
+        return (
+          <g key={i}>
+            {i % 2 === 1 && <line x1="300" x2="300" y1={cy - 56} y2={cy + 80} stroke={GUIDE} strokeWidth="1.5" />}
+            <ClockFace cx={x + 56} cy={cy} r={48} hour={h} minute={m} />
+            <line x1={x + 112} x2={x + 176} y1={cy} y2={cy} stroke={INK} strokeWidth="2.5" />
+            <path d={`M${x + 184} ${cy} l-12 -7 v14 z`} fill={INK} />
+            <Label x={x + 146} y={cy - 18} size={18}>
+              {`${add > 0 ? '+' : '−'}${Math.abs(add)} h`}
+            </Label>
+            <ClockFace cx={x + 240} cy={cy} r={48} />
+            <TimeBox cx={x + 240} y={cy + 56} />
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+// Dani i meseci: [indeks dana] za pre/posle, [tri meseca, koji fali], [mesec → doba].
+const NEIGHBOUR_DAYS = [1, 3, 4, 6, 2];
+const MONTH_GAPS: [number[], number][] = [
+  [[0, 1, 2], 1],
+  [[4, 5, 6], 1],
+  [[8, 9, 10], 2],
+  [[10, 11, 0], 1],
+  [[2, 3, 4], 0],
+  [[6, 7, 8], 1],
+];
+const MONTHS_TO_MATCH = [0, 6, 3, 9, 11, 4];
+
+function DaysOrderSheet({ labels }: { labels: SheetLabels }) {
+  const blank = (cx: number, y: number, w: number) => <rect x={cx - w / 2} y={y - 16} width={w} height="32" rx="7" fill="#fff" stroke={INK} strokeWidth="1.8" />;
+  return (
+    <Page height={655}>
+      <Label x={6} y={14} size={17} anchor="start">
+        {labels.daysOrder.neighbours}
+      </Label>
+      {NEIGHBOUR_DAYS.map((d, i) => {
+        const y = 54 + i * 42;
+        return (
+          <g key={d}>
+            {blank(150, y, 180)}
+            <Label x={300} y={y} size={19}>
+              {labels.weekdays[d]}
+            </Label>
+            {blank(450, y, 180)}
+          </g>
+        );
+      })}
+      <Divider y={262} />
+      <Label x={6} y={286} size={17} anchor="start">
+        {labels.daysOrder.missingMonth}
+      </Label>
+      {MONTH_GAPS.map(([months, gap], i) => {
+        const x0 = (i % 2) * 300;
+        const y = 326 + Math.floor(i / 2) * 44;
+        return (
+          <g key={i}>
+            {i % 2 === 1 && <line x1="300" x2="300" y1={y - 20} y2={y + 20} stroke={GUIDE} strokeWidth="1.5" />}
+            <Label x={x0 + 100} y={y + 4} size={16}>
+              ,
+            </Label>
+            <Label x={x0 + 200} y={y + 4} size={16}>
+              ,
+            </Label>
+            {months.map((m, j) =>
+              j === gap ? (
+                <g key={j}>{blank(x0 + 50 + j * 100, y, 90)}</g>
+              ) : (
+                <Label key={j} x={x0 + 50 + j * 100} y={y} size={16}>
+                  {labels.months[m]}
+                </Label>
+              ),
+            )}
+          </g>
+        );
+      })}
+      <Divider y={444} />
+      <Label x={6} y={468} size={17} anchor="start">
+        {labels.daysOrder.monthSeason}
+      </Label>
+      {MONTHS_TO_MATCH.map((m, i) => {
+        const x = 50 + i * 100;
+        return (
+          <g key={m}>
+            <Label x={x} y={506} size={16}>
+              {labels.months[m]}
+            </Label>
+            <circle cx={x} cy="528" r="6" fill={INK} />
+          </g>
+        );
+      })}
+      {SEASONS.map(({ key, Icon }, i) => {
+        const x = 90 + i * 140;
+        return (
+          <g key={key}>
+            <circle cx={x} cy="574" r="6" fill={INK} />
+            <Pic Icon={Icon} x={x} y={608} size={40} />
+            <Label x={x} y={644} size={14}>
+              {labels.seasons[key]}
+            </Label>
+          </g>
+        );
+      })}
+    </Page>
+  );
+}
+
+// Kalendar: mesec od 30 dana koji počinje u sredu (pitanja u rečniku su napisana za ovaj raspored).
+const CALENDAR_START = 2;
+const CALENDAR_DAYS = 30;
+
+function calendarPages(labels: SheetLabels): ReactNode[] {
+  const cell = 80;
+  const rowH = 54;
+  return [
+    <div key="calendar" className="grid gap-[5mm]">
+      <Page height={6 + 36 + 5 * rowH + 6}>
+        {labels.weekdays.map((day, i) => (
+          <g key={day}>
+            <rect x={20 + i * cell} y="6" width={cell} height="36" fill="#fff" stroke={INK} strokeWidth="2" />
+            <Label x={20 + i * cell + cell / 2} y={24} size={15}>
+              {day.slice(0, 3)}
+            </Label>
+          </g>
+        ))}
+        {Array.from({ length: 35 }, (_, i) => {
+          const day = i - CALENDAR_START + 1;
+          const x = 20 + (i % 7) * cell;
+          const y = 42 + Math.floor(i / 7) * rowH;
+          return (
+            <g key={i}>
+              <rect x={x} y={y} width={cell} height={rowH} fill="#fff" stroke={INK} strokeWidth="1.6" />
+              {day >= 1 && day <= CALENDAR_DAYS && (
+                <Label x={x + 18} y={y + 17} size={16}>
+                  {day}
+                </Label>
+              )}
+            </g>
+          );
+        })}
+      </Page>
+      <ol className="grid gap-[3.5mm] text-[15px] text-[#111827]">
+        {labels.calendarTasks.map((task, i) => (
+          <li key={task} className="flex items-end gap-3">
+            <span className="shrink-0">
+              <span className="font-bold">{i + 1}.</span> {task}
+            </span>
+            <span className="sheet-line min-w-[30mm] flex-1" />
+          </li>
+        ))}
+      </ol>
+    </div>,
+  ];
+}
+
 interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
+  labels: SheetLabels;
 }
 
 // Svaki list vraća svoje strane; stranica radnog lista oko svake dodaje zaglavlje i prelom strane.
@@ -2488,6 +3817,32 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   coloringCyrillic: () => coloringLetterPages(CYRILLIC_COLOR_CARDS),
   colorByNumber: (ctx) => [<ColorByNumberSheet key="colorByNumber" {...ctx} />],
   coloringScenes: () => ColoringScenesPages(),
+  coloringHandWash: ({ labels }) => [<HandWashSheet key="coloringHandWash" labels={labels} />],
+  coloringTraffic: ({ labels, colorNames }) => [<TrafficSheet key="coloringTraffic" labels={labels} colorNames={colorNames} />],
+  coloringFood: ({ labels }) => [<FoodSheet key="coloringFood" labels={labels} />],
+  coloringRecycle: ({ labels }) => [<RecycleSheet key="coloringRecycle" labels={labels} />],
+  coloringFeelings: ({ labels }) => [<FeelingsSheet key="coloringFeelings" labels={labels} />],
+  timeDayParts: ({ labels }) => [<DayPartsSheet key="timeDayParts" labels={labels} />],
+  timeSequence: () => [<SequenceSheet key="timeSequence" />],
+  timeClock: () => clockPages(),
+  timeRoutine: ({ labels }) => [<RoutineSheet key="timeRoutine" labels={labels} />],
+  timeWeek: ({ labels }) => [<WeekSheet key="timeWeek" labels={labels} />],
+  timeYear: ({ labels }) => [<YearSheet key="timeYear" labels={labels} />],
+  timeClockRead: () => clockReadPages(),
+  timeClockMath: () => [<ClockMathSheet key="timeClockMath" />],
+  timeDaysOrder: ({ labels }) => [<DaysOrderSheet key="timeDaysOrder" labels={labels} />],
+  timeCalendar: ({ labels }) => calendarPages(labels),
+  mathNumberLine: () => [<NumberLineSheet key="mathNumberLine" />],
+  mathHouses: () => [<HousesSheet key="mathHouses" />],
+  mathAdd10: () => drillPages('mathAdd10', DRILL_SETS.mathAdd10),
+  mathSub10: () => drillPages('mathSub10', DRILL_SETS.mathSub10),
+  mathMissing: () => drillPages('mathMissing', DRILL_SETS.mathMissing),
+  mathAddSub20: () => drillPages('mathAddSub20', DRILL_SETS.mathAddSub20),
+  mathPyramids: () => pyramidPages(),
+  mathAddSub100: () => drillPages('mathAddSub100', DRILL_SETS.mathAddSub100),
+  mathMultiply: () => drillPages('mathMultiply', DRILL_SETS.mathMultiply),
+  mathDivide: () => drillPages('mathDivide', DRILL_SETS.mathDivide),
+  mathWordProblems: ({ labels }) => wordProblemPages(labels),
   trace: () => [<TraceSheet key="trace" />],
   dots: () => [<DotsSheet key="dots" />],
   maze: () => [<MazeSheet key="maze" />],

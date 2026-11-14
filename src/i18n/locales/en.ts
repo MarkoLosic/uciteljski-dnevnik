@@ -351,7 +351,7 @@ export const en: Dictionary = {
       tip: 'Tip: print on A4 paper. Black and white works too. Crayons and a thick pencil are better than a thin pen.',
       sectionEyebrow: 'Printables · A4 format',
       sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
-      sectionText: 'Complete collection of 60 worksheets, differentiated tests and themed coloring pages ready to print on A4: achievement tests for 3 levels (basic, intermediate, advanced), themed coloring books, alphabet pages, fine motor skills and math.',
+      sectionText: 'Complete collection of 91 worksheets, differentiated tests and themed coloring pages ready to print on A4: achievement tests for 3 levels (basic, intermediate, advanced), themed coloring books, alphabet pages, fine motor skills and math.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
         tests: 'Differentiated tests (3 levels: basic, intermediate & advanced)',
@@ -360,6 +360,93 @@ export const en: Dictionary = {
         motor: 'Fine motor and pre-writing',
         math: 'Numbers and counting',
         logic: 'Logic and attention',
+        time: 'Telling time — clock, parts of the day, days, months and seasons',
+      },
+      labels: {
+        dayParts: {
+          morning: 'Morning',
+          noon: 'Noon',
+          evening: 'Evening',
+          night: 'Night',
+        },
+        routine: {
+          wakeUp: 'Wake up',
+          breakfast: 'Breakfast',
+          school: 'School',
+          lunch: 'Lunch',
+          play: 'Play',
+          sleep: 'Sleep',
+        },
+        weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        yesterday: 'Yesterday:',
+        today: 'Today:',
+        tomorrow: 'Tomorrow:',
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        seasons: {
+          winter: 'winter',
+          spring: 'spring',
+          summer: 'summer',
+          autumn: 'autumn',
+        },
+        year: 'Year',
+        birthday: 'My birthday is in:',
+        handWash: {
+          wet: 'Wet your hands',
+          soap: 'Add soap',
+          rub: 'Rub well',
+          dry: 'Rinse and dry',
+        },
+        traffic: {
+          stop: 'STOP!',
+          wait: 'GET READY!',
+          go: 'GO!',
+        },
+        food: {
+          everyday: 'Every day',
+          sometimes: 'Sometimes',
+        },
+        bins: {
+          paper: 'Paper',
+          plastic: 'Plastic',
+          glass: 'Glass',
+        },
+        feelings: {
+          happy: 'Happy',
+          sad: 'Sad',
+          angry: 'Angry',
+          scared: 'Scared',
+          surprised: 'Surprised',
+          calm: 'Calm',
+        },
+        feelToday: 'Today I feel:',
+        answer: 'Answer:',
+        calculation: 'Working:',
+        daysOrder: {
+          neighbours: 'Write the day before and the day after.',
+          missingMonth: 'Write the missing month.',
+          monthSeason: 'Match each month to its season.',
+        },
+        calendarTasks: [
+          'What day of the week is the 1st?',
+          'What day is the 15th?',
+          'Circle all the Sundays. How many are there this month?',
+          'Color all Saturdays and Sundays yellow.',
+          'How many days does this month have?',
+          'Today is the 10th. What date will it be in exactly one week?',
+          'What was the date two days before the 20th?',
+        ],
+        wordProblems: [
+          'At snack time, Mia ate 3 apples and Luke ate 4 bananas. How many pieces of fruit did they eat altogether?',
+          'There were 12 carrots on the plate. The children ate 5. How many carrots are left on the plate?',
+          'A week has 7 days. How many days are there in 3 weeks?',
+          'Anna has training twice every week. How many training sessions does she have in 4 weeks?',
+          'School starts at 8 o\'clock and lasts 4 hours. What time does it finish?',
+          'A year has 12 months and 4 seasons. How many months does one season last?',
+          'The class collected 18 plastic bottles and 9 glass jars. How many containers did they collect altogether?',
+          '15 cars were waiting at the traffic lights. When the light turned green, 9 cars drove away. How many cars were still waiting?',
+          'We wash our hands for at least 20 seconds. How many seconds is that if we wash them 3 times a day?',
+          'Luke fell asleep at 9 o\'clock in the evening and woke up at 7 o\'clock in the morning. How many hours did he sleep?',
+        ],
       },
       sheets: {
         testGrade1: {
@@ -497,6 +584,110 @@ export const en: Dictionary = {
         coloringScenes: {
           title: 'Big colouring book — nature, animals & space',
           text: 'Pick your favourite crayons and colour the cheerful nature scene with animals, the space rocket with planets and the underwater world.',
+        },
+        coloringHandWash: {
+          title: 'Coloring: I Wash My Hands',
+          text: 'We wash our hands before eating and after playing. Color all four pictures and tell the steps of handwashing in order.',
+        },
+        coloringTraffic: {
+          title: 'Coloring: Traffic Lights & Crosswalk',
+          text: 'Color the traffic lights in the right colors: red at the top, yellow in the middle, green at the bottom. We cross the street only at the crosswalk, when the light is green.',
+        },
+        coloringFood: {
+          title: 'Coloring: Healthy Food',
+          text: 'Color the healthy food on the big plate — it gives us energy every day. The box at the bottom has sweets we eat only sometimes: circle your favorite.',
+        },
+        coloringRecycle: {
+          title: 'Coloring: Caring for Nature — Sort the Waste',
+          text: 'Draw a line from each item to the bin it goes in. Color the paper bin blue, the plastic bin yellow and the glass bin green.',
+        },
+        coloringFeelings: {
+          title: 'Coloring: How Do I Feel?',
+          text: 'Look at the faces and show how each feeling looks. Color them, then draw how you feel today in the big circle at the bottom.',
+        },
+        timeSequence: {
+          title: 'What happened first? Putting events in order',
+          text: 'Look at the pictures in each row. In the box below, write 1 for what happened first, then 2, 3 and 4. Then color the pictures.',
+        },
+        timeDayParts: {
+          title: 'Parts of the day: morning, noon, evening and night',
+          text: 'Color what you do in the morning, at noon, in the evening and at night. Point to where the sun is in the morning and at noon. What do you do when the moon comes out?',
+        },
+        timeRoutine: {
+          title: 'My day and the clock',
+          text: 'Color the pictures in the order of your day. On the clock next to each picture, draw the hands — what time do you wake up, have lunch and go to bed?',
+        },
+        timeClock: {
+          title: 'What time is it? Learning the clock',
+          text: 'On the first page, color the big clock, then write the time under each small clock. On the second page, draw the hands: the short one for hours, the long one for minutes.',
+        },
+        timeWeek: {
+          title: 'Days of the week — the caterpillar',
+          text: 'Color the caterpillar: school days in one color, the weekend in another. Read the days in order, draw or write what you do on each one, then fill in yesterday, today and tomorrow.',
+        },
+        timeYear: {
+          title: 'The year: months and seasons',
+          text: 'Color the winter months blue, spring green, summer yellow and autumn orange. Find the month of your birthday, draw a heart in it and finish the sentence.',
+        },
+        timeClockRead: {
+          title: 'Reading the clock: o\'clock and half past',
+          text: 'On the first page, look at the hands and write the time (e.g. 6:30). On the second page, draw a line from each clock to the matching time.',
+        },
+        timeClockMath: {
+          title: 'Clock math: what time will it be?',
+          text: 'Look at the time on the first clock and how many hours to add or take away. Draw the hands on the second clock and write the new time.',
+        },
+        timeDaysOrder: {
+          title: 'Days and months in order',
+          text: 'Write the day before and after each day, fill in the missing months, and draw a line from each month to its season.',
+        },
+        timeCalendar: {
+          title: 'Reading a calendar',
+          text: 'Look at the calendar for one month and answer the questions below it. The first row shows short names of the days.',
+        },
+        mathNumberLine: {
+          title: 'Number line jumps',
+          text: 'Write the missing numbers on the number line. The arc shows a jump forward (+) or back (−) — work out where the jump lands.',
+        },
+        mathHouses: {
+          title: 'Number houses — number bonds',
+          text: 'The number on the roof is the sum of the two numbers on each floor. Write the missing number so they add up to the roof number.',
+        },
+        mathAdd10: {
+          title: 'Addition within 10 (96 problems)',
+          text: 'Add the numbers and write the sum in the box. Two pages with 48 problems each — take your time and check with fingers or pictures.',
+        },
+        mathSub10: {
+          title: 'Subtraction within 10 (96 problems)',
+          text: 'Subtract and write the difference in the box. Two pages with 48 problems each.',
+        },
+        mathMissing: {
+          title: 'Find the missing number (within 10 and 20)',
+          text: 'Write the missing number so the equation is true. Page one within 10, page two within 20.',
+        },
+        mathAddSub20: {
+          title: 'Addition and subtraction within 20',
+          text: 'Page one: without bridging ten. Page two: bridging ten (e.g. 8 + 5, 14 − 6).',
+        },
+        mathPyramids: {
+          title: 'Number pyramids',
+          text: 'Each brick is the sum of the two bricks below it. Fill in the empty bricks. Page one within 20, page two within 100.',
+        },
+        mathAddSub100: {
+          title: 'Addition and subtraction within 100',
+          text: 'Page one: without regrouping. Page two: with regrouping (e.g. 37 + 25, 62 − 18). Work out the tens first, then the ones.',
+        },
+        mathMultiply: {
+          title: 'Times tables (96 problems)',
+          text: 'Page one: multiplying by 1 to 5. Page two: by 6 to 10. Write the product in the box.',
+        },
+        mathDivide: {
+          title: 'Division (96 problems)',
+          text: 'Page one: dividing by 1 to 5. Page two: by 6 to 10. Use the times tables to help you.',
+        },
+        mathWordProblems: {
+          title: 'Word problems: food, time, traffic and nature',
+          text: 'Read each problem carefully, write the calculation and answer in a full sentence. The problems connect to the lessons on healthy food, the clock, days, traffic and caring for nature.',
         },
         trace: {
           title: 'Follow the path',

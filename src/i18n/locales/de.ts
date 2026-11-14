@@ -351,7 +351,7 @@ export const de: Dictionary = {
       tip: 'Tipp: auf A4-Papier drucken. Schwarz-Weiß funktioniert auch. Buntstifte und ein dicker Bleistift sind besser als ein dünner Kuli.',
       sectionEyebrow: 'Zum Ausdrucken · A4-Format',
       sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
-      sectionText: 'Komplette Sammlung von 60 Arbeitsblättern, differenzierten Leistungstests und Malbüchern im A4-Format: Tests für 3 Lernstufen (Basis, Mittel, Fortgeschritten), thematische Ausmalbilder, Buchstaben und Rechnen.',
+      sectionText: 'Komplette Sammlung von 91 Arbeitsblättern, differenzierten Leistungstests und Malbüchern im A4-Format: Tests für 3 Lernstufen (Basis, Mittel, Fortgeschritten), thematische Ausmalbilder, Buchstaben und Rechnen.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
         tests: 'Differenzierte Tests (3 Stufen: Basis, Mittel & Fortgeschritten)',
@@ -360,6 +360,93 @@ export const de: Dictionary = {
         motor: 'Feinmotorik und Schreibvorbereitung',
         math: 'Zahlen und Rechnen',
         logic: 'Logik und Konzentration',
+        time: 'Zeit verstehen — Uhr, Tageszeiten, Wochentage, Monate und Jahreszeiten',
+      },
+      labels: {
+        dayParts: {
+          morning: 'Morgen',
+          noon: 'Mittag',
+          evening: 'Abend',
+          night: 'Nacht',
+        },
+        routine: {
+          wakeUp: 'Aufstehen',
+          breakfast: 'Frühstück',
+          school: 'Schule',
+          lunch: 'Mittagessen',
+          play: 'Spielen',
+          sleep: 'Schlafen',
+        },
+        weekdays: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
+        yesterday: 'Gestern:',
+        today: 'Heute:',
+        tomorrow: 'Morgen:',
+        months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        seasons: {
+          winter: 'Winter',
+          spring: 'Frühling',
+          summer: 'Sommer',
+          autumn: 'Herbst',
+        },
+        year: 'Jahr',
+        birthday: 'Mein Geburtstag ist im:',
+        handWash: {
+          wet: 'Hände nass machen',
+          soap: 'Einseifen',
+          rub: 'Gut reiben',
+          dry: 'Abspülen, abtrocknen',
+        },
+        traffic: {
+          stop: 'STOPP!',
+          wait: 'ACHTUNG!',
+          go: 'GEH!',
+        },
+        food: {
+          everyday: 'Jeden Tag',
+          sometimes: 'Manchmal',
+        },
+        bins: {
+          paper: 'Papier',
+          plastic: 'Plastik',
+          glass: 'Glas',
+        },
+        feelings: {
+          happy: 'Fröhlich',
+          sad: 'Traurig',
+          angry: 'Wütend',
+          scared: 'Ängstlich',
+          surprised: 'Überrascht',
+          calm: 'Ruhig',
+        },
+        feelToday: 'Heute fühle ich mich:',
+        answer: 'Antwort:',
+        calculation: 'Rechnung:',
+        daysOrder: {
+          neighbours: 'Schreibe den Tag davor und den Tag danach.',
+          missingMonth: 'Schreibe den fehlenden Monat.',
+          monthSeason: 'Verbinde jeden Monat mit seiner Jahreszeit.',
+        },
+        calendarTasks: [
+          'Welcher Wochentag ist der 1.?',
+          'Welcher Tag ist der 15.?',
+          'Kreise alle Sonntage ein. Wie viele gibt es in diesem Monat?',
+          'Male alle Samstage und Sonntage gelb an.',
+          'Wie viele Tage hat dieser Monat?',
+          'Heute ist der 10. Welches Datum ist genau in einer Woche?',
+          'Welches Datum war zwei Tage vor dem 20.?',
+        ],
+        wordProblems: [
+          'In der Pause hat Mia 3 Äpfel und Luka 4 Bananen gegessen. Wie viele Früchte haben sie zusammen gegessen?',
+          'Auf dem Teller lagen 12 Karotten. Die Kinder haben 5 gegessen. Wie viele Karotten liegen noch auf dem Teller?',
+          'Eine Woche hat 7 Tage. Wie viele Tage haben 3 Wochen?',
+          'Anna trainiert jede Woche 2-mal. Wie oft trainiert sie in 4 Wochen?',
+          'Der Unterricht beginnt um 8 Uhr und dauert 4 Stunden. Um wie viel Uhr endet er?',
+          'Ein Jahr hat 12 Monate und 4 Jahreszeiten. Wie viele Monate dauert eine Jahreszeit?',
+          'Die Klasse hat 18 Plastikflaschen und 9 Gläser gesammelt. Wie viele Verpackungen sind das zusammen?',
+          'An der Ampel warteten 15 Autos. Bei Grün fuhren 9 Autos los. Wie viele Autos warteten noch?',
+          'Wir waschen unsere Hände mindestens 20 Sekunden lang. Wie viele Sekunden sind das, wenn wir sie 3-mal am Tag waschen?',
+          'Luka ist um 9 Uhr abends eingeschlafen und um 7 Uhr morgens aufgewacht. Wie viele Stunden hat er geschlafen?',
+        ],
       },
       sheets: {
         testGrade1: {
@@ -497,6 +584,110 @@ export const de: Dictionary = {
         coloringScenes: {
           title: 'Großes Ausmalbuch — Natur, Tiere und Weltraum',
           text: 'Wähle deine Lieblingsbuntstifte und male die fröhliche Natur mit Tieren, die Weltraumrakete mit Planeten und die Unterwasserwelt aus.',
+        },
+        coloringHandWash: {
+          title: 'Ausmalbild: Ich wasche meine Hände',
+          text: 'Vor dem Essen und nach dem Spielen waschen wir die Hände. Male alle vier Bilder aus und erzähle der Reihe nach, wie man die Hände richtig wäscht.',
+        },
+        coloringTraffic: {
+          title: 'Ausmalbild: Ampel & Zebrastreifen',
+          text: 'Male die Ampel in den richtigen Farben aus: oben rot, in der Mitte gelb, unten grün. Wir gehen nur am Zebrastreifen über die Straße, wenn es grün ist.',
+        },
+        coloringFood: {
+          title: 'Ausmalbild: Gesundes Essen',
+          text: 'Male das gesunde Essen auf dem großen Teller aus — es gibt uns jeden Tag Kraft. Unten sind Süßigkeiten, die wir nur manchmal essen: Kreise deine liebste ein.',
+        },
+        coloringRecycle: {
+          title: 'Ausmalbild: Ich schütze die Natur — Müll trennen',
+          text: 'Verbinde jeden Gegenstand mit einer Linie mit der richtigen Tonne. Male die Papiertonne blau, die Plastiktonne gelb und die Glastonne grün aus.',
+        },
+        coloringFeelings: {
+          title: 'Ausmalbild: Wie fühle ich mich?',
+          text: 'Schau dir die Gesichter an und zeige, wie jedes Gefühl aussieht. Male sie aus und zeichne in den großen Kreis unten, wie du dich heute fühlst.',
+        },
+        timeSequence: {
+          title: 'Was war zuerst? Reihenfolge von Ereignissen',
+          text: 'Schau dir die Bilder in jeder Reihe an. Schreibe in das Kästchen darunter 1 für das, was zuerst passiert ist, dann 2, 3 und 4. Male die Bilder danach aus.',
+        },
+        timeDayParts: {
+          title: 'Tageszeiten: Morgen, Mittag, Abend und Nacht',
+          text: 'Male aus, was du morgens, mittags, abends und nachts machst. Zeige, wo die Sonne am Morgen und wo sie am Mittag steht. Was machst du, wenn der Mond aufgeht?',
+        },
+        timeRoutine: {
+          title: 'Mein Tag und die Uhr',
+          text: 'Male die Bilder in der Reihenfolge deines Tages aus. Zeichne auf der Uhr neben jedem Bild die Zeiger — wann stehst du auf, isst zu Mittag und gehst schlafen?',
+        },
+        timeClock: {
+          title: 'Wie spät ist es? Die Uhr lernen',
+          text: 'Male auf der ersten Seite die große Uhr aus und schreibe unter jede kleine Uhr, wie spät es ist. Zeichne auf der zweiten Seite die Zeiger: den kurzen für die Stunden, den langen für die Minuten.',
+        },
+        timeWeek: {
+          title: 'Die Wochentage — die Raupe',
+          text: 'Male die Raupe aus: Schultage in einer Farbe, das Wochenende in einer anderen. Lies die Tage der Reihe nach, zeichne oder schreibe daneben, was du an dem Tag machst, und ergänze gestern, heute und morgen.',
+        },
+        timeYear: {
+          title: 'Das Jahr: Monate und Jahreszeiten',
+          text: 'Male die Wintermonate blau, die Frühlingsmonate grün, die Sommermonate gelb und die Herbstmonate orange aus. Finde deinen Geburtstagsmonat, zeichne ein Herz hinein und ergänze den Satz.',
+        },
+        timeClockRead: {
+          title: 'Uhr lesen: volle und halbe Stunden',
+          text: 'Schau dir auf der ersten Seite die Zeiger an und schreibe die Uhrzeit auf (z. B. 6:30). Verbinde auf der zweiten Seite jede Uhr mit der passenden Uhrzeit.',
+        },
+        timeClockMath: {
+          title: 'Rechnen mit der Uhr: Wie spät wird es sein?',
+          text: 'Schau, wie spät es auf der ersten Uhr ist und wie viele Stunden dazu- oder wegkommen. Zeichne die Zeiger auf der zweiten Uhr und schreibe die neue Uhrzeit auf.',
+        },
+        timeDaysOrder: {
+          title: 'Tage und Monate der Reihe nach',
+          text: 'Schreibe den Tag davor und danach, ergänze die fehlenden Monate und verbinde jeden Monat mit seiner Jahreszeit.',
+        },
+        timeCalendar: {
+          title: 'Den Kalender lesen',
+          text: 'Schau dir den Kalender eines Monats an und beantworte die Fragen darunter. In der ersten Zeile stehen die abgekürzten Wochentage.',
+        },
+        mathNumberLine: {
+          title: 'Sprünge am Zahlenstrahl',
+          text: 'Schreibe die fehlenden Zahlen an den Zahlenstrahl. Der Bogen zeigt einen Sprung nach vorne (+) oder zurück (−) — rechne aus, wo der Sprung endet.',
+        },
+        mathHouses: {
+          title: 'Zahlenhäuser — Zahlen zerlegen',
+          text: 'Die Zahl auf dem Dach ist die Summe der beiden Zahlen in jedem Stockwerk. Schreibe die fehlende Zahl.',
+        },
+        mathAdd10: {
+          title: 'Addieren bis 10 (96 Aufgaben)',
+          text: 'Addiere die Zahlen und schreibe das Ergebnis in das Kästchen. Zwei Seiten mit je 48 Aufgaben — rechne in Ruhe und prüfe mit den Fingern.',
+        },
+        mathSub10: {
+          title: 'Subtrahieren bis 10 (96 Aufgaben)',
+          text: 'Subtrahiere und schreibe das Ergebnis in das Kästchen. Zwei Seiten mit je 48 Aufgaben.',
+        },
+        mathMissing: {
+          title: 'Welche Zahl fehlt? (bis 10 und bis 20)',
+          text: 'Schreibe die fehlende Zahl, damit die Gleichung stimmt. Erste Seite bis 10, zweite bis 20.',
+        },
+        mathAddSub20: {
+          title: 'Plus und Minus bis 20',
+          text: 'Erste Seite: ohne Zehnerübergang. Zweite Seite: mit Zehnerübergang (z. B. 8 + 5, 14 − 6).',
+        },
+        mathPyramids: {
+          title: 'Zahlenmauern',
+          text: 'Jeder Stein ist die Summe der beiden Steine darunter. Fülle die leeren Steine aus. Erste Seite bis 20, zweite bis 100.',
+        },
+        mathAddSub100: {
+          title: 'Plus und Minus bis 100',
+          text: 'Erste Seite: ohne Zehnerübergang. Zweite Seite: mit Zehnerübergang (z. B. 37 + 25, 62 − 18). Rechne zuerst die Zehner, dann die Einer.',
+        },
+        mathMultiply: {
+          title: 'Einmaleins (96 Aufgaben)',
+          text: 'Erste Seite: mal 1 bis 5. Zweite Seite: mal 6 bis 10. Schreibe das Ergebnis in das Kästchen.',
+        },
+        mathDivide: {
+          title: 'Teilen (96 Aufgaben)',
+          text: 'Erste Seite: geteilt durch 1 bis 5. Zweite Seite: durch 6 bis 10. Das Einmaleins hilft dir.',
+        },
+        mathWordProblems: {
+          title: 'Sachaufgaben: Essen, Zeit, Verkehr und Natur',
+          text: 'Lies jede Aufgabe genau, schreibe die Rechnung und antworte in einem ganzen Satz. Die Aufgaben passen zu den Themen gesundes Essen, Uhr, Wochentage, Verkehr und Naturschutz.',
         },
         trace: {
           title: 'Dem Weg folgen',

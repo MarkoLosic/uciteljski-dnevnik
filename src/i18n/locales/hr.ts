@@ -351,7 +351,7 @@ export const hr: Dictionary = {
       tip: 'Savjet: ispišite na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka bolje su od tanke kemijske.',
       sectionEyebrow: 'Za ispis · A4 format',
       sectionTitle: 'Bojanke slova i slika, latinica, ćirilica i radni listovi',
-      sectionText: 'Kompletna zbirka od 60 radnih listova, diferenciranih ispita i tematskih bojanki spremnih za ispis na A4 formatu: provjere znanja za tri razine postignuća učenika (osnovna, srednja i napredna), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
+      sectionText: 'Kompletna zbirka od 91 radnih listova, diferenciranih ispita i tematskih bojanki spremnih za ispis na A4 formatu: provjere znanja za tri razine postignuća učenika (osnovna, srednja i napredna), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
         tests: 'Diferencirani ispiti znanja (3 razine: osnovna, srednja i napredna)',
@@ -360,6 +360,93 @@ export const hr: Dictionary = {
         motor: 'Motorika i predvježbe pisanja',
         math: 'Brojevi i računanje',
         logic: 'Logika i pažnja',
+        time: 'Snalaženje u vremenu — sat, dijelovi dana, dani, mjeseci i godišnja doba',
+      },
+      labels: {
+        dayParts: {
+          morning: 'Jutro',
+          noon: 'Podne',
+          evening: 'Večer',
+          night: 'Noć',
+        },
+        routine: {
+          wakeUp: 'Budim se',
+          breakfast: 'Doručak',
+          school: 'Škola',
+          lunch: 'Ručak',
+          play: 'Igra',
+          sleep: 'Spavanje',
+        },
+        weekdays: ['ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota', 'nedjelja'],
+        yesterday: 'Jučer:',
+        today: 'Danas:',
+        tomorrow: 'Sutra:',
+        months: ['siječanj', 'veljača', 'ožujak', 'travanj', 'svibanj', 'lipanj', 'srpanj', 'kolovoz', 'rujan', 'listopad', 'studeni', 'prosinac'],
+        seasons: {
+          winter: 'zima',
+          spring: 'proljeće',
+          summer: 'ljeto',
+          autumn: 'jesen',
+        },
+        year: 'Godina',
+        birthday: 'Moj rođendan je u mjesecu:',
+        handWash: {
+          wet: 'Smoči ruke',
+          soap: 'Nasapunaj',
+          rub: 'Trljaj ruke',
+          dry: 'Isperi i obriši',
+        },
+        traffic: {
+          stop: 'STANI!',
+          wait: 'PAZI!',
+          go: 'KRENI!',
+        },
+        food: {
+          everyday: 'Svaki dan',
+          sometimes: 'Ponekad',
+        },
+        bins: {
+          paper: 'Papir',
+          plastic: 'Plastika',
+          glass: 'Staklo',
+        },
+        feelings: {
+          happy: 'Sreća',
+          sad: 'Tuga',
+          angry: 'Ljutnja',
+          scared: 'Strah',
+          surprised: 'Iznenađenje',
+          calm: 'Mir',
+        },
+        feelToday: 'Danas se osjećam:',
+        answer: 'Odgovor:',
+        calculation: 'Račun:',
+        daysOrder: {
+          neighbours: 'Upiši dan koji je prije i dan koji je poslije.',
+          missingMonth: 'Upiši mjesec koji nedostaje.',
+          monthSeason: 'Spoji mjesec s godišnjim dobom.',
+        },
+        calendarTasks: [
+          'Koji je dan u tjednu 1. u mjesecu?',
+          'Koji je dan 15. u mjesecu?',
+          'Zaokruži sve nedjelje. Koliko ih ima u ovom mjesecu?',
+          'Oboji žutom bojom sve subote i nedjelje.',
+          'Koliko dana ima ovaj mjesec?',
+          'Danas je 10. Koji će datum biti točno za tjedan dana?',
+          'Koji je datum bio dva dana prije 20.?',
+        ],
+        wordProblems: [
+          'Mia je za užinu pojela 3 jabuke, a Luka 4 banane. Koliko su voćaka pojeli zajedno?',
+          'Na tanjuru je bilo 12 mrkvi. Djeca su pojela 5. Koliko je mrkvi ostalo na tanjuru?',
+          'Tjedan ima 7 dana. Koliko dana imaju 3 tjedna?',
+          'Ana trenira 2 puta svaki tjedan. Koliko treninga ima za 4 tjedna?',
+          'Nastava počinje u 8 sati i traje 4 sata. U koliko sati završava?',
+          'Godina ima 12 mjeseci i 4 godišnja doba. Koliko mjeseci traje jedno godišnje doba?',
+          'Razred je skupio 18 plastičnih boca i 9 staklenki. Koliko su ambalaže skupili ukupno?',
+          'Na semaforu je čekalo 15 automobila. Kad se upalilo zeleno svjetlo, prošlo je 9 automobila. Koliko ih je još čekalo?',
+          'Ruke peremo najmanje 20 sekundi. Koliko sekundi peremo ruke ako ih tijekom dana operemo 3 puta?',
+          'Luka je zaspao u 9 sati navečer, a probudio se u 7 sati ujutro. Koliko je sati spavao?',
+        ],
       },
       sheets: {
         testGrade1: {
@@ -497,6 +584,110 @@ export const hr: Dictionary = {
         coloringScenes: {
           title: 'Velika bojanka — priroda, životinje i svemir',
           text: 'Odaberi omiljene drvene bojice i oboji veselu prirodu sa životinjama, svemirsku raketu s planetama i morski svijet.',
+        },
+        coloringHandWash: {
+          title: 'Bojanka: Perem ruke',
+          text: 'Prije jela i nakon igre peremo ruke. Oboji sve četiri slike i ispričaj redom kako se pravilno peru ruke.',
+        },
+        coloringTraffic: {
+          title: 'Bojanka: Semafor i pješački prijelaz',
+          text: 'Oboji svjetla na semaforu pravim bojama: gore crveno, u sredini žuto, dolje zeleno. Cestu prelazimo samo na pješačkom prijelazu, kad je zeleno.',
+        },
+        coloringFood: {
+          title: 'Bojanka: Zdrava hrana',
+          text: 'Oboji zdravu hranu na velikom tanjuru — ona nam daje snagu svaki dan. U donjem polju su slatkiši koje jedemo samo ponekad: zaokruži onaj koji najviše voliš.',
+        },
+        coloringRecycle: {
+          title: 'Bojanka: Čuvam prirodu — razvrstaj otpad',
+          text: 'Crtom spoji svaku stvar s kantom u koju je bacamo. Oboji kantu za papir plavo, za plastiku žuto, a za staklo zeleno.',
+        },
+        coloringFeelings: {
+          title: 'Bojanka: Kako se osjećam?',
+          text: 'Pogledaj lica i pokaži kako izgleda svaki osjećaj. Oboji ih, a u velikom krugu na dnu nacrtaj kako se ti danas osjećaš.',
+        },
+        timeSequence: {
+          title: 'Što je bilo prvo? Redoslijed događaja',
+          text: 'Pogledaj sličice u svakom redu. U kvadratić ispod upiši 1 za ono što se dogodilo prvo, pa 2, 3 i 4. Zatim oboji sličice.',
+        },
+        timeDayParts: {
+          title: 'Dijelovi dana: jutro, podne, večer i noć',
+          text: 'Oboji što radiš ujutro, u podne, navečer i noću. Pokaži prstom gdje je sunce ujutro, a gdje u podne. Što radiš kad izađe mjesec?',
+        },
+        timeRoutine: {
+          title: 'Moj dan i sat',
+          text: 'Oboji sličice redom kako teče tvoj dan. Na satu pokraj svake sličice nacrtaj kazaljke — u koliko se sati budiš, ručaš i ideš spavati?',
+        },
+        timeClock: {
+          title: 'Koliko je sati? Učimo sat',
+          text: 'Na prvoj stranici oboji veliki sat, pa ispod svakog malog sata napiši koliko je sati. Na drugoj stranici nacrtaj kazaljke: kratku za sate, dugu za minute.',
+        },
+        timeWeek: {
+          title: 'Dani u tjednu — gusjenica',
+          text: 'Oboji gusjenicu: dane kad ideš u školu jednom bojom, a vikend drugom. Pročitaj dane redom, pokraj svakoga nacrtaj ili napiši što tada radiš, pa dopuni jučer, danas i sutra.',
+        },
+        timeYear: {
+          title: 'Godina: mjeseci i godišnja doba',
+          text: 'Oboji zimske mjesece plavo, proljetne zeleno, ljetne žuto, a jesenske narančasto. Pronađi mjesec svog rođendana, nacrtaj u njemu srce i dopuni rečenicu.',
+        },
+        timeClockRead: {
+          title: 'Čitam sat: puni sati i pola sata',
+          text: 'Na prvoj stranici pogledaj kazaljke i upiši koliko je sati (npr. 6:30). Na drugoj stranici crtom spoji svaki sat s točnim vremenom.',
+        },
+        timeClockMath: {
+          title: 'Računam sa satom: koliko će biti sati?',
+          text: 'Pogledaj koliko je sati na prvom satu i koliko sati treba dodati ili oduzeti. Na drugom satu nacrtaj kazaljke i upiši novo vrijeme.',
+        },
+        timeDaysOrder: {
+          title: 'Dani i mjeseci redom',
+          text: 'Upiši dan prije i poslije zadanog dana, dopuni mjesece koji nedostaju i crtom spoji svaki mjesec s godišnjim dobom kojem pripada.',
+        },
+        timeCalendar: {
+          title: 'Čitam kalendar',
+          text: 'Pogledaj kalendar jednog mjeseca i odgovori na pitanja ispod njega. U prvom redu kalendara su skraćeni nazivi dana.',
+        },
+        mathNumberLine: {
+          title: 'Brojevni pravac: skokovi',
+          text: 'Upiši brojeve koji nedostaju na brojevnom pravcu. Luk pokazuje skok naprijed (+) ili natrag (−) — izračunaj gdje skok završava.',
+        },
+        mathHouses: {
+          title: 'Kućice brojeva — rastavljanje broja',
+          text: 'Broj na krovu je zbroj dvaju brojeva na svakom katu. Upiši broj koji nedostaje da zajedno daju broj s krova.',
+        },
+        mathAdd10: {
+          title: 'Zbrajanje do 10 (96 zadataka)',
+          text: 'Zbroji brojeve i upiši zbroj u kvadratić. Dvije stranice po 48 zadataka — radi polako i provjeri na prstima ili sličicama.',
+        },
+        mathSub10: {
+          title: 'Oduzimanje do 10 (96 zadataka)',
+          text: 'Oduzmi i upiši razliku u kvadratić. Dvije stranice po 48 zadataka.',
+        },
+        mathMissing: {
+          title: 'Koji broj nedostaje? (do 10 i do 20)',
+          text: 'Upiši broj koji nedostaje da jednakost bude točna. Prva stranica do 10, druga do 20.',
+        },
+        mathAddSub20: {
+          title: 'Zbrajanje i oduzimanje do 20',
+          text: 'Prva stranica: bez prijelaza desetice. Druga stranica: s prijelazom desetice (npr. 8 + 5, 14 − 6).',
+        },
+        mathPyramids: {
+          title: 'Brojevne piramide',
+          text: 'Svaka cigla je zbroj dviju cigli ispod nje. Popuni prazne cigle. Prva stranica do 20, druga do 100.',
+        },
+        mathAddSub100: {
+          title: 'Zbrajanje i oduzimanje do 100',
+          text: 'Prva stranica: bez prijelaza desetice. Druga stranica: s prijelazom (npr. 37 + 25, 62 − 18). Računaj prvo desetice, pa jedinice.',
+        },
+        mathMultiply: {
+          title: 'Tablica množenja (96 zadataka)',
+          text: 'Prva stranica: množenje brojevima od 1 do 5. Druga stranica: od 6 do 10. Upiši umnožak u kvadratić.',
+        },
+        mathDivide: {
+          title: 'Dijeljenje (96 zadataka)',
+          text: 'Prva stranica: dijeljenje brojevima od 1 do 5. Druga stranica: od 6 do 10. Pomogni si tablicom množenja.',
+        },
+        mathWordProblems: {
+          title: 'Problemski zadaci: hrana, vrijeme, promet i priroda',
+          text: 'Pažljivo pročitaj zadatak, napiši račun i odgovor cijelom rečenicom. Zadaci su vezani uz lekcije o zdravoj hrani, satu, danima, prometu i čuvanju prirode.',
         },
         trace: {
           title: 'Prati stazu',

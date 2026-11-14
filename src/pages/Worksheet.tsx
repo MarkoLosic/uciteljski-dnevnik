@@ -20,7 +20,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   const { t, paths } = useLocale();
   const ws = t.games.worksheet;
   const { title, text } = ws.sheets[id];
-  const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames });
+  const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames, labels: ws.labels });
   usePageMeta(pageMeta.worksheet(t, id));
 
   return (

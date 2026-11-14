@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
+import { Clock, Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
@@ -34,7 +34,7 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   colors: '/slike/bojanke/oboji-oblike.svg',
 };
 
-const GROUP_ORDER: WorksheetGroup[] = ['tests', 'coloring', 'writing', 'motor', 'math', 'logic'];
+const GROUP_ORDER: WorksheetGroup[] = ['tests', 'coloring', 'time', 'writing', 'motor', 'math', 'logic'];
 
 const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
   sr: {
@@ -44,6 +44,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Grafomotorika',
     math: 'Matematika',
     logic: 'Logika i pažnja',
+    time: 'Vreme i sat',
   },
   bs: {
     tests: 'Testovi (3 nivoa)',
@@ -52,6 +53,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Grafomotorika',
     math: 'Matematika',
     logic: 'Logika i pažnja',
+    time: 'Vrijeme i sat',
   },
   hr: {
     tests: 'Testovi (3 razine)',
@@ -60,6 +62,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Grafomotorika',
     math: 'Matematika',
     logic: 'Logika i pažnja',
+    time: 'Vrijeme i sat',
   },
   en: {
     tests: 'Tests (3 levels)',
@@ -68,6 +71,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Motor Skills',
     math: 'Math & Numbers',
     logic: 'Logic & Focus',
+    time: 'Time & Clock',
   },
   de: {
     tests: 'Tests (3 Stufen)',
@@ -76,6 +80,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Feinmotorik',
     math: 'Mathematik',
     logic: 'Logik & Fokus',
+    time: 'Zeit & Uhr',
   },
 };
 
@@ -147,6 +152,7 @@ export default function WorksheetsPage() {
             >
               {group === 'tests' && <GraduationCap aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {group === 'coloring' && <Palette aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+              {group === 'time' && <Clock aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {shortLabels[group]} ({count})
             </button>
           );
@@ -165,6 +171,7 @@ export default function WorksheetsPage() {
                 <h2 id={`naslov-${group}`} className="text-lg font-bold tracking-tight sm:text-2xl flex items-center gap-2 sm:gap-2.5">
                   {group === 'tests' && <GraduationCap aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {group === 'coloring' && <Palette aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
+                  {group === 'time' && <Clock aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {g.worksheet.groups[group]}
                 </h2>
                 <span className="font-mono text-xs font-semibold text-muted">
@@ -193,6 +200,8 @@ export default function WorksheetsPage() {
                                 <GraduationCap aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
                               ) : group === 'coloring' ? (
                                 <Palette aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+                              ) : group === 'time' ? (
+                                <Clock aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
                               ) : (
                                 <Printer aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6" />
                               )}
