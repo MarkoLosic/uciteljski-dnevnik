@@ -670,7 +670,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Zaključci ispod tabela: `src/content/world/<jezik>/zakljucci.md` (bez frontmattera, `##` naslovi); učitava ih `loadWorldSummary`.
 - **Svaka činjenica mora imati izvor** (Eurydice, OECD, ministarstvo). Kad nisi siguran, formuliši oprezno („pravila se razlikuju po entitetima“) umesto da izmišljaš broj. Ne tvrditi da autor trenutno predaje.
 - Pregled: kartice + tabela za poređenje (`COUNTRY_FACTS` × zemlje, prva kolona lepljiva, vodoravni skrol) + `<ResultsTable />` (redosled po PISA matematici; stariji ciklus = siva vrednost sa godinom) + zaključci. Zemlja: ključna ideja, kartice činjenica, rezultati, tekst, izvori, `<ShareButtons />`, ostale zemlje.
-- Jezik bez zemalja: stranica prikazuje `EmptyState` sa linkom na srpsku verziju (`noindex`), link nije u headeru/footeru, a stranica nije u sitemap-u. Link u headeru je samo na ≥ 1024px (`max-lg:hidden`); uvek je u footeru.
+- Jezik bez zemalja: stranica prikazuje `EmptyState` sa linkom na srpsku verziju (`noindex`), link nije u headeru/footeru, a stranica nije u sitemap-u. Link je u headeru (na < 1024px u hamburger meniju) i u footeru.
 - Nova činjenica: ključ u `COUNTRY_FACTS` + oznaka u `t.world.facts` (svih pet rečnika) + vrednost u svakoj zemlji.
 
 ### 10.6. `NotFound.tsx`

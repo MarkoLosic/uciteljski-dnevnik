@@ -53,7 +53,6 @@ export default function Header() {
     short?: string;
     badge?: string;
     icon: LucideIcon;
-    wideOnly?: boolean;
     external?: boolean;
   }[] = [
     { to: paths.home, label: t.nav.home, icon: Home },
@@ -61,7 +60,7 @@ export default function Header() {
     { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort, badge: 'A4 štampa', icon: Palette },
     { to: paths.games, label: t.nav.games, short: t.nav.gamesShort, badge: '10 igara', icon: Gamepad2 },
     { to: paths.blog, label: t.nav.blog, icon: FileText },
-    ...(hasCountries(locale) ? [{ to: paths.world, label: t.nav.world, icon: Globe2, wideOnly: true }] : []),
+    ...(hasCountries(locale) ? [{ to: paths.world, label: t.nav.world, icon: Globe2 }] : []),
     { to: paths.about, label: t.nav.about, icon: User },
   ];
 
@@ -86,8 +85,8 @@ export default function Header() {
         {/* Desktop Nav: Prikazuje se na velikim i srednjim ekranima */}
         <nav className="hidden lg:block" aria-label={t.nav.label}>
           <ul className="flex items-center gap-0.5">
-            {navItems.map(({ to, label, wideOnly, external }) => (
-              <li key={to} className={wideOnly ? 'max-xl:hidden' : undefined}>
+            {navItems.map(({ to, label, external }) => (
+              <li key={to}>
                 {external ? (
                   <a
                     href={to}
