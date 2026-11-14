@@ -44,7 +44,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     motor: 'Grafomotorika',
     math: 'Matematika',
     logic: 'Logika i pažnja',
-    time: 'Vreme i sat',
+    time: 'Vrijeme i sat',
   },
   bs: {
     tests: 'Testovi (3 nivoa)',

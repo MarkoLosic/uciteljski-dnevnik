@@ -13,15 +13,15 @@ export const sr = {
     role: 'QA inženjer i profesor razredne nastave',
     location: 'Banja Luka, BiH',
     intro:
-      'Po struci sam učitelj, i onih osam meseci provedenih sa prvacima naučilo me je dvema najvažnijim veštinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primetiti svaku sitnicu — ko je tiho zapeo, gde je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo kliktanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gde stvarno rasterećuje, a gde zbog lošeg dizajna samo smeta.',
+      'Po struci sam učitelj, i onih osam mjeseci provedenih sa prvacima naučilo me je dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — ko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo kliktanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
     background: [
       {
         title: 'U IT-u',
-        text: 'Više od šest godina radim kao QA inženjer: testiram veb i mobilne aplikacije, automatizujem testove i proveravam AI modele. Posao me naučio da tehnologiji ne verujem na reč — prvo proverim da li zaista radi.',
+        text: 'Više od šest godina radim kao QA inženjer: testiram veb i mobilne aplikacije, automatizujem testove i provjeravam AI modele. Posao me naučio da tehnologiji ne vjerujem na riječ — prvo provjerim da li zaista radi.',
       },
       {
         title: 'U učionici',
-        text: 'Završio sam razrednu nastavu na Univerzitetu u Banjoj Luci i osam meseci radio sa prvacima u OŠ Grahovo. Tamo sam video koliko nastava zavisi od jasnoće, strpljenja i topline — sa tehnologijom ili bez nje.',
+        text: 'Završio sam razrednu nastavu na Univerzitetu u Banjoj Luci i osam mjeseci radio sa prvacima u OŠ Grahovo. Tamo sam vidio koliko nastava zavisi od jasnoće, strpljenja i topline — sa tehnologijom ili bez nje.',
       },
     ],
   },
@@ -29,9 +29,9 @@ export const sr = {
     { title: 'Život u učionici', text: 'Iskustva iz prvog razreda i ideje za razrednu nastavu.' },
     {
       title: 'Tehnologija u nastavi',
-      text: 'Alati i aplikacije za nastavu, provereni okom testera — šta radi, a šta ne.',
+      text: 'Alati i aplikacije za nastavu, provjereni okom testera — šta radi, a šta ne.',
     },
-    { title: 'Veštačka inteligencija', text: 'Kako AI može da pomogne nastavnicima, i gde treba biti oprezan.' },
+    { title: 'Vještačka inteligencija', text: 'Kako AI može da pomogne nastavnicima, i gdje treba biti oprezan.' },
   ],
   nav: {
     label: 'Glavna navigacija',
@@ -40,24 +40,24 @@ export const sr = {
     worksheets: 'Bojanke i listovi',
     worksheetsShort: 'Bojanke',
     games: 'Edukativne igre',
-    gamesShort: 'Igre', // na telefonu, gde nema mesta za pun naziv
+    gamesShort: 'Igre', // na telefonu, gdje nema mjesta za pun naziv
     blog: 'Blog',
     about: 'O meni',
-    world: 'Škole u svetu',
+    world: 'Škole u svijetu',
   },
   pripremePromo: {
     eyebrow: 'Za učitelje i nastavnike · 1–5. razred (RS i FBiH)',
     title: 'Biblioteka dnevnih priprema za čas (1.436 priprema)',
-    desc: 'Kompletna baza metodički razrađenih dnevnih priprema za celu školsku godinu od 1. do 5. razreda osnovne škole, usklađena sa planovima u Republici Srpskoj (RPZ) i Federaciji BiH (ZJNPP). Kopiranje za e-Dnevnik jednim klikom, A4 štampa, radni listići i Word (.docx) preuzimanje.',
+    desc: 'Kompletna baza metodički razrađenih dnevnih priprema za cijelu školsku godinu od 1. do 5. razreda osnovne škole, usklađena sa planovima u Republici Srpskoj (RPZ) i Federaciji BiH (ZJNPP). Kopiranje za e-Dnevnik jednim klikom, A4 štampa, radni listići i Word (.docx) preuzimanje.',
     ctaAll: 'Otvori sve pripreme (1.436)',
     gradeLabel: (r: number) => `${r}. razred`,
   },
   language: {
     label: 'Jezik',
-    change: 'Promeni jezik',
+    change: 'Promijeni jezik',
   },
   theme: {
-    toLight: 'Uključi svetlu temu',
+    toLight: 'Uključi svjetlu temu',
     toDark: 'Uključi tamnu temu',
   },
   footer: {
@@ -82,23 +82,23 @@ export const sr = {
     whoEyebrow: '01 — Ko sam ja',
     whoTitle: 'Između učionice i IT-a',
     whoImageAlt:
-      'Ilustracija: s jedne strane učitelj se igra s decom u učionici, a s druge isti čovek radi za računarom kao QA inženjer — slova i brojevi iz učionice prelaze u kod i testove.',
+      'Ilustracija: s jedne strane učitelj se igra s djecom u učionici, a s druge isti čovjek radi za računarom kao QA inženjer — slova i brojevi iz učionice prelaze u kod i testove.',
     topicsEyebrow: '03 — Teme i oblasti rada',
     topicsTitle: 'O čemu pišemo i šta istražujemo',
     blogEyebrow: '04 — Iz učiteljske prakse',
     blogTitle: 'Najnoviji članci za učitelje',
     heroBadge: 'Portal za učitelje i razrednu nastavu · 1–5. razred osnovne škole',
-    heroTitleBefore: 'Mesto koje učiteljima olakšava ',
+    heroTitleBefore: 'Mjesto koje učiteljima olakšava ',
     heroTitleHighlight: 'svakodnevni rad u školi',
     heroLead:
-      'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom detetu u učionici. Zato je „Iz učionice“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i saveta iz prakse koji štede sate administracije.',
+      'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom djetetu u učionici. Zato je „Iz učionice“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i savjeta iz prakse koji štede sate administracije.',
     ctaPripreme: 'Biblioteka priprema (1.436)',
     ctaWorksheets: 'Bojanke i radni listovi (55)',
     stats: [
       {
         value: '1.436',
         label: 'Dnevnih priprema (1–5. razred)',
-        detail: 'Pokrivena cela školska godina za svih 6 nastavnih predmeta (RPZ RS i ZJNPP FBiH).',
+        detail: 'Pokrivena cijela školska godina za svih 6 nastavnih predmeta (RPZ RS i ZJNPP FBiH).',
       },
       {
         value: '3 nivoa',
@@ -117,21 +117,21 @@ export const sr = {
       },
     ],
     pillarsEyebrow: '01 — Podrška u svakodnevnom radu',
-    pillarsTitle: 'Sve što je učitelju potrebno za čas — na jednom mestu',
+    pillarsTitle: 'Sve što je učitelju potrebno za čas — na jednom mjestu',
     pillarsIntro:
-      'Umesto lutanja po desetinama dokumenata i tabelama, ovde su objedinjeni materijali koji prate stvarni ritam školske godine i realne potrebe u učionici.',
+      'Umjesto lutanja po desetinama dokumenata i tabelama, ovdje su objedinjeni materijali koji prate stvarni ritam školske godine i realne potrebe u učionici.',
     pillars: [
       {
         badge: 'Nastavni plan i program',
-        title: 'Dnevne pripreme za celu školsku godinu (1–5. razred)',
-        text: 'Kompletno razrađene nastavne jedinice za Maternji jezik, Matematiku, Prirodu i društvo / Moju okolinu, Likovnu kulturu, Muzičku kulturu i Fizičko / Tjelesni odgoj — sa ciljem, ishodima i uvodnim, glavnim i završnim delom časa.',
+        title: 'Dnevne pripreme za cijelu školsku godinu (1–5. razred)',
+        text: 'Kompletno razrađene nastavne jedinice za Maternji jezik, Matematiku, Prirodu i društvo / Moju okolinu, Likovnu kulturu, Muzičku kulturu i Fizičko / Tjelesni odgoj — sa ciljem, ishodima i uvodnim, glavnim i završnim dijelom časa.',
         linkText: 'Pretraži pripreme →',
         href: '/pripreme/index.html',
       },
       {
         badge: 'Individualizacija i inkluzija',
         title: 'Priprema za 3 nivoa postignuća učenika',
-        text: 'U svakom odeljenju sede učenici različitog tempa rada. Na svakoj pripremi jednim klikom generišete posebna očekivanja, prilagođene zadatke i način praćenja za osnovni (I), srednji (II) i napredni (III) nivo.',
+        text: 'U svakom odjeljenju sjede učenici različitog tempa rada. Na svakoj pripremi jednim klikom generišete posebna očekivanja, prilagođene zadatke i način praćenja za osnovni (I), srednji (II) i napredni (III) nivo.',
         linkText: 'Otvori diferencirane pripreme →',
         href: '/pripreme/index.html',
       },
@@ -145,21 +145,21 @@ export const sr = {
       {
         badge: 'Materijali za klupe',
         title: 'Automatski A4 radni listići za učenike',
-        text: 'Uz svaku pripremu možete odmah otvoriti i odštampati radni listić za učenike sa četiri strukturisana zadatka i skalom samoprocene, kao i poseban diferencirani listić podeljen na tri nivoa težine.',
+        text: 'Uz svaku pripremu možete odmah otvoriti i odštampati radni listić za učenike sa četiri strukturisana zadatka i skalom samoprocjene, kao i poseban diferencirani listić podijeljen na tri nivoa težine.',
         linkText: 'Pogledaj radne listiće →',
         href: '/pripreme/index.html',
       },
       {
         badge: 'Prvi koraci u školi',
         title: 'Bojanke za štampu, slova, ćirilica, latinica i igre',
-        text: 'Za predškolce i učenike nižih razreda pripremili smo 55 tematskih bojanki i radnih listova za A4 štampu (učionica, 4 doba, životinje, bageri i građevina, morski svet, bajka, kosmos, slova na ćirilici i latinici), uz 10 edukativnih igara.',
+        text: 'Za predškolce i učenike nižih razreda pripremili smo 55 tematskih bojanki i radnih listova za A4 štampu (učionica, 4 doba, životinje, bageri i građevina, morski svijet, bajka, kosmos, slova na ćirilici i latinici), uz 10 edukativnih igara.',
         linkText: 'Otvori bojanke i radne listove →',
         href: '/radni-listovi',
       },
       {
         badge: 'Stručno usavršavanje',
-        title: 'Iskustva iz učionice, AI alati i škole u svetu',
-        text: 'Praktični članci o organizaciji časa, bezbednoj upotrebi veštačke inteligencije u pisanju priprema, zaštiti podataka učenika i poređenju našeg školstva sa Finskom, Estonijom, Japanom i drugim zemljama.',
+        title: 'Iskustva iz učionice, AI alati i škole u svijetu',
+        text: 'Praktični članci o organizaciji časa, bezbjednoj upotrebi vještačke inteligencije u pisanju priprema, zaštiti podataka učenika i poređenju našeg školstva sa Finskom, Estonijom, Japanom i drugim zemljama.',
         linkText: 'Čitaj članke na blogu →',
         href: '/blog',
       },
@@ -179,19 +179,19 @@ export const sr = {
         grade: 2,
         count: '296 priprema',
         title: '2. razred osnovne škole',
-        desc: 'Drugo pismo (latinica/ćirilica), sabiranje i oduzimanje do 100, množenje i deljenje, godišnja doba, saobraćaj i zavičaj.',
+        desc: 'Drugo pismo (latinica/ćirilica), sabiranje i oduzimanje do 100, množenje i dijeljenje, godišnja doba, saobraćaj i zavičaj.',
       },
       {
         grade: 3,
         count: '288 priprema',
         title: '3. razred osnovne škole',
-        desc: 'Vrste reči i pismeno izražavanje, brojevi do 1.000, geometrijski oblici i merenje, prošlost zavičaja, živa i neživa priroda.',
+        desc: 'Vrste riječi i pismeno izražavanje, brojevi do 1.000, geometrijski oblici i mjerenje, prošlost zavičaja, živa i neživa priroda.',
       },
       {
         grade: 4,
         count: '284 pripreme',
         title: '4. razred osnovne škole',
-        desc: 'Služba reči u rečenici, višeocifreni brojevi, površina i zapremina, geografska karta, prirodne i društvene odlike domovine.',
+        desc: 'Služba riječi u rečenici, višeocifreni brojevi, površina i zapremina, geografska karta, prirodne i društvene odlike domovine.',
       },
       {
         grade: 5,
@@ -224,7 +224,7 @@ export const sr = {
     eyebrow: 'Blog',
     title: 'Svi članci',
     description:
-      'Svi članci o nastavi u nižim razredima, iskustvima iz učionice i pametnoj upotrebi tehnologije i veštačke inteligencije.',
+      'Svi članci o nastavi u nižim razredima, iskustvima iz učionice i pametnoj upotrebi tehnologije i vještačke inteligencije.',
     allPosts: 'Svi članci',
     readMore: 'Pročitaj više',
     published: 'Objavljeno',
@@ -232,7 +232,7 @@ export const sr = {
     emptyTitle: 'Još nema članaka',
     emptyMessage: 'Prvi članci su u pripremi. Navratite uskoro!',
     notFoundTitle: 'Članak nije pronađen',
-    notFoundMessage: 'Članak koji tražite ne postoji ili je premešten.',
+    notFoundMessage: 'Članak koji tražite ne postoji ili je premješten.',
     readingTime: (n: number) => `${n} min čitanja`,
     filterLabel: 'Filtriraj po kategoriji',
     filterAll: 'Sve',
@@ -241,10 +241,10 @@ export const sr = {
     headingLink: (title: string) => `Link na sekciju „${title}“`,
     copyCode: 'Kopiraj',
     codeCopied: 'Kopirano',
-    copyFailed: 'Kopiranje nije uspelo',
-    share: 'Podeli članak',
-    shareNative: 'Podeli',
-    shareVia: (app: string) => `Podeli preko aplikacije ${app}`,
+    copyFailed: 'Kopiranje nije uspjelo',
+    share: 'Podijeli članak',
+    shareNative: 'Podijeli',
+    shareVia: (app: string) => `Podijeli preko aplikacije ${app}`,
     copyLink: 'Kopiraj link',
     linkCopied: 'Link je kopiran',
   },
@@ -253,9 +253,9 @@ export const sr = {
     description:
       'Ko piše blog Iz učionice: učitelj po struci, QA inženjer po zanimanju, iz Banje Luke. Iskustvo, teme i kontakt.',
     blogEyebrow: 'O blogu',
-    blogTitle: 'Šta ćete ovde naći',
+    blogTitle: 'Šta ćete ovdje naći',
     blogText: (siteName: string) =>
-      `${siteName} je mesto gde spajam ono što sam naučio u učionici sa onim čime se svaki dan bavim u IT-u.`,
+      `${siteName} je mjesto gdje spajam ono što sam naučio u učionici sa onim čime se svaki dan bavim u IT-u.`,
     contactEyebrow: 'Kontakt',
     contactTitle: 'Javite se',
     contactText: 'Pitanja, predlozi, ideja za temu ili samo pozdrav — rado odgovaram.',
@@ -265,28 +265,28 @@ export const sr = {
     eyebrow: 'Igre · predškolski uzrast',
     title: 'Igre za male ruke',
     intro:
-      'Deset kratkih igara za decu od 3 do 6 godina. Svaka vežba po nešto: preciznost prsta, koordinaciju oka i ruke, pažnju, brojanje ili logičko zaključivanje. Najbolje rade na tabletu ili telefonu, ali mogu i mišem.',
+      'Deset kratkih igara za djecu od 3 do 6 godina. Svaka vježba po nešto: preciznost prsta, koordinaciju oka i ruke, pažnju, brojanje ili logičko zaključivanje. Najbolje rade na tabletu ili telefonu, ali mogu i mišem.',
     age: 'Uzrast 3–6 godina · bez reklama i praćenja',
     play: 'Igraj',
     back: 'Sve igre',
     again: 'Igraj ponovo',
-    next: 'Sledeća',
+    next: 'Sljedeća',
     win: 'Bravo!',
-    winText: 'Svaka čast — sve je rešeno!',
+    winText: 'Svaka čast — sve je riješeno!',
     tipsEyebrow: 'Za roditelje i vaspitače',
     tipsTitle: 'Kako da igra bude korisna',
     tips: [
       {
         title: 'Igrajte zajedno',
-        text: 'Sedite pored deteta, pročitajte mu kako se igra i pohvalite trud, ne samo rezultat. Razgovor o bojama, oblicima i brojevima vredi više od same igre.',
+        text: 'Sjedite pored djeteta, pročitajte mu kako se igra i pohvalite trud, ne samo rezultat. Razgovor o bojama, oblicima i brojevima vrijedi više od same igre.',
       },
       {
         title: 'Kratko i često',
-        text: 'Za predškolce je dovoljno 10–15 minuta ekrana odjednom. Bolje je odigrati dve-tri igre i stati dok je dete još raspoloženo.',
+        text: 'Za predškolce je dovoljno 10–15 minuta ekrana odjednom. Bolje je odigrati dvije-tri igre i stati dok je dijete još raspoloženo.',
       },
       {
-        title: 'Ekran ne menja ruke',
-        text: 'Ove igre su dopuna, a ne zamena za plastelin, makaze, kocke i bojice. Prava fina motorika se razvija u stvarnom svetu.',
+        title: 'Ekran ne mijenja ruke',
+        text: 'Ove igre su dopuna, a ne zamjena za plastelin, makaze, kocke i bojice. Prava fina motorika se razvija u stvarnom svijetu.',
       },
     ],
     skills: {
@@ -308,7 +308,7 @@ export const sr = {
       circle: 'krug',
       square: 'kvadrat',
       triangle: 'trougao',
-      star: 'zvezda',
+      star: 'zvijezda',
       heart: 'srce',
     } satisfies Record<Shape, string>,
     things: {
@@ -320,8 +320,8 @@ export const sr = {
       turtle: 'kornjača',
       snail: 'puž',
       apple: 'jabuka',
-      star: 'zvezda',
-      flower: 'cvet',
+      star: 'zvijezda',
+      flower: 'cvijet',
       sun: 'sunce',
     } satisfies Record<Thing, string>,
     ui: {
@@ -330,14 +330,14 @@ export const sr = {
       popBalloon: (color: string) => `Balon, boja: ${color}`,
       block: (color: string) => `Kocka, boja: ${color}`,
       basket: (color: string) => `Korpa, boja: ${color}`,
-      slot: (shape: string) => `Mesto za oblik: ${shape}`,
+      slot: (shape: string) => `Mjesto za oblik: ${shape}`,
       piece: (shape: string) => `Oblik: ${shape}`,
       dot: (n: number) => `Tačka ${n}`,
-      traceArea: 'Staza od bube do cveta',
-      maze: 'Lavirint: pomeri zeca do šargarepe strelicama ili prstom',
+      traceArea: 'Staza od bube do cvijeta',
+      maze: 'Lavirint: pomjeri zeca do šargarepe strelicama ili prstom',
       hiddenCard: 'Zatvorena kartica',
       sequence: 'Niz oblika',
-      missing: 'Šta dolazi sledeće?',
+      missing: 'Šta dolazi sljedeće?',
       howMany: (thing: string) => `Koliko ima? (${thing})`,
       sizeItem: (thing: string, n: number, total: number) => `${thing}, veličina ${n} od ${total}`,
       shelf: 'Polica, od najmanjeg do najvećeg',
@@ -351,7 +351,7 @@ export const sr = {
       name: 'Ime',
       date: 'Datum',
       page: (n: number, total: number) => `Strana ${n}/${total}`,
-      tip: 'Savet: štampajte na A4 papiru. Radi i crno-belo. Bojice i debela olovka su bolje od tanke hemijske.',
+      tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
       sectionText: 'Kompletna zbirka od 91 radnih listova, diferenciranih testova i tematskih bojanki spremnih za štampu na A4 formatu: testovi znanja za tri nivoa postignuća učenika (osnovni, srednji i napredni), tematske bojanke, slova azbuke i abecede, grafomotorika i matematika.',
@@ -363,7 +363,7 @@ export const sr = {
         motor: 'Motorika i predpisanje',
         math: 'Brojevi i računanje',
         logic: 'Logika i pažnja',
-        time: 'Spoznaja vremena — sat, delovi dana, dani, meseci i godišnja doba',
+        time: 'Spoznaja vremena — sat, dijelovi dana, dani, mjeseci i godišnja doba',
       } satisfies Record<WorksheetGroup, string>,
       labels: {
         dayParts: {
@@ -380,19 +380,19 @@ export const sr = {
           play: 'Igra',
           sleep: 'Spavanje',
         },
-        weekdays: ['ponedeljak', 'utorak', 'sreda', 'četvrtak', 'petak', 'subota', 'nedelja'],
+        weekdays: ['ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota', 'nedjelja'],
         yesterday: 'Juče:',
         today: 'Danas:',
         tomorrow: 'Sutra:',
         months: ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar'],
         seasons: {
           winter: 'zima',
-          spring: 'proleće',
-          summer: 'leto',
+          spring: 'proljeće',
+          summer: 'ljeto',
           autumn: 'jesen',
         },
         year: 'Godina',
-        birthday: 'Moj rođendan je u mesecu:',
+        birthday: 'Moj rođendan je u mjesecu:',
         handWash: {
           wet: 'Pokvasi ruke',
           soap: 'Nasapunjaj',
@@ -421,32 +421,32 @@ export const sr = {
           surprised: 'Iznenađenje',
           calm: 'Mir',
         },
-        feelToday: 'Danas se osećam:',
+        feelToday: 'Danas se osjećam:',
         answer: 'Odgovor:',
         calculation: 'Račun:',
         daysOrder: {
-          neighbours: 'Upiši dan koji je pre i dan koji je posle.',
-          missingMonth: 'Upiši mesec koji nedostaje.',
-          monthSeason: 'Spoji mesec sa godišnjim dobom.',
+          neighbours: 'Upiši dan koji je prije i dan koji je poslije.',
+          missingMonth: 'Upiši mjesec koji nedostaje.',
+          monthSeason: 'Spoji mjesec sa godišnjim dobom.',
         },
         calendarTasks: [
-          'Koji je dan u sedmici 1. u mesecu?',
-          'Koji je dan 15. u mesecu?',
-          'Zaokruži sve nedelje. Koliko ih ima u ovom mesecu?',
-          'Oboji žutom bojom sve subote i nedelje.',
-          'Koliko dana ima ovaj mesec?',
+          'Koji je dan u sedmici 1. u mjesecu?',
+          'Koji je dan 15. u mjesecu?',
+          'Zaokruži sve nedjelje. Koliko ih ima u ovom mjesecu?',
+          'Oboji žutom bojom sve subote i nedjelje.',
+          'Koliko dana ima ovaj mjesec?',
           'Danas je 10. Koji će datum biti tačno za jednu sedmicu?',
-          'Koji je datum bio dva dana pre 20.?',
+          'Koji je datum bio dva dana prije 20.?',
         ],
         wordProblems: [
           'Mia je za užinu pojela 3 jabuke, a Luka 4 banane. Koliko su voćki pojeli zajedno?',
-          'Na tanjiru je bilo 12 šargarepa. Deca su pojela 5. Koliko je šargarepa ostalo na tanjiru?',
+          'Na tanjiru je bilo 12 šargarepa. Djeca su pojela 5. Koliko je šargarepa ostalo na tanjiru?',
           'Sedmica ima 7 dana. Koliko dana imaju 3 sedmice?',
           'Ana trenira 2 puta svake sedmice. Koliko treninga ima za 4 sedmice?',
           'Nastava počinje u 8 sati i traje 4 sata. U koliko sati se nastava završava?',
-          'Godina ima 12 meseci i 4 godišnja doba. Koliko meseci traje jedno godišnje doba?',
+          'Godina ima 12 mjeseci i 4 godišnja doba. Koliko mjeseci traje jedno godišnje doba?',
           'Razred je skupio 18 plastičnih flaša i 9 staklenih tegli. Koliko su ambalaže skupili ukupno?',
-          'Na semaforu je čekalo 15 automobila. Kad se upalilo zeleno svetlo, prošlo je 9 automobila. Koliko ih je još čekalo?',
+          'Na semaforu je čekalo 15 automobila. Kad se upalilo zeleno svjetlo, prošlo je 9 automobila. Koliko ih je još čekalo?',
           'Ruke peremo najmanje 20 sekundi. Koliko sekundi peremo ruke ako ih tokom dana operemo 3 puta?',
           'Luka je zaspao u 9 sati uveče, a probudio se u 7 sati ujutru. Koliko sati je spavao?',
         ],
@@ -454,67 +454,67 @@ export const sr = {
       sheets: {
         testGrade1: {
           title: 'Diferencirani test za 1. razred (3 nivoa znanja)',
-          text: 'Provera za učenike prvog razreda: I nivo (brojevi do 10, prepoznavanje slova i glasova), II nivo (sabiranje i oduzimanje do 20, spajanje slogova i reči), III nivo (tekstualni zadatak i sastavljanje rečenice).',
+          text: 'Provjera za učenike prvog razreda: I nivo (brojevi do 10, prepoznavanje slova i glasova), II nivo (sabiranje i oduzimanje do 20, spajanje slogova i riječi), III nivo (tekstualni zadatak i sastavljanje rečenice).',
         },
         testGrade2: {
           title: 'Diferencirani test za 2. razred (3 nivoa znanja)',
-          text: 'Provera za učenike drugog razreda: I nivo (račun do 100 bez prelaza, imenice i rečenice), II nivo (sabiranje i oduzimanje sa prelazom, vrste reči i godišnja doba), III nivo (zadaci u dva koraka i kratak opis).',
+          text: 'Provjera za učenike drugog razreda: I nivo (račun do 100 bez prelaza, imenice i rečenice), II nivo (sabiranje i oduzimanje sa prelazom, vrste riječi i godišnja doba), III nivo (zadaci u dva koraka i kratak opis).',
         },
         testGrade3: {
           title: 'Diferencirani test za 3. razred (3 nivoa znanja)',
-          text: 'Provera za učenike trećeg razreda: I nivo (tablica množenja i deljenja, imenice i glagoli), II nivo (izrazi sa zagradama, pridevi, orijentacija u prostoru), III nivo (tekstualni zadaci sa nepoznatim činiocem i plan naselja).',
+          text: 'Provjera za učenike trećeg razreda: I nivo (tablica množenja i dijeljenja, imenice i glagoli), II nivo (izrazi sa zagradama, pridjevi, orijentacija u prostoru), III nivo (tekstualni zadaci sa nepoznatim činiocem i plan naselja).',
         },
         testGrade4: {
           title: 'Diferencirani test za 4. razred (3 nivoa znanja)',
-          text: 'Provera za učenike četvrtog razreda: I nivo (višecifreni brojevi, pravopis i rečenice), II nivo (pisano množenje i deljenje, subjekat i predikat, organi i čovek), III nivo (površina geometrijskih tela, analiza teksta i ekosistemi).',
+          text: 'Provjera za učenike četvrtog razreda: I nivo (višecifreni brojevi, pravopis i rečenice), II nivo (pisano množenje i dijeljenje, subjekat i predikat, organi i čovjek), III nivo (površina geometrijskih tijela, analiza teksta i ekosistemi).',
         },
         testGrade5: {
           title: 'Diferencirani test za 5. razred (3 nivoa znanja)',
-          text: 'Provera za učenike petog razreda: I nivo (osnovni razlomci, vrste reči i padeži), II nivo (računanje sa razlomcima, služba reči, geografska karta), III nivo (uglovi i geometrijski zadaci, stilske figure i interpretacija).',
+          text: 'Provjera za učenike petog razreda: I nivo (osnovni razlomci, vrste riječi i padeži), II nivo (računanje sa razlomcima, služba riječi, geografska karta), III nivo (uglovi i geometrijski zadaci, stilske figure i interpretacija).',
         },
         testMathOperations: {
           title: 'Diferencirani test: Sabiranje i oduzimanje (3 nivoa znanja)',
-          text: 'Diferencirana kontrolna vežba iz matematike: I nivo (osnovni račun do 20), II nivo (računanje do 100 sa zagradama i nepoznatim brojem), III nivo (složeni tekstualni zadatak i magični kvadrat).',
+          text: 'Diferencirana kontrolna vježba iz matematike: I nivo (osnovni račun do 20), II nivo (računanje do 100 sa zagradama i nepoznatim brojem), III nivo (složeni tekstualni zadatak i magični kvadrat).',
         },
         testLanguageGrammar: {
           title: 'Diferencirani test: Srpski jezik i gramatika (3 nivoa znanja)',
-          text: 'Diferencirana provera iz maternjeg jezika: I nivo (vrste rečenica i veliko slovo), II nivo (imenice, glagoli, pridevi, rod i broj), III nivo (ispravka grešaka i kratak opis sa pridevima).',
+          text: 'Diferencirana provjera iz maternjeg jezika: I nivo (vrste rečenica i veliko slovo), II nivo (imenice, glagoli, pridjevi, rod i broj), III nivo (ispravka grešaka i kratak opis sa pridjevima).',
         },
         testNatureSociety: {
-          title: 'Diferencirani test: Priroda i društvo — Svet oko nas (3 nivoa znanja)',
-          text: 'Diferencirani test o prirodi: I nivo (delovi biljke i staništa životinja), II nivo (korist domaćih životinja i godišnja doba), III nivo (lanac ishrane i zaštita čiste vode i šuma).',
+          title: 'Diferencirani test: Priroda i društvo — Svijet oko nas (3 nivoa znanja)',
+          text: 'Diferencirani test o prirodi: I nivo (dijelovi biljke i staništa životinja), II nivo (korist domaćih životinja i godišnja doba), III nivo (lanac ishrane i zaštita čiste vode i šuma).',
         },
         testReadingComprehension: {
-          title: 'Diferencirani test: Čitanje sa razumevanjem (3 nivoa znanja)',
-          text: 'Diferencirani test razumevanja pročitanog teksta: I nivo (glavni likovi i mesto radnje), II nivo (hronološki redosled događaja i uzroci), III nivo (glavna poruka basne i lični stav).',
+          title: 'Diferencirani test: Čitanje sa razumijevanjem (3 nivoa znanja)',
+          text: 'Diferencirani test razumijevanja pročitanog teksta: I nivo (glavni likovi i mjesto radnje), II nivo (hronološki redoslijed događaja i uzroci), III nivo (glavna poruka basne i lični stav).',
         },
         testMultiplicationDivision: {
-          title: 'Diferencirani test: Množenje i deljenje (3 nivoa znanja)',
-          text: 'Diferencirana provera operacija: I nivo (osnovna tablica do 5), II nivo (tablica do 10, redosled operacija i poređenje), III nivo (jednačine sa nepoznatim činiocem i tekstualni zadatak).',
+          title: 'Diferencirani test: Množenje i dijeljenje (3 nivoa znanja)',
+          text: 'Diferencirana provjera operacija: I nivo (osnovna tablica do 5), II nivo (tablica do 10, redoslijed operacija i poređenje), III nivo (jednačine sa nepoznatim činiocem i tekstualni zadatak).',
         },
         coloringClassroom: {
           title: 'Bojanka: Moja učionica i škola',
-          text: 'Oboji veselu učionicu, nasmejanu učiteljicu, đake u klupama, školsku tablu i globus svojim najlepšim bojama.',
+          text: 'Oboji veselu učionicu, nasmijanu učiteljicu, đake u klupama, školsku tablu i globus svojim najljepšim bojama.',
         },
         coloringSeasons: {
           title: 'Bojanka: Četiri godišnja doba',
-          text: 'Četiri slike prirode na jednom listu: proleće sa cvetićima, toplo leto sa suncem, jesenje lišće sa vevericom i snežna zima sa Sneškom Belićem.',
+          text: 'Četiri slike prirode na jednom listu: proljeće sa cvjetićima, toplo ljeto sa suncem, jesenje lišće sa vjevericom i snježna zima sa Sneškom Bjelićem.',
         },
         coloringSpring: {
-          title: 'Bojanka: Proleće u cvatu i pčelice',
-          text: 'Oboji buđenje prirode, rascvetalo drveće i prolećno cveće, veselu pčelicu, leptira i toplo nasmejano prolećno sunce.',
+          title: 'Bojanka: Proljeće u cvatu i pčelice',
+          text: 'Oboji buđenje prirode, rascvjetalo drveće i proljećno cvijeće, veselu pčelicu, leptira i toplo nasmijano proljećno sunce.',
         },
         coloringSummer: {
-          title: 'Bojanka: Leto na plaži i dvorac od peska',
-          text: 'Oboji letnje radosti pored mora, veliki dvorac od peska sa kulama, suncobran, šarenu loptu i veselog morskog račića.',
+          title: 'Bojanka: Ljeto na plaži i dvorac od pijeska',
+          text: 'Oboji ljetnje radosti pored mora, veliki dvorac od pijeska sa kulama, suncobran, šarenu loptu i veselog morskog račića.',
         },
         coloringAutumn: {
           title: 'Bojanka: Jesenja šuma i šumske životinje',
-          text: 'Oboji jesenje čarolije u šumi: vrednog ježića sa jabukom na leđima, vevericu sa žirom, mudru sovu i opalo šareno lišće.',
+          text: 'Oboji jesenje čarolije u šumi: vrijednog ježića sa jabukom na leđima, vjevericu sa žirom, mudru sovu i opalo šareno lišće.',
         },
         coloringWinter: {
           title: 'Bojanka: Zimske radosti i sankanje',
-          text: 'Oboji zimske igre na snegu, dečje sanke koje jure niz brdo, toplu kapu i šal, pahulje i veselog psa na snegu.',
+          text: 'Oboji zimske igre na snijegu, dječje sanke koje jure niz brdo, toplu kapu i šal, pahulje i veselog psa na snijegu.',
         },
         coloringAnimals: {
           title: 'Bojanka: Domaće životinje na farmi',
@@ -522,19 +522,19 @@ export const sr = {
         },
         coloringSafari: {
           title: 'Bojanka: Safari i divlje životinje',
-          text: 'Upoznaj divlji svet afričke savane: oboji hrabrog lavića sa grivom, visoku žirafu, slonče sa surlom i majmunčića na drvetu.',
+          text: 'Upoznaj divlji svijet afričke savane: oboji hrabrog lavića sa grivom, visoku žirafu, slonče sa surlom i majmunčića na drvetu.',
         },
         coloringPets: {
           title: 'Bojanka: Kućni ljubimci',
-          text: 'Oboji najdraže kućne ljubimce: razigranu macu sa klupkom vune, vernog psa sa koskom u travi i zlatnu ribicu u akvarijumu.',
+          text: 'Oboji najdraže kućne ljubimce: razigranu macu sa klupkom vune, vjernog psa sa koskom u travi i zlatnu ribicu u akvarijumu.',
         },
         coloringUnderwater: {
-          title: 'Bojanka: Podvodni svet i morske dubine',
-          text: 'Zaroni u morsko plavetnilo i oboji dobroćudnog delfina, morsku kornjaču, hobotnicu, morske zvezde i školjke.',
+          title: 'Bojanka: Podvodni svijet i morske dubine',
+          text: 'Zaroni u morsko plavetnilo i oboji dobroćudnog delfina, morsku kornjaču, hobotnicu, morske zvijezde i školjke.',
         },
         coloringSubmarine: {
           title: 'Bojanka: Podmornica i tajanstveno blago',
-          text: 'Zaroni žutom podmornicom na samo dno okeana, istraži staru škrinju sa blagom i oboji jata svetlećih ribica.',
+          text: 'Zaroni žutom podmornicom na samo dno okeana, istraži staru škrinju sa blagom i oboji jata svjetlećih ribica.',
         },
         coloringVehicles: {
           title: 'Bojanka: Saobraćaj i prevozna sredstva',
@@ -542,7 +542,7 @@ export const sr = {
         },
         coloringConstruction: {
           title: 'Bojanka: Građevinske mašine i radovi',
-          text: 'Oboji velika vozila na gradilištu: snažni bager koji kopa zemlju, kamion kiper pun peska i visoku građevinsku dizalicu.',
+          text: 'Oboji velika vozila na gradilištu: snažni bager koji kopa zemlju, kamion kiper pun pijeska i visoku građevinsku dizalicu.',
         },
         coloringDino: {
           title: 'Bojanka: Dinosaurusi i praistorija',
@@ -550,7 +550,7 @@ export const sr = {
         },
         coloringCastle: {
           title: 'Bojanka: Bajkoviti dvorac i zmaj',
-          text: 'Oboji čarobni dvorac sa kulama i zastavicama, veselog zmaja sa cvetićem i dugu na nebu.',
+          text: 'Oboji čarobni dvorac sa kulama i zastavicama, veselog zmaja sa cvjetićem i dugu na nebu.',
         },
         coloringSpace: {
           title: 'Bojanka: Kosmos, raketa i astronaut',
@@ -561,16 +561,16 @@ export const sr = {
           text: 'Ko želiš da budeš kad porasteš? Oboji hrabrog vatrogasca sa šmrkom, doktora sa stetoskopom i veselog kuvara sa kapom.',
         },
         coloringSports: {
-          title: 'Bojanka: Sport i rekreacija za decu',
-          text: 'Oboji sportski duh i igru: fudbalsku i košarkašku loptu, dečji bicikl, patike za trčanje i zlatni pobednički pehar.',
+          title: 'Bojanka: Sport i rekreacija za djecu',
+          text: 'Oboji sportski duh i igru: fudbalsku i košarkašku loptu, dječji bicikl, patike za trčanje i zlatni pobjednički pehar.',
         },
         coloringMusic: {
           title: 'Bojanka: Muzički orkestar i instrumenti',
-          text: 'Zasviraj u bojama: oboji akustičnu gitaru, dirke klavira, bubnjeve, violinu i raspevane note koje lebde u vazduhu.',
+          text: 'Zasviraj u bojama: oboji akustičnu gitaru, dirke klavira, bubnjeve, violinu i raspjevane note koje lebde u vazduhu.',
         },
         coloringBakery: {
           title: 'Bojanka: Slatka pekara i kolačići',
-          text: 'Oboji najslađe đakonije iz pekare: rođendansku tortu sa svećicama, krofne sa posipom, mafine i ukusne sladolede.',
+          text: 'Oboji najslađe đakonije iz pekare: rođendansku tortu sa svjećicama, krofne sa posipom, mafine i ukusne sladolede.',
         },
         coloringLatin: {
           title: 'Bojanka slova — latinica (A–Ž)',
@@ -586,15 +586,15 @@ export const sr = {
         },
         coloringScenes: {
           title: 'Velika bojanka — priroda, životinje i svemir',
-          text: 'Izaberi omiljene drvene bojice i oboji veselu prirodu sa životinjama, svemirsku raketu sa planetama i morski svet.',
+          text: 'Izaberi omiljene drvene bojice i oboji veselu prirodu sa životinjama, svemirsku raketu sa planetama i morski svijet.',
         },
         coloringHandWash: {
           title: 'Bojanka: Perem ruke',
-          text: 'Pre jela i posle igre peremo ruke. Oboji sve četiri slike i ispričaj redom kako se pravilno peru ruke.',
+          text: 'Prije jela i poslije igre peremo ruke. Oboji sve četiri slike i ispričaj redom kako se pravilno peru ruke.',
         },
         coloringTraffic: {
-          title: 'Bojanka: Semafor i pešački prelaz',
-          text: 'Oboji svetla na semaforu pravim bojama: gore crveno, u sredini žuto, dole zeleno. Ulicu prelazimo samo na pešačkom prelazu, kad je zeleno.',
+          title: 'Bojanka: Semafor i pješački prelaz',
+          text: 'Oboji svjetla na semaforu pravim bojama: gore crveno, u sredini žuto, dole zeleno. Ulicu prelazimo samo na pješačkom prelazu, kad je zeleno.',
         },
         coloringFood: {
           title: 'Bojanka: Zdrava hrana',
@@ -605,16 +605,16 @@ export const sr = {
           text: 'Linijom spoji svaku stvar sa kantom u koju je bacamo. Oboji kantu za papir plavo, za plastiku žuto, a za staklo zeleno.',
         },
         coloringFeelings: {
-          title: 'Bojanka: Kako se osećam?',
-          text: 'Pogledaj lica i pokaži kako izgleda svako osećanje. Oboji ih, pa u velikom krugu na dnu nacrtaj kako se ti danas osećaš.',
+          title: 'Bojanka: Kako se osjećam?',
+          text: 'Pogledaj lica i pokaži kako izgleda svako osjećanje. Oboji ih, pa u velikom krugu na dnu nacrtaj kako se ti danas osjećaš.',
         },
         timeSequence: {
-          title: 'Šta je bilo prvo? Redosled događaja',
+          title: 'Šta je bilo prvo? Redoslijed događaja',
           text: 'Pogledaj sličice u svakom redu. U kvadratić ispod upiši 1 za ono što se desilo prvo, pa 2, 3 i 4. Zatim oboji sličice.',
         },
         timeDayParts: {
-          title: 'Delovi dana: jutro, podne, veče i noć',
-          text: 'Oboji šta radiš ujutru, u podne, uveče i noću. Pokaži prstom gde je sunce ujutru, a gde u podne. Šta radiš kad izađe mesec?',
+          title: 'Dijelovi dana: jutro, podne, veče i noć',
+          text: 'Oboji šta radiš ujutru, u podne, uveče i noću. Pokaži prstom gdje je sunce ujutru, a gdje u podne. Šta radiš kad izađe mjesec?',
         },
         timeRoutine: {
           title: 'Moj dan i sat',
@@ -625,12 +625,12 @@ export const sr = {
           text: 'Na prvoj strani oboji veliki sat, pa ispod svakog malog sata napiši koliko je sati. Na drugoj strani nacrtaj kazaljke: kratku za sate, dugu za minute.',
         },
         timeWeek: {
-          title: 'Dani u sedmici — gusenica',
-          text: 'Oboji gusenicu: dane kad ideš u školu jednom bojom, a vikend drugom. Pročitaj dane redom, pored svakog nacrtaj ili napiši šta tada radiš, pa dopuni juče, danas i sutra.',
+          title: 'Dani u sedmici — gusjenica',
+          text: 'Oboji gusjenicu: dane kad ideš u školu jednom bojom, a vikend drugom. Pročitaj dane redom, pored svakog nacrtaj ili napiši šta tada radiš, pa dopuni juče, danas i sutra.',
         },
         timeYear: {
-          title: 'Godina: meseci i godišnja doba',
-          text: 'Oboji zimske mesece plavo, prolećne zeleno, letnje žuto, a jesenje narandžasto. Pronađi mesec svog rođendana, nacrtaj u njemu srce i dopuni rečenicu.',
+          title: 'Godina: mjeseci i godišnja doba',
+          text: 'Oboji zimske mjesece plavo, proljećne zeleno, ljetnje žuto, a jesenje narandžasto. Pronađi mjesec svog rođendana, nacrtaj u njemu srce i dopuni rečenicu.',
         },
         timeClockRead: {
           title: 'Čitam sat: puni sati i pola sata',
@@ -638,19 +638,19 @@ export const sr = {
         },
         timeClockMath: {
           title: 'Računam sa satom: koliko će biti sati?',
-          text: 'Pogledaj koliko je sati na prvom satu i koliko sati treba dodati ili oduzeti. Na drugom satu nacrtaj kazaljke i upiši novo vreme.',
+          text: 'Pogledaj koliko je sati na prvom satu i koliko sati treba dodati ili oduzeti. Na drugom satu nacrtaj kazaljke i upiši novo vrijeme.',
         },
         timeDaysOrder: {
-          title: 'Dani i meseci redom',
-          text: 'Upiši dan pre i posle zadatog dana, dopuni mesece koji nedostaju i linijom spoji svaki mesec sa godišnjim dobom kome pripada.',
+          title: 'Dani i mjeseci redom',
+          text: 'Upiši dan prije i poslije zadatog dana, dopuni mjesece koji nedostaju i linijom spoji svaki mjesec sa godišnjim dobom kome pripada.',
         },
         timeCalendar: {
           title: 'Čitam kalendar',
-          text: 'Pogledaj kalendar jednog meseca i odgovori na pitanja ispod njega. U prvom redu kalendara su skraćeni nazivi dana.',
+          text: 'Pogledaj kalendar jednog mjeseca i odgovori na pitanja ispod njega. U prvom redu kalendara su skraćeni nazivi dana.',
         },
         mathNumberLine: {
           title: 'Brojevna prava: skokovi',
-          text: 'Upiši brojeve koji nedostaju na brojevnoj pravoj. Luk pokazuje skok napred (+) ili nazad (−) — izračunaj gde skok završava.',
+          text: 'Upiši brojeve koji nedostaju na brojevnoj pravoj. Luk pokazuje skok naprijed (+) ili nazad (−) — izračunaj gdje skok završava.',
         },
         mathHouses: {
           title: 'Kućice brojeva — rastavljanje broja',
@@ -658,11 +658,11 @@ export const sr = {
         },
         mathAdd10: {
           title: 'Sabiranje do 10 (96 zadataka)',
-          text: 'Saberi brojeve i upiši zbir u kvadratić. Dve strane po 48 zadataka — radi polako i proveri na prstima ili sličicama.',
+          text: 'Saberi brojeve i upiši zbir u kvadratić. Dvije strane po 48 zadataka — radi polako i provjeri na prstima ili sličicama.',
         },
         mathSub10: {
           title: 'Oduzimanje do 10 (96 zadataka)',
-          text: 'Oduzmi i upiši razliku u kvadratić. Dve strane po 48 zadataka.',
+          text: 'Oduzmi i upiši razliku u kvadratić. Dvije strane po 48 zadataka.',
         },
         mathMissing: {
           title: 'Koji broj nedostaje? (do 10 i do 20)',
@@ -674,7 +674,7 @@ export const sr = {
         },
         mathPyramids: {
           title: 'Brojevne piramide',
-          text: 'Svaka cigla je zbir dve cigle ispod nje. Popuni prazne cigle. Prva strana do 20, druga do 100.',
+          text: 'Svaka cigla je zbir dvije cigle ispod nje. Popuni prazne cigle. Prva strana do 20, druga do 100.',
         },
         mathAddSub100: {
           title: 'Sabiranje i oduzimanje do 100',
@@ -685,20 +685,20 @@ export const sr = {
           text: 'Prva strana: množenje brojevima od 1 do 5. Druga strana: od 6 do 10. Upiši proizvod u kvadratić.',
         },
         mathDivide: {
-          title: 'Deljenje (96 zadataka)',
-          text: 'Prva strana: deljenje brojevima od 1 do 5. Druga strana: od 6 do 10. Pomozi se tablicom množenja.',
+          title: 'Dijeljenje (96 zadataka)',
+          text: 'Prva strana: dijeljenje brojevima od 1 do 5. Druga strana: od 6 do 10. Pomozi se tablicom množenja.',
         },
         mathWordProblems: {
-          title: 'Tekstualni zadaci: hrana, vreme, saobraćaj i priroda',
-          text: 'Pažljivo pročitaj zadatak, napiši račun i odgovor celom rečenicom. Zadaci su vezani za lekcije o zdravoj hrani, satu, danima, saobraćaju i čuvanju prirode.',
+          title: 'Tekstualni zadaci: hrana, vrijeme, saobraćaj i priroda',
+          text: 'Pažljivo pročitaj zadatak, napiši račun i odgovor cijelom rečenicom. Zadaci su vezani za lekcije o zdravoj hrani, satu, danima, saobraćaju i čuvanju prirode.',
         },
         trace: {
           title: 'Prati stazu',
-          text: 'Olovkom ili bojicom prati isprekidanu liniju od bube do cveta. Ne žuri i pokušaj da ostaneš na sivoj stazi.',
+          text: 'Olovkom ili bojicom prati isprekidanu liniju od bube do cvijeta. Ne žuri i pokušaj da ostaneš na sivoj stazi.',
         },
         dots: {
           title: 'Spoji tačke',
-          text: 'Spoji tačke redom, od 1 do poslednjeg broja, pa se vrati na 1. Zatim oboji sliku.',
+          text: 'Spoji tačke redom, od 1 do posljednjeg broja, pa se vrati na 1. Zatim oboji sliku.',
         },
         maze: {
           title: 'Zeka u lavirintu',
@@ -706,7 +706,7 @@ export const sr = {
         },
         numbers: {
           title: 'Pišemo brojeve',
-          text: 'Prvo pogledaj crni broj, pa olovkom pređi preko svakog sivog. Kreni odozgo. Na praznom delu reda napiši broj bez pomoći.',
+          text: 'Prvo pogledaj crni broj, pa olovkom pređi preko svakog sivog. Kreni odozgo. Na praznom dijelu reda napiši broj bez pomoći.',
         },
         latin: {
           title: 'Pišemo slova — latinica',
@@ -718,7 +718,7 @@ export const sr = {
         },
         initialLetterLatin: {
           title: 'Početno slovo — latinica',
-          text: 'Imenuj svaku sličicu, zaokruži tačno početno slovo među tri ponuđena i napiši ga na crti ispred ostatka reči.',
+          text: 'Imenuj svaku sličicu, zaokruži tačno početno slovo među tri ponuđena i napiši ga na crti ispred ostatka riječi.',
         },
         initialLetterCyrillic: {
           title: 'Почетно слово — ћирилица',
@@ -726,7 +726,7 @@ export const sr = {
         },
         letterMatchLatin: {
           title: 'Spoji velika i mala slova — latinica',
-          text: 'U gornjem delu spoji linijom svako veliko slovo sa odgovarajućim malim slovom, a u kućicama ispod dopiši malo slovo pored velikog.',
+          text: 'U gornjem dijelu spoji linijom svako veliko slovo sa odgovarajućim malim slovom, a u kućicama ispod dopiši malo slovo pored velikog.',
         },
         letterMatchCyrillic: {
           title: 'Споји велика и мала слова — ћирилица',
@@ -734,7 +734,7 @@ export const sr = {
         },
         syllablesLatin: {
           title: 'Čitamo i spajamo slogove — latinica',
-          text: 'Prvo naglas pročitaj tablicu slogova na vrhu. Zatim spoji slogove u reči, izgovori ih i napiši celu reč na liniji.',
+          text: 'Prvo naglas pročitaj tablicu slogova na vrhu. Zatim spoji slogove u riječi, izgovori ih i napiši cijelu riječ na liniji.',
         },
         syllablesCyrillic: {
           title: 'Читамо и спајамо слогове — ћирилица',
@@ -742,11 +742,11 @@ export const sr = {
         },
         scriptBridge: {
           title: 'Most između pisama — latinica i ćirilica',
-          text: 'Spoji parove istih slova u latinici i ćirilici, a u donjem delu prepiši zadate reči drugim pismom.',
+          text: 'Spoji parove istih slova u latinici i ćirilici, a u donjem dijelu prepiši zadate riječi drugim pismom.',
         },
         lines: {
           title: 'Ravne linije',
-          text: 'Povuci liniju od jedne sličice do druge: kucu do koske, zeku do šargarepe, kišu od oblaka do cveta i raketu do meseca. Prati isprekidanu liniju.',
+          text: 'Povuci liniju od jedne sličice do druge: kucu do koske, zeku do šargarepe, kišu od oblaka do cvijeta i raketu do mjeseca. Prati isprekidanu liniju.',
         },
         waves: {
           title: 'Talasi i petlje',
@@ -754,7 +754,7 @@ export const sr = {
         },
         outlines: {
           title: 'Precrtaj oblike',
-          text: 'Prvi oblik u redu je uzorak. Pređi olovkom preko isprekidanih oblika, pa ih imenuj: krug, kvadrat, trougao, srce, zvezda.',
+          text: 'Prvi oblik u redu je uzorak. Pređi olovkom preko isprekidanih oblika, pa ih imenuj: krug, kvadrat, trougao, srce, zvijezda.',
         },
         colors: {
           title: 'Oboji oblike',
@@ -770,7 +770,7 @@ export const sr = {
         },
         adding: {
           title: 'Saberi sličice',
-          text: 'Prebroj sličice levo i desno od znaka plus, pa u kvadratić upiši koliko ih ima zajedno.',
+          text: 'Prebroj sličice lijevo i desno od znaka plus, pa u kvadratić upiši koliko ih ima zajedno.',
         },
         subtraction: {
           title: 'Oduzimanje sa sličicama',
@@ -778,11 +778,11 @@ export const sr = {
         },
         compareNumbers: {
           title: 'Uporedi grupe i brojeve (<, >, =)',
-          text: 'Prebroj sličice na levoj i desnoj strani, pa u kružić u sredini upiši znak < (manje), > (veće) ili = (jednako).',
+          text: 'Prebroj sličice na lijevoj i desnoj strani, pa u kružić u sredini upiši znak < (manje), > (veće) ili = (jednako).',
         },
         missingNumbers: {
-          title: 'Brojevni niz, prethodnik i sledbenik',
-          text: 'U gornjem delu upiši brojeve koji nedostaju u vagonima od 1 do 10, a dole upiši prethodnik (za 1 manji) i sledbenik (za 1 veći broj).',
+          title: 'Brojevni niz, prethodnik i sljedbenik',
+          text: 'U gornjem dijelu upiši brojeve koji nedostaju u vagonima od 1 do 10, a dole upiši prethodnik (za 1 manji) i sljedbenik (za 1 veći broj).',
         },
         sizes: {
           title: 'Od najmanjeg do najvećeg',
@@ -801,8 +801,8 @@ export const sr = {
           text: 'Spoji linijom sličice koje idu zajedno: kucu i kosku, kišu i kišobran… Linija ide od tačke do tačke.',
         },
         shapes: {
-          title: 'Pronađi senku',
-          text: 'Spoji svaku sličicu levo sa njenom senkom desno.',
+          title: 'Pronađi sjenku',
+          text: 'Spoji svaku sličicu lijevo sa njenom sjenkom desno.',
         },
         differences: {
           title: 'Pronađi 5 razlika',
@@ -810,18 +810,18 @@ export const sr = {
         },
         symmetry: {
           title: 'Dovrši drugu polovinu',
-          text: 'Nacrtana je samo leva polovina slike. Nacrtaj desnu kao u ogledalu: isprekidana linija je ogledalo. Broji kvadratiće.',
+          text: 'Nacrtana je samo lijeva polovina slike. Nacrtaj desnu kao u ogledalu: isprekidana linija je ogledalo. Broji kvadratiće.',
         },
         copy: {
           title: 'Precrtaj sliku',
-          text: 'Precrtaj crtež sa leve mreže na praznu mrežu desno. Broji kvadratiće i kreni od istog ugla.',
+          text: 'Precrtaj crtež sa lijeve mreže na praznu mrežu desno. Broji kvadratiće i kreni od istog ugla.',
         },
       } satisfies Record<WorksheetId, { title: string; text: string }>,
     },
     list: {
       balloons: {
         title: 'Baloni',
-        short: 'Baloni lete ka nebu — dodirni ih prstom pre nego što odlete.',
+        short: 'Baloni lete ka nebu — dodirni ih prstom prije nego što odlete.',
         howTo: 'Dodirni balon da pukne. Kada pukne deset balona, igra je gotova. Nema žurbe — novi baloni stalno dolaze.',
       },
       colors: {
@@ -830,14 +830,14 @@ export const sr = {
         howTo: 'Uhvati kocku prstom i prevuci je u korpu iste boje. Može i ovako: dodirni kocku, pa dodirni korpu.',
       },
       shapes: {
-        title: 'Svaki oblik na svoje mesto',
-        short: 'Krug, kvadrat, trougao… svaki oblik ima svoju senku.',
-        howTo: 'Prevuci svaki oblik na isprekidanu senku koja mu odgovara. Imenujte oblike naglas dok igrate.',
+        title: 'Svaki oblik na svoje mjesto',
+        short: 'Krug, kvadrat, trougao… svaki oblik ima svoju sjenku.',
+        howTo: 'Prevuci svaki oblik na isprekidanu sjenku koja mu odgovara. Imenujte oblike naglas dok igrate.',
       },
       trace: {
         title: 'Prati stazu',
-        short: 'Vodi bubu prstom po stazi do cveta, polako i pažljivo.',
-        howTo: 'Stavi prst na bubu i polako je vodi po stazi do cveta. Ako prst skrene, vrati se na stazu i nastavi.',
+        short: 'Vodi bubu prstom po stazi do cvijeta, polako i pažljivo.',
+        howTo: 'Stavi prst na bubu i polako je vodi po stazi do cvijeta. Ako prst skrene, vrati se na stazu i nastavi.',
       },
       dots: {
         title: 'Spoji tačke',
@@ -851,13 +851,13 @@ export const sr = {
       },
       memory: {
         title: 'Pronađi par',
-        short: 'Okreći kartice i pamti gde se krije koja sličica.',
-        howTo: 'Dodirni dve kartice. Ako su iste, ostaju otvorene; ako nisu, okreću se nazad. Pronađi sve parove.',
+        short: 'Okreći kartice i pamti gdje se krije koja sličica.',
+        howTo: 'Dodirni dvije kartice. Ako su iste, ostaju otvorene; ako nisu, okreću se nazad. Pronađi sve parove.',
       },
       pattern: {
-        title: 'Šta dolazi sledeće?',
+        title: 'Šta dolazi sljedeće?',
         short: 'Crveno, plavo, crveno… pogodi šta nastavlja niz.',
-        howTo: 'Pogledaj niz i izaberi oblik koji ide na mesto upitnika. Pokušajte prvo naglas da „pročitate“ niz.',
+        howTo: 'Pogledaj niz i izaberi oblik koji ide na mjesto upitnika. Pokušajte prvo naglas da „pročitate“ niz.',
       },
       count: {
         title: 'Prebroj',
@@ -872,36 +872,36 @@ export const sr = {
       coloring: {
         title: 'Bojanka slova i slika (latinica i ćirilica)',
         short: 'Izaberi boju i oboji velika i mala slova, jabuku, sunce, kućicu i raketu.',
-        howTo: 'Izaberi pismo (latinica ili ćirilica) na vrhu, klikni na željenu boju u paleti dole, a zatim dodiruj delove slova i crteža da ih obojiš.',
+        howTo: 'Izaberi pismo (latinica ili ćirilica) na vrhu, klikni na željenu boju u paleti dole, a zatim dodiruj dijelove slova i crteža da ih obojiš.',
       },
       letters: {
         title: 'Na koje slovo počinje? (latinica i ćirilica)',
-        short: 'Pogledaj sličicu i pogodi kojim slovom počinje reč na latinici ili ćirilici.',
+        short: 'Pogledaj sličicu i pogodi kojim slovom počinje riječ na latinici ili ćirilici.',
         howTo: 'Imenuj ono što vidiš na slici, izaberi pismo na vrhu (latinica ili ćirilica) i dodirni tačno početno slovo među tri ponuđena.',
       },
     } satisfies Record<GameId, GameText>,
   },
   world: {
-    eyebrow: 'Škole u svetu',
-    title: 'Razredna nastava u svetu',
+    eyebrow: 'Škole u svijetu',
+    title: 'Razredna nastava u svijetu',
     description:
-      'Kako druge zemlje uče najmlađe đake: polazak u školu, učitelji, ocenjivanje i testiranje — uz poređenje sa Bosnom i Hercegovinom.',
+      'Kako druge zemlje uče najmlađe đake: polazak u školu, učitelji, ocjenjivanje i testiranje — uz poređenje sa Bosnom i Hercegovinom.',
     intro:
-      'Kako druge zemlje uče decu u prvim razredima osnovne škole — i šta bismo od toga mogli da primenimo kod nas. Bosna i Hercegovina je referentna tačka.',
-    note: 'Podaci su iz zvaničnih izvora (Eurydice, OECD, ministarstva), navedenih uz svaku zemlju. Sistemi se menjaju, pa uz svaku zemlju piše kada su podaci provereni.',
+      'Kako druge zemlje uče djecu u prvim razredima osnovne škole — i šta bismo od toga mogli da primijenimo kod nas. Bosna i Hercegovina je referentna tačka.',
+    note: 'Podaci su iz zvaničnih izvora (Eurydice, OECD, ministarstva), navedenih uz svaku zemlju. Sistemi se mijenjaju, pa uz svaku zemlju piše kada su podaci provjereni.',
     reference: 'Referentna tačka',
     countriesTitle: 'Zemlje',
     compareEyebrow: 'Poređenje',
     compareTitle: 'Jedno pored drugog',
     compareCaption: 'Poređenje razredne nastave po zemljama',
-    compareScroll: 'Tabela se pomera vodoravno.',
+    compareScroll: 'Tabela se pomjera vodoravno.',
     facts: {
       schoolStart: 'Polazak u školu',
       compulsory: 'Obavezno obrazovanje',
-      tracking: 'Prvo usmeravanje',
+      tracking: 'Prvo usmjeravanje',
       primaryTeacher: 'Ko predaje u nižim razredima',
       teacherEducation: 'Obrazovanje učitelja',
-      grading: 'Ocenjivanje',
+      grading: 'Ocjenjivanje',
       testing: 'Nacionalno testiranje',
     },
     keyIdea: 'Ključna ideja',
@@ -914,14 +914,14 @@ export const sr = {
     resultsEyebrow: 'Rezultati',
     resultsTitle: 'Međunarodna testiranja',
     resultsIntro:
-      'PISA meri znanje 15-godišnjaka, a TIMSS i PIRLS učenika 4. razreda — zato su za razrednu nastavu TIMSS i PIRLS najbliže poređenje.',
+      'PISA mjeri znanje 15-godišnjaka, a TIMSS i PIRLS učenika 4. razreda — zato su za razrednu nastavu TIMSS i PIRLS najbliže poređenje.',
     resultsCaption: 'Rezultati na međunarodnim testiranjima po zemljama',
-    oecdAverage: 'Prosek OECD-a',
-    scaleNote: 'TIMSS i PIRLS nemaju prosek OECD-a; centralna tačka njihove skale je 500.',
+    oecdAverage: 'Prosjek OECD-a',
+    scaleNote: 'TIMSS i PIRLS nemaju prosjek OECD-a; centralna tačka njihove skale je 500.',
     notTaken: 'bez učešća',
     olderCycle: (year: number) => `podatak iz ${year}.`,
     sources: 'Izvori',
-    checked: 'Podaci provereni',
+    checked: 'Podaci provjereni',
     readMore: 'Detaljnije',
     allCountries: 'Sve zemlje',
     otherCountries: 'Ostale zemlje',
@@ -938,8 +938,8 @@ export const sr = {
   },
   error: {
     title: 'Nešto je pošlo naopako',
-    message: 'Stranica se nije učitala kako treba. Osvežite je — ako je sajt upravo ažuriran, to obično reši problem.',
-    reload: 'Osveži stranicu',
+    message: 'Stranica se nije učitala kako treba. Osvježite je — ako je sajt upravo ažuriran, to obično riješi problem.',
+    reload: 'Osvježi stranicu',
   },
 };
 

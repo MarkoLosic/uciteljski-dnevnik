@@ -72,7 +72,7 @@ import { PATHS } from './Trace';
 import { FIGURES } from './ConnectDots';
 import { MAZES } from './Maze';
 
-// Papir je uvek beo, pa su boje fiksne (ne prate temu sajta) i dovoljno svetle da se štampaju i crno-belo.
+// Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
 const GUIDE = '#e5e7eb';
 const HEDGE = '#bbf7d0';
@@ -123,7 +123,7 @@ function DotsSheet() {
             aria-hidden="true"
           >
             {points.map(([x, y], i) => {
-              // Broj stoji malo van oblika, da ne smeta liniji koju dete crta.
+              // Broj stoji malo van oblika, da ne smeta liniji koju dijete crta.
               const len = Math.hypot(x - cx, y - cy) || 1;
               const lx = x + ((x - cx) / len) * 22;
               const ly = y + ((y - cy) / len) * 22;
@@ -200,7 +200,7 @@ function WritingRow({ model, lowercase }: WritingRowProps) {
   const base = lowercase ? 58 : 52;
   const top = base - size * 0.727;
   const middle = base - size * 0.546;
-  // Širina uzorka se meri u browseru (i ponovo kada se font učita), da se široka slova poput Љ i М ne preklapaju.
+  // Širina uzorka se mjeri u browseru (i ponovo kada se font učita), da se široka slova poput Љ i М ne preklapaju.
   const modelRef = useRef<SVGTextElement>(null);
   const [measured, setMeasured] = useState<number | null>(null);
   useLayoutEffect(() => {
@@ -239,7 +239,7 @@ const letterPages = (letters: readonly string[]) =>
     </div>
   ));
 
-// Listovi ispod crtaju celu stranu u jednom SVG-u širine 600; visina ≤ 660 staje na A4 ispod zaglavlja.
+// Listovi ispod crtaju cijelu stranu u jednom SVG-u širine 600; visina ≤ 660 staje na A4 ispod zaglavlja.
 const W = 600;
 const MUTED = '#6b7280';
 const DASH = { fill: 'none', stroke: MUTED, strokeWidth: 2.5, strokeDasharray: '6 7', strokeLinecap: 'round' } as const;
@@ -260,7 +260,7 @@ interface PicProps {
   filled?: boolean;
 }
 
-// Sličica centrirana na (x, y); `filled` je pun crni obris (senka).
+// Sličica centrirana na (x, y); `filled` je pun crni obris (sjenka).
 function Pic({ Icon, x, y, size, filled = false }: PicProps) {
   return <Icon x={x - size / 2} y={y - size / 2} width={size} height={size} color={INK} fill={filled ? INK : 'none'} strokeWidth={2} />;
 }
@@ -758,7 +758,7 @@ function Lines({ lines, x, y, cell }: { lines: Polyline[]; x: number; y: number;
   );
 }
 
-// Leva polovina figure na mreži 10×10; osa simetrije je na x = 5.
+// Lijeva polovina figure na mreži 10×10; osa simetrije je na x = 5.
 const SYMMETRY: Polyline[][] = [
   [[[5, 1], [1, 5], [2, 5], [2, 9], [5, 9]], [[4, 9], [4, 6], [5, 6]]],
   [[[5, 3], [4, 1], [2, 1], [1, 2], [1, 4], [5, 9]]],
@@ -1514,7 +1514,7 @@ function MissingNumbersSheet() {
 
       <Divider y={310} />
 
-      {/* Donji dio: prethodnik i sledbenik */}
+      {/* Donji dio: prethodnik i sljedbenik */}
       {NEIGHBORS.map((centerNum, i) => {
         const col = i % 2;
         const row = Math.floor(i / 2);
@@ -1726,24 +1726,24 @@ function DifferentiatedGrammarTestSheet() {
   return (
     <TestFrame
       subject="SRPSKI / MATERNJI JEZIK"
-      title="Vrste reči, rečenice, pravopis i čitanje sa razumevanjem"
+      title="Vrste riječi, rečenice, pravopis i čitanje sa razumijevanjem"
       level1={
         <div className="space-y-2">
           <p className="font-semibold text-[13px]">1. Na kraju svake rečenice upiši tačku (.), upitnik (?) ili uzvičnik (!) (5 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 space-y-1 text-xs sm:text-sm">
-            <div>a) Danas je prelep, sunčan i topao prolećni dan [ &nbsp; ]</div>
-            <div>b) Da li si poneo pernicu i udžbenik za školu [ &nbsp; ]</div>
+            <div>a) Danas je prelijep, sunčan i topao proljećni dan [ &nbsp; ]</div>
+            <div>b) Da li si ponio pernicu i udžbenik za školu [ &nbsp; ]</div>
             <div>c) Pazi na stepenicama, nemoj trčati [ &nbsp; ]</div>
           </div>
-          <p className="font-semibold text-[13px] pt-1">2. Podvuci reči koje moraju biti napisane velikim početnim slovom (5 b):</p>
+          <p className="font-semibold text-[13px] pt-1">2. Podvuci riječi koje moraju biti napisane velikim početnim slovom (5 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm italic">
-            „učenik marko i njegova sestra jelena žive u banjaluci blizu reke vrbas.”
+            „učenik marko i njegova sestra jelena žive u banjaluci blizu rijeke vrbas.”
           </div>
         </div>
       }
       level2={
         <div className="space-y-2">
-          <p className="font-semibold text-[13px]">3. Razvrstaj ponuđene reči u tabelu: kuća, pevati, plavo, reka, crtati, vesela, drvo, trčati (4 b):</p>
+          <p className="font-semibold text-[13px]">3. Razvrstaj ponuđene riječi u tabelu: kuća, pjevati, plavo, rijeka, crtati, vesela, drvo, trčati (4 b):</p>
           <div className="grid grid-cols-3 gap-2 bg-white p-2 rounded border border-gray-200 text-xs">
             <div><strong>Imenice (bića, predmeti):</strong><br />________________________</div>
             <div><strong>Glagoli (radnja):</strong><br />________________________</div>
@@ -1766,12 +1766,12 @@ function DifferentiatedGrammarTestSheet() {
         <div className="space-y-2">
           <p className="font-semibold text-[13px]">6. Pronađi i precrtaj 4 pravopisne greške u tekstu, pa ih pravilno napiši (5 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm leading-relaxed">
-            „Juče smo išli na izlet na planinu jahorinu. nismo znali dase tamo još uvek sneg nije otopio. Sa nama je išao i pas žuća.”<br />
+            „Juče smo išli na izlet na planinu jahorinu. nismo znali dase tamo još uvijek snijeg nije otopio. Sa nama je išao i pas žuća.”<br />
             <span className="text-gray-500 text-xs">Ispravke: 1) _______________ 2) _______________ 3) _______________ 4) _______________</span>
           </div>
           <p className="font-semibold text-[13px] pt-1">7. Stvaralačko pisanje (5 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
-            Napiši 3 povezane rečenice o svom omiljenom godišnjem dobu. Upotrijebi najmanje 3 opisna prideva i 1 uzvičnu rečenicu:<br />
+            Napiši 3 povezane rečenice o svom omiljenom godišnjem dobu. Upotrijebi najmanje 3 opisna pridjeva i 1 uzvičnu rečenicu:<br />
             <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
             <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
             <div className="border-b border-dotted border-gray-400 h-5 mt-1" />
@@ -1786,13 +1786,13 @@ function DifferentiatedNatureTestSheet() {
   return (
     <TestFrame
       subject="PRIRODA I DRUŠTVO / SVET OKO NAS"
-      title="Živa i neživa priroda, godišnja doba, biljke i životinjski svet"
+      title="Živa i neživa priroda, godišnja doba, biljke i životinjski svijet"
       level1={
         <div className="space-y-2">
           <p className="font-semibold text-[13px]">1. Poveži linijom živo biće sa njegovim staništem (4 b):</p>
           <div className="grid grid-cols-2 gap-2 bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
-            <div>• Pastrmka<br />• Veverica<br />• Pčela medarica<br />• Krtica</div>
-            <div className="text-right">• Rascvetala livada<br />• Planinska bistra reka<br />• Podzemni hodnici u zemlji<br />• Hrastova šuma</div>
+            <div>• Pastrmka<br />• Vjeverica<br />• Pčela medarica<br />• Krtica</div>
+            <div className="text-right">• Rascvjetala livada<br />• Planinska bistra rijeka<br />• Podzemni hodnici u zemlji<br />• Hrastova šuma</div>
           </div>
           <p className="font-semibold text-[13px] pt-1">2. Zaokruži šta pripada NEŽIVOJ prirodi (3 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm flex flex-wrap gap-3">
@@ -1810,7 +1810,7 @@ function DifferentiatedNatureTestSheet() {
       }
       level2={
         <div className="space-y-2">
-          <p className="font-semibold text-[13px]">4. Razvrstaj životinje na domaće i divlje i napiši korist domaćih za čoveka (5 b):</p>
+          <p className="font-semibold text-[13px]">4. Razvrstaj životinje na domaće i divlje i napiši korist domaćih za čovjeka (5 b):</p>
           <div className="grid grid-cols-2 gap-2 bg-white p-2 rounded border border-gray-200 text-xs">
             <div>
               <strong>Domaće životinje:</strong> krava, ovca, kokoška<br />
@@ -2230,7 +2230,7 @@ function Grade4TestSheet() {
           <div className="grid grid-cols-3 gap-2 text-xs bg-white p-2 rounded border border-gray-200">
             <div><strong>Srce:</strong> pumpa krv</div>
             <div><strong>Pluća:</strong> disanje i kiseonik</div>
-            <div><strong>Mozak:</strong> upravlja telom</div>
+            <div><strong>Mozak:</strong> upravlja tijelom</div>
           </div>
         </div>
       }
@@ -2296,9 +2296,9 @@ function Grade5TestSheet() {
             <div>a) Vidim <u>lijepu pticu</u> na grani ➔ Koga/šta vidim? ➔ Padež: __________________</div>
             <div>b) Idemo prema <u>školskom dvorištu</u> ➔ Kome/čemu idemo? ➔ Padež: ____________</div>
           </div>
-          <p className="font-semibold text-[13px] pt-1">3. Geografska karta i razmernik (3 b):</p>
+          <p className="font-semibold text-[13px] pt-1">3. Geografska karta i razmjernik (3 b):</p>
           <div className="bg-white p-2 rounded border border-gray-200 text-xs sm:text-sm">
-            Šta označava razmernik 1 : 100.000 na geografskoj karti? &nbsp;➔&nbsp; 1 cm na karti u prirodi je: __________ km.
+            Šta označava razmjernik 1 : 100.000 na geografskoj karti? &nbsp;➔&nbsp; 1 cm na karti u prirodi je: __________ km.
           </div>
         </div>
       }
@@ -2340,7 +2340,7 @@ function Grade5TestSheet() {
             Prepoznaj stilske figure u sljedećim primjerima:<br />
             a) <em>"Zlatno sunce se tiho nasmijalo planinskim vrhovima."</em> ➔ ___________________________<br />
             b) <em>"Bistar kao gorsko jezero."</em> ➔ ___________________________<br />
-            Napiši u 2 rečenice zašto je čitanje knjiga važno za bogaćenje rečnika i mišljenje:<br />
+            Napiši u 2 rečenice zašto je čitanje knjiga važno za bogaćenje rječnika i mišljenje:<br />
             ____________________________________________________________________________________________________
           </div>
         </div>
@@ -2350,7 +2350,7 @@ function Grade5TestSheet() {
 }
 
 // ============================================================================
-// SPOZNAJA VREMENA I SMISLENE BOJANKE (crtano u kodu, tekst iz rečnika)
+// SPOZNAJA VREMENA I SMISLENE BOJANKE (crtano u kodu, tekst iz rječnika)
 // ============================================================================
 
 type SheetLabels = Dictionary['games']['worksheet']['labels'];
@@ -2380,7 +2380,7 @@ interface ClockFaceProps {
   cx: number;
   cy: number;
   r: number;
-  hour?: number; // bez sata = prazan brojčanik na kom dete crta kazaljke
+  hour?: number; // bez sata = prazan brojčanik na kom dijete crta kazaljke
   minute?: number;
   rim?: boolean;
 }
@@ -2433,7 +2433,7 @@ function ClockFace({ cx, cy, r, hour, minute = 0, rim = false }: ClockFaceProps)
   );
 }
 
-// Delovi dana: nebo (gde je sunce/mesec) i šta tada radimo.
+// Dijelovi dana: nebo (gdje je sunce/mesec) i šta tada radimo.
 const DAY_SCENES = [
   { key: 'morning', Sky: Sunrise, items: [AlarmClock, Toothbrush, Croissant] },
   { key: 'noon', Sky: Sun, items: [School, Backpack, Soup] },
@@ -2496,7 +2496,7 @@ const egg =
     );
   };
 
-// Sneško se pravi u tri koraka: jedna, dve, pa tri kugle sa šeširom.
+// Sneško se pravi u tri koraka: jedna, dvije, pa tri kugle sa šeširom.
 const snowman =
   (stage: 1 | 2 | 3): Draw =>
   (x, y, s) => {
@@ -2519,7 +2519,7 @@ const snowman =
     );
   };
 
-// Redosled je namerno izmešan; tačan: izlazak sunca → sunce → zalazak → mesec, pasulj → klica → cvet, jaje → napuklo → ptica, sneško 1 → 2 → 3.
+// Redoslijed je namerno izmešan; tačan: izlazak sunca → sunce → zalazak → mjesec, pasulj → klica → cvijet, jaje → napuklo → ptica, sneško 1 → 2 → 3.
 const SEQUENCES: Draw[][] = [
   [icon(Sun), icon(Moon), icon(Sunrise), icon(Sunset)],
   [icon(Sprout), icon(Flower2), icon(Bean)],
@@ -2650,7 +2650,7 @@ function WeekSheet({ labels }: { labels: SheetLabels }) {
           </g>
         );
       })}
-      {/* Glava gusenice */}
+      {/* Glava gusjenice */}
       <path d="M40 52 Q28 22 18 18 M68 50 Q76 20 88 14" fill="none" stroke={INK} strokeWidth="2.5" strokeLinecap="round" />
       <circle cx="17" cy="16" r="6" fill="#fff" stroke={INK} strokeWidth="2.2" />
       <circle cx="89" cy="13" r="6" fill="#fff" stroke={INK} strokeWidth="2.2" />
@@ -2697,7 +2697,7 @@ const SEASONS = [
   { key: 'autumn', Icon: Leaf },
 ] as const satisfies readonly { key: keyof SheetLabels['seasons']; Icon: LucideIcon }[];
 
-// Godišnji točak: januar je gore, pa zima (dec–feb) zauzima gornju četvrtinu, proleće desnu, leto donju, jesen levu.
+// Godišnji točak: januar je gore, pa zima (dec–feb) zauzima gornju četvrtinu, proljeće desnu, ljeto donju, jesen lijevu.
 function YearSheet({ labels }: { labels: SheetLabels }) {
   const cx = 300;
   const cy = 292;
@@ -2755,7 +2755,7 @@ function Bubbles({ points }: { points: [number, number, number][] }) {
   );
 }
 
-// Desna ruka je ogledalska slika leve.
+// Desna ruka je ogledalska slika lijeve.
 function MirroredPic({ Icon, x, y, size }: { Icon: LucideIcon; x: number; y: number; size: number }) {
   return (
     <g transform={`translate(${2 * x} 0) scale(-1 1)`}>
@@ -2916,7 +2916,7 @@ const jar: Draw = (x, y, s) => {
   );
 };
 
-// Izmešano: papir (novine, kutija), plastika (sok, flaša mleka), staklo (čaša, tegla).
+// Izmešano: papir (novine, kutija), plastika (sok, flaša mlijeka), staklo (čaša, tegla).
 const WASTE: Draw[] = [icon(Newspaper), icon(CupSoda), icon(GlassWater), icon(Package), icon(Milk), jar];
 
 function RecycleSheet({ labels }: { labels: SheetLabels }) {
@@ -3236,7 +3236,7 @@ function HousesSheet() {
   );
 }
 
-// Piramida: red 0 su osnovni brojevi, svaki sledeći red je zbir dva susedna ispod. `hidden` su prazne cigle ("red-indeks").
+// Piramida: red 0 su osnovni brojevi, svaki sljedeći red je zbir dva susedna ispod. `hidden` su prazne cigle ("red-indeks").
 function pyramidRows(base: number[]): number[][] {
   const rows = [base];
   while (rows[rows.length - 1].length > 1) {
@@ -3507,7 +3507,7 @@ function ClockMathSheet() {
   );
 }
 
-// Dani i meseci: [indeks dana] za pre/posle, [tri meseca, koji fali], [mesec → doba].
+// Dani i mjeseci: [indeks dana] za pre/posle, [tri mjeseca, koji fali], [mjesec → doba].
 const NEIGHBOUR_DAYS = [1, 3, 4, 6, 2];
 const MONTH_GAPS: [number[], number][] = [
   [[0, 1, 2], 1],
@@ -3597,7 +3597,7 @@ function DaysOrderSheet({ labels }: { labels: SheetLabels }) {
   );
 }
 
-// Kalendar: mesec od 30 dana koji počinje u sredu (pitanja u rečniku su napisana za ovaj raspored).
+// Kalendar: mjesec od 30 dana koji počinje u sredu (pitanja u rječniku su napisana za ovaj raspored).
 const CALENDAR_START = 2;
 const CALENDAR_DAYS = 30;
 
@@ -3698,7 +3698,7 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
       key="coloringWinter"
       src="/slike/bojanke/zimske-radosti.svg"
       alt="Zimske radosti i sankanje"
-      prompt="Oboji sanke koje jure niz brdo, Sneška Belića, toplu zimsku odeću i pahulje."
+      prompt="Oboji sanke koje jure niz brdo, Sneška Bjelića, toplu zimsku odjeću i pahulje."
     />,
   ],
   coloringAnimals: () => [

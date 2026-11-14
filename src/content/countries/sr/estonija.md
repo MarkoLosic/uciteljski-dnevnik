@@ -3,14 +3,14 @@ name: "Estonija"
 code: "EE"
 excerpt: "Mala zemlja sa ograničenim budžetom koja je i na PISA 2025 najbolja u Evropi u matematici i prirodnim naukama — zahvaljujući jednakim šansama, a ne elitnim školama."
 checked: "2026-11-13"
-keyIdea: "Jednake šanse: ista škola za svu decu do kraja 9. razreda, mala razlika između đaka iz različitih porodica i digitalni alati kao svakodnevica."
+keyIdea: "Jednake šanse: ista škola za svu djecu do kraja 9. razreda, mala razlika između đaka iz različitih porodica i digitalni alati kao svakodnevica."
 facts:
   schoolStart: "7 godina."
   compulsory: "Devetogodišnja osnovna škola (põhikool) u tri stepena: 1–3, 4–6. i 7–9. razred. Od 2025/26 obaveza učenja traje do 18 godina ili završene srednje škole."
-  tracking: "Posle 9. razreda; do tada svi idu u istu školu."
-  primaryTeacher: "Razredni učitelj (klassiõpetaja) u prvom stepenu (1–3. razred). Zakonski maksimum je 24 učenika u odeljenju, uz izuzetke."
+  tracking: "Poslije 9. razreda; do tada svi idu u istu školu."
+  primaryTeacher: "Razredni učitelj (klassiõpetaja) u prvom stepenu (1–3. razred). Zakonski maksimum je 24 učenika u odjeljenju, uz izuzetke."
   teacherEducation: "Master ili ekvivalentna kvalifikacija je zakonski uslov. Razredni učitelji završavaju integrisani petogodišnji studij."
-  grading: "Skala 1–5. U 1–6. razredu škola sme da ocenjuje opisno, bez brojeva, ali do kraja 6. razreda ocene prevodi u skalu 1–5."
+  grading: "Skala 1–5. U 1–6. razredu škola smije da ocjenjuje opisno, bez brojeva, ali do kraja 6. razreda ocjene prevodi u skalu 1–5."
   testing: "Završni ispiti na kraju 9. razreda (estonski jezik, matematika i izborni predmet), uz prelazak na elektronske ispite."
 results:
   pisa: { year: 2025, math: 508, reading: 499, science: 527 }
@@ -36,17 +36,17 @@ Estonija je mala zemlja sa ograničenim budžetom, a ipak su njeni petnaestogodi
 
 ## Prvi razredi
 
-Deca kreću u školu sa sedam godina. Osnovna škola traje devet godina i podeljena je na tri stepena po tri razreda. U prvom stepenu decu vodi razredni učitelj, a odeljenje po zakonu ima najviše 24 učenika. Opštine moraju da obezbede školu blizu kuće bar za razrede 1–6.
+Djeca kreću u školu sa sedam godina. Osnovna škola traje devet godina i podijeljena je na tri stepena po tri razreda. U prvom stepenu djecu vodi razredni učitelj, a odjeljenje po zakonu ima najviše 24 učenika. Opštine moraju da obezbijede školu blizu kuće bar za razrede 1–6.
 
-Škola sama bira kako će ocenjivati u prvih šest razreda. Može koristiti opisne ocene bez brojeva, a do kraja 6. razreda mora ih prevesti u skalu od 1 do 5.
+Škola sama bira kako će ocjenjivati u prvih šest razreda. Može koristiti opisne ocjene bez brojeva, a do kraja 6. razreda mora ih prevesti u skalu od 1 do 5.
 
 ## Jednake šanse
 
-Najvažniji podatak o Estoniji nije prosek, nego razlika. U prirodnim naukama razlika između četvrtine najimućnijih i četvrtine najsiromašnijih učenika je 68 poena, a prosek OECD-a je 86. OECD Estoniju svrstava među sedam sistema koji istovremeno imaju visoke rezultate, visoku inkluziju i slab uticaj porekla. Usmeravanja nema do kraja 9. razreda.
+Najvažniji podatak o Estoniji nije prosjek, nego razlika. U prirodnim naukama razlika između četvrtine najimućnijih i četvrtine najsiromašnijih učenika je 68 poena, a prosjek OECD-a je 86. OECD Estoniju svrstava među sedam sistema koji istovremeno imaju visoke rezultate, visoku inkluziju i slab uticaj porijekla. Usmjeravanja nema do kraja 9. razreda.
 
 ## Nastava na estonskom
 
-Od 2024. sva deca u 1. razredu prvi put počinju nastavu na estonskom jeziku. Prelaz ide generaciju po generaciju: 2026/27 obuhvata razrede 1–6, a završetak je planiran do 2030. Država je propisala nivo znanja estonskog za nastavnike i pomaže školama u prelazu.
+Od 2024. sva djeca u 1. razredu prvi put počinju nastavu na estonskom jeziku. Prelaz ide generaciju po generaciju: 2026/27 obuhvata razrede 1–6, a završetak je planiran do 2030. Država je propisala nivo znanja estonskog za nastavnike i pomaže školama u prelazu.
 
 ## Digitalno, ali bez pompe
 
@@ -54,11 +54,11 @@ E-dnevnik i e-ispiti su odavno svakodnevica. Inicijativa „AI Leap“ (TI-Hüpe
 
 ## Izazovi
 
-Ni Estonija nije imuna na pad. Čitanje je na PISA 2025 najslabije otkad Estonija učestvuje: 12 poena manje nego 2022. i 24 manje nego 2018. Udeo slabih učenika raste, nedostaje nastavnika, a kadar stari. Brz prelazak na estonski nosi rizike za decu iz porodica u kojima se govori ruski.
+Ni Estonija nije imuna na pad. Čitanje je na PISA 2025 najslabije otkad Estonija učestvuje: 12 poena manje nego 2022. i 24 manje nego 2018. Udio slabih učenika raste, nedostaje nastavnika, a kadar stari. Brz prelazak na estonski nosi rizike za djecu iz porodica u kojima se govori ruski.
 
 ## Šta bismo mogli preuzeti
 
-- **Ista škola za svu decu do kraja osnovne**, uz praćenje razlika među školama, a ne samo proseka.
-- **Jasnu gornju granicu broja dece u odeljenju**, sa izuzecima koji moraju da se obrazlože.
-- **Slobodu škole da u nižim razredima ocenjuje opisno**, uz pravilo kako se to kasnije prevodi u brojeve.
-- **Završne ispite na kraju osnovne škole** kao zajedničku meru za celu zemlju.
+- **Ista škola za svu djecu do kraja osnovne**, uz praćenje razlika među školama, a ne samo prosjeka.
+- **Jasnu gornju granicu broja djece u odjeljenju**, sa izuzecima koji moraju da se obrazlože.
+- **Slobodu škole da u nižim razredima ocjenjuje opisno**, uz pravilo kako se to kasnije prevodi u brojeve.
+- **Završne ispite na kraju osnovne škole** kao zajedničku mjeru za cijelu zemlju.
