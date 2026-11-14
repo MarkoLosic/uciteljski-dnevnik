@@ -1,6 +1,8 @@
 /**
  * Moja okolina / Priroda i društvo — zadaci po temama za 1–5. razred.
- * Činjenice su provjerljive (BiH: brojevi hitnih službi 122 policija, 123 vatrogasci, 124 hitna pomoć).
+ * Činjenice o BiH provjerene u izvorima (novembar 2026): hitne službe 122 policija, 123 vatrogasci, 124 hitna pomoć
+ * (112 u BiH ne radi jedinstveno); 4 nacionalna parka (Sutjeska, Kozara, Una, Drina); Maglić 2386 m;
+ * ZOI 1984: Jahorina, Bjelašnica, Igman, Trebević; stećci na listi UNESCO-a od 2016; gradovi po popisu 2013.
  */
 (function (B) {
   'use strict';
@@ -465,8 +467,8 @@
     },
     {
       id: 'p4-planine', r: [4], t: /planinski reljef/i,
-      o: ['Navedi 3 planine BiH.', 'Koja je najviša planina u BiH?  [[! Maglić]]'],
-      s: ['Na kojim planinama su održane Zimske olimpijske igre 1984?  [[! Jahorina, Bjelašnica (i Igman)]]', 'Kojem planinskom sistemu pripadaju planine BiH?  [[! Dinaridima]]'],
+      o: ['Navedi 3 planine BiH.', 'Koja je najviša planina u BiH?  [[! Maglić (2386 m, na granici sa Crnom Gorom)]]'],
+      s: ['Na kojim planinama su održane Zimske olimpijske igre 1984?  [[! Jahorina, Bjelašnica, Igman i Trebević]]', 'Kojem planinskom sistemu pripadaju planine BiH?  [[! Dinaridima]]'],
       n: ['Kako planine koriste ljudi? Navedi 3 načina.  [[! turizam, šume, ispaša]]', 'Napravi kartu sa 5 planina BiH.'],
     },
     {
@@ -502,12 +504,12 @@
     {
       id: 'p4-endemi-parkovi', r: [4], t: /biljni i .ivotinjski svijet, endemske/i,
       o: ['Navedi 2 nacionalna parka u BiH.  [[! Sutjeska, Kozara, Una, Drina]]', 'Šta je endemska vrsta?  [[! vrsta koja živi samo na jednom području]]'],
-      s: ['Navedi primjer endemske biljke ili životinje.  [[! Pančićeva omorika, čovječija ribica]]', 'Napiši 2 pravila ponašanja u nacionalnom parku.'],
+      s: ['Navedi primjer endemske biljke ili životinje.  [[! Pančićeva omorika (uz Drinu), čovječija ribica (pećine Popova polja)]]', 'Napiši 2 pravila ponašanja u nacionalnom parku.'],
       n: ['Zašto je važno čuvati endemske vrste?', 'Napravi kartu nacionalnih parkova BiH.'],
     },
     {
       id: 'p4-stanovnistvo', r: [4], t: /stanovni.tvo i naselja – narodi/i,
-      o: ['Navedi 4 najveća grada u BiH.  [[! Sarajevo, Banja Luka, Tuzla, Zenica, Mostar]]', 'Koji su konstitutivni narodi BiH?  [[! Bošnjaci, Srbi, Hrvati]]'],
+      o: ['Navedi 4 najveća grada u BiH.  [[! Sarajevo, Banja Luka, Tuzla, Zenica (popis 2013; slijede Bijeljina i Mostar)]]', 'Koji su konstitutivni narodi BiH?  [[! Bošnjaci, Srbi, Hrvati]]'],
       s: ['Šta je kulturna baština? Navedi primjer.', 'Navedi jednu nacionalnu manjinu u BiH.  [[! npr. Romi, Ukrajinci, Slovenci]]'],
       n: ['Zašto je raznolikost naroda i kultura bogatstvo?', 'Napravi plakat o jednom gradu u BiH.'],
     },
@@ -532,7 +534,7 @@
     {
       id: 'p4-srednji-vijek', r: [4], t: /srednjovjekovna pro.lost/i,
       o: ['Šta su stećci?  [[! srednjovjekovni nadgrobni spomenici]]', 'Navedi jedan srednjovjekovni grad-tvrđavu u BiH.  [[! npr. Jajce, Srebrenik, Počitelj, Doboj]]'],
-      s: ['Zašto su stećci na listi svjetske baštine UNESCO-a?', 'Kojim pismom se pisalo u srednjem vijeku na našim prostorima?  [[! ćirilica (bosančica), glagoljica]]'],
+      s: ['Zašto su stećci na listi svjetske baštine UNESCO-a?', 'Kojim pismom se pisalo u srednjem vijeku na našim prostorima?  [[! najviše ćirilicom, a koristila se i glagoljica]]'],
       n: ['Napiši 3 rečenice o jednom srednjovjekovnom vladaru.', 'Nacrtaj stećak i ukrase na njemu.'],
     },
     {
@@ -606,7 +608,7 @@
     {
       id: 'p5-globus', r: [5], t: /globus i geografska karta svijeta/i,
       o: ['Nabroji 7 kontinenata.  [[! Evropa, Azija, Afrika, Sjeverna Amerika, Južna Amerika, Australija, Antarktik]]', 'Šta je ekvator?  [[! zamišljena linija koja dijeli Zemlju na sjevernu i južnu poluloptu]]'],
-      s: ['Nabroji 4 okeana.  [[! Tihi, Atlantski, Indijski, Sjeverni ledeni]]', 'Šta su meridijani, a šta paralele?'],
+      s: ['Nabroji 4 okeana.  [[! Tihi, Atlantski, Indijski, Sjeverni ledeni (neki udžbenici navode i Južni okean)]]', 'Šta su meridijani, a šta paralele?'],
       n: ['Pronađi na globusu BiH i odredi na kojoj je polulopti.  [[! sjevernoj i istočnoj]]', 'Koji je najveći kontinent i najveći okean?  [[! Azija; Tihi okean]]'],
     },
     {
