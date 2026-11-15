@@ -13,6 +13,13 @@ import { documentTitle, pageMeta, type PageMetaText } from './src/lib/seo';
 import { GAME_IDS, WORKSHEET_IDS, WORKSHEET_LOCALES } from './src/games/ids';
 import type { PostFrontmatter } from './src/types/post';
 import type { CountryFrontmatter } from './src/types/country';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { formatDate } from './src/lib/formatDate';
+import { WORKSHEET_THUMBNAILS } from './src/games/thumbnails';
+import { napraviStranicePriprema, type StranicaPripreme } from './plugins/pripremeStranice';
 
 // gray-matter zavisi od Node-ovog Buffer-a, pa frontmatter parsiramo ovde (u Node-u),
 // a ne u browseru. Validacija ovde znači da neispravan članak obara `npm run build`.
@@ -49,6 +56,7 @@ interface SourcePost extends PostFrontmatter {
   slug: string;
   locale: Locale;
   image?: { src: string; alt: string }; // prva slika u tekstu → og:image
+  content: string;
 }
 
 function readPosts(): SourcePost[] {
@@ -66,6 +74,7 @@ function readPosts(): SourcePost[] {
           locale,
           ...validateFrontmatter(data, `${locale}/${file}`),
           image: img ? { src: img[2], alt: img[1] } : undefined,
+          content,
         };
       })
       .sort((a, b) => b.date.localeCompare(a.date));
@@ -75,6 +84,7 @@ function readPosts(): SourcePost[] {
 interface SourceCountry extends CountryFrontmatter {
   id: string;
   locale: Locale;
+  content: string;
 }
 
 function readCountries(): SourceCountry[] {
@@ -84,11 +94,10 @@ function readCountries(): SourceCountry[] {
     return fs
       .readdirSync(dir)
       .filter((f) => f.endsWith('.md'))
-      .map((file): SourceCountry => ({
-        id: file.replace(/\.md$/, ''),
-        locale,
-        ...validateCountry(matter(fs.readFileSync(path.join(dir, file), 'utf8')).data, `${locale}/${file}`),
-      }));
+      .map((file): SourceCountry => {
+        const { data, content } = matter(fs.readFileSync(path.join(dir, file), 'utf8'));
+        return { id: file.replace(/\.md$/, ''), locale, ...validateCountry(data, `${locale}/${file}`), content };
+      });
   });
 }
 
@@ -96,7 +105,10 @@ interface Page {
   path: string;
   meta: PageMetaText;
   lastmod?: string;
+  kind?: 'home' | 'about';
   article?: SourcePost;
+  country?: SourceCountry;
+  image?: { src: string; alt: string }; // og:image (jpg/png — pregledi linkova ne prikazuju SVG)
 }
 
 type PageGroup = Partial<Record<Locale, Page>>;
@@ -109,17 +121,28 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
   const everywhere = (page: (locale: Locale) => Page, locales: readonly Locale[] = LOCALES): PageGroup =>
     Object.fromEntries(locales.map((locale) => [locale, page(locale)]));
   const games = (locale: Locale) => `${base(locale)}/${localeInfo[locale].gamesSlug}`;
+  // Isto kao paths.worksheets u src/i18n/paths.ts (stare adrese /igre/radni-listovi/* preusmjerava vercel.json).
+  const worksheets = (locale: Locale) => `${base(locale)}/${localeInfo[locale].worksheetSlug}`;
   const t = (locale: Locale) => dictionaries[locale];
 
   const groups: PageGroup[] = [
-    everywhere((l) => ({ path: base(l) || '/', meta: pageMeta.home(t(l)) })),
+    everywhere((l) => ({ path: base(l) || '/', meta: pageMeta.home(t(l)), kind: 'home' })),
     everywhere((l) => ({ path: `${base(l)}/blog`, meta: pageMeta.blog(t(l)) })),
-    everywhere((l) => ({ path: `${base(l)}/${localeInfo[l].aboutSlug}`, meta: pageMeta.about(t(l)) })),
+    everywhere((l) => ({ path: `${base(l)}/${localeInfo[l].aboutSlug}`, meta: pageMeta.about(t(l)), kind: 'about' })),
     everywhere((l) => ({ path: games(l), meta: pageMeta.games(t(l)) })),
     ...GAME_IDS.map((id) => everywhere((l) => ({ path: `${games(l)}/${id}`, meta: pageMeta.game(t(l), id) }))),
+    everywhere((l) => ({ path: worksheets(l), meta: pageMeta.worksheets(t(l)) })),
     ...WORKSHEET_IDS.map((id) =>
       everywhere(
-        (l) => ({ path: `${games(l)}/${localeInfo[l].worksheetSlug}/${id}`, meta: pageMeta.worksheet(t(l), id) }),
+        (l) => {
+          const thumb = WORKSHEET_THUMBNAILS[id];
+          const meta = pageMeta.worksheet(t(l), id);
+          return {
+            path: `${worksheets(l)}/${id}`,
+            meta,
+            image: thumb && !thumb.endsWith('.svg') ? { src: thumb, alt: meta.title ?? '' } : undefined,
+          };
+        },
         WORKSHEET_LOCALES[id],
       ),
     ),
@@ -133,6 +156,7 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
       meta: { title: post.title, description: post.excerpt },
       lastmod: post.date,
       article: post,
+      image: post.image,
     };
     bySlug.set(post.slug, group);
   }
@@ -149,6 +173,7 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
       path: `${world(country.locale)}/${country.id}`,
       meta: pageMeta.country(t(country.locale), country),
       lastmod: country.checked,
+      country,
     };
     byCountry.set(country.id, group);
   }
@@ -170,7 +195,8 @@ function alternateLinks(group: PageGroup, tag: 'xhtml:link' | 'link'): string[] 
   return links;
 }
 
-function sitemapXml(groups: PageGroup[]): string {
+// `extra` = stranice samo na srpskom, bez prevoda (biblioteka priprema), pa bez hreflang veza.
+function sitemapXml(groups: PageGroup[], extra: string[]): string {
   const urls = groups.flatMap((group) => {
     const alternates = alternateLinks(group, 'xhtml:link').map((l) => `    ${l}`);
     return groupEntries(group).map(([, { path: p, lastmod }]) =>
@@ -181,6 +207,7 @@ function sitemapXml(groups: PageGroup[]): string {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...urls,
+    ...extra.map((p) => `  <url>\n    <loc>${siteConfig.url}${p}</loc>\n  </url>`),
     '</urlset>',
     '',
   ].join('\n');
@@ -220,6 +247,86 @@ function rssXml(locale: Locale, posts: SourcePost[]): string {
   ].join('\n');
 }
 
+const markdownHtml = (markdown: string) =>
+  renderToStaticMarkup(createElement(ReactMarkdown, { remarkPlugins: [remarkGfm] }, markdown));
+
+const ldScript = (data: unknown) =>
+  `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+
+// Tekst stranice u #root, za pretraživače i AI alate koji ne izvršavaju JS (Bing, ChatGPT, Perplexity…).
+// React ga pri pokretanju zamijeni (createRoot), pa klase prate BlogPost/Country da skok bude što manji.
+function prerender(locale: Locale, page: Page): string {
+  const t = dictionaries[locale];
+  const wrap = 'wrap min-h-[80vh] max-w-[780px] pt-[96px] sm:pt-[130px]';
+  const h1 = 'mt-3.5 mb-4 font-head text-[clamp(32px,5vw,52px)] leading-[1.1] font-bold tracking-[-0.03em] text-balance';
+  const lead = 'text-[clamp(16.5px,1.6vw,19px)] text-muted';
+  const meta = 'flex flex-wrap items-center gap-2 font-mono text-[12.5px] font-medium text-muted';
+
+  const { article, country } = page;
+  if (article) {
+    return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><div class="${meta}"><span>${escapeXml(t.categories[article.category])}</span><span>${escapeXml(t.blog.published)} <time datetime="${article.date}">${formatDate(article.date, locale)}</time></span></div><h1 class="${h1}">${escapeXml(article.title)}</h1><p class="${lead}">${escapeXml(article.excerpt)}</p></header><article class="prose">${markdownHtml(article.content)}</article></div>`;
+  }
+  if (country) {
+    return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><h1 class="${h1}">${escapeXml(country.name)}</h1><p class="${lead}">${escapeXml(country.excerpt)}</p></header><article class="prose">${markdownHtml(country.content)}</article></div>`;
+  }
+  return `<div class="${wrap}"><h1 class="${h1}">${escapeXml(page.meta.title ?? siteConfig.name)}</h1><p class="${lead}">${escapeXml(page.meta.description)}</p></div>`;
+}
+
+function person(locale: Locale) {
+  const t = dictionaries[locale];
+  return {
+    '@type': 'Person',
+    '@id': `${siteConfig.url}/#autor`,
+    name: siteConfig.author.name,
+    jobTitle: t.author.role,
+    url: `${siteConfig.url}${base(locale)}/${localeInfo[locale].aboutSlug}`,
+    image: `${siteConfig.url}/slike/marko-losic.jpg`,
+    sameAs: Object.values(siteConfig.social).filter(Boolean),
+  };
+}
+
+function structuredData(locale: Locale, page: Page, url: string): unknown[] {
+  const inLanguage = localeInfo[locale].tag;
+  if (page.kind === 'home') {
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: siteConfig.name,
+        url,
+        inLanguage,
+        description: page.meta.description,
+        author: { '@id': `${siteConfig.url}/#autor` },
+      },
+      { '@context': 'https://schema.org', ...person(locale) },
+    ];
+  }
+  if (page.kind === 'about') {
+    return [{ '@context': 'https://schema.org', '@type': 'ProfilePage', url, inLanguage, mainEntity: person(locale) }];
+  }
+  if (page.article) {
+    const a = page.article;
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: a.title,
+        description: a.excerpt,
+        datePublished: a.date,
+        dateModified: a.date,
+        inLanguage,
+        url,
+        mainEntityOfPage: url,
+        image: `${siteConfig.url}${a.image?.src ?? '/slike/og-slika.jpg'}`,
+        articleSection: dictionaries[locale].categories[a.category],
+        author: person(locale),
+        publisher: { '@type': 'Person', name: siteConfig.author.name, url: person(locale).url },
+      },
+    ];
+  }
+  return [];
+}
+
 // Statični HTML po ruti: isti index.html, ali sa naslovom, opisom i og:* tagovima te stranice.
 // Pregledi linkova (Viber, Facebook, WhatsApp) ne izvršavaju JS, pa bez ovoga svi linkovi izgledaju isto.
 function pageHtml(template: string, locale: Locale, page: Page, group: PageGroup, hasRss: boolean): string {
@@ -245,7 +352,7 @@ function pageHtml(template: string, locale: Locale, page: Page, group: PageGroup
   meta('property', 'og:locale', localeInfo[locale].tag.replace(/-/g, '_'));
   replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${url}" />`);
 
-  const image = page.article?.image;
+  const image = page.image;
   if (image) {
     meta('property', 'og:image', `${siteConfig.url}${image.src}`);
     meta('property', 'og:image:alt', image.alt);
@@ -257,7 +364,19 @@ function pageHtml(template: string, locale: Locale, page: Page, group: PageGroup
     ...(hasRss ? [`<link rel="alternate" type="application/rss+xml" title="${escapeXml(siteConfig.name)}" href="${siteConfig.url}${rssPath(locale)}"/>`] : []),
     ...(page.article ? [`<meta property="article:published_time" content="${page.article.date}" />`] : []),
   ];
+  if (!html.includes('<div id="root"></div>')) throw new Error('seo-files: index.html nema <div id="root"></div>');
+  html = html.replace('<div id="root"></div>', `<div id="root">${prerender(locale, page)}</div>`);
+  extra.push(...structuredData(locale, page, url).map(ldScript));
   return html.replace('</head>', `  ${extra.join('\n    ')}\n  </head>`);
+}
+
+// 404.html: Vercel ga vraća sa statusom 404 za svaku adresu bez svog fajla; SPA tada prikaže NotFound.
+function notFoundHtml(template: string): string {
+  const t = dictionaries[DEFAULT_LOCALE];
+  return template
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeXml(documentTitle(t.notFound.title.replace(/\.$/, ''), t))}</title>`)
+    .replace(/\s*<link rel="canonical"[^>]*>/, '')
+    .replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>');
 }
 
 // robots.txt, sitemap.xml, RSS po jeziku i statični HTML po ruti nastaju pri buildu iz istih podataka
@@ -266,6 +385,8 @@ function seoFiles(): Plugin {
   const placeholder = siteConfig.url.includes('example.');
   let posts: SourcePost[] = [];
   let groups: PageGroup[] = [];
+  let pripreme: StranicaPripreme[] = [];
+  const pripremeSrc = path.resolve(__dirname, 'pripreme');
   const postsOf = (locale: Locale) => posts.filter((p) => p.locale === locale);
 
   return {
@@ -275,6 +396,7 @@ function seoFiles(): Plugin {
     buildStart() {
       posts = readPosts();
       groups = pageGroups(posts, readCountries());
+      pripreme = fs.existsSync(pripremeSrc) ? napraviStranicePriprema(pripremeSrc) : [];
     },
     generateBundle() {
       const robots = ['User-agent: *', 'Allow: /'];
@@ -282,7 +404,7 @@ function seoFiles(): Plugin {
         this.warn('siteConfig.url je još placeholder (src/config/site.ts) — sitemap.xml, RSS i HTML po ruti nisu napravljeni.');
       } else {
         robots.push('', `Sitemap: ${siteConfig.url}/sitemap.xml`);
-        this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemapXml(groups) });
+        this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemapXml(groups, pripreme.length ? ['/pripreme', ...pripreme.map((p) => p.path)] : []) });
         for (const locale of LOCALES) {
           if (postsOf(locale).length === 0) continue;
           this.emitFile({ type: 'asset', fileName: rssPath(locale).slice(1), source: rssXml(locale, postsOf(locale)) });
@@ -294,6 +416,7 @@ function seoFiles(): Plugin {
       const index = bundle['index.html'];
       if (placeholder || !options.dir || index?.type !== 'asset') return;
       const template = String(index.source);
+      fs.writeFileSync(path.join(options.dir, '404.html'), notFoundHtml(template));
       for (const group of groups) {
         for (const [locale, page] of groupEntries(group)) {
           const file = path.join(options.dir, page.path, 'index.html');
@@ -301,9 +424,13 @@ function seoFiles(): Plugin {
           fs.writeFileSync(file, pageHtml(template, locale, page, group, postsOf(locale).length > 0));
         }
       }
-      const pripremeSrc = path.resolve(__dirname, 'pripreme');
       if (fs.existsSync(pripremeSrc)) {
         fs.cpSync(pripremeSrc, path.join(options.dir, 'pripreme'), { recursive: true });
+        for (const stranica of pripreme) {
+          const file = path.join(options.dir, stranica.path, 'index.html');
+          fs.mkdirSync(path.dirname(file), { recursive: true });
+          fs.writeFileSync(file, stranica.html);
+        }
       }
     },
   };
@@ -313,11 +440,21 @@ function pripremeDevRoute(): Plugin {
   return {
     name: 'pripreme-dev-route',
     configureServer(server) {
-      server.middlewares.use((req, _res, next) => {
+      server.middlewares.use((req, res, next) => {
         if (req.url) {
           const [pathname, search] = req.url.split('?');
           if (pathname === '/pripreme' || pathname === '/pripreme/') {
             req.url = `/pripreme/index.html${search ? `?${search}` : ''}`;
+          }
+          // Statične stranice priprema (u buildu ih piše seo-files); ovdje se prave na zahtjev.
+          else if (pathname && /^\/pripreme\/[a-z0-9-]+(\/[a-z0-9-]+)?\/?$/.test(pathname)) {
+            const trazena = pathname.replace(/\/$/, '');
+            const stranica = napraviStranicePriprema(path.resolve(__dirname, 'pripreme')).find((s) => s.path === trazena);
+            if (stranica) {
+              res.setHeader('Content-Type', 'text/html; charset=utf-8');
+              res.end(stranica.html);
+              return;
+            }
           }
         }
         next();

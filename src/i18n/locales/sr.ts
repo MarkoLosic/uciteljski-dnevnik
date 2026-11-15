@@ -1,4 +1,5 @@
 import type { Category } from '../../types/post';
+import { worksheetAboutSr } from '../worksheetAbout/sr';
 import type { GameId, GameText, Shape, Skill, Thing, ToyColor, WorksheetGroup, WorksheetId } from '../../games/ids';
 
 // KORISNIK: tekstovi o tebi i tekst interfejsa na srpskom. Ostali jezici su u susednim fajlovima
@@ -126,28 +127,28 @@ export const sr = {
         title: 'Dnevne pripreme za cijelu školsku godinu (1–5. razred)',
         text: 'Kompletno razrađene nastavne jedinice za Maternji jezik, Matematiku, Prirodu i društvo / Moju okolinu, Likovnu kulturu, Muzičku kulturu i Fizičko / Tjelesni odgoj — sa ciljem, ishodima i uvodnim, glavnim i završnim dijelom časa.',
         linkText: 'Pretraži pripreme →',
-        href: '/pripreme/index.html',
+        href: '/pripreme',
       },
       {
         badge: 'Individualizacija i inkluzija',
         title: 'Priprema za 3 nivoa postignuća učenika',
         text: 'U svakom odjeljenju sjede učenici različitog tempa rada. Na svakoj pripremi jednim klikom generišete posebna očekivanja, prilagođene zadatke i način praćenja za osnovni (I), srednji (II) i napredni (III) nivo.',
         linkText: 'Otvori diferencirane pripreme →',
-        href: '/pripreme/index.html',
+        href: '/pripreme',
       },
       {
         badge: 'Manje papirologije',
         title: 'Brz unos u e-Dnevnik, Word (.docx) i A4 štampa',
         text: 'Svaku pripremu možete jednim klikom kopirati u formatu spremnom za e-Dnevnik, preuzeti kao uredan Word dokument sa sačuvanim imenom vaše škole i učitelja, ili prebaciti između latinice i ćirilice.',
         linkText: 'Isprobaj alate za izvoz →',
-        href: '/pripreme/index.html',
+        href: '/pripreme',
       },
       {
         badge: 'Materijali za klupe',
         title: 'Automatski A4 radni listići za učenike',
         text: 'Uz svaku pripremu možete odmah otvoriti i odštampati radni listić za učenike sa četiri strukturisana zadatka i skalom samoprocjene, kao i poseban diferencirani listić podijeljen na tri nivoa težine.',
         linkText: 'Pogledaj radne listiće →',
-        href: '/pripreme/index.html',
+        href: '/pripreme',
       },
       {
         badge: 'Prvi koraci u školi',
@@ -352,6 +353,10 @@ export const sr = {
       date: 'Datum',
       page: (n: number, total: number) => `Strana ${n}/${total}`,
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
+      aboutTitle: 'O ovom listu',
+      ageLabel: 'Uzrast',
+      // „O ovom listu“ za roditelje i učitelje (src/i18n/worksheetAbout/); prazno = prikazuje se samo uputstvo.
+      about: worksheetAboutSr,
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
       sectionText: 'Kompletna zbirka od 94 radnih listova, diferenciranih testova i tematskih bojanki spremnih za štampu na A4 formatu: testovi znanja za tri nivoa postignuća učenika (osnovni, srednji i napredni), tematske bojanke, slova azbuke i abecede, grafomotorika i matematika.',

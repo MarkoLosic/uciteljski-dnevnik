@@ -63,10 +63,10 @@ This site also has a few [interactive games for preschoolers](/en/games): balloo
 
 That's why the games come with printable worksheets:
 
-- [Follow the path](/en/games/worksheets/trace) — lines from easier to harder
-- [Join the dots](/en/games/worksheets/dots) — counting and a precise stroke
-- [Bunny maze](/en/games/worksheets/maze) — planning a route with a pencil
-- [Writing numbers](/en/games/worksheets/numbers) and [writing letters](/en/games/worksheets/latin)
+- [Follow the path](/en/worksheets/trace) — lines from easier to harder
+- [Join the dots](/en/worksheets/dots) — counting and a precise stroke
+- [Bunny maze](/en/worksheets/maze) — planning a route with a pencil
+- [Writing numbers](/en/worksheets/numbers) and [writing letters](/en/worksheets/latin)
 
 ## Checklist: fine motor skills and independence before starting school
 

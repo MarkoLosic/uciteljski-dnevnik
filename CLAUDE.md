@@ -87,6 +87,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
 ├── tsconfig.json              # app (src/), referencira tsconfig.node.json
 ├── tsconfig.node.json         # vite.config.ts + deljeni validator
 ├── vite.config.ts             # pluginovi markdown-posts (vidi 6) i seo-files (sitemap.xml, robots.txt, RSS, HTML po ruti — vidi 12)
+├── plugins/
+│   └── pripremeStranice.ts    # statične stranice priprema: /pripreme/<slug>, po razredu i predmetu (vidi 10.8)
 ├── vercel.json                # SPA rewrite: sve rute → index.html
 ├── index.html
 ├── .gitignore
@@ -105,7 +107,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── paths.ts           # localeBase, pathsFor(locale), switchLocalePath
     │   ├── LocaleContext.tsx  # LocaleProvider + useLocale() → { locale, t, paths }
     │   ├── dictionaries.ts    # Record<Locale, Dictionary>
-    │   └── locales/           # sr.ts (izvor tipa Dictionary), en.ts, hr.ts, bs.ts, de.ts
+    │   ├── locales/           # sr.ts (izvor tipa Dictionary), en.ts, hr.ts, bs.ts, de.ts
+    │   └── worksheetAbout/    # „O ovom listu“ po jeziku (sr.ts; ostali jezici kad se prevede)
     ├── types/
     │   ├── post.ts            # Post, PostMeta, Category
     │   └── country.ts         # COUNTRY_FACTS, CountryFrontmatter, CountryMeta
@@ -139,6 +142,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
+    │   ├── thumbnails.ts      # WORKSHEET_THUMBNAILS — sličice listova (kartice + og:image, deli se sa vite.config.ts)
     │   ├── registry.ts        # GameId → komponenta, ikona, boja kartice, veštine
     │   ├── shared.tsx         # toyHex, shuffle, ShapeIcon, RoundDots, useShake, useDragDrop
     │   ├── things.ts          # sličice (lucide) za pamćenje, brojanje, veličine
@@ -189,7 +193,7 @@ export const siteConfig = {
     email: 'kontakt@example.ba',
   },
   topics: [{ title, text }, …],  // „O čemu pišem"
-  url: 'https://uciteljski-dnevnik-roan.vercel.app',
+  url: 'https://www.xn--uiteljskidnevnik-s7b.online',
   locale: 'sr-Latn-BA',
   social: {
     linkedin: '',
@@ -665,7 +669,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Grupa `books` („Priručnici i vježbanke“) je prva na stranici radnih listova i drži izdanja od više strana (vježbanka i priručnik); nova takva izdanja idu u nju, a ne u tematske grupe.
 - Vježbanka `homeWorkbookMath2` (`workbook.tsx`, samo sr i bs jer je novac u KM): plan vježbanja, 12 dana po jedna strana sa likom Njuška, koker španijela (SVG `Njusko`), Veliki izazov, diploma i rješenja za roditelje. Brojevi u zadacima su u nizovima na vrhu fajla, a rješenja se iz njih računaju — pri izmjeni zadatka mijenja se samo niz.
 - Priručnik „Kako nastaje priča“ (`writingHandbookLatin` / `writingHandbookCyrillic`, `writingHandbook.tsx`, sr i bs): uvod sa mapom, 12 tema (pravilo pisaca, primjer „Iz radionice“, preporuka „Pročitaj“, vježbe), plan priče i strana za pisanje sa listom za provjeru. Tekst se piše latinicom, a ćirilična verzija nastaje funkcijom `toCyrillic`. Primjeri su naš tekst — ne prepisivati odlomke iz knjiga zaštićenih autorskim pravom, nego knjigu samo preporučiti.
-- Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`.
+- Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`. Opis „O ovom listu“ za roditelje i učitelje (uzrast + 2–3 rečenice, ne štampa se, koristi se i kao meta opis) je u `src/i18n/worksheetAbout/<jezik>.ts` i stiže kroz `t.games.worksheet.about`; jezik bez opisa ima `about: {}` i prikazuje samo uputstvo. Novi list → dodaj i njegov opis.
 
 ### 10.7. `World.tsx` i `Country.tsx` — Škole u svetu
 
@@ -682,7 +686,9 @@ Redosled sekcija (lično predstavljanje pa blog):
 ### 10.8. Pripreme (`pripreme/`) — zadaci za 3 nivoa
 
 - Zaglavlje priprema (`index.html`, `admin.html`, stil u `stil.css`, meni na telefonu u `zaglavlje.js`) je kopija zaglavlja sajta (`Header.tsx`): iste stavke, isti nazivi i iste boje. **Kad se mijenja meni sajta, mijenja se i ovdje.** Alati priprema (LAT/ĆIR, Generator) su u traci ispod zaglavlja, ne u meniju.
-- Biblioteka dnevnih priprema je statična aplikacija u `pripreme/` (`podaci.js` = 1.436 priprema, `app.js` = prikaz); Vite je kopira u `dist/`.
+- Biblioteka dnevnih priprema je statična aplikacija u `pripreme/` (`podaci.js` = 1.436 priprema, `app.js` = prikaz); Vite je kopira u `dist/`. Adresa biblioteke je `/pripreme` (ne `/pripreme/index.html`, to preusmjerava `vercel.json`); putanje u njenim HTML fajlovima su apsolutne (`/pripreme/stil.css`), da rade i bez kose crte na kraju.
+- **Statične stranice priprema** (`plugins/pripremeStranice.ts`, poziva ga `seo-files`): biblioteka otvara pripremu preko `#priprema=<slug>`, a pretraživači sve iza `#` odbacuju. Zato build pravi `/pripreme/<slug>` (cijela priprema u HTML-u + zadaci za 3 nivoa bez rješenja + JSON-LD `LearningResource` i `BreadcrumbList`; dugme vodi u biblioteku), `/pripreme/<r>-razred` i `/pripreme/<r>-razred/<predmet>` (sve pripreme po cjelinama), i dodaje ih u sitemap. Zaglavlje i skriptu teme uzima iz `pripreme/index.html`. U dev serveru se prave na zahtjev. Linkovi na razred u Reactu idu na `/pripreme/<r>-razred`.
+- **Slug pripreme mora biti jedinstven** (adresa stranice i ključ za `#priprema=`); build i `provjeri:zadatke` padaju na duplikat. Slova koja se bez dijakritika poklope razlikuju se ovako: š → `sh`, ž → `zh`, č → `ch`, ć → `cj`. Nov predmet → dodaj ga u `PREDMETI` u `pripremeStranice.ts`.
 - Zadaci za I, II i III nivo **nisu šablon po predmetu**, nego dolaze iz banke `pripreme/zadaci/` (`osnova.js` + `matematika.js`, `jezik.js`, `priroda.js`, `ostalo.js`): svaka tema časa ima svoje pravilo (`t:` regex nad nazivom časa, `r:` razredi). Prvo pravilo koje odgovara se koristi — specifičnija pravila idu ispred opštijih.
 - Zadaci su pisani **za učenika** (kratka naredba, jedna radnja, konkretni brojevi i riječi); ishodi iz plana su za učitelja i ne idu na učenički listić.
 - Računi se pišu oznakama (`[[34 + 5]]`, `[[x + 24 = 60 | 36]]`, `[[14 + 3 ? 20 - 2]]`, `[[= 4 + 5]]`, `[[! rješenje]]`…, opis u `osnova.js`); banka ih računa i provjerava, a rješenja vidi samo učitelj.
@@ -714,13 +720,17 @@ Redosled sekcija (lično predstavljanje pa blog):
 - `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`) — podrazumevane vrednosti i ono što vide pregledi linkova bez JS-a.
 - **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — Iz učionice“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
 - Naslov i opis stranica su u `src/lib/seo.ts` (`pageMeta.home(t)`, `pageMeta.game(t, id)`…) i koriste ih i stranice i `vite.config.ts`. Nova stranica → dodaj `pageMeta.*` i grupu u `pageGroups()`.
+- Radni listovi su na `paths.worksheet(id)` (`/radni-listovi/<id>`, en `/en/worksheets/<id>`…); stare adrese `/igre/radni-listovi/*` i `/bojanke/*` trajno (301) preusmjerava `vercel.json`. `/pripreme/admin.html` ima `noindex` (meta + `X-Robots-Tag`).
 - Plugin `seo-files` u `vite.config.ts` pri `npm run build` iz `pageGroups()` (jezici, slugovi, igre, radni listovi, članci) pravi:
   - `sitemap.xml` (sa `lastmod` = `date` i `hreflang` vezama) i `robots.txt`;
   - RSS po jeziku: `/rss.xml`, `/en/rss.xml`… (samo jezici sa člancima);
   - **statični HTML po ruti** (`dist/<putanja>/index.html`): kopija `index.html` sa pravim `lang`, `<title>`, description, `og:*`, canonical, `hreflang` linkovima i RSS linkom; za članak `og:type=article`, `article:published_time` i `og:image` = prva slika iz teksta. Vercel prvo služi statične fajlove, pa tek onda SPA rewrite — zato pregledi linkova (Viber, Facebook, WhatsApp) vide naslov i opis baš tog članka. Ako se promeni `index.html`, regexi u `pageHtml()` moraju i dalje da nađu tagove (inače build pada).
-- Domen: `https://uciteljski-dnevnik-roan.vercel.app` (Vercel). Ako se promeni, menja se u `siteConfig.url` i u `index.html` (`og:url`, `og:image`, `canonical`). Dok je `siteConfig.url` placeholder (`example.`), sitemap se ne pravi.
+- Domen: `https://www.učiteljskidnevnik.online`, u kodu uvijek kao punycode `https://www.xn--uiteljskidnevnik-s7b.online` (sitemap, canonical i og:* moraju biti ASCII). Bez `www` i `http` preusmjerava Vercel; stara adresa `uciteljski-dnevnik-roan.vercel.app` trajno (301) preusmjerava na domen (`vercel.json`, uslov `has: host`). Ako se domen promeni, menja se u `siteConfig.url`, `index.html` i `pripreme/index.html` (`og:url`, `og:image`, `canonical`) i u preusmjeravanju u `vercel.json`. Dok je `siteConfig.url` placeholder (`example.`), sitemap se ne pravi.
 - Slika za deljenje linkova: `public/slike/og-slika.jpg` (1200×630), postavljena u `index.html`.
-- Telo stranice se i dalje iscrtava JS-om; Google ga vidi, a pregledima linkova trebaju samo tagovi iz `<head>`.
+- **Tekst u statičnom HTML-u:** `prerender()` u `vite.config.ts` upisuje u `#root` naslov i opis stranice, a za članke i zemlje i cijeli tekst (Markdown kroz `react-markdown` + `react-dom/server`). To je za pretraživače i AI alate koji ne izvršavaju JS (Bing, ChatGPT, Perplexity); React ga pri pokretanju zamijeni (`createRoot`, ne `hydrateRoot`), a klase prate `BlogPost` da skok bude minimalan.
+- **JSON-LD** (`structuredData()` u `vite.config.ts`): početna = `WebSite` + `Person`, „O meni“ = `ProfilePage`, članak = `BlogPosting` (autor = `Person`). Pripreme imaju `LearningResource` + `BreadcrumbList` (sekcija 10.8).
+- **og:image po stranici:** članak = prva slika iz teksta; radni list = sličica iz `src/games/thumbnails.ts` (samo jpg/png — Facebook i Viber ne prikazuju SVG); ostalo = `og-slika.jpg`.
+- **Pravi 404:** `vercel.json` više nema rewrite „sve → index.html“; svaka ruta ima svoj statični `index.html`, a sve ostalo dobija `dist/404.html` (status 404, `noindex`, SPA prikaže `NotFound`). **Posljedica: nova vrsta stranice MORA ući u `pageGroups()`**, inače pri direktnom otvaranju vraća 404.
 - Semantički HTML (sekcija 11) pomaže SEO.
 
 ---

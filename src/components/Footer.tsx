@@ -26,7 +26,7 @@ export default function Footer() {
         <Link to={paths.home} className={linkClass}>
           {t.nav.home}
         </Link>
-        <a href="/pripreme/index.html" className={linkClass}>
+        <a href="/pripreme" className={linkClass}>
           {t.nav.pripreme}
         </a>
         <Link to={paths.games} className={linkClass}>

@@ -56,7 +56,7 @@ export default function Header() {
     external?: boolean;
   }[] = [
     { to: paths.home, label: t.nav.home, icon: Home },
-    { to: '/pripreme/index.html', label: t.nav.pripreme, badge: '1–5. razred', icon: BookOpen, external: true },
+    { to: '/pripreme', label: t.nav.pripreme, badge: '1–5. razred', icon: BookOpen, external: true },
     { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort, badge: 'A4 štampa', icon: Palette },
     { to: paths.games, label: t.nav.games, short: t.nav.gamesShort, badge: '10 igara', icon: Gamepad2 },
     { to: paths.blog, label: t.nav.blog, icon: FileText },

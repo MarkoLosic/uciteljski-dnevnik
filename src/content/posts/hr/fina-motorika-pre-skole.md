@@ -63,10 +63,10 @@ Na stranici se nalazi i nekoliko [interaktivnih igara za predškolce](/hr/igre):
 
 Zato uz igre postoje i radni listovi za ispis:
 
-- [Prati stazu](/hr/igre/radni-listovi/trace) — crte od lakših prema težima
-- [Spoji točke](/hr/igre/radni-listovi/dots) — brojenje i precizan potez
-- [Zeko u labirintu](/hr/igre/radni-listovi/maze) — planiranje puta olovkom
-- [Pišemo brojeve](/hr/igre/radni-listovi/numbers) i [pišemo slova](/hr/igre/radni-listovi/latin)
+- [Prati stazu](/hr/radni-listovi/trace) — crte od lakših prema težima
+- [Spoji točke](/hr/radni-listovi/dots) — brojenje i precizan potez
+- [Zeko u labirintu](/hr/radni-listovi/maze) — planiranje puta olovkom
+- [Pišemo brojeve](/hr/radni-listovi/numbers) i [pišemo slova](/hr/radni-listovi/latin)
 
 ## Kontrolni popis: fina motorika i samostalnost pred polazak u školu
 

@@ -9,6 +9,15 @@
       name="description"
       content="Biblioteka dnevnih priprema za razrednu nastavu od 1. do 5. razreda osnovne škole u Bosni i Hercegovini (Republika Srpska RPZ i Federacija BiH ZJNPP)."
     />
+    <link rel="canonical" href="https://www.xn--uiteljskidnevnik-s7b.online/pripreme" />
+    <meta property="og:title" content="Nastavne pripreme i planovi (1–5. razred BiH) — Iz učionice" />
+    <meta property="og:description" content="Biblioteka od 1.436 dnevnih priprema za razrednu nastavu od 1. do 5. razreda (Republika Srpska i Federacija BiH): štampa, Word i zadaci za 3 nivoa." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.xn--uiteljskidnevnik-s7b.online/pripreme" />
+    <meta property="og:site_name" content="Iz učionice" />
+    <meta property="og:locale" content="sr_Latn_BA" />
+    <meta property="og:image" content="https://www.xn--uiteljskidnevnik-s7b.online/slike/og-slika.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script>
       (function () {
         try {
@@ -25,7 +34,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./stil.css" />
+    <link rel="stylesheet" href="/pripreme/stil.css" />
   </head>
   <body>
     <!-- Zaglavlje: isto kao na ostatku sajta (src/components/Header.tsx) — mijenjati oba zajedno -->
@@ -36,7 +45,7 @@
       </a>
       <nav class="header-nav" aria-label="Glavna navigacija">
         <a href="/" class="nav-link">Početna</a>
-        <a href="/pripreme/index.html" class="nav-link active" aria-current="page">Pripreme</a>
+        <a href="/pripreme" class="nav-link active" aria-current="page">Pripreme</a>
         <a href="/radni-listovi" class="nav-link">Bojanke i listovi</a>
         <a href="/igre" class="nav-link">Edukativne igre</a>
         <a href="/blog" class="nav-link">Blog</a>
@@ -56,7 +65,7 @@
       </div>
       <nav id="mobilniMeni" class="mobile-nav" aria-label="Glavna navigacija">
         <a href="/" class="mobile-link">Početna</a>
-        <a href="/pripreme/index.html" class="mobile-link active">Pripreme</a>
+        <a href="/pripreme" class="mobile-link active">Pripreme</a>
         <a href="/radni-listovi" class="mobile-link">Bojanke i listovi</a>
         <a href="/igre" class="mobile-link">Edukativne igre</a>
         <a href="/blog" class="mobile-link">Blog</a>
@@ -78,7 +87,7 @@
         >
           АБВ / ABC
         </button>
-        <a href="./admin.html" class="tool-link">⚙️ Generator priprema</a>
+        <a href="/pripreme/admin.html" class="tool-link">⚙️ Generator priprema</a>
       </div>
     </div>
 
@@ -204,7 +213,7 @@
                 ⭐ Sačuvane (<span id="brojSacuvanih">0</span>)
               </button>
               <button type="button" id="dugmeResetujFiltere" class="btn btn-subtle">↺ Resetuj filtere</button>
-              <a href="./admin.html" class="btn btn-outline">+ Dodaj novu pripremu</a>
+              <a href="/pripreme/admin.html" class="btn btn-outline">+ Dodaj novu pripremu</a>
             </div>
           </div>
         </div>
@@ -238,6 +247,12 @@
           <button type="button" id="dugmeResetujPrazno" class="btn btn-primary">Prikaži sve pripreme</button>
         </div>
       </section>
+
+      <!-- Obični linkovi na stranice po razredima (plugins/pripremeStranice.ts) — preko njih pretraživači nalaze svaku pripremu -->
+      <nav class="pripreme-po-razredima" aria-labelledby="naslovPoRazredima">
+        <h2 id="naslovPoRazredima" class="static-title">Pripreme po razredima</h2>
+        <p class="hub-grades"><a class="btn btn-outline" href="/pripreme/1-razred">1. razred</a> <a class="btn btn-outline" href="/pripreme/2-razred">2. razred</a> <a class="btn btn-outline" href="/pripreme/3-razred">3. razred</a> <a class="btn btn-outline" href="/pripreme/4-razred">4. razred</a> <a class="btn btn-outline" href="/pripreme/5-razred">5. razred</a></p>
+      </nav>
     </main>
 
     <!-- Modal sa detaljnim prikazom pripreme -->
@@ -461,7 +476,7 @@
         <p>© <span id="trenutnaGodina"></span> Iz učionice — Biblioteka nastavnih priprema za osnovne škole u BiH.</p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap">
           <a href="/">Početna stranica bloga</a>
-          <a href="./admin.html">Generator novih priprema (Admin)</a>
+          <a href="/pripreme/admin.html">Generator novih priprema (Admin)</a>
         </div>
       </div>
     </footer>
@@ -471,14 +486,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
     <!-- Podaci i aplikaciona logika -->
-    <script src="./podaci.js"></script>
-    <script src="./zadaci/osnova.js"></script>
-    <script src="./zadaci/matematika.js"></script>
-    <script src="./zadaci/jezik.js"></script>
-    <script src="./zadaci/priroda.js"></script>
-    <script src="./zadaci/ostalo.js"></script>
-    <script src="./app.js"></script>
-    <script src="./zaglavlje.js"></script>
+    <script src="/pripreme/podaci.js"></script>
+    <script src="/pripreme/zadaci/osnova.js"></script>
+    <script src="/pripreme/zadaci/matematika.js"></script>
+    <script src="/pripreme/zadaci/jezik.js"></script>
+    <script src="/pripreme/zadaci/priroda.js"></script>
+    <script src="/pripreme/zadaci/ostalo.js"></script>
+    <script src="/pripreme/app.js"></script>
+    <script src="/pripreme/zaglavlje.js"></script>
   </body>
 </html>
 

@@ -16,6 +16,12 @@ const jedinice = vm.runInContext(fs.readFileSync(path.join(koren, 'podaci.js'), 
 const banka = kontekst.BankaZadataka;
 
 const greske = [];
+// Slug je adresa stranice pripreme (/pripreme/<slug>) i ključ za #priprema= — mora biti jedinstven.
+const slugovi = new Map();
+for (const j of jedinice) {
+  if (slugovi.has(j.slug)) greske.push(`#${j.id} ${j.naziv}\n    isti slug kao #${slugovi.get(j.slug)}: ${j.slug}`);
+  else slugovi.set(j.slug, j.id);
+}
 const koristeno = new Map();
 const OPSEG = { 1: 20, 2: 100, 3: 1000 };
 

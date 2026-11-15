@@ -1887,3 +1887,257 @@ textarea {
   color: var(--primary);
   border-color: var(--primary);
 }
+
+/* ==========================================================================
+   STATIČNE STRANICE PRIPREMA (plugins/pripremeStranice.ts)
+   /pripreme/<razred>-razred, /pripreme/<razred>-razred/<predmet>, /pripreme/<slug>
+   ========================================================================== */
+.static-page {
+  max-width: 980px;
+  padding: 18px 0 48px;
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.crumbs li + li::before {
+  content: '›';
+  margin-right: 8px;
+}
+
+.crumbs a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.crumbs [aria-current] {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.static-hero {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.static-hero .card-badges {
+  margin-bottom: 12px;
+}
+
+.static-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.static-actions .btn {
+  height: auto;
+  min-height: 40px;
+  padding-block: 8px;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.static-page .lesson-section-header {
+  margin: 0;
+}
+
+.static-levels {
+  padding-top: 16px;
+}
+
+.static-levels > .levels-section-title,
+.static-levels > .levels-section-subtitle {
+  padding: 0 18px;
+}
+
+.static-levels .level-card-head {
+  margin: 0;
+  font-size: inherit;
+}
+
+.static-levels a,
+.lesson-links a,
+.hub-card-title {
+  color: var(--primary);
+}
+
+.static-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.static-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.static-pager a:hover {
+  border-color: var(--primary);
+}
+
+.static-pager a span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.static-pager .next {
+  text-align: right;
+}
+
+.static-block {
+  margin-top: 32px;
+}
+
+.static-title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.static-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.static-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 20px 0 8px;
+}
+
+.lesson-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.lesson-links li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.lesson-links li:first-child {
+  border-top: 0;
+}
+
+.lesson-links [aria-current] {
+  font-weight: 600;
+}
+
+.lesson-links-type {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.hub-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.hub-card-title {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hub-card-count {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hub-card-examples {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.hub-grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pripreme-po-razredima {
+  margin: 32px 0 8px;
+}
+
+@media (max-width: 640px) {
+  .static-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .static-pager .next {
+    text-align: left;
+  }
+
+  .lesson-links li {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-card {
+    transition: none;
+  }
+
+  .hub-card:hover {
+    transform: none;
+  }
+}

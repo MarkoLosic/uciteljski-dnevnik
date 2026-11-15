@@ -105,14 +105,14 @@ export default function Games() {
           </h2>
           <p className="max-w-[760px] text-[15.5px] text-muted">{t.pripremePromo.desc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-2.5">
-            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
+            <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.pripremePromo.ctaAll}
               <PixelIcon name="arrow" />
             </a>
             {[1, 2, 3, 4, 5].map((r) => (
               <a
                 key={r}
-                href={`/pripreme/index.html?razred=${r}`}
+                href={`/pripreme/${r}-razred`}
                 className="btn btn-ghost focus-ring text-sm"
               >
                 {t.pripremePromo.gradeLabel(r)}

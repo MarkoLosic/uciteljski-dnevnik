@@ -63,10 +63,10 @@ Auf dieser Seite gibt es auch einige [interaktive Spiele für Vorschulkinder](/d
 
 Deshalb gibt es zu den Spielen auch Arbeitsblätter zum Ausdrucken:
 
-- [Dem Weg folgen](/de/spiele/arbeitsblaetter/trace) — Linien von leicht bis schwer
-- [Punkte verbinden](/de/spiele/arbeitsblaetter/dots) — zählen und genau ziehen
-- [Hasen-Labyrinth](/de/spiele/arbeitsblaetter/maze) — einen Weg mit dem Stift planen
-- [Zahlen schreiben](/de/spiele/arbeitsblaetter/numbers) und [Buchstaben schreiben](/de/spiele/arbeitsblaetter/latin)
+- [Dem Weg folgen](/de/arbeitsblaetter/trace) — Linien von leicht bis schwer
+- [Punkte verbinden](/de/arbeitsblaetter/dots) — zählen und genau ziehen
+- [Hasen-Labyrinth](/de/arbeitsblaetter/maze) — einen Weg mit dem Stift planen
+- [Zahlen schreiben](/de/arbeitsblaetter/numbers) und [Buchstaben schreiben](/de/arbeitsblaetter/latin)
 
 ## Checkliste: Feinmotorik und Selbstständigkeit vor dem Schulstart
 

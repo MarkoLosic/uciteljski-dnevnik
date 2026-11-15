@@ -5,34 +5,8 @@ import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
 import { usePageMeta } from '../lib/usePageMeta';
-
-export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
-  coloringClassroom: '/slike/bojanke/ucionica-i-skola.jpg',
-  coloringSeasons: '/slike/bojanke/cetiri-godisnja-doba.jpg',
-  coloringSpring: '/slike/bojanke/prolece-i-pcelice.jpg',
-  coloringSummer: '/slike/bojanke/leto-na-plazi.jpg',
-  coloringAutumn: '/slike/bojanke/jesen-u-sumi.jpg',
-  coloringWinter: '/slike/bojanke/zimske-radosti.svg',
-  coloringAnimals: '/slike/bojanke/zivotinje-na-farmi.jpg',
-  coloringSafari: '/slike/bojanke/safari-dzungla.svg',
-  coloringPets: '/slike/bojanke/kucni-ljubimci.jpg',
-  coloringUnderwater: '/slike/bojanke/podvodni-svet.jpg',
-  coloringSubmarine: '/slike/bojanke/podmornica-i-blago.svg',
-  coloringVehicles: '/slike/bojanke/saobracaj-i-vozila.jpg',
-  coloringConstruction: '/slike/bojanke/gradjevinske-masine.jpg',
-  coloringDino: '/slike/bojanke/dinosauri-avantura.jpg',
-  coloringCastle: '/slike/bojanke/dvorac-i-bajka.jpg',
-  coloringSpace: '/slike/bojanke/svemir-i-kosmonauti.jpg',
-  coloringProfessions: '/slike/bojanke/zanimanja-ljudi.svg',
-  coloringSports: '/slike/bojanke/sport-i-igra.jpg',
-  coloringMusic: '/slike/bojanke/muzika-i-instrumenti.svg',
-  coloringBakery: '/slike/bojanke/pekara-i-kolaci.svg',
-  coloringLatin: '/slike/bojanke/slova-latinica.svg',
-  coloringCyrillic: '/slike/bojanke/slova-cirilica.svg',
-  colorByNumber: '/slike/bojanke/bojenje-po-brojevima.svg',
-  coloringScenes: '/slike/bojanke/velika-bojanka.svg',
-  colors: '/slike/bojanke/oboji-oblike.svg',
-};
+import { pageMeta } from '../lib/seo';
+import { WORKSHEET_THUMBNAILS } from '../games/thumbnails';
 
 const GROUP_ORDER: WorksheetGroup[] = ['books', 'tests', 'coloring', 'time', 'writing', 'motor', 'math', 'logic'];
 
@@ -97,10 +71,7 @@ export default function WorksheetsPage() {
 
   const shortLabels = GROUP_SHORT_LABELS[locale] || GROUP_SHORT_LABELS.sr;
 
-  usePageMeta({
-    title: `${g.worksheet.sectionTitle} | ${t.site.tagline}`,
-    description: g.worksheet.sectionText,
-  });
+  usePageMeta(pageMeta.worksheets(t));
 
   const displayedGroups = selectedGroup === 'all' ? GROUP_ORDER : [selectedGroup];
 
@@ -270,14 +241,14 @@ export default function WorksheetsPage() {
           </h2>
           <p className="max-w-[760px] text-[15.5px] text-muted">{t.pripremePromo.desc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-2.5">
-            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
+            <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.pripremePromo.ctaAll}
               <PixelIcon name="arrow" />
             </a>
             {[1, 2, 3, 4, 5].map((r) => (
               <a
                 key={r}
-                href={`/pripreme/index.html?razred=${r}`}
+                href={`/pripreme/${r}-razred`}
                 className="btn btn-ghost focus-ring text-sm"
               >
                 {t.pripremePromo.gradeLabel(r)}

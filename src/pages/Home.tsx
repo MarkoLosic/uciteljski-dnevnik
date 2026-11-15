@@ -45,7 +45,7 @@ export default function Home() {
             {t.home.heroLead}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/pripreme/index.html" className="btn btn-primary focus-ring">
+            <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.home.ctaPripreme}
               <PixelIcon name="arrow" />
             </a>
@@ -65,7 +65,7 @@ export default function Home() {
             return (
               <a
                 key={label}
-                href={i === 2 ? paths.worksheets : '/pripreme/index.html'}
+                href={i === 2 ? paths.worksheets : '/pripreme'}
                 className="card hoverable focus-ring flex flex-col p-5"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -146,7 +146,7 @@ export default function Home() {
           {t.home.gradesList.map(({ grade, count, title, desc }) => (
             <li key={grade}>
               <a
-                href={`/pripreme/index.html?razred=${grade}`}
+                href={`/pripreme/${grade}-razred`}
                 className="card hoverable focus-ring group flex h-full flex-col justify-between"
               >
                 <div>
@@ -173,7 +173,7 @@ export default function Home() {
           {/* Kartica za otvaranje kompletne biblioteke svih razreda */}
           <li>
             <a
-              href="/pripreme/index.html"
+              href="/pripreme"
               className="card hoverable focus-ring flex h-full flex-col justify-between border-accent/40 bg-surface-2/70"
             >
               <div>

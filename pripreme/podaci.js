@@ -1191,7 +1191,7 @@ const nastavneJedinice = [
   },
   {
     "id": 57,
-    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c",
+    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-ch",
     "sistem": [
       "RS"
     ],
@@ -1207,12 +1207,12 @@ const nastavneJedinice = [
     "glavniDio": "Izdvajanje glasa, pisanje slova i čitanje (27 min):\n1. Fonetska analiza položaja glasa Č (7 min): Učenici pronalaze glas Č na početku riječi (ČAŠA, ČEKIĆ, ČAMAC, ČIZME, ČOKOLADA), u sredini riječi (MAČKA, PČELA, DJEČAK, UČITELJ, OČI) i na kraju riječi (KOLAČ, MAČ, VOZAČ, KOVAČ).\n2. Grafička obrada slova Č, č (10 min): Demonstracija slova na slovarici i linijskoj tabli. Slovo se sastoji od slova C sa kvačicom iznad. Pisanje slova prstom u vazduhu i na klupi, a zatim pisanje po jednog reda velikog slova, malog slova i kombinacije u sveskama.\n3. Čitanje i pisanje riječi i rečenica (10 min): Slaganje riječi na slovarici, čitanje teksta u bukvaru i zapisivanje rečenica: DJEČAK PIJE ČAJ IZ ČAŠE. MAČKA SPAVA NA ĆILIMU.",
     "zavrsniDio": "Sinteza i ilustrovanje (10 min): Učenici u sveskama crtaju čašu, čamac i pčelu, ispod crteža upisuju naziv štampanim slovima i provjeravaju urednost rukopisa. Zadavanje domaće zadaće u bukvaru.",
     "korelacija": "Moja okolina (pojmovi iz prirode i okruženja), Likovna kultura (grafičko oblikovanje slova i ilustracija), Muzička kultura (ritmički izgovor)",
-    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c.docx",
-    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-ch.docx",
+    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-ch-radni-listic.pdf"
   },
   {
     "id": 58,
-    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c",
+    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-ch",
     "sistem": [
       "FBiH"
     ],
@@ -1228,12 +1228,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada slova Č, č i sinteza riječi (27 min):\n1. Analiza glasovne strukture (7 min): Gdje čujemo glas Č? Na početku (ČAŠA, ČEKIĆ, ČAMAC, ČIZME, ČOKOLADA), u sredini (MAČKA, PČELA, DJEČAK, UČITELJ, OČI) i na kraju riječi (KOLAČ, MAČ, VOZAČ, KOVAČ).\n2. Oblikovanje i pisanje slova Č, č (10 min): Analiza grafičkog oblika (slova C sa kvačicom iznad). Modelovanje slova na klupi i pisanje u sveskama.\n3. Čitanje sa razumijevanjem i pisanje rečenica (10 min): Čitanje riječi iz početnice i pisanje rečenica na tabli i u sveskama: DJEČAK PIJE ČAJ IZ ČAŠE. MAČKA SPAVA NA ĆILIMU.",
     "zavrsniDio": "Didaktička igra i crtanje (10 min): Crtanje pojmova (čašu, čamac i pčelu) i povezivanje riječi sa sličicama na radnom listiću.",
     "korelacija": "Moja okolina, Likovna kultura (ilustrovanje pojmova), Muzička kultura (izgovor i dikcija)",
-    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c.docx",
-    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-ch.docx",
+    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-ch-radni-listic.pdf"
   },
   {
     "id": 59,
-    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c",
+    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-cj",
     "sistem": [
       "RS"
     ],
@@ -1249,12 +1249,12 @@ const nastavneJedinice = [
     "glavniDio": "Izdvajanje glasa, pisanje slova i čitanje (27 min):\n1. Fonetska analiza položaja glasa Ć (7 min): Učenici pronalaze glas Ć na početku riječi (ĆILIM, ĆUP, ĆURKA, ĆEVAPI, ĆUK), u sredini riječi (KUĆA, SREĆA, CVIJEĆE, VOĆE, DRVEĆE) i na kraju riječi (NOĆ, PEĆ, POMOĆ, PROLJEĆE).\n2. Grafička obrada slova Ć, ć (10 min): Demonstracija slova na slovarici i linijskoj tabli. Slovo se sastoji od slova C sa kosom crticom iznad. Pisanje slova prstom u vazduhu i na klupi, a zatim pisanje po jednog reda velikog slova, malog slova i kombinacije u sveskama.\n3. Čitanje i pisanje riječi i rečenica (10 min): Slaganje riječi na slovarici, čitanje teksta u bukvaru i zapisivanje rečenica: U PROLJEĆE CVJETA CVIJEĆE. PORED KUĆE JE VOĆNJAK.",
     "zavrsniDio": "Sinteza i ilustrovanje (10 min): Učenici u sveskama crtaju kuću, ćup i proljetno cvijeće, ispod crteža upisuju naziv štampanim slovima i provjeravaju urednost rukopisa. Zadavanje domaće zadaće u bukvaru.",
     "korelacija": "Moja okolina (pojmovi iz prirode i okruženja), Likovna kultura (grafičko oblikovanje slova i ilustracija), Muzička kultura (ritmički izgovor)",
-    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c.docx",
-    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-c-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-cj.docx",
+    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-cj-radni-listic.pdf"
   },
   {
     "id": 60,
-    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c",
+    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-cj",
     "sistem": [
       "FBiH"
     ],
@@ -1270,12 +1270,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada slova Ć, ć i sinteza riječi (27 min):\n1. Analiza glasovne strukture (7 min): Gdje čujemo glas Ć? Na početku (ĆILIM, ĆUP, ĆURKA, ĆEVAPI, ĆUK), u sredini (KUĆA, SREĆA, CVIJEĆE, VOĆE, DRVEĆE) i na kraju riječi (NOĆ, PEĆ, POMOĆ, PROLJEĆE).\n2. Oblikovanje i pisanje slova Ć, ć (10 min): Analiza grafičkog oblika (slova C sa kosom crticom iznad). Modelovanje slova na klupi i pisanje u sveskama.\n3. Čitanje sa razumijevanjem i pisanje rečenica (10 min): Čitanje riječi iz početnice i pisanje rečenica na tabli i u sveskama: U PROLJEĆE CVJETA CVIJEĆE. PORED KUĆE JE VOĆNJAK.",
     "zavrsniDio": "Didaktička igra i crtanje (10 min): Crtanje pojmova (kuću, ćup i proljetno cvijeće) i povezivanje riječi sa sličicama na radnom listiću.",
     "korelacija": "Moja okolina, Likovna kultura (ilustrovanje pojmova), Muzička kultura (izgovor i dikcija)",
-    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c.docx",
-    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-c-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-cj.docx",
+    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-cj-radni-listic.pdf"
   },
   {
     "id": 61,
-    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-s",
+    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-sh",
     "sistem": [
       "RS"
     ],
@@ -1291,12 +1291,12 @@ const nastavneJedinice = [
     "glavniDio": "Izdvajanje glasa, pisanje slova i čitanje (27 min):\n1. Fonetska analiza položaja glasa Š (7 min): Učenici pronalaze glas Š na početku riječi (ŠUMA, ŠKOLA, ŠEŠIR, ŠIŠARKA, ŠATOR, ŠAL), u sredini riječi (KIŠA, KRUŠKA, ČAŠA, MAŠNA, KOKOŠKA) i na kraju riječi (MIŠ, KOŠ, TUŠ, PLIŠ).\n2. Grafička obrada slova Š, š (10 min): Demonstracija slova na slovarici i linijskoj tabli. Slovo se sastoji od slova S sa kvačicom iznad (ili tri uspravne linije na donjoj vodoravnoj u ćirilici). Pisanje slova prstom u vazduhu i na klupi, a zatim pisanje po jednog reda velikog slova, malog slova i kombinacije u sveskama.\n3. Čitanje i pisanje riječi i rečenica (10 min): Slaganje riječi na slovarici, čitanje teksta u bukvaru i zapisivanje rečenica: SAŠA IDE U ŠKOLU. U ŠUMI JE PALA KIŠA.",
     "zavrsniDio": "Sinteza i ilustrovanje (10 min): Učenici u sveskama crtaju šešir, šišarku i krušku, ispod crteža upisuju naziv štampanim slovima i provjeravaju urednost rukopisa. Zadavanje domaće zadaće u bukvaru.",
     "korelacija": "Moja okolina (pojmovi iz prirode i okruženja), Likovna kultura (grafičko oblikovanje slova i ilustracija), Muzička kultura (ritmički izgovor)",
-    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-s.docx",
-    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-s-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-sh.docx",
+    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-sh-radni-listic.pdf"
   },
   {
     "id": 62,
-    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-s",
+    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-sh",
     "sistem": [
       "FBiH"
     ],
@@ -1312,12 +1312,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada slova Š, š i sinteza riječi (27 min):\n1. Analiza glasovne strukture (7 min): Gdje čujemo glas Š? Na početku (ŠUMA, ŠKOLA, ŠEŠIR, ŠIŠARKA, ŠATOR, ŠAL), u sredini (KIŠA, KRUŠKA, ČAŠA, MAŠNA, KOKOŠKA) i na kraju riječi (MIŠ, KOŠ, TUŠ, PLIŠ).\n2. Oblikovanje i pisanje slova Š, š (10 min): Analiza grafičkog oblika (slova S sa kvačicom iznad (ili tri uspravne linije na donjoj vodoravnoj u ćirilici)). Modelovanje slova na klupi i pisanje u sveskama.\n3. Čitanje sa razumijevanjem i pisanje rečenica (10 min): Čitanje riječi iz početnice i pisanje rečenica na tabli i u sveskama: SAŠA IDE U ŠKOLU. U ŠUMI JE PALA KIŠA.",
     "zavrsniDio": "Didaktička igra i crtanje (10 min): Crtanje pojmova (šešir, šišarku i krušku) i povezivanje riječi sa sličicama na radnom listiću.",
     "korelacija": "Moja okolina, Likovna kultura (ilustrovanje pojmova), Muzička kultura (izgovor i dikcija)",
-    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-s.docx",
-    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-s-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-sh.docx",
+    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-sh-radni-listic.pdf"
   },
   {
     "id": 63,
-    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-z",
+    "slug": "1-razred-rs-maternji-jezik-obrada-glasa-i-slova-zh",
     "sistem": [
       "RS"
     ],
@@ -1333,12 +1333,12 @@ const nastavneJedinice = [
     "glavniDio": "Izdvajanje glasa, pisanje slova i čitanje (27 min):\n1. Fonetska analiza položaja glasa Ž (7 min): Učenici pronalaze glas Ž na početku riječi (ŽABA, ŽIRAFA, ŽIR, ŽITO, ŽUTO), u sredini riječi (RUŽA, PUŽ, KOŽA, KNJIŽARA, SNJEŽANA) i na kraju riječi (JEŽ, PUŽ, NOŽ, MUŽ).\n2. Grafička obrada slova Ž, ž (10 min): Demonstracija slova na slovarici i linijskoj tabli. Slovo se sastoji od slova Z sa kvačicom iznad. Pisanje slova prstom u vazduhu i na klupi, a zatim pisanje po jednog reda velikog slova, malog slova i kombinacije u sveskama.\n3. Čitanje i pisanje riječi i rečenica (10 min): Slaganje riječi na slovarici, čitanje teksta u bukvaru i zapisivanje rečenica: ŽUTA ŽABA SKAČE U BARU. JEŽ I PUŽ IDU KROZ ŠUMU.",
     "zavrsniDio": "Sinteza i ilustrovanje (10 min): Učenici u sveskama crtaju žabu, žir i puža, ispod crteža upisuju naziv štampanim slovima i provjeravaju urednost rukopisa. Zadavanje domaće zadaće u bukvaru.",
     "korelacija": "Moja okolina (pojmovi iz prirode i okruženja), Likovna kultura (grafičko oblikovanje slova i ilustracija), Muzička kultura (ritmički izgovor)",
-    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-z.docx",
-    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-z-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-zh.docx",
+    "fajlPdf": "fajlovi/1-razred-rs-maternji-jezik-obrada-glasa-i-slova-zh-radni-listic.pdf"
   },
   {
     "id": 64,
-    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-z",
+    "slug": "1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-zh",
     "sistem": [
       "FBiH"
     ],
@@ -1354,8 +1354,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada slova Ž, ž i sinteza riječi (27 min):\n1. Analiza glasovne strukture (7 min): Gdje čujemo glas Ž? Na početku (ŽABA, ŽIRAFA, ŽIR, ŽITO, ŽUTO), u sredini (RUŽA, PUŽ, KOŽA, KNJIŽARA, SNJEŽANA) i na kraju riječi (JEŽ, PUŽ, NOŽ, MUŽ).\n2. Oblikovanje i pisanje slova Ž, ž (10 min): Analiza grafičkog oblika (slova Z sa kvačicom iznad). Modelovanje slova na klupi i pisanje u sveskama.\n3. Čitanje sa razumijevanjem i pisanje rečenica (10 min): Čitanje riječi iz početnice i pisanje rečenica na tabli i u sveskama: ŽUTA ŽABA SKAČE U BARU. JEŽ I PUŽ IDU KROZ ŠUMU.",
     "zavrsniDio": "Didaktička igra i crtanje (10 min): Crtanje pojmova (žabu, žir i puža) i povezivanje riječi sa sličicama na radnom listiću.",
     "korelacija": "Moja okolina, Likovna kultura (ilustrovanje pojmova), Muzička kultura (izgovor i dikcija)",
-    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-z.docx",
-    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-z-radni-listic.pdf"
+    "fajlDocx": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-zh.docx",
+    "fajlPdf": "fajlovi/1-razred-fbih-maternji-jezik-obrada-glasa-i-slova-zh-radni-listic.pdf"
   },
   {
     "id": 65,
@@ -6378,7 +6378,7 @@ const nastavneJedinice = [
   },
   {
     "id": 304,
-    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-s-s-latinica",
+    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-sh-sh-latinica",
     "sistem": [
       "FBiH"
     ],
@@ -6394,8 +6394,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Š i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Š na plakatu i tabli. Poređenje sa štampanim slovom Š. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Š uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Š. Zatim učitelj demonstrira spajanje pisanog slova Š sa drugim slovima u riječima: škola, šuma, šal, šešir, miš. Na kraju učenici pisanim slovima prepisuju rečenicu: „U šumi šušti zlatno jesenje lišće.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-s-s-latinica.docx",
-    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-s-s-latinica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-sh-sh-latinica.docx",
+    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-sh-sh-latinica-radni-listic.pdf"
   },
   {
     "id": 305,
@@ -6630,7 +6630,7 @@ const nastavneJedinice = [
   },
   {
     "id": 316,
-    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-z-z-latinica",
+    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-zh-zh-latinica",
     "sistem": [
       "FBiH"
     ],
@@ -6646,8 +6646,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Ž i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Ž na plakatu i tabli. Poređenje sa štampanim slovom Ž. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Ž uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Ž. Zatim učitelj demonstrira spajanje pisanog slova Ž sa drugim slovima u riječima: Željko, žaba, žito, žirafa, jež. Na kraju učenici pisanim slovima prepisuju rečenicu: „Mali jež traži hranu u šumi.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-z-z-latinica.docx",
-    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-z-z-latinica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-zh-zh-latinica.docx",
+    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-zh-zh-latinica-radni-listic.pdf"
   },
   {
     "id": 317,
@@ -6777,7 +6777,7 @@ const nastavneJedinice = [
   },
   {
     "id": 323,
-    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-s-cirilica",
+    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-sh-cirilica",
     "sistem": [
       "RS"
     ],
@@ -6793,8 +6793,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Š i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Š na plakatu i tabli. Poređenje sa štampanim slovom Š. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Š uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Š. Zatim učitelj demonstrira spajanje pisanog slova Š sa drugim slovima u riječima: школа, шума, шал, шешир, миш. Na kraju učenici pisanim slovima prepisuju rečenicu: „У шуми шушти жуто лишће.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-s-cirilica.docx",
-    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-s-cirilica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-sh-cirilica.docx",
+    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-sh-cirilica-radni-listic.pdf"
   },
   {
     "id": 324,
@@ -6903,7 +6903,7 @@ const nastavneJedinice = [
   },
   {
     "id": 329,
-    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-z-cirilica",
+    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-zh-cirilica",
     "sistem": [
       "RS"
     ],
@@ -6919,12 +6919,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Ž i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Ž na plakatu i tabli. Poređenje sa štampanim slovom Ž. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Ž uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Ž. Zatim učitelj demonstrira spajanje pisanog slova Ž sa drugim slovima u riječima: Жарко, жаба, жито, жирафа, јеж. Na kraju učenici pisanim slovima prepisuju rečenicu: „Мали јеж живи у шуми.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-z-cirilica.docx",
-    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-z-cirilica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-zh-cirilica.docx",
+    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-zh-cirilica-radni-listic.pdf"
   },
   {
     "id": 330,
-    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica",
+    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-ch-ch-latinica",
     "sistem": [
       "FBiH"
     ],
@@ -6940,12 +6940,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Č i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Č na plakatu i tabli. Poređenje sa štampanim slovom Č. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Č uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Č. Zatim učitelj demonstrira spajanje pisanog slova Č sa drugim slovima u riječima: čaša, pčela, čitanka, čamac, mačka. Na kraju učenici pisanim slovima prepisuju rečenicu: „Pčela sakuplja slatki nektar.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica.docx",
-    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-ch-ch-latinica.docx",
+    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-ch-ch-latinica-radni-listic.pdf"
   },
   {
     "id": 331,
-    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica",
+    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-ch-cirilica",
     "sistem": [
       "RS"
     ],
@@ -6961,12 +6961,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Č i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Č na plakatu i tabli. Poređenje sa štampanim slovom Č. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Č uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Č. Zatim učitelj demonstrira spajanje pisanog slova Č sa drugim slovima u riječima: Часлав, чаша, пчела, читанка, мачка. Na kraju učenici pisanim slovima prepisuju rečenicu: „Вриједна пчела лети са цвијета на цвијет.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica.docx",
-    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-ch-cirilica.docx",
+    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-ch-cirilica-radni-listic.pdf"
   },
   {
     "id": 332,
-    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica",
+    "slug": "2-razred-fbih-maternji-jezik-obrada-pisanog-slova-cj-cj-latinica",
     "sistem": [
       "FBiH"
     ],
@@ -6982,12 +6982,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Ć i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Ć na plakatu i tabli. Poređenje sa štampanim slovom Ć. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Ć uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Ć. Zatim učitelj demonstrira spajanje pisanog slova Ć sa drugim slovima u riječima: ćilim, kuća, cvijeće, proljeće, sreća. Na kraju učenici pisanim slovima prepisuju rečenicu: „U proljeće cvjeta mirisno cvijeće.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica.docx",
-    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-c-c-latinica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-cj-cj-latinica.docx",
+    "fajlPdf": "fajlovi/2-razred-fbih-maternji-jezik-obrada-pisanog-slova-cj-cj-latinica-radni-listic.pdf"
   },
   {
     "id": 333,
-    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica",
+    "slug": "2-razred-rs-maternji-jezik-obrada-pisanog-slova-cj-cirilica",
     "sistem": [
       "RS"
     ],
@@ -7003,8 +7003,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada pisanog slova Ć i povezivanje u riječima (27 min):\n1. Analiza grafičke strukture pisanog slova (7 min): Posmatranje velikog i malog pisanog slova Ć na plakatu i tabli. Poređenje sa štampanim slovom Ć. Uočavanje elemenata slova (ravne, zaobljene i spojne linije) i njihovog položaja u linijskom sistemu.\n2. Demonstracija pisanja i vježbe u vazduhu (8 min): Učitelj na linijskoj tabli piše veliko, a zatim malo pisano slovo Ć uz glasno objašnjavanje smjera kretanja ruke bez nepotrebnog podizanja olovke. Učenici „pišu“ slovo kažiprstom u vazduhu i na klupi, a zatim 2–3 učenika pišu na tabli.\n3. Pisanje u sveske i spajanje slova u riječi (12 min): Učenici pišu po jedan red velikog i malog pisanog slova Ć. Zatim učitelj demonstrira spajanje pisanog slova Ć sa drugim slovima u riječima: Ћирило, ћилим, кућа, цвијеће, прољеће. Na kraju učenici pisanim slovima prepisuju rečenicu: „У прољеће цвјета мирисно цвијеће.“ vodeći računa o velikom početnom slovu i znaku na kraju rečenice.",
     "zavrsniDio": "Čitanje napisanog i vrednovanje urednosti (10 min): Učenici čitaju napisane riječi i rečenicu iz svojih svesaka. Izbor najurednije napisanih redova („Krasnopis dana“). Kratka vježba prepisivanja 2 rečenice sa štampanog na pisano pismo i zadavanje domaće zadaće.",
     "korelacija": "Likovna kultura (kaligrafija, ritam i sklad linija), Moja okolina / Priroda i društvo (pojmovi iz prirode i života ljudi)",
-    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica.docx",
-    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-c-cirilica-radni-listic.pdf"
+    "fajlDocx": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-cj-cirilica.docx",
+    "fajlPdf": "fajlovi/2-razred-rs-maternji-jezik-obrada-pisanog-slova-cj-cirilica-radni-listic.pdf"
   },
   {
     "id": 334,
@@ -12300,7 +12300,7 @@ const nastavneJedinice = [
   },
   {
     "id": 586,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-m-n-j-l",
     "sistem": [
       "FBiH"
     ],
@@ -12316,8 +12316,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (usvajanje pisanih slova М, Н, Ј, Л i čitanje i pisanje riječi i rečenica pisanim slovima ćirilice).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-m-n-j-l.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-m-n-j-l-radni-listic.pdf"
   },
   {
     "id": 587,
@@ -12342,7 +12342,7 @@ const nastavneJedinice = [
   },
   {
     "id": 588,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-s-sh-v-z-zh",
     "sistem": [
       "FBiH"
     ],
@@ -12358,8 +12358,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (pravilno pisanje i povezivanje pisanih slova С, Ш, В, З, Ж u riječima i rečenicama).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-s-sh-v-z-zh.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-s-sh-v-z-zh-radni-listic.pdf"
   },
   {
     "id": 589,
@@ -12426,7 +12426,7 @@ const nastavneJedinice = [
   },
   {
     "id": 592,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-b-d-g",
     "sistem": [
       "FBiH"
     ],
@@ -12442,8 +12442,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (pravilno oblikovanje pisanih slova Б, Д, Г i pisanje kraćih rečenica).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-b-d-g.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-b-d-g-radni-listic.pdf"
   },
   {
     "id": 593,
@@ -12468,7 +12468,7 @@ const nastavneJedinice = [
   },
   {
     "id": 594,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-c-ch-cj",
     "sistem": [
       "FBiH"
     ],
@@ -12484,8 +12484,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (usvajanje pisanih slova Ц, Ч, Ћ i pravilno povezivanje sa ostalim slovima u riječima).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-c-ch-cj.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-c-ch-cj-radni-listic.pdf"
   },
   {
     "id": 595,
@@ -12510,7 +12510,7 @@ const nastavneJedinice = [
   },
   {
     "id": 596,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-lj-nj-dj-dz",
     "sistem": [
       "FBiH"
     ],
@@ -12526,8 +12526,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (usvajanje specifičnih ćiriličnih slova Љ, Њ, Ђ, Џ (koja u ćirilici imaju jedan znak za razliku od latiničnih dvoznaka Lj, Nj, Dž)).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-lj-nj-dj-dz.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-lj-nj-dj-dz-radni-listic.pdf"
   },
   {
     "id": 597,
@@ -12552,7 +12552,7 @@ const nastavneJedinice = [
   },
   {
     "id": 598,
-    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice",
+    "slug": "3-razred-fbih-maternji-jezik-pisana-slova-cirilice-f-h",
     "sistem": [
       "FBiH"
     ],
@@ -12568,8 +12568,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje nastavnih sadržaja (27 min):\n1. Istraživanje polaznog teksta / primjera na tabli (10 min): Uočavanje, izdvajanje i tumačenje ključnih jezičkih ili književnih pojava (usvajanje posljednjih pisanih slova Ф i Х i zaokruživanje cijele pisane azbuke).\n2. Sinteza pravila i zapis na tabli (8 min): Formiranje preglednog zapisa na tabli (definicija, tabela ili plan teksta) uz aktivno učešće učenika.\n3. Samostalni i grupni rad na zadacima (9 min): Rješavanje nastavnog listića sa zadacima na tri nivoa složenosti i zajednička analiza rješenja.",
     "zavrsniDio": "Vrednovanje, kviz i domaća zadaća (10 min): Kratka usmena ili pisana provjera ostvarenosti ishoda časa (igra riječi, izlazna kartica ili čitanje učeničkih radova) i uputstvo za domaću zadaću.",
     "korelacija": "Moja okolina / Priroda i društvo (zavičaj, prošlost, priroda), Likovna kultura (ilustracija i strip), Muzička kultura (ritam, melodija stiha i narodna tradicija)",
-    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-f-h.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-maternji-jezik-pisana-slova-cirilice-f-h-radni-listic.pdf"
   },
   {
     "id": 599,
@@ -15177,7 +15177,7 @@ const nastavneJedinice = [
   },
   {
     "id": 723,
-    "slug": "3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje",
+    "slug": "3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom",
     "sistem": [
       "RS"
     ],
@@ -15193,12 +15193,12 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje postupka (27 min):\n1. Demonstracija i izvođenje algoritma na tabli (10 min): Postupno objašnjavanje i zapisivanje postupka (pismeno množenje sa pamćenjem i dodavanjem desetica i stotina te primjena u složenijim zadacima) uz isticanje ključnih pravila.\n2. Vođeno vježbanje uz izlazak učenika pred tablu (8 min): Rješavanje brojnih izraza i problemskog zadatka uz glasno obrazlaganje.\n3. Samostalni rad po nivoima složenosti (9 min): Učenici u sveskama rješavaju zadatke (osnovni, srednji i napredni nivo) uz individualnu pomoć učitelja.",
     "zavrsniDio": "Provjera, izlazna kartica i domaća zadaća (10 min): Analiza rješenja, dvominutna izlazna kartica za brzu provjeru razumijevanja i zadavanje domaće zadaće.",
     "korelacija": "Moja okolina / Priroda i društvo (mjerenje udaljenosti na karti, lente vremena, privreda), Tehnička i Likovna kultura (precizno crtanje geometrijskim priborom)",
-    "fajlDocx": "fajlovi/3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje.docx",
-    "fajlPdf": "fajlovi/3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom.docx",
+    "fajlPdf": "fajlovi/3-razred-rs-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom-radni-listic.pdf"
   },
   {
     "id": 724,
-    "slug": "3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje",
+    "slug": "3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom",
     "sistem": [
       "FBiH"
     ],
@@ -15214,8 +15214,8 @@ const nastavneJedinice = [
     "glavniDio": "Obrada i vježbanje postupka (27 min):\n1. Demonstracija i izvođenje algoritma na tabli (10 min): Postupno objašnjavanje i zapisivanje postupka (pismeno množenje sa pamćenjem i dodavanjem desetica i stotina te primjena u složenijim zadacima) uz isticanje ključnih pravila.\n2. Vođeno vježbanje uz izlazak učenika pred tablu (8 min): Rješavanje brojnih izraza i problemskog zadatka uz glasno obrazlaganje.\n3. Samostalni rad po nivoima složenosti (9 min): Učenici u sveskama rješavaju zadatke (osnovni, srednji i napredni nivo) uz individualnu pomoć učitelja.",
     "zavrsniDio": "Provjera, izlazna kartica i domaća zadaća (10 min): Analiza rješenja, dvominutna izlazna kartica za brzu provjeru razumijevanja i zadavanje domaće zadaće.",
     "korelacija": "Moja okolina / Priroda i društvo (mjerenje udaljenosti na karti, lente vremena, privreda), Tehnička i Likovna kultura (precizno crtanje geometrijskim priborom)",
-    "fajlDocx": "fajlovi/3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje.docx",
-    "fajlPdf": "fajlovi/3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-radni-listic.pdf"
+    "fajlDocx": "fajlovi/3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom.docx",
+    "fajlPdf": "fajlovi/3-razred-fbih-matematika-pismeno-mnozenje-dvocifrenog-i-trocifrenog-broja-jednocifrenim-broje-sa-prelazom-radni-listic.pdf"
   },
   {
     "id": 725,

@@ -63,10 +63,10 @@ Na sajtu se nalazi i nekoliko [interaktivnih igara za predškolce](/igre): balon
 
 Zato uz igre postoje i radni listovi za štampu:
 
-- [Prati stazu](/igre/radni-listovi/trace) — linije od lakih ka težim
-- [Spoji tačke](/igre/radni-listovi/dots) — brojanje i precizan potez
-- [Zeka u lavirintu](/igre/radni-listovi/maze) — planiranje puta olovkom
-- [Pišemo brojeve](/igre/radni-listovi/numbers), [slova na latinici](/igre/radni-listovi/latin) i [slova na ćirilici](/igre/radni-listovi/cyrillic)
+- [Prati stazu](/radni-listovi/trace) — linije od lakih ka težim
+- [Spoji tačke](/radni-listovi/dots) — brojanje i precizan potez
+- [Zeka u lavirintu](/radni-listovi/maze) — planiranje puta olovkom
+- [Pišemo brojeve](/radni-listovi/numbers), [slova na latinici](/radni-listovi/latin) i [slova na ćirilici](/radni-listovi/cyrillic)
 
 ## Kontrolna lista: fina motorika i samostalnost pred polazak u školu
 

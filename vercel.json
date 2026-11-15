@@ -1,6 +1,32 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "uciteljski-dnevnik-roan.vercel.app" }],
+      "destination": "https://www.xn--uiteljskidnevnik-s7b.online/:path*",
+      "permanent": true
+    },
+    { "source": "/pripreme/index.html", "destination": "/pripreme", "permanent": true },
+    { "source": "/igre/radni-listovi/:id", "destination": "/radni-listovi/:id", "permanent": true },
+    { "source": "/:lang(hr|bs)/igre/radni-listovi/:id", "destination": "/:lang/radni-listovi/:id", "permanent": true },
+    { "source": "/en/games/worksheets/:id", "destination": "/en/worksheets/:id", "permanent": true },
+    { "source": "/de/spiele/arbeitsblaetter/:id", "destination": "/de/arbeitsblaetter/:id", "permanent": true },
+    { "source": "/bojanke", "destination": "/radni-listovi", "permanent": true },
+    { "source": "/bojanke/:id", "destination": "/radni-listovi/:id", "permanent": true },
+    { "source": "/:lang(hr|bs)/bojanke", "destination": "/:lang/radni-listovi", "permanent": true },
+    { "source": "/:lang(hr|bs)/bojanke/:id", "destination": "/:lang/radni-listovi/:id", "permanent": true },
+    { "source": "/en/bojanke", "destination": "/en/worksheets", "permanent": true },
+    { "source": "/en/bojanke/:id", "destination": "/en/worksheets/:id", "permanent": true },
+    { "source": "/de/bojanke", "destination": "/de/arbeitsblaetter", "permanent": true },
+    { "source": "/de/bojanke/:id", "destination": "/de/arbeitsblaetter/:id", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/pripreme/admin.html",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ],
   "rewrites": [
-    { "source": "/pripreme", "destination": "/pripreme/index.html" },
-    { "source": "/((?!pripreme/).*)", "destination": "/index.html" }
+    { "source": "/pripreme", "destination": "/pripreme/index.html" }
   ]
 }

@@ -29,8 +29,12 @@ export const pageMeta = {
     title: `${country.name} — ${t.world.title}`,
     description: country.excerpt,
   }),
+  worksheets: (t: Dictionary): PageMetaText => ({
+    title: t.games.worksheet.sectionTitle,
+    description: t.games.worksheet.sectionText,
+  }),
   worksheet: (t: Dictionary, id: WorksheetId): PageMetaText => ({
     title: `${t.games.worksheet.eyebrow}: ${t.games.worksheet.sheets[id].title}`,
-    description: t.games.worksheet.sheets[id].text,
+    description: t.games.worksheet.about[id]?.text ?? t.games.worksheet.sheets[id].text,
   }),
 };

@@ -20,6 +20,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   const { t, paths } = useLocale();
   const ws = t.games.worksheet;
   const { title, text } = ws.sheets[id];
+  const about = ws.about[id];
   const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames, labels: ws.labels });
   usePageMeta(pageMeta.worksheet(t, id));
 
@@ -38,6 +39,20 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
           {ws.print}
         </button>
       </div>
+      {/* Bez <h2>: h1 stranice je naslov na samom listu, ispod ovog okvira. */}
+      {about && (
+        <section className="card mb-6 p-5 sm:p-6 print:hidden" aria-labelledby="o-ovom-listu">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <p id="o-ovom-listu" className="font-head text-[18px] font-bold">
+              {ws.aboutTitle}
+            </p>
+            <p className="font-mono text-[12.5px] text-muted">
+              {ws.ageLabel}: <span className="text-ink">{about.age}</span>
+            </p>
+          </div>
+          <p className="mt-2 text-[15.5px] leading-relaxed">{about.text}</p>
+        </section>
+      )}
       <p className="mb-6 text-[15px] text-muted print:hidden">{ws.tip}</p>
 
       {pages.map((content, i) => (
