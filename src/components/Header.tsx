@@ -10,6 +10,7 @@ import {
   FileText,
   User,
   Globe2,
+  Library,
   type LucideIcon,
 } from 'lucide-react';
 import { siteConfig } from '../config/site';
@@ -18,6 +19,7 @@ import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLocale } from '../i18n/LocaleContext';
 import { hasCountries } from '../lib/countries';
+import { hasLektire } from '../lektire/types';
 
 export default function Header() {
   const { locale, t, paths } = useLocale();
@@ -57,6 +59,7 @@ export default function Header() {
   }[] = [
     { to: paths.home, label: t.nav.home, icon: Home },
     { to: '/pripreme', label: t.nav.pripreme, badge: '1–5. razred', icon: BookOpen, external: true },
+    ...(hasLektire(locale) ? [{ to: paths.lektire, label: t.nav.lektire, badge: 'RS i FBiH', icon: Library }] : []),
     { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort, badge: 'A4 štampa', icon: Palette },
     { to: paths.games, label: t.nav.games, short: t.nav.gamesShort, badge: '10 igara', icon: Gamepad2 },
     { to: paths.blog, label: t.nav.blog, icon: FileText },

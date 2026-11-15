@@ -19,6 +19,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { formatDate } from './src/lib/formatDate';
 import { WORKSHEET_THUMBNAILS } from './src/games/thumbnails';
+import { LEKTIRE } from './src/lektire';
+import { LEKTIRE_LOCALES, LEKTIRE_RAZREDI, LEKTIRE_SISTEMI, LEKTIRE_SLUG, type Djelo } from './src/lektire/types';
 import { napraviStranicePriprema, type StranicaPripreme } from './plugins/pripremeStranice';
 
 // gray-matter zavisi od Node-ovog Buffer-a, pa frontmatter parsiramo ovde (u Node-u),
@@ -105,7 +107,7 @@ interface Page {
   path: string;
   meta: PageMetaText;
   lastmod?: string;
-  kind?: 'home' | 'about';
+  kind?: 'home' | 'about' | 'lektire';
   article?: SourcePost;
   country?: SourceCountry;
   image?: { src: string; alt: string }; // og:image (jpg/png — pregledi linkova ne prikazuju SVG)
@@ -160,6 +162,9 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
     };
     bySlug.set(post.slug, group);
   }
+  groups.push(
+    everywhere((l) => ({ path: `${base(l)}/${LEKTIRE_SLUG}`, meta: pageMeta.lektire(t(l)), kind: 'lektire', lastmod: LEKTIRE[l]?.checked }), LEKTIRE_LOCALES),
+  );
   // Škole u svetu: samo jezici koji imaju bar jednu zemlju.
   const world = (locale: Locale) => `${base(locale)}/${localeInfo[locale].worldSlug}`;
   const worldLocales = LOCALES.filter((l) => countries.some((c) => c.locale === l));
@@ -268,6 +273,25 @@ function prerender(locale: Locale, page: Page): string {
   }
   if (country) {
     return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><h1 class="${h1}">${escapeXml(country.name)}</h1><p class="${lead}">${escapeXml(country.excerpt)}</p></header><article class="prose">${markdownHtml(country.content)}</article></div>`;
+  }
+  const lektire = page.kind === 'lektire' ? LEKTIRE[locale] : undefined;
+  if (lektire) {
+    const l = t.lektire;
+    const djelo = (d: Djelo) =>
+      `<li>${d.autor ? `${escapeXml(d.autor)}: ` : ''}<cite>${escapeXml(d.naslov)}</cite>${d.napomena ? ` (${escapeXml(d.napomena)})` : ''}</li>`;
+    const razredi = LEKTIRE_RAZREDI.map((r) => {
+      const razred = lektire.razredi[r];
+      const sistemi = LEKTIRE_SISTEMI.map((s) => {
+        const spisak = razred[s];
+        const lista = spisak.djela.length > 0 ? `<ol>${spisak.djela.map(djelo).join('')}</ol>` : `<p>${escapeXml(l.noList)}</p>`;
+        return `<h3>${escapeXml(lektire.sistemi[s].naziv)}</h3>${lista}${spisak.napomena ? `<p>${escapeXml(spisak.napomena)}</p>` : ''}`;
+      }).join('');
+      const preporuke = razred.preporuke.map((p) => djelo(p).replace('</li>', ` — ${escapeXml(p.zasto)}</li>`)).join('');
+      return `<h2 id="razred-${r}">${escapeXml(l.grade(r))}</h2>${sistemi}<h3>${escapeXml(l.recommendedTitle)}</h3><ul>${preporuke}</ul>`;
+    }).join('');
+    const savjeti = lektire.savjeti.map((s) => `<h3>${escapeXml(s.title)}</h3><p>${escapeXml(s.text)}</p>`).join('');
+    const izvori = lektire.izvori.map((s) => `<li><a href="${escapeXml(s.url)}">${escapeXml(s.title)}</a></li>`).join('');
+    return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><h1 class="${h1}">${escapeXml(l.title)}</h1><p class="${lead}">${escapeXml(lektire.intro)}</p></header><article class="prose">${razredi}<h2>${escapeXml(l.tipsTitle)}</h2>${savjeti}<h2>${escapeXml(l.sourcesTitle)}</h2><ul>${izvori}</ul></article></div>`;
   }
   return `<div class="${wrap}"><h1 class="${h1}">${escapeXml(page.meta.title ?? siteConfig.name)}</h1><p class="${lead}">${escapeXml(page.meta.description)}</p></div>`;
 }

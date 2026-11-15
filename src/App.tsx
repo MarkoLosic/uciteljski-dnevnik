@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import { LOCALES, localeInfo } from './i18n/config';
 import { LocaleProvider } from './i18n/LocaleContext';
 import { localeBase } from './i18n/paths';
+import { LEKTIRE_SLUG, hasLektire } from './lektire/types';
 
 // Članak (react-markdown), O meni, igre/radni listovi i Škole u svetu su zasebni chunk-ovi — ne usporavaju početnu i listu.
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -17,6 +18,7 @@ const WorksheetsPage = lazy(() => import('./pages/WorksheetsPage'));
 const Worksheet = lazy(() => import('./pages/Worksheet'));
 const World = lazy(() => import('./pages/World'));
 const Country = lazy(() => import('./pages/Country'));
+const Lektire = lazy(() => import('./pages/Lektire'));
 
 // Isti skup ruta za svaki jezik: srpski bez prefiksa (`/blog`), ostali sa njim (`/en/blog`).
 export default function App() {
@@ -49,6 +51,7 @@ export default function App() {
           />
           <Route path={localeInfo[locale].worldSlug} element={<World />} />
           <Route path={`${localeInfo[locale].worldSlug}/:countryId`} element={<Country />} />
+          {hasLektire(locale) && <Route path={LEKTIRE_SLUG} element={<Lektire />} />}
           <Route path="*" element={<NotFound />} />
         </Route>
       ))}

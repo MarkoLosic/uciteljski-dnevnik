@@ -4,6 +4,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { localeBase } from '../i18n/paths';
 import { getAllPosts } from '../lib/posts';
 import { hasCountries } from '../lib/countries';
+import { hasLektire } from '../lektire/types';
 
 const linkClass = 'focus-ring rounded py-2 transition-colors hover:text-accent';
 
@@ -29,6 +30,11 @@ export default function Footer() {
         <a href="/pripreme" className={linkClass}>
           {t.nav.pripreme}
         </a>
+        {hasLektire(locale) && (
+          <Link to={paths.lektire} className={linkClass}>
+            {t.nav.lektire}
+          </Link>
+        )}
         <Link to={paths.games} className={linkClass}>
           {t.nav.games}
         </Link>

@@ -1,6 +1,7 @@
 import { DEFAULT_LOCALE, localeInfo, type Locale } from './config';
 import { getPostBySlug } from '../lib/posts';
 import { getCountry } from '../lib/countries';
+import { LEKTIRE_SLUG, hasLektire } from '../lektire/types';
 
 export function localeBase(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '' : `/${locale}`;
@@ -19,6 +20,7 @@ export function pathsFor(locale: Locale) {
     worksheet: (id: string) => `${base}/${localeInfo[locale].worksheetSlug}/${id}`,
     world: `${base}/${localeInfo[locale].worldSlug}`,
     country: (id: string) => `${base}/${localeInfo[locale].worldSlug}/${id}`,
+    lektire: `${base}/${LEKTIRE_SLUG}`,
   };
 }
 
@@ -51,6 +53,8 @@ export function switchLocalePath(pathname: string, from: Locale, to: Locale): st
   if (rest === `/${worldSlug}`) return target.world;
   const countryMatch = new RegExp(`^/${worldSlug}/([^/]+)$`).exec(rest);
   if (countryMatch) return getCountry(to, countryMatch[1]) ? target.country(countryMatch[1]) : target.world;
+
+  if (rest === `/${LEKTIRE_SLUG}`) return hasLektire(to) ? target.lektire : target.home;
 
   const postMatch = /^\/blog\/([^/]+)$/.exec(rest);
   if (postMatch) {

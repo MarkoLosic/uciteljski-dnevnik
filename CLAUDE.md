@@ -139,6 +139,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── Worksheet.tsx      # radni list za štampu (A4)
     │   ├── World.tsx          # Škole u svetu: kartice zemalja + tabela za poređenje
     │   ├── Country.tsx        # jedna zemlja: činjenice, tekst, izvori
+    │   ├── Lektire.tsx        # lektire 1–5. razred (RS i FBiH) + preporuke i savjeti (sekcija 10.9)
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
@@ -151,6 +152,11 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── writingHandbook.tsx # priručnik „Kako nastaje priča“ za mlade pisce (15 strana, latinica i ćirilica)
     │   └── Balloons.tsx, ColorSort.tsx, ShapeMatch.tsx, Trace.tsx, ConnectDots.tsx,
     │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
+    ├── lektire/               # sadržaj stranice Lektire (sekcija 10.9)
+    │   ├── types.ts           # tipovi, LEKTIRE_LOCALES (sr, bs), LEKTIRE_SLUG, hasLektire
+    │   ├── spiskovi.ts        # RS_DJELA, FBIH_DJELA — djela iz nastavnih programa
+    │   ├── sr.ts, bs.ts       # napomene, preporuke, savjeti, izvori po jeziku
+    │   └── index.ts           # LEKTIRE: Locale → sadržaj
     ├── lib/
     │   ├── posts.ts           # čitanje .md fajlova
     │   ├── frontmatter.ts     # validateFrontmatter, readingMinutes (deli se sa vite.config.ts)
@@ -453,6 +459,7 @@ Koristi `react-router-dom`:
 | `/igre/radni-listovi/:sheetId` | `<Worksheet />` | Radni list za štampu (`WORKSHEET_IDS`; ćirilica samo sr i bs) |
 | `/skole-u-svetu` | `<World />` | Razredna nastava u svetu (sekcija 10.7) |
 | `/skole-u-svetu/:countryId` | `<Country />` | Jedna zemlja |
+| `/lektire` | `<Lektire />` | Lektire 1–5. razred (samo sr i bs: `/lektire`, `/bs/lektire`) |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />` (unutar `ErrorBoundary` i `Suspense`). `Home`, `BlogList` i `NotFound` su u glavnom paketu; `BlogPost` (react-markdown), `About`, `Games`, `GamePlay` i `Worksheet` se učitavaju preko `React.lazy`.
@@ -693,6 +700,15 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Zadaci su pisani **za učenika** (kratka naredba, jedna radnja, konkretni brojevi i riječi); ishodi iz plana su za učitelja i ne idu na učenički listić.
 - Računi se pišu oznakama (`[[34 + 5]]`, `[[x + 24 = 60 | 36]]`, `[[14 + 3 ? 20 - 2]]`, `[[= 4 + 5]]`, `[[! rješenje]]`…, opis u `osnova.js`); banka ih računa i provjerava, a rješenja vidi samo učitelj.
 - Posle svake izmene banke ili `podaci.js`: **`npm run provjeri:zadatke`** — prolazi kroz sve pripreme i javlja temu bez svojih zadataka, netačan račun, ostatke HTML-a (`&nbsp;`), ćirilicu usred latinice i brojeve prevelike za razred (1: ≤ 20, 2: ≤ 100, 3: ≤ 1000).
+
+### 10.9. `Lektire.tsx` — lektire za 1–5. razred
+
+- Stranica postoji samo na jezicima iz `LEKTIRE_LOCALES` (sr, bs); na ostalima ruta ne postoji, link nije u headeru/footeru, a izbor jezika vodi na početnu. Slug je isti (`lektire`).
+- Spiskovi (`src/lektire/spiskovi.ts`) se **prepisuju iz nastavnih programa**, ne iz sjećanja: RS = RPZ RS, Nastavni program Srpski jezik (II–V razred; za I razred program nije objavljen na sajtu RPZ-a); FBiH = NPP Kantona Sarajevo (2018) — ostali kantoni se mogu razlikovati; za FBiH 2. razred program ne propisuje lektiru, pa su djela sa spiskova škola u KS. Izvori su u `sr.ts` (`lektireIzvori`).
+- Pri izmjeni programa: promijeni spisak, napomene u `sr.ts` i `bs.ts` i datum `checked` u oba.
+- Preporuke (van spiska) ne smiju ponavljati djela sa spiskova; savjeti su za roditelje i učitelje.
+- Statični HTML (`prerender`, `kind: 'lektire'`) sadrži cijeli spisak za pretraživače; stranica je u sitemap-u sa hreflang sr/bs.
+- Link „Lektire“ je i u zaglavlju priprema (`pripreme/index.html`, `admin.html`).
 
 ### 10.6. `NotFound.tsx`
 
