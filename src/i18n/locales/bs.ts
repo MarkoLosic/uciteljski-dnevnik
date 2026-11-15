@@ -10,11 +10,11 @@ export const bs: Dictionary = {
     role: 'QA inženjer i profesor razredne nastave',
     location: 'Banja Luka, BiH',
     intro:
-      'Po struci sam učitelj, i onih osam mjeseci provedenih sa prvacima naučilo me je dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — ko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo klikanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
+      'Po struci sam učitelj, i onih osam mjeseci provedenih sa prvacima naučilo me je dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — ko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pometnju. Taj isti mentalni sklop danas unosim u IT, gdje kao QA inženjer kreiram i testiram softver. Kreiranje i testiranje softvera za mene nije samo pisanje koda i klikanje po aplikaciji, već upravo to: pažljivo posmatranje detalja koje drugi previde i strpljivo građenje sistema koji radi bez greške. Zato i tehnologiju u obrazovanju gledam iz oba ugla — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
     background: [
       {
         title: 'U IT-u',
-        text: 'Više od šest godina radim kao QA inženjer: testiram web i mobilne aplikacije, automatizujem testove i provjeravam AI modele. Posao me naučio da tehnologiji ne vjerujem na riječ — prvo provjerim da li zaista radi.',
+        text: 'Više od šest godina radim kao QA inženjer: kreiram i testiram web i mobilne aplikacije, automatizujem testove i provjeravam AI modele. Posao me naučio da tehnologiji ne vjerujem na riječ — prvo provjerim da li zaista radi.',
       },
       {
         title: 'U učionici',
@@ -351,9 +351,10 @@ export const bs: Dictionary = {
       tip: 'Savjet: štampajte na A4 papiru. Radi i crno-bijelo. Bojice i debela olovka su bolje od tanke hemijske.',
       sectionEyebrow: 'Za štampu · A4 format',
       sectionTitle: 'Bojanke slova i slika, ćirilica, latinica i radni listovi',
-      sectionText: 'Kompletna zbirka od 91 radnih listova, diferenciranih testova i tematskih bojanki spremnih za štampu na A4 formatu: testovi znanja za tri nivoa postignuća učenika (osnovni, srednji i napredni), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
+      sectionText: 'Kompletna zbirka od 94 radnih listova, diferenciranih testova i tematskih bojanki spremnih za štampu na A4 formatu: testovi znanja za tri nivoa postignuća učenika (osnovni, srednji i napredni), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
+        books: 'Priručnici i vježbanke za štampu (više strana, s planom i rješenjima)',
         tests: 'Diferencirani testovi znanja (3 nivoa: osnovni, srednji i napredni)',
         coloring: 'Bojanke (tematske slike, slova i brojevi)',
         writing: 'Čitanje i pisanje — latinica i ćirilica',
@@ -684,6 +685,18 @@ export const bs: Dictionary = {
         mathDivide: {
           title: 'Dijeljenje (96 zadataka)',
           text: 'Prva strana: dijeljenje brojevima od 1 do 5. Druga strana: od 6 do 10. Pomozi se tablicom množenja.',
+        },
+        writingHandbookLatin: {
+          title: 'Kako nastaje priča — priručnik za mlade pisce (latinica)',
+          text: 'Za 3, 4. i 5. razred: 12 tema sa pravilima kojih se drže pisci (ideja, junak, mjesto i vrijeme radnje, početak, zaplet, vrhunac, dijalog, pripovjedač, kraj, prepravljanje), primjeri, preporuke za čitanje, vježbe, plan priče i lista za provjeru.',
+        },
+        writingHandbookCyrillic: {
+          title: 'Како настаје прича — приручник за младе писце (ћирилица)',
+          text: 'За 3, 4. и 5. разред: 12 тема са правилима којих се држе писци (идеја, јунак, мјесто и вријеме радње, почетак, заплет, врхунац, дијалог, приповједач, крај, преправљање), примјери, препоруке за читање, вјежбе, план приче и листа за провјеру.',
+        },
+        homeWorkbookMath2: {
+          title: 'Vježbam kod kuće — matematika, 2. razred (vježbanka)',
+          text: 'Svaki dan po jedna strana: sabiranje i oduzimanje do 100, zamjena mjesta i združivanje sabiraka, veće i manje, množenje, sat i kalendar, novac (KM) i grafikoni. Na kraju su veliki izazov, diploma i rješenja za roditelje.',
         },
         mathWordProblems: {
           title: 'Tekstualni zadaci: hrana, vrijeme, saobraćaj i priroda',

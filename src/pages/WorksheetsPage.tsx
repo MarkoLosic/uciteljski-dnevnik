@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
+import { BookOpen, Clock, Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
 import PixelIcon from '../components/PixelIcon';
 import { useLocale } from '../i18n/LocaleContext';
 import { WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
@@ -34,10 +34,11 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   colors: '/slike/bojanke/oboji-oblike.svg',
 };
 
-const GROUP_ORDER: WorksheetGroup[] = ['tests', 'coloring', 'time', 'writing', 'motor', 'math', 'logic'];
+const GROUP_ORDER: WorksheetGroup[] = ['books', 'tests', 'coloring', 'time', 'writing', 'motor', 'math', 'logic'];
 
 const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
   sr: {
+    books: 'Priručnici i vježbanke',
     tests: 'Testovi (3 nivoa)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
@@ -47,6 +48,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     time: 'Vrijeme i sat',
   },
   bs: {
+    books: 'Priručnici i vježbanke',
     tests: 'Testovi (3 nivoa)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
@@ -56,6 +58,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     time: 'Vrijeme i sat',
   },
   hr: {
+    books: 'Priručnici i vježbenice',
     tests: 'Testovi (3 razine)',
     coloring: 'Bojanke',
     writing: 'Pisanje i slova',
@@ -65,6 +68,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     time: 'Vrijeme i sat',
   },
   en: {
+    books: 'Handbooks & Workbooks',
     tests: 'Tests (3 levels)',
     coloring: 'Coloring',
     writing: 'Letters & Writing',
@@ -74,6 +78,7 @@ const GROUP_SHORT_LABELS: Record<string, Record<WorksheetGroup, string>> = {
     time: 'Time & Clock',
   },
   de: {
+    books: 'Handbücher & Übungshefte',
     tests: 'Tests (3 Stufen)',
     coloring: 'Ausmalbilder',
     writing: 'Schreiben & Buchstaben',
@@ -150,6 +155,7 @@ export default function WorksheetsPage() {
                   : 'border border-line bg-surface text-muted hover:bg-surface-2 hover:text-ink'
               }`}
             >
+              {group === 'books' && <BookOpen aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {group === 'tests' && <GraduationCap aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {group === 'coloring' && <Palette aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               {group === 'time' && <Clock aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
@@ -169,13 +175,14 @@ export default function WorksheetsPage() {
             <section key={group} aria-labelledby={`naslov-${group}`}>
               <div className="mb-4 sm:mb-5 flex items-center justify-between border-b border-line/60 pb-2.5 sm:pb-3">
                 <h2 id={`naslov-${group}`} className="text-lg font-bold tracking-tight sm:text-2xl flex items-center gap-2 sm:gap-2.5">
+                  {group === 'books' && <BookOpen aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {group === 'tests' && <GraduationCap aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {group === 'coloring' && <Palette aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {group === 'time' && <Clock aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />}
                   {g.worksheet.groups[group]}
                 </h2>
                 <span className="font-mono text-xs font-semibold text-muted">
-                  {ids.length} {group === 'tests' ? 'testova' : group === 'coloring' ? 'bojanki' : 'listova'}
+                  {ids.length} {group === 'tests' ? 'testova' : group === 'coloring' ? 'bojanki' : group === 'books' ? 'izdanja' : 'listova'}
                 </span>
               </div>
               <ul className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -209,7 +216,7 @@ export default function WorksheetsPage() {
                           )}
                           <div className="min-w-0 flex-1">
                             <span className="inline-block rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-semibold text-muted">
-                              {group === 'tests' ? 'Test · 3 nivoa' : group === 'coloring' ? 'Bojanka · A4' : `${g.worksheet.eyebrow} · A4`}
+                              {group === 'tests' ? 'Test · 3 nivoa' : group === 'coloring' ? 'Bojanka · A4' : group === 'books' ? 'Priručnik · A4' : `${g.worksheet.eyebrow} · A4`}
                             </span>
                             <h3 className="mt-1 text-[15px] sm:text-[16px] font-semibold tracking-tight leading-snug line-clamp-2 group-hover:text-accent transition-colors">
                               {cleanTitle}

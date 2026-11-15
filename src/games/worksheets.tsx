@@ -71,6 +71,8 @@ import { shapePaths, toyHex } from './shared';
 import { PATHS } from './Trace';
 import { FIGURES } from './ConnectDots';
 import { MAZES } from './Maze';
+import { homeWorkbookMath2Pages } from './workbook';
+import { writingHandbookPages } from './writingHandbook';
 
 // Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
@@ -3843,6 +3845,9 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   mathMultiply: () => drillPages('mathMultiply', DRILL_SETS.mathMultiply),
   mathDivide: () => drillPages('mathDivide', DRILL_SETS.mathDivide),
   mathWordProblems: ({ labels }) => wordProblemPages(labels),
+  homeWorkbookMath2: () => homeWorkbookMath2Pages(),
+  writingHandbookLatin: () => writingHandbookPages('lat'),
+  writingHandbookCyrillic: () => writingHandbookPages('cyr'),
   trace: () => [<TraceSheet key="trace" />],
   dots: () => [<DotsSheet key="dots" />],
   maze: () => [<MazeSheet key="maze" />],

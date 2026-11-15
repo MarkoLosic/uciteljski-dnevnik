@@ -86,6 +86,9 @@ export const WORKSHEET_IDS = [
   'timeClockMath',
   'timeDaysOrder',
   'timeCalendar',
+  'homeWorkbookMath2',
+  'writingHandbookLatin',
+  'writingHandbookCyrillic',
   'mathNumberLine',
   'mathHouses',
   'mathAdd10',
@@ -150,10 +153,16 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
   letterMatchCyrillic: ['sr', 'bs', 'hr'],
   syllablesCyrillic: ['sr', 'bs', 'hr'],
   scriptBridge: ['sr', 'bs', 'hr'],
+  // Tekst je na srpskom (ijekavica), a novac u KM — za čitaoce iz BiH.
+  homeWorkbookMath2: ['sr', 'bs'],
+  writingHandbookLatin: ['sr', 'bs'],
+  writingHandbookCyrillic: ['sr', 'bs'],
 };
 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
+  // Priručnici i vježbanke od više strana — posebna grupa, prva na stranici, da se lako nađu.
+  books: ['homeWorkbookMath2', 'writingHandbookLatin', 'writingHandbookCyrillic'],
   tests: [
     'testGrade1',
     'testGrade2',

@@ -4,6 +4,11 @@
    i kompletna podrška za A4 štampu (@media print).
    ========================================================================== */
 
+/* Atribut hidden mora sakriti element i kad mu klasa postavlja display (npr. .load-more-wrap, prazno stanje). */
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --bg: #f3f7f8;
   --bg-accent: #e6f0f2;
@@ -138,119 +143,6 @@ textarea {
 /* ==========================================================================
    ZAGLAVLJE I NAVIGACIJA
    ========================================================================== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: color-mix(in srgb, var(--surface) 90%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 68px;
-  padding-block: 10px;
-  flex-wrap: wrap;
-}
-
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.12rem;
-  color: var(--text);
-}
-
-.brand-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 1rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.brand-divider {
-  color: var(--border-strong);
-  font-weight: 400;
-}
-
-.brand-sub {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  border: 1px solid transparent;
-  transition: all 0.15s ease;
-}
-
-.nav-link:hover {
-  background: var(--surface-2);
-  color: var(--text);
-}
-
-.nav-link.active {
-  background: var(--primary-light);
-  color: var(--primary);
-  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
-  font-weight: 600;
-}
-
-.theme-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.theme-btn:hover {
-  background: var(--surface-2);
-  color: var(--primary);
-  border-color: var(--border-strong);
-}
-
 .script-toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -1509,34 +1401,6 @@ textarea {
   .container {
     width: calc(100% - 24px);
   }
-  .header-inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding-block: 8px;
-    min-height: auto;
-  }
-  .header-nav {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
-    gap: 6px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .header-nav::-webkit-scrollbar {
-    display: none;
-  }
-  .nav-link {
-    padding: 6px 12px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .script-toggle-btn,
-  .theme-btn {
-    flex-shrink: 0;
-  }
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1607,6 +1471,7 @@ textarea {
 
   /* Sakrij sve elemente sajta osim modala sa pripremom */
   .site-header,
+  .tools-bar,
   .hero,
   .filters-section,
   .cards-grid,
@@ -1787,3 +1652,238 @@ textarea {
   }
 }
 
+
+/* ==========================================================================
+   ZAGLAVLJE — isto kao na ostatku sajta (src/components/Header.tsx, boje iz src/index.css)
+   ========================================================================== */
+.site-header {
+  --h-surface: rgba(255, 255, 255, 0.85);
+  --h-panel: #ffffff;
+  --h-surface-2: #eef1f7;
+  --h-border: rgba(15, 20, 32, 0.09);
+  --h-border-strong: rgba(15, 20, 32, 0.2);
+  --h-text: #0e1420;
+  --h-muted: #566074;
+  --h-accent: #047857;
+  --h-accent-ink: #ffffff;
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  width: min(1160px, calc(100% - 24px));
+  margin: 12px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--h-border);
+  background: var(--h-surface);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  font-family: var(--font-sans);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+:root[data-theme='dark'] .site-header {
+  --h-surface: rgba(13, 17, 24, 0.85);
+  --h-panel: #0d1118;
+  --h-surface-2: #131a25;
+  --h-border: rgba(255, 255, 255, 0.08);
+  --h-border-strong: rgba(255, 255, 255, 0.16);
+  --h-text: #e9edf4;
+  --h-muted: #8f99ab;
+  --h-accent: #34d399;
+  --h-accent-ink: #04140d;
+}
+.site-header.is-scrolled {
+  border-color: var(--h-border-strong);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.35);
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--h-text);
+  text-decoration: none;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--h-accent);
+  color: var(--h-accent-ink);
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav-link {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--h-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-link:hover {
+  background: var(--h-surface-2);
+  color: var(--h-text);
+}
+.nav-link.active {
+  background: var(--h-surface-2);
+  color: var(--h-text);
+  box-shadow: inset 0 0 0 1px var(--h-border);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.theme-btn,
+.menu-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--h-border);
+  background: transparent;
+  color: var(--h-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover,
+.menu-btn:hover {
+  border-color: var(--h-border-strong);
+  background: var(--h-surface-2);
+  color: var(--h-text);
+}
+.theme-btn .ikona-mjesec,
+:root[data-theme='dark'] .theme-btn .ikona-sunce {
+  display: none;
+}
+:root[data-theme='dark'] .theme-btn .ikona-mjesec {
+  display: block;
+}
+.lang-badge {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--h-border);
+  color: var(--h-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.menu-btn {
+  display: none;
+}
+.menu-btn .ikona-zatvori,
+.site-header.menu-open .menu-btn .ikona-meni {
+  display: none;
+}
+.site-header.menu-open .menu-btn .ikona-zatvori {
+  display: block;
+}
+.site-header.menu-open .menu-btn {
+  border-color: var(--h-accent);
+  background: var(--h-accent);
+  color: var(--h-accent-ink);
+}
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border-radius: 24px;
+  border: 1px solid var(--h-border-strong);
+  background: var(--h-panel);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+.site-header.menu-open .mobile-nav {
+  display: flex;
+}
+.mobile-link {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--h-muted);
+  text-decoration: none;
+}
+.mobile-link:hover {
+  background: var(--h-surface-2);
+  color: var(--h-text);
+}
+.mobile-link.active {
+  background: var(--h-accent);
+  color: var(--h-accent-ink);
+}
+@media (max-width: 1023px) {
+  .header-nav {
+    display: none;
+  }
+  .menu-btn {
+    display: grid;
+  }
+}
+
+/* Traka sa alatima priprema (pismo, generator) ispod zaglavlja */
+.tools-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.tools-label {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.tools-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.tool-link:hover {
+  background: var(--surface-2);
+  color: var(--primary);
+  border-color: var(--primary);
+}

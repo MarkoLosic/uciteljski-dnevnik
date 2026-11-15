@@ -10,11 +10,11 @@ export const hr: Dictionary = {
     role: 'QA inženjer i učitelj razredne nastave',
     location: 'Banja Luka, BiH',
     intro:
-      'Po struci sam učitelj, a onih osam mjeseci provedenih s prvašićima naučilo me dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — tko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pomutnju. Taj isti način razmišljanja danas unosim u IT kao QA inženjer. Testiranje softvera za mene nije samo klikanje po aplikaciji, nego upravo to: pažljivo promatranje detalja koje drugi previde i strpljivo građenje sustava koji radi bez pogreške. Zato i tehnologiju u obrazovanju gledam iz obaju kutova — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
+      'Po struci sam učitelj, a onih osam mjeseci provedenih s prvašićima naučilo me dvjema najvažnijim vještinama: beskrajnom strpljenju i oku za detalje. U učionici punoj šestogodišnjaka morate primijetiti svaku sitnicu — tko je tiho zapeo, gdje je zadatak nejasan i kako naizgled mali propust može stvoriti pomutnju. Taj isti način razmišljanja danas unosim u IT, gdje kao QA inženjer razvijam i testiram softver. Razvoj i testiranje softvera za mene nisu samo pisanje koda i klikanje po aplikaciji, nego upravo to: pažljivo promatranje detalja koje drugi previde i strpljivo građenje sustava koji radi bez pogreške. Zato i tehnologiju u obrazovanju gledam iz obaju kutova — gdje stvarno rasterećuje, a gdje zbog lošeg dizajna samo smeta.',
     background: [
       {
         title: 'U IT-u',
-        text: 'Više od šest godina radim kao QA inženjer: testiram web i mobilne aplikacije, automatiziram testove i provjeravam AI modele. Posao me naučio da tehnologiji ne vjerujem na riječ — prvo provjerim radi li zaista.',
+        text: 'Više od šest godina radim kao QA inženjer: razvijam i testiram web i mobilne aplikacije, automatiziram testove i provjeravam AI modele. Posao me naučio da tehnologiji ne vjerujem na riječ — prvo provjerim radi li zaista.',
       },
       {
         title: 'U učionici',
@@ -354,6 +354,7 @@ export const hr: Dictionary = {
       sectionText: 'Kompletna zbirka od 91 radnih listova, diferenciranih ispita i tematskih bojanki spremnih za ispis na A4 formatu: provjere znanja za tri razine postignuća učenika (osnovna, srednja i napredna), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',
       alphabet: ['A a', 'B b', 'C c', 'Č č', 'Ć ć', 'D d', 'Dž dž', 'Đ đ', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'Lj lj', 'M m', 'N n', 'Nj nj', 'O o', 'P p', 'R r', 'S s', 'Š š', 'T t', 'U u', 'V v', 'Z z', 'Ž ž'],
       groups: {
+        books: 'Priručnici i vježbenice za ispis (više stranica, s planom i rješenjima)',
         tests: 'Diferencirani ispiti znanja (3 razine: osnovna, srednja i napredna)',
         coloring: 'Bojanke (tematske slike, slova i brojevi)',
         writing: 'Čitanje i pisanje — latinica i ćirilica',
@@ -684,6 +685,18 @@ export const hr: Dictionary = {
         mathDivide: {
           title: 'Dijeljenje (96 zadataka)',
           text: 'Prva stranica: dijeljenje brojevima od 1 do 5. Druga stranica: od 6 do 10. Pomogni si tablicom množenja.',
+        },
+        writingHandbookLatin: {
+          title: 'Kako nastaje priča — priručnik za mlade pisce (latinica)',
+          text: 'Za 3., 4. i 5. razred: 12 tema s pravilima kojih se drže pisci, primjeri, preporuke za čitanje, vježbe, plan priče i popis za provjeru.',
+        },
+        writingHandbookCyrillic: {
+          title: 'Kako nastaje priča — priručnik za mlade pisce (ćirilica)',
+          text: 'Isti priručnik napisan ćirilicom: 12 tema s pravilima kojih se drže pisci, primjeri, preporuke za čitanje i vježbe.',
+        },
+        homeWorkbookMath2: {
+          title: 'Vježbam kod kuće — matematika, 2. razred (vježbenica)',
+          text: 'Svaki dan jedna stranica: zbrajanje i oduzimanje do 100, zamjena mjesta i združivanje pribrojnika, veće i manje, množenje, sat i kalendar, novac (KM) i grafikoni. Na kraju su veliki izazov, diploma i rješenja za roditelje.',
         },
         mathWordProblems: {
           title: 'Problemski zadaci: hrana, vrijeme, promet i priroda',

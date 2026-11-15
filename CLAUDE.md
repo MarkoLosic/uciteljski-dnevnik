@@ -143,6 +143,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── shared.tsx         # toyHex, shuffle, ShapeIcon, RoundDots, useShake, useDragDrop
     │   ├── things.ts          # sličice (lucide) za pamćenje, brojanje, veličine
     │   ├── worksheets.tsx     # 21 radni list: igre na papiru, predpisanje, pisanje, brojevi, logika
+    │   ├── workbook.tsx       # vježbanka „Vježbam kod kuće — matematika, 2. razred“ (16 strana)
+    │   ├── writingHandbook.tsx # priručnik „Kako nastaje priča“ za mlade pisce (15 strana, latinica i ćirilica)
     │   └── Balloons.tsx, ColorSort.tsx, ShapeMatch.tsx, Trace.tsx, ConnectDots.tsx,
     │       Maze.tsx, Memory.tsx, Pattern.tsx, Count.tsx, Sizes.tsx
     ├── lib/
@@ -660,6 +662,9 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Bez zvuka, reklama i praćenja. Animacije poštuju `prefers-reduced-motion`.
 - Radni listovi (`WORKSHEET_IDS`, 21): list sa istim id kao igra je njena papirna verzija (`trace`, `dots`, `maze`, `shapes`, `colors`, `count`, `pattern`, `sizes`; `GamePlay` linkuje na njih preko `hasWorksheet`); `trace`/`dots`/`maze` dele data sa igrom (`PATHS`, `FIGURES`, `MAZES`). `numbers`, `latin`, `cyrillic` su listovi za pisanje (`WritingRow`: crni uzorak, sive kopije za precrtavanje, linije). Ostali listovi su jedan SVG širine 600 i visine ≤ 660 (`Page`), sa fiksnim (ne nasumičnim) rasporedom da se isto štampaju. Na stranici igara su grupisani po `WORKSHEET_GROUPS` (naslovi u `t.games.worksheet.groups`). `WORKSHEET_LOCALES` ograničava list na jezike (ćirilica: sr, bs); abeceda za `latin` je u `t.games.worksheet.alphabet` (en/de imaju svoju), a list `colors` koristi `t.games.colorNames`. Novi list: id u `WORKSHEET_IDS` i u jednu grupu, komponenta u `worksheets` (`worksheets.tsx`), `title`/`text` u svih pet rečnika.
 - Grupa `time` (Spoznaja vremena: `timeSequence`, `timeDayParts`, `timeRoutine`, `timeClock`, `timeWeek`, `timeYear`) i smislene bojanke (`coloringHandWash`, `coloringTraffic`, `coloringFood`, `coloringRecycle`, `coloringFeelings`) crtaju se u kodu (`worksheets.tsx`); isto važi za vežbe uz te lekcije (`timeClockRead`, `timeClockMath`, `timeDaysOrder`, `timeCalendar`) i matematiku sa mnogo zadataka (`mathAdd10`…`mathDivide` po 2 × 48 zadataka iz generatora sa fiksnim semenom — `DRILL_SETS`, da se štampa uvek isto; `mathHouses`, `mathPyramids`, `mathNumberLine`, `mathWordProblems` sa tekstom zadataka u `labels.wordProblems`). Pitanja u `labels.calendarTasks` važe za kalendar od 30 dana koji počinje u sredu (`CALENDAR_START`); natpisi na njima (dani, meseci, delovi dana, osećanja…) su u `t.games.worksheet.labels` i stižu kroz `SheetContext.labels` — imena dana i mjeseci su u rečnicima (ne iz `Intl`), da svaki jezik ima tačno svoje oblike (npr. hr: siječanj).
+- Grupa `books` („Priručnici i vježbanke“) je prva na stranici radnih listova i drži izdanja od više strana (vježbanka i priručnik); nova takva izdanja idu u nju, a ne u tematske grupe.
+- Vježbanka `homeWorkbookMath2` (`workbook.tsx`, samo sr i bs jer je novac u KM): plan vježbanja, 12 dana po jedna strana sa likom Njuška, koker španijela (SVG `Njusko`), Veliki izazov, diploma i rješenja za roditelje. Brojevi u zadacima su u nizovima na vrhu fajla, a rješenja se iz njih računaju — pri izmjeni zadatka mijenja se samo niz.
+- Priručnik „Kako nastaje priča“ (`writingHandbookLatin` / `writingHandbookCyrillic`, `writingHandbook.tsx`, sr i bs): uvod sa mapom, 12 tema (pravilo pisaca, primjer „Iz radionice“, preporuka „Pročitaj“, vježbe), plan priče i strana za pisanje sa listom za provjeru. Tekst se piše latinicom, a ćirilična verzija nastaje funkcijom `toCyrillic`. Primjeri su naš tekst — ne prepisivati odlomke iz knjiga zaštićenih autorskim pravom, nego knjigu samo preporučiti.
 - Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`.
 
 ### 10.7. `World.tsx` i `Country.tsx` — Škole u svetu
@@ -676,6 +681,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 
 ### 10.8. Pripreme (`pripreme/`) — zadaci za 3 nivoa
 
+- Zaglavlje priprema (`index.html`, `admin.html`, stil u `stil.css`, meni na telefonu u `zaglavlje.js`) je kopija zaglavlja sajta (`Header.tsx`): iste stavke, isti nazivi i iste boje. **Kad se mijenja meni sajta, mijenja se i ovdje.** Alati priprema (LAT/ĆIR, Generator) su u traci ispod zaglavlja, ne u meniju.
 - Biblioteka dnevnih priprema je statična aplikacija u `pripreme/` (`podaci.js` = 1.436 priprema, `app.js` = prikaz); Vite je kopira u `dist/`.
 - Zadaci za I, II i III nivo **nisu šablon po predmetu**, nego dolaze iz banke `pripreme/zadaci/` (`osnova.js` + `matematika.js`, `jezik.js`, `priroda.js`, `ostalo.js`): svaka tema časa ima svoje pravilo (`t:` regex nad nazivom časa, `r:` razredi). Prvo pravilo koje odgovara se koristi — specifičnija pravila idu ispred opštijih.
 - Zadaci su pisani **za učenika** (kratka naredba, jedna radnja, konkretni brojevi i riječi); ishodi iz plana su za učitelja i ne idu na učenički listić.

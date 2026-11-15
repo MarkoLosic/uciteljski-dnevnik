@@ -10,11 +10,11 @@ export const en: Dictionary = {
     role: 'QA engineer and primary school teacher',
     location: 'Banja Luka, Bosnia and Herzegovina',
     intro:
-      'I’m a primary school teacher by training, and those eight months with first-graders taught me the two most important skills I have: endless patience and an eye for detail. In a classroom full of six-year-olds you have to notice every little thing — who has quietly got stuck, where a task is unclear, and how a seemingly small slip can cause chaos. I bring that same mindset to IT today as a QA engineer. For me, software testing isn’t just clicking around an app; it’s exactly that: carefully noticing the details others miss and patiently building systems that work without errors. That’s why I look at technology in education from both sides — where it genuinely lightens the load, and where poor design only gets in the way.',
+      'I’m a primary school teacher by training, and those eight months with first-graders taught me the two most important skills I have: endless patience and an eye for detail. In a classroom full of six-year-olds you have to notice every little thing — who has quietly got stuck, where a task is unclear, and how a seemingly small slip can cause chaos. I bring that same mindset to IT today, where as a QA engineer I build and test software. For me, building and testing software isn’t just writing code and clicking around an app; it’s exactly that: carefully noticing the details others miss and patiently building systems that work without errors. That’s why I look at technology in education from both sides — where it genuinely lightens the load, and where poor design only gets in the way.',
     background: [
       {
         title: 'In IT',
-        text: 'For more than six years I have worked as a QA engineer: testing web and mobile apps, automating tests and evaluating AI models. The job taught me not to take technology at its word — I check first whether it really works.',
+        text: 'For more than six years I have worked as a QA engineer: building and testing web and mobile apps, automating tests and evaluating AI models. The job taught me not to take technology at its word — I check first whether it really works.',
       },
       {
         title: 'In the classroom',
@@ -354,6 +354,7 @@ export const en: Dictionary = {
       sectionText: 'Complete collection of 91 worksheets, differentiated tests and themed coloring pages ready to print on A4: achievement tests for 3 levels (basic, intermediate, advanced), themed coloring books, alphabet pages, fine motor skills and math.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z'],
       groups: {
+        books: 'Printable handbooks and workbooks (multi-page, with a plan and answers)',
         tests: 'Differentiated tests (3 levels: basic, intermediate & advanced)',
         coloring: 'Coloring books (themed pictures, letters & numbers)',
         writing: 'Reading and writing',
@@ -684,6 +685,18 @@ export const en: Dictionary = {
         mathDivide: {
           title: 'Division (96 problems)',
           text: 'Page one: dividing by 1 to 5. Page two: by 6 to 10. Use the times tables to help you.',
+        },
+        writingHandbookLatin: {
+          title: 'How a story is made — a handbook for young writers (Latin script)',
+          text: 'For grades 3–5: 12 topics on the rules writers follow, examples, reading tips, exercises, a story plan and a checklist.',
+        },
+        writingHandbookCyrillic: {
+          title: 'How a story is made — a handbook for young writers (Cyrillic)',
+          text: 'The same handbook in Cyrillic script: 12 topics on the rules writers follow, examples, reading tips and exercises.',
+        },
+        homeWorkbookMath2: {
+          title: 'Practice at home — math, grade 2 (workbook)',
+          text: 'One page a day: adding and subtracting to 100, swapping and grouping addends, greater and less, multiplication, clock and calendar, money (KM) and charts. At the end: a big challenge, a certificate and answers for parents.',
         },
         mathWordProblems: {
           title: 'Word problems: food, time, traffic and nature',

@@ -66,7 +66,7 @@ export default function Home() {
               <a
                 key={label}
                 href={i === 2 ? paths.worksheets : '/pripreme/index.html'}
-                className="card hoverable focus-ring flex flex-col justify-between p-5"
+                className="card hoverable focus-ring flex flex-col p-5"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="icon-tile">
@@ -77,7 +77,8 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="mt-4">
-                  <h2 className="text-[17px] leading-snug font-semibold tracking-tight">{label}</h2>
+                  {/* Naslov uvijek zauzima dva reda, da naslovi i opisi u istom redu kartica počinju na istoj visini. */}
+                  <h2 className="min-h-[2.75em] text-[17px] leading-snug font-semibold tracking-tight">{label}</h2>
                   <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">{detail}</p>
                 </div>
               </a>

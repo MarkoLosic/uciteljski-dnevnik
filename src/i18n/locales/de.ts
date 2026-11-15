@@ -10,11 +10,11 @@ export const de: Dictionary = {
     role: 'QA-Ingenieur und Grundschullehrer',
     location: 'Banja Luka, Bosnien und Herzegowina',
     intro:
-      'Von Beruf bin ich Grundschullehrer, und die acht Monate mit Erstklässlern haben mich die zwei wichtigsten Fähigkeiten gelehrt: grenzenlose Geduld und ein Auge fürs Detail. In einem Klassenzimmer voller Sechsjähriger muss man jede Kleinigkeit bemerken — wer still hängen geblieben ist, wo eine Aufgabe unklar ist und wie ein scheinbar kleines Versehen für Durcheinander sorgen kann. Genau diese Denkweise bringe ich heute als QA-Ingenieur in die IT ein. Softwaretests bedeuten für mich nicht bloß, sich durch eine App zu klicken, sondern genau das: Details aufmerksam beobachten, die andere übersehen, und geduldig an Systemen arbeiten, die fehlerfrei funktionieren. Deshalb betrachte ich Technologie in der Bildung von beiden Seiten — wo sie wirklich entlastet und wo sie wegen schlechten Designs nur stört.',
+      'Von Beruf bin ich Grundschullehrer, und die acht Monate mit Erstklässlern haben mich die zwei wichtigsten Fähigkeiten gelehrt: grenzenlose Geduld und ein Auge fürs Detail. In einem Klassenzimmer voller Sechsjähriger muss man jede Kleinigkeit bemerken — wer still hängen geblieben ist, wo eine Aufgabe unklar ist und wie ein scheinbar kleines Versehen für Durcheinander sorgen kann. Genau diese Denkweise bringe ich heute in die IT ein, wo ich als QA-Ingenieur Software entwickle und teste. Software zu entwickeln und zu testen bedeutet für mich nicht bloß, Code zu schreiben und sich durch eine App zu klicken, sondern genau das: Details aufmerksam beobachten, die andere übersehen, und geduldig an Systemen arbeiten, die fehlerfrei funktionieren. Deshalb betrachte ich Technologie in der Bildung von beiden Seiten — wo sie wirklich entlastet und wo sie wegen schlechten Designs nur stört.',
     background: [
       {
         title: 'In der IT',
-        text: 'Seit mehr als sechs Jahren arbeite ich als QA-Ingenieur: Ich teste Web- und Mobile-Apps, automatisiere Tests und prüfe KI-Modelle. Der Beruf hat mich gelehrt, Technologie nicht aufs Wort zu glauben — ich prüfe zuerst, ob sie wirklich funktioniert.',
+        text: 'Seit mehr als sechs Jahren arbeite ich als QA-Ingenieur: Ich entwickle und teste Web- und Mobile-Apps, automatisiere Tests und prüfe KI-Modelle. Der Beruf hat mich gelehrt, Technologie nicht aufs Wort zu glauben — ich prüfe zuerst, ob sie wirklich funktioniert.',
       },
       {
         title: 'Im Klassenzimmer',
@@ -354,6 +354,7 @@ export const de: Dictionary = {
       sectionText: 'Komplette Sammlung von 91 Arbeitsblättern, differenzierten Leistungstests und Malbüchern im A4-Format: Tests für 3 Lernstufen (Basis, Mittel, Fortgeschritten), thematische Ausmalbilder, Buchstaben und Rechnen.',
       alphabet: ['A a', 'B b', 'C c', 'D d', 'E e', 'F f', 'G g', 'H h', 'I i', 'J j', 'K k', 'L l', 'M m', 'N n', 'O o', 'P p', 'Q q', 'R r', 'S s', 'T t', 'U u', 'V v', 'W w', 'X x', 'Y y', 'Z z', 'Ä ä', 'Ö ö', 'Ü ü', 'ß'],
       groups: {
+        books: 'Handbücher und Übungshefte zum Drucken (mehrseitig, mit Plan und Lösungen)',
         tests: 'Differenzierte Tests (3 Stufen: Basis, Mittel & Fortgeschritten)',
         coloring: 'Ausmalbilder (Themenbilder, Buchstaben & Zahlen)',
         writing: 'Lesen und Schreiben',
@@ -684,6 +685,18 @@ export const de: Dictionary = {
         mathDivide: {
           title: 'Teilen (96 Aufgaben)',
           text: 'Erste Seite: geteilt durch 1 bis 5. Zweite Seite: durch 6 bis 10. Das Einmaleins hilft dir.',
+        },
+        writingHandbookLatin: {
+          title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Lateinschrift)',
+          text: 'Für die 3.–5. Klasse: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps, Übungen, ein Geschichtenplan und eine Checkliste.',
+        },
+        writingHandbookCyrillic: {
+          title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Kyrillisch)',
+          text: 'Dasselbe Handbuch in kyrillischer Schrift: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps und Übungen.',
+        },
+        homeWorkbookMath2: {
+          title: 'Ich übe zu Hause — Mathe, 2. Klasse (Übungsheft)',
+          text: 'Jeden Tag eine Seite: Plus und Minus bis 100, Tauschen und Zusammenfassen von Summanden, größer und kleiner, Malnehmen, Uhr und Kalender, Geld (KM) und Diagramme. Am Ende: große Herausforderung, Urkunde und Lösungen für Eltern.',
         },
         mathWordProblems: {
           title: 'Sachaufgaben: Essen, Zeit, Verkehr und Natur',
