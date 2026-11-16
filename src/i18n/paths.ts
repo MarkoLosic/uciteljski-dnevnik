@@ -22,6 +22,7 @@ export function pathsFor(locale: Locale) {
     country: (id: string) => `${base}/${localeInfo[locale].worldSlug}/${id}`,
     lektire: `${base}/${LEKTIRE_SLUG}`,
     copyright: `${base}/${localeInfo[locale].copyrightSlug}`,
+    contact: `${base}/${localeInfo[locale].contactSlug}`,
   };
 }
 
@@ -38,6 +39,7 @@ export function switchLocalePath(pathname: string, from: Locale, to: Locale): st
   if (rest === '/blog') return target.blog;
   if (rest === `/${localeInfo[from].aboutSlug}`) return target.about;
   if (rest === `/${localeInfo[from].copyrightSlug}`) return target.copyright;
+  if (rest === `/${localeInfo[from].contactSlug}`) return target.contact;
 
   const worksheetSlug = localeInfo[from].worksheetSlug;
   if (rest === `/${worksheetSlug}` || rest === '/bojanke') return target.worksheets;

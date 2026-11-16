@@ -1,4 +1,5 @@
 import { Ban, Check, X, type LucideIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
 import { formatDate } from '../lib/formatDate';
@@ -90,9 +91,14 @@ export default function Copyright() {
         <p>{c.permission.text}</p>
       </article>
 
-      <a href={`mailto:${siteConfig.author.email}`} className="btn btn-primary focus-ring mt-8">
-        {c.permission.cta}: {siteConfig.author.email}
-      </a>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link to={`${paths.contact}?tema=collaboration`} state={{ from: paths.copyright }} className="btn btn-primary focus-ring">
+          {c.permission.cta}
+        </Link>
+        <Link to={`${paths.contact}?tema=copyright`} state={{ from: paths.copyright }} className="btn btn-ghost focus-ring">
+          {t.contact.topics.copyright}
+        </Link>
+      </div>
     </div>
   );
 }

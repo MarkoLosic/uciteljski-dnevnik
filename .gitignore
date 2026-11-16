@@ -4,3 +4,7 @@ dist
 .DS_Store
 .vercel
 .impeccable/hook.cache.json
+
+# Tajni ključevi (kontakt forma)
+.env
+.env*.local

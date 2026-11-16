@@ -15,14 +15,15 @@ interface LocaleInfo {
   worksheetSlug: string;
   worldSlug: string; // Škole u svetu
   copyrightSlug: string; // Autorska prava
+  contactSlug: string; // Kontakt forma
 }
 
 export const localeInfo: Record<Locale, LocaleInfo> = {
-  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svetu', copyrightSlug: 'autorska-prava' },
-  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games', worksheetSlug: 'worksheets', worldSlug: 'schools-worldwide', copyrightSlug: 'copyright' },
-  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu', copyrightSlug: 'autorska-prava' },
-  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu', copyrightSlug: 'autorska-prava' },
-  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele', worksheetSlug: 'arbeitsblaetter', worldSlug: 'schulen-weltweit', copyrightSlug: 'urheberrecht' },
+  sr: { name: 'Srpski', tag: 'sr-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svetu', copyrightSlug: 'autorska-prava', contactSlug: 'kontakt' },
+  en: { name: 'English', tag: 'en-GB', aboutSlug: 'about', gamesSlug: 'games', worksheetSlug: 'worksheets', worldSlug: 'schools-worldwide', copyrightSlug: 'copyright', contactSlug: 'contact' },
+  hr: { name: 'Hrvatski', tag: 'hr-HR', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu', copyrightSlug: 'autorska-prava', contactSlug: 'kontakt' },
+  bs: { name: 'Bosanski', tag: 'bs-Latn-BA', aboutSlug: 'o-meni', gamesSlug: 'igre', worksheetSlug: 'radni-listovi', worldSlug: 'skole-u-svijetu', copyrightSlug: 'autorska-prava', contactSlug: 'kontakt' },
+  de: { name: 'Deutsch', tag: 'de-DE', aboutSlug: 'ueber-mich', gamesSlug: 'spiele', worksheetSlug: 'arbeitsblaetter', worldSlug: 'schulen-weltweit', copyrightSlug: 'urheberrecht', contactSlug: 'kontakt' },
 };
 
 export function isLocale(value: unknown): value is Locale {

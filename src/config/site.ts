@@ -4,7 +4,7 @@ export const siteConfig = {
   name: 'Iz učionice',
   author: {
     name: 'Marko Lošić',
-    email: 'markolosic1993@gmail.com',
+    // Mejl namjerno nije ovdje: poruke idu kroz kontakt formu, a adresa je samo u CONTACT_TO_EMAIL na Vercelu.
   },
   url: 'https://www.xn--uiteljskidnevnik-s7b.online',
   displayDomain: 'www.učiteljskidnevnik.online', // isti domen kako ga čitaoci vide (primjer navođenja izvora)

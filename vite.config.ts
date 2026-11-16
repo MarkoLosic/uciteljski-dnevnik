@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
@@ -137,6 +137,7 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
       kind: 'copyright',
       lastmod: siteConfig.copyrightUpdated,
     })),
+    everywhere((l) => ({ path: `${base(l)}/${localeInfo[l].contactSlug}`, meta: pageMeta.contact(t(l)) })),
     everywhere((l) => ({ path: games(l), meta: pageMeta.games(t(l)) })),
     ...GAME_IDS.map((id) => everywhere((l) => ({ path: `${games(l)}/${id}`, meta: pageMeta.game(t(l), id) }))),
     everywhere((l) => ({ path: worksheets(l), meta: pageMeta.worksheets(t(l)) })),
@@ -499,6 +500,46 @@ function pripremeDevRoute(): Plugin {
   };
 }
 
+// U dev serveru /api/contact poziva istu funkciju kao Vercel (api/contact.ts).
+// Ključevi iz .env.local; bez RESEND_API_KEY poruka se samo ispiše u terminal.
+function contactApiDev(): Plugin {
+  return {
+    name: 'contact-api-dev',
+    apply: 'serve',
+    configureServer(server) {
+      const env = loadEnv(server.config.mode, process.cwd(), '');
+      for (const key of ['RESEND_API_KEY', 'CONTACT_TO_EMAIL', 'CONTACT_FROM_EMAIL']) {
+        if (env[key]) process.env[key] = env[key];
+      }
+      server.middlewares.use('/api/contact', (req, res) => {
+        const chunks: Buffer[] = [];
+        req.on('data', (chunk: Buffer) => chunks.push(chunk));
+        req.on('end', async () => {
+          const body = Buffer.concat(chunks).toString('utf8');
+          if (!process.env.RESEND_API_KEY) {
+            server.config.logger.info(`[kontakt] Poruka (nije poslata, nema RESEND_API_KEY):\n${body}`);
+            res.setHeader('Content-Type', 'application/json');
+            res.end('{"ok":true}');
+            return;
+          }
+          const mod = (await server.ssrLoadModule('/api/contact.ts')) as { POST: (r: Request) => Promise<Response> };
+          const host = req.headers.host ?? 'localhost';
+          const response = await mod.POST(
+            new Request(`http://${host}/api/contact`, {
+              method: req.method,
+              headers: { 'Content-Type': 'application/json', Origin: req.headers.origin ?? '' },
+              body: req.method === 'POST' ? body : undefined,
+            }),
+          );
+          res.statusCode = response.status;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(await response.text());
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
+  plugins: [contactApiDev(), pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
 });
