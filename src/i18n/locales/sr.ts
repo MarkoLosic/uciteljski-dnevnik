@@ -93,7 +93,7 @@ export const sr = {
     heroTitleBefore: 'Mjesto koje učiteljima olakšava ',
     heroTitleHighlight: 'svakodnevni rad u školi',
     heroLead:
-      'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom djetetu u učionici. Zato je „Iz učionice“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i savjeta iz prakse koji štede sate administracije.',
+      'Svaki školski dan traži dobru pripremu, strpljenje i prilagođavanje svakom djetetu u učionici. Zato je „učiteljskidnevnik.online“ osmišljen kao praktična baza alata za učitelje: od 1.436 gotovih dnevnih priprema za čas, diferenciranih očekivanja za tri nivoa postignuća učenika i radnih listova za A4 štampu, do edukativnih igara i savjeta iz prakse koji štede sate administracije.',
     ctaPripreme: 'Biblioteka priprema (1.436)',
     ctaWorksheets: 'Bojanke i radni listovi (55)',
     stats: [
@@ -253,11 +253,11 @@ export const sr = {
   about: {
     title: 'O meni',
     description:
-      'Ko piše blog Iz učionice: učitelj po struci, QA inženjer po zanimanju, iz Banje Luke. Iskustvo, teme i kontakt.',
+      'Ko piše blog učiteljskidnevnik.online: učitelj po struci, QA inženjer po zanimanju, iz Banje Luke. Iskustvo, teme i kontakt.',
     blogEyebrow: 'O blogu',
     blogTitle: 'Šta ćete ovdje naći',
     blogText: (siteName: string) =>
-      `${siteName} je mjesto gdje spajam ono što sam naučio u učionici sa onim čime se svaki dan bavim u IT-u.`,
+      `Učitelj po struci, QA inženjer po poslu. ${siteName} je mjesto gdje se ta dva svijeta sreću.`,
     contactEyebrow: 'Kontakt',
     contactTitle: 'Javite se',
     contactText: 'Pitanja, predlozi, ideja za temu ili samo pozdrav — rado odgovaram.',
@@ -348,6 +348,7 @@ export const sr = {
       link: 'Radni list za štampu',
       eyebrow: 'Radni list',
       print: 'Štampaj',
+      copyright: 'Zabranjeno objavljivanje i prodaja bez dozvole autora.',
       backToGames: 'Nazad na igre',
       backToWorksheets: 'Nazad na bojanke i listove',
       name: 'Ime',

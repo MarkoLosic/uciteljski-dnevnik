@@ -1,7 +1,7 @@
 // KORISNIK: ovdje su ime sajta, kontakt i linkovi — isti su na svim jezicima.
 // Tekstovi o tebi (uloga, uvod, „Ko sam ja", teme) su prevedeni u src/i18n/locales/*.ts.
 export const siteConfig = {
-  name: 'Iz učionice',
+  name: 'učiteljskidnevnik.online',
   author: {
     name: 'Marko Lošić',
     email: 'markolosic1993@gmail.com',

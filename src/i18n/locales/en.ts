@@ -89,7 +89,7 @@ export const en: Dictionary = {
     heroTitleBefore: 'A place built to help teachers in ',
     heroTitleHighlight: 'everyday school work',
     heroLead:
-      'Every school day calls for thoughtful preparation, patience, and adapting to every child in the classroom. “Iz učionice” is a practical toolkit for primary teachers: from 1,436 ready-to-use daily lesson plans, 3-level differentiated student expectations, and printable A4 worksheets, to ad-free educational games and classroom insights that save hours of paperwork.',
+      'Every school day calls for thoughtful preparation, patience, and adapting to every child in the classroom. “učiteljskidnevnik.online” is a practical toolkit for primary teachers: from 1,436 ready-to-use daily lesson plans, 3-level differentiated student expectations, and printable A4 worksheets, to ad-free educational games and classroom insights that save hours of paperwork.',
     ctaPripreme: 'Lesson Plans Library (1,436)',
     ctaWorksheets: 'Coloring & Worksheets (55)',
     stats: [
@@ -249,11 +249,11 @@ export const en: Dictionary = {
   about: {
     title: 'About me',
     description:
-      'Who writes Iz učionice: a primary teacher by training and QA engineer by trade, from Banja Luka. Background, topics and contact.',
+      'Who writes učiteljskidnevnik.online: a primary teacher by training and QA engineer by trade, from Banja Luka. Background, topics and contact.',
     blogEyebrow: 'About the blog',
     blogTitle: 'What you’ll find here',
     blogText: (siteName: string) =>
-      `${siteName} is where I bring together what I learned in the classroom and what I work on every day in IT.`,
+      `A primary teacher by training, a QA engineer by trade. ${siteName} is where those two worlds meet.`,
     contactEyebrow: 'Contact',
     contactTitle: 'Get in touch',
     contactText: 'Questions, suggestions, an idea for a topic or just a hello — I’m happy to reply.',
@@ -344,6 +344,7 @@ export const en: Dictionary = {
       link: 'Printable worksheet',
       eyebrow: 'Worksheet',
       print: 'Print',
+      copyright: 'Publishing or selling without the author’s permission is not allowed.',
       backToGames: 'Back to games',
       backToWorksheets: 'Back to coloring & worksheets',
       name: 'Name',

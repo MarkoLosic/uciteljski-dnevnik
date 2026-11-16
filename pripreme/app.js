@@ -1196,6 +1196,8 @@
       '.line { border-bottom: 1px dotted #555; height: 16px; }' +
       '.draw-space { height: 90px; border: 1.5px dashed #999; border-radius: 6px; margin: 4px 0 10px; }' +
       '.footer-note { border: 1px solid #444; border-radius: 6px; padding: 8px 12px; font-size: 12.5px; display: flex; justify-content: space-between; margin-top: 10px; }' +
+      '@page { size: A4; margin: 12mm 12mm 16mm; @bottom-center { content: "© Marko Lošić · www.učiteljskidnevnik.online · Zabranjeno objavljivanje i prodaja bez dozvole autora"; font: 7.5pt Arial, sans-serif; color: #6b7280; } }' +
+      '.credit { margin-top: 14px; padding-top: 5px; border-top: 0.5px solid #9ca3af; font-size: 10px; color: #4b5563; text-align: center; user-select: none; }' +
       '@media print { body { background: #fff; padding: 0; } .toolbar { display: none !important; } .sheet { border: none; padding: 0; max-width: none; } }' +
       '</style>' +
       '</head>' +
@@ -1267,6 +1269,11 @@
       escapeHtml(preslovi('Ostvareni nivo:')) +
       '</strong> I / II / III</span>' +
       '</div>' +
+      '<p class="credit">© ' +
+      new Date().getFullYear() +
+      ' Marko Lošić · www.učiteljskidnevnik.online · ' +
+      escapeHtml(preslovi('Zabranjeno objavljivanje i prodaja bez dozvole autora.')) +
+      '</p>' +
       '</div>' +
       '</body>' +
       '</html>';
@@ -1354,6 +1361,7 @@
         BorderStyle,
         HeadingLevel,
         ShadingType,
+        Footer,
       } = window.docx;
 
       const okvirTabele = {
@@ -1428,6 +1436,27 @@
         sections: [
           {
             properties: {},
+            footers: {
+              default: new Footer({
+                children: [
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    children: [
+                      new TextRun({
+                        text:
+                          '© ' +
+                          new Date().getFullYear() +
+                          ' Marko Lošić · www.učiteljskidnevnik.online · ' +
+                          preslovi('Zabranjeno objavljivanje i prodaja bez dozvole autora.'),
+                        size: 15,
+                        font: 'Calibri',
+                        color: '6B7280',
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            },
             children: [
               new Paragraph({
                 alignment: AlignmentType.CENTER,
@@ -1599,6 +1628,8 @@
       '.draw-box { height: 115px; border: 1.5px dashed #777; border-radius: 6px; margin-top: 6px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px 10px; font-size: 11px; color: #666; }' +
       '.self-eval { border: 1.5px solid #0d6e6e; border-radius: 8px; padding: 10px 14px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }' +
       '.eval-options { display: flex; gap: 18px; font-weight: 600; }' +
+      '@page { size: A4; margin: 12mm 12mm 16mm; @bottom-center { content: "© Marko Lošić · www.učiteljskidnevnik.online · Zabranjeno objavljivanje i prodaja bez dozvole autora"; font: 7.5pt Arial, sans-serif; color: #6b7280; } }' +
+      '.credit { margin-top: 14px; padding-top: 5px; border-top: 0.5px solid #9ca3af; font-size: 10px; color: #4b5563; text-align: center; user-select: none; }' +
       '@media print { body { background: #fff; padding: 0; } .toolbar { display: none !important; } .sheet { border: none; box-shadow: none; padding: 0; max-width: none; } }' +
       '</style>' +
       '</head>' +
@@ -1662,6 +1693,11 @@
       '</span>' +
       '</div>' +
       '</div>' +
+      '<p class="credit">© ' +
+      new Date().getFullYear() +
+      ' Marko Lošić · www.učiteljskidnevnik.online · ' +
+      escapeHtml(preslovi('Zabranjeno objavljivanje i prodaja bez dozvole autora.')) +
+      '</p>' +
       '</div>' +
       '</body>' +
       '</html>';
@@ -1705,6 +1741,9 @@
     // Godina u podnožju
     const elGodina = document.getElementById('trenutnaGodina');
     if (elGodina) elGodina.textContent = String(new Date().getFullYear());
+    document.querySelectorAll('.tekuca-godina').forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
+    });
 
     azurirajDugmadPisma();
     azurirajBrojacSacuvanih();

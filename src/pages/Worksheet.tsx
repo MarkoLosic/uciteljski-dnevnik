@@ -23,6 +23,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
   const about = ws.about[id];
   const pages = worksheets[id]({ alphabet: ws.alphabet, colorNames: t.games.colorNames, labels: ws.labels });
   usePageMeta(pageMeta.worksheet(t, id));
+  const year = new Date().getFullYear();
 
   return (
     <div className="wrap max-w-[860px] pt-[96px] sm:pt-[130px] print:w-auto print:max-w-none print:p-0">
@@ -76,6 +77,12 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
               <p className="mt-4 text-[15px] leading-snug">{text}</p>
             </header>
             <div className="mt-4 grid gap-[4mm]">{content}</div>
+            <footer className="sheet-footer">
+              <span>
+                © {year} {siteConfig.author.name} · www.{siteConfig.name}
+              </span>
+              <span>{ws.copyright}</span>
+            </footer>
           </article>
       ))}
     </div>

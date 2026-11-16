@@ -45,7 +45,7 @@ Ovo je **React + TypeScript blog sajt** koji vodi **Marko Lošić** iz Banje Luk
 - Sajt je **višejezičan**: srpski (podrazumevani, latinica, **ijekavica** — kako se piše u Republici Srpskoj), engleski, hrvatski, bosanski i njemački — i interfejs i članci (sekcija 7.1).
 - **Ton sajta:** ličan, topao, profesionalan, bez korporativnog žargona. Kao da nastavnik piše iz svoje učionice.
 
-**Predlog imena (nije obavezno):** `Iz učionice`, `Nastavničke beleške`, `Moja učionica`, `Tabla i kreda`. Kada korisnik izabere ime, ažuriraj `siteConfig` (sekcija 3) i ovaj opis.
+**Ime sajta:** `učiteljskidnevnik.online` (ranije `Iz učionice`). Ime se ne prevodi i piše se malim slovom, kao domen.
 
 ---
 
@@ -186,7 +186,7 @@ Centralno mesto za ime sajta, opis, autora i linkove. Koristi ovo svuda umesto h
 
 ```typescript
 export const siteConfig = {
-  name: 'Iz učionice',
+  name: 'učiteljskidnevnik.online',
   tagline: 'O učionici i tehnologiji u nastavi',
   description:
     'Lični blog nastavnika iz Bosne i Hercegovine o obrazovanju, nastavnoj praksi i upotrebi veštačke inteligencije u učionici.',
@@ -676,7 +676,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Grupa `books` („Priručnici i vježbanke“) je prva na stranici radnih listova i drži izdanja od više strana (vježbanka i priručnik); nova takva izdanja idu u nju, a ne u tematske grupe.
 - Vježbanka `homeWorkbookMath2` (`workbook.tsx`, samo sr i bs jer je novac u KM): plan vježbanja, 12 dana po jedna strana sa likom Njuška, koker španijela (SVG `Njusko`), Veliki izazov, diploma i rješenja za roditelje. Brojevi u zadacima su u nizovima na vrhu fajla, a rješenja se iz njih računaju — pri izmjeni zadatka mijenja se samo niz.
 - Priručnik „Kako nastaje priča“ (`writingHandbookLatin` / `writingHandbookCyrillic`, `writingHandbook.tsx`, sr i bs): uvod sa mapom, 12 tema (pravilo pisaca, primjer „Iz radionice“, preporuka „Pročitaj“, vježbe), plan priče i strana za pisanje sa listom za provjeru. Tekst se piše latinicom, a ćirilična verzija nastaje funkcijom `toCyrillic`. Primjeri su naš tekst — ne prepisivati odlomke iz knjiga zaštićenih autorskim pravom, nego knjigu samo preporučiti.
-- Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`. Opis „O ovom listu“ za roditelje i učitelje (uzrast + 2–3 rečenice, ne štampa se, koristi se i kao meta opis) je u `src/i18n/worksheetAbout/<jezik>.ts` i stiže kroz `t.games.worksheet.about`; jezik bez opisa ima `about: {}` i prikazuje samo uputstvo. Novi list → dodaj i njegov opis.
+- Svaki list vraća niz strana; `Worksheet.tsx` svaku umotava u `.sheet` (A4, uvek beo papir sa fiksnim bojama) sa zaglavljem i prelomom strane. Pri štampi se header, footer i pozadina sakrivaju (`print:hidden`). Na dnu svake strane je autorski potpis (`.sheet-footer`: „© godina Marko Lošić · www.učiteljskidnevnik.online“ + `t.games.worksheet.copyright`), u donjoj margini lista — sadržaj strane ne smije ući u donjih 14 mm. **Svaka strana mora stati na jedan A4** — proveri sa `chromium --headless --no-pdf-header-footer --print-to-pdf`. Naslov i uputstvo su u `t.games.worksheet.sheets`. Opis „O ovom listu“ za roditelje i učitelje (uzrast + 2–3 rečenice, ne štampa se, koristi se i kao meta opis) je u `src/i18n/worksheetAbout/<jezik>.ts` i stiže kroz `t.games.worksheet.about`; jezik bez opisa ima `about: {}` i prikazuje samo uputstvo. Novi list → dodaj i njegov opis.
 
 ### 10.7. `World.tsx` i `Country.tsx` — Škole u svetu
 
@@ -697,6 +697,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 - **Statične stranice priprema** (`plugins/pripremeStranice.ts`, poziva ga `seo-files`): biblioteka otvara pripremu preko `#priprema=<slug>`, a pretraživači sve iza `#` odbacuju. Zato build pravi `/pripreme/<slug>` (cijela priprema u HTML-u + zadaci za 3 nivoa bez rješenja + JSON-LD `LearningResource` i `BreadcrumbList`; dugme vodi u biblioteku), `/pripreme/<r>-razred` i `/pripreme/<r>-razred/<predmet>` (sve pripreme po cjelinama), i dodaje ih u sitemap. Zaglavlje i skriptu teme uzima iz `pripreme/index.html`. U dev serveru se prave na zahtjev. Linkovi na razred u Reactu idu na `/pripreme/<r>-razred`.
 - **Slug pripreme mora biti jedinstven** (adresa stranice i ključ za `#priprema=`); build i `provjeri:zadatke` padaju na duplikat. Slova koja se bez dijakritika poklope razlikuju se ovako: š → `sh`, ž → `zh`, č → `ch`, ć → `cj`. Nov predmet → dodaj ga u `PREDMETI` u `pripremeStranice.ts`.
 - Zadaci za I, II i III nivo **nisu šablon po predmetu**, nego dolaze iz banke `pripreme/zadaci/` (`osnova.js` + `matematika.js`, `jezik.js`, `priroda.js`, `ostalo.js`): svaka tema časa ima svoje pravilo (`t:` regex nad nazivom časa, `r:` razredi). Prvo pravilo koje odgovara se koristi — specifičnija pravila idu ispred opštijih.
+- **Autorski potpis na štampi:** priprema (`@page @bottom-center` u `stil.css` + `.print-credit` na kraju), oba listića za učenike iz `app.js` (isto, `.credit`) i Word izvoz (`Footer` u `generisiDocxPripremu`). Novi izvoz ili štampa mora dobiti isti potpis.
 - Zadaci su pisani **za učenika** (kratka naredba, jedna radnja, konkretni brojevi i riječi); ishodi iz plana su za učitelja i ne idu na učenički listić.
 - Računi se pišu oznakama (`[[34 + 5]]`, `[[x + 24 = 60 | 36]]`, `[[14 + 3 ? 20 - 2]]`, `[[= 4 + 5]]`, `[[! rješenje]]`…, opis u `osnova.js`); banka ih računa i provjerava, a rješenja vidi samo učitelj.
 - Posle svake izmene banke ili `podaci.js`: **`npm run provjeri:zadatke`** — prolazi kroz sve pripreme i javlja temu bez svojih zadataka, netačan račun, ostatke HTML-a (`&nbsp;`), ćirilicu usred latinice i brojeve prevelike za razred (1: ≤ 20, 2: ≤ 100, 3: ≤ 1000).
@@ -734,7 +735,7 @@ Redosled sekcija (lično predstavljanje pa blog):
 ## 12. SEO i meta podaci
 
 - `index.html`: `<title>`, `<meta name="description">`, `<meta name="viewport">`, Open Graph tagovi (`og:title`, `og:description`, `og:type`, `og:url`) — podrazumevane vrednosti i ono što vide pregledi linkova bez JS-a.
-- **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — Iz učionice“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
+- **Svaka stranica poziva `usePageMeta({ title, description })`** (`src/lib/usePageMeta.ts`, bez dodatne biblioteke): postavlja `document.title` („Naslov — učiteljskidnevnik.online“), description, `og:*` i `<link rel="canonical">`. Članak koristi `type: 'article'`; 404 i nepostojeći članak `noindex: true`. Opisi stranica su u rečnicima (`site.description`, `blog.description`, `about.description`).
 - Naslov i opis stranica su u `src/lib/seo.ts` (`pageMeta.home(t)`, `pageMeta.game(t, id)`…) i koriste ih i stranice i `vite.config.ts`. Nova stranica → dodaj `pageMeta.*` i grupu u `pageGroups()`.
 - Radni listovi su na `paths.worksheet(id)` (`/radni-listovi/<id>`, en `/en/worksheets/<id>`…); stare adrese `/igre/radni-listovi/*` i `/bojanke/*` trajno (301) preusmjerava `vercel.json`. `/pripreme/admin.html` ima `noindex` (meta + `X-Robots-Tag`).
 - Plugin `seo-files` u `vite.config.ts` pri `npm run build` iz `pageGroups()` (jezici, slugovi, igre, radni listovi, članci) pravi:

@@ -89,7 +89,7 @@ export const de: Dictionary = {
     heroTitleBefore: 'Ein Ort, der Lehrkräften die ',
     heroTitleHighlight: 'tägliche Arbeit in der Schule erleichtert',
     heroLead:
-      'Jeder Schultag erfordert gute Vorbereitung, Geduld und das Eingehen auf jedes einzelne Kind. „Iz učionice“ bündelt praktische Werkzeuge für Lehrkräfte: von 1.436 fertigen täglichen Unterrichtsentwürfen, differenzierten Erwartungen für drei Leistungsniveaus und druckfertigen A4-Arbeitsblättern bis hin zu werbefreien Lernspielen und Praxistipps.',
+      'Jeder Schultag erfordert gute Vorbereitung, Geduld und das Eingehen auf jedes einzelne Kind. „učiteljskidnevnik.online“ bündelt praktische Werkzeuge für Lehrkräfte: von 1.436 fertigen täglichen Unterrichtsentwürfen, differenzierten Erwartungen für drei Leistungsniveaus und druckfertigen A4-Arbeitsblättern bis hin zu werbefreien Lernspielen und Praxistipps.',
     ctaPripreme: 'Unterrichtspläne (1.436)',
     ctaWorksheets: 'Ausmalbilder & Blätter (55)',
     stats: [
@@ -249,11 +249,11 @@ export const de: Dictionary = {
   about: {
     title: 'Über mich',
     description:
-      'Wer hinter Iz učionice steht: Grundschullehrer von Beruf, QA-Ingenieur in der Praxis, aus Banja Luka. Hintergrund, Themen und Kontakt.',
+      'Wer hinter učiteljskidnevnik.online steht: Grundschullehrer von Beruf, QA-Ingenieur in der Praxis, aus Banja Luka. Hintergrund, Themen und Kontakt.',
     blogEyebrow: 'Über den Blog',
     blogTitle: 'Was Sie hier finden',
     blogText: (siteName: string) =>
-      `${siteName} ist der Ort, an dem ich verbinde, was ich im Klassenzimmer gelernt habe, mit dem, was ich jeden Tag in der IT mache.`,
+      `Grundschullehrer von Beruf, QA-Ingenieur in der Praxis. ${siteName} ist der Ort, an dem sich diese beiden Welten begegnen.`,
     contactEyebrow: 'Kontakt',
     contactTitle: 'Schreiben Sie mir',
     contactText: 'Fragen, Vorschläge, eine Themenidee oder einfach ein Hallo — ich antworte gern.',
@@ -344,6 +344,7 @@ export const de: Dictionary = {
       link: 'Arbeitsblatt zum Ausdrucken',
       eyebrow: 'Arbeitsblatt',
       print: 'Drucken',
+      copyright: 'Veröffentlichung und Verkauf ohne Erlaubnis des Autors nicht gestattet.',
       backToGames: 'Zurück zu den Spielen',
       backToWorksheets: 'Zurück zu den Ausmalbildern',
       name: 'Name',

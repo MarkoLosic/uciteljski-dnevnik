@@ -1181,6 +1181,10 @@ textarea {
   white-space: normal;
 }
 
+.print-credit {
+  display: none;
+}
+
 .print-signatures {
   display: none;
   margin-top: 36px;
@@ -1457,7 +1461,24 @@ textarea {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 14mm 15mm;
+    margin: 14mm 15mm 16mm;
+
+    @bottom-center {
+      content: '© Marko Lošić · www.učiteljskidnevnik.online · Zabranjeno objavljivanje i prodaja bez dozvole autora';
+      font: 7.5pt 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: #6b7280;
+    }
+  }
+
+  .print-credit {
+    display: block !important;
+    margin-top: 18px;
+    padding-top: 6px;
+    border-top: 0.5px solid #9ca3af;
+    font-size: 8pt !important;
+    color: #4b5563 !important;
+    text-align: center;
+    user-select: none;
   }
 
   html,
