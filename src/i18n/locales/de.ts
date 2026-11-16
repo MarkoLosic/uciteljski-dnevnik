@@ -613,6 +613,30 @@ export const de: Dictionary = {
           title: 'Ausmalbild: Wie fühle ich mich?',
           text: 'Schau dir die Gesichter an und zeige, wie jedes Gefühl aussieht. Male sie aus und zeichne in den großen Kreis unten, wie du dich heute fühlst.',
         },
+        coloringCircus: {
+          title: 'Ausmalbild: Zirkus & Zauberer',
+          text: 'Bunte Zirkuswelt: großes Zirkuszelt mit Wimpeln, ein kleiner Elefant auf dem Ball, ein Hase im Zauberhut und ein fröhlicher Clown mit Luftballons.',
+        },
+        coloringJungle: {
+          title: 'Ausmalbild: Tropischer Regenwald & Papagei',
+          text: 'Exotischer Dschungel: Tukan mit großem Schnabel auf dem Ast, bunter Ara-Papagei, tropische Orchideen, Lianen und ein fröhlicher Schmetterling.',
+        },
+        coloringRobot: {
+          title: 'Ausmalbild: Freundlicher Roboter & Weltraumfreunde',
+          text: 'Zukunft und Technik: süßer Retro-Roboter mit Antenne und Brustmonitor, kleiner fliegender Drohnenhelfer, Sterne und Saturn mit Ringen.',
+        },
+        coloringGarden: {
+          title: 'Ausmalbild: Fröhlicher Garten & Gemüsebeet',
+          text: 'Gartenleben: lächelnde Vogelscheuche mit Strohhut, Gemüsebeet mit Karotten und rundem Kürbis, Sonnenblumen und eine Gießkanne.',
+        },
+        coloringPirates: {
+          title: 'Ausmalbild: Piratenschiff & Schatzinsel',
+          text: 'Meeresabenteuer: prächtiges Segelschiff auf den Wellen, einsame Sandinsel mit Palme, fliegende Möwen und eine offene Schatztruhe.',
+        },
+        coloringFair: {
+          title: 'Ausmalbild: Freizeitpark & Karussell',
+          text: 'Kirmes und Spaß: großes Riesenrad mit Gondeln, buntes Pferdekarussell und ein Stand mit Zuckerwatte und Luftballons.',
+        },
         timeSequence: {
           title: 'Was war zuerst? Reihenfolge von Ereignissen',
           text: 'Schau dir die Bilder in jeder Reihe an. Schreibe in das Kästchen darunter 1 für das, was zuerst passiert ist, dann 2, 3 und 4. Male die Bilder danach aus.',
@@ -708,6 +732,30 @@ export const de: Dictionary = {
         mathWordProblems: {
           title: 'Sachaufgaben: Essen, Zeit, Verkehr und Natur',
           text: 'Lies jede Aufgabe genau, schreibe die Rechnung und antworte in einem ganzen Satz. Die Aufgaben passen zu den Themen gesundes Essen, Uhr, Wochentage, Verkehr und Naturschutz.',
+        },
+        mathFractions: {
+          title: 'Mathe: Brüche & Teile des Ganzen',
+          text: 'Brüche spielerisch lernen: Hälften (1/2), Drittel (1/3), Viertel (1/4) und Achtel (1/8) an geometrischen Formen ausmalen, Brüche notieren und vergleichen.',
+        },
+        mathGeometry: {
+          title: 'Mathe: Geometrische Formen & Körper',
+          text: 'Formen und Körper entdecken: Ecken und Seiten von Dreieck, Quadrat und Rechteck zählen; Würfel, Quader, Zylinder und Kugel Alltagsgegenständen zuordnen.',
+        },
+        mathEvenOdd: {
+          title: 'Mathe: Gerade & ungerade Zahlen',
+          text: 'Gerade Zahlen blau und ungerade gelb auf Luftballons anmalen, Paare bilden und Zahlenfolgen richtig fortsetzen.',
+        },
+        mathMoney: {
+          title: 'Mathe: Geld, Einkaufen & Wechselgeld',
+          text: 'Im kleinen Laden: Münzen und Scheine zählen, Preise für Schulsachen zusammenrechnen und das Wechselgeld berechnen.',
+        },
+        mathRomanNumerals: {
+          title: 'Mathe: Römische Zahlen (I–XX)',
+          text: 'Römische Ziffern meistern: arabische und römische Zahlen verbinden, Daten schreiben und einfache Rechenaufgaben mit römischen Zahlen lösen.',
+        },
+        mathMultiplicationGrid: {
+          title: 'Mathe: Multiplikation & Punktegitter',
+          text: 'Malnehmen als wiederholte Addition: Punkte- und Sternengitter berechnen, Bildergruppen ergänzen und das kleine Einmaleins ausfüllen.',
         },
         trace: {
           title: 'Dem Weg folgen',

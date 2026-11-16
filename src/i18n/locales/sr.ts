@@ -617,6 +617,30 @@ export const sr = {
           title: 'Bojanka: Kako se osjećam?',
           text: 'Pogledaj lica i pokaži kako izgleda svako osjećanje. Oboji ih, pa u velikom krugu na dnu nacrtaj kako se ti danas osjećaš.',
         },
+        coloringCircus: {
+          title: 'Bojanka: Cirkus i mađioničar',
+          text: 'Veseli cirkuski svijet: velika šatra sa zastavicama, slončić koji balansira na šarenoj lopti, zeka koji viri iz mađioničarskog šešira i nasmijani klovn sa balonima.',
+        },
+        coloringJungle: {
+          title: 'Bojanka: Tropska prašuma i papagaj',
+          text: 'Egzotična prašuma: tukan sa velikim kljunom na grani, šareni papagaj ara, tropski cvetovi orhideja, lijane i veseli leptirić.',
+        },
+        coloringRobot: {
+          title: 'Bojanka: Prijateljski robot i svemirski drugari',
+          text: 'Budućnost i tehnologija: slatki retro robot sa antenicom i ekranom na grudima, leteći mali dron pomagač, zvezdice i planeta Saturn sa prstenom.',
+        },
+        coloringGarden: {
+          title: 'Bojanka: Veseli vrt i povrtnjak',
+          text: 'Život u bašti: nasmijano baštensko strašilo sa slamnatim šeširom, gredica sa sočnim šargarepama i debelom bundevom, suncokret i kanta za zalivanje.',
+        },
+        coloringPirates: {
+          title: 'Bojanka: Gusarski brod i ostrvo sa blagom',
+          text: 'Morska pustolovina: veliki jedrenjak sa razapetim jedrima na talasima, pusto peščano ostrvo sa palmom, leteći galebovi i otvorena škrinja puna blaga.',
+        },
+        coloringFair: {
+          title: 'Bojanka: Zabavni park i vrteška',
+          text: 'Praznik radosti i igre: veliki panoramski točak sa kabinama za posetioce, šareni ringišpil sa konjićima, štand sa šećernom vunom i balonima.',
+        },
         timeSequence: {
           title: 'Šta je bilo prvo? Redoslijed događaja',
           text: 'Pogledaj sličice u svakom redu. U kvadratić ispod upiši 1 za ono što se desilo prvo, pa 2, 3 i 4. Zatim oboji sličice.',
@@ -712,6 +736,30 @@ export const sr = {
         mathWordProblems: {
           title: 'Tekstualni zadaci: hrana, vrijeme, saobraćaj i priroda',
           text: 'Pažljivo pročitaj zadatak, napiši račun i odgovor cijelom rečenicom. Zadaci su vezani za lekcije o zdravoj hrani, satu, danima, saobraćaju i čuvanju prirode.',
+        },
+        mathFractions: {
+          title: 'Matematika: Razlomci i dijelovi cjeline',
+          text: 'Učimo razlomke kroz igru i bojenje: oboji polovine (1/2), trećine (1/3), četvrtine (1/4) i osmine (1/8) na geometrijskim oblicima, zapiši razlomke i uporedi ih.',
+        },
+        mathGeometry: {
+          title: 'Matematika: Geometrijske figure i tijela',
+          text: 'Upoznaj oblike i tijela: prebroj stranice i tjemena trougla, kvadrata i pravougaonika, prepoznaj kocku, kvadar, valjak i loptu i spoji ih sa predmetima iz života.',
+        },
+        mathEvenOdd: {
+          title: 'Matematika: Parni i neparni brojevi',
+          text: 'Pravilo parnosti: oboji parne brojeve plavom, a neparne žutom bojom na šarenim balonima, spoji sličice u parove i dopuni nizove brojeva koji nedostaju.',
+        },
+        mathMoney: {
+          title: 'Matematika: Novac, kupovina i kusur',
+          text: 'Mala prodavnica: prebroj kovanice i novčanice, saberi cijene kupljenog školskog pribora i izračunaj tačan kusur koji kasir treba da vrati.',
+        },
+        mathRomanNumerals: {
+          title: 'Matematika: Rimski brojevi (I–XX)',
+          text: 'Nauči rimske cifre: poveži arapske i rimske brojeve, prepiši datume rimskim brojevima i riješi jednostavne matematičke zadatke sa rimskim ciframa.',
+        },
+        mathMultiplicationGrid: {
+          title: 'Matematika: Množenje i pravougaona mreža',
+          text: 'Množenje kao zbir jednakih sabiraka: izračunaj proizvod pomoću mreže tačkica i zvjezdica, dopuni ilustrovane grupe i popuni mini tablicu množenja.',
         },
         trace: {
           title: 'Prati stazu',

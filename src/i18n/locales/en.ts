@@ -613,6 +613,30 @@ export const en: Dictionary = {
           title: 'Coloring: How Do I Feel?',
           text: 'Look at the faces and show how each feeling looks. Color them, then draw how you feel today in the big circle at the bottom.',
         },
+        coloringCircus: {
+          title: 'Coloring: Circus & Magician',
+          text: 'Joyful circus world: a grand tent with banners, a baby elephant balancing on a ball, a bunny popping from a magic hat, and a smiling clown with balloons.',
+        },
+        coloringJungle: {
+          title: 'Coloring: Tropical Rainforest & Parrot',
+          text: 'Exotic jungle: a toucan with a large beak on a branch, a colorful macaw parrot, tropical orchid blossoms, hanging vines, and a cheerful butterfly.',
+        },
+        coloringRobot: {
+          title: 'Coloring: Friendly Robot & Space Buddies',
+          text: 'Future and technology: a cute retro robot with an antenna and chest screen, a flying mini helper drone, twinkling stars, and planet Saturn with its rings.',
+        },
+        coloringGarden: {
+          title: 'Coloring: Happy Garden & Vegetable Patch',
+          text: 'Garden life: a cheerful scarecrow with a straw hat, vegetable beds with juicy carrots and a plump pumpkin, sunflowers, and a watering can.',
+        },
+        coloringPirates: {
+          title: 'Coloring: Pirate Ship & Treasure Island',
+          text: 'Ocean adventure: a magnificent tall ship with billowing sails on waves, a secluded sandy island with a palm tree, flying seagulls, and an open treasure chest.',
+        },
+        coloringFair: {
+          title: 'Coloring: Amusement Park & Carousel',
+          text: 'Holiday fun and games: a grand Ferris wheel with passenger gondolas, a carousel with horses, and a cart with cotton candy and balloons.',
+        },
         timeSequence: {
           title: 'What happened first? Putting events in order',
           text: 'Look at the pictures in each row. In the box below, write 1 for what happened first, then 2, 3 and 4. Then color the pictures.',
@@ -708,6 +732,30 @@ export const en: Dictionary = {
         mathWordProblems: {
           title: 'Word problems: food, time, traffic and nature',
           text: 'Read each problem carefully, write the calculation and answer in a full sentence. The problems connect to the lessons on healthy food, the clock, days, traffic and caring for nature.',
+        },
+        mathFractions: {
+          title: 'Math: Fractions & Equal Parts',
+          text: 'Learn fractions through coloring: color halves (1/2), thirds (1/3), quarters (1/4), and eighths (1/8) on shapes, write fractions, and compare them.',
+        },
+        mathGeometry: {
+          title: 'Math: Geometric Shapes & Solids',
+          text: 'Explore 2D and 3D shapes: count sides and vertices of triangles, squares, and rectangles; identify cubes, cylinders, and spheres, and connect them with everyday objects.',
+        },
+        mathEvenOdd: {
+          title: 'Math: Even & Odd Numbers',
+          text: 'Parity rules: color even numbers blue and odd numbers yellow on colorful balloons, pair up items in twos, and fill in missing sequence numbers.',
+        },
+        mathMoney: {
+          title: 'Math: Money, Shopping & Change',
+          text: 'Little grocery store: count coins and bills, add up prices of school supplies, and calculate the exact change to give back.',
+        },
+        mathRomanNumerals: {
+          title: 'Math: Roman Numerals (I–XX)',
+          text: 'Master Roman numerals: match Arabic and Roman numerals, write dates in Roman numerals, and solve fun arithmetic equations with Roman numbers.',
+        },
+        mathMultiplicationGrid: {
+          title: 'Math: Multiplication & Rectangular Grid',
+          text: 'Multiplication as repeated addition: calculate products using arrays of dots and stars, complete illustrated groups, and fill in the mini times table.',
         },
         trace: {
           title: 'Follow the path',

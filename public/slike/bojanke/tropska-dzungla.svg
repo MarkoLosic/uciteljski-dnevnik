@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#ffffff" />
+
+  <!-- Džungla - tlo i veliko tropsko lišće na dnu -->
+  <path d="M 0 680 Q 200 640 400 670 T 800 650 L 800 800 L 0 800 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+  
+  <!-- Tropsko sunce na nebu -->
+  <circle cx="700" cy="110" r="55" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+  <line x1="700" y1="35" x2="700" y2="15" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="775" y1="110" x2="795" y2="110" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="700" y1="185" x2="700" y2="205" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="625" y1="110" x2="605" y2="110" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="755" y1="55" x2="770" y2="40" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="755" y1="165" x2="770" y2="180" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="645" y1="165" x2="630" y2="180" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  <line x1="645" y1="55" x2="630" y2="40" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Lijane i viseće grane na vrhu -->
+  <path d="M 0 60 Q 200 160 420 80 Q 600 180 800 50" fill="none" stroke="#111827" stroke-width="4.5" />
+  <path d="M 80 115 Q 120 220 100 300" fill="none" stroke="#111827" stroke-width="3.5" />
+  <path d="M 320 110 Q 340 240 310 320" fill="none" stroke="#111827" stroke-width="3.5" />
+  <path d="M 520 130 Q 560 220 540 280" fill="none" stroke="#111827" stroke-width="3.5" />
+
+  <!-- Monstere i palmino lišće levo i desno na tlu -->
+  <g transform="translate(40, 520)">
+    <!-- Veliki list monstera -->
+    <path d="M 20 160 Q 10 60 90 20 Q 150 10 160 80 C 160 140 100 180 20 160 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <line x1="20" y1="160" x2="135" y2="45" stroke="#111827" stroke-width="3" />
+    <path d="M 60 105 Q 40 95 35 110" fill="none" stroke="#111827" stroke-width="2.5" />
+    <path d="M 85 80 Q 75 60 65 75" fill="none" stroke="#111827" stroke-width="2.5" />
+    <path d="M 115 60 Q 125 40 140 50" fill="none" stroke="#111827" stroke-width="2.5" />
+  </g>
+
+  <!-- Grana drveta na kojoj sedi tukan -->
+  <path d="M 0 420 Q 250 440 500 390 Q 650 360 800 380 L 800 440 Q 650 420 500 450 Q 250 490 0 470 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+
+  <!-- TUKAN SA VELIKIM KLJUNOM (CENTAR-LEVO NA GRANI) -->
+  <g transform="translate(180, 210)">
+    <!-- Telo tukana -->
+    <ellipse cx="140" cy="180" rx="55" ry="75" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Krilo -->
+    <path d="M 125 150 C 170 170 190 230 145 250 C 115 240 105 180 125 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <!-- Rep -->
+    <polygon points="175,220 230,280 200,290 160,240" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round" />
+    <!-- Glava -->
+    <circle cx="110" cy="115" r="42" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Beli krug oko oka -->
+    <circle cx="100" cy="110" r="15" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <circle cx="100" cy="110" r="6" fill="#111827" />
+    <!-- VELIKI KLJUN TUKANA -->
+    <path d="M 85 90 Q 0 95 -45 135 Q -30 170 85 145 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" stroke-linejoin="round" />
+    <line x1="85" y1="120" x2="-40" y2="135" stroke="#111827" stroke-width="3.5" />
+    <!-- Šare na kljunu za bojenje -->
+    <path d="M -20 108 L -15 140" stroke="#111827" stroke-width="3" />
+    <path d="M 20 98 L 25 130" stroke="#111827" stroke-width="3" />
+    <!-- Noge koje drže granu -->
+    <path d="M 125 245 L 120 270 M 135 245 L 135 270 M 145 245 L 150 270" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- PAPAGAJ ARA (DESNO NA GRANI) -->
+  <g transform="translate(480, 160)">
+    <!-- Telo papagaja -->
+    <ellipse cx="120" cy="190" rx="45" ry="70" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Dugi rep perje -->
+    <path d="M 140 250 Q 160 380 180 430 L 160 430 Q 130 350 115 260 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <path d="M 120 255 Q 130 360 140 400 L 125 400 Q 110 330 100 260 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <!-- Glava papagaja sa krestom -->
+    <circle cx="105" cy="120" r="35" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <!-- Kresta na glavi -->
+    <path d="M 95 88 Q 80 50 105 45 Q 110 70 105 88" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <path d="M 110 88 Q 110 40 128 45 Q 125 70 118 88" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <!-- Oko -->
+    <circle cx="95" cy="115" r="10" fill="#ffffff" stroke="#111827" stroke-width="2.5" />
+    <circle cx="95" cy="115" r="4.5" fill="#111827" />
+    <!-- Zakrivljeni kljun -->
+    <path d="M 75 110 Q 40 115 45 140 Q 65 145 75 130 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <path d="M 72 130 Q 55 142 58 152 Q 72 145 76 135 Z" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <!-- Krilo sa slojevima perja -->
+    <path d="M 100 160 C 150 170 165 240 120 260 C 85 245 80 185 100 160 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <line x1="105" y1="200" x2="145" y2="215" stroke="#111827" stroke-width="2.5" />
+    <line x1="95" y1="225" x2="135" y2="240" stroke="#111827" stroke-width="2.5" />
+    <!-- Kandžice na grani -->
+    <path d="M 105 255 L 100 275 M 115 255 L 115 275 M 125 255 L 130 275" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Tropski cvetovi orhideja i hibiskus na tlu -->
+  <g transform="translate(620, 560)">
+    <!-- Latice cveta -->
+    <circle cx="60" cy="60" r="18" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="60" cy="18" rx="16" ry="24" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="60" cy="102" rx="16" ry="24" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="18" cy="60" rx="24" ry="16" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="102" cy="60" rx="24" ry="16" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="32" cy="32" rx="20" ry="16" transform="rotate(-45 32 32)" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <ellipse cx="88" cy="32" rx="20" ry="16" transform="rotate(45 88 32)" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <ellipse cx="32" cy="88" rx="20" ry="16" transform="rotate(45 32 88)" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <ellipse cx="88" cy="88" rx="20" ry="16" transform="rotate(-45 88 88)" fill="#ffffff" stroke="#111827" stroke-width="3" />
+  </g>
+
+  <!-- Leptir u letu -->
+  <g transform="translate(360, 290)">
+    <line x1="30" y1="20" x2="30" y2="60" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M 28 20 Q 20 5 15 10 M 32 20 Q 40 5 45 10" stroke="#111827" stroke-width="2" stroke-linecap="round" />
+    <!-- Leva krila -->
+    <path d="M 28 30 Q -10 10 -5 35 Q -8 55 28 45 Z" fill="#ffffff" stroke="#111827" stroke-width="3" />
+    <!-- Desna krila -->
+    <path d="M 32 30 Q 70 10 65 35 Q 68 55 32 45 Z" fill="#ffffff" stroke="#111827" stroke-width="3" />
+  </g>
+</svg>

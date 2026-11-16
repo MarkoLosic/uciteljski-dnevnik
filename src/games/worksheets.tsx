@@ -1540,6 +1540,807 @@ function MissingNumbersSheet() {
 }
 
 // ============================================================================
+// NOVI MATEMATIČKI RADNI LISTOVI (RAZLOMCI, GEOMETRIJA, PARNI/NEPARNI, NOVAC, RIMSKI BROJEVI, MNOŽENJE)
+// ============================================================================
+
+function MathFractionsSheet() {
+  return (
+    <Page height={650}>
+      {/* 1. Osenči zadati dio */}
+      <text x={300} y={28} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Osenči ili oboji zadati dio na svakoj figuri:
+      </text>
+
+      {/* 4 figure za bojenje */}
+      {/* Krug 1/2 */}
+      <g transform="translate(60, 45)">
+        <circle cx={40} cy={40} r={38} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <line x1={40} y1={2} x2={40} y2={78} stroke={INK} strokeWidth={2.5} />
+        <rect x={22} y={92} width={36} height={36} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+        <text x={40} y={116} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={18} fontWeight="bold">½</text>
+      </g>
+
+      {/* Krug 3/4 */}
+      <g transform="translate(195, 45)">
+        <circle cx={40} cy={40} r={38} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <line x1={40} y1={2} x2={40} y2={78} stroke={INK} strokeWidth={2.5} />
+        <line x1={2} y1={40} x2={78} y2={40} stroke={INK} strokeWidth={2.5} />
+        <rect x={22} y={92} width={36} height={36} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+        <text x={40} y={116} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={18} fontWeight="bold">¾</text>
+      </g>
+
+      {/* Pravougaonik 2/3 */}
+      <g transform="translate(330, 45)">
+        <rect x={0} y={15} width={90} height={50} rx={4} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <line x1={30} y1={15} x2={30} y2={65} stroke={INK} strokeWidth={2.5} />
+        <line x1={60} y1={15} x2={60} y2={65} stroke={INK} strokeWidth={2.5} />
+        <rect x={27} y={92} width={36} height={36} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+        <text x={45} y={116} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={18} fontWeight="bold">⅔</text>
+      </g>
+
+      {/* Pravougaonik 5/6 */}
+      <g transform="translate(465, 45)">
+        <rect x={0} y={15} width={90} height={50} rx={4} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <line x1={30} y1={15} x2={30} y2={65} stroke={INK} strokeWidth={2.2} />
+        <line x1={60} y1={15} x2={60} y2={65} stroke={INK} strokeWidth={2.2} />
+        <line x1={0} y1={40} x2={90} y2={40} stroke={INK} strokeWidth={2.2} />
+        <rect x={27} y={92} width={36} height={36} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+        <text x={45} y={116} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={18} fontWeight="bold">⅚</text>
+      </g>
+
+      <Divider y={195} />
+
+      {/* 2. Zapiši razlomak za osenčeni dio */}
+      <text x={300} y={222} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Upiši razlomak koji odgovara osenčenom dijelu figure:
+      </text>
+
+      {/* 4 figure sa osenčenim delovima */}
+      {/* Krug 1/4 osenčen */}
+      <g transform="translate(60, 240)">
+        <circle cx={40} cy={40} r={38} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <path d="M 40 40 L 40 2 A 38 38 0 0 1 78 40 Z" fill="#93c5fd" stroke={INK} strokeWidth={2.5} />
+        <line x1={40} y1={2} x2={40} y2={78} stroke={INK} strokeWidth={2.5} />
+        <line x1={2} y1={40} x2={78} y2={40} stroke={INK} strokeWidth={2.5} />
+        <g transform="translate(25, 90)">
+          <rect x={0} y={0} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <line x1={-4} y1={28} x2={34} y2={28} stroke={INK} strokeWidth={2.5} />
+          <rect x={0} y={34} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        </g>
+      </g>
+
+      {/* Pravougaonik 2/4 osenčen */}
+      <g transform="translate(195, 240)">
+        <rect x={0} y={15} width={90} height={50} rx={4} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <rect x={0} y={15} width={45} height={50} rx={0} fill="#93c5fd" stroke={INK} strokeWidth={2.5} />
+        <line x1={22.5} y1={15} x2={22.5} y2={65} stroke={INK} strokeWidth={2} />
+        <line x1={45} y1={15} x2={45} y2={65} stroke={INK} strokeWidth={2.5} />
+        <line x1={67.5} y1={15} x2={67.5} y2={65} stroke={INK} strokeWidth={2} />
+        <g transform="translate(30, 90)">
+          <rect x={0} y={0} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <line x1={-4} y1={28} x2={34} y2={28} stroke={INK} strokeWidth={2.5} />
+          <rect x={0} y={34} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        </g>
+      </g>
+
+      {/* Krug podeljen na 8 (3 osenčena) */}
+      <g transform="translate(330, 240)">
+        <circle cx={40} cy={40} r={38} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <path d="M 40 40 L 40 2 A 38 38 0 0 1 78 40 L 40 40 L 67 67 A 38 38 0 0 1 40 78 Z" fill="#93c5fd" stroke={INK} strokeWidth={2.5} />
+        <line x1={40} y1={2} x2={40} y2={78} stroke={INK} strokeWidth={2.2} />
+        <line x1={2} y1={40} x2={78} y2={40} stroke={INK} strokeWidth={2.2} />
+        <line x1={13} y1={13} x2={67} y2={67} stroke={INK} strokeWidth={2.2} />
+        <line x1={13} y1={67} x2={67} y2={13} stroke={INK} strokeWidth={2.2} />
+        <g transform="translate(25, 90)">
+          <rect x={0} y={0} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <line x1={-4} y1={28} x2={34} y2={28} stroke={INK} strokeWidth={2.5} />
+          <rect x={0} y={34} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        </g>
+      </g>
+
+      {/* Pravougaonik podeljen na 5 (3 osenčena) */}
+      <g transform="translate(465, 240)">
+        <rect x={0} y={15} width={90} height={50} rx={4} fill="#fff" stroke={INK} strokeWidth={2.5} />
+        <rect x={0} y={15} width={54} height={50} fill="#93c5fd" stroke={INK} strokeWidth={2} />
+        {[18, 36, 54, 72].map((x) => (
+          <line key={x} x1={x} y1={15} x2={x} y2={65} stroke={INK} strokeWidth={2} />
+        ))}
+        <g transform="translate(30, 90)">
+          <rect x={0} y={0} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <line x1={-4} y1={28} x2={34} y2={28} stroke={INK} strokeWidth={2.5} />
+          <rect x={0} y={34} width={30} height={22} rx={4} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        </g>
+      </g>
+
+      <Divider y={415} />
+
+      {/* 3. Poređenje razlomaka */}
+      <text x={300} y={442} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Uporedi razlomke upisivanjem znaka &lt;, &gt; ili = u kružić:
+      </text>
+
+      {[
+        { l: '¼', r: '¾', y: 485 },
+        { l: '⅖', r: '⅘', y: 535 },
+        { l: '3/3', r: '1', y: 585 },
+      ].map((item, i) => (
+        <g key={i}>
+          <text x={110} y={item.y + 7} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={22} fontWeight="bold">
+            {item.l}
+          </text>
+          <circle cx={175} cy={item.y} r={18} fill="#fff" stroke={INK} strokeWidth={2} />
+          <text x={240} y={item.y + 7} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={22} fontWeight="bold">
+            {item.r}
+          </text>
+
+          <text x={360} y={item.y + 7} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={22} fontWeight="bold">
+            {i === 0 ? '⅚' : i === 1 ? '⅜' : '4/4'}
+          </text>
+          <circle cx={425} cy={item.y} r={18} fill="#fff" stroke={INK} strokeWidth={2} />
+          <text x={490} y={item.y + 7} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={22} fontWeight="bold">
+            {i === 0 ? '⅙' : i === 1 ? '⅞' : '2/4'}
+          </text>
+        </g>
+      ))}
+    </Page>
+  );
+}
+
+function MathGeometrySheet() {
+  return (
+    <Page height={650}>
+      {/* 1. Ravne geometrijske figure */}
+      <text x={300} y={26} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Prepoznaj figure, napiši njihov naziv i prebroj stranice i tjemena:
+      </text>
+
+      <g transform="translate(30, 45)">
+        <g transform="translate(0, 0)">
+          <rect x={15} y={5} width={65} height={65} rx={2} fill="#f9fafb" stroke={INK} strokeWidth={2.5} />
+          <text x={47} y={92} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">KVADRAT</text>
+          <text x={47} y={112} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Stranica: [ 4 ]</text>
+          <text x={47} y={128} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Tjemena: [ 4 ]</text>
+        </g>
+
+        <g transform="translate(140, 0)">
+          <polygon points="47,5 15,70 80,70" fill="#f9fafb" stroke={INK} strokeWidth={2.5} strokeLinejoin="round" />
+          <text x={47} y={92} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">TROUGAO</text>
+          <text x={47} y={112} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Stranica: [ &nbsp;&nbsp; ]</text>
+          <text x={47} y={128} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Tjemena: [ &nbsp;&nbsp; ]</text>
+        </g>
+
+        <g transform="translate(280, 0)">
+          <rect x={5} y={15} width={85} height={50} rx={2} fill="#f9fafb" stroke={INK} strokeWidth={2.5} />
+          <text x={47} y={92} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={12} fontWeight="bold">PRAVOUGAONIK</text>
+          <text x={47} y={112} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Stranica: [ &nbsp;&nbsp; ]</text>
+          <text x={47} y={128} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Tjemena: [ &nbsp;&nbsp; ]</text>
+        </g>
+
+        <g transform="translate(435, 0)">
+          <circle cx={47} cy={38} r={33} fill="#f9fafb" stroke={INK} strokeWidth={2.5} />
+          <text x={47} y={92} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">KRUG</text>
+          <text x={47} y={112} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Stranica: [ &nbsp;&nbsp; ]</text>
+          <text x={47} y={128} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11}>Tjemena: [ &nbsp;&nbsp; ]</text>
+        </g>
+      </g>
+
+      <Divider y={195} />
+
+      {/* 2. Geometrijska tijela i predmeti */}
+      <text x={300} y={222} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Spoji linijom geometrijsko tijelo sa odgovarajućim predmetom:
+      </text>
+
+      <g transform="translate(70, 245)">
+        <g transform="translate(0, 0)">
+          <rect x={15} y={10} width={38} height={38} fill="#fff" stroke={INK} strokeWidth={2} />
+          <polygon points="15,10 32,0 70,0 53,10" fill="#fff" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+          <polygon points="53,10 70,0 70,38 53,48" fill="#fff" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+          <text x={110} y={32} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">KOCKA</text>
+          <circle cx={185} cy={28} r={5} fill={INK} />
+        </g>
+
+        <g transform="translate(0, 55)">
+          <circle cx={35} cy={28} r={22} fill="#fff" stroke={INK} strokeWidth={2.2} />
+          <ellipse cx={35} cy={28} rx={22} ry={7} fill="none" stroke={INK} strokeWidth={1.5} strokeDasharray="4 3" />
+          <text x={110} y={32} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">LOPTA / KUGLA</text>
+          <circle cx={185} cy={28} r={5} fill={INK} />
+        </g>
+
+        <g transform="translate(0, 110)">
+          <ellipse cx={35} cy={12} rx={22} ry={8} fill="#fff" stroke={INK} strokeWidth={2} />
+          <line x1={13} y1={12} x2={13} y2={44} stroke={INK} strokeWidth={2} />
+          <line x1={57} y1={12} x2={57} y2={44} stroke={INK} strokeWidth={2} />
+          <ellipse cx={35} cy={44} rx={22} ry={8} fill="#fff" stroke={INK} strokeWidth={2} />
+          <text x={110} y={32} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">VALJAK</text>
+          <circle cx={185} cy={28} r={5} fill={INK} />
+        </g>
+
+        <g transform="translate(0, 165)">
+          <rect x={5} y={15} width={48} height={28} fill="#fff" stroke={INK} strokeWidth={2} />
+          <polygon points="5,15 20,5 68,5 53,15" fill="#fff" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+          <polygon points="53,15 68,5 68,33 53,43" fill="#fff" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+          <text x={110} y={32} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">KVADAR</text>
+          <circle cx={185} cy={28} r={5} fill={INK} />
+        </g>
+      </g>
+
+      <g transform="translate(360, 245)">
+        {[
+          { text: 'Konzerva soka', y: 0 },
+          { text: 'Kutija za cipele', y: 55 },
+          { text: 'Fudbalska lopta', y: 110 },
+          { text: 'Drvena kockica za igru', y: 165 },
+        ].map((item, i) => (
+          <g key={i} transform={`translate(0, ${item.y})`}>
+            <circle cx={15} cy={28} r={5} fill={INK} />
+            <rect x={35} y={10} width={175} height={36} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+            <text x={122} y={33} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13} fontWeight="600">
+              {item.text}
+            </text>
+          </g>
+        ))}
+      </g>
+
+      <Divider y={475} />
+
+      {/* 3. Vrste linija i duž */}
+      <text x={300} y={502} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Prepoznaj linije: upiši da li je to Duž, Prava, Poluprava ili Kriva linija:
+      </text>
+
+      <g transform="translate(40, 525)">
+        <g transform="translate(0, 0)">
+          <line x1={15} y1={25} x2={105} y2={25} stroke={INK} strokeWidth={3} />
+          <circle cx={15} cy={25} r={4.5} fill={INK} />
+          <circle cx={105} cy={25} r={4.5} fill={INK} />
+          <text x={15} y={15} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11} fontWeight="bold">A</text>
+          <text x={105} y={15} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11} fontWeight="bold">B</text>
+          <rect x={0} y={45} width={120} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={60} y={63} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={12} fontWeight="bold">DUŽ AB</text>
+        </g>
+
+        <g transform="translate(135, 0)">
+          <line x1={5} y1={25} x2={115} y2={25} stroke={INK} strokeWidth={3} />
+          <text x={110} y={15} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11} fontWeight="bold">p</text>
+          <rect x={0} y={45} width={120} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={60} y={63} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={12}>PRAVA</text>
+        </g>
+
+        <g transform="translate(270, 0)">
+          <line x1={15} y1={25} x2={115} y2={25} stroke={INK} strokeWidth={3} />
+          <circle cx={15} cy={25} r={4.5} fill={INK} />
+          <text x={15} y={15} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11} fontWeight="bold">O</text>
+          <text x={110} y={15} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={11} fontWeight="bold">a</text>
+          <rect x={0} y={45} width={120} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={60} y={63} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={12}>POLUPRAVA</text>
+        </g>
+
+        <g transform="translate(405, 0)">
+          <path d="M 10 35 Q 40 5 65 30 T 115 15" fill="none" stroke={INK} strokeWidth={3} />
+          <rect x={0} y={45} width={120} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={60} y={63} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={12}>KRIVA LINIJA</text>
+        </g>
+      </g>
+    </Page>
+  );
+}
+
+function MathEvenOddSheet() {
+  const BALLOONS = [
+    { n: 4, even: true },
+    { n: 7, even: false },
+    { n: 12, even: true },
+    { n: 15, even: false },
+    { n: 18, even: true },
+    { n: 21, even: false },
+    { n: 26, even: true },
+    { n: 33, even: false },
+    { n: 40, even: true },
+    { n: 47, even: false },
+    { n: 52, even: true },
+    { n: 65, even: false },
+    { n: 78, even: true },
+    { n: 81, even: false },
+    { n: 94, even: true },
+    { n: 99, even: false },
+  ];
+
+  return (
+    <Page height={650}>
+      <rect x={30} y={10} width={540} height={48} rx={10} fill="#f0fdf4" stroke="#16a34a" strokeWidth={2} />
+      <text x={300} y={30} textAnchor="middle" fill="#15803d" fontFamily={FONT} fontSize={12.5} fontWeight="bold">
+        💡 PARNI brojevi se završavaju sa 0, 2, 4, 6, 8 (mogu se podijeliti u parove).
+      </text>
+      <text x={300} y={48} textAnchor="middle" fill="#b45309" fontFamily={FONT} fontSize={12.5} fontWeight="bold">
+        💡 NEPARNI brojevi se završavaju sa 1, 3, 5, 7, 9 (uvijek ostane 1 samac).
+      </text>
+
+      <text x={300} y={82} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Oboji balone: PARNE oboji PLAVO, a NEPARNE ŽUTO:
+      </text>
+
+      <g transform="translate(45, 95)">
+        {BALLOONS.map((b, i) => {
+          const col = i % 4;
+          const row = Math.floor(i / 4);
+          const x = col * 130 + 50;
+          const y = row * 55 + 24;
+          return (
+            <g key={i}>
+              <ellipse cx={x} cy={y} rx={26} ry={20} fill="#fff" stroke={INK} strokeWidth={2} />
+              <polygon points={`${x - 4},${y + 20} ${x + 4},${y + 20} ${x},${y + 25}`} fill={INK} />
+              <line x1={x} y1={y + 25} x2={x + 3} y2={y + 35} stroke={INK} strokeWidth={1.5} />
+              <text x={x} y={y + 6} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={16} fontWeight="bold">
+                {b.n}
+              </text>
+            </g>
+          );
+        })}
+      </g>
+
+      <Divider y={330} />
+
+      <text x={300} y={355} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Spoji sličice u parove po dvoje i zaokruži tačnu riječ:
+      </text>
+
+      <g transform="translate(40, 375)">
+        <g transform="translate(0, 0)">
+          <text x={10} y={22} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">a) 6 zvjezdica:</text>
+          <g transform="translate(130, 8)">
+            {[0, 1, 2].map((k) => (
+              <g key={k} transform={`translate(${k * 50}, 0)`}>
+                <rect x={0} y={0} width={42} height={24} rx={6} fill="#f9fafb" stroke={INK} strokeWidth={1.5} strokeDasharray="4 3" />
+                <circle cx={14} cy={12} r={5} fill={INK} />
+                <circle cx={28} cy={12} r={5} fill={INK} />
+              </g>
+            ))}
+          </g>
+          <rect x={315} y={3} width={90} height={28} rx={6} fill="#dbeafe" stroke="#2563eb" strokeWidth={2} />
+          <text x={360} y={22} textAnchor="middle" fill="#1e40af" fontFamily={FONT} fontSize={13} fontWeight="bold">PARAN</text>
+          <rect x={415} y={3} width={90} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={460} y={22} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13}>NEPARAN</text>
+        </g>
+
+        <g transform="translate(0, 42)">
+          <text x={10} y={22} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">b) 7 krugova:</text>
+          <g transform="translate(130, 8)">
+            {[0, 1, 2].map((k) => (
+              <g key={k} transform={`translate(${k * 45}, 0)`}>
+                <rect x={0} y={0} width={38} height={24} rx={6} fill="#f9fafb" stroke={INK} strokeWidth={1.5} strokeDasharray="4 3" />
+                <circle cx={12} cy={12} r={5} fill={INK} />
+                <circle cx={26} cy={12} r={5} fill={INK} />
+              </g>
+            ))}
+            <circle cx={150} cy={12} r={5} fill={INK} />
+          </g>
+          <rect x={315} y={3} width={90} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={360} y={22} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13}>PARAN</text>
+          <rect x={415} y={3} width={90} height={28} rx={6} fill="#fef3c7" stroke="#d97706" strokeWidth={2} />
+          <text x={460} y={22} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={13} fontWeight="bold">NEPARAN</text>
+        </g>
+
+        <g transform="translate(0, 84)">
+          <text x={10} y={22} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">c) 8 kvadrata:</text>
+          <g transform="translate(130, 8)">
+            {[0, 1, 2, 3].map((k) => (
+              <g key={k} transform={`translate(${k * 42}, 0)`}>
+                <rect x={0} y={0} width={36} height={24} rx={6} fill="#f9fafb" stroke={INK} strokeWidth={1.5} strokeDasharray="4 3" />
+                <rect x={8} y={7} width={8} height={8} fill={INK} />
+                <rect x={20} y={7} width={8} height={8} fill={INK} />
+              </g>
+            ))}
+          </g>
+          <rect x={315} y={3} width={90} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={360} y={22} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13}>PARAN</text>
+          <rect x={415} y={3} width={90} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.5} />
+          <text x={460} y={22} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13}>NEPARAN</text>
+        </g>
+      </g>
+
+      <Divider y={505} />
+
+      <text x={300} y={530} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Nastavi niz brojeva upisivanjem brojeva koji nedostaju:
+      </text>
+
+      <g transform="translate(40, 550)">
+        <text x={10} y={22} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">
+          a) Parni: &nbsp;&nbsp; 2, &nbsp; 4, &nbsp; 6,
+        </text>
+        <rect x={160} y={2} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={205} y={22} fill={INK} fontFamily={FONT} fontSize={14}>,</text>
+        <rect x={220} y={2} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={265} y={22} fill={INK} fontFamily={FONT} fontSize={14}>, &nbsp; 12, </text>
+        <rect x={315} y={2} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={360} y={22} fill={INK} fontFamily={FONT} fontSize={14}>, &nbsp; 16.</text>
+
+        <text x={10} y={62} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">
+          b) Neparni: 1, &nbsp; 3, &nbsp; 5,
+        </text>
+        <rect x={160} y={42} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={205} y={62} fill={INK} fontFamily={FONT} fontSize={14}>,</text>
+        <rect x={220} y={42} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={265} y={62} fill={INK} fontFamily={FONT} fontSize={14}>, &nbsp; 11, </text>
+        <rect x={315} y={42} width={35} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+        <text x={360} y={62} fill={INK} fontFamily={FONT} fontSize={14}>, &nbsp; 15.</text>
+      </g>
+    </Page>
+  );
+}
+
+function MathMoneySheet() {
+  return (
+    <Page height={650}>
+      <text x={300} y={26} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Prebroj novac u svakom novčaniku i zapiši ukupan iznos:
+      </text>
+
+      <g transform="translate(30, 42)">
+        <g transform="translate(0, 0)">
+          <rect x={0} y={0} width={165} height={85} rx={12} fill="#f9fafb" stroke={INK} strokeWidth={2} />
+          <rect x={10} y={10} width={50} height={28} rx={4} fill="#ecfdf5" stroke="#059669" strokeWidth={1.8} />
+          <text x={35} y={28} textAnchor="middle" fill="#059669" fontFamily={FONT} fontSize={12} fontWeight="bold">10</text>
+          <rect x={68} y={10} width={45} height={28} rx={4} fill="#eff6ff" stroke="#2563eb" strokeWidth={1.8} />
+          <text x={90} y={28} textAnchor="middle" fill="#2563eb" fontFamily={FONT} fontSize={12} fontWeight="bold">5</text>
+          <circle cx={135} cy={24} r={12} fill="#fef3c7" stroke="#d97706" strokeWidth={1.8} />
+          <text x={135} y={28} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={11} fontWeight="bold">2</text>
+          <circle cx={40} cy={60} r={11} fill="#fef3c7" stroke="#d97706" strokeWidth={1.8} />
+          <text x={40} y={64} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={11} fontWeight="bold">1</text>
+          <text x={105} y={66} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="bold">= ____ KM</text>
+        </g>
+
+        <g transform="translate(185, 0)">
+          <rect x={0} y={0} width={165} height={85} rx={12} fill="#f9fafb" stroke={INK} strokeWidth={2} />
+          <rect x={10} y={10} width={55} height={28} rx={4} fill="#fdf2f8" stroke="#db2777" strokeWidth={1.8} />
+          <text x={37} y={28} textAnchor="middle" fill="#db2777" fontFamily={FONT} fontSize={12} fontWeight="bold">20</text>
+          <rect x={72} y={10} width={50} height={28} rx={4} fill="#ecfdf5" stroke="#059669" strokeWidth={1.8} />
+          <text x={97} y={28} textAnchor="middle" fill="#059669" fontFamily={FONT} fontSize={12} fontWeight="bold">10</text>
+          <circle cx={145} cy={24} r={12} fill="#fef3c7" stroke="#d97706" strokeWidth={1.8} />
+          <text x={145} y={28} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={11} fontWeight="bold">5</text>
+          <circle cx={40} cy={60} r={12} fill="#fef3c7" stroke="#d97706" strokeWidth={1.8} />
+          <text x={40} y={64} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={11} fontWeight="bold">2</text>
+          <text x={105} y={66} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="bold">= ____ KM</text>
+        </g>
+
+        <g transform="translate(370, 0)">
+          <rect x={0} y={0} width={170} height={85} rx={12} fill="#f9fafb" stroke={INK} strokeWidth={2} />
+          <rect x={10} y={10} width={58} height={28} rx={4} fill="#fefce8" stroke="#ca8a04" strokeWidth={1.8} />
+          <text x={39} y={28} textAnchor="middle" fill="#ca8a04" fontFamily={FONT} fontSize={12} fontWeight="bold">50</text>
+          <rect x={75} y={10} width={55} height={28} rx={4} fill="#fdf2f8" stroke="#db2777" strokeWidth={1.8} />
+          <text x={102} y={28} textAnchor="middle" fill="#db2777" fontFamily={FONT} fontSize={12} fontWeight="bold">20</text>
+          <circle cx={150} cy={24} r={11} fill="#fef3c7" stroke="#d97706" strokeWidth={1.8} />
+          <text x={150} y={28} textAnchor="middle" fill="#92400e" fontFamily={FONT} fontSize={11} fontWeight="bold">1</text>
+          <text x={90} y={66} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="bold">= ____ KM</text>
+        </g>
+      </g>
+
+      <Divider y={150} />
+
+      <text x={300} y={178} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Cjenovnik u školskoj knjižari — izračunaj cijenu svake korpe:
+      </text>
+
+      <rect x={35} y={192} width={530} height={36} rx={8} fill="#f3f4f6" stroke={INK} strokeWidth={2} />
+      <text x={300} y={215} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">
+        Sveska: 3 KM &nbsp;|&nbsp; Olovka: 1 KM &nbsp;|&nbsp; Bojice: 6 KM &nbsp;|&nbsp; Pernica: 8 KM &nbsp;|&nbsp; Šestar: 4 KM
+      </text>
+
+      <g transform="translate(35, 240)">
+        <g transform="translate(0, 0)">
+          <rect x={0} y={0} width={530} height={42} rx={8} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={20} y={26} fill={INK} fontFamily={FONT} fontSize={13.5}>
+            a) Sveska + Olovka + Bojice = <strong>3 + 1 + 6 =</strong>
+          </text>
+          <rect x={380} y={7} width={65} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={455} y={26} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">KM</text>
+        </g>
+
+        <g transform="translate(0, 52)">
+          <rect x={0} y={0} width={530} height={42} rx={8} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={20} y={26} fill={INK} fontFamily={FONT} fontSize={13.5}>
+            b) Pernica + Šestar + Sveska = <strong>8 + 4 + 3 =</strong>
+          </text>
+          <rect x={380} y={7} width={65} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={455} y={26} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">KM</text>
+        </g>
+
+        <g transform="translate(0, 104)">
+          <rect x={0} y={0} width={530} height={42} rx={8} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={20} y={26} fill={INK} fontFamily={FONT} fontSize={13.5}>
+            c) Dvije sveske + Pernica = <strong>(2 × 3) + 8 = 6 + 8 =</strong>
+          </text>
+          <rect x={380} y={7} width={65} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+          <text x={455} y={26} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">KM</text>
+        </g>
+      </g>
+
+      <Divider y={410} />
+
+      <text x={300} y={438} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Izračunaj kusur koji kasir treba da vrati kupcu:
+      </text>
+
+      <g transform="translate(35, 455)">
+        <g transform="translate(0, 0)">
+          <rect x={0} y={0} width={530} height={52} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+          <text x={15} y={22} fill={INK} fontFamily={FONT} fontSize={13}>
+            a) Ana je kupila svesku i olovku (4 KM), a platila novčanicom od <strong>10 KM</strong>.
+          </text>
+          <text x={15} y={42} fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">
+            Račun: 10 - 4 = _____ KM &nbsp;&nbsp;&nbsp;➔&nbsp;&nbsp;&nbsp; Kusur je: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] KM
+          </text>
+        </g>
+
+        <g transform="translate(0, 62)">
+          <rect x={0} y={0} width={530} height={52} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+          <text x={15} y={22} fill={INK} fontFamily={FONT} fontSize={13}>
+            b) Marko je kupio pernicu i bojice (14 KM), a dao novčanicu od <strong>20 KM</strong>.
+          </text>
+          <text x={15} y={42} fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">
+            Račun: 20 - 14 = _____ KM &nbsp;&nbsp;&nbsp;➔&nbsp;&nbsp;&nbsp; Kusur je: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] KM
+          </text>
+        </g>
+
+        <g transform="translate(0, 124)">
+          <rect x={0} y={0} width={530} height={52} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={1.8} />
+          <text x={15} y={22} fill={INK} fontFamily={FONT} fontSize={13}>
+            c) Učiteljica je kupila knjigu od 35 KM i platila novčanicom od <strong>50 KM</strong>.
+          </text>
+          <text x={15} y={42} fill={INK} fontFamily={FONT} fontSize={13} fontWeight="bold">
+            Račun: 50 - 35 = _____ KM &nbsp;&nbsp;&nbsp;➔&nbsp;&nbsp;&nbsp; Kusur je: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] KM
+          </text>
+        </g>
+      </g>
+    </Page>
+  );
+}
+
+function MathRomanNumeralsSheet() {
+  const PAIRS = [
+    { a: 3, r: 'III' },
+    { a: 4, r: 'IV' },
+    { a: 7, r: 'VII' },
+    { a: 9, r: 'IX' },
+    { a: 12, r: 'XII' },
+    { a: 14, r: 'XIV' },
+    { a: 16, r: 'XVI' },
+    { a: 19, r: 'XIX' },
+  ];
+
+  return (
+    <Page height={650}>
+      <rect x={30} y={10} width={540} height={42} rx={8} fill="#f9fafb" stroke={INK} strokeWidth={2} />
+      <text x={300} y={36} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+        Osnovni rimski brojevi: &nbsp; I = 1 &nbsp;|&nbsp; V = 5 &nbsp;|&nbsp; X = 10 &nbsp;|&nbsp; L = 50 &nbsp;|&nbsp; C = 100
+      </text>
+
+      <text x={300} y={75} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Spoji linijom arapski broj sa odgovarajućim rimskim brojem:
+      </text>
+
+      <g transform="translate(30, 90)">
+        {PAIRS.map((p, i) => (
+          <g key={i} transform={`translate(${i * 68}, 0)`}>
+            <circle cx={30} cy={20} r={18} fill="#fff" stroke={INK} strokeWidth={2} />
+            <text x={30} y={26} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={16} fontWeight="bold">
+              {p.a}
+            </text>
+            <circle cx={30} cy={45} r={3.5} fill={INK} />
+          </g>
+        ))}
+
+        {[
+          { r: 'IV', id: 1 },
+          { r: 'VII', id: 2 },
+          { r: 'III', id: 0 },
+          { r: 'XIV', id: 5 },
+          { r: 'IX', id: 3 },
+          { r: 'XIX', id: 7 },
+          { r: 'XII', id: 4 },
+          { r: 'XVI', id: 6 },
+        ].map((p, i) => (
+          <g key={i} transform={`translate(${i * 68}, 85)`}>
+            <circle cx={30} cy={0} r={3.5} fill={INK} />
+            <rect x={8} y={10} width={44} height={32} rx={8} fill="#f3f4f6" stroke={INK} strokeWidth={2} />
+            <text x={30} y={32} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="bold">
+              {p.r}
+            </text>
+          </g>
+        ))}
+      </g>
+
+      <Divider y={260} />
+
+      <text x={300} y={288} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Zapiši zadate brojeve rimskim ciframa:
+      </text>
+
+      <g transform="translate(50, 310)">
+        {[
+          { n: 2, y: 0 },
+          { n: 6, y: 0 },
+          { n: 8, y: 0 },
+          { n: 11, y: 0 },
+          { n: 13, y: 45 },
+          { n: 15, y: 45 },
+          { n: 17, y: 45 },
+          { n: 20, y: 45 },
+        ].map((item, i) => {
+          const col = i % 4;
+          const row = Math.floor(i / 4);
+          const x = col * 130;
+          const y = row * 45;
+          return (
+            <g key={i} transform={`translate(${x}, ${y})`}>
+              <text x={20} y={22} fill={INK} fontFamily={FONT} fontSize={15} fontWeight="bold">
+                {item.n} =
+              </text>
+              <rect x={48} y={2} width={50} height={28} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+            </g>
+          );
+        })}
+      </g>
+
+      <Divider y={425} />
+
+      <text x={300} y={452} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Izračunaj i zapiši rezultat rimskim brojem:
+      </text>
+
+      <g transform="translate(50, 475)">
+        {[
+          { text: 'V + II = 5 + 2 =', ans: 'VII' },
+          { text: 'X + IV = 10 + 4 =', ans: 'XIV' },
+          { text: 'IX - IV = 9 - 4 =', ans: 'V' },
+          { text: 'XV - VI = 15 - 6 =', ans: 'IX' },
+          { text: 'VIII + VII = 8 + 7 =', ans: 'XV' },
+          { text: 'XX - XI = 20 - 11 =', ans: 'IX' },
+        ].map((item, i) => {
+          const col = i % 2;
+          const row = Math.floor(i / 2);
+          const x = col * 260;
+          const y = row * 50;
+          return (
+            <g key={i} transform={`translate(${x}, ${y})`}>
+              <text x={10} y={24} fill={INK} fontFamily={FONT} fontSize={13.5} fontWeight="600">
+                {item.text}
+              </text>
+              <rect x={160} y={4} width={55} height={30} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+            </g>
+          );
+        })}
+      </g>
+    </Page>
+  );
+}
+
+function MathMultiplicationGridSheet() {
+  return (
+    <Page height={650}>
+      <text x={300} y={26} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        1. Zbir jednakih sabiraka zapiši kao množenje i izračunaj:
+      </text>
+
+      <g transform="translate(40, 42)">
+        {[
+          { text: '4 + 4 + 4 =', mult: '3 × 4 =' },
+          { text: '6 + 6 + 6 + 6 =', mult: '4 × 6 =' },
+          { text: '7 + 7 =', mult: '2 × 7 =' },
+          { text: '5 + 5 + 5 + 5 + 5 =', mult: '5 × 5 =' },
+        ].map((item, i) => {
+          const y = i * 36;
+          return (
+            <g key={i} transform={`translate(0, ${y})`}>
+              <text x={20} y={20} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+                {item.text}
+              </text>
+              <text x={190} y={20} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+                {item.mult}
+              </text>
+              <rect x={260} y={2} width={50} height={26} rx={6} fill="#fff" stroke={INK} strokeWidth={1.8} />
+            </g>
+          );
+        })}
+      </g>
+
+      <Divider y={195} />
+
+      <text x={300} y={222} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        2. Izračunaj ukupan broj tačkica pomoću redova i kolona:
+      </text>
+
+      <g transform="translate(40, 240)">
+        <g transform="translate(0, 0)">
+          <g transform="translate(20, 10)">
+            {[0, 1, 2].map((r) =>
+              [0, 1, 2, 3].map((c) => (
+                <circle key={`${r}-${c}`} cx={c * 20} cy={r * 20} r={6} fill={INK} />
+              ))
+            )}
+          </g>
+          <text x={125} y={25} fill={INK} fontFamily={FONT} fontSize={13}>3 reda po 4 tačke</text>
+          <text x={125} y={48} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+            3 × 4 = [ &nbsp;&nbsp;&nbsp;&nbsp; ]
+          </text>
+        </g>
+
+        <g transform="translate(280, 0)">
+          <g transform="translate(20, 15)">
+            {[0, 1].map((r) =>
+              [0, 1, 2, 3, 4, 5].map((c) => (
+                <rect key={`${r}-${c}`} x={c * 18} y={r * 18} width={10} height={10} fill={INK} rx={2} />
+              ))
+            )}
+          </g>
+          <text x={155} y={25} fill={INK} fontFamily={FONT} fontSize={13}>2 reda po 6 kockica</text>
+          <text x={155} y={48} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+            2 × 6 = [ &nbsp;&nbsp;&nbsp;&nbsp; ]
+          </text>
+        </g>
+
+        <g transform="translate(130, 85)">
+          <g transform="translate(20, 10)">
+            {[0, 1, 2, 3].map((r) =>
+              [0, 1, 2, 3, 4].map((c) => (
+                <circle key={`${r}-${c}`} cx={c * 20} cy={r * 16} r={5} fill={INK} />
+              ))
+            )}
+          </g>
+          <text x={150} y={30} fill={INK} fontFamily={FONT} fontSize={13}>4 reda po 5 tačaka</text>
+          <text x={150} y={54} fill={INK} fontFamily={FONT} fontSize={14} fontWeight="bold">
+            4 × 5 = [ &nbsp;&nbsp;&nbsp;&nbsp; ]
+          </text>
+        </g>
+      </g>
+
+      <Divider y={415} />
+
+      <text x={300} y={442} textAnchor="middle" fill={INK} fontFamily={FONT} fontSize={15} fontWeight="700">
+        3. Popuni mini tablicu množenja (pomnoži red sa kolonom):
+      </text>
+
+      <g transform="translate(160, 460)">
+        {[0, 1, 2, 3, 4, 5].map((r) =>
+          [0, 1, 2, 3, 4, 5].map((c) => {
+            const isHeader = r === 0 || c === 0;
+            const isCorner = r === 0 && c === 0;
+            const x = c * 46;
+            const y = r * 30;
+            const val = isCorner ? '×' : r === 0 ? c : c === 0 ? r : '';
+            return (
+              <g key={`${r}-${c}`}>
+                <rect
+                  x={x}
+                  y={y}
+                  width={46}
+                  height={30}
+                  fill={isCorner ? '#111827' : isHeader ? '#f3f4f6' : '#fff'}
+                  stroke={INK}
+                  strokeWidth={1.8}
+                />
+                <text
+                  x={x + 23}
+                  y={y + 20}
+                  textAnchor="middle"
+                  fill={isCorner ? '#fff' : INK}
+                  fontFamily={FONT}
+                  fontSize={14}
+                  fontWeight={isHeader ? 'bold' : 'normal'}
+                >
+                  {val}
+                </text>
+              </g>
+            );
+          })
+        )}
+      </g>
+    </Page>
+  );
+}
+
+// ============================================================================
 // VEKTORSKE TEMATSKE BOJANKE ZA ŠTAMPU
 // ============================================================================
 
@@ -3824,6 +4625,54 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   coloringFood: ({ labels }) => [<FoodSheet key="coloringFood" labels={labels} />],
   coloringRecycle: ({ labels }) => [<RecycleSheet key="coloringRecycle" labels={labels} />],
   coloringFeelings: ({ labels }) => [<FeelingsSheet key="coloringFeelings" labels={labels} />],
+  coloringCircus: () => [
+    <ImageColoringSheet
+      key="coloringCircus"
+      src="/slike/bojanke/cirkus-i-madjionicar.svg"
+      alt="Cirkus i mađioničar"
+      prompt="Oboji veselu cirkusku šatru, klovna sa balonima, mađioničarskog zeku i slončića na lopti."
+    />,
+  ],
+  coloringJungle: () => [
+    <ImageColoringSheet
+      key="coloringJungle"
+      src="/slike/bojanke/tropska-dzungla.svg"
+      alt="Tropska prašuma i papagaj"
+      prompt="Oboji tukana sa velikim kljunom, šarenog papagaja aru, tropske cvetove i lijane u živim bojama prirode."
+    />,
+  ],
+  coloringRobot: () => [
+    <ImageColoringSheet
+      key="coloringRobot"
+      src="/slike/bojanke/prijateljski-robot.svg"
+      alt="Prijateljski robot i svemirski drugari"
+      prompt="Oboji prijateljskog robota sa ekranom i antenom, malog letećeg drona, zvezdice i planetu Saturn."
+    />,
+  ],
+  coloringGarden: () => [
+    <ImageColoringSheet
+      key="coloringGarden"
+      src="/slike/bojanke/veseli-vrt.svg"
+      alt="Veseli vrt i povrtnjak"
+      prompt="Oboji nasmejano baštensko strašilo, leje sa šargarepom i bundevom, suncokret i kantu za zalivanje."
+    />,
+  ],
+  coloringPirates: () => [
+    <ImageColoringSheet
+      key="coloringPirates"
+      src="/slike/bojanke/gusarski-brod.svg"
+      alt="Gusarski brod i ostrvo sa blagom"
+      prompt="Oboji veliki gusarski jedrenjak sa jedrima, pusto peščano ostrvo sa palmom i otvorenu škrinju sa blagom."
+    />,
+  ],
+  coloringFair: () => [
+    <ImageColoringSheet
+      key="coloringFair"
+      src="/slike/bojanke/zabavni-park.svg"
+      alt="Zabavni park i vrteška"
+      prompt="Oboji panoramski točak sa kabinama za posetioce, šarenu vrtešku sa konjićima i kolica sa balonima."
+    />,
+  ],
   timeDayParts: ({ labels }) => [<DayPartsSheet key="timeDayParts" labels={labels} />],
   timeSequence: () => [<SequenceSheet key="timeSequence" />],
   timeClock: () => clockPages(),
@@ -3845,6 +4694,12 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   mathMultiply: () => drillPages('mathMultiply', DRILL_SETS.mathMultiply),
   mathDivide: () => drillPages('mathDivide', DRILL_SETS.mathDivide),
   mathWordProblems: ({ labels }) => wordProblemPages(labels),
+  mathFractions: () => [<MathFractionsSheet key="mathFractions" />],
+  mathGeometry: () => [<MathGeometrySheet key="mathGeometry" />],
+  mathEvenOdd: () => [<MathEvenOddSheet key="mathEvenOdd" />],
+  mathMoney: () => [<MathMoneySheet key="mathMoney" />],
+  mathRomanNumerals: () => [<MathRomanNumeralsSheet key="mathRomanNumerals" />],
+  mathMultiplicationGrid: () => [<MathMultiplicationGridSheet key="mathMultiplicationGrid" />],
   homeWorkbookMath2: () => homeWorkbookMath2Pages(),
   writingHandbookLatin: () => writingHandbookPages('lat'),
   writingHandbookCyrillic: () => writingHandbookPages('cyr'),

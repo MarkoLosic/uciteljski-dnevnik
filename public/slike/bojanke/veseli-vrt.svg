@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#ffffff" />
+
+  <!-- Sunce i oblaci na nebu -->
+  <circle cx="100" cy="110" r="45" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+  <line x1="100" y1="45" x2="100" y2="25" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="100" y1="175" x2="100" y2="195" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="35" y1="110" x2="15" y2="110" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="165" y1="110" x2="185" y2="110" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="55" y1="65" x2="40" y2="50" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="145" y1="65" x2="160" y2="50" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+
+  <!-- Pufnasti oblak -->
+  <path d="M 550 110 Q 580 80 620 90 Q 660 70 700 100 Q 730 110 730 140 Q 720 170 670 170 L 560 170 Q 520 160 530 130 Q 530 110 550 110 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+
+  <!-- Drvena baštenska ograda u pozadini -->
+  <g transform="translate(0, 360)">
+    <line x1="0" y1="50" x2="800" y2="50" stroke="#111827" stroke-width="4.5" />
+    <line x1="0" y1="100" x2="800" y2="100" stroke="#111827" stroke-width="4.5" />
+    <!-- Letvice tarabe -->
+    <path d="M 40 20 L 55 5 L 70 20 L 70 150 L 40 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 120 20 L 135 5 L 150 20 L 150 150 L 120 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 200 20 L 215 5 L 230 20 L 230 150 L 200 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 570 20 L 585 5 L 600 20 L 600 150 L 570 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 650 20 L 665 5 L 680 20 L 680 150 L 650 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 730 20 L 745 5 L 760 20 L 760 150 L 730 150 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+  </g>
+
+  <!-- Brežuljci i leje sa povrćem -->
+  <path d="M 0 520 Q 400 480 800 520 L 800 800 L 0 800 Z" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+
+  <!-- VELIKI SUNCOKRET (LEVO) -->
+  <g transform="translate(60, 220)">
+    <!-- Debela stabljika i listovi -->
+    <path d="M 80 140 Q 75 220 85 300" stroke="#111827" stroke-width="8" stroke-linecap="round" fill="none" />
+    <!-- Veliki list suncokreta -->
+    <path d="M 80 200 Q 140 170 160 210 Q 120 250 80 220 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <line x1="80" y1="210" x2="145" y2="205" stroke="#111827" stroke-width="2.5" />
+    <!-- Latice suncokreta u krugu -->
+    <g transform="translate(80, 140)">
+      <circle cx="0" cy="0" r="40" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-dasharray="8 6" />
+      <polygon points="0,-40 -12,-75 12,-75" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="0,40 -12,75 12,75" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="-40,0 -75,-12 -75,12" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="40,0 75,-12 75,12" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="-28,-28 -55,-50 -40,-65" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="28,-28 55,-50 40,-65" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="-28,28 -55,50 -40,65" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="28,28 55,50 40,65" fill="#ffffff" stroke="#111827" stroke-width="3" stroke-linejoin="round" />
+      <!-- Smešak na suncokretu -->
+      <circle cx="-12" cy="-8" r="4" fill="#111827" />
+      <circle cx="12" cy="-8" r="4" fill="#111827" />
+      <path d="M -14 12 Q 0 24 14 12" fill="none" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- VESELO BAŠTENSKO STRAŠILO (CENTAR) -->
+  <g transform="translate(310, 240)">
+    <!-- Drveni stub strašila -->
+    <line x1="90" y1="120" x2="90" y2="400" stroke="#111827" stroke-width="7" />
+    <line x1="-30" y1="200" x2="210" y2="200" stroke="#111827" stroke-width="7" />
+
+    <!-- Glava strašila od vreće -->
+    <circle cx="90" cy="110" r="38" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Slamnati šešir -->
+    <polygon points="50,85 130,85 120,40 60,40" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round" />
+    <ellipse cx="90" cy="85" rx="65" ry="14" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <!-- Slama koja viri ispod šešira -->
+    <line x1="55" y1="88" x2="40" y2="105" stroke="#111827" stroke-width="3" />
+    <line x1="125" y1="88" x2="140" y2="105" stroke="#111827" stroke-width="3" />
+    <!-- Lice: dugmad oči, trouglast nos od zakrpe, osmeh od konca -->
+    <circle cx="75" cy="105" r="5" fill="#111827" />
+    <circle cx="105" cy="105" r="5" fill="#111827" />
+    <polygon points="90,110 84,122 96,122" fill="#ffffff" stroke="#111827" stroke-width="2.5" />
+    <path d="M 72 130 Q 90 142 108 130" fill="none" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    <line x1="80" y1="130" x2="80" y2="136" stroke="#111827" stroke-width="2" />
+    <line x1="90" y1="133" x2="90" y2="139" stroke="#111827" stroke-width="2" />
+    <line x1="100" y1="130" x2="100" y2="136" stroke="#111827" stroke-width="2" />
+
+    <!-- Košulja strašila sa zakrpom -->
+    <polygon points="45,150 135,150 150,280 30,280" fill="#ffffff" stroke="#111827" stroke-width="4.5" stroke-linejoin="round" />
+    <!-- Zakrpa sa šavovima -->
+    <rect x="50" y="190" width="28" height="28" fill="#ffffff" stroke="#111827" stroke-width="2.5" />
+    <line x1="48" y1="188" x2="52" y2="192" stroke="#111827" stroke-width="2" />
+    <line x1="76" y1="216" x2="80" y2="220" stroke="#111827" stroke-width="2" />
+    <!-- Dugmad na košulji -->
+    <circle cx="90" cy="180" r="5" fill="#111827" />
+    <circle cx="90" cy="215" r="5" fill="#111827" />
+    <circle cx="90" cy="250" r="5" fill="#111827" />
+    <!-- Rukavi iz kojih viri slama -->
+    <line x1="-30" y1="190" x2="-45" y2="185" stroke="#111827" stroke-width="3" />
+    <line x1="-30" y1="200" x2="-50" y2="200" stroke="#111827" stroke-width="3" />
+    <line x1="-30" y1="210" x2="-45" y2="215" stroke="#111827" stroke-width="3" />
+    <line x1="210" y1="190" x2="225" y2="185" stroke="#111827" stroke-width="3" />
+    <line x1="210" y1="200" x2="230" y2="200" stroke="#111827" stroke-width="3" />
+    <line x1="210" y1="210" x2="225" y2="215" stroke="#111827" stroke-width="3" />
+  </g>
+
+  <!-- KANTA ZA ZALIVANJE (DESNO) -->
+  <g transform="translate(560, 460)">
+    <!-- Telo kante -->
+    <polygon points="30,80 120,80 135,170 15,170" fill="#ffffff" stroke="#111827" stroke-width="4.5" stroke-linejoin="round" />
+    <!-- Ručka kante -->
+    <path d="M 15 110 C -25 110 -25 150 15 160" fill="none" stroke="#111827" stroke-width="5" stroke-linecap="round" />
+    <!-- Gornja lučna drška -->
+    <path d="M 40 80 Q 75 25 110 80" fill="none" stroke="#111827" stroke-width="5" stroke-linecap="round" />
+    <!-- Grlić sa ružom za tuširanje -->
+    <polygon points="120,130 190,75 195,95 125,150" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round" />
+    <ellipse cx="200" cy="78" rx="14" ry="24" transform="rotate(35 200 78)" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <!-- Kapljice vode koje padaju -->
+    <ellipse cx="225" cy="110" rx="4" ry="7" fill="#111827" />
+    <ellipse cx="240" cy="125" rx="4" ry="7" fill="#111827" />
+    <ellipse cx="220" cy="140" rx="4" ry="7" fill="#111827" />
+  </g>
+
+  <!-- GREDICA SA ŠARGAREPOM I BUNDEVOM (DOLE U ZEMLJI) -->
+  <!-- Šargarepe koje vire iz zemlje -->
+  <g transform="translate(140, 610)">
+    <!-- Perje šargarepe 1 -->
+    <path d="M 40 30 Q 30 0 20 10 M 40 30 Q 40 -5 45 5 M 40 30 Q 55 0 60 15" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Vrh šargarepe -->
+    <path d="M 25 35 Q 40 25 55 35 Q 50 65 40 80 Q 30 65 25 35 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <line x1="30" y1="45" x2="45" y2="45" stroke="#111827" stroke-width="2.5" />
+    <line x1="35" y1="58" x2="50" y2="58" stroke="#111827" stroke-width="2.5" />
+  </g>
+
+  <!-- Šargarepa 2 -->
+  <g transform="translate(230, 620)">
+    <path d="M 40 30 Q 30 0 20 10 M 40 30 Q 40 -5 45 5 M 40 30 Q 55 0 60 15" stroke="#111827" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M 25 35 Q 40 25 55 35 Q 50 65 40 80 Q 30 65 25 35 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+    <line x1="30" y1="45" x2="45" y2="45" stroke="#111827" stroke-width="2.5" />
+    <line x1="35" y1="58" x2="50" y2="58" stroke="#111827" stroke-width="2.5" />
+  </g>
+
+  <!-- Velika debela bundeva -->
+  <g transform="translate(420, 600)">
+    <!-- Peteljka bundeve -->
+    <path d="M 70 30 Q 65 10 75 5 Q 85 5 80 30" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <!-- Rebra bundeve -->
+    <ellipse cx="75" cy="70" rx="55" ry="42" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
+    <ellipse cx="75" cy="70" rx="35" ry="42" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <ellipse cx="75" cy="70" rx="16" ry="42" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+  </g>
+
+  <!-- Veseli pužić na zemlji levo -->
+  <g transform="translate(70, 710)">
+    <path d="M 20 40 Q 50 40 80 40 Q 90 25 80 15 Q 70 20 60 30 Z" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <!-- Rogići -->
+    <line x1="80" y1="18" x2="88" y2="8" stroke="#111827" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="88" cy="8" r="2.5" fill="#111827" />
+    <!-- Kućica puža sa spiralom -->
+    <circle cx="35" cy="22" r="20" fill="#ffffff" stroke="#111827" stroke-width="3.5" />
+    <path d="M 35 22 A 8 8 0 0 1 43 22 A 13 13 0 0 1 30 35" fill="none" stroke="#111827" stroke-width="2.5" />
+  </g>
+</svg>

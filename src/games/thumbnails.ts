@@ -25,5 +25,11 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringCyrillic: '/slike/bojanke/slova-cirilica.svg',
   colorByNumber: '/slike/bojanke/bojenje-po-brojevima.svg',
   coloringScenes: '/slike/bojanke/velika-bojanka.svg',
+  coloringCircus: '/slike/bojanke/cirkus-i-madjionicar.svg',
+  coloringJungle: '/slike/bojanke/tropska-dzungla.svg',
+  coloringRobot: '/slike/bojanke/prijateljski-robot.svg',
+  coloringGarden: '/slike/bojanke/veseli-vrt.svg',
+  coloringPirates: '/slike/bojanke/gusarski-brod.svg',
+  coloringFair: '/slike/bojanke/zabavni-park.svg',
   colors: '/slike/bojanke/oboji-oblike.svg',
 };
