@@ -1,6 +1,6 @@
 import { Laptop, School, type LucideIcon } from 'lucide-react';
 import { siteConfig } from '../config/site';
-import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
+import Icon, { type IconName } from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
@@ -24,7 +24,7 @@ export default function About() {
     [
       { label: 'LinkedIn', href: social.linkedin, icon: 'linkedin' },
       { label: 'Email', href: `mailto:${author.email}`, icon: 'mail' },
-    ] satisfies { label: string; href: string; icon: PixelIconName }[]
+    ] satisfies { label: string; href: string; icon: IconName }[]
   ).filter(({ href }) => href.length > 0);
 
   const contactItems: { label: string; text: string; href: string }[] = [
@@ -55,11 +55,11 @@ export default function About() {
                 rel={href.startsWith('mailto:') ? undefined : 'me noopener'}
                 className="focus-ring grid h-[42px] w-[42px] place-items-center rounded-xl border border-line text-muted transition hover:-translate-y-0.5 hover:border-accent hover:bg-surface hover:text-accent"
               >
-                <PixelIcon name={icon} />
+                <Icon name={icon} />
               </a>
             ))}
             <span className="inline-flex items-center gap-2 text-sm text-muted max-sm:w-full sm:ml-2.5">
-              <PixelIcon name="pin" />
+              <Icon name="pin" />
               {author.location}
             </span>
           </div>

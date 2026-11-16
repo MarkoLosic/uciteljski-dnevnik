@@ -58,6 +58,7 @@ export const de: Dictionary = {
     toLight: 'Helles Design aktivieren',
     toDark: 'Dunkles Design aktivieren',
   },
+  backToTop: 'Nach oben',
   footer: {
     label: 'Links in der Fußzeile',
     rights: 'Alle Rechte vorbehalten.',

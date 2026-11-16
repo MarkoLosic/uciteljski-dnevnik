@@ -62,6 +62,7 @@ export const sr = {
     toLight: 'Uključi svjetlu temu',
     toDark: 'Uključi tamnu temu',
   },
+  backToTop: 'Nazad na vrh',
   footer: {
     label: 'Linkovi u podnožju',
     rights: 'Sva prava zadržana.',

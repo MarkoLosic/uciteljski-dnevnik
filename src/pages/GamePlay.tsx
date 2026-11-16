@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Printer, RotateCcw, Star } from 'lucide-react';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import NotFound from './NotFound';
 import { useLocale } from '../i18n/LocaleContext';
 import { GAME_IDS, hasWorksheet, isGameId, worksheetsFor, type GameId, type WorksheetId } from '../games/ids';
@@ -51,7 +51,7 @@ function GameStage({ id }: { id: GameId }) {
         to={paths.games}
         className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-muted transition-colors hover:text-accent"
       >
-        <PixelIcon name="back" size={14} />
+        <Icon name="back" size={14} />
         {g.back}
       </Link>
       <header className="mt-5 mb-6">
@@ -112,7 +112,7 @@ function GameStage({ id }: { id: GameId }) {
                 </button>
                 <Link to={paths.game(nextId)} className="btn btn-primary focus-ring">
                   {g.next}: {g.list[nextId].title}
-                  <PixelIcon name="arrow" />
+                  <Icon name="arrow" />
                 </Link>
               </div>
             </div>

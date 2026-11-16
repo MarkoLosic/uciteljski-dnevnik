@@ -58,6 +58,7 @@ export const hr: Dictionary = {
     toLight: 'Uključi svijetlu temu',
     toDark: 'Uključi tamnu temu',
   },
+  backToTop: 'Natrag na vrh',
   footer: {
     label: 'Poveznice u podnožju',
     rights: 'Sva prava pridržana.',

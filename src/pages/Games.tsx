@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Hand, HeartHandshake, Palette, Timer, type LucideIcon } from 'lucide-react';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { GAME_IDS, worksheetsFor } from '../games/ids';
 import { games } from '../games/registry';
@@ -68,7 +68,7 @@ export default function Games() {
                   ))}
                   <span className="ml-auto inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                     {g.play}
-                    <PixelIcon name="arrow" size={14} />
+                    <Icon name="arrow" size={14} />
                   </span>
                 </div>
               </Link>
@@ -92,7 +92,7 @@ export default function Games() {
           <Link to={paths.worksheets} className="btn btn-primary focus-ring shrink-0">
             <Palette aria-hidden="true" className="h-5 w-5" />
             {t.nav.worksheets} ({sheetIds.length})
-            <PixelIcon name="arrow" />
+            <Icon name="arrow" />
           </Link>
         </div>
       </section>
@@ -107,7 +107,7 @@ export default function Games() {
           <div className="mt-5 flex flex-wrap items-center gap-2.5">
             <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.pripremePromo.ctaAll}
-              <PixelIcon name="arrow" />
+              <Icon name="arrow" />
             </a>
             {[1, 2, 3, 4, 5].map((r) => (
               <a

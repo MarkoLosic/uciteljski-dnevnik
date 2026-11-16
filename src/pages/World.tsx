@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import EmptyState from '../components/EmptyState';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import CountryCode from '../components/CountryCode';
 import ResultsTable from '../components/ResultsTable';
 import { useLocale } from '../i18n/LocaleContext';
@@ -78,7 +78,7 @@ export default function World() {
                 </p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                   {w.readMore}
-                  <PixelIcon name="arrow" size={14} className="transition-transform group-hover:translate-x-1" />
+                  <Icon name="arrow" size={14} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </li>

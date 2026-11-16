@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 
@@ -14,7 +14,7 @@ export default function NotFound() {
       <h1 className="mt-4 font-head text-2xl font-bold tracking-tight sm:text-3xl">{t.notFound.title}</h1>
       <Link to={paths.home} className="btn btn-primary focus-ring mt-9">
         {t.notFound.backHome}
-        <PixelIcon name="arrow" />
+        <Icon name="arrow" />
       </Link>
     </div>
   );

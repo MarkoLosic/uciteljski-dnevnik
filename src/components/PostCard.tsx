@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import type { PostMeta } from '../types/post';
 import { formatDate } from '../lib/formatDate';
 import CategoryBadge from './CategoryBadge';
-import PixelIcon from './PixelIcon';
+import Icon from './Icon';
 import { useLocale } from '../i18n/LocaleContext';
 
 interface PostCardProps {
@@ -23,7 +23,7 @@ export default function PostCard({ post }: PostCardProps) {
       <div className="mt-auto flex items-center justify-between gap-3 pt-1.5">
         <span className="inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent">
           {t.blog.readMore}
-          <PixelIcon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
+          <Icon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
         </span>
         <span className="font-mono text-[12.5px] font-medium text-muted">{t.blog.readingTime(post.readingMinutes)}</span>
       </div>

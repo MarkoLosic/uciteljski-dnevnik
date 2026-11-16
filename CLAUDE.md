@@ -126,7 +126,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── TableOfContents.tsx # sadržaj članka (## i ###), samo ako ima ≥ 3 sekcije ##
     │   ├── CodeBlock.tsx      # <pre> iz Markdowna sa dugmetom „Kopiraj“
     │   ├── ShareButtons.tsx   # deljenje članka: Viber, WhatsApp, Facebook, kopiraj link, navigator.share
-    │   ├── PixelIcon.tsx      # pikselske SVG ikone (9×9) sa markolosic.github.io
+    │   ├── Icon.tsx           # ikone sajta (lucide-react + GitHub/LinkedIn u istom stilu)
+    │   ├── BackToTop.tsx      # plutajuće dugme „Nazad na vrh“ (posle 600px skrola)
     │   ├── CountryCode.tsx    # dvoslovna oznaka zemlje (umesto emoji zastave)
     │   └── ResultsTable.tsx   # tabela PISA / TIMSS / PIRLS + prosek OECD-a
     ├── pages/
@@ -551,12 +552,12 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 - Struktura: `<Header />` + `<main><ErrorBoundary key={pathname}><Suspense><Outlet /></Suspense></ErrorBoundary></main>` + `<Footer />`.
 - Greška pri iscrtavanju (ili neuspelo učitavanje chunk-a posle deploy-a) prikazuje `t.error` sa dugmetom „Osveži stranicu“ umesto belog ekrana.
 - `<main>` ima `min-h-screen` da footer bude na dnu.
-- Sadrži `<ScrollToTop />`.
+- Sadrži `<ScrollToTop />` i `<BackToTop />` (tekst `t.backToTop`).
 
 ### 9.2. `Header.tsx`
 
 - Plutajuća pilula: `fixed top-3.5`, centrirana, `rounded-full`, poluprozirna `bg-surface/70` + `backdrop-blur`; posle skrola dobija jaču granicu i senku.
-- Levo: znak (zeleni kvadrat sa pikselskom kvačicom) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
+- Levo: znak (zeleni kvadrat sa ikonom sveske i olovke, `Icon name="logo"`; isti znak je u `favicon.svg` i zaglavlju priprema) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
 - Desno: Početna, Blog, Igre, O meni (`NavLink`; „Početna“ je skrivena na < 640px jer logo vodi na početnu; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<LanguageSwitcher />` + `<ThemeToggle />`.
 
 ### 9.3. `Footer.tsx`
