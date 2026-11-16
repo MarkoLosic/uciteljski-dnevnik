@@ -1581,7 +1581,7 @@ function TestFrame({
   level3: ReactNode;
 }) {
   return (
-    <div className="w-full text-[#111827] flex flex-col gap-3.5 print:gap-3 text-sm">
+    <div className="test-frame w-full text-[#111827] flex flex-col gap-3.5 print:gap-3 text-sm">
       {/* Zaglavlje za podatke o učeniku i ocjenjivanje */}
       <div className="rounded-xl border-2 border-[#111827] bg-[#f9fafb] p-3 print:bg-white">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold pb-2 border-b border-gray-300">
