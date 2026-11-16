@@ -62,6 +62,7 @@ export const sr = {
     toLight: 'Uključi svjetlu temu',
     toDark: 'Uključi tamnu temu',
   },
+  backToTop: 'Nazad na vrh',
   footer: {
     label: 'Linkovi u podnožju',
     rights: 'Sva prava zadržana.',
@@ -975,6 +976,117 @@ export const sr = {
     title: 'Nešto je pošlo naopako',
     message: 'Stranica se nije učitala kako treba. Osvježite je — ako je sajt upravo ažuriran, to obično riješi problem.',
     reload: 'Osvježi stranicu',
+  },
+  copyright: {
+    footerLink: 'Autorska prava',
+    eyebrow: 'Pravila korišćenja',
+    title: 'Autorska prava i korišćenje sadržaja',
+    description:
+      'Šta smijete slobodno da štampate, kopirate i dijelite sa ovog sajta, šta nije dozvoljeno bez dozvole i kako da navedete izvor.',
+    intro:
+      'Materijale na ovom sajtu pravim da bi ih koristili učitelji, roditelji i djeca. Zato je većina upotrebe slobodna i besplatna. Tražim samo da se poštuje rad koji stoji iza njih i da izvor ostane vidljiv.',
+    updated: (date: string) => `Posljednja izmjena: ${date}`,
+    owner: {
+      title: 'Ko je vlasnik sajta i sadržaja',
+      text: (author: string) =>
+        `Jedini vlasnik ovog sajta, njegovog imena, logotipa, domena i cjelokupnog sadržaja je ${author}. Tekstovi, dnevne pripreme, zadaci za tri nivoa, radni listovi, bojanke, vježbanke, priručnici, igre, ilustracije i dizajn sajta njegovo su autorsko djelo, osim kada je uz materijal navedeno drugačije. Sva prava su zadržana.`,
+      items: [
+        'Dnevne pripreme su urađene prema nastavnim planovima i programima Republike Srpske i Federacije BiH. Sami programi (nazivi tema, ishodi i sadržaji) javni su dokumenti nadležnih ministarstava i pedagoških zavoda. Ono što je autorsko djelo jesu same pripreme: izbor i redoslijed aktivnosti, tok časa, primjeri, zadaci i tekst.',
+        'Niko drugi nije vlasnik, suvlasnik, koautor niti ovlašćeni zastupnik ovog sajta. Niko nije ovlašćen da u ime sajta ili autora prodaje materijale, naplaćuje pristup, sklapa dogovore ili prikuplja podatke.',
+        'Ime sajta, logotip i ime autora ne smiju se koristiti tako da se stvori utisak da neko drugi stoji iza sajta ili da sajt stoji iza tuđeg sadržaja.',
+        'Pravo autora da bude naveden kao autor svog djela (moralno pravo) ne može se prenijeti na drugoga. Dozvola za korišćenje materijala, čak i kada je data, nikome ne daje pravo da se predstavlja kao njegov autor.',
+        'Sadržaj je zaštićen Zakonom o autorskom i srodnim pravima Bosne i Hercegovine i međunarodnim ugovorima o autorskom pravu (Bernska konvencija).',
+      ],
+    },
+    allowed: {
+      title: 'Šta smijete bez pitanja',
+      text: 'Ako je upotreba besplatna i nekomercijalna, slobodno:',
+      items: [
+        'štampajte i kopirajte radne listove, bojanke, vježbanke, priručnike i pripreme za rad sa svojim odjeljenjem, svojim djetetom ili u produženom boravku;',
+        'koristite materijale na času, u stručnom aktivu, na seminaru ili oglednom času, uz navođenje izvora;',
+        'dijelite link ka stranici: u Viber grupi odjeljenja, na društvenim mrežama, u mejlu ili na sajtu škole;',
+        'citirajte kratke odlomke tekstova (nekoliko rečenica), uz ime autora i link ka originalu;',
+        'prilagodite materijal svojim učenicima (povećajte slova, izostavite ili dodajte zadatak) za rad u svojoj učionici.',
+      ],
+    },
+    forbidden: {
+      title: 'Šta nije dozvoljeno bez pisane dozvole',
+      text: 'Za sljedeće je potrebna moja pisana saglasnost:',
+      items: [
+        'prodaja materijala ili njihovo uključivanje u bilo šta što se naplaćuje: zbirke, kurseve, pretplate, platforme sa plaćenim pristupom;',
+        'objavljivanje cijelih tekstova, radnih listova ili PDF datoteka na drugim sajtovima, blogovima, u grupama i na platformama za dijeljenje datoteka (umjesto toga podijelite link);',
+        'štampanje u udžbenicima, zbirkama ili časopisima;',
+        'masovno preuzimanje sadržaja skriptama i botovima radi ponovne objave.',
+      ],
+    },
+    never: {
+      title: 'Nije dozvoljeno ni uz dozvolu',
+      items: [
+        'predstavljanje kao vlasnik, suvlasnik, autor ili zastupnik ovog sajta i njegovog sadržaja;',
+        'objavljivanje materijala sa ovog sajta, preuzetog ili prerađenog, pod svojim ili tuđim imenom kao autorskog djela;',
+        'uklanjanje ili zamjena imena autora i sajta na materijalu;',
+        'korišćenje imena sajta, logotipa ili imena autora tako da izgleda da sajt stoji iza vašeg sadržaja, proizvoda ili usluge.',
+      ],
+    },
+    credit: {
+      title: 'Kako navesti izvor',
+      text: 'Dovoljno je ime autora, ime sajta i link ka stranici sa koje je materijal preuzet. Na primjer:',
+      source: 'Izvor',
+    },
+    others: {
+      title: 'Sadržaj drugih autora',
+      items: [
+        'Spiskovi lektira prepisani su iz javno objavljenih nastavnih programa, a izvori su navedeni na stranici sa lektirama.',
+        'Knjige se na sajtu samo preporučuju; odlomci djela zaštićenih autorskim pravom se ne objavljuju.',
+        'Podaci o školskim sistemima i rezultati istraživanja imaju naveden izvor uz svaki tekst.',
+        'Ikone su iz biblioteke Lucide (licenca ISC), a fontovi Space Grotesk, Inter i JetBrains Mono sa servisa Google Fonts (SIL Open Font License).',
+      ],
+    },
+    report: {
+      title: 'Ako primijetite da je sadržaj preuzet',
+      text: 'Ako vidite materijal sa ovog sajta objavljen ili prodat bez dozvole, ako se neko predstavlja kao vlasnik ili autor ovog sajta, ili smatrate da sajt koristi vaš rad bez dozvole, javite mi se preko kontakt forme. Provjeriću svaku prijavu i, ako je opravdana, ukloniti sporni sadržaj.',
+    },
+    permission: {
+      title: 'Dozvola i saradnja',
+      text: 'Ako želite da materijal koristite na način koji ovdje nije pokriven, na primjer u zbirci, na kursu ili na drugom sajtu, pišite mi. Rado razgovaram o saradnji.',
+      cta: 'Pišite mi',
+    },
+  },
+  contact: {
+    eyebrow: 'Kontakt',
+    title: 'Kontaktirajte me',
+    cta: 'Kontaktirajte me',
+    description: 'Pošaljite pitanje, prijedlog ili poziv na saradnju preko kontakt forme. Odgovor stiže na mejl koji ostavite.',
+    intro: 'Pitanja, prijedlozi, ideja za temu, saradnja ili samo pozdrav — pišite. Odgovor stiže na mejl koji ostavite u formi.',
+    fields: {
+      name: 'Ime i prezime',
+      email: 'Vaš mejl',
+      emailHint: 'Na ovu adresu stiže odgovor.',
+      topic: 'Tema',
+      message: 'Poruka',
+      messageHint: (max: number) => `Najviše ${max} znakova.`,
+      honeypot: 'Ne popunjavajte ovo polje',
+    },
+    topics: {
+      question: 'Pitanje',
+      collaboration: 'Saradnja',
+      copyright: 'Autorska prava ili preuzet sadržaj',
+      bug: 'Greška na sajtu',
+      other: 'Drugo',
+    },
+    errors: {
+      name: 'Upišite ime (najmanje 2 slova).',
+      email: 'Upišite ispravnu mejl adresu.',
+      topic: 'Izaberite temu.',
+      message: 'Poruka mora imati najmanje 10 znakova.',
+    },
+    privacy: 'Ime i mejl koristim samo da vam odgovorim. Ne objavljujem ih, ne dijelim ih i ne šaljem vam reklame.',
+    submit: 'Pošalji poruku',
+    sending: 'Šaljem…',
+    successTitle: 'Poruka je poslata',
+    successText: 'Hvala! Javiću vam se na mejl koji ste ostavili, obično u roku od nekoliko dana.',
+    sendAnother: 'Pošalji novu poruku',
+    errorText: 'Poruka nije poslata. Provjerite internet vezu i pokušajte ponovo za minut.',
   },
 };
 

@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import CountryCode from '../components/CountryCode';
 import EmptyState from '../components/EmptyState';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import ShareButtons from '../components/ShareButtons';
 import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
@@ -62,7 +62,7 @@ export default function Country() {
         to={paths.world}
         className="focus-ring mb-7 inline-flex items-center gap-2 rounded text-[14.5px] font-medium text-muted transition-colors hover:text-accent"
       >
-        <PixelIcon name="back" size={16} />
+        <Icon name="back" size={16} />
         {w.allCountries}
       </Link>
 

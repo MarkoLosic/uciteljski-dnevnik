@@ -14,7 +14,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { siteConfig } from '../config/site';
-import PixelIcon from './PixelIcon';
+import Icon from './Icon';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLocale } from '../i18n/LocaleContext';
@@ -80,7 +80,7 @@ export default function Header() {
           className="focus-ring flex items-center gap-2 sm:gap-2.5 rounded-lg font-head text-[15px] sm:text-base font-semibold tracking-tight shrink-0"
         >
           <span className="grid h-7 w-7 place-items-center rounded-[9px] bg-accent text-accent-ink shrink-0">
-            <PixelIcon name="mark" />
+            <Icon name="logo" />
           </span>
           <span className="font-semibold text-ink">{siteConfig.name}</span>
         </Link>

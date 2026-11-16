@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { Printer } from 'lucide-react';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import NotFound from './NotFound';
 import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
@@ -32,7 +32,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
           to={paths.worksheets}
           className="focus-ring inline-flex items-center gap-2 rounded text-sm font-semibold text-muted transition-colors hover:text-accent"
         >
-          <PixelIcon name="back" size={14} />
+          <Icon name="back" size={14} />
           {ws.backToWorksheets}
         </Link>
         <button type="button" onClick={() => window.print()} className="btn btn-primary focus-ring">

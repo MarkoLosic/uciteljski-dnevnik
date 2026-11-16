@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { siteConfig } from '../config/site';
 import { useLocale } from '../i18n/LocaleContext';
 import { localeBase } from '../i18n/paths';
@@ -10,6 +10,7 @@ const linkClass = 'focus-ring rounded py-2 transition-colors hover:text-accent';
 
 export default function Footer() {
   const { locale, t, paths } = useLocale();
+  const { pathname } = useLocation();
   const { social } = siteConfig;
   const external = [
     { label: 'LinkedIn', href: social.linkedin },
@@ -49,9 +50,12 @@ export default function Footer() {
         <Link to={paths.about} className={linkClass}>
           {t.nav.about}
         </Link>
-        <a href={`mailto:${siteConfig.author.email}`} className={linkClass}>
+        <Link to={paths.contact} state={{ from: pathname }} className={linkClass}>
           {t.footer.contact}
-        </a>
+        </Link>
+        <Link to={paths.copyright} className={linkClass}>
+          {t.copyright.footerLink}
+        </Link>
         {external.map(({ label, href }) => (
           <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
             {label}

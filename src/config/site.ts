@@ -4,9 +4,11 @@ export const siteConfig = {
   name: 'učiteljskidnevnik.online',
   author: {
     name: 'Marko Lošić',
-    email: 'markolosic1993@gmail.com',
+    // Mejl namjerno nije ovdje: poruke idu kroz kontakt formu, a adresa je samo u CONTACT_TO_EMAIL na Vercelu.
   },
   url: 'https://www.xn--uiteljskidnevnik-s7b.online',
+  displayDomain: 'www.učiteljskidnevnik.online', // isti domen kako ga čitaoci vide (primjer navođenja izvora)
+  copyrightUpdated: '2026-11-16', // datum posljednje izmjene stranice „Autorska prava“
   social: {
     linkedin: 'https://www.linkedin.com/in/markolo%C5%A1i%C4%87/',
     twitter: '',

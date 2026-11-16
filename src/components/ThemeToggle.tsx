@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PixelIcon from './PixelIcon';
+import Icon from './Icon';
 import { useLocale } from '../i18n/LocaleContext';
 
 type Theme = 'dark' | 'light';
@@ -30,7 +30,7 @@ export default function ThemeToggle() {
       aria-label={theme === 'dark' ? t.theme.toLight : t.theme.toDark}
       className="focus-ring inline-grid h-[38px] w-[38px] place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:bg-surface-2 hover:text-ink"
     >
-      <PixelIcon name={theme === 'dark' ? 'moon' : 'sun'} />
+      <Icon name={theme === 'dark' ? 'moon' : 'sun'} />
     </button>
   );
 }

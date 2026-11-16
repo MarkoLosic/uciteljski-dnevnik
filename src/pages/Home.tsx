@@ -15,7 +15,7 @@ import {
 import { getRecentPosts } from '../lib/posts';
 import PostCard from '../components/PostCard';
 import EmptyState from '../components/EmptyState';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
@@ -47,7 +47,7 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.home.ctaPripreme}
-              <PixelIcon name="arrow" />
+              <Icon name="arrow" />
             </a>
             <Link to={paths.worksheets} className="btn btn-ghost focus-ring">
               {t.home.ctaWorksheets}
@@ -164,7 +164,7 @@ export default function Home() {
                   <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{desc}</p>
                 </div>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                  {t.pripremePromo.gradeLabel(grade)} <PixelIcon name="arrow" size={14} />
+                  {t.pripremePromo.gradeLabel(grade)} <Icon name="arrow" size={14} />
                 </span>
               </a>
             </li>
@@ -182,7 +182,7 @@ export default function Home() {
                 <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{t.pripremePromo.desc}</p>
               </div>
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                {t.pripremePromo.ctaAll} <PixelIcon name="arrow" size={14} />
+                {t.pripremePromo.ctaAll} <Icon name="arrow" size={14} />
               </span>
             </a>
           </li>
@@ -220,7 +220,7 @@ export default function Home() {
               to={paths.blog}
               className="focus-ring inline-flex items-center gap-2 rounded font-semibold text-accent hover:underline"
             >
-              {t.blog.allPosts} <PixelIcon name="arrow" size={16} />
+              {t.blog.allPosts} <Icon name="arrow" size={16} />
             </Link>
           )}
         </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PixelIcon from './PixelIcon';
+import Icon from './Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { copyText } from '../lib/clipboard';
 
@@ -44,7 +44,7 @@ export default function ShareButtons({ title, url }: ShareButtonsProps) {
         {canShare && (
           <li>
             <button type="button" onClick={handleNativeShare} className="share-btn focus-ring">
-              <PixelIcon name="arrow" size={13} />
+              <Icon name="arrow" size={13} />
               {t.blog.shareNative}
             </button>
           </li>
@@ -67,7 +67,7 @@ export default function ShareButtons({ title, url }: ShareButtonsProps) {
             onClick={async () => setCopied(await copyText(url))}
             className="share-btn focus-ring"
           >
-            <PixelIcon name={copied ? 'mark' : 'copy'} size={13} />
+            <Icon name={copied ? 'check' : 'copy'} size={13} />
             <span aria-live="polite">{copied ? t.blog.linkCopied : t.blog.copyLink}</span>
           </button>
         </li>

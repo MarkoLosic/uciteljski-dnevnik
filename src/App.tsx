@@ -19,6 +19,8 @@ const Worksheet = lazy(() => import('./pages/Worksheet'));
 const World = lazy(() => import('./pages/World'));
 const Country = lazy(() => import('./pages/Country'));
 const Lektire = lazy(() => import('./pages/Lektire'));
+const Copyright = lazy(() => import('./pages/Copyright'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 // Isti skup ruta za svaki jezik: srpski bez prefiksa (`/blog`), ostali sa njim (`/en/blog`).
 export default function App() {
@@ -51,6 +53,8 @@ export default function App() {
           />
           <Route path={localeInfo[locale].worldSlug} element={<World />} />
           <Route path={`${localeInfo[locale].worldSlug}/:countryId`} element={<Country />} />
+          <Route path={localeInfo[locale].copyrightSlug} element={<Copyright />} />
+          <Route path={localeInfo[locale].contactSlug} element={<Contact />} />
           {hasLektire(locale) && <Route path={LEKTIRE_SLUG} element={<Lektire />} />}
           <Route path="*" element={<NotFound />} />
         </Route>

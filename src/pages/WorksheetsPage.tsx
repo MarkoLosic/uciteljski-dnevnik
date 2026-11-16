@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Clock, Gamepad2, GraduationCap, Palette, Printer } from 'lucide-react';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { WORKSHEET_GROUPS, worksheetsFor, type WorksheetGroup } from '../games/ids';
 import { usePageMeta } from '../lib/usePageMeta';
@@ -202,7 +202,7 @@ export default function WorksheetsPage() {
                             <Printer aria-hidden="true" className="h-3.5 w-3.5" />
                             Otvori za štampu
                           </span>
-                          <PixelIcon name="arrow" size={12} />
+                          <Icon name="arrow" size={12} />
                         </div>
                       </Link>
                     </li>
@@ -227,7 +227,7 @@ export default function WorksheetsPage() {
           <Link to={paths.games} className="btn btn-primary focus-ring shrink-0">
             <Gamepad2 aria-hidden="true" className="h-5 w-5" />
             {t.nav.games}
-            <PixelIcon name="arrow" />
+            <Icon name="arrow" />
           </Link>
         </div>
       </section>
@@ -243,7 +243,7 @@ export default function WorksheetsPage() {
           <div className="mt-5 flex flex-wrap items-center gap-2.5">
             <a href="/pripreme" className="btn btn-primary focus-ring">
               {t.pripremePromo.ctaAll}
-              <PixelIcon name="arrow" />
+              <Icon name="arrow" />
             </a>
             {[1, 2, 3, 4, 5].map((r) => (
               <a

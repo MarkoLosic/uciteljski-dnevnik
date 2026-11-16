@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ComponentPropsWithoutRef } from 'react';
-import PixelIcon from './PixelIcon';
+import Icon from './Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { copyText } from '../lib/clipboard';
 
@@ -28,7 +28,7 @@ export default function CodeBlock(props: ComponentPropsWithoutRef<'pre'>) {
     <div className="code-block">
       <pre ref={preRef} {...props} />
       <button type="button" onClick={handleCopy} className="code-copy focus-ring">
-        <PixelIcon name={status === 'copied' ? 'mark' : 'copy'} size={13} />
+        <Icon name={status === 'copied' ? 'check' : 'copy'} size={13} />
         <span aria-live="polite">{label}</span>
       </button>
     </div>

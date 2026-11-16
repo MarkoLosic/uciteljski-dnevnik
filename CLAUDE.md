@@ -90,6 +90,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
 ├── plugins/
 │   └── pripremeStranice.ts    # statične stranice priprema: /pripreme/<slug>, po razredu i predmetu (vidi 10.8)
 ├── vercel.json                # SPA rewrite: sve rute → index.html
+├── api/
+│   └── contact.ts             # Vercel funkcija: kontakt forma → mejl preko Resend-a (sekcija 10.11)
 ├── index.html
 ├── .gitignore
 ├── README.md                  ← kratak opis za ljude (opciono)
@@ -126,7 +128,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── TableOfContents.tsx # sadržaj članka (## i ###), samo ako ima ≥ 3 sekcije ##
     │   ├── CodeBlock.tsx      # <pre> iz Markdowna sa dugmetom „Kopiraj“
     │   ├── ShareButtons.tsx   # deljenje članka: Viber, WhatsApp, Facebook, kopiraj link, navigator.share
-    │   ├── PixelIcon.tsx      # pikselske SVG ikone (9×9) sa markolosic.github.io
+    │   ├── Icon.tsx           # ikone sajta (lucide-react + GitHub/LinkedIn u istom stilu)
+    │   ├── BackToTop.tsx      # plutajuće dugme „Nazad na vrh“ (posle 600px skrola)
     │   ├── CountryCode.tsx    # dvoslovna oznaka zemlje (umesto emoji zastave)
     │   └── ResultsTable.tsx   # tabela PISA / TIMSS / PIRLS + prosek OECD-a
     ├── pages/
@@ -140,6 +143,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── World.tsx          # Škole u svetu: kartice zemalja + tabela za poređenje
     │   ├── Country.tsx        # jedna zemlja: činjenice, tekst, izvori
     │   ├── Lektire.tsx        # lektire 1–5. razred (RS i FBiH) + preporuke i savjeti (sekcija 10.9)
+    │   ├── Copyright.tsx      # Autorska prava: šta je dozvoljeno, šta nije, navođenje izvora (sekcija 10.10)
+    │   ├── Contact.tsx        # Kontakt forma (sekcija 10.11)
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
@@ -164,6 +169,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── usePageMeta.ts     # naslov, opis, Open Graph i canonical po stranici
     │   ├── headings.ts        # extractHeadings, slugifyHeading — id-jevi naslova za sadržaj i sidra
     │   ├── clipboard.ts       # copyText (Clipboard API + rezervna varijanta)
+    │   ├── contact.ts         # teme, ograničenja i validacija kontakt forme (deli se sa api/contact.ts)
     │   ├── formatDate.ts      # formatiranje datuma (po jeziku)
     │   ├── countries.ts       # čitanje zemalja (isti obrazac kao posts.ts)
     │   └── countryFrontmatter.ts # validateCountry (deli se sa vite.config.ts)
@@ -209,7 +215,7 @@ export const siteConfig = {
 } as const;
 ```
 
-**Ažurirano (višejezičnost):** `siteConfig` sada drži samo ono što je isto na svim jezicima: `name`, `author.name`, `author.email`, `url`, `social`. Prevodivi tekstovi (`tagline`, `author.role/location/intro/background`, `topics`) su u `src/i18n/locales/<jezik>.ts`. Komponente ih spajaju: `const author = { ...siteConfig.author, ...t.author }`.
+**Ažurirano (višejezičnost):** `siteConfig` sada drži samo ono što je isto na svim jezicima: `name`, `author.name`, `url`, `social`. **Mejl autora namjerno nije u kodu** (ni u `siteConfig`) — kontakt ide samo kroz formu (sekcija 10.11); ne vraćati `mailto:` linkove. Prevodivi tekstovi (`tagline`, `author.role/location/intro/background`, `topics`) su u `src/i18n/locales/<jezik>.ts`. Komponente ih spajaju: `const author = { ...siteConfig.author, ...t.author }`.
 
 **Pravilo:** Kada korisnik menja tekst o sebi, menjaj ga u **svih pet** rečnika.
 
@@ -460,6 +466,8 @@ Koristi `react-router-dom`:
 | `/skole-u-svetu` | `<World />` | Razredna nastava u svetu (sekcija 10.7) |
 | `/skole-u-svetu/:countryId` | `<Country />` | Jedna zemlja |
 | `/lektire` | `<Lektire />` | Lektire 1–5. razred (samo sr i bs: `/lektire`, `/bs/lektire`) |
+| `/kontakt` | `<Contact />` | Kontakt forma (en `/en/contact`, de `/de/kontakt`); `?tema=<id>` bira temu |
+| `/autorska-prava` | `<Copyright />` | Autorska prava i pravila korišćenja (en `/en/copyright`, de `/de/urheberrecht`) |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />` (unutar `ErrorBoundary` i `Suspense`). `Home`, `BlogList` i `NotFound` su u glavnom paketu; `BlogPost` (react-markdown), `About`, `Games`, `GamePlay` i `Worksheet` se učitavaju preko `React.lazy`.
@@ -551,19 +559,19 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 - Struktura: `<Header />` + `<main><ErrorBoundary key={pathname}><Suspense><Outlet /></Suspense></ErrorBoundary></main>` + `<Footer />`.
 - Greška pri iscrtavanju (ili neuspelo učitavanje chunk-a posle deploy-a) prikazuje `t.error` sa dugmetom „Osveži stranicu“ umesto belog ekrana.
 - `<main>` ima `min-h-screen` da footer bude na dnu.
-- Sadrži `<ScrollToTop />`.
+- Sadrži `<ScrollToTop />` i `<BackToTop />` (tekst `t.backToTop`).
 
 ### 9.2. `Header.tsx`
 
 - Plutajuća pilula: `fixed top-3.5`, centrirana, `rounded-full`, poluprozirna `bg-surface/70` + `backdrop-blur`; posle skrola dobija jaču granicu i senku.
-- Levo: znak (zeleni kvadrat sa pikselskom kvačicom) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
+- Levo: znak (zeleni kvadrat sa ikonom sveske i olovke, `Icon name="logo"`; isti znak je u `favicon.svg` i zaglavlju priprema) + `siteConfig.name` (ime skriveno na < 640px, ostaje za čitače ekrana).
 - Desno: Početna, Blog, Igre, O meni (`NavLink`; „Početna“ je skrivena na < 640px jer logo vodi na početnu; aktivni = `bg-surface-2 text-ink` sa unutrašnjom granicom) + `<LanguageSwitcher />` + `<ThemeToggle />`.
 
 ### 9.3. `Footer.tsx`
 
 - Copyright: `© {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}`.
 - Autor: `{t.footer.author}: {siteConfig.author.name}`.
-- Linkovi: O meni, Kontakt (mailto), GitHub i LinkedIn (iz `siteConfig.social`, samo neprazni), RSS (`<jezik>/rss.xml`, samo ako jezik ima članke).
+- Linkovi: O meni, Kontakt (`paths.contact`, ne mailto), Autorska prava (`paths.copyright`), GitHub i LinkedIn (iz `siteConfig.social`, samo neprazni), RSS (`<jezik>/rss.xml`, samo ako jezik ima članke).
 
 ### 9.4. `PostCard.tsx`
 
@@ -710,6 +718,24 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Preporuke (van spiska) ne smiju ponavljati djela sa spiskova; savjeti su za roditelje i učitelje.
 - Statični HTML (`prerender`, `kind: 'lektire'`) sadrži cijeli spisak za pretraživače; stranica je u sitemap-u sa hreflang sr/bs.
 - Link „Lektire“ je i u zaglavlju priprema (`pripreme/index.html`, `admin.html`).
+
+### 10.10. `Copyright.tsx` — autorska prava
+
+- Slug je `localeInfo[locale].copyrightSlug` (`autorska-prava`, en `copyright`, de `urheberrecht`); link je u footeru.
+- Tekst je u `t.copyright` (svih pet rječnika): vlasnik sajta i sadržaja (jedini vlasnik je autor; pripreme su autorsko djelo rađeno po javnim programima RS i FBiH; niko drugi nije vlasnik ni zastupnik), šta je dozvoljeno (besplatna, nekomercijalna upotreba u učionici i kod kuće), šta traži pisanu dozvolu, šta nije dozvoljeno ni uz dozvolu (`never`: lažno predstavljanje, potpisivanje tuđeg djela), kako navesti izvor, sadržaj drugih autora (lektire, ikone, fontovi), prijava preuzetog sadržaja.
+- Datum posljednje izmjene je `siteConfig.copyrightUpdated` — **promijeni ga kad god se mijenjaju pravila**. Primjer navođenja izvora koristi `siteConfig.displayDomain`.
+- Statični HTML (`prerender`, `kind: 'copyright'`) sadrži cijeli tekst; stranica je u sitemap-u na svih pet jezika.
+- Nova vrsta sadržaja (npr. fotografije drugih autora) → dodaj stavku u `others.items`.
+
+### 10.11. `Contact.tsx` — kontakt forma
+
+- Forma (ime, mejl za odgovor, tema iz `CONTACT_TOPICS`, poruka) šalje JSON na `POST /api/contact`. Validacija je u `src/lib/contact.ts` i ista je u browseru i na serveru.
+- `api/contact.ts` je Vercel funkcija (Web `Request`/`Response`, bez dodatnih paketa) koja šalje mejl preko Resend REST API-ja. `reply_to` = mejl pošiljaoca, pa „Odgovori“ ide direktno njemu. Import iz `src/` mora imati ekstenziju `.js` (ES modul na Vercelu).
+- **Promjenljive okruženja na Vercelu** (Settings → Environment Variables): `RESEND_API_KEY`, `CONTACT_TO_EMAIL` (adresa primaoca), opciono `CONTACT_FROM_EMAIL` (bez verifikovanog domena ostaje `onboarding@resend.dev`, koji smije slati samo na mejl Resend naloga). Lokalno: `.env.local` (u `.gitignore`).
+- Zaštita od spama: skriveno polje `website` (zamka), minimalno vrijeme popunjavanja (`CONTACT_LIMITS.minFillMs`), provjera `Origin` = isti host. Bot dobija „uspjeh“ da ne pokušava ponovo.
+- U `npm run dev` plugin `contact-api-dev` (u `vite.config.ts`) poziva istu funkciju; bez `RESEND_API_KEY` poruka se samo ispiše u terminal.
+- Linkovi na formu: footer, „O meni“ (ikona i dugme), „Autorska prava“ (`?tema=collaboration` i `?tema=copyright`). Linkovi šalju `state={{ from: pathname }}`, pa u mejlu piše sa koje je stranice poruka poslata.
+- Nova tema: id u `CONTACT_TOPICS`, oznaka u `t.contact.topics` (svih pet rječnika) i u `TOPIC_LABELS` u `api/contact.ts`.
 
 ### 10.6. `NotFound.tsx`
 

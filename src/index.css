@@ -17,6 +17,7 @@
   --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
   --cat-purple: #c4a5ff;
   --cat-amber: #f0b74e;
+  --danger: #f87171;
   color-scheme: dark;
 }
 
@@ -37,6 +38,7 @@
   --shadow: 0 30px 70px -35px rgba(15, 20, 32, 0.35);
   --cat-purple: #7c3aed;
   --cat-amber: #b45309;
+  --danger: #b91c1c;
   color-scheme: light;
 }
 
@@ -690,6 +692,28 @@
       gap: 2px;
       margin-top: 16px;
     }
+  }
+}
+
+/* Diferencirani testovi na telefonu: list je uži od A4, pa se linije za pisanje (____) i redovi
+   sa 3–4 kolone moraju prelomiti, inače se desni dio odsiječe. Van slojeva, da nadjača Tailwind
+   klase kolona; štampa (A4 ≈ 794px) ovo ne vidi. */
+@media screen and (max-width: 640px) {
+  .test-frame {
+    overflow-wrap: anywhere;
+  }
+  .test-frame * {
+    min-width: 0;
+  }
+  .test-frame .grid-cols-3,
+  .test-frame .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .test-frame .justify-around,
+  .test-frame .justify-between {
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 6px;
   }
 }
 

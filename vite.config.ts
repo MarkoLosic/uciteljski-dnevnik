@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
@@ -107,7 +107,7 @@ interface Page {
   path: string;
   meta: PageMetaText;
   lastmod?: string;
-  kind?: 'home' | 'about' | 'lektire';
+  kind?: 'home' | 'about' | 'lektire' | 'copyright';
   article?: SourcePost;
   country?: SourceCountry;
   image?: { src: string; alt: string }; // og:image (jpg/png — pregledi linkova ne prikazuju SVG)
@@ -131,6 +131,13 @@ function pageGroups(posts: SourcePost[], countries: SourceCountry[]): PageGroup[
     everywhere((l) => ({ path: base(l) || '/', meta: pageMeta.home(t(l)), kind: 'home' })),
     everywhere((l) => ({ path: `${base(l)}/blog`, meta: pageMeta.blog(t(l)) })),
     everywhere((l) => ({ path: `${base(l)}/${localeInfo[l].aboutSlug}`, meta: pageMeta.about(t(l)), kind: 'about' })),
+    everywhere((l) => ({
+      path: `${base(l)}/${localeInfo[l].copyrightSlug}`,
+      meta: pageMeta.copyright(t(l)),
+      kind: 'copyright',
+      lastmod: siteConfig.copyrightUpdated,
+    })),
+    everywhere((l) => ({ path: `${base(l)}/${localeInfo[l].contactSlug}`, meta: pageMeta.contact(t(l)) })),
     everywhere((l) => ({ path: games(l), meta: pageMeta.games(t(l)) })),
     ...GAME_IDS.map((id) => everywhere((l) => ({ path: `${games(l)}/${id}`, meta: pageMeta.game(t(l), id) }))),
     everywhere((l) => ({ path: worksheets(l), meta: pageMeta.worksheets(t(l)) })),
@@ -273,6 +280,12 @@ function prerender(locale: Locale, page: Page): string {
   }
   if (country) {
     return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><h1 class="${h1}">${escapeXml(country.name)}</h1><p class="${lead}">${escapeXml(country.excerpt)}</p></header><article class="prose">${markdownHtml(country.content)}</article></div>`;
+  }
+  if (page.kind === 'copyright') {
+    const c = t.copyright;
+    const list = (items: readonly string[]) => `<ul>${items.map((i) => `<li>${escapeXml(i)}</li>`).join('')}</ul>`;
+    const example = `${c.credit.source}: ${siteConfig.author.name}, ${siteConfig.name}, ${siteConfig.displayDomain}${base(locale)}/${localeInfo[locale].worksheetSlug}`;
+    return `<div class="${wrap}"><header class="mb-9 border-b border-line pb-8"><h1 class="${h1}">${escapeXml(c.title)}</h1><p class="${lead}">${escapeXml(c.intro)}</p><p class="${meta}">${escapeXml(c.updated(formatDate(siteConfig.copyrightUpdated, locale)))}</p></header><article class="prose"><h2>${escapeXml(c.owner.title)}</h2><p>${escapeXml(c.owner.text(siteConfig.author.name))}</p>${list(c.owner.items)}<h2>${escapeXml(c.allowed.title)}</h2><p>${escapeXml(c.allowed.text)}</p>${list(c.allowed.items)}<h2>${escapeXml(c.forbidden.title)}</h2><p>${escapeXml(c.forbidden.text)}</p>${list(c.forbidden.items)}<h2>${escapeXml(c.never.title)}</h2>${list(c.never.items)}<h2>${escapeXml(c.credit.title)}</h2><p>${escapeXml(c.credit.text)}</p><blockquote><p>${escapeXml(example)}</p></blockquote><h2>${escapeXml(c.others.title)}</h2>${list(c.others.items)}<h2>${escapeXml(c.report.title)}</h2><p>${escapeXml(c.report.text)}</p><h2>${escapeXml(c.permission.title)}</h2><p>${escapeXml(c.permission.text)}</p></article></div>`;
   }
   const lektire = page.kind === 'lektire' ? LEKTIRE[locale] : undefined;
   if (lektire) {
@@ -487,6 +500,46 @@ function pripremeDevRoute(): Plugin {
   };
 }
 
+// U dev serveru /api/contact poziva istu funkciju kao Vercel (api/contact.ts).
+// Ključevi iz .env.local; bez RESEND_API_KEY poruka se samo ispiše u terminal.
+function contactApiDev(): Plugin {
+  return {
+    name: 'contact-api-dev',
+    apply: 'serve',
+    configureServer(server) {
+      const env = loadEnv(server.config.mode, process.cwd(), '');
+      for (const key of ['RESEND_API_KEY', 'CONTACT_TO_EMAIL', 'CONTACT_FROM_EMAIL']) {
+        if (env[key]) process.env[key] = env[key];
+      }
+      server.middlewares.use('/api/contact', (req, res) => {
+        const chunks: Buffer[] = [];
+        req.on('data', (chunk: Buffer) => chunks.push(chunk));
+        req.on('end', async () => {
+          const body = Buffer.concat(chunks).toString('utf8');
+          if (!process.env.RESEND_API_KEY) {
+            server.config.logger.info(`[kontakt] Poruka (nije poslata, nema RESEND_API_KEY):\n${body}`);
+            res.setHeader('Content-Type', 'application/json');
+            res.end('{"ok":true}');
+            return;
+          }
+          const mod = (await server.ssrLoadModule('/api/contact.ts')) as { POST: (r: Request) => Promise<Response> };
+          const host = req.headers.host ?? 'localhost';
+          const response = await mod.POST(
+            new Request(`http://${host}/api/contact`, {
+              method: req.method,
+              headers: { 'Content-Type': 'application/json', Origin: req.headers.origin ?? '' },
+              body: req.method === 'POST' ? body : undefined,
+            }),
+          );
+          res.statusCode = response.status;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(await response.text());
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
+  plugins: [contactApiDev(), pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
 });

@@ -1,6 +1,7 @@
+import { Link, useLocation } from 'react-router-dom';
 import { Laptop, School, type LucideIcon } from 'lucide-react';
 import { siteConfig } from '../config/site';
-import PixelIcon, { type PixelIconName } from '../components/PixelIcon';
+import Icon, { type IconName } from '../components/Icon';
 import { useLocale } from '../i18n/LocaleContext';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
@@ -14,7 +15,8 @@ const heroChips = [
 ] as const;
 
 export default function About() {
-  const { t } = useLocale();
+  const { t, paths } = useLocale();
+  const { pathname } = useLocation();
   const { social } = siteConfig;
   const author = { ...siteConfig.author, ...t.author };
   const { topics } = t;
@@ -23,12 +25,10 @@ export default function About() {
   const socialLinks = (
     [
       { label: 'LinkedIn', href: social.linkedin, icon: 'linkedin' },
-      { label: 'Email', href: `mailto:${author.email}`, icon: 'mail' },
-    ] satisfies { label: string; href: string; icon: PixelIconName }[]
+    ] satisfies { label: string; href: string; icon: IconName }[]
   ).filter(({ href }) => href.length > 0);
 
   const contactItems: { label: string; text: string; href: string }[] = [
-    { label: 'Email', text: author.email, href: `mailto:${author.email}` },
     { label: 'LinkedIn', text: 'linkedin.com/in/markološić', href: social.linkedin },
     { label: t.about.location, text: author.location, href: '' },
   ].filter(({ label, href }) => label === t.about.location || href.length > 0);
@@ -52,14 +52,22 @@ export default function About() {
                 key={label}
                 href={href}
                 aria-label={label}
-                rel={href.startsWith('mailto:') ? undefined : 'me noopener'}
+                rel="me noopener"
                 className="focus-ring grid h-[42px] w-[42px] place-items-center rounded-xl border border-line text-muted transition hover:-translate-y-0.5 hover:border-accent hover:bg-surface hover:text-accent"
               >
-                <PixelIcon name={icon} />
+                <Icon name={icon} />
               </a>
             ))}
+            <Link
+              to={paths.contact}
+              state={{ from: pathname }}
+              aria-label={t.contact.cta}
+              className="focus-ring grid h-[42px] w-[42px] place-items-center rounded-xl border border-line text-muted transition hover:-translate-y-0.5 hover:border-accent hover:bg-surface hover:text-accent"
+            >
+              <Icon name="mail" />
+            </Link>
             <span className="inline-flex items-center gap-2 text-sm text-muted max-sm:w-full sm:ml-2.5">
-              <PixelIcon name="pin" />
+              <Icon name="pin" />
               {author.location}
             </span>
           </div>
@@ -156,6 +164,10 @@ export default function About() {
             {t.about.contactTitle}
           </h2>
           <p className="max-w-[520px] text-[17px] text-muted">{t.about.contactText}</p>
+          <Link to={paths.contact} state={{ from: pathname }} className="btn btn-primary focus-ring mt-7">
+            <Icon name="mail" />
+            {t.contact.cta}
+          </Link>
         </div>
         <ul className="grid content-center">
           {contactItems.map(({ label, text, href }) => (
@@ -169,7 +181,7 @@ export default function About() {
               {href ? (
                 <a
                   href={href}
-                  rel={href.startsWith('mailto:') ? undefined : 'me noopener'}
+                  rel="me noopener"
                   className="focus-ring rounded transition-colors hover:text-accent"
                 >
                   {text}

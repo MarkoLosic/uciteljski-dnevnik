@@ -7,7 +7,7 @@ import { formatDate } from '../lib/formatDate';
 import CategoryBadge from '../components/CategoryBadge';
 import CodeBlock from '../components/CodeBlock';
 import EmptyState from '../components/EmptyState';
-import PixelIcon from '../components/PixelIcon';
+import Icon from '../components/Icon';
 import PostCard from '../components/PostCard';
 import ShareButtons from '../components/ShareButtons';
 import TableOfContents from '../components/TableOfContents';
@@ -100,7 +100,7 @@ export default function BlogPost() {
           to={paths.blog}
           className="focus-ring mb-7 inline-flex items-center gap-2 rounded text-[14.5px] font-medium text-muted transition-colors hover:text-accent"
         >
-          <PixelIcon name="back" size={16} />
+          <Icon name="back" size={16} />
           {t.blog.allPosts}
         </Link>
 
@@ -135,7 +135,7 @@ export default function BlogPost() {
 
         <div className="mt-10">
           <Link to={paths.blog} className="btn btn-ghost focus-ring">
-            <PixelIcon name="back" />
+            <Icon name="back" />
             {t.blog.backToBlog}
           </Link>
         </div>
