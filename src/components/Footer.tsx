@@ -52,6 +52,9 @@ export default function Footer() {
         <a href={`mailto:${siteConfig.author.email}`} className={linkClass}>
           {t.footer.contact}
         </a>
+        <Link to={paths.copyright} className={linkClass}>
+          {t.copyright.footerLink}
+        </Link>
         {external.map(({ label, href }) => (
           <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
             {label}

@@ -972,4 +972,79 @@ export const hr: Dictionary = {
     message: 'Stranica se nije ispravno učitala. Osvježite je — ako je stranica upravo ažurirana, to obično riješi problem.',
     reload: 'Osvježi stranicu',
   },
+  copyright: {
+    footerLink: 'Autorska prava',
+    eyebrow: 'Pravila korištenja',
+    title: 'Autorska prava i korištenje sadržaja',
+    description:
+      'Što smijete slobodno ispisati, kopirati i dijeliti s ove stranice, što nije dopušteno bez dopuštenja i kako navesti izvor.',
+    intro:
+      'Materijale na ovoj stranici izrađujem da bi ih koristili učitelji, roditelji i djeca. Zato je većina upotrebe slobodna i besplatna. Tražim samo da se poštuje rad koji stoji iza njih i da izvor ostane vidljiv.',
+    updated: (date: string) => `Posljednja izmjena: ${date}`,
+    owner: {
+      title: 'Tko je vlasnik stranice i sadržaja',
+      text: (author: string) =>
+        `Jedini vlasnik ove stranice, njezina imena, logotipa, domene i cjelokupnog sadržaja je ${author}. Tekstovi, dnevne pripreme, zadaci za tri razine, radni listići, bojanke, vježbenice, priručnici, igre, ilustracije i dizajn stranice njegovo su autorsko djelo, osim kada je uz materijal navedeno drukčije. Sva prava su pridržana.`,
+      items: [
+        'Dnevne pripreme izrađene su prema nastavnim planovima i programima Republike Srpske i Federacije BiH. Sami programi (nazivi tema, ishodi i sadržaji) javni su dokumenti nadležnih ministarstava i pedagoških zavoda. Autorsko djelo su same pripreme: izbor i redoslijed aktivnosti, tijek sata, primjeri, zadaci i tekst.',
+        'Nitko drugi nije vlasnik, suvlasnik, koautor ni ovlašteni zastupnik ove stranice. Nitko nije ovlašten u ime stranice ili autora prodavati materijale, naplaćivati pristup, sklapati dogovore ili prikupljati podatke.',
+        'Ime stranice, logotip i ime autora ne smiju se koristiti tako da se stvori dojam da netko drugi stoji iza stranice ili da stranica stoji iza tuđeg sadržaja.',
+        'Pravo autora da bude naveden kao autor svojeg djela (moralno pravo) ne može se prenijeti na drugoga. Dopuštenje za korištenje materijala, čak i kada je dano, nikome ne daje pravo predstavljati se kao njegov autor.',
+        'Sadržaj je zaštićen Zakonom o autorskom i srodnim pravima Bosne i Hercegovine i međunarodnim ugovorima o autorskom pravu (Bernska konvencija).',
+      ],
+    },
+    allowed: {
+      title: 'Što smijete bez pitanja',
+      text: 'Ako je upotreba besplatna i nekomercijalna, slobodno:',
+      items: [
+        'ispišite i kopirajte radne listiće, bojanke, vježbenice, priručnike i pripreme za rad sa svojim razrednim odjelom, svojim djetetom ili u produženom boravku;',
+        'koristite materijale na satu, u stručnom aktivu, na seminaru ili oglednom satu, uz navođenje izvora;',
+        'dijelite poveznicu na stranicu: u Viber grupi razreda, na društvenim mrežama, u e-pošti ili na mrežnoj stranici škole;',
+        'citirajte kratke odlomke tekstova (nekoliko rečenica), uz ime autora i poveznicu na izvornik;',
+        'prilagodite materijal svojim učenicima (povećajte slova, izostavite ili dodajte zadatak) za rad u svojoj učionici.',
+      ],
+    },
+    forbidden: {
+      title: 'Što nije dopušteno bez pisanog dopuštenja',
+      text: 'Za sljedeće je potrebna moja pisana suglasnost:',
+      items: [
+        'prodaja materijala ili njihovo uključivanje u bilo što što se naplaćuje: zbirke, tečajeve, pretplate, platforme s plaćenim pristupom;',
+        'objavljivanje cijelih tekstova, radnih listića ili PDF datoteka na drugim stranicama, blogovima, u grupama i na platformama za dijeljenje datoteka (umjesto toga podijelite poveznicu);',
+        'tiskanje u udžbenicima, zbirkama ili časopisima;',
+        'masovno preuzimanje sadržaja skriptama i botovima radi ponovne objave.',
+      ],
+    },
+    never: {
+      title: 'Nije dopušteno ni uz dopuštenje',
+      items: [
+        'predstavljanje kao vlasnik, suvlasnik, autor ili zastupnik ove stranice i njezina sadržaja;',
+        'objavljivanje materijala s ove stranice, preuzetog ili prerađenog, pod svojim ili tuđim imenom kao autorskog djela;',
+        'uklanjanje ili zamjena imena autora i stranice na materijalu;',
+        'korištenje imena stranice, logotipa ili imena autora tako da izgleda da stranica stoji iza vašeg sadržaja, proizvoda ili usluge.',
+      ],
+    },
+    credit: {
+      title: 'Kako navesti izvor',
+      text: 'Dovoljno je ime autora, ime stranice i poveznica na stranicu s koje je materijal preuzet. Na primjer:',
+      source: 'Izvor',
+    },
+    others: {
+      title: 'Sadržaj drugih autora',
+      items: [
+        'Popisi lektire prepisani su iz javno objavljenih nastavnih programa, a izvori su navedeni na stranici s lektirom.',
+        'Knjige se na stranici samo preporučuju; ulomci djela zaštićenih autorskim pravom ne objavljuju se.',
+        'Podaci o školskim sustavima i rezultati istraživanja imaju naveden izvor uz svaki tekst.',
+        'Ikone su iz biblioteke Lucide (licencija ISC), a fontovi Space Grotesk, Inter i JetBrains Mono s usluge Google Fonts (SIL Open Font License).',
+      ],
+    },
+    report: {
+      title: 'Ako primijetite da je sadržaj preuzet',
+      text: 'Ako vidite materijal s ove stranice objavljen ili prodan bez dopuštenja, ako se netko predstavlja kao vlasnik ili autor ove stranice, ili smatrate da stranica koristi vaš rad bez dopuštenja, pišite mi e-poštom. Provjerit ću svaku prijavu i, ako je opravdana, ukloniti sporni sadržaj.',
+    },
+    permission: {
+      title: 'Dopuštenje i suradnja',
+      text: 'Ako želite koristiti materijal na način koji ovdje nije obuhvaćen, na primjer u zbirci, na tečaju ili na drugoj stranici, pišite mi. Rado razgovaram o suradnji.',
+      cta: 'Pišite mi',
+    },
+  },
 };

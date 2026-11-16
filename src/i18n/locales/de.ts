@@ -972,4 +972,79 @@ export const de: Dictionary = {
     message: 'Die Seite wurde nicht richtig geladen. Bitte laden Sie sie neu – nach einem Update der Website behebt das meist das Problem.',
     reload: 'Seite neu laden',
   },
+  copyright: {
+    footerLink: 'Urheberrecht',
+    eyebrow: 'Nutzungsbedingungen',
+    title: 'Urheberrecht und Nutzung der Inhalte',
+    description:
+      'Was Sie von dieser Website frei drucken, kopieren und teilen dürfen, was ohne Erlaubnis nicht gestattet ist und wie Sie die Quelle angeben.',
+    intro:
+      'Ich erstelle die Materialien auf dieser Website, damit Lehrkräfte, Eltern und Kinder sie nutzen. Deshalb ist die meiste Nutzung frei und kostenlos. Ich bitte nur darum, die Arbeit dahinter zu respektieren und die Quelle sichtbar zu lassen.',
+    updated: (date: string) => `Zuletzt geändert: ${date}`,
+    owner: {
+      title: 'Wem die Website und die Inhalte gehören',
+      text: (author: string) =>
+        `Alleiniger Inhaber dieser Website, ihres Namens, Logos, ihrer Domain und sämtlicher Inhalte ist ${author}. Texte, Unterrichtsvorbereitungen, Aufgaben auf drei Niveaus, Arbeitsblätter, Ausmalbilder, Übungshefte, Handbücher, Spiele, Illustrationen und das Design der Website sind seine Werke, sofern beim Material nichts anderes angegeben ist. Alle Rechte vorbehalten.`,
+      items: [
+        'Die Unterrichtsvorbereitungen folgen den Lehrplänen der Republika Srpska und der Föderation BiH. Die Lehrpläne selbst (Themen, Lernziele und Inhalte) sind öffentliche Dokumente der zuständigen Ministerien und pädagogischen Institute. Urheberrechtlich geschützt sind die Vorbereitungen selbst: Auswahl und Reihenfolge der Aktivitäten, Stundenverlauf, Beispiele, Aufgaben und Text.',
+        'Niemand sonst ist Inhaber, Miteigentümer, Mitautor oder bevollmächtigter Vertreter dieser Website. Niemand ist berechtigt, im Namen der Website oder des Autors Materialien zu verkaufen, Zugang zu berechnen, Vereinbarungen zu schließen oder Daten zu erheben.',
+        'Der Name der Website, das Logo und der Name des Autors dürfen nicht so verwendet werden, dass der Eindruck entsteht, jemand anderes stehe hinter der Website oder die Website stehe hinter fremden Inhalten.',
+        'Das Recht des Autors, als Urheber seines Werks genannt zu werden (Urheberpersönlichkeitsrecht), ist nicht übertragbar. Eine Nutzungserlaubnis, auch wenn sie erteilt wurde, berechtigt niemanden, sich als Urheber auszugeben.',
+        'Die Inhalte sind durch das Gesetz über das Urheberrecht und verwandte Schutzrechte von Bosnien und Herzegowina sowie durch internationale Urheberrechtsabkommen (Berner Übereinkunft) geschützt.',
+      ],
+    },
+    allowed: {
+      title: 'Was Sie ohne Nachfrage dürfen',
+      text: 'Sofern die Nutzung kostenlos und nicht kommerziell ist, dürfen Sie:',
+      items: [
+        'Arbeitsblätter, Ausmalbilder, Übungshefte, Handbücher und Unterrichtsvorbereitungen für Ihre eigene Klasse, Ihr eigenes Kind oder die Nachmittagsbetreuung drucken und kopieren;',
+        'die Materialien im Unterricht, in der Fachkonferenz, bei Fortbildungen oder in Musterstunden verwenden, mit Angabe der Quelle;',
+        'einen Link zur Seite teilen: in der Klassengruppe, in sozialen Netzwerken, per E-Mail oder auf der Website der Schule;',
+        'kurze Textstellen (einige Sätze) mit Namen des Autors und Link zum Original zitieren;',
+        'ein Material für Ihre Schülerinnen und Schüler anpassen (größere Schrift, eine Aufgabe mehr oder weniger), um es in Ihrem eigenen Unterricht zu verwenden.',
+      ],
+    },
+    forbidden: {
+      title: 'Was ohne schriftliche Erlaubnis nicht gestattet ist',
+      text: 'Hierfür ist meine schriftliche Zustimmung erforderlich:',
+      items: [
+        'der Verkauf der Materialien oder ihre Aufnahme in kostenpflichtige Angebote: Sammlungen, Kurse, Abonnements, Plattformen mit bezahltem Zugang;',
+        'die Veröffentlichung vollständiger Texte, Arbeitsblätter oder PDF-Dateien auf anderen Websites, Blogs, in Gruppen oder auf Filesharing-Plattformen (teilen Sie stattdessen einen Link);',
+        'der Abdruck in Schulbüchern, Sammlungen oder Zeitschriften;',
+        'das massenhafte Herunterladen von Inhalten mit Skripten oder Bots zur erneuten Veröffentlichung.',
+      ],
+    },
+    never: {
+      title: 'Auch mit Erlaubnis nie gestattet',
+      items: [
+        'sich als Inhaber, Miteigentümer, Autor oder Vertreter dieser Website oder ihrer Inhalte auszugeben;',
+        'Material dieser Website, übernommen oder bearbeitet, unter eigenem oder fremdem Namen als eigenes Werk zu veröffentlichen;',
+        'den Namen des Autors und der Website auf dem Material zu entfernen oder zu ersetzen;',
+        'Namen, Logo der Website oder den Namen des Autors so zu verwenden, dass es so aussieht, als stehe die Website hinter Ihren Inhalten, Produkten oder Dienstleistungen.',
+      ],
+    },
+    credit: {
+      title: 'So geben Sie die Quelle an',
+      text: 'Es genügen der Name des Autors, der Name der Website und ein Link zu der Seite, von der das Material stammt. Zum Beispiel:',
+      source: 'Quelle',
+    },
+    others: {
+      title: 'Inhalte anderer Urheber',
+      items: [
+        'Die Lektürelisten stammen aus öffentlich zugänglichen Lehrplänen; die Quellen sind auf der Seite mit den Lektüren angegeben.',
+        'Bücher werden auf der Website nur empfohlen; Auszüge aus urheberrechtlich geschützten Werken werden nicht veröffentlicht.',
+        'Angaben zu Schulsystemen und Studienergebnisse sind bei jedem Text mit ihrer Quelle versehen.',
+        'Die Icons stammen aus der Bibliothek Lucide (ISC-Lizenz), die Schriften Space Grotesk, Inter und JetBrains Mono von Google Fonts (SIL Open Font License).',
+      ],
+    },
+    report: {
+      title: 'Wenn Sie übernommene Inhalte bemerken',
+      text: 'Wenn Sie Material dieser Website sehen, das ohne Erlaubnis veröffentlicht oder verkauft wird, wenn sich jemand als Inhaber oder Autor dieser Website ausgibt, oder wenn Sie meinen, dass die Website Ihre Arbeit ohne Erlaubnis nutzt, schreiben Sie mir bitte eine E-Mail. Ich prüfe jede Meldung und entferne den betreffenden Inhalt, wenn sie berechtigt ist.',
+    },
+    permission: {
+      title: 'Erlaubnis und Zusammenarbeit',
+      text: 'Wenn Sie ein Material auf eine Weise nutzen möchten, die hier nicht abgedeckt ist, etwa in einer Sammlung, einem Kurs oder auf einer anderen Website, schreiben Sie mir. Ich spreche gern über eine Zusammenarbeit.',
+      cta: 'Schreiben Sie mir',
+    },
+  },
 };

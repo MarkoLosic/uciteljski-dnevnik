@@ -7,6 +7,8 @@ export const siteConfig = {
     email: 'markolosic1993@gmail.com',
   },
   url: 'https://www.xn--uiteljskidnevnik-s7b.online',
+  displayDomain: 'www.učiteljskidnevnik.online', // isti domen kako ga čitaoci vide (primjer navođenja izvora)
+  copyrightUpdated: '2026-11-16', // datum posljednje izmjene stranice „Autorska prava“
   social: {
     linkedin: 'https://www.linkedin.com/in/markolo%C5%A1i%C4%87/',
     twitter: '',

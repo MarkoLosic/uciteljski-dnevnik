@@ -26,6 +26,7 @@ export const pageMeta = {
   }),
   world: (t: Dictionary): PageMetaText => ({ title: t.world.title, description: t.world.description }),
   lektire: (t: Dictionary): PageMetaText => ({ title: t.lektire.title, description: t.lektire.description }),
+  copyright: (t: Dictionary): PageMetaText => ({ title: t.copyright.title, description: t.copyright.description }),
   country: (t: Dictionary, country: Pick<CountryFrontmatter, 'name' | 'excerpt'>): PageMetaText => ({
     title: `${country.name} — ${t.world.title}`,
     description: country.excerpt,

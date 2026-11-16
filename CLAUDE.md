@@ -141,6 +141,7 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── World.tsx          # Škole u svetu: kartice zemalja + tabela za poređenje
     │   ├── Country.tsx        # jedna zemlja: činjenice, tekst, izvori
     │   ├── Lektire.tsx        # lektire 1–5. razred (RS i FBiH) + preporuke i savjeti (sekcija 10.9)
+    │   ├── Copyright.tsx      # Autorska prava: šta je dozvoljeno, šta nije, navođenje izvora (sekcija 10.10)
     │   └── NotFound.tsx       # 404
     ├── games/                 # igre za predškolce (sekcija 10.5)
     │   ├── ids.ts             # GAME_IDS, veštine, boje, oblici (deli se sa rečnicima)
@@ -461,6 +462,7 @@ Koristi `react-router-dom`:
 | `/skole-u-svetu` | `<World />` | Razredna nastava u svetu (sekcija 10.7) |
 | `/skole-u-svetu/:countryId` | `<Country />` | Jedna zemlja |
 | `/lektire` | `<Lektire />` | Lektire 1–5. razred (samo sr i bs: `/lektire`, `/bs/lektire`) |
+| `/autorska-prava` | `<Copyright />` | Autorska prava i pravila korišćenja (en `/en/copyright`, de `/de/urheberrecht`) |
 | `*` | `<NotFound />` | 404 stranica |
 
 Sve rute su umotane u `<Layout />` koji koristi `<Outlet />` (unutar `ErrorBoundary` i `Suspense`). `Home`, `BlogList` i `NotFound` su u glavnom paketu; `BlogPost` (react-markdown), `About`, `Games`, `GamePlay` i `Worksheet` se učitavaju preko `React.lazy`.
@@ -564,7 +566,7 @@ Globalno `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px
 
 - Copyright: `© {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}`.
 - Autor: `{t.footer.author}: {siteConfig.author.name}`.
-- Linkovi: O meni, Kontakt (mailto), GitHub i LinkedIn (iz `siteConfig.social`, samo neprazni), RSS (`<jezik>/rss.xml`, samo ako jezik ima članke).
+- Linkovi: O meni, Kontakt (mailto), Autorska prava (`paths.copyright`), GitHub i LinkedIn (iz `siteConfig.social`, samo neprazni), RSS (`<jezik>/rss.xml`, samo ako jezik ima članke).
 
 ### 9.4. `PostCard.tsx`
 
@@ -710,6 +712,14 @@ Redosled sekcija (lično predstavljanje pa blog):
 - Preporuke (van spiska) ne smiju ponavljati djela sa spiskova; savjeti su za roditelje i učitelje.
 - Statični HTML (`prerender`, `kind: 'lektire'`) sadrži cijeli spisak za pretraživače; stranica je u sitemap-u sa hreflang sr/bs.
 - Link „Lektire“ je i u zaglavlju priprema (`pripreme/index.html`, `admin.html`).
+
+### 10.10. `Copyright.tsx` — autorska prava
+
+- Slug je `localeInfo[locale].copyrightSlug` (`autorska-prava`, en `copyright`, de `urheberrecht`); link je u footeru.
+- Tekst je u `t.copyright` (svih pet rječnika): vlasnik sajta i sadržaja (jedini vlasnik je autor; pripreme su autorsko djelo rađeno po javnim programima RS i FBiH; niko drugi nije vlasnik ni zastupnik), šta je dozvoljeno (besplatna, nekomercijalna upotreba u učionici i kod kuće), šta traži pisanu dozvolu, šta nije dozvoljeno ni uz dozvolu (`never`: lažno predstavljanje, potpisivanje tuđeg djela), kako navesti izvor, sadržaj drugih autora (lektire, ikone, fontovi), prijava preuzetog sadržaja.
+- Datum posljednje izmjene je `siteConfig.copyrightUpdated` — **promijeni ga kad god se mijenjaju pravila**. Primjer navođenja izvora koristi `siteConfig.displayDomain`.
+- Statični HTML (`prerender`, `kind: 'copyright'`) sadrži cijeli tekst; stranica je u sitemap-u na svih pet jezika.
+- Nova vrsta sadržaja (npr. fotografije drugih autora) → dodaj stavku u `others.items`.
 
 ### 10.6. `NotFound.tsx`
 

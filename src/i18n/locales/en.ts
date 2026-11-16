@@ -972,4 +972,79 @@ export const en: Dictionary = {
     message: 'The page did not load properly. Please refresh it — if the site was just updated, that usually fixes it.',
     reload: 'Refresh the page',
   },
+  copyright: {
+    footerLink: 'Copyright',
+    eyebrow: 'Terms of use',
+    title: 'Copyright and use of content',
+    description:
+      'What you may freely print, copy and share from this site, what is not allowed without permission, and how to credit the source.',
+    intro:
+      'I make the materials on this site for teachers, parents and children to use. That is why most uses are free and open. All I ask is that the work behind them is respected and that the source stays visible.',
+    updated: (date: string) => `Last updated: ${date}`,
+    owner: {
+      title: 'Who owns the site and its content',
+      text: (author: string) =>
+        `The sole owner of this site, its name, logo, domain and all of its content is ${author}. The texts, daily lesson plans, three-level exercises, worksheets, colouring pages, workbooks, handbooks, games, illustrations and site design are his original work, unless stated otherwise next to the material. All rights reserved.`,
+      items: [
+        'The daily lesson plans follow the official curricula of Republika Srpska and the Federation of BiH. The curricula themselves (topic names, learning outcomes and content) are public documents of the competent ministries and pedagogical institutes. The original work is the lesson plans themselves: the choice and order of activities, the course of the lesson, examples, exercises and text.',
+        'Nobody else is an owner, co-owner, co-author or authorised representative of this site. Nobody is authorised to sell materials, charge for access, make agreements or collect data on behalf of the site or its author.',
+        'The site’s name, logo and the author’s name may not be used in a way that suggests someone else is behind the site or that the site is behind someone else’s content.',
+        'The author’s right to be named as the author of his work (moral right) cannot be transferred to anyone else. Permission to use a material, even when granted, gives nobody the right to present themselves as its author.',
+        'The content is protected by the Copyright and Related Rights Act of Bosnia and Herzegovina and by international copyright treaties (Berne Convention).',
+      ],
+    },
+    allowed: {
+      title: 'What you may do without asking',
+      text: 'As long as the use is free of charge and non-commercial, feel free to:',
+      items: [
+        'print and copy worksheets, colouring pages, workbooks, handbooks and lesson plans for your own class, your own child or an after-school group;',
+        'use the materials in lessons, in teacher meetings, at a workshop or in a demonstration lesson, with credit to the source;',
+        'share a link to the page: in your class’s Viber group, on social media, by email or on your school’s website;',
+        'quote short passages (a few sentences), with the author’s name and a link to the original;',
+        'adapt a material for your students (larger letters, one exercise more or less) for use in your own classroom.',
+      ],
+    },
+    forbidden: {
+      title: 'What is not allowed without written permission',
+      text: 'The following require my written consent:',
+      items: [
+        'selling the materials or including them in anything that is paid for: collections, courses, subscriptions, platforms with paid access;',
+        'publishing full texts, worksheets or PDF files on other websites, blogs, groups or file-sharing platforms (share a link instead);',
+        'printing in textbooks, collections or magazines;',
+        'bulk downloading of content with scripts or bots for republication.',
+      ],
+    },
+    never: {
+      title: 'Never allowed, even with permission',
+      items: [
+        'presenting yourself as the owner, co-owner, author or representative of this site or its content;',
+        'publishing material from this site, copied or adapted, as an original work under your own or anyone else’s name;',
+        'removing or replacing the author’s and the site’s name on a material;',
+        'using the site’s name, logo or the author’s name so that it looks as if the site is behind your content, product or service.',
+      ],
+    },
+    credit: {
+      title: 'How to credit the source',
+      text: 'The author’s name, the site’s name and a link to the page the material came from are enough. For example:',
+      source: 'Source',
+    },
+    others: {
+      title: 'Content by other authors',
+      items: [
+        'Reading lists are copied from publicly available curricula, and their sources are listed on the reading list page.',
+        'Books are only recommended on the site; excerpts from copyrighted works are not published.',
+        'Facts about school systems and research results have their source listed with every text.',
+        'Icons are from the Lucide library (ISC licence); the fonts Space Grotesk, Inter and JetBrains Mono come from Google Fonts (SIL Open Font License).',
+      ],
+    },
+    report: {
+      title: 'If you notice copied content',
+      text: 'If you see material from this site published or sold without permission, if someone presents themselves as the owner or author of this site, or you believe the site uses your work without permission, please email me. I will look into every report and, if it is justified, remove the content in question.',
+    },
+    permission: {
+      title: 'Permission and collaboration',
+      text: 'If you would like to use a material in a way not covered here, for example in a collection, a course or on another website, write to me. I am happy to talk about working together.',
+      cta: 'Write to me',
+    },
+  },
 };
