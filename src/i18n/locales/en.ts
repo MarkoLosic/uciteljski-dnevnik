@@ -469,6 +469,26 @@ export const en: Dictionary = {
           diplomaReason: 'for completing the winter break pack',
           signature: 'Parent’s signature',
         },
+        wildAnimals: {
+          coverTitle: 'Wild animals',
+          coverSubtitle: 'A colouring book with 12 animals from forests near and lands far away',
+          drawTitle: 'Draw your own wild animal',
+          drawName: 'My animal is called:',
+          animals: {
+            bear: { name: 'Bear', fact: 'Brown bears live in the forests of Bosnia and Herzegovina too. They sleep through the winter in a den.' },
+            giraffe: { name: 'Giraffe', fact: 'The giraffe is the tallest animal in the world. It picks leaves from the very tops of trees.' },
+            owl: { name: 'Owl', fact: 'Owls hunt at night. They can turn their heads almost all the way round.' },
+            lion: { name: 'Lion', fact: 'Lions live in groups called prides. A lion’s roar can be heard miles away.' },
+            hedgehog: { name: 'Hedgehog', fact: 'A hedgehog has thousands of spines. When it is scared, it rolls up into a ball.' },
+            zebra: { name: 'Zebra', fact: 'Every zebra has its own stripes. No two are the same.' },
+            wolf: { name: 'Wolf', fact: 'Wolves live in packs. They howl to call to the rest of the pack.' },
+            crocodile: { name: 'Crocodile', fact: 'A crocodile can lie in the water for hours with only its eyes and nose showing.' },
+            squirrel: { name: 'Squirrel', fact: 'In autumn, squirrels hide nuts and acorns for the winter.' },
+            elephant: { name: 'Elephant', fact: 'The elephant is the largest animal on land. It drinks and showers with its trunk.' },
+            penguin: { name: 'Penguin', fact: 'Penguins can’t fly, but they are excellent divers and swimmers.' },
+            monkey: { name: 'Monkey', fact: 'Monkeys jump nimbly from branch to branch.' },
+          },
+        },
       },
       sheets: {
         testGrade1: {
@@ -738,6 +758,10 @@ export const en: Dictionary = {
         writingHandbookCyrillic: {
           title: 'How a story is made — a handbook for young writers (Cyrillic)',
           text: 'The same handbook in Cyrillic script: 12 topics on the rules writers follow, examples, reading tips and exercises.',
+        },
+        coloringWildAnimals: {
+          title: 'Colouring book: Wild animals (14 pages)',
+          text: 'Colour the animals any way you like. Read the fun fact under each picture, and draw your own animal at the end.',
         },
         winterBreakPack: {
           title: 'Winter break pack: 12 days of play and practice',

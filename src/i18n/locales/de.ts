@@ -469,6 +469,26 @@ export const de: Dictionary = {
           diplomaReason: 'für das erfolgreich bearbeitete Winterferien-Paket',
           signature: 'Unterschrift der Eltern',
         },
+        wildAnimals: {
+          coverTitle: 'Wilde Tiere',
+          coverSubtitle: 'Ein Malbuch mit 12 Tieren aus heimischen Wäldern und fernen Ländern',
+          drawTitle: 'Male dein eigenes wildes Tier',
+          drawName: 'Mein Tier heißt:',
+          animals: {
+            bear: { name: 'Bär', fact: 'Braunbären leben auch in den Wäldern von Bosnien und Herzegowina. Den Winter verschlafen sie in einer Höhle.' },
+            giraffe: { name: 'Giraffe', fact: 'Die Giraffe ist das höchste Tier der Welt. Sie frisst Blätter ganz oben aus den Baumkronen.' },
+            owl: { name: 'Eule', fact: 'Eulen jagen nachts. Sie können ihren Kopf fast ganz nach hinten drehen.' },
+            lion: { name: 'Löwe', fact: 'Löwen leben in Rudeln. Ihr Brüllen ist kilometerweit zu hören.' },
+            hedgehog: { name: 'Igel', fact: 'Ein Igel hat Tausende Stacheln. Wenn er Angst hat, rollt er sich zu einer Kugel zusammen.' },
+            zebra: { name: 'Zebra', fact: 'Jedes Zebra hat seine eigenen Streifen. Keine zwei sind gleich.' },
+            wolf: { name: 'Wolf', fact: 'Wölfe leben im Rudel. Mit Heulen rufen sie die anderen Wölfe.' },
+            crocodile: { name: 'Krokodil', fact: 'Ein Krokodil liegt stundenlang im Wasser, nur Augen und Nase schauen heraus.' },
+            squirrel: { name: 'Eichhörnchen', fact: 'Im Herbst versteckt das Eichhörnchen Nüsse und Eicheln für den Winter.' },
+            elephant: { name: 'Elefant', fact: 'Der Elefant ist das größte Landtier. Mit dem Rüssel trinkt und duscht er.' },
+            penguin: { name: 'Pinguin', fact: 'Pinguine können nicht fliegen, aber sie tauchen und schwimmen hervorragend.' },
+            monkey: { name: 'Affe', fact: 'Affen springen geschickt von Ast zu Ast.' },
+          },
+        },
       },
       sheets: {
         testGrade1: {
@@ -738,6 +758,10 @@ export const de: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Kyrillisch)',
           text: 'Dasselbe Handbuch in kyrillischer Schrift: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps und Übungen.',
+        },
+        coloringWildAnimals: {
+          title: 'Malbuch: Wilde Tiere (14 Seiten)',
+          text: 'Die Tiere nach Lust und Laune ausmalen. Unter jedem Bild steht etwas Spannendes über das Tier, am Ende ein eigenes Tier malen.',
         },
         winterBreakPack: {
           title: 'Winterferien-Paket: 12 Tage Spielen und Üben',

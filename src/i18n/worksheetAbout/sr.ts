@@ -54,6 +54,10 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  coloringWildAnimals: {
+    age: '4–8 godina',
+    text: 'Bojanka od 14 strana: naslovna strana, 12 divljih životinja (medvjed, vuk, sova, jež i vjeverica iz naših šuma, pa žirafa, lav, zebra, krokodil, slon, pingvin i majmun) i strana za crtanje vlastite životinje. Ispod svake slike je ime životinje u slovima za bojenje i kratka zanimljivost za čitanje sa djetetom.',
+  },
   winterBreakPack: {
     age: '5–7 godina',
     text: 'Paket od 14 strana za zimski raspust: plan sa 12 pahuljica, pa svaki dan po jedan list (zimska bojanka, lavirint, brojanje, spajanje tačaka, sabiranje i oduzimanje sa sličicama, logika, godišnja doba, razlike, simetrija i nizovi) i diploma na kraju. Dovoljno je 15 do 20 minuta dnevno, a dijete samo prati šta je uradilo.',

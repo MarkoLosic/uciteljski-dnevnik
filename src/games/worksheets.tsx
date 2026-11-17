@@ -74,6 +74,7 @@ import { MAZES } from './Maze';
 import { homeWorkbookMath2Pages } from './workbook';
 import { writingHandbookPages } from './writingHandbook';
 import { winterBreakPackPages } from './packs';
+import { wildAnimalsPages } from './wildAnimals';
 
 // Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
@@ -4704,6 +4705,7 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   mathMultiplicationGrid: () => [<MathMultiplicationGridSheet key="mathMultiplicationGrid" />],
   homeWorkbookMath2: () => homeWorkbookMath2Pages(),
   winterBreakPack: ({ ws }) => winterBreakPackPages(ws),
+  coloringWildAnimals: ({ labels }) => wildAnimalsPages(labels),
   writingHandbookLatin: () => writingHandbookPages('lat'),
   writingHandbookCyrillic: () => writingHandbookPages('cyr'),
   trace: () => [<TraceSheet key="trace" />],

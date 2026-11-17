@@ -469,6 +469,26 @@ export const bs: Dictionary = {
           diplomaReason: 'za uspješno završen paket za zimski raspust',
           signature: 'Potpis roditelja',
         },
+        wildAnimals: {
+          coverTitle: 'Divlje životinje',
+          coverSubtitle: 'Bojanka s 12 životinja iz naših šuma i dalekih zemalja',
+          drawTitle: 'Nacrtaj svoju divlju životinju',
+          drawName: 'Moja životinja se zove:',
+          animals: {
+            bear: { name: 'Medvjed', fact: 'Medvjed živi i u šumama Bosne i Hercegovine. Zimu prespava u brlogu.' },
+            giraffe: { name: 'Žirafa', fact: 'Žirafa je najviša životinja na svijetu. Lišće bere sa samog vrha drveta.' },
+            owl: { name: 'Sova', fact: 'Sova lovi noću. Glavu može okrenuti skoro do leđa.' },
+            lion: { name: 'Lav', fact: 'Lavovi žive u čoporu. Lavlja rika čuje se kilometrima daleko.' },
+            hedgehog: { name: 'Jež', fact: 'Jež ima hiljade bodlji. Kad se uplaši, sklupča se u loptu.' },
+            zebra: { name: 'Zebra', fact: 'Svaka zebra ima svoje pruge. Ne postoje dvije iste.' },
+            wolf: { name: 'Vuk', fact: 'Vuk živi u čoporu. Zavija da bi se javio ostalim vukovima.' },
+            crocodile: { name: 'Krokodil', fact: 'Krokodil satima leži u vodi, a vire mu samo oči i nos.' },
+            squirrel: { name: 'Vjeverica', fact: 'Vjeverica u jesen sakriva lješnike i žireve za zimu.' },
+            elephant: { name: 'Slon', fact: 'Slon je najveća životinja na kopnu. Surlom pije vodu i tušira se.' },
+            penguin: { name: 'Pingvin', fact: 'Pingvin ne leti, ali odlično roni i pliva.' },
+            monkey: { name: 'Majmun', fact: 'Majmun spretno skače s grane na granu.' },
+          },
+        },
       },
       sheets: {
         testGrade1: {
@@ -738,6 +758,10 @@ export const bs: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Како настаје прича — приручник за младе писце (ћирилица)',
           text: 'За 3, 4. и 5. разред: 12 тема са правилима којих се држе писци (идеја, јунак, мјесто и вријеме радње, почетак, заплет, врхунац, дијалог, приповједач, крај, преправљање), примјери, препоруке за читање, вјежбе, план приче и листа за провјеру.',
+        },
+        coloringWildAnimals: {
+          title: 'Bojanka: Divlje životinje (14 strana)',
+          text: 'Oboji životinje kako želiš. Ispod svake slike pročitaj zanimljivost o njoj, a na kraju nacrtaj svoju životinju.',
         },
         winterBreakPack: {
           title: 'Paket za zimski raspust: 12 dana igre i vježbe',

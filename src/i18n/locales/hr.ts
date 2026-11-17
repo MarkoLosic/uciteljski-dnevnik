@@ -469,6 +469,26 @@ export const hr: Dictionary = {
           diplomaReason: 'za uspješno riješen paket za zimske praznike',
           signature: 'Potpis roditelja',
         },
+        wildAnimals: {
+          coverTitle: 'Divlje životinje',
+          coverSubtitle: 'Bojanka s 12 životinja iz naših šuma i dalekih zemalja',
+          drawTitle: 'Nacrtaj svoju divlju životinju',
+          drawName: 'Moja se životinja zove:',
+          animals: {
+            bear: { name: 'Medvjed', fact: 'Medvjed živi i u šumama Bosne i Hercegovine. Zimu prespava u brlogu.' },
+            giraffe: { name: 'Žirafa', fact: 'Žirafa je najviša životinja na svijetu. Lišće bere sa samog vrha stabla.' },
+            owl: { name: 'Sova', fact: 'Sova lovi noću. Glavu može okrenuti gotovo do leđa.' },
+            lion: { name: 'Lav', fact: 'Lavovi žive u čoporu. Lavlja rika čuje se kilometrima daleko.' },
+            hedgehog: { name: 'Jež', fact: 'Jež ima tisuće bodlji. Kad se uplaši, sklupča se u loptu.' },
+            zebra: { name: 'Zebra', fact: 'Svaka zebra ima svoje pruge. Ne postoje dvije iste.' },
+            wolf: { name: 'Vuk', fact: 'Vuk živi u čoporu. Zavija kako bi se javio ostalim vukovima.' },
+            crocodile: { name: 'Krokodil', fact: 'Krokodil satima leži u vodi, a vire mu samo oči i nos.' },
+            squirrel: { name: 'Vjeverica', fact: 'Vjeverica u jesen skriva lješnjake i žireve za zimu.' },
+            elephant: { name: 'Slon', fact: 'Slon je najveća životinja na kopnu. Surlom pije vodu i tušira se.' },
+            penguin: { name: 'Pingvin', fact: 'Pingvin ne leti, ali odlično roni i pliva.' },
+            monkey: { name: 'Majmun', fact: 'Majmun spretno skače s grane na granu.' },
+          },
+        },
       },
       sheets: {
         testGrade1: {
@@ -738,6 +758,10 @@ export const hr: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Kako nastaje priča — priručnik za mlade pisce (ćirilica)',
           text: 'Isti priručnik napisan ćirilicom: 12 tema s pravilima kojih se drže pisci, primjeri, preporuke za čitanje i vježbe.',
+        },
+        coloringWildAnimals: {
+          title: 'Bojanka: Divlje životinje (14 stranica)',
+          text: 'Oboji životinje kako želiš. Ispod svake slike pročitaj zanimljivost o njoj, a na kraju nacrtaj svoju životinju.',
         },
         winterBreakPack: {
           title: 'Paket za zimske praznike: 12 dana igre i vježbe',
