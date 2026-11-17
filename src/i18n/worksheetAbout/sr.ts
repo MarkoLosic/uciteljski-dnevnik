@@ -54,6 +54,10 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  winterBreakPack: {
+    age: '5–7 godina',
+    text: 'Paket od 14 strana za zimski raspust: plan sa 12 pahuljica, pa svaki dan po jedan list (zimska bojanka, lavirint, brojanje, spajanje tačaka, sabiranje i oduzimanje sa sličicama, logika, godišnja doba, razlike, simetrija i nizovi) i diploma na kraju. Dovoljno je 15 do 20 minuta dnevno, a dijete samo prati šta je uradilo.',
+  },
   homeWorkbookMath2: {
     age: '2. razred',
     text: 'Vježbanka od 16 strana za rad kod kuće: 12 dana po jedna strana, a kroz zadatke dijete vodi pas Njuško. Obuhvata gradivo matematike drugog razreda, od računa do 100 do sata, kalendara i novca u KM. Na kraju su veliki izazov, diploma i rješenja, pa roditelj može sam provjeriti rad.',

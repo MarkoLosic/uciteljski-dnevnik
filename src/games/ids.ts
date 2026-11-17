@@ -93,6 +93,7 @@ export const WORKSHEET_IDS = [
   'timeDaysOrder',
   'timeCalendar',
   'homeWorkbookMath2',
+  'winterBreakPack',
   'writingHandbookLatin',
   'writingHandbookCyrillic',
   'mathNumberLine',
@@ -174,7 +175,7 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
   // Priručnici i vježbanke od više strana — posebna grupa, prva na stranici, da se lako nađu.
-  books: ['homeWorkbookMath2', 'writingHandbookLatin', 'writingHandbookCyrillic'],
+  books: ['winterBreakPack', 'homeWorkbookMath2', 'writingHandbookLatin', 'writingHandbookCyrillic'],
   tests: [
     'testGrade1',
     'testGrade2',

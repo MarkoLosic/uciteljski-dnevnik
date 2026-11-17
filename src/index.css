@@ -668,6 +668,18 @@
     color: #6b7280;
     user-select: none;
   }
+  /* QR kod u zaglavlju lista: samo za štampu i širi ekran (na telefonu je čitalac već na sajtu). */
+  .sheet-qr {
+    display: flex;
+    width: 19mm;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 1mm;
+    font: 500 7px/1.15 var(--font-sans);
+    text-align: center;
+    color: #4b5563;
+  }
   .sheet-eyebrow {
     font: 500 11px var(--font-mono);
     letter-spacing: 0.08em;
@@ -685,6 +697,9 @@
       padding: 14px 12px;
       border-radius: 12px;
       overflow-x: hidden;
+    }
+    .sheet-qr {
+      display: none;
     }
     .sheet-footer {
       position: static;

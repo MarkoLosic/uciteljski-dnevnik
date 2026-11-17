@@ -346,6 +346,7 @@ export const de: Dictionary = {
       eyebrow: 'Arbeitsblatt',
       print: 'Drucken',
       copyright: 'Veröffentlichung und Verkauf ohne Erlaubnis des Autors nicht gestattet.',
+      qr: 'Scannen für mehr Arbeitsblätter',
       backToGames: 'Zurück zu den Spielen',
       backToWorksheets: 'Zurück zu den Ausmalbildern',
       name: 'Name',
@@ -455,6 +456,19 @@ export const de: Dictionary = {
           'Wir waschen unsere Hände mindestens 20 Sekunden lang. Wie viele Sekunden sind das, wenn wir sie 3-mal am Tag waschen?',
           'Luka ist um 9 Uhr abends eingeschlafen und um 7 Uhr morgens aufgewacht. Wie viele Stunden hat er geschlafen?',
         ],
+        winterPack: {
+          day: 'Tag',
+          planHeading: 'Mein Plan für die Winterferien',
+          planHint: 'Die Reihenfolge ist frei. Wichtig ist ein Blatt pro Tag.',
+          parentsTitle: 'Für Eltern',
+          parentsText: 'Ein Blatt pro Tag, 15 bis 20 Minuten, reicht völlig. Setzen Sie sich neben Ihr Kind, fragen Sie, wie es überlegt hat, und loben Sie die Mühe, nicht nur die richtige Antwort. Das Paket ist für Vorschulkinder und Erstklässler (5–7 Jahre).',
+          diplomaTitle: 'Urkunde',
+          diplomaText: 'Alle Blätter sind fertig. Super! Den Namen auf die Linie schreiben und den Schneemann ausmalen.',
+          diplomaHeading: 'URKUNDE',
+          diplomaFor: 'verliehen an',
+          diplomaReason: 'für das erfolgreich bearbeitete Winterferien-Paket',
+          signature: 'Unterschrift der Eltern',
+        },
       },
       sheets: {
         testGrade1: {
@@ -724,6 +738,10 @@ export const de: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Kyrillisch)',
           text: 'Dasselbe Handbuch in kyrillischer Schrift: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps und Übungen.',
+        },
+        winterBreakPack: {
+          title: 'Winterferien-Paket: 12 Tage Spielen und Üben',
+          text: 'Jeden Tag ein Blatt bearbeiten. Danach im Plan die Schneeflocke daneben ausmalen. Am Ende wartet eine Urkunde.',
         },
         homeWorkbookMath2: {
           title: 'Ich übe zu Hause — Mathe, 2. Klasse (Übungsheft)',

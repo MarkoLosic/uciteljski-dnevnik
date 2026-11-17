@@ -346,6 +346,7 @@ export const hr: Dictionary = {
       eyebrow: 'Radni list',
       print: 'Ispiši',
       copyright: 'Zabranjeno objavljivanje i prodaja bez dopuštenja autora.',
+      qr: 'Skeniraj za još listića',
       backToGames: 'Natrag na igre',
       backToWorksheets: 'Natrag na bojanke i listiće',
       name: 'Ime',
@@ -455,6 +456,19 @@ export const hr: Dictionary = {
           'Ruke peremo najmanje 20 sekundi. Koliko sekundi peremo ruke ako ih tijekom dana operemo 3 puta?',
           'Luka je zaspao u 9 sati navečer, a probudio se u 7 sati ujutro. Koliko je sati spavao?',
         ],
+        winterPack: {
+          day: 'Dan',
+          planHeading: 'Moj plan za zimske praznike',
+          planHint: 'Redoslijed možeš mijenjati. Važno je da svaki dan riješiš jedan listić.',
+          parentsTitle: 'Za roditelje',
+          parentsText: 'Jedan listić dnevno, 15 do 20 minuta, sasvim je dovoljan. Sjednite pokraj djeteta, pitajte ga kako je razmišljalo i pohvalite trud, a ne samo točan odgovor. Paket je za predškolce i prvašiće (5–7 godina).',
+          diplomaTitle: 'Diploma',
+          diplomaText: 'Svi listići su gotovi. Bravo! Upiši ime na crtu i oboji snjegovića.',
+          diplomaHeading: 'DIPLOMA',
+          diplomaFor: 'dodjeljuje se',
+          diplomaReason: 'za uspješno riješen paket za zimske praznike',
+          signature: 'Potpis roditelja',
+        },
       },
       sheets: {
         testGrade1: {
@@ -724,6 +738,10 @@ export const hr: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Kako nastaje priča — priručnik za mlade pisce (ćirilica)',
           text: 'Isti priručnik napisan ćirilicom: 12 tema s pravilima kojih se drže pisci, primjeri, preporuke za čitanje i vježbe.',
+        },
+        winterBreakPack: {
+          title: 'Paket za zimske praznike: 12 dana igre i vježbe',
+          text: 'Svaki dan riješi jedan listić. Kad ga završiš, oboji pahuljicu pokraj njega u planu. Na kraju te čeka diploma.',
         },
         homeWorkbookMath2: {
           title: 'Vježbam kod kuće — matematika, 2. razred (vježbenica)',

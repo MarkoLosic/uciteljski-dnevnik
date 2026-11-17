@@ -350,6 +350,7 @@ export const sr = {
       eyebrow: 'Radni list',
       print: 'Štampaj',
       copyright: 'Zabranjeno objavljivanje i prodaja bez dozvole autora.',
+      qr: 'Skeniraj za još listića',
       backToGames: 'Nazad na igre',
       backToWorksheets: 'Nazad na bojanke i listove',
       name: 'Ime',
@@ -459,6 +460,19 @@ export const sr = {
           'Ruke peremo najmanje 20 sekundi. Koliko sekundi peremo ruke ako ih tokom dana operemo 3 puta?',
           'Luka je zaspao u 9 sati uveče, a probudio se u 7 sati ujutru. Koliko sati je spavao?',
         ],
+        winterPack: {
+          day: 'Dan',
+          planHeading: 'Moj plan za zimski raspust',
+          planHint: 'Redoslijed možeš mijenjati. Važno je da svaki dan uradiš po jedan list.',
+          parentsTitle: 'Za roditelje',
+          parentsText: 'Jedan list dnevno, 15 do 20 minuta, sasvim je dovoljan. Sjedite pored djeteta, pitajte ga kako je razmišljalo i pohvalite trud, a ne samo tačan odgovor. Paket je za predškolce i prvake (5–7 godina).',
+          diplomaTitle: 'Diploma',
+          diplomaText: 'Svi listovi su gotovi. Bravo! Upiši ime na liniju i oboji Snješka.',
+          diplomaHeading: 'DIPLOMA',
+          diplomaFor: 'dodjeljuje se',
+          diplomaReason: 'za uspješno završen paket za zimski raspust',
+          signature: 'Potpis roditelja',
+        },
       },
       sheets: {
         testGrade1: {
@@ -728,6 +742,10 @@ export const sr = {
         writingHandbookCyrillic: {
           title: 'Како настаје прича — приручник за младе писце (ћирилица)',
           text: 'За 3, 4. и 5. разред: 12 тема са правилима којих се држе писци (идеја, јунак, мјесто и вријеме радње, почетак, заплет, врхунац, дијалог, приповједач, крај, преправљање), примјери, препоруке за читање, вјежбе, план приче и листа за провјеру.',
+        },
+        winterBreakPack: {
+          title: 'Paket za zimski raspust: 12 dana igre i vježbe',
+          text: 'Svaki dan uradi jedan list. Kad ga završiš, oboji pahuljicu pored njega u planu. Na kraju te čeka diploma.',
         },
         homeWorkbookMath2: {
           title: 'Vježbam kod kuće — matematika, 2. razred (vježbanka)',

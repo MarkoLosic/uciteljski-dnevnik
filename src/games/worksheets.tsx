@@ -73,6 +73,7 @@ import { FIGURES } from './ConnectDots';
 import { MAZES } from './Maze';
 import { homeWorkbookMath2Pages } from './workbook';
 import { writingHandbookPages } from './writingHandbook';
+import { winterBreakPackPages } from './packs';
 
 // Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
@@ -4452,6 +4453,7 @@ interface SheetContext {
   alphabet: readonly string[];
   colorNames: Record<ToyColor, string>;
   labels: SheetLabels;
+  ws: Dictionary['games']['worksheet'];
 }
 
 // Svaki list vraća svoje strane; stranica radnog lista oko svake dodaje zaglavlje i prelom strane.
@@ -4701,6 +4703,7 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   mathRomanNumerals: () => [<MathRomanNumeralsSheet key="mathRomanNumerals" />],
   mathMultiplicationGrid: () => [<MathMultiplicationGridSheet key="mathMultiplicationGrid" />],
   homeWorkbookMath2: () => homeWorkbookMath2Pages(),
+  winterBreakPack: ({ ws }) => winterBreakPackPages(ws),
   writingHandbookLatin: () => writingHandbookPages('lat'),
   writingHandbookCyrillic: () => writingHandbookPages('cyr'),
   trace: () => [<TraceSheet key="trace" />],

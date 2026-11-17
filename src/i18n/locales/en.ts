@@ -346,6 +346,7 @@ export const en: Dictionary = {
       eyebrow: 'Worksheet',
       print: 'Print',
       copyright: 'Publishing or selling without the author’s permission is not allowed.',
+      qr: 'Scan for more worksheets',
       backToGames: 'Back to games',
       backToWorksheets: 'Back to coloring & worksheets',
       name: 'Name',
@@ -455,6 +456,19 @@ export const en: Dictionary = {
           'We wash our hands for at least 20 seconds. How many seconds is that if we wash them 3 times a day?',
           'Luke fell asleep at 9 o\'clock in the evening and woke up at 7 o\'clock in the morning. How many hours did he sleep?',
         ],
+        winterPack: {
+          day: 'Day',
+          planHeading: 'My winter break plan',
+          planHint: 'You can change the order. What matters is doing one sheet a day.',
+          parentsTitle: 'For parents',
+          parentsText: 'One sheet a day, 15 to 20 minutes, is plenty. Sit next to your child, ask how they worked it out and praise the effort, not just the right answer. The pack is for preschoolers and first graders (ages 5–7).',
+          diplomaTitle: 'Certificate',
+          diplomaText: 'All the sheets are done. Well done! Write your name on the line and colour in the snowman.',
+          diplomaHeading: 'CERTIFICATE',
+          diplomaFor: 'is awarded to',
+          diplomaReason: 'for completing the winter break pack',
+          signature: 'Parent’s signature',
+        },
       },
       sheets: {
         testGrade1: {
@@ -724,6 +738,10 @@ export const en: Dictionary = {
         writingHandbookCyrillic: {
           title: 'How a story is made — a handbook for young writers (Cyrillic)',
           text: 'The same handbook in Cyrillic script: 12 topics on the rules writers follow, examples, reading tips and exercises.',
+        },
+        winterBreakPack: {
+          title: 'Winter break pack: 12 days of play and practice',
+          text: 'Do one sheet each day. When you finish it, colour in the snowflake next to it on the plan. A certificate is waiting at the end.',
         },
         homeWorkbookMath2: {
           title: 'Practice at home — math, grade 2 (workbook)',
