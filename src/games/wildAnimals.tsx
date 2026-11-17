@@ -1,6 +1,6 @@
 // Bojanka „Divlje životinje“: naslovna strana, 12 životinja (svaka sa imenom i zanimljivošću) i strana
 // za crtanje. Svi crteži su naši (SVG u kodu), da bojanka ne zavisi od tuđih ilustracija.
-// Vodeni žig sajta je ispod crteža: vidi se u praznom prostoru, a životinje (bijela ispuna) ga pokrivaju.
+// U donjem desnom uglu svake slike je mali potpis autora i adresa sajta.
 import type { ReactNode, SVGProps } from 'react';
 import { siteConfig } from '../config/site';
 import type { Dictionary } from '../i18n/dictionaries';
@@ -122,26 +122,10 @@ function Ground({ y = 512 }: { y?: number }) {
   return <path d={`M8 ${y + 6} Q160 ${y - 10} 300 ${y} T592 ${y - 4}`} {...T} strokeWidth={3} />;
 }
 
-function Watermark() {
-  const text = `www.${siteConfig.name}`;
-  return (
-    <g fill="#9ca3af" opacity={0.28} fontFamily="'Space Grotesk', sans-serif" fontSize={26} fontWeight={700} textAnchor="middle">
-      <g transform="rotate(-28 300 300)">
-        {[150, 320, 490].map((y) => (
-          <text key={y} x={300} y={y}>
-            {text}
-          </text>
-        ))}
-      </g>
-    </g>
-  );
-}
-
 function Frame({ children, label }: { children: ReactNode; label?: string }) {
   return (
     <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="block w-full" role="img" aria-label={label}>
       <rect x={6} y={6} width={588} height={588} rx={22} fill="#fff" stroke={INK} strokeWidth={3} />
-      <Watermark />
       {children}
       <text x={580} y={586} textAnchor="end" fontSize={11} fill="#6b7280">
         © {siteConfig.author.name} · www.{siteConfig.name}

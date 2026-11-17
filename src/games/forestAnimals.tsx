@@ -1,5 +1,5 @@
 // Bojanka „Šumske životinje“: autorove ilustracije (public/slike/bojanke/sumske-zivotinje/).
-// Vodeni žig i potpis su upisani u same slike (ImageMagick), pa ostaju i kad se slika preuzme sa sajta.
+// Mali potpis autora (donji desni ugao) je upisan u same slike (ImageMagick).
 import type { ReactNode } from 'react';
 import type { Dictionary } from '../i18n/dictionaries';
 
