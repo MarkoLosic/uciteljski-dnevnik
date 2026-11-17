@@ -54,6 +54,14 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  coloringBunnies: {
+    age: '3–7 godina',
+    text: 'Bojanka od 9 strana sa veselim zečićima: u korpi, ispod duge, u bašti, u trci sa kornjačom, na livadi i sa porodicom. Ispod svake slike je pitanje ili mali zadatak (brojanje, redoslijed boja duge, basna o zecu i kornjači) za razgovor sa djetetom dok boji. Lijepa je i za proljeće i Uskrs.',
+  },
+  coloringPuppies: {
+    age: '3–7 godina',
+    text: 'Bojanka od 9 strana sa razigranim štencima: igra s loptom, spavanje u korpi, kupanje, šetnja po kiši, ljuljaška, skejtbord i drugarstvo sa mačkom. Ispod svake slike je pitanje ili mali zadatak koji podstiče razgovor sa djetetom dok boji.',
+  },
   coloringForestAnimals: {
     age: '3–7 godina',
     text: 'Bojanka od 9 strana sa šumskim životinjama: medo, lisica, jež, sova, zeko, lane, vjeverica, rakun i žabica. Crteži imaju debele, jasne obrise, pa su pogodni i za najmlađe, a ispod svake slike je kratka zanimljivost koju roditelj ili učitelj može pročitati djetetu.',

@@ -500,6 +500,28 @@ export const bs: Dictionary = {
           raccoon: { name: 'Rakun', fact: 'Rakun potiče iz Sjeverne Amerike. Hranu često opipava i kvasi u vodi.' },
           frog: { name: 'Žabica', fact: 'Žaba je na početku punoglavac koji živi u vodi, a noge dobije kasnije.' },
         },
+        puppies: {
+          bone: { title: 'Štene i koska', note: 'Smisli ime za ovo štene i reci ga naglas.' },
+          ball: { title: 'Igra s loptom', note: 'Koju igru ti najviše voliš igrati s prijateljima?' },
+          basket: { title: 'Slatki snovi u korpi', note: 'Štenci spavaju i po 18 sati dnevno. Oboji ćebence toplim bojama.' },
+          glasses: { title: 'Štene s naočalama', note: 'Kojim bojama ćeš obojiti naočale, mašnu i cvijeće?' },
+          bath: { title: 'Vrijeme za kupanje', note: 'Pse kupamo posebnim šamponom za pse, a ne našim.' },
+          rain: { title: 'Šetnja po kiši', note: 'Šta tebi treba kad pada kiša? Nacrtaj to pored šteneta.' },
+          swing: { title: 'Na ljuljašci u parku', note: 'Na grani sjedi ptičica. Pronađi je i oboji.' },
+          skateboard: { title: 'Vožnja skejtborda', note: 'Štene nosi kacigu. Šta ti nosiš kad voziš bicikl ili rolere?' },
+          friends: { title: 'Najbolji prijatelji', note: 'Pas i mačka mogu biti najbolji prijatelji. Ko je tvoj najbolji prijatelj?' },
+        },
+        bunnies: {
+          carrot: { title: 'Zečić i mrkva', note: 'Šta ti voliš jesti za užinu? Nacrtaj to pored zečića.' },
+          wreath: { title: 'Zečić s cvjetnim vijencem', note: 'Prebroj cvjetove u vijencu i oboji svaki drugom bojom.' },
+          basket: { title: 'Zečić u korpi', note: 'Kojom bojom ćeš obojiti mašnu? A korpu?' },
+          rainbow: { title: 'Zečić ispod duge', note: 'Duga ima sedam boja. Pokušaj ih poredati: crvena, narandžasta, žuta, zelena, plava, modra, ljubičasta.' },
+          garden: { title: 'Zečić u bašti', note: 'Koje povrće vidiš u korpi? Šta raste u vašoj bašti ili na pijaci?' },
+          tortoise: { title: 'Zec i kornjača', note: 'Poznaješ li basnu o zecu i kornjači? Ko je pobijedio u trci i zašto?' },
+          sleepy: { title: 'Uspavani zečić', note: 'Zečić spava. Pronađi sve leptire i pečurke na slici.' },
+          tophat: { title: 'Zečić u cilindru', note: 'Zečić pleše. Uz koju pjesmu ti voliš plesati?' },
+          family: { title: 'Porodica zečića', note: 'Koliko je zečića na slici? Ko je sve u tvojoj porodici?' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -769,6 +791,14 @@ export const bs: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Како настаје прича — приручник за младе писце (ћирилица)',
           text: 'За 3, 4. и 5. разред: 12 тема са правилима којих се држе писци (идеја, јунак, мјесто и вријеме радње, почетак, заплет, врхунац, дијалог, приповједач, крај, преправљање), примјери, препоруке за читање, вјежбе, план приче и листа за провјеру.',
+        },
+        coloringBunnies: {
+          title: 'Bojanka: Zečići (9 strana)',
+          text: 'Oboji vesele zečiće bojicama, flomasterima ili vodenim bojama. Ispod svake slike je pitanje ili zadatak za razgovor.',
+        },
+        coloringPuppies: {
+          title: 'Bojanka: Štenci (9 strana)',
+          text: 'Oboji razigrane štence bojicama, flomasterima ili vodenim bojama. Ispod svake slike je pitanje ili zadatak za razgovor.',
         },
         coloringForestAnimals: {
           title: 'Bojanka: Šumske životinje (9 strana)',

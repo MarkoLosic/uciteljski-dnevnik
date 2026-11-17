@@ -500,6 +500,28 @@ export const de: Dictionary = {
           raccoon: { name: 'Waschbär', fact: 'Waschbären stammen aus Nordamerika. Sie betasten ihr Futter oft im Wasser.' },
           frog: { name: 'Fröschchen', fact: 'Ein Frosch ist zuerst eine Kaulquappe im Wasser und bekommt erst später Beine.' },
         },
+        puppies: {
+          bone: { title: 'Welpe mit Knochen', note: 'Denk dir einen Namen für diesen Welpen aus und sag ihn laut.' },
+          ball: { title: 'Ballspiel', note: 'Welches Spiel spielst du am liebsten mit Freunden?' },
+          basket: { title: 'Süße Träume im Korb', note: 'Welpen schlafen bis zu 18 Stunden am Tag. Male die Decke in warmen Farben aus.' },
+          glasses: { title: 'Welpe mit Brille', note: 'Welche Farben wählst du für die Brille, die Fliege und die Blumen?' },
+          bath: { title: 'Badezeit', note: 'Hunde werden mit speziellem Hundeshampoo gebadet, nicht mit unserem.' },
+          rain: { title: 'Spaziergang im Regen', note: 'Was brauchst du, wenn es regnet? Male es neben den Welpen.' },
+          swing: { title: 'Auf der Schaukel im Park', note: 'Auf dem Ast sitzt ein kleiner Vogel. Finde ihn und male ihn aus.' },
+          skateboard: { title: 'Skateboard fahren', note: 'Der Welpe trägt einen Helm. Was trägst du beim Fahrrad- oder Inlinerfahren?' },
+          friends: { title: 'Beste Freunde', note: 'Hund und Katze können beste Freunde sein. Wer ist dein bester Freund?' },
+        },
+        bunnies: {
+          carrot: { title: 'Häschen mit Karotte', note: 'Was isst du gern als Pausensnack? Male es neben das Häschen.' },
+          wreath: { title: 'Häschen mit Blumenkranz', note: 'Zähle die Blumen im Kranz und male jede in einer anderen Farbe aus.' },
+          basket: { title: 'Häschen im Korb', note: 'Welche Farbe bekommt die Schleife? Und der Korb?' },
+          rainbow: { title: 'Häschen unter dem Regenbogen', note: 'Ein Regenbogen hat sieben Farben. Versuche, sie zu ordnen: Rot, Orange, Gelb, Grün, Blau, Indigo, Violett.' },
+          garden: { title: 'Häschen im Garten', note: 'Welches Gemüse siehst du im Korb? Was wächst in eurem Garten oder auf dem Markt?' },
+          tortoise: { title: 'Hase und Schildkröte', note: 'Kennst du die Fabel vom Hasen und der Schildkröte? Wer hat das Rennen gewonnen und warum?' },
+          sleepy: { title: 'Schläfriges Häschen', note: 'Das Häschen schläft. Finde alle Schmetterlinge und Pilze im Bild.' },
+          tophat: { title: 'Häschen mit Zylinder', note: 'Das Häschen tanzt. Zu welchem Lied tanzt du gern?' },
+          family: { title: 'Hasenfamilie', note: 'Wie viele Häschen sind auf dem Bild? Wer gehört zu deiner Familie?' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -769,6 +791,14 @@ export const de: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Kyrillisch)',
           text: 'Dasselbe Handbuch in kyrillischer Schrift: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps und Übungen.',
+        },
+        coloringBunnies: {
+          title: 'Malbuch: Häschen (9 Seiten)',
+          text: 'Die fröhlichen Häschen mit Buntstiften, Filzstiften oder Wasserfarben ausmalen. Unter jedem Bild steht eine Frage oder Aufgabe zum Gespräch.',
+        },
+        coloringPuppies: {
+          title: 'Malbuch: Welpen (9 Seiten)',
+          text: 'Die verspielten Welpen mit Buntstiften, Filzstiften oder Wasserfarben ausmalen. Unter jedem Bild steht eine Frage oder Aufgabe zum Gespräch.',
         },
         coloringForestAnimals: {
           title: 'Malbuch: Waldtiere (9 Seiten)',

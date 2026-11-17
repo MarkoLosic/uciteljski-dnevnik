@@ -33,4 +33,6 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringFair: '/slike/bojanke/zabavni-park.svg',
   colors: '/slike/bojanke/oboji-oblike.svg',
   coloringForestAnimals: '/slike/bojanke/sumske-zivotinje/02-lisica.jpg',
+  coloringPuppies: '/slike/bojanke/stenci/02-igra-s-loptom.jpg',
+  coloringBunnies: '/slike/bojanke/zecici/04-ispod-duge.jpg',
 };

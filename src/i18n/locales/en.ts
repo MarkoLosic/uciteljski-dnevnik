@@ -500,6 +500,28 @@ export const en: Dictionary = {
           raccoon: { name: 'Raccoon', fact: 'Raccoons come from North America. They often feel and wet their food in water.' },
           frog: { name: 'Frog', fact: 'A frog starts life as a tadpole living in water and grows legs later.' },
         },
+        puppies: {
+          bone: { title: 'Puppy with a bone', note: 'Think of a name for this puppy and say it out loud.' },
+          ball: { title: 'Playing ball', note: 'What is your favourite game to play with friends?' },
+          basket: { title: 'Sweet dreams in a basket', note: 'Puppies can sleep up to 18 hours a day. Colour the blanket in warm colours.' },
+          glasses: { title: 'Puppy in glasses', note: 'Which colours will you choose for the glasses, the bow tie and the flowers?' },
+          bath: { title: 'Bath time', note: 'Dogs are washed with a special dog shampoo, not ours.' },
+          rain: { title: 'A walk in the rain', note: 'What do you need when it rains? Draw it next to the puppy.' },
+          swing: { title: 'On the swing in the park', note: 'A little bird is sitting on the branch. Find it and colour it.' },
+          skateboard: { title: 'Skateboarding', note: 'The puppy is wearing a helmet. What do you wear when you ride a bike or rollerblade?' },
+          friends: { title: 'Best friends', note: 'A dog and a cat can be best friends. Who is your best friend?' },
+        },
+        bunnies: {
+          carrot: { title: 'Bunny with a carrot', note: 'What do you like to eat for a snack? Draw it next to the bunny.' },
+          wreath: { title: 'Bunny with a flower crown', note: 'Count the flowers in the crown and colour each one a different colour.' },
+          basket: { title: 'Bunny in a basket', note: 'What colour will you use for the bow? And for the basket?' },
+          rainbow: { title: 'Bunny under the rainbow', note: 'A rainbow has seven colours. Try to put them in order: red, orange, yellow, green, blue, indigo, violet.' },
+          garden: { title: 'Bunny in the garden', note: 'Which vegetables can you see in the basket? What grows in your garden or at the market?' },
+          tortoise: { title: 'The hare and the tortoise', note: 'Do you know the fable of the hare and the tortoise? Who won the race, and why?' },
+          sleepy: { title: 'Sleepy bunny', note: 'The bunny is asleep. Find all the butterflies and mushrooms in the picture.' },
+          tophat: { title: 'Bunny in a top hat', note: 'The bunny is dancing. Which song do you like to dance to?' },
+          family: { title: 'Bunny family', note: 'How many bunnies are in the picture? Who is in your family?' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -769,6 +791,14 @@ export const en: Dictionary = {
         writingHandbookCyrillic: {
           title: 'How a story is made — a handbook for young writers (Cyrillic)',
           text: 'The same handbook in Cyrillic script: 12 topics on the rules writers follow, examples, reading tips and exercises.',
+        },
+        coloringBunnies: {
+          title: 'Colouring book: Bunnies (9 pages)',
+          text: 'Colour the cheerful bunnies with crayons, felt-tip pens or watercolours. Under each picture there is a question or task to talk about.',
+        },
+        coloringPuppies: {
+          title: 'Colouring book: Puppies (9 pages)',
+          text: 'Colour the playful puppies with crayons, felt-tip pens or watercolours. Under each picture there is a question or task to talk about.',
         },
         coloringForestAnimals: {
           title: 'Colouring book: Forest animals (9 pages)',
