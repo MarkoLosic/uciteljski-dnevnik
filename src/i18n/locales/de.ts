@@ -489,6 +489,17 @@ export const de: Dictionary = {
             monkey: { name: 'Affe', fact: 'Affen springen geschickt von Ast zu Ast.' },
           },
         },
+        forestAnimals: {
+          bear: { name: 'Bärchen', fact: 'Bärenjunge kommen im Winter in einer Höhle zur Welt und bleiben fast zwei Jahre bei ihrer Mutter.' },
+          fox: { name: 'Fuchs', fact: 'Füchse hören hervorragend. Sie hören sogar eine Maus, die sich unter dem Schnee bewegt.' },
+          hedgehog: { name: 'Igel', fact: 'Igel fressen Käfer und Schnecken und sind deshalb echte Gartenfreunde.' },
+          owl: { name: 'Eule', fact: 'Eulen fliegen dank ihrer weichen Federn fast lautlos.' },
+          rabbit: { name: 'Häschen', fact: 'Hasen drehen ihre langen Ohren in alle Richtungen und hören Gefahr schon von Weitem.' },
+          fawn: { name: 'Rehkitz', fact: 'Ein Rehkitz hat weiße Tupfen im Fell und kann sich so besser im Gras verstecken.' },
+          squirrel: { name: 'Eichhörnchen', fact: 'Eichhörnchen finden nicht alle vergrabenen Nüsse wieder, und aus manchen wachsen neue Bäume.' },
+          raccoon: { name: 'Waschbär', fact: 'Waschbären stammen aus Nordamerika. Sie betasten ihr Futter oft im Wasser.' },
+          frog: { name: 'Fröschchen', fact: 'Ein Frosch ist zuerst eine Kaulquappe im Wasser und bekommt erst später Beine.' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -758,6 +769,10 @@ export const de: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Wie eine Geschichte entsteht — Handbuch für junge Autoren (Kyrillisch)',
           text: 'Dasselbe Handbuch in kyrillischer Schrift: 12 Themen zu den Regeln guter Geschichten, Beispiele, Lesetipps und Übungen.',
+        },
+        coloringForestAnimals: {
+          title: 'Malbuch: Waldtiere (9 Seiten)',
+          text: 'Die Waldfreunde mit Buntstiften, Filzstiften oder Wasserfarben ausmalen. Unter jedem Bild steht etwas Spannendes über das Tier.',
         },
         coloringWildAnimals: {
           title: 'Malbuch: Wilde Tiere (14 Seiten)',

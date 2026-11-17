@@ -32,4 +32,5 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringPirates: '/slike/bojanke/gusarski-brod.svg',
   coloringFair: '/slike/bojanke/zabavni-park.svg',
   colors: '/slike/bojanke/oboji-oblike.svg',
+  coloringForestAnimals: '/slike/bojanke/sumske-zivotinje/02-lisica.jpg',
 };

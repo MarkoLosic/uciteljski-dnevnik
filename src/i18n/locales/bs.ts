@@ -489,6 +489,17 @@ export const bs: Dictionary = {
             monkey: { name: 'Majmun', fact: 'Majmun spretno skače s grane na granu.' },
           },
         },
+        forestAnimals: {
+          bear: { name: 'Medo', fact: 'Medvjedići se rađaju zimi u brlogu i ostaju sa mamom skoro dvije godine.' },
+          fox: { name: 'Lisica', fact: 'Lisica ima odličan sluh. Čuje i miša koji se kreće ispod snijega.' },
+          hedgehog: { name: 'Jež', fact: 'Jež jede bube i puževe, pa je pravi prijatelj svake bašče.' },
+          owl: { name: 'Sova', fact: 'Sova leti potpuno nečujno, jer ima mekano perje.' },
+          rabbit: { name: 'Zeko', fact: 'Zec okreće duge uši na sve strane i tako izdaleka čuje opasnost.' },
+          fawn: { name: 'Lane', fact: 'Lane ima bijele tačkice na krznu da bi se lakše sakrilo u travi.' },
+          squirrel: { name: 'Vjeverica', fact: 'Vjeverica ne pronađe sve plodove koje zakopa, pa iz nekih izrastu nova stabla.' },
+          raccoon: { name: 'Rakun', fact: 'Rakun potiče iz Sjeverne Amerike. Hranu često opipava i kvasi u vodi.' },
+          frog: { name: 'Žabica', fact: 'Žaba je na početku punoglavac koji živi u vodi, a noge dobije kasnije.' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -758,6 +769,10 @@ export const bs: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Како настаје прича — приручник за младе писце (ћирилица)',
           text: 'За 3, 4. и 5. разред: 12 тема са правилима којих се држе писци (идеја, јунак, мјесто и вријеме радње, почетак, заплет, врхунац, дијалог, приповједач, крај, преправљање), примјери, препоруке за читање, вјежбе, план приче и листа за провјеру.',
+        },
+        coloringForestAnimals: {
+          title: 'Bojanka: Šumske životinje (9 strana)',
+          text: 'Oboji šumske prijatelje bojicama, flomasterima ili vodenim bojama. Ispod svake slike je zanimljivost o životinji.',
         },
         coloringWildAnimals: {
           title: 'Bojanka: Divlje životinje (14 strana)',

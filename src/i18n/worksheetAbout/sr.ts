@@ -54,6 +54,10 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  coloringForestAnimals: {
+    age: '3–7 godina',
+    text: 'Bojanka od 9 strana sa šumskim životinjama: medo, lisica, jež, sova, zeko, lane, vjeverica, rakun i žabica. Crteži imaju debele, jasne obrise, pa su pogodni i za najmlađe, a ispod svake slike je kratka zanimljivost koju roditelj ili učitelj može pročitati djetetu.',
+  },
   coloringWildAnimals: {
     age: '4–8 godina',
     text: 'Bojanka od 14 strana: naslovna strana, 12 divljih životinja (medvjed, vuk, sova, jež i vjeverica iz naših šuma, pa žirafa, lav, zebra, krokodil, slon, pingvin i majmun) i strana za crtanje vlastite životinje. Ispod svake slike je ime životinje u slovima za bojenje i kratka zanimljivost za čitanje sa djetetom.',

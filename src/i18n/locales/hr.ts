@@ -489,6 +489,17 @@ export const hr: Dictionary = {
             monkey: { name: 'Majmun', fact: 'Majmun spretno skače s grane na granu.' },
           },
         },
+        forestAnimals: {
+          bear: { name: 'Medo', fact: 'Medvjedići se rađaju zimi u brlogu i ostaju s mamom gotovo dvije godine.' },
+          fox: { name: 'Lisica', fact: 'Lisica ima izvrstan sluh. Čuje i miša koji se kreće ispod snijega.' },
+          hedgehog: { name: 'Jež', fact: 'Jež jede kukce i puževe, pa je pravi prijatelj svakog vrta.' },
+          owl: { name: 'Sova', fact: 'Sova leti potpuno nečujno jer ima mekano perje.' },
+          rabbit: { name: 'Zeko', fact: 'Zec okreće duge uši na sve strane i tako izdaleka čuje opasnost.' },
+          fawn: { name: 'Lane', fact: 'Lane ima bijele točkice na krznu kako bi se lakše sakrilo u travi.' },
+          squirrel: { name: 'Vjeverica', fact: 'Vjeverica ne pronađe sve plodove koje zakopa, pa iz nekih izrastu nova stabla.' },
+          raccoon: { name: 'Rakun', fact: 'Rakun potječe iz Sjeverne Amerike. Hranu često opipava i kvasi u vodi.' },
+          frog: { name: 'Žabica', fact: 'Žaba je na početku punoglavac koji živi u vodi, a noge dobije kasnije.' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -758,6 +769,10 @@ export const hr: Dictionary = {
         writingHandbookCyrillic: {
           title: 'Kako nastaje priča — priručnik za mlade pisce (ćirilica)',
           text: 'Isti priručnik napisan ćirilicom: 12 tema s pravilima kojih se drže pisci, primjeri, preporuke za čitanje i vježbe.',
+        },
+        coloringForestAnimals: {
+          title: 'Bojanka: Šumske životinje (9 stranica)',
+          text: 'Oboji šumske prijatelje bojicama, flomasterima ili vodenim bojama. Ispod svake slike je zanimljivost o životinji.',
         },
         coloringWildAnimals: {
           title: 'Bojanka: Divlje životinje (14 stranica)',

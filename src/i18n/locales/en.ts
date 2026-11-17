@@ -489,6 +489,17 @@ export const en: Dictionary = {
             monkey: { name: 'Monkey', fact: 'Monkeys jump nimbly from branch to branch.' },
           },
         },
+        forestAnimals: {
+          bear: { name: 'Bear cub', fact: 'Bear cubs are born in winter in a den and stay with their mother for almost two years.' },
+          fox: { name: 'Fox', fact: 'Foxes have excellent hearing. They can hear a mouse moving under the snow.' },
+          hedgehog: { name: 'Hedgehog', fact: 'Hedgehogs eat beetles and slugs, so they are every garden’s friend.' },
+          owl: { name: 'Owl', fact: 'Owls fly almost silently thanks to their soft feathers.' },
+          rabbit: { name: 'Bunny', fact: 'Rabbits turn their long ears in every direction to hear danger from far away.' },
+          fawn: { name: 'Fawn', fact: 'A fawn has white spots on its fur so it can hide more easily in the grass.' },
+          squirrel: { name: 'Squirrel', fact: 'Squirrels don’t find all the nuts they bury, so some of them grow into new trees.' },
+          raccoon: { name: 'Raccoon', fact: 'Raccoons come from North America. They often feel and wet their food in water.' },
+          frog: { name: 'Frog', fact: 'A frog starts life as a tadpole living in water and grows legs later.' },
+        },
       },
       sheets: {
         testGrade1: {
@@ -758,6 +769,10 @@ export const en: Dictionary = {
         writingHandbookCyrillic: {
           title: 'How a story is made — a handbook for young writers (Cyrillic)',
           text: 'The same handbook in Cyrillic script: 12 topics on the rules writers follow, examples, reading tips and exercises.',
+        },
+        coloringForestAnimals: {
+          title: 'Colouring book: Forest animals (9 pages)',
+          text: 'Colour your forest friends with crayons, felt-tip pens or watercolours. There is a fun fact under each picture.',
         },
         coloringWildAnimals: {
           title: 'Colouring book: Wild animals (14 pages)',
