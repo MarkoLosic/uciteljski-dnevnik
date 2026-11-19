@@ -629,6 +629,42 @@ export const hr: Dictionary = {
           words: { title: 'Lijepe riječi', note: 'Oprosti, hvala i molim čarobne su riječi. Kada ih govorimo?' },
           sharing: { title: 'Dijeljenje igračaka', note: 'Kad dijelimo igračke, igra je ljepša. S kim ti dijeliš igračke?' },
         },
+        tools: {
+          wrench: { title: 'Ključ i odvijač', note: 'Ključem se pritežu matice, a odvijačem vijci. Tko kod vas kod kuće popravlja stvari?' },
+          pliers: { title: 'Kliješta', note: 'Kliještima se drži i savija žica. Alat koristimo samo uz odraslu osobu.' },
+          shovels: { title: 'Lopata i ašov', note: 'Lopatom i ašovom kopamo zemlju. Što bismo mogli posaditi u vrtu?' },
+          roller: { title: 'Valjak za bojenje zidova', note: 'Valjkom se boje zidovi. Koje bi boje bili zidovi tvoje sobe iz snova?' },
+          wheelbarrow: { title: 'Tačke', note: 'U tačkama se prevozi zemlja, pijesak i cigle. Što još možemo prevesti tačkama?' },
+          saw: { title: 'Ručna pila', note: 'Pila ima oštre zupce i njome se reže drvo. Što je u tvojoj sobi napravljeno od drva?' },
+          hammer: { title: 'Čekić', note: 'Veseli čekić zabija čavle. Nacrtaj pokraj njega nekoliko čavala.' },
+        },
+        flowers: {
+          bird: { title: 'Ptičica na rascvjetaloj grani', note: 'Proljeće je stiglo! Koje ptice dolaze u vaše dvorište ili na prozor?' },
+          mandala: { title: 'Cvjetna mandala', note: 'Latice istog oblika oboji istom bojom i pogledaj kakav se uzorak pojavi.' },
+          vase: { title: 'Vaza s cvijećem', note: 'U vazi su tulipani i narcisi. Kome želiš pokloniti ovaj buket?' },
+          heart: { title: 'Cvjetno srce', note: 'Srce je napravljeno od ruža, tulipana i suncokreta. Koji je tvoj omiljeni cvijet?' },
+          basket: { title: 'Košara s cvijećem', note: 'Koliko različitih cvjetova vidiš u košari?' },
+          bee: { title: 'Pčela iznad cvijeća', note: 'Pčela skuplja nektar iz cvjetova i od njega radi med. Pronađi lavandu na slici.' },
+          wreath: { title: 'Cvjetni vijenac', note: 'Prebroji leptire u vijencu. U sredinu možeš nacrtati sebe ili napisati svoje ime.' },
+        },
+        insects: {
+          bee: { title: 'Pčelica', note: 'Pčelica ima žute i crne pruge. Kakav zvuk proizvodi pčela?' },
+          caterpillar: { title: 'Gusjenica na panju', note: 'Od gusjenice jednog dana nastane leptir. Pronađi leptire na slici.' },
+          snailButterfly: { title: 'Puž i leptir', note: 'Puž nosi svoju kućicu na leđima. Tko je brži, puž ili leptir?' },
+          butterfly: { title: 'Leptir', note: 'Krila leptira jednaka su s lijeve i desne strane. Oboji ih istim bojama.' },
+          ladybird: { title: 'Bubamara na grani', note: 'Bubamara je crvena s crnim točkicama. Prebroji točkice na njezinim krilima.' },
+          ant: { title: 'Mrav na livadi', note: 'Mravi rade zajedno i nose teret veći od sebe. Prebroji cvjetove oko mrava.' },
+          dragonfly: { title: 'Vilin konjic', note: 'Vilin konjic ima četiri prozirna krila i živi uz vodu. Oboji cvjetove oko njega.' },
+        },
+        pizza: {
+          slice: { title: 'Komad pizze', note: 'Što ti voliš na pizzi? Dodaj na komad svoje omiljene dodatke.' },
+          board: { title: 'Cijela pizza na dasci', note: 'Na koliko je komada pizza izrezana? Prebroji ih.' },
+          box: { title: 'Otvorena kutija pizze', note: 'Pizza je tek stigla i još se puši. Pazi, vruća je!' },
+          chef: { title: 'Majstor za pizzu', note: 'Majstor peče pizzu u peći. Što je potrebno da se umijesi tijesto?' },
+          kids: { title: 'Djeca jedu pizzu', note: 'Koliko je djece za stolom? Ako svatko dobije po jedan komad, koliko komada treba?' },
+          happySlice: { title: 'Veseli komad pizze', note: 'Komad pizze pleše od sreće. Nacrtaj mu prijatelja.' },
+          ingredients: { title: 'Sastojci za pizzu', note: 'Gljiva, rajčica, sir, bosiljak i paprika. Koji ti je sastojak najdraži?' },
+        },
         bunnies: {
           carrot: { title: 'Zečić i mrkva', note: 'Što ti voliš jesti za užinu? Nacrtaj to pokraj zečića.' },
           wreath: { title: 'Zečić s cvjetnim vijencem', note: 'Prebroji cvjetove u vijencu i oboji svaki drugom bojom.' },
@@ -957,6 +993,22 @@ export const hr: Dictionary = {
         coloringManners: {
           title: 'Bojanka: Lijepo ponašanje (7 stranica)',
           text: 'Oboji djecu koja pomažu, uče, dijele i govore lijepe riječi. Ispod svake slike je pitanje za razgovor o lijepim navikama.',
+        },
+        coloringTools: {
+          title: 'Bojanka: Alati (7 stranica)',
+          text: 'Oboji ključ i odvijač, kliješta, lopatu, valjak, tačke, pilu i veselog čekića. Ispod svake slike je kratko pitanje o tome čemu alat služi.',
+        },
+        coloringFlowers: {
+          title: 'Bojanka: Cvijeće (7 stranica)',
+          text: 'Oboji ptičicu na rascvjetaloj grani, cvjetnu mandalu, vazu, srce, košaru i vijenac od cvijeća. Ispod svake slike je pitanje ili mali zadatak.',
+        },
+        coloringInsects: {
+          title: 'Bojanka: Kukci (7 stranica)',
+          text: 'Oboji pčelicu, gusjenicu, puža i leptira, bubamaru, mrava i vilinog konjica. Ispod svake slike je zanimljivost ili pitanje o malim stanovnicima livade.',
+        },
+        coloringPizza: {
+          title: 'Bojanka: Pizza (7 stranica)',
+          text: 'Oboji komad pizze, pizzu na dasci i u kutiji, majstora za pizzu, djecu za stolom i sastojke za pizzu. Ispod svake slike je pitanje ili zadatak.',
         },
         coloringBunnies: {
           title: 'Bojanka: Zečići (9 stranica)',

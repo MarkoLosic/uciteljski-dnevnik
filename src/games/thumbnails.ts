@@ -47,4 +47,8 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringBicycle: '/slike/bojanke/bicikl/03-porodicna-voznja.jpg',
   coloringWeather: '/slike/bojanke/vrijeme/07-duga-poslije-kise.jpg',
   coloringManners: '/slike/bojanke/lijepo-ponasanje/06-lijepe-rijeci.jpg',
+  coloringTools: '/slike/bojanke/alati/07-cekic.jpg',
+  coloringFlowers: '/slike/bojanke/cvijece/04-cvjetno-srce.jpg',
+  coloringInsects: '/slike/bojanke/insekti/04-leptir.jpg',
+  coloringPizza: '/slike/bojanke/pica/06-veselo-parce-pice.jpg',
 };

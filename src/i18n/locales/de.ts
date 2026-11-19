@@ -629,6 +629,42 @@ export const de: Dictionary = {
           words: { title: 'Freundliche Worte', note: 'Entschuldigung, danke und bitte sind Zauberwörter. Wann sagen wir sie?' },
           sharing: { title: 'Spielzeug teilen', note: 'Wenn wir teilen, macht das Spielen mehr Spaß. Mit wem teilst du dein Spielzeug?' },
         },
+        tools: {
+          wrench: { title: 'Schraubenschlüssel und Schraubenzieher', note: 'Mit dem Schlüssel zieht man Muttern fest, mit dem Schraubenzieher Schrauben. Wer repariert bei euch zu Hause Dinge?' },
+          pliers: { title: 'Zange', note: 'Mit der Zange hält und biegt man Draht. Werkzeug benutzen wir nur mit einem Erwachsenen.' },
+          shovels: { title: 'Schaufel und Spaten', note: 'Mit Schaufel und Spaten graben wir die Erde um. Was könnten wir im Garten pflanzen?' },
+          roller: { title: 'Farbroller', note: 'Mit dem Roller streicht man Wände. Welche Farbe hätten die Wände deines Traumzimmers?' },
+          wheelbarrow: { title: 'Schubkarre', note: 'In der Schubkarre fährt man Erde, Sand und Ziegel. Was können wir noch damit transportieren?' },
+          saw: { title: 'Handsäge', note: 'Die Säge hat scharfe Zähne und schneidet Holz. Was in deinem Zimmer ist aus Holz?' },
+          hammer: { title: 'Hammer', note: 'Der fröhliche Hammer schlägt Nägel ein. Male ein paar Nägel neben ihn.' },
+        },
+        flowers: {
+          bird: { title: 'Vogel auf einem blühenden Zweig', note: 'Der Frühling ist da! Welche Vögel kommen in euren Garten oder an dein Fenster?' },
+          mandala: { title: 'Blumen-Mandala', note: 'Male gleich geformte Blütenblätter in derselben Farbe an und schau, welches Muster entsteht.' },
+          vase: { title: 'Vase mit Blumen', note: 'In der Vase sind Tulpen und Narzissen. Wem möchtest du diesen Strauß schenken?' },
+          heart: { title: 'Blumenherz', note: 'Das Herz besteht aus Rosen, Tulpen und Sonnenblumen. Was ist deine Lieblingsblume?' },
+          basket: { title: 'Blumenkorb', note: 'Wie viele verschiedene Blumen siehst du im Korb?' },
+          bee: { title: 'Biene über den Blumen', note: 'Die Biene sammelt Nektar aus den Blüten und macht daraus Honig. Finde den Lavendel im Bild.' },
+          wreath: { title: 'Blumenkranz', note: 'Zähle die Schmetterlinge im Kranz. In die Mitte kannst du dich selbst malen oder deinen Namen schreiben.' },
+        },
+        insects: {
+          bee: { title: 'Kleine Biene', note: 'Die kleine Biene hat gelbe und schwarze Streifen. Welches Geräusch macht eine Biene?' },
+          caterpillar: { title: 'Raupe auf dem Baumstumpf', note: 'Aus einer Raupe wird eines Tages ein Schmetterling. Finde die Schmetterlinge im Bild.' },
+          snailButterfly: { title: 'Schnecke und Schmetterling', note: 'Die Schnecke trägt ihr Haus auf dem Rücken. Wer ist schneller, die Schnecke oder der Schmetterling?' },
+          butterfly: { title: 'Schmetterling', note: 'Die Flügel des Schmetterlings sind links und rechts gleich. Male sie in denselben Farben an.' },
+          ladybird: { title: 'Marienkäfer auf dem Zweig', note: 'Der Marienkäfer ist rot mit schwarzen Punkten. Zähle die Punkte auf seinen Flügeln.' },
+          ant: { title: 'Ameise auf der Wiese', note: 'Ameisen arbeiten zusammen und tragen Lasten, die größer sind als sie selbst. Zähle die Blumen um die Ameise.' },
+          dragonfly: { title: 'Libelle', note: 'Die Libelle hat vier durchsichtige Flügel und lebt am Wasser. Male die Blumen um sie herum an.' },
+        },
+        pizza: {
+          slice: { title: 'Pizzastück', note: 'Was magst du auf deiner Pizza? Male deinen Lieblingsbelag auf das Stück.' },
+          board: { title: 'Ganze Pizza auf dem Brett', note: 'In wie viele Stücke ist die Pizza geschnitten? Zähle sie.' },
+          box: { title: 'Offener Pizzakarton', note: 'Die Pizza ist gerade angekommen und dampft noch. Vorsicht, heiß!' },
+          chef: { title: 'Pizzabäcker', note: 'Der Pizzabäcker backt die Pizza im Ofen. Was braucht man für den Teig?' },
+          kids: { title: 'Kinder essen Pizza', note: 'Wie viele Kinder sitzen am Tisch? Wenn jedes ein Stück bekommt, wie viele Stücke brauchen wir?' },
+          happySlice: { title: 'Fröhliches Pizzastück', note: 'Das Pizzastück tanzt vor Freude. Male ihm einen Freund.' },
+          ingredients: { title: 'Pizzazutaten', note: 'Pilz, Tomate, Käse, Basilikum und Paprika. Welche Zutat magst du am liebsten?' },
+        },
         bunnies: {
           carrot: { title: 'Häschen mit Karotte', note: 'Was isst du gern als Pausensnack? Male es neben das Häschen.' },
           wreath: { title: 'Häschen mit Blumenkranz', note: 'Zähle die Blumen im Kranz und male jede in einer anderen Farbe aus.' },
@@ -957,6 +993,22 @@ export const de: Dictionary = {
         coloringManners: {
           title: 'Malbuch: Gutes Benehmen (7 Seiten)',
           text: 'Male Kinder an, die helfen, lernen, teilen und freundliche Worte sagen. Unter jedem Bild steht eine Frage zu guten Gewohnheiten.',
+        },
+        coloringTools: {
+          title: 'Malbuch: Werkzeuge (7 Seiten)',
+          text: 'Male Schraubenschlüssel und Schraubenzieher, Zange, Schaufel, Farbroller, Schubkarre, Säge und einen fröhlichen Hammer an. Unter jedem Bild steht eine kurze Frage, wofür das Werkzeug gut ist.',
+        },
+        coloringFlowers: {
+          title: 'Malbuch: Blumen (7 Seiten)',
+          text: 'Male einen Vogel auf einem blühenden Zweig, ein Blumen-Mandala, eine Vase, ein Herz, einen Korb und einen Kranz aus Blumen an. Unter jedem Bild steht eine Frage oder kleine Aufgabe.',
+        },
+        coloringInsects: {
+          title: 'Malbuch: Insekten (7 Seiten)',
+          text: 'Male eine kleine Biene, eine Raupe, Schnecke und Schmetterling, einen Marienkäfer, eine Ameise und eine Libelle an. Unter jedem Bild steht ein Wissenshappen oder eine Frage zu den kleinen Wiesenbewohnern.',
+        },
+        coloringPizza: {
+          title: 'Malbuch: Pizza (7 Seiten)',
+          text: 'Male ein Pizzastück, eine Pizza auf dem Brett und im Karton, einen Pizzabäcker, Kinder am Tisch und Pizzazutaten an. Unter jedem Bild steht eine Frage oder Aufgabe.',
         },
         coloringBunnies: {
           title: 'Malbuch: Häschen (9 Seiten)',

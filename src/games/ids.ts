@@ -110,6 +110,10 @@ export const WORKSHEET_IDS = [
   'coloringBicycle',
   'coloringWeather',
   'coloringManners',
+  'coloringTools',
+  'coloringFlowers',
+  'coloringInsects',
+  'coloringPizza',
   'writingHandbookLatin',
   'writingHandbookCyrillic',
   'mathNumberLine',
@@ -191,7 +195,7 @@ export const WORKSHEET_LOCALES: Partial<Record<WorksheetId, readonly Locale[]>> 
 // Grupe na stranici igara; naslov grupe je u `t.games.worksheet.groups`.
 export const WORKSHEET_GROUPS = {
   // Priručnici i vježbanke od više strana — posebna grupa, prva na stranici, da se lako nađu.
-  books: ['winterBreakPack', 'coloringWildAnimals', 'coloringForestAnimals', 'coloringPuppies', 'coloringBunnies', 'coloringCars', 'coloringFruitVeg', 'coloringLeaves', 'coloringNumbers', 'coloringBasketball', 'coloringSummerDays', 'coloringFamily', 'coloringFathersDay', 'coloringEarth', 'coloringBicycle', 'coloringWeather', 'coloringManners', 'homeWorkbookMath2', 'writingHandbookLatin', 'writingHandbookCyrillic'],
+  books: ['winterBreakPack', 'coloringWildAnimals', 'coloringForestAnimals', 'coloringPuppies', 'coloringBunnies', 'coloringCars', 'coloringFruitVeg', 'coloringLeaves', 'coloringNumbers', 'coloringBasketball', 'coloringSummerDays', 'coloringFamily', 'coloringFathersDay', 'coloringEarth', 'coloringBicycle', 'coloringWeather', 'coloringManners', 'coloringTools', 'coloringFlowers', 'coloringInsects', 'coloringPizza', 'homeWorkbookMath2', 'writingHandbookLatin', 'writingHandbookCyrillic'],
   tests: [
     'testGrade1',
     'testGrade2',

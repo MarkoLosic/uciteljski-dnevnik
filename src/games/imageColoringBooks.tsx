@@ -262,6 +262,46 @@ const MANNERS_FILES = {
   sharing: '07-dijeljenje-igracaka',
 };
 
+const TOOLS_FILES = {
+  wrench: '01-kljuc-i-odvijac',
+  pliers: '02-klijesta',
+  shovels: '03-lopata-i-asov',
+  roller: '04-valjak-za-krecenje',
+  wheelbarrow: '05-kolica',
+  saw: '06-rucna-testera',
+  hammer: '07-cekic',
+};
+
+const FLOWERS_FILES = {
+  bird: '01-pticica-na-grani',
+  mandala: '02-cvjetna-mandala',
+  vase: '03-vaza-sa-cvijecem',
+  heart: '04-cvjetno-srce',
+  basket: '05-korpa-sa-cvijecem',
+  bee: '06-pcela-iznad-cvijeca',
+  wreath: '07-cvjetni-vijenac',
+};
+
+const INSECTS_FILES = {
+  bee: '01-pcelica',
+  caterpillar: '02-gusjenica-na-panju',
+  snailButterfly: '03-puz-i-leptir',
+  butterfly: '04-leptir',
+  ladybird: '05-bubamara-na-grani',
+  ant: '06-mrav-na-livadi',
+  dragonfly: '07-vilin-konjic',
+};
+
+const PIZZA_FILES = {
+  slice: '01-parce-pice',
+  board: '02-pica-na-dasci',
+  box: '03-kutija-pice',
+  chef: '04-pica-majstor',
+  kids: '05-djeca-jedu-picu',
+  happySlice: '06-veselo-parce-pice',
+  ingredients: '07-sastojci-za-picu',
+};
+
 export const basketballPages = (labels: Labels) => pagesFrom('kosarka', BASKETBALL_FILES, labels.basketball);
 export const summerPages = (labels: Labels) => pagesFrom('ljeto', SUMMER_FILES, labels.summer);
 export const familyPages = (labels: Labels) => pagesFrom('porodica', FAMILY_FILES, labels.family);
@@ -270,3 +310,7 @@ export const earthPages = (labels: Labels) => pagesFrom('planeta-zemlja', EARTH_
 export const bicyclePages = (labels: Labels) => pagesFrom('bicikl', BICYCLE_FILES, labels.bicycle);
 export const weatherPages = (labels: Labels) => pagesFrom('vrijeme', WEATHER_FILES, labels.weather);
 export const mannersPages = (labels: Labels) => pagesFrom('lijepo-ponasanje', MANNERS_FILES, labels.manners);
+export const toolsPages = (labels: Labels) => pagesFrom('alati', TOOLS_FILES, labels.tools);
+export const flowersPages = (labels: Labels) => pagesFrom('cvijece', FLOWERS_FILES, labels.flowers);
+export const insectsPages = (labels: Labels) => pagesFrom('insekti', INSECTS_FILES, labels.insects);
+export const pizzaPages = (labels: Labels) => pagesFrom('pica', PIZZA_FILES, labels.pizza);

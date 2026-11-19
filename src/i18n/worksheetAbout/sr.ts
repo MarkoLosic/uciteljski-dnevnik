@@ -82,6 +82,22 @@ export const worksheetAboutSr: WorksheetAbout = {
     age: '3–7 godina',
     text: 'Bojanka od 7 strana o vremenskim prilikama: oluja, sunčan dan, kiša, vjetar, snijeg, igra po kiši i duga. Dobra je uz časove o godišnjim dobima i vremenu; ispod svake slike je pitanje ili zadatak sa brojanjem.',
   },
+  coloringTools: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana sa alatima iz kuće i bašte: ključ i odvijač, kliješta, lopata i ašov, valjak za krečenje, kolica, ručna testera i veseli čekić. Uz svaku sliku je pitanje o tome čemu alat služi — dobra prilika za razgovor o sigurnosti i pomaganju odraslima.',
+  },
+  coloringFlowers: {
+    age: '3–8 godina',
+    text: 'Bojanka od 7 strana sa cvijećem: ptičica na rascvjetaloj grani, cvjetna mandala, vaza, srce, korpa, pčela iznad livade i cvjetni vijenac. Mandala i vijenac imaju više sitnih detalja, pa su dobri i za stariju djecu.',
+  },
+  coloringInsects: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o malim stanovnicima livade: pčelica, gusjenica, puž i leptir, leptir, bubamara, mrav i vilin konjic. Uz svaku sliku je kratka zanimljivost ili pitanje za razgovor o prirodi.',
+  },
+  coloringPizza: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o pici: parče pice, pica na dasci i u kutiji, pica majstor, djeca za stolom, veselo parče i sastojci. Zadaci uz slike vježbaju brojanje i razgovor o hrani.',
+  },
   coloringManners: {
     age: '3–7 godina',
     text: 'Bojanka od 7 strana o lijepom ponašanju: briga o biljci, pomoć u dvorištu i kuhinji, pomoć starijima, red na stolu, čarobne riječi (izvini, hvala, molim) i dijeljenje igračaka. Svaka slika ima pitanje za razgovor o lijepim navikama.',

@@ -629,6 +629,42 @@ export const en: Dictionary = {
           words: { title: 'Kind words', note: 'Sorry, thank you and please are magic words. When do we say them?' },
           sharing: { title: 'Sharing toys', note: 'Playing is more fun when we share. Who do you share your toys with?' },
         },
+        tools: {
+          wrench: { title: 'Spanner and screwdriver', note: 'A spanner tightens nuts and a screwdriver turns screws. Who fixes things in your home?' },
+          pliers: { title: 'Pliers', note: 'Pliers hold and bend wire. We only use tools with a grown-up.' },
+          shovels: { title: 'Spade and shovel', note: 'We dig the soil with a spade and a shovel. What could we plant in the garden?' },
+          roller: { title: 'Paint roller', note: 'A roller is used to paint walls. What colour would the walls of your dream room be?' },
+          wheelbarrow: { title: 'Wheelbarrow', note: 'A wheelbarrow carries soil, sand and bricks. What else can we carry in it?' },
+          saw: { title: 'Hand saw', note: 'A saw has sharp teeth and cuts wood. What in your room is made of wood?' },
+          hammer: { title: 'Hammer', note: 'The happy hammer knocks in nails. Draw a few nails next to it.' },
+        },
+        flowers: {
+          bird: { title: 'Bird on a blossoming branch', note: 'Spring is here! Which birds visit your garden or window?' },
+          mandala: { title: 'Flower mandala', note: 'Colour petals of the same shape in the same colour and see what pattern appears.' },
+          vase: { title: 'Vase of flowers', note: 'The vase holds tulips and daffodils. Who would you like to give this bouquet to?' },
+          heart: { title: 'Flower heart', note: 'The heart is made of roses, tulips and sunflowers. What is your favourite flower?' },
+          basket: { title: 'Basket of flowers', note: 'How many different flowers can you see in the basket?' },
+          bee: { title: 'Bee above the flowers', note: 'Bees collect nectar from flowers and make honey from it. Find the lavender in the picture.' },
+          wreath: { title: 'Flower wreath', note: 'Count the butterflies in the wreath. You can draw yourself or write your name in the middle.' },
+        },
+        insects: {
+          bee: { title: 'Little bee', note: 'The little bee has yellow and black stripes. What sound does a bee make?' },
+          caterpillar: { title: 'Caterpillar on a tree stump', note: 'One day a caterpillar turns into a butterfly. Find the butterflies in the picture.' },
+          snailButterfly: { title: 'Snail and butterfly', note: 'A snail carries its house on its back. Who is faster, the snail or the butterfly?' },
+          butterfly: { title: 'Butterfly', note: 'A butterfly’s wings are the same on the left and the right. Colour them in the same colours.' },
+          ladybird: { title: 'Ladybird on a branch', note: 'A ladybird is red with black spots. Count the spots on its wings.' },
+          ant: { title: 'Ant in the meadow', note: 'Ants work together and carry loads bigger than themselves. Count the flowers around the ant.' },
+          dragonfly: { title: 'Dragonfly', note: 'A dragonfly has four see-through wings and lives near water. Colour the flowers around it.' },
+        },
+        pizza: {
+          slice: { title: 'Pizza slice', note: 'What do you like on your pizza? Add your favourite toppings to the slice.' },
+          board: { title: 'Whole pizza on a board', note: 'How many slices is the pizza cut into? Count them.' },
+          box: { title: 'Open pizza box', note: 'The pizza has just arrived and is still steaming. Careful, it’s hot!' },
+          chef: { title: 'Pizza chef', note: 'The chef bakes pizza in the oven. What do we need to make the dough?' },
+          kids: { title: 'Children eating pizza', note: 'How many children are at the table? If each gets one slice, how many slices do we need?' },
+          happySlice: { title: 'Happy pizza slice', note: 'The pizza slice is dancing with joy. Draw a friend for it.' },
+          ingredients: { title: 'Pizza ingredients', note: 'Mushroom, tomato, cheese, basil and pepper. Which ingredient do you like best?' },
+        },
         bunnies: {
           carrot: { title: 'Bunny with a carrot', note: 'What do you like to eat for a snack? Draw it next to the bunny.' },
           wreath: { title: 'Bunny with a flower crown', note: 'Count the flowers in the crown and colour each one a different colour.' },
@@ -957,6 +993,22 @@ export const en: Dictionary = {
         coloringManners: {
           title: 'Colouring book: Good manners (7 pages)',
           text: 'Colour children who help, learn, share and use kind words. Under each picture there is a question about good habits.',
+        },
+        coloringTools: {
+          title: 'Colouring book: Tools (7 pages)',
+          text: 'Colour a spanner and screwdriver, pliers, a spade, a paint roller, a wheelbarrow, a saw and a happy hammer. Under each picture there is a short question about what the tool is for.',
+        },
+        coloringFlowers: {
+          title: 'Colouring book: Flowers (7 pages)',
+          text: 'Colour a bird on a blossoming branch, a flower mandala, a vase, a heart, a basket and a wreath of flowers. Under each picture there is a question or a small task.',
+        },
+        coloringInsects: {
+          title: 'Colouring book: Insects (7 pages)',
+          text: 'Colour a little bee, a caterpillar, a snail and butterfly, a ladybird, an ant and a dragonfly. Under each picture there is a fun fact or a question about the small creatures of the meadow.',
+        },
+        coloringPizza: {
+          title: 'Colouring book: Pizza (7 pages)',
+          text: 'Colour a pizza slice, a pizza on a board and in a box, a pizza chef, children at the table and pizza ingredients. Under each picture there is a question or a task.',
         },
         coloringBunnies: {
           title: 'Colouring book: Bunnies (9 pages)',
