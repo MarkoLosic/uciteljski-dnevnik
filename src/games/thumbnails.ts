@@ -35,4 +35,8 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringForestAnimals: '/slike/bojanke/sumske-zivotinje/02-lisica.jpg',
   coloringPuppies: '/slike/bojanke/stenci/02-igra-s-loptom.jpg',
   coloringBunnies: '/slike/bojanke/zecici/04-ispod-duge.jpg',
+  coloringCars: '/slike/bojanke/auta/02-trkaci-auto.jpg',
+  coloringFruitVeg: '/slike/bojanke/voce-i-povrce/01-veseli-prijatelji.jpg',
+  coloringLeaves: '/slike/bojanke/lisce/08-vjeverica-na-ljuljasci.jpg',
+  coloringNumbers: '/slike/bojanke/brojevi/01-jedan-dva-tri.jpg',
 };

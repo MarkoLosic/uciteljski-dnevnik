@@ -75,7 +75,7 @@ import { homeWorkbookMath2Pages } from './workbook';
 import { writingHandbookPages } from './writingHandbook';
 import { winterBreakPackPages } from './packs';
 import { wildAnimalsPages } from './wildAnimals';
-import { bunniesPages, forestAnimalsPages, puppiesPages } from './imageColoringBooks';
+import { bunniesPages, carsPages, forestAnimalsPages, fruitVegPages, leavesPages, numbersPages, puppiesPages } from './imageColoringBooks';
 
 // Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
@@ -4710,6 +4710,10 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   coloringForestAnimals: ({ labels }) => forestAnimalsPages(labels),
   coloringPuppies: ({ labels }) => puppiesPages(labels),
   coloringBunnies: ({ labels }) => bunniesPages(labels),
+  coloringCars: ({ labels }) => carsPages(labels),
+  coloringFruitVeg: ({ labels }) => fruitVegPages(labels),
+  coloringLeaves: ({ labels }) => leavesPages(labels),
+  coloringNumbers: ({ labels }) => numbersPages(labels),
   writingHandbookLatin: () => writingHandbookPages('lat'),
   writingHandbookCyrillic: () => writingHandbookPages('cyr'),
   trace: () => [<TraceSheet key="trace" />],

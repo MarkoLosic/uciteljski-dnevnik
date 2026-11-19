@@ -84,3 +84,91 @@ export function bunniesPages(labels: Labels): ReactNode[] {
     return <ImagePage key={id} src={`/slike/bojanke/zecici/${BUNNY_FILES[id]}.jpg`} title={b.title} note={b.note} />;
   });
 }
+
+export const CARS = ['car', 'race', 'fire', 'police', 'bus', 'excavator', 'dumper', 'tractor', 'jeep'] as const;
+export type Car = (typeof CARS)[number];
+
+const CAR_FILES: Record<Car, string> = {
+  car: '01-veseli-auto',
+  race: '02-trkaci-auto',
+  fire: '03-vatrogasni-kamion',
+  police: '04-policijski-auto',
+  bus: '05-skolski-autobus',
+  excavator: '06-bager',
+  dumper: '07-kamion-kiper',
+  tractor: '08-traktor',
+  jeep: '09-terenski-dzip',
+};
+
+export const FRUIT_VEG = [
+  'friends',
+  'applePear',
+  'strawberryCherry',
+  'bananaGrapes',
+  'watermelon',
+  'tomatoPepper',
+  'carrotPumpkin',
+  'broccoliCabbage',
+  'cucumberPeas',
+] as const;
+export type FruitVeg = (typeof FRUIT_VEG)[number];
+
+const FRUIT_VEG_FILES: Record<FruitVeg, string> = {
+  friends: '01-veseli-prijatelji',
+  applePear: '02-jabuka-i-kruska',
+  strawberryCherry: '03-jagoda-i-tresnje',
+  bananaGrapes: '04-banana-i-grozdje',
+  watermelon: '05-lubenica',
+  tomatoPepper: '06-paradajz-i-paprika',
+  carrotPumpkin: '07-mrkva-i-bundeva',
+  broccoliCabbage: '08-brokoli-i-kupus',
+  cucumberPeas: '09-krastavac-i-grasak',
+};
+
+export const LEAVES = ['sprout', 'kinds', 'bigLeaf', 'mouse', 'caterpillar', 'bird', 'path', 'squirrel', 'stream'] as const;
+export type Leaf = (typeof LEAVES)[number];
+
+const LEAF_FILES: Record<Leaf, string> = {
+  sprout: '01-mladica',
+  kinds: '02-vrste-lisca',
+  bigLeaf: '03-veliki-list',
+  mouse: '04-mis-ispod-lista',
+  caterpillar: '05-gusjenica-na-listu',
+  bird: '06-ptica-i-gnijezdo',
+  path: '07-jesenja-staza',
+  squirrel: '08-vjeverica-na-ljuljasci',
+  stream: '09-lisce-na-potoku',
+};
+
+export const NUMBERS = ['oneTwoThree', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'] as const;
+export type NumberPage = (typeof NUMBERS)[number];
+
+const NUMBER_FILES: Record<NumberPage, string> = {
+  oneTwoThree: '01-jedan-dva-tri',
+  zero: '02-nula',
+  one: '03-jedan',
+  two: '04-dva',
+  three: '05-tri',
+  four: '06-cetiri',
+  five: '07-pet',
+  six: '08-sest',
+  seven: '09-sedam',
+  eight: '10-osam',
+  nine: '11-devet',
+};
+
+function bookPages<Id extends string>(
+  folder: string,
+  ids: readonly Id[],
+  files: Record<Id, string>,
+  text: Record<Id, { title: string; note: string }>,
+): ReactNode[] {
+  return ids.map((id) => (
+    <ImagePage key={id} src={`/slike/bojanke/${folder}/${files[id]}.jpg`} title={text[id].title} note={text[id].note} />
+  ));
+}
+
+export const carsPages = (labels: Labels) => bookPages('auta', CARS, CAR_FILES, labels.cars);
+export const fruitVegPages = (labels: Labels) => bookPages('voce-i-povrce', FRUIT_VEG, FRUIT_VEG_FILES, labels.fruitVeg);
+export const leavesPages = (labels: Labels) => bookPages('lisce', LEAVES, LEAF_FILES, labels.leaves);
+export const numbersPages = (labels: Labels) => bookPages('brojevi', NUMBERS, NUMBER_FILES, labels.numbers);

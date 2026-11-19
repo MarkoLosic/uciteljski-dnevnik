@@ -54,6 +54,22 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  coloringCars: {
+    age: '3–7 godina',
+    text: 'Bojanka od 9 strana sa veselim vozilima: trkaći auto, vatrogasni kamion, policijski auto, školski autobus, bager, kiper, traktor i terenski džip. Ispod svake slike je pitanje ili mali zadatak (brojanje, pronalaženje detalja, brojevi za hitne slučajeve 122 i 123) za razgovor sa djetetom dok boji.',
+  },
+  coloringFruitVeg: {
+    age: '3–7 godina',
+    text: 'Bojanka od 9 strana sa nasmijanim voćem i povrćem: jabuka i kruška, jagoda i trešnje, banana i grožđe, lubenica, paradajz i paprika, mrkva i bundeva, brokoli i kupus, krastavac i grašak. Dobra je uz temu zdrave ishrane, a ispod svake slike je pitanje ili zadatak sa brojanjem.',
+  },
+  coloringLeaves: {
+    age: '4–8 godina',
+    text: 'Bojanka od 9 strana o lišću i prirodi: listovi hrasta, javora, breze, ginka i palme, veliki list sa žilicama za strpljivo bojenje, jesenja šumska staza i životinje uz lišće. Lijepa je za jesen i za časove o biljkama; ispod svake slike je pitanje ili zadatak.',
+  },
+  coloringNumbers: {
+    age: '3–6 godina',
+    text: 'Bojanka od 11 strana sa brojevima od 0 do 9: svaki broj je veseli lik sa nečim što se može prebrojati ili dopuniti. Ispod svake slike je mali zadatak (prebroj, nacrtaj još, pokaži prstima), pa dijete uz bojenje vježba i brojanje.',
+  },
   coloringBunnies: {
     age: '3–7 godina',
     text: 'Bojanka od 9 strana sa veselim zečićima: u korpi, ispod duge, u bašti, u trci sa kornjačom, na livadi i sa porodicom. Ispod svake slike je pitanje ili mali zadatak (brojanje, redoslijed boja duge, basna o zecu i kornjači) za razgovor sa djetetom dok boji. Lijepa je i za proljeće i Uskrs.',
