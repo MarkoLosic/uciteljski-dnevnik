@@ -75,7 +75,23 @@ import { homeWorkbookMath2Pages } from './workbook';
 import { writingHandbookPages } from './writingHandbook';
 import { winterBreakPackPages } from './packs';
 import { wildAnimalsPages } from './wildAnimals';
-import { bunniesPages, carsPages, forestAnimalsPages, fruitVegPages, leavesPages, numbersPages, puppiesPages } from './imageColoringBooks';
+import {
+  basketballPages,
+  bicyclePages,
+  bunniesPages,
+  carsPages,
+  earthPages,
+  familyPages,
+  fathersDayPages,
+  forestAnimalsPages,
+  fruitVegPages,
+  leavesPages,
+  mannersPages,
+  numbersPages,
+  puppiesPages,
+  summerPages,
+  weatherPages,
+} from './imageColoringBooks';
 
 // Papir je uvijek bijel, pa su boje fiksne (ne prate temu sajta) i dovoljno svijetle da se štampaju i crno-bijelo.
 const INK = '#111827';
@@ -4714,6 +4730,14 @@ export const worksheets: Record<WorksheetId, (ctx: SheetContext) => ReactNode[]>
   coloringFruitVeg: ({ labels }) => fruitVegPages(labels),
   coloringLeaves: ({ labels }) => leavesPages(labels),
   coloringNumbers: ({ labels }) => numbersPages(labels),
+  coloringBasketball: ({ labels }) => basketballPages(labels),
+  coloringSummerDays: ({ labels }) => summerPages(labels),
+  coloringFamily: ({ labels }) => familyPages(labels),
+  coloringFathersDay: ({ labels }) => fathersDayPages(labels),
+  coloringEarth: ({ labels }) => earthPages(labels),
+  coloringBicycle: ({ labels }) => bicyclePages(labels),
+  coloringWeather: ({ labels }) => weatherPages(labels),
+  coloringManners: ({ labels }) => mannersPages(labels),
   writingHandbookLatin: () => writingHandbookPages('lat'),
   writingHandbookCyrillic: () => writingHandbookPages('cyr'),
   trace: () => [<TraceSheet key="trace" />],

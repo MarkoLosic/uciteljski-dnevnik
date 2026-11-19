@@ -39,4 +39,12 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringFruitVeg: '/slike/bojanke/voce-i-povrce/01-veseli-prijatelji.jpg',
   coloringLeaves: '/slike/bojanke/lisce/08-vjeverica-na-ljuljasci.jpg',
   coloringNumbers: '/slike/bojanke/brojevi/01-jedan-dva-tri.jpg',
+  coloringBasketball: '/slike/bojanke/kosarka/01-sut-na-kos.jpg',
+  coloringSummerDays: '/slike/bojanke/ljeto/05-dvorac-od-pijeska.jpg',
+  coloringFamily: '/slike/bojanke/porodica/06-piknik.jpg',
+  coloringFathersDay: '/slike/bojanke/dan-oceva/05-na-tatinim-ramenima.jpg',
+  coloringEarth: '/slike/bojanke/planeta-zemlja/07-prijatelji-planete.jpg',
+  coloringBicycle: '/slike/bojanke/bicikl/03-porodicna-voznja.jpg',
+  coloringWeather: '/slike/bojanke/vrijeme/07-duga-poslije-kise.jpg',
+  coloringManners: '/slike/bojanke/lijepo-ponasanje/06-lijepe-rijeci.jpg',
 };

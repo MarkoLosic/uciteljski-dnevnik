@@ -54,6 +54,38 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
 
   // Priručnici i vježbanke
+  coloringBasketball: {
+    age: '4–8 godina',
+    text: 'Bojanka od 7 strana o košarci: šut na koš, vođenje lopte, početak utakmice, zakucavanje, slavlje, navijačice i pehar. Ispod svake slike je pitanje ili zadatak (brojanje, pronalaženje detalja) koji otvara razgovor o igri, timu i fer-pleju.',
+  },
+  coloringSummerDays: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o ljetu: sunce s naočarima, plaža, bazen, sladoled, dvorac od pijeska, kampovanje i štand sa limunadom. Dobra je za kraj školske godine i ljetni raspust; ispod svake slike je pitanje ili zadatak za razgovor.',
+  },
+  coloringFamily: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o porodici: društvena igra, ručak, šetnja, filmsko veče, pravljenje kolača, piknik i polazak u školu. Pitanja ispod slika podstiču dijete da priča o svojoj porodici, pa je bojanka dobra i uz temu „Moja porodica“.',
+  },
+  coloringFathersDay: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana za Dan očeva: transparent „Volimo tatu“, igra loptom, priča za laku noć, vožnja bicikla, nošenje na ramenima, gradnja kućice na drvetu i pecanje. Može poslužiti i kao poklon tati.',
+  },
+  coloringEarth: {
+    age: '4–8 godina',
+    text: 'Bojanka od 7 strana o planeti Zemlji: Zemlja u svemiru, sadnja drveća, recikliranje, astronauti i djeca iz cijelog svijeta. Dobra je za Dan planete Zemlje i časove o zaštiti prirode; ispod svake slike je pitanje ili zadatak.',
+  },
+  coloringBicycle: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o biciklu: brdski bicikl, vožnja u parku, porodična vožnja, pomoćni točkovi, trka, starinski bicikl i sladoled na biciklu. Pitanja ispod slika otvaraju razgovor i o kacigi i bezbjednoj vožnji.',
+  },
+  coloringWeather: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o vremenskim prilikama: oluja, sunčan dan, kiša, vjetar, snijeg, igra po kiši i duga. Dobra je uz časove o godišnjim dobima i vremenu; ispod svake slike je pitanje ili zadatak sa brojanjem.',
+  },
+  coloringManners: {
+    age: '3–7 godina',
+    text: 'Bojanka od 7 strana o lijepom ponašanju: briga o biljci, pomoć u dvorištu i kuhinji, pomoć starijima, red na stolu, čarobne riječi (izvini, hvala, molim) i dijeljenje igračaka. Svaka slika ima pitanje za razgovor o lijepim navikama.',
+  },
   coloringCars: {
     age: '3–7 godina',
     text: 'Bojanka od 9 strana sa veselim vozilima: trkaći auto, vatrogasni kamion, policijski auto, školski autobus, bager, kiper, traktor i terenski džip. Ispod svake slike je pitanje ili mali zadatak (brojanje, pronalaženje detalja, brojevi za hitne slučajeve 122 i 123) za razgovor sa djetetom dok boji.',

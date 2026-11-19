@@ -172,3 +172,101 @@ export const carsPages = (labels: Labels) => bookPages('auta', CARS, CAR_FILES, 
 export const fruitVegPages = (labels: Labels) => bookPages('voce-i-povrce', FRUIT_VEG, FRUIT_VEG_FILES, labels.fruitVeg);
 export const leavesPages = (labels: Labels) => bookPages('lisce', LEAVES, LEAF_FILES, labels.leaves);
 export const numbersPages = (labels: Labels) => bookPages('brojevi', NUMBERS, NUMBER_FILES, labels.numbers);
+
+// Bojanke od 7 strana: redoslijed strana = redoslijed ključeva u mapi fajlova.
+function pagesFrom<Id extends string>(
+  folder: string,
+  files: Record<Id, string>,
+  text: Record<Id, { title: string; note: string }>,
+): ReactNode[] {
+  return bookPages(folder, Object.keys(files) as Id[], files, text);
+}
+
+const BASKETBALL_FILES = {
+  shot: '01-sut-na-kos',
+  dribble: '02-vodjenje-lopte',
+  jumpBall: '03-pocetak-utakmice',
+  dunk: '04-zakucavanje',
+  celebration: '05-slavlje-poslije-kosa',
+  cheerleaders: '06-navijacice',
+  trophy: '07-pehar',
+};
+
+const SUMMER_FILES = {
+  sun: '01-sunce-s-naocarima',
+  beach: '02-plaza-i-palme',
+  pool: '03-kupanje-u-bazenu',
+  iceCream: '04-ljetnji-sladoled',
+  sandCastle: '05-dvorac-od-pijeska',
+  camping: '06-kampovanje',
+  lemonade: '07-limunada',
+};
+
+const FAMILY_FILES = {
+  boardGame: '01-drustvena-igra',
+  lunch: '02-porodicni-rucak',
+  park: '03-setnja-u-parku',
+  movieNight: '04-filmsko-vece',
+  baking: '05-priprema-kolaca',
+  picnic: '06-piknik',
+  school: '07-odlazak-u-skolu',
+};
+
+const FATHERS_DAY_FILES = {
+  banner: '01-volimo-tatu',
+  ball: '02-igra-loptom',
+  bedtime: '03-prica-za-laku-noc',
+  bike: '04-voznja-bicikla',
+  shoulders: '05-na-tatinim-ramenima',
+  treehouse: '06-kucica-na-drvetu',
+  fishing: '07-pecanje',
+};
+
+const EARTH_FILES = {
+  hello: '01-vesela-zemlja',
+  hands: '02-cuvajmo-planetu',
+  space: '03-zemlja-u-svemiru',
+  trees: '04-sadimo-drvece',
+  recycling: '05-recikliranje',
+  astronauts: '06-putovanje-oko-zemlje',
+  friends: '07-prijatelji-planete',
+};
+
+const BICYCLE_FILES = {
+  mountainBike: '01-brdski-bicikl',
+  ride: '02-voznja-bicikla',
+  family: '03-porodicna-voznja',
+  trainingWheels: '04-pomocni-tockovi',
+  race: '05-biciklisticka-trka',
+  oldBike: '06-starinski-bicikl',
+  iceCream: '07-sladoled-na-biciklu',
+};
+
+const WEATHER_FILES = {
+  storm: '01-oluja',
+  sunny: '02-suncan-dan',
+  rain: '03-kisni-oblaci',
+  windy: '04-vjetrovit-dan',
+  snow: '05-snjezna-zima',
+  puddles: '06-igra-na-kisi',
+  rainbow: '07-duga-poslije-kise',
+};
+
+const MANNERS_FILES = {
+  watering: '01-zalijevanje-biljke',
+  sweeping: '02-ciscenje-dvorista',
+  elderly: '03-pomoc-starijima',
+  kitchen: '04-pomoc-u-kuhinji',
+  study: '05-ucenje-i-red',
+  words: '06-lijepe-rijeci',
+  sharing: '07-dijeljenje-igracaka',
+};
+
+export const basketballPages = (labels: Labels) => pagesFrom('kosarka', BASKETBALL_FILES, labels.basketball);
+export const summerPages = (labels: Labels) => pagesFrom('ljeto', SUMMER_FILES, labels.summer);
+export const familyPages = (labels: Labels) => pagesFrom('porodica', FAMILY_FILES, labels.family);
+export const fathersDayPages = (labels: Labels) => pagesFrom('dan-oceva', FATHERS_DAY_FILES, labels.fathersDay);
+export const earthPages = (labels: Labels) => pagesFrom('planeta-zemlja', EARTH_FILES, labels.earth);
+export const bicyclePages = (labels: Labels) => pagesFrom('bicikl', BICYCLE_FILES, labels.bicycle);
+export const weatherPages = (labels: Labels) => pagesFrom('vrijeme', WEATHER_FILES, labels.weather);
+export const mannersPages = (labels: Labels) => pagesFrom('lijepo-ponasanje', MANNERS_FILES, labels.manners);
