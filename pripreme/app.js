@@ -1335,6 +1335,42 @@
     return preslovi(dijelovi.join('\n'));
   }
 
+  // Odloženo učitavanje `docx` i `FileSaver` biblioteka tek na prvi klik za Word (.docx) izvoz
+  let docxUcitavanjePromise = null;
+  function ucitajSkriptu(src) {
+    return new Promise(function (resolve, reject) {
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error('Neuspjelo učitavanje: ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function ucitajDocxBiblioteke() {
+    if (window.docx && typeof window.saveAs === 'function') {
+      return Promise.resolve(true);
+    }
+    if (!docxUcitavanjePromise) {
+      prikaziObavjestenje(preslovi('Pripremam Word (.docx) dokument...'));
+      docxUcitavanjePromise = Promise.all([
+        window.docx ? Promise.resolve() : ucitajSkriptu('https://unpkg.com/docx@8.5.0/build/index.umd.js'),
+        typeof window.saveAs === 'function'
+          ? Promise.resolve()
+          : ucitajSkriptu('https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js'),
+      ])
+        .then(function () {
+          return Boolean(window.docx && typeof window.saveAs === 'function');
+        })
+        .catch(function () {
+          docxUcitavanjePromise = null;
+          return false;
+        });
+    }
+    return docxUcitavanjePromise;
+  }
+
   // Generisanje .docx dokumenta direktno u browseru pomoću `docx` biblioteke
   window.generisiDocxPripremu = async function (jedinica, zaglavljeOpcije) {
     const opcije = zaglavljeOpcije || {};
@@ -1345,6 +1381,8 @@
       opcije.ucitelj || (elMetaUcitelj ? elMetaUcitelj.textContent.trim() : '________________________________')
     );
     const datumCasa = opcije.datum || (elMetaDatum ? elMetaDatum.textContent.trim() : '________________');
+
+    await ucitajDocxBiblioteke();
 
     // Ako je dostupna `docx` biblioteka (sa CDN-a), kreiramo pravi .docx fajl
     if (window.docx && typeof window.saveAs === 'function') {

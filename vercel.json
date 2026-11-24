@@ -24,6 +24,30 @@
     {
       "source": "/pripreme/admin.html",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/slike/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/pripreme/:file(podaci\\.js|app\\.js|stil\\.css|zaglavlje\\.js)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/pripreme/zadaci/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</llms.txt>; rel=\"llms-txt\"" }
+      ]
     }
   ],
   "rewrites": [

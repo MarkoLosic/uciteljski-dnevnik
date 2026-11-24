@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "provjeri:zadatke": "node scripts/provjeri-zadatke.mjs",
-    "generisi:og": "node scripts/generisi-og-listove.mjs"
+    "generisi:og": "node scripts/generisi-og-listove.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "indexnow:dry": "node scripts/indexnow.mjs --dry-run"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

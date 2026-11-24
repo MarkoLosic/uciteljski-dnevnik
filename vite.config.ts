@@ -1081,6 +1081,7 @@ function seoFiles(): Plugin {
         const llms = buildLlmsFiles(posts, countries, jedinice);
         this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llms.short });
         this.emitFile({ type: 'asset', fileName: 'llms-full.txt', source: llms.full });
+        this.emitFile({ type: 'asset', fileName: `${siteConfig.indexNowKey}.txt`, source: siteConfig.indexNowKey });
 
         for (const locale of LOCALES) {
           if (postsOf(locale).length === 0) continue;
@@ -1183,4 +1184,20 @@ function contactApiDev(): Plugin {
 
 export default defineConfig({
   plugins: [contactApiDev(), pripremeDevRoute(), markdownPosts(), seoFiles(), react(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('/react-dom/') || id.includes('/react/') || id.includes('/react-router')) {
+              return 'vendor-react';
+            }
+            if (id.includes('/react-markdown/') || id.includes('/remark-') || id.includes('/micromark') || id.includes('/mdast') || id.includes('/unist')) {
+              return 'vendor-markdown';
+            }
+          }
+        },
+      },
+    },
+  },
 });

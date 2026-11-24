@@ -91,7 +91,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
 │   └── pripremeStranice.ts    # statične stranice priprema: /pripreme/<slug>, po razredu i predmetu (vidi 10.8)
 ├── scripts/
 │   ├── provjeri-zadatke.mjs   # validacija zadataka u banci priprema
-│   └── generisi-og-listove.mjs # generiše 1200×630 JPG og:image kartice za sve radne listove u public/slike/og-listovi/
+│   ├── generisi-og-listove.mjs # generiše 1200×630 JPG og:image kartice za sve radne listove u public/slike/og-listovi/
+│   └── indexnow.mjs           # šalje URL-ove iz dist/sitemap-*.xml na IndexNow API (Bing, ChatGPT Search, Copilot)
 ├── vercel.json                # SPA rewrite: sve rute → index.html
 ├── api/
 │   └── contact.ts             # Vercel funkcija: kontakt forma → mejl preko Resend-a (sekcija 10.11)
@@ -111,7 +112,8 @@ Učiteljski_dnevnik/            ← koren projekta (npm ime: uciteljski-dnevnik)
     │   ├── config.ts          # LOCALES, DEFAULT_LOCALE, localeInfo (ime, BCP 47 tag, slug „O meni“) — deli se sa vite.config.ts
     │   ├── paths.ts           # localeBase, pathsFor(locale), switchLocalePath
     │   ├── LocaleContext.tsx  # LocaleProvider + useLocale() → { locale, t, paths }
-    │   ├── dictionaries.ts    # Record<Locale, Dictionary>
+    │   ├── dictionaries.ts    # puni Record<Locale, Dictionary> za Node build (vite.config.ts)
+    │   ├── clientDictionaries.ts # dinamičko učitavanje samo aktivnog jezika u browseru
     │   ├── locales/           # sr.ts (izvor tipa Dictionary), en.ts, hr.ts, bs.ts, de.ts
     │   └── worksheetAbout/    # „O ovom listu“ po jeziku (sr.ts; ostali jezici kad se prevede)
     ├── types/

@@ -66,9 +66,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link rel="stylesheet" href="/pripreme/stil.css" />
   </head>
   <body>
@@ -534,9 +547,7 @@
       </div>
     </footer>
 
-    <!-- Biblioteke za direktno generisanje .docx fajlova u browseru -->
-    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Biblioteke docx i FileSaver učitavaju se po potrebi u app.js tek kada učitelj klikne na Word (.docx) preuzimanje -->
 
     <!-- Podaci i aplikaciona logika -->
     <script src="/pripreme/podaci.js"></script>
