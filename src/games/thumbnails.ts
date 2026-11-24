@@ -1,3 +1,5 @@
+import type { WorksheetId } from './ids';
+
 // Sličice radnih listova (kartice na stranici listova i og:image u statičnom HTML-u — vite.config.ts).
 // Deli se sa vite.config.ts, pa ne sme uvoziti ništa zavisno od okruženja.
 export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
@@ -52,3 +54,10 @@ export const WORKSHEET_THUMBNAILS: Partial<Record<string, string>> = {
   coloringInsects: '/slike/bojanke/insekti/04-leptir.jpg',
   coloringPizza: '/slike/bojanke/pica/06-veselo-parce-pice.jpg',
 };
+
+// Svaki radni list ima JPG sličicu za og:image i Google Slike: postojeću ilustraciju ili generisanu 1200×630 karticu.
+export function worksheetOgImage(id: WorksheetId): string {
+  const thumb = WORKSHEET_THUMBNAILS[id];
+  if (thumb && (thumb.endsWith('.jpg') || thumb.endsWith('.png'))) return thumb;
+  return `/slike/og-listovi/${id}.jpg`;
+}

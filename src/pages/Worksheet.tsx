@@ -9,6 +9,7 @@ import QrCode from '../components/QrCode';
 import { isWorksheetId, worksheetsFor, type WorksheetId } from '../games/ids';
 import { worksheets } from '../games/worksheets';
 import { WORKSHEET_PACKS } from '../games/packs';
+import { worksheetOgImage } from '../games/thumbnails';
 import { usePageMeta } from '../lib/usePageMeta';
 import { pageMeta } from '../lib/seo';
 
@@ -40,7 +41,7 @@ function WorksheetPage({ id }: { id: WorksheetId }) {
         ...own.slice(1).map((p) => ({ ...p, title: ws.labels.winterPack.diplomaTitle, text: ws.labels.winterPack.diplomaText })),
       ]
     : own;
-  usePageMeta(pageMeta.worksheet(t, id));
+  usePageMeta({ ...pageMeta.worksheet(t, id), image: worksheetOgImage(id) });
   const year = new Date().getFullYear();
   // Odštampan list putuje kući; QR vodi roditelja nazad na ovaj list i ostale.
   const qrUrl = `${siteConfig.url}${paths.worksheet(id)}`;

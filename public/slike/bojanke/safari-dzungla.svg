@@ -7,7 +7,6 @@
 
   <!-- Veliko afričko sunce -->
   <circle cx="680" cy="140" r="70" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
-  {[0, 45, 90, 135, 180, 225, 270, 315]}
   <line x1="680" y1="50" x2="680" y2="25" stroke="#111827" stroke-width="4" stroke-linecap="round" />
   <line x1="770" y1="140" x2="795" y2="140" stroke="#111827" stroke-width="4" stroke-linecap="round" />
   <line x1="680" y1="230" x2="680" y2="255" stroke="#111827" stroke-width="4" stroke-linecap="round" />

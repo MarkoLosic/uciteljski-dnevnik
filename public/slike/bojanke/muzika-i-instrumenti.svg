@@ -13,7 +13,6 @@
     <!-- Vrat gitare -->
     <rect x="5" y="-220" width="30" height="210" fill="#ffffff" stroke="#111827" stroke-width="4.5" />
     <!-- Pragovi -->
-    {[-180, -145, -110, -75, -40, -5].map((py) => (
     <line x1="5" y1="-180" x2="35" y2="-180" stroke="#111827" stroke-width="3" />
     <line x1="5" y1="-140" x2="35" y2="-140" stroke="#111827" stroke-width="3" />
     <line x1="5" y1="-100" x2="35" y2="-100" stroke="#111827" stroke-width="3" />

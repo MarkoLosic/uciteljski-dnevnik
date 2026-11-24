@@ -53,7 +53,7 @@ export default function BlogPost() {
 
   usePageMeta(
     post
-      ? { title: post.title, description: post.excerpt, type: 'article' }
+      ? { title: post.title, description: post.excerpt, type: 'article', image: post.image }
       : { title: t.blog.notFoundTitle, description: t.blog.notFoundMessage, noindex: true },
   );
 

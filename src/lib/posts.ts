@@ -9,7 +9,7 @@ const metaModules = import.meta.glob('../content/posts/*/*.md', {
   query: '?meta',
   import: 'default',
   eager: true,
-}) as Record<string, { data: unknown; readingMinutes: number }>;
+}) as Record<string, { data: unknown; readingMinutes: number; image?: string }>;
 
 const contentModules = import.meta.glob('../content/posts/*/*.md', { import: 'default' }) as Record<
   string,
@@ -25,14 +25,14 @@ let cachedEntries: Entry[] | null = null;
 function loadEntries(): Entry[] {
   if (cachedEntries) return cachedEntries;
 
-  const entries = Object.entries(metaModules).map(([filepath, { data, readingMinutes }]): Entry => {
+  const entries = Object.entries(metaModules).map(([filepath, { data, readingMinutes, image }]): Entry => {
     const file = filepath.replace(/\?.*$/, '');
     const [locale, filename] = file.split('/').slice(-2);
     if (!isLocale(locale)) throw new Error(`Nepoznat jezik članka "${locale}/${filename}"`);
     const frontmatter = validateFrontmatter(data, `${locale}/${filename}`);
     const loadContent = contentModules[file];
     if (!loadContent) throw new Error(`Nema sadržaja za članak "${locale}/${filename}"`);
-    return { slug: filename.replace(/\.md$/, ''), locale, ...frontmatter, readingMinutes, loadContent };
+    return { slug: filename.replace(/\.md$/, ''), locale, ...frontmatter, readingMinutes, image, loadContent };
   });
 
   cachedEntries = entries.sort((a, b) =>

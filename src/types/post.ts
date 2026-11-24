@@ -27,6 +27,7 @@ export interface PostMeta {
   excerpt: string;
   category: Category;
   readingMinutes: number; // procena iz broja reči (vite.config.ts)
+  image?: string; // putanja prve slike iz članka (za og:image)
 }
 
 export interface PostFrontmatter {

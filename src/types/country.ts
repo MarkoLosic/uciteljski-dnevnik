@@ -44,6 +44,10 @@ export interface CountryResults {
   pirls?: PirlsScores;
 }
 
+// Prosek OECD-a za poslednji PISA ciklus (OECD, PISA 2025 Results, Volume I).
+// TIMSS i PIRLS nemaju „prosek OECD-a“; centralna tačka njihove skale je 500.
+export const PISA_OECD_AVERAGE: PisaScores = { year: 2025, math: 463, reading: 461, science: 482 };
+
 export interface CountryFrontmatter {
   name: string;
   code: string; // ISO 3166-1 alpha-2, npr. "FI"

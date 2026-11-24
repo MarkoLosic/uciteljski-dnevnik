@@ -268,6 +268,30 @@ export const worksheetAboutSr: WorksheetAbout = {
     age: '3–7 godina',
     text: 'Lica sa različitim osjećanjima i prazan krug u koji dijete crta kako se danas osjeća. Pomaže djetetu da imenuje osjećanja, a odraslom da otvori razgovor.',
   },
+  coloringCircus: {
+    age: '4–8 godina',
+    text: 'Cirkuska šatra, slončić na lopti, zeka u mađioničarskom šeširu i klovn sa balonima. Raznovrsni detalji vježbaju strpljenje i precizno bojenje unutar linije.',
+  },
+  coloringJungle: {
+    age: '4–8 godina',
+    text: 'Tropska prašuma sa tukanom, papagajem arom, lijanama i cvjetovima. Pogodna uz razgovor o divljim životinjama i toplim krajevima svijeta.',
+  },
+  coloringRobot: {
+    age: '4–8 godina',
+    text: 'Prijateljski robot sa ekranom, dugmićima i malim letećim dronom u svemiru. Dobra za vježbanje geometrijskih oblika i uredno bojenje manjih polja.',
+  },
+  coloringGarden: {
+    age: '3–7 godina',
+    text: 'Baštensko strašilo, suncokret, kanta za zalivanje, šargarepe i bundeva u leji. Lijepo prati teme o biljkama, povrću, proljeću i jesenjim plodovima.',
+  },
+  coloringPirates: {
+    age: '4–8 godina',
+    text: 'Jedrenjak na talasima, ostrvo sa palmom i otvorena škrinja sa blagom. Podstiče maštu i pričanje priče dok dijete boji scenu.',
+  },
+  coloringFair: {
+    age: '4–8 godina',
+    text: 'Zabavni park sa panoramskim točkom, vrteškom sa konjićima i kolicima sa balonima. Sitniji detalji vježbaju kontrolu olovke i kombinovanje boja.',
+  },
   colors: {
     age: '3–5 godina',
     text: 'Bojenje oblika prema legendi: dijete prepoznaje krug, kvadrat, trougao i druge oblike, imenuje boje i povezuje jedno sa drugim. Papirna verzija igre sa ovog sajta.',
@@ -455,6 +479,30 @@ export const worksheetAboutSr: WorksheetAbout = {
   mathWordProblems: {
     age: '2–3. razred',
     text: 'Tekstualni zadaci iz svakodnevnog života: hrana, sat, dani, saobraćaj i priroda. Dijete čita zadatak, piše račun i odgovor cijelom rečenicom.',
+  },
+  mathFractions: {
+    age: '3–5. razred',
+    text: 'Uvod u razlomke kroz bojenje i čitanje dijelova figure (polovine, trećine, četvrtine, šestine i osmine) uz poređenje razlomaka jednakih imenilaca.',
+  },
+  mathGeometry: {
+    age: '1–3. razred',
+    text: 'Ravne geometrijske figure (stranice i tjemena), povezivanje geometrijskih tijela sa predmetima iz okruženja i prepoznavanje duži, prave, poluprave i krive linije.',
+  },
+  mathEvenOdd: {
+    age: '1–2. razred',
+    text: 'Parni i neparni brojevi do 100: bojenje balona po parnosti, spajanje predmeta u parove po dvoje i nastavljanje parnih i neparnih nizova.',
+  },
+  mathMoney: {
+    age: '1–2. razred',
+    text: 'Sabiranje novčanica i kovanica (KM), računanje cijene školskog pribora prema cjenovniku i vraćanje kusura na kasi.',
+  },
+  mathRomanNumerals: {
+    age: '3–4. razred',
+    text: 'Rimski brojevi do XX: povezivanje sa arapskim ciframa, zapisivanje brojeva rimskim znakovima i jednostavan račun sabiranja i oduzimanja.',
+  },
+  mathMultiplicationGrid: {
+    age: '2–3. razred',
+    text: 'Množenje kao zbir jednakih sabiraka, prebrojavanje tačkica po redovima i kolonama i popunjavanje mini Pitagorine tablice do 5.',
   },
 
   // Logika

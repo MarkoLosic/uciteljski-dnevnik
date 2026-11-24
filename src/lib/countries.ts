@@ -1,7 +1,10 @@
 import type { Locale } from '../i18n/config';
 import { isLocale, localeInfo } from '../i18n/config';
-import type { CountryMeta, PisaScores } from '../types/country';
+import type { CountryMeta } from '../types/country';
+import { PISA_OECD_AVERAGE } from '../types/country';
 import { validateCountry } from './countryFrontmatter';
+
+export { PISA_OECD_AVERAGE };
 
 // Isti obrazac kao posts.ts: frontmatter parsira plugin markdown-posts (vite.config.ts),
 // `?meta` je mali i ide odmah, tekst se učitava tek kad se zemlja otvori.
@@ -16,10 +19,6 @@ const contentModules = import.meta.glob('../content/countries/*/*.md', { import:
   string,
   () => Promise<string>
 >;
-
-// Prosek OECD-a za poslednji PISA ciklus (OECD, PISA 2025 Results, Volume I).
-// TIMSS i PIRLS nemaju „prosek OECD-a“; centralna tačka njihove skale je 500.
-export const PISA_OECD_AVERAGE: PisaScores = { year: 2025, math: 463, reading: 461, science: 482 };
 
 // Uvod i zaključci za stranicu Škole u svetu: content/world/<jezik>/zakljucci.md (bez frontmattera).
 const summaryModules = import.meta.glob('../content/world/*/*.md', { import: 'default' }) as Record<

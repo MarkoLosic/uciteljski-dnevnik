@@ -257,6 +257,102 @@ function sekcija(naslov: string, tekst: string, trajanje?: string): string {
       </section>`;
 }
 
+// Semantičko uvezivanje pripreme sa odgovarajućim A4 radnim listovima, diferenciranim testovima i lektirama.
+function povezaniMaterijali(j: Priprema): [string, string][] {
+  const tekst = `${j.naziv} ${j.cjelina}`.toLowerCase();
+  const veze: [string, string][] = [
+    [`Diferencirani test za ${j.razred}. razred (3 nivoa znanja)`, `/radni-listovi/testGrade${j.razred}`],
+  ];
+
+  if (j.predmet === 'Matematika') {
+    if (/razlom|dijelov.*cjelin|polovin|četvrtin/.test(tekst)) {
+      veze.push(['Radni list: Razlomci i dijelovi cjeline', '/radni-listovi/mathFractions']);
+    }
+    if (/množenj|tablic/.test(tekst)) {
+      veze.push(['Radni list: Množenje i pravougaona mreža', '/radni-listovi/mathMultiplicationGrid']);
+      veze.push(['Tablica množenja (96 zadataka)', '/radni-listovi/mathMultiply']);
+      veze.push(['Diferencirani test: Množenje i dijeljenje', '/radni-listovi/testMultiplicationDivision']);
+    }
+    if (/dijeljenj/.test(tekst)) {
+      veze.push(['Dijeljenje (96 zadataka)', '/radni-listovi/mathDivide']);
+      veze.push(['Diferencirani test: Množenje i dijeljenje', '/radni-listovi/testMultiplicationDivision']);
+    }
+    if (/rimsk/.test(tekst)) {
+      veze.push(['Radni list: Rimski brojevi (I–XX)', '/radni-listovi/mathRomanNumerals']);
+    }
+    if (/novac|kupovin|mark|kusur/.test(tekst)) {
+      veze.push(['Radni list: Novac, kupovina i kusur', '/radni-listovi/mathMoney']);
+    }
+    if (/parn|neparn/.test(tekst)) {
+      veze.push(['Radni list: Parni i neparni brojevi', '/radni-listovi/mathEvenOdd']);
+    }
+    if (/geometrij|oblic|figur|tijel|troug|kvadrat|pravougaonik|krug|kock|kvadar|valjak|lopt|linij|duž|površin|obim/.test(tekst)) {
+      veze.push(['Radni list: Geometrijske figure i tijela', '/radni-listovi/mathGeometry']);
+    }
+    if (/sat|časovnik|vrijem|minut|kalendar|sedmic|mjesec/.test(tekst)) {
+      veze.push(['Radni list: Čitanje sata i vrijeme', '/radni-listovi/timeClockRead']);
+      veze.push(['Radni list: Računanje sa vremenom', '/radni-listovi/timeClockMath']);
+    }
+    if (/tekstualn|problemsk/.test(tekst)) {
+      veze.push(['Tekstualni zadaci iz matematike', '/radni-listovi/mathWordProblems']);
+    }
+    if (j.razred === '1') {
+      veze.push(['Sabiranje i oduzimanje do 20', '/radni-listovi/mathAddSub20']);
+      veze.push(['Kućice brojeva i brojevna prava', '/radni-listovi/mathHouses']);
+    } else if (j.razred === '2') {
+      veze.push(['Vježbanka za 2. razred — Vježbam kod kuće (16 strana)', '/radni-listovi/homeWorkbookMath2']);
+      veze.push(['Sabiranje i oduzimanje do 100', '/radni-listovi/mathAddSub100']);
+    } else {
+      veze.push(['Diferencirani test: Sabiranje i oduzimanje', '/radni-listovi/testMathOperations']);
+    }
+  } else if (j.predmet === 'Maternji jezik i književnost') {
+    veze.push([`Lektire za ${j.razred}. razred osnovne škole (RS i FBiH)`, `/lektire#razred-${j.razred}`]);
+    if (/ćirilic|azbuk/.test(tekst)) {
+      veze.push(['Pišemo slova — ćirilica', '/radni-listovi/cyrillic']);
+      veze.push(['Bojanka slova — ćirilica', '/radni-listovi/coloringCyrillic']);
+      veze.push(['Most između latinice i ćirilice', '/radni-listovi/scriptBridge']);
+    } else if (/latinic|abeced|slov|glas|slog/.test(tekst)) {
+      veze.push(['Pišemo slova — latinica', '/radni-listovi/latin']);
+      veze.push(['Slogovi i početno slovo', '/radni-listovi/syllablesLatin']);
+    }
+    if (/imenic|glagol|pridjev|rečenic|padež|pravopis|velik.*slov|subjek|predikat/.test(tekst)) {
+      veze.push(['Diferencirani test: Jezik i gramatika (3 nivoa)', '/radni-listovi/testLanguageGrammar']);
+    }
+    if (/lektir|bajk|basn|prič|pjesm|tekst|čitanj/.test(tekst)) {
+      veze.push(['Diferencirani test: Čitanje sa razumijevanjem', '/radni-listovi/testReadingComprehension']);
+    }
+    if (['3', '4', '5'].includes(j.razred)) {
+      veze.push(['Kako nastaje priča — priručnik za mlade pisce', '/radni-listovi/writingHandbookLatin']);
+    }
+  } else if (j.predmet === 'Moja okolina / Priroda i društvo') {
+    veze.push(['Diferencirani test: Priroda i društvo (3 nivoa)', '/radni-listovi/testNatureSociety']);
+    if (/godišnj|proljeć|ljet|jesen|zim/.test(tekst)) {
+      veze.push(['Bojanka: Četiri godišnja doba', '/radni-listovi/coloringSeasons']);
+      veze.push(['Godina: mjeseci i godišnja doba', '/radni-listovi/timeYear']);
+    }
+    if (/saobraćaj|semafor|pješa|vozil/.test(tekst)) {
+      veze.push(['Bojanka: Semafor i pješački prelaz', '/radni-listovi/coloringTraffic']);
+    }
+    if (/zdrav|hran|higijen|ruk/.test(tekst)) {
+      veze.push(['Bojanka: Zdrava hrana', '/radni-listovi/coloringFood']);
+      veze.push(['Bojanka: Perem ruke', '/radni-listovi/coloringHandWash']);
+    }
+    if (/ekolog|otpad|recikl|prirod|šum|vod/.test(tekst)) {
+      veze.push(['Bojanka: Čuvam prirodu — razvrstaj otpad', '/radni-listovi/coloringRecycle']);
+    }
+  } else if (j.predmet === 'Likovna kultura') {
+    veze.push(['Zbirka A4 bojanki i crteža za štampu', '/radni-listovi']);
+    veze.push(['Crtanje u ogledalu — simetrija na mreži', '/radni-listovi/symmetry']);
+  } else if (j.predmet === 'Muzička kultura') {
+    veze.push(['Bojanka: Muzički orkestar i instrumenti', '/radni-listovi/coloringMusic']);
+  } else if (j.predmet === 'Tjelesni i zdravstveni odgoj') {
+    veze.push(['Bojanka: Sport i rekreacija za djecu', '/radni-listovi/coloringSports']);
+  }
+
+  const vidjene = new Set<string>();
+  return veze.filter(([, href]) => (vidjene.has(href) ? false : (vidjene.add(href), true))).slice(0, 5);
+}
+
 function stranicaPripreme(j: Priprema, zadaci: Zadaci | null, cjelina: Priprema[], predmetNiz: Priprema[]): Stranica {
   const sis = sistemOf(j);
   const predmet = PREDMETI[j.predmet];
@@ -279,6 +375,12 @@ ${NIVOI.map(
         </div>
       </section>`
     : '';
+
+  const povezani = povezaniMaterijali(j);
+  const povezaniBlok = `      <section class="static-block">
+        <h2 class="static-title">Prateći A4 radni listovi, testovi i lektira</h2>
+        <ul class="lesson-links">${povezani.map(([naziv, href]) => `<li><a href="${href}">${esc(naziv)}</a></li>`).join('')}</ul>
+      </section>`;
 
   const ostale = cjelina.length > 1
     ? `      <section class="static-block">
@@ -324,6 +426,8 @@ ${nivoi}
         ${sljedeca ? `<a class="next" href="${pripremaPutanja(sljedeca)}"><span>Sljedeći čas →</span>${esc(sljedeca.naziv)}</a>` : '<span></span>'}
       </nav>
 
+${povezaniBlok}
+
 ${ostale}`;
 
   return {
@@ -348,6 +452,8 @@ ${ostale}`;
       educationalLevel: `${j.razred}. razred osnovne škole`,
       about: j.predmet,
       teaches: j.ishodi,
+      isAccessibleForFree: true,
+      license: `${siteConfig.url}/autorska-prava`,
       audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' },
       isPartOf: { '@type': 'WebSite', name: siteConfig.name, url: siteConfig.url },
       author: { '@type': 'Person', name: siteConfig.author.name, url: `${siteConfig.url}/o-meni` },
@@ -385,10 +491,22 @@ ${[...cjeline]
           <div class="static-actions">
             <a class="btn btn-primary" href="${BIBLIOTEKA}?razred=${r}">Pretraži u biblioteci</a>
             <a class="btn btn-outline" href="${razredPutanja(r)}">Svi predmeti za ${r}. razred</a>
+            <a class="btn btn-outline" href="/radni-listovi/testGrade${r}">Diferencirani test za ${r}. razred</a>
           </div>
         </div>
       </header>
 ${poSistemu.join('\n')}`,
+    ld: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `${p.kratko} — pripreme za ${r}. razred (RS i FBiH)`,
+      url: `${siteConfig.url}${predmetPutanja(r, predmet)}`,
+      inLanguage: 'sr-Latn-BA',
+      isAccessibleForFree: true,
+      about: predmet,
+      educationalLevel: `${r}. razred osnovne škole`,
+      author: { '@type': 'Person', name: siteConfig.author.name, url: `${siteConfig.url}/o-meni` },
+    },
   };
 }
 
@@ -421,6 +539,8 @@ function stranicaRazreda(r: string, jedinice: Priprema[]): Stranica {
           <p class="hero-desc">${jedinice.length} dnevnih priprema za cijelu školsku godinu, po nastavnim planovima Republike Srpske (RPZ) i Federacije BiH (ZJNPP). Izaberite predmet.</p>
           <div class="static-actions">
             <a class="btn btn-primary" href="${BIBLIOTEKA}?razred=${r}">Otvori biblioteku za ${r}. razred</a>
+            <a class="btn btn-outline" href="/radni-listovi/testGrade${r}">Diferencirani test za ${r}. razred</a>
+            <a class="btn btn-outline" href="/lektire#razred-${r}">Lektira za ${r}. razred</a>
           </div>
         </div>
       </header>
@@ -431,6 +551,16 @@ ${kartice}
         <h2 class="static-title">Drugi razredi</h2>
         <p class="hub-grades">${RAZREDI.filter((x) => x !== r).map((x) => `<a class="btn btn-outline" href="${razredPutanja(x)}">${x}. razred</a>`).join(' ')}</p>
       </nav>`,
+    ld: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `Pripreme za ${r}. razred osnovne škole (RS i FBiH)`,
+      url: `${siteConfig.url}${razredPutanja(r)}`,
+      inLanguage: 'sr-Latn-BA',
+      isAccessibleForFree: true,
+      educationalLevel: `${r}. razred osnovne škole`,
+      author: { '@type': 'Person', name: siteConfig.author.name, url: `${siteConfig.url}/o-meni` },
+    },
   };
 }
 
