@@ -58,10 +58,10 @@ export default function Header() {
     external?: boolean;
   }[] = [
     { to: paths.home, label: t.nav.home, icon: Home },
-    { to: '/pripreme', label: t.nav.pripreme, badge: '1–5. razred', icon: BookOpen, external: true },
-    ...(hasLektire(locale) ? [{ to: paths.lektire, label: t.nav.lektire, badge: 'RS i FBiH', icon: Library }] : []),
-    { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort, badge: 'A4 štampa', icon: Palette },
-    { to: paths.games, label: t.nav.games, short: t.nav.gamesShort, badge: '10 igara', icon: Gamepad2 },
+    { to: '/pripreme', label: t.nav.pripreme, badge: t.nav.pripremeBadge, icon: BookOpen, external: true },
+    ...(hasLektire(locale) ? [{ to: paths.lektire, label: t.nav.lektire, badge: t.nav.lektireBadge, icon: Library }] : []),
+    { to: paths.worksheets, label: t.nav.worksheets, short: t.nav.worksheetsShort, badge: t.nav.worksheetsBadge, icon: Palette },
+    { to: paths.games, label: t.nav.games, short: t.nav.gamesShort, badge: t.nav.gamesBadge, icon: Gamepad2 },
     { to: paths.blog, label: t.nav.blog, icon: FileText },
     ...(hasCountries(locale) ? [{ to: paths.world, label: t.nav.world, icon: Globe2 }] : []),
     { to: paths.about, label: t.nav.about, icon: User },
@@ -131,7 +131,7 @@ export default function Header() {
             }`}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
-            aria-label={isMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
+            aria-label={isMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
           >
             {isMenuOpen ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
           </button>

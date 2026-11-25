@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { siteConfig } from '../config/site';
 import { documentTitle } from './seo';
 import { DEFAULT_LOCALE, LOCALES, localeInfo } from '../i18n/config';
-import { switchLocalePath } from '../i18n/paths';
+import { alternatePathForLocale } from '../i18n/paths';
 import { useLocale } from '../i18n/LocaleContext';
 
 interface PageMeta {
@@ -77,27 +77,24 @@ export function usePageMeta({ title, description, type = 'website', image, noind
       document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
 
       if (!noindex) {
-        const seen = new Set<string>();
         for (const targetLocale of LOCALES) {
-          const targetPath = switchLocalePath(cleanPath, locale, targetLocale);
-          // Preskoči ako je fallback vratio na opštu stranicu, a nismo na njoj (npr. radni list samo za sr/bs).
-          if (targetLocale !== locale && targetPath === (targetLocale === DEFAULT_LOCALE ? '/' : `/${targetLocale}`) && cleanPath !== (locale === DEFAULT_LOCALE ? '/' : `/${locale}`)) {
-            continue;
-          }
+          const targetPath = alternatePathForLocale(cleanPath, locale, targetLocale);
+          if (!targetPath) continue;
           const href = `${siteConfig.url}${targetPath === '/' ? '' : targetPath}`;
-          seen.add(`${targetLocale}:${href}`);
           const link = document.createElement('link');
           link.setAttribute('rel', 'alternate');
           link.setAttribute('hreflang', targetLocale);
           link.setAttribute('href', href);
           document.head.appendChild(link);
         }
-        const defaultPath = switchLocalePath(cleanPath, locale, DEFAULT_LOCALE);
-        const xDefault = document.createElement('link');
-        xDefault.setAttribute('rel', 'alternate');
-        xDefault.setAttribute('hreflang', 'x-default');
-        xDefault.setAttribute('href', `${siteConfig.url}${defaultPath === '/' ? '' : defaultPath}`);
-        document.head.appendChild(xDefault);
+        const defaultPath = alternatePathForLocale(cleanPath, locale, DEFAULT_LOCALE);
+        if (defaultPath) {
+          const xDefault = document.createElement('link');
+          xDefault.setAttribute('rel', 'alternate');
+          xDefault.setAttribute('hreflang', 'x-default');
+          xDefault.setAttribute('href', `${siteConfig.url}${defaultPath === '/' ? '' : defaultPath}`);
+          document.head.appendChild(xDefault);
+        }
       }
     }
 

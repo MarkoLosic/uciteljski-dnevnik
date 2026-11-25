@@ -178,7 +178,7 @@ export const worksheetAboutSr: WorksheetAbout = {
   },
   coloringAnimals: {
     age: '3–6 godina',
-    text: 'Domaće životinje na farmi: krava, ovca, štene i petao. Dok boji, dijete može imenovati životinje, oponašati njihove glasove i reći šta nam koja životinja daje.',
+    text: 'Domaće životinje na farmi: krava, ovca, štene i pijetao. Dok boji, dijete može imenovati životinje, oponašati njihove glasove i reći šta nam koja životinja daje.',
   },
   coloringSafari: {
     age: '4–7 godina',
