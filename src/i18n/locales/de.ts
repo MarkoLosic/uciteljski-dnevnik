@@ -1,4 +1,5 @@
 import type { Dictionary } from './sr';
+import { worksheetAboutDe } from '../worksheetAbout/de';
 
 export const de: Dictionary = {
   site: {
@@ -362,7 +363,7 @@ export const de: Dictionary = {
       aboutTitle: 'Über dieses Arbeitsblatt',
       ageLabel: 'Alter',
       // „O ovom listu“ za roditelje i učitelje (src/i18n/worksheetAbout/); prazno = prikazuje se samo uputstvo.
-      about: {},
+      about: worksheetAboutDe,
       sectionEyebrow: 'Zum Ausdrucken · A4-Format',
       sectionTitle: 'Ausmalbilder, Buchstaben, Kyrillisch, Lateinisch & Arbeitsblätter',
       sectionText: 'Komplette Sammlung von 118 Arbeitsblättern, differenzierten Leistungstests und Malbüchern im A4-Format: Tests für 3 Lernstufen (Basis, Mittel, Fortgeschritten), thematische Ausmalbilder, Buchstaben und Rechnen.',

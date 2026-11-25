@@ -1,4 +1,5 @@
 import type { Dictionary } from './sr';
+import { worksheetAboutHr } from '../worksheetAbout/hr';
 
 export const hr: Dictionary = {
   site: {
@@ -362,7 +363,7 @@ export const hr: Dictionary = {
       aboutTitle: 'O ovom listu',
       ageLabel: 'Dob',
       // „O ovom listu“ za roditelje i učitelje (src/i18n/worksheetAbout/); prazno = prikazuje se samo uputstvo.
-      about: {},
+      about: worksheetAboutHr,
       sectionEyebrow: 'Za ispis · A4 format',
       sectionTitle: 'Bojanke slova i slika, latinica, ćirilica i radni listovi',
       sectionText: 'Kompletna zbirka od 124 radna lista, diferenciranih ispita i tematskih bojanki spremnih za ispis na A4 formatu: provjere znanja za tri razine postignuća učenika (osnovna, srednja i napredna), tematske bojanke, slova abecede i azbuke, grafomotorika i matematika.',

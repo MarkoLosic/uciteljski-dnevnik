@@ -1,4 +1,5 @@
 import type { Dictionary } from './sr';
+import { worksheetAboutEn } from '../worksheetAbout/en';
 
 export const en: Dictionary = {
   site: {
@@ -362,7 +363,7 @@ export const en: Dictionary = {
       aboutTitle: 'About this worksheet',
       ageLabel: 'Age',
       // „O ovom listu“ za roditelje i učitelje (src/i18n/worksheetAbout/); prazno = prikazuje se samo uputstvo.
-      about: {},
+      about: worksheetAboutEn,
       sectionEyebrow: 'Printables · A4 format',
       sectionTitle: 'Coloring books, letters, Cyrillic, Latin & worksheets',
       sectionText: 'Complete collection of 118 worksheets, differentiated tests and themed coloring pages ready to print on A4: achievement tests for 3 levels (basic, intermediate, advanced), themed coloring books, alphabet pages, fine motor skills and math.',
